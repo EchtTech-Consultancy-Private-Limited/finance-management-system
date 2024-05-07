@@ -183,6 +183,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Helper' => App\Http\Helpers\CustomCaptcha::class,
     ])->toArray(),
 
 ];

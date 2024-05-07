@@ -20,9 +20,13 @@ return new class extends Migration
             $table->string('user_type')->nullable();
             $table->string('dob')->nullable();
             $table->string('gender')->nullable();
+            $table->string('ip')->nullable();
+            $table->string('user_agent')->nullable();
+            $table->string('last_login')->nullable();
             $table->string('number')->nullable();
             $table->string('mobile')->unique()->nullable();
             $table->string('landline')->nullable();
+            $table->string('login_status')->nullable();
             $table->string('designation')->nullable();
             $table->text('institute_name')->nullable();
             $table->timestamp('email_verified_at')->nullable();
