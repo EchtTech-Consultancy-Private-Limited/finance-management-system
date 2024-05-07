@@ -18,7 +18,7 @@ class SOEUCUploadFormController extends Controller
     public function index()
     {
         $stateList = DB::table('states')->where('status',1)->get();
-        return view($this->create,['state'=>$stateList]);
+        return view($this->list,['state'=>$stateList]);
     }
 
     /**
@@ -26,7 +26,8 @@ class SOEUCUploadFormController extends Controller
      */
     public function create()
     {
-        //
+        $stateList = DB::table('states')->where('status',1)->get();
+        return view($this->create,['state'=>$stateList]);
     }
 
     /**

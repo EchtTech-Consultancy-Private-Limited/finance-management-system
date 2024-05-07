@@ -22,19 +22,23 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login-dev', [LoginController::class, 'authenticateDev'])->name('authenticate-dev');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('profile/{id}/edit', [LoginController::class, 'getUserProfile'])->name('profile.edit');
-Route::get('password/{id}/update', [LoginController::class, 'getUserPassword'])->name('password.update');
+
 
 Route::middleware(['auth'])->group(function () {
     
+    Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
+    Route::get('password/{id}/update', [LoginController::class, 'getUserPassword'])->name('password.update');
+
     Route::prefix('national-user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('national-user.dashboard');
     });
 
     Route::prefix('institue-user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('institue-user.dashboard');
-        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'index'])->name('institue-user.SOE-&-UC');
-        Route::get('/SOE-UC-upload', [SOEUCUploadFormController::class, 'index'])->name('institue-user.SOE-UC-upload');
+        Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('institue-user.SOE-&-UC-list');
+        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('institue-user.SOE-&-UC');
+        Route::get('/SOE-UC-upload-list', [SOEUCUploadFormController::class, 'index'])->name('institue-user.SOE-UC-upload-list');
+        Route::get('/SOE-UC-upload', [SOEUCUploadFormController::class, 'create'])->name('institue-user.SOE-UC-upload');
     });
     
 });

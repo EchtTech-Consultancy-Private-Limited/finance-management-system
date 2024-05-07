@@ -26,7 +26,10 @@ class DashboardController extends Controller
 
         return view('national-user.dashboard');
     }
-
+    public function getUserProfile(Request $request, $id){
+          
+        return view('auth.profile');
+     }
     /**
      * Show the form for creating a new resource.
      *

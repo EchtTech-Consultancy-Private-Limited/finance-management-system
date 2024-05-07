@@ -302,9 +302,7 @@ class LoginController extends Controller
     {
         return response()->json(['captcha'=> captcha_img('math')]);
     }
-    public function getUserProfile(Reuest $request,$id){
-          dd($id);
-    }
+   
     public function getUserPassword(Reuest $request,$id){
         dd($id);
     }

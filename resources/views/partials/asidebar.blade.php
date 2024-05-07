@@ -7,7 +7,7 @@
          </div>
          <ul id="sidebar_menu">
             <li class>
-               <a href="#" aria-expanded="false">
+               <a href="@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==1) {{ route('institue-user.dashboard') }} @else {{ route('national-user.dashboard') }} @endif" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/dashboard.svg') }}" alt>
                   </div>
@@ -42,7 +42,7 @@
                </a>
                <ul>
                   <li><a href="{{ route('institue-user.SOE-UC-upload') }}">Create</a></li>
-                  <li><a href="#">List</a></li>
+                  <li><a href="{{ route('institue-user.SOE-UC-upload-list') }}">List</a></li>
                </ul>
             </li>
             @endif
