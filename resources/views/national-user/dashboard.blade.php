@@ -36,7 +36,8 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4 mx-auto mb-4">
                     <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup class="text-danger">*</sup></b></label>
+                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                                    class="text-danger">*</sup></b></label>
                         <select name="" class="form-control" id="">
                             <option value="">Choose Financial Year</option>
                             <option value="">2023-2024</option>
@@ -51,7 +52,88 @@
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_head d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                            <i class="fas fa-calendar f_s_16 white_text"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19.9" height="17.734"
+                                    viewBox="0 0 19.9 17.734" class="invert-1">
+                                    <g id="calender_icon" transform="translate(0 -20.9)">
+                                        <g id="Group_2869" data-name="Group 2869" transform="translate(0 20.9)">
+                                            <g id="Group_2868" data-name="Group 2868" transform="translate(0 0)">
+                                                <path id="Path_1648" data-name="Path 1648"
+                                                    d="M17.837,22.408H16.588v-.99a.518.518,0,0,0-1.037,0v.99h-5.08v-.99a.518.518,0,0,0-1.037,0v.99H4.3v-.99a.518.518,0,0,0-1.037,0v.99h-1.2A2.1,2.1,0,0,0,0,24.508V36.56a2.069,2.069,0,0,0,2.068,2.073H17.832A2.067,2.067,0,0,0,19.9,36.565V24.508A2.09,2.09,0,0,0,17.837,22.408ZM18.869,36.56A1.034,1.034,0,0,1,17.842,37.6H2.068a1.031,1.031,0,0,1-1.032-1.032V24.508a1.055,1.055,0,0,1,1.032-1.063h1.2V24.2a.518.518,0,0,0,1.037,0v-.752H9.434V24.2a.518.518,0,0,0,1.037,0v-.752h5.08V24.2a.518.518,0,0,0,1.037,0v-.752h1.249a1.054,1.054,0,0,1,1.032,1.063Z"
+                                                    transform="translate(0 -20.9)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2871" data-name="Group 2871" transform="translate(7.164 26.815)">
+                                            <g id="Group_2870" data-name="Group 2870">
+                                                <path id="Path_1649" data-name="Path 1649"
+                                                    d="M139.626,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
+                                                    transform="translate(-138.2 -135)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2873" data-name="Group 2873" transform="translate(10.772 26.815)">
+                                            <g id="Group_2872" data-name="Group 2872">
+                                                <path id="Path_1650" data-name="Path 1650"
+                                                    d="M209.226,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
+                                                    transform="translate(-207.8 -135)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2875" data-name="Group 2875" transform="translate(14.411 26.815)">
+                                            <g id="Group_2874" data-name="Group 2874">
+                                                <path id="Path_1651" data-name="Path 1651"
+                                                    d="M279.426,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
+                                                    transform="translate(-278 -135)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2877" data-name="Group 2877" transform="translate(7.164 30.391)">
+                                            <g id="Group_2876" data-name="Group 2876" transform="translate(0 0)">
+                                                <path id="Path_1652" data-name="Path 1652"
+                                                    d="M139.626,204h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
+                                                    transform="translate(-138.2 -204)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2879" data-name="Group 2879" transform="translate(3.525 30.391)">
+                                            <g id="Group_2878" data-name="Group 2878" transform="translate(0 0)">
+                                                <path id="Path_1653" data-name="Path 1653"
+                                                    d="M69.431,204h-.912a.518.518,0,0,0,0,1.037h.907A.518.518,0,0,0,69.431,204Z"
+                                                    transform="translate(-68 -204)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2881" data-name="Group 2881" transform="translate(10.772 30.391)">
+                                            <g id="Group_2880" data-name="Group 2880" transform="translate(0 0)">
+                                                <path id="Path_1654" data-name="Path 1654"
+                                                    d="M209.226,204h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
+                                                    transform="translate(-207.8 -204)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2883" data-name="Group 2883" transform="translate(14.411 30.391)">
+                                            <g id="Group_2882" data-name="Group 2882" transform="translate(0 0)">
+                                                <path id="Path_1655" data-name="Path 1655"
+                                                    d="M279.426,204h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
+                                                    transform="translate(-278 -204)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2885" data-name="Group 2885" transform="translate(7.164 33.916)">
+                                            <g id="Group_2884" data-name="Group 2884" transform="translate(0 0)">
+                                                <path id="Path_1656" data-name="Path 1656"
+                                                    d="M139.626,272h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
+                                                    transform="translate(-138.2 -272)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2887" data-name="Group 2887" transform="translate(3.525 33.916)">
+                                            <g id="Group_2886" data-name="Group 2886" transform="translate(0 0)">
+                                                <path id="Path_1657" data-name="Path 1657"
+                                                    d="M69.431,272h-.912a.518.518,0,0,0,0,1.037h.907A.518.518,0,0,0,69.431,272Z"
+                                                    transform="translate(-68 -272)" />
+                                            </g>
+                                        </g>
+                                        <g id="Group_2889" data-name="Group 2889" transform="translate(10.772 33.916)">
+                                            <g id="Group_2888" data-name="Group 2888" transform="translate(0 0)">
+                                                <path id="Path_1658" data-name="Path 1658"
+                                                    d="M209.226,272h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
+                                                    transform="translate(-207.8 -272)" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
@@ -65,7 +147,7 @@
                     <div class="single_crm border-line-2 p-0">
                         <div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                              <i class="fas fa-credit-card f_s_16 white_text"></i>
+                                <i class="fas fa-credit-card f_s_16 white_text"></i>
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
@@ -79,7 +161,7 @@
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                              <i class="fas fa-plus f_s_16 white_text"></i>
+                                <i class="fas fa-plus f_s_16 white_text"></i>
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
@@ -93,15 +175,28 @@
                     <div class="single_crm border-line-4 p-0">
                         <div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15.535" height="14.888" viewBox="0 0 15.535 14.888">
-                                <g id="infographic" transform="translate(0 -1)">
-                                    <path id="Path_1511" data-name="Path 1511" d="M2.647,7.65a.647.647,0,0,1-.43-1.131L5.13,3.93a.644.644,0,0,1,.507-.159l5.038.61,2.854-2.7a.647.647,0,0,1,.89.941L11.345,5.531a.65.65,0,0,1-.523.173l-5.05-.613-2.695,2.4a.645.645,0,0,1-.43.163Z" transform="translate(-0.706 -0.177)" fill="#fff"/>
-                                    <path id="Path_1512" data-name="Path 1512" d="M19.751,4.236a.483.483,0,0,1-.343-.142L17.143,1.829A.485.485,0,0,1,17.486,1h2.266a.486.486,0,0,1,.485.485V3.751a.485.485,0,0,1-.485.485Z" transform="translate(-5.996)" fill="#fff"/>
-                                    <path id="Path_1513" data-name="Path 1513" d="M4.884,17.809v1.78H1v-1.78A.809.809,0,0,1,1.809,17H4.075A.809.809,0,0,1,4.884,17.809Z" transform="translate(-0.353 -5.643)" fill="#fff"/>
-                                    <path id="Path_1514" data-name="Path 1514" d="M12.884,11.809v5.664H9V11.809A.809.809,0,0,1,9.809,11h2.266A.809.809,0,0,1,12.884,11.809Z" transform="translate(-3.174 -3.527)" fill="#fff"/>
-                                    <path id="Path_1515" data-name="Path 1515" d="M20.884,13.809v4.369H17V13.809A.809.809,0,0,1,17.809,13h2.266A.809.809,0,0,1,20.884,13.809Z" transform="translate(-5.996 -4.232)" fill="#fff"/>
-                                    <path id="Path_1516" data-name="Path 1516" d="M15.05,23.471H.485a.485.485,0,1,1,0-.971H15.05a.485.485,0,1,1,0,.971Z" transform="translate(0 -7.583)" fill="#fff"/>
-                                </g>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15.535" height="14.888"
+                                    viewBox="0 0 15.535 14.888">
+                                    <g id="infographic" transform="translate(0 -1)">
+                                        <path id="Path_1511" data-name="Path 1511"
+                                            d="M2.647,7.65a.647.647,0,0,1-.43-1.131L5.13,3.93a.644.644,0,0,1,.507-.159l5.038.61,2.854-2.7a.647.647,0,0,1,.89.941L11.345,5.531a.65.65,0,0,1-.523.173l-5.05-.613-2.695,2.4a.645.645,0,0,1-.43.163Z"
+                                            transform="translate(-0.706 -0.177)" fill="#fff" />
+                                        <path id="Path_1512" data-name="Path 1512"
+                                            d="M19.751,4.236a.483.483,0,0,1-.343-.142L17.143,1.829A.485.485,0,0,1,17.486,1h2.266a.486.486,0,0,1,.485.485V3.751a.485.485,0,0,1-.485.485Z"
+                                            transform="translate(-5.996)" fill="#fff" />
+                                        <path id="Path_1513" data-name="Path 1513"
+                                            d="M4.884,17.809v1.78H1v-1.78A.809.809,0,0,1,1.809,17H4.075A.809.809,0,0,1,4.884,17.809Z"
+                                            transform="translate(-0.353 -5.643)" fill="#fff" />
+                                        <path id="Path_1514" data-name="Path 1514"
+                                            d="M12.884,11.809v5.664H9V11.809A.809.809,0,0,1,9.809,11h2.266A.809.809,0,0,1,12.884,11.809Z"
+                                            transform="translate(-3.174 -3.527)" fill="#fff" />
+                                        <path id="Path_1515" data-name="Path 1515"
+                                            d="M20.884,13.809v4.369H17V13.809A.809.809,0,0,1,17.809,13h2.266A.809.809,0,0,1,20.884,13.809Z"
+                                            transform="translate(-5.996 -4.232)" fill="#fff" />
+                                        <path id="Path_1516" data-name="Path 1516"
+                                            d="M15.05,23.471H.485a.485.485,0,1,1,0-.971H15.05a.485.485,0,1,1,0,.971Z"
+                                            transform="translate(0 -7.583)" fill="#fff" />
+                                    </g>
                                 </svg>
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
@@ -116,17 +211,31 @@
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_head crm_bg_4 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15.412" height="15.412" viewBox="0 0 15.412 15.412" class="briteness-10">
-                            <g id="XMLID_17_" transform="translate(0 -0.002)">
-                                <path id="XMLID_40_" d="M257.823.4A7.874,7.874,0,0,0,255,0V3.221Z" transform="translate(-247.294 0)" fill="#5e3787"/>
-                                <path id="XMLID_560_" d="M406.712,164.428a7.873,7.873,0,0,0-.4-2.823l-2.823,2.823Z" transform="translate(-391.3 -156.719)" fill="#5e3787"/>
-                                <path id="XMLID_561_" d="M255,65.9h.641l5.252-5.252a7.285,7.285,0,0,0-.641-.641L255,65.263Z" transform="translate(-247.294 -58.195)" fill="#5e3787"/>
-                                <path id="XMLID_562_" d="M319.921,109.629l3.724-3.724a7.253,7.253,0,0,0-.475-.807l-4.531,4.531Z" transform="translate(-309.01 -101.92)" fill="#5e3787"/>
-                                <path id="XMLID_2261_" d="M255,30.729,259.53,26.2a7.238,7.238,0,0,0-.807-.476L255,29.447Z" transform="translate(-247.294 -24.943)" fill="#5e3787"/>
-                                <path id="XMLID_2337_" d="M6.8,29.884l-.513.068A7.254,7.254,0,0,0,1.813,41.939L6.8,36.953Z" transform="translate(0 -28.979)" fill="#5e3787"/>
-                                <path id="XMLID_2340_" d="M81.205,290.006a7.254,7.254,0,0,0,11.987-4.473l.068-.513H86.191Z" transform="translate(-78.751 -276.405)" fill="#5e3787"/>
-                            </g>
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15.412" height="15.412"
+                                    viewBox="0 0 15.412 15.412" class="briteness-10">
+                                    <g id="XMLID_17_" transform="translate(0 -0.002)">
+                                        <path id="XMLID_40_" d="M257.823.4A7.874,7.874,0,0,0,255,0V3.221Z"
+                                            transform="translate(-247.294 0)" fill="#5e3787" />
+                                        <path id="XMLID_560_"
+                                            d="M406.712,164.428a7.873,7.873,0,0,0-.4-2.823l-2.823,2.823Z"
+                                            transform="translate(-391.3 -156.719)" fill="#5e3787" />
+                                        <path id="XMLID_561_"
+                                            d="M255,65.9h.641l5.252-5.252a7.285,7.285,0,0,0-.641-.641L255,65.263Z"
+                                            transform="translate(-247.294 -58.195)" fill="#5e3787" />
+                                        <path id="XMLID_562_"
+                                            d="M319.921,109.629l3.724-3.724a7.253,7.253,0,0,0-.475-.807l-4.531,4.531Z"
+                                            transform="translate(-309.01 -101.92)" fill="#5e3787" />
+                                        <path id="XMLID_2261_"
+                                            d="M255,30.729,259.53,26.2a7.238,7.238,0,0,0-.807-.476L255,29.447Z"
+                                            transform="translate(-247.294 -24.943)" fill="#5e3787" />
+                                        <path id="XMLID_2337_"
+                                            d="M6.8,29.884l-.513.068A7.254,7.254,0,0,0,1.813,41.939L6.8,36.953Z"
+                                            transform="translate(0 -28.979)" fill="#5e3787" />
+                                        <path id="XMLID_2340_"
+                                            d="M81.205,290.006a7.254,7.254,0,0,0,11.987-4.473l.068-.513H86.191Z"
+                                            transform="translate(-78.751 -276.405)" fill="#5e3787" />
+                                    </g>
+                                </svg>
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
@@ -139,7 +248,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="col-xl-4">
         <div class="white_card card_height_100 mb_30">
             <div class="white_card_header">
@@ -165,11 +274,11 @@
             </div>
             <div class="white_card_body">
                 <div id="chart-currently"></div>
-              
+
             </div>
         </div>
     </div>
-  
+
     <div class="col-xl-4">
         <div class="white_card card_height_100 mb_30">
             <div class="white_card_header">
@@ -195,11 +304,13 @@
             </div>
             <div class="white_card_body">
                 <div id="chart-currently-again"></div>
-              
+
             </div>
         </div>
     </div>
-   
+
 </div>
 
+
+</div>
 @endsection
