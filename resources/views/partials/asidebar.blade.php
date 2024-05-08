@@ -28,7 +28,7 @@
                </a>
                <ul>
                   <li><a href="{{ route('institue-user.SOE-&-UC') }}">Create</a></li>
-                  <li><a href="#">List</a></li>
+                  <li><a href="{{ route('institue-user.SOE-&-UC-list') }}">List</a></li>
                </ul>
             </li>
             <li class>

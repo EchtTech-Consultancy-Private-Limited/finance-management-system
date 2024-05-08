@@ -1,15 +1,16 @@
 @extends('layout.main')
 @section('title')
     @parent
-    | {{__('Create')}}
+    | {{__('Profile Update')}}
 @endsection
 @section('pageTitle')
- {{ __('Create') }}
+ {{ __('Profile Update') }}
 @endsection
 @section('breadcrumbs')
- {{ __('Create') }}
+ {{ __('Profile Update') }}
 @endsection
 @section('content')
+{!! Toastr::message() !!}
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
         <div class="white_card_header">
@@ -21,29 +22,39 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('update-profile') }}">
+                @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress">First Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="fname" value="{{Auth::user()->name}}" id="fname" placeholder="First Name ">
+                            <input type="text" class="form-control" name="fname" value="{{Auth::user()->name??old('fname')}}" id="fname" placeholder="First Name ">
+                            @error('fname')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Middle Name</label>
-                            <input type="text" class="form-control" name="mname" value="{{Auth::user()->mname}}" id="mname" placeholder="Middle Name">
+                            <input type="text" class="form-control" name="mname" value="{{Auth::user()->mname??old('mname')}}" id="mname" placeholder="Middle Name">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Last Name</label>
-                            <input type="text" class="form-control" name="lname" value="{{Auth::user()->lname}}" id="lname" placeholder="Last Name">
+                            <input type="text" class="form-control" name="lname" value="{{Auth::user()->lname??old('lname')}}" id="lname" placeholder="Last Name">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Email<span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}" id="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}" id="email" placeholder="Email" readonly>
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Mobile<span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" name="mobile " value="{{Auth::user()->mobile }}" id="mobile" placeholder="Mobile">
+                            <input type="number" class="form-control" name="mobile" value="{{Auth::user()->mobile??old('mobile') }}" id="mobile" placeholder="Mobile">
+                            @error('mobile')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">LandLine</label>
@@ -53,16 +64,22 @@
                     <div class="row mb-3">
                         <div class="col-md-2">
                             <label class="form-label" for="inputAddress2">DOB<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" name="dob" value="{{Auth::user()->dob}}" id="dob" placeholder="DOB">
+                            <input type="date" class="form-control" name="dob" value="{{Auth::user()->dob??old('dob')}}" id="dob" placeholder="DOB">
+                            @error('dob')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-2">
                             <label class="form-label" for="inputAddress2">Gender<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="gender">
-                                <option selected>Gender...</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="other">other</option>
+                                <option value="">Gender...</option>
+                                <option value="Male" @if(Auth::user()->gender == 'Male') selected @else '' @endif>Male</option>
+                                <option value="Female" @if(Auth::user()->gender == 'Female') selected @else '' @endif>Female</option>
+                                <option value="other" @if(Auth::user()->gender == 'other') selected @else '' @endif>other</option>
                             </select>
+                            @error('gender')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">ID Type<span class="text-danger">*</span></label>
@@ -70,13 +87,19 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Designation<span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" name="designation" value="{{Auth::user()->designation}}" id="inputAddress2" placeholder="Designation">
+                            <input type="text" class="form-control" name="designation" value="{{Auth::user()->designation??old('designation')}}" id="inputAddress2" placeholder="Designation">
+                            @error('designation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class=" col-md-12">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_name" value="{{Auth::user()->institute_name}}" id="inputPassword4" placeholder="Name of the Institute">
+                            <input type="text" class="form-control" name="institute_name" value="{{Auth::user()->institute_name??old('institute_name')}}" id="inputPassword4" placeholder="Name of the Institute">
+                            @error('institute_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>

@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/morris/morris.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/material_icon/material-icons.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/metisMenu.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
+<link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+<script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
