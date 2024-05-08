@@ -27,7 +27,7 @@ class DashboardController extends Controller
         if($data['segment'] == 'national-user'){
             $file = 'national-user.dashboard';
         }else{
-            $file = 'institue-user.dashboard';
+            $file = 'institute-user.dashboard';
         }
         
         return view($file);
