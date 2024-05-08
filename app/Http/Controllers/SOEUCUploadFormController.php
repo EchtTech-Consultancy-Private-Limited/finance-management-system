@@ -35,7 +35,36 @@ class SOEUCUploadFormController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'yearofuc'    => 'required|string',
+            'month'     => 'required|string',
+            'ucuploaddate'     => 'required|string',
+            'ucfileupload'        => 'required|image',
+        ]);
+        
+        DB::beginTransaction();
+        try {
+           
+            $upload_file = rand() . '.' . $request->ucfileupload->extension();
+            $request->upload->move(storage_path('app/public/UCFileUpload/'), $upload_file);
+            if(!empty($request->upload)) {
+                $student = new SOEUCUploadForm;
+                $student->yearofuc   = $request->yearofuc;
+                $student->month    = $request->month;
+                $student->ucuploaddate= $request->ucuploaddate;
+                $student->ucfileupload = $ucfileupload;
+                $student->save();
+
+                Toastr::success('Has been add successfully :)','Success');
+                DB::commit();
+            }
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error('fail, Add new student  :)','Error');
+            return redirect()->back();
+        }
+
     }
 
     /**

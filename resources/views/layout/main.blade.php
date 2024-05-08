@@ -79,7 +79,7 @@
                               </div>
                               <div class="profile_info_details">
                                  <a href="{{ route('profile.edit',Auth::user()->id) }}">My Profile </a>
-                                 <a href="#">Change Password</a>
+                                 <a href="{{ route('password.update',Auth::user()->id) }}">Change Password</a>
                                  <a href="{{ route('logout') }}">Log Out </a>
                               </div>
                            </div>
