@@ -6,6 +6,11 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SOEUCFormController;
 use App\Http\Controllers\SOEUCUploadFormController;
+use App\Http\Controllers\NOHPPCZRCSController;
+use App\Http\Controllers\NOHPPCZSSSController;
+use App\Http\Controllers\NRCPLABController;
+use App\Http\Controllers\PPCLLabController;
+use App\Http\Controllers\PMABHIMSSSController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +36,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('national-user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('national-user.dashboard');
+        Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('national-user.nohppczrcs');
+        Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('national-user.nohppczrsss');
+        Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('national-user.nrcplab');
+        Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('national-user.ppcllab');
+        Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('national-user.pmabhimsss');
     });
 
     Route::prefix('institue-user')->group(function(){
