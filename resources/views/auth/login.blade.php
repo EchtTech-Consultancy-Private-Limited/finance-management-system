@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="baseURL" content="{{ asset('/') }}">
-    <title>Finance Management System | Login</title>
+    <title>Financial Management System | Login</title>
     <link rel="shortcut icon" href="{{ asset('assets-cms/media/logos/favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/themefy_icon/themify-icons.css') }}" />
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
     <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/captcha.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 </head>
 <body class="crm_body_bg">
@@ -102,6 +103,5 @@
     <script src="{{ asset('assets/finance-nrcp/scroll/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/finance-nrcp/scroll/scrollable-custom.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="{{ asset('assets/js/captcha.js') }}"></script>
 </body>
 </html>
