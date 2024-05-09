@@ -606,16 +606,94 @@
     </div>
 
     <div class="col-xl-6">
-        <div class="white_box mb_30 mt_40">
-            <div class="box_header ">
-                <div class="main-title">
-                    <h3 class="mb-0">Bar Chart</h3>
+        <div class="white_card mb_30 card_height_100 mt_40">
+            <div class="white_card_header">
+                <div class="row align-items-center justify-content-between flex-wrap">
+                    <div class="col-lg-8">
+                        <div class="main-title">
+                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-end d-flex justify-content-end">
+                        <select class="nice_Select2 max-width-220">
+                            <option value="1">Show by month</option>
+                            <option value="1">Show by year</option>
+                            <option value="1">Show by day</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <canvas style="height: 250px " id="barChart"></canvas>
+            <div class="white_card_body">
+                <div id="management_bar"></div>
+            </div>
         </div>
     </div>
 
+    <div class="col-xl-6">
+        <div class="white_card mb_30 card_height_100 mt_40">
+            <div class="white_card_header">
+                <div class="row align-items-center justify-content-between flex-wrap">
+                    <div class="col-lg-8">
+                        <div class="main-title">
+                            <h3 class="m-0">Institute wise Yearly Expenditure</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-end d-flex justify-content-end">
+                        <select class="nice_Select2 max-width-220">
+                            <option value="1">Show by month</option>
+                            <option value="1">Show by year</option>
+                            <option value="1">Show by day</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="management_Institute_wise"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="mt-5 pb-3">
+        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 mb-4">
+                   
+                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Choose Financial Year</option>
+                            <option value="">2023-2024</option>
+                            <option value="">2022-2023</option>
+                            <option value="">2021-2022</option>
+                        </select>
+                    
+                </div>
+                <div class="col-md-3 col-lg-3 mb-4">
+                        <label for="" class="text-nowrap me-3 font-16"><b>Form Type<sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Choose Form Type</option>
+                            <option value="">SOE</option>
+                            <option value="">UC</option>
+                        </select>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex align-items-center">
+                        <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Select Months</option>
+                            <option value="">January</option>
+                            <option value="">Febuary</option>
+                            <option value="">March</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+ 
 </div>
 
 @endsection
