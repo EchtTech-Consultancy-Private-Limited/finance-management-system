@@ -59,7 +59,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class>
-                                                    <img src="{{ url('captcha') }}" id="captchaimg" height="50" width="350">
+                                                    <img src="{{ url('captcha-code') }}" id="captchaimg" height="50" width="350">
                                                 </div>
                                                 <fieldset class="mb-3">
                                                     Can't read the above code? <a class="ccc" href="javascript:void(0);" onClick="refreshCaptcha();">Refresh</a>
