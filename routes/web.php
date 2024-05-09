@@ -24,7 +24,7 @@ use App\Http\Controllers\PMABHIMSSSController;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('/');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::get('/captcha', [LoginController::class, 'generateCaptcha'])->name('captcha');
+Route::get('/captcha-code', [LoginController::class, 'generateCaptcha'])->name('captcha-code');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
