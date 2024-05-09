@@ -150,10 +150,10 @@
                 </div>
             </div>
             <div class="white_card_body row">
-               
-            <div class="col-md-8">
-            <div id="chart-currently-overall"></div>
-            </div>
+
+                <div class="col-md-8">
+                    <div id="chart-currently-overall"></div>
+                </div>
 
                 <div class="col-md-4">
                     <ul class="bullet-list pt-3">
@@ -409,6 +409,210 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pb-3">
+        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex align-items-center">
+                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Choose Financial Year</option>
+                            <option value="">2023-2024</option>
+                            <option value="">2022-2023</option>
+                            <option value="">2021-2022</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="d-flex align-items-center">
+                        <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Choose the Institute</option>
+                            <option value="">Institute Name</option>
+                            <option value="">Institute Name</option>
+                            <option value="">Institute Name</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xl-3">
+        <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+                <div class="box_header m-0">
+                    <div class="main-title">
+                        <h3 class="m-0">% of UC Received</h3>
+                    </div>
+                    <div class="header_more_tool">
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="ti-more-alt"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
+                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
+                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="chart-currently-UC-Received"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3">
+        <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+                <div class="box_header m-0">
+                    <div class="main-title">
+                        <h3 class="m-0">% of UC not Received</h3>
+                    </div>
+                    <div class="header_more_tool">
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="ti-more-alt"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
+                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
+                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="chart-currently-UC-not-Received"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3">
+        <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+                <div class="box_header m-0">
+                    <div class="main-title">
+                        <h3 class="m-0">Nos. of UC Received</h3>
+                    </div>
+                    <div class="header_more_tool">
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="ti-more-alt"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
+                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
+                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="chart-currently-Nos-UC-Received"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3">
+        <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+                <div class="box_header m-0">
+                    <div class="main-title">
+                        <h3 class="m-0">Nos. of UC not received</h3>
+                    </div>
+                    <div class="header_more_tool">
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="ti-more-alt"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
+                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
+                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="chart-currently-Nos-UC-not-Received"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="white_card">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive-sm pt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name of Institute</th>
+                                <th>Year of UC</th>
+                                <th>All UCs</th>
+                                <th>UC Uploaded Date</th>
+                                <th>UC Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Display Selected Name</td>
+                                <td>Display Selected Financial Year</td>
+                                <td>View UC</td>
+                                <td>Display submission date</td>
+                                <td><span class="approve badge bg-success">Approved</span></td>
+                                <td>Remarks</td>
+                            </tr>
+                            <tr>
+                                <td>Display Selected Name</td>
+                                <td>Display Selected Financial Year</td>
+                                <td>View UC</td>
+                                <td>Display submission date</td>
+                                <td><span class="rejected badge bg-danger">Rejected</span></td>
+                                <td>Remarks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6">
+        <div class="white_box mb_30 mt_40">
+            <div class="box_header ">
+                <div class="main-title">
+                    <h3 class="mb-0">Bar Chart</h3>
+                </div>
+            </div>
+            <canvas style="height: 250px " id="barChart"></canvas>
         </div>
     </div>
 
