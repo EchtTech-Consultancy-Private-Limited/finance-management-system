@@ -19,12 +19,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 </head>
 <body class="crm_body_bg">
-    <section class="main_content ps-0">
-        <div class="main_content_iner ">
+    <section class="main_content login-p ps-0 p-0">
+        <div class="main_content_iner p-0">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="white_box mb_30">
+                        <div class="white_box">
                             <div class="row justify-content-center">
                                 <div class="col-lg-4">
                                     <div class="modal-content cs_modal">
