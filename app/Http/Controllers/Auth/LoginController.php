@@ -102,9 +102,7 @@ class LoginController extends Controller
       $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
       if($ExitMail == false){
           Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
-          return redirect('login');
-          //Toastr::success('You Have Successfully Implement Toastr Notification :)', 'Success!!');
-       // return response()->json(['message' => "Check Your Login Credential.",'status'=>401],401);
+          return redirect()->back();
       }else{
         //$approve = DB::table('users')->where('email',$request->email)->first()->status == '3';
         // if($approve == false){
@@ -161,12 +159,12 @@ class LoginController extends Controller
       }
 
       if ($request->expectsJson()) {
-          return response()->json(['message' => "Incorrect email or password. User not authenticated Demo.",
-                              'status'=>401],401);
+          Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
+          return redirect()->back();
       }
       else 
-        return back()->withInput()->with(['message', 'Incorrect email or password. User not authenticated!',
-                          'status'=>401],401);
+          Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
+          return redirect()->back();
       
       //}}
     }
