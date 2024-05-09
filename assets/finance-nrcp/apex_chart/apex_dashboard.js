@@ -522,3 +522,253 @@ chart6.render();
  var chart = new ApexCharts(document.querySelector("#chart4"), options);
  chart.render();
 
+
+
+ var options = {
+   series: [50,50],
+   chart: {
+      height: 300,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "50%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#b64926", "#f8905c"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["% of UC Received", "Blank"],
+   legend: {
+      show: true,
+      position: 'bottom',
+      fontSize: '13px',
+      offsetY: 8,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   }
+};
+var chart7 = new ApexCharts(document.querySelector("#chart-currently-UC-Received"), options);
+chart7.render();
+
+ var options = {
+   series: [80,20],
+   chart: {
+      height: 300,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "50%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#b64926", "#f8905c"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["% of UC Received", "Blank"],
+   legend: {
+      show: true,
+      position: 'bottom',
+      fontSize: '13px',
+      offsetY: 8,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   }
+};
+var chart8 = new ApexCharts(document.querySelector("#chart-currently-UC-not-Received"), options);
+chart8.render();
+
+ var options = {
+   series: [20,80],
+   chart: {
+      height: 300,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "50%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#b64926", "#f8905c"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Nos. of UC received", "Blank"],
+   legend: {
+      show: true,
+      position: 'bottom',
+      fontSize: '13px',
+      offsetY: 8,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   }
+};
+
+var chart9 = new ApexCharts(document.querySelector("#chart-currently-Nos-UC-Received"), options);
+chart9.render();
+
+ var options = {
+   series: [80,20],
+   chart: {
+      height: 300,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "50%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#b64926", "#f8905c"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Nos. of UC not received", "Blank"],
+   legend: {
+      show: true,
+      position: 'bottom',
+      fontSize: '13px',
+      offsetY: 8,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   }
+};
+var chart10 = new ApexCharts(document.querySelector("#chart-currently-Nos-UC-not-Received"), options);
+chart10.render();
