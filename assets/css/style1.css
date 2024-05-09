@@ -60,6 +60,9 @@ input:focus {
 .form-control {
     border-color: #bbc1c9
 }
+select.form-control{
+    appearance: auto;
+}
 
 .form-control:focus {
     box-shadow: 0 0 0 0 transparent !important;
@@ -4609,11 +4612,53 @@ body::-webkit-scrollbar {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 30px
     }
+
+    .cs_modal .modal-header{padding: 16px 20px;}
+    .cs_modal .modal-header h5 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .cs_modal .modal-body {
+        padding: 25px 18px !important;
+    }
+    
+    .cs_modal .modal-body input, .cs_modal .modal-body .nice_Select {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+    }
+    .radio-btn-card {
+        margin-bottom: 5px !important;
+    }
+    
 }
+.form-check{padding-left: 0;}
+.cs_modal .modal-body .btn_1{margin-top: 0px !important;}
 
 @media only screen and (min-width:1440px) and (max-width:1679px) {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 60px
+    }
+
+    .main_content .main_content_iner.main_content_iner_padding {
+        padding: 0 30px
+    }
+
+    .cs_modal .modal-header{padding: 16px 20px;}
+    .cs_modal .modal-header h5 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+       
+    .cs_modal .modal-body input, .cs_modal .modal-body .nice_Select {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+    }
+    .radio-btn-card {
+        margin-bottom: 5px !important;
     }
 }
 
@@ -12073,6 +12118,17 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
         padding: 15px 13px
     }
 }
+@media(max-width:1499px) {
+    .select-form-s select.form-control {
+        font-size: 12px;
+        padding: 6px 6px;
+    }
+}
+@media(min-width:1550px) {
+    .card-mm .col-lg {
+        width: 20%;
+    }
+}
 
 .user_crm_wrapper {
     background: 0 0
@@ -12082,7 +12138,12 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     background: #fff;
     border-radius: 15px;
     margin-bottom: 15px;
-    padding: 5px
+    padding: 5px;
+    box-shadow: 0 10px 10px #d3d3d3;
+    text-align: center;
+    min-height: 150px;
+    transition: all .3s ease-in-out;
+    border: 1px solid transparent;
 }
 
 .user_crm_wrapper .single_crm .crm_head {
@@ -12150,12 +12211,15 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 .crm_bg_3 {
-    background: #f5f5ff !important
+    background: #f45b0fad !important
+}
+.crm_bg_4 {
+    background: #2196F3 !important
 }
 
-.crm_bg_3 i {
+/* .crm_bg_3 i {
     color: #58377e !important
-}
+} */
 
 .max-width-220 {
     max-width: 220px
@@ -12186,4 +12250,75 @@ img#captchaimg {
 .bg-cancel{
     background: #f45b0f;
     color:#fff !important;
+}
+
+.border-line-1:hover {
+    border: 1px solid #ff7ea5;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+.border-line-2:hover {
+    border: 1px solid #20deff;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+.border-line-3:hover {
+    border: 1px solid #c388f6;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+.border-line-4:hover {
+    border: 1px solid #f45b0fad;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+.border-line-5:hover {
+    border: 1px solid #2196F3;
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+}
+
+.briteness-10{filter:brightness(10);}
+.invert-1{filter: invert(1);}
+
+.table.lms_table_active3 .download-icon-width {
+    /* width: 20% !important; */
+    white-space: nowrap;
+}
+.table.lms_table_active3 .download {
+    padding: 5px 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.table.lms_table_active3 .download .view {
+    color: #ff0000;
+}
+.table.lms_table_active3 span.size {
+    font-size: 12px;
+}
+
+.table.lms_table_active3 thead tr th{background:#00539f !important;color: #fff !important;}
+
+.table.table-bordered td, .table.table-bordered tbody th {
+    border-bottom: 1px solid #eee !important;
+    padding: 3px 15px 2px !important;
+    vertical-align: middle;
+}
+.QA_section .QA_table tbody tr:first-child td {
+    padding-top: 0;
+}
+
+#DataTables_Table_0_info, .dataTables_paginate{margin-top: 20px;}
+ul.bullet-list li {
+    list-style: disc;
+}
+.main_content.login-p {
+    padding: 0 !important;
+}
+
+.main_content.login-p .main_content_iner{height: 100%;}
+.main_content.login-p .main_content_iner .white_box{height: 100vh;}
+.main_content.login-p .main_content_iner .white_box .row{
+    height: 100%;
+    align-items: center;
 }

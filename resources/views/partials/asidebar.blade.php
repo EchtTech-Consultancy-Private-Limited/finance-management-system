@@ -48,7 +48,7 @@
             @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0)
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/4.svg') }}" alt>
                   </div>
@@ -56,13 +56,13 @@
                      <span>NOHPPCZ -RC's</span>
                   </div>
                </a>
-               <ul>
+               <!-- <ul>
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
-               </ul>
+               </ul> -->
             </li>
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.nohppczrsss') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/11.svg') }}" alt>
                   </div>
@@ -70,13 +70,13 @@
                      <span>NOHPPCZ -SSS</span>
                   </div>
                </a>
-               <ul>
+               <!-- <ul>
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
-               </ul>
+               </ul> -->
             </li>
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.nrcplab') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/5.svg') }}" alt>
                   </div>
@@ -84,13 +84,13 @@
                      <span>NRCP -Lab</span>
                   </div>
                </a>
-               <ul>
+               <!-- <ul>
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
-               </ul>
+               </ul> -->
             </li>
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.ppcllab') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/8.svg') }}" alt>
                   </div>
@@ -98,13 +98,13 @@
                      <span>PPCL -Lab</span>
                   </div>
                </a>
-               <ul>
+               <!-- <ul>
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
-               </ul>
+               </ul> -->
             </li>
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.pmabhimsss') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/11.svg') }}" alt>
                   </div>
@@ -112,10 +112,10 @@
                      <span>PM-ABHIM-SSS</span>
                   </div>
                </a>
-               <ul>
+               <!-- <ul>
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
-               </ul>
+               </ul> -->
             </li>
          </ul>
          @endif

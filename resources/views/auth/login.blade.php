@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="baseURL" content="{{ asset('/') }}">
-    <title>Finance Management System | Login</title>
+    <title>Financial Management System | Login</title>
     <link rel="shortcut icon" href="{{ asset('assets-cms/media/logos/favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/themefy_icon/themify-icons.css') }}" />
@@ -13,20 +13,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/metisMenu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+    <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/captcharefresh.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 </head>
 <body class="crm_body_bg">
-    <section class="main_content ps-0">
-        <div class="main_content_iner ">
+    <section class="main_content login-p ps-0 p-0">
+        <div class="main_content_iner p-0">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="white_box mb_30">
+                        <div class="white_box">
                             <div class="row justify-content-center">
                                 <div class="col-lg-4">
                                     <div class="modal-content cs_modal">
                                         <div class="modal-header justify-content-center theme_bg_1">
-                                            <h5 class="modal-title text_white">Log in</h5>
+                                            <h5 class="modal-title text_white">NRCP Financial Management System</h5>
                                         </div>
                                         {!! Toastr::message() !!}
                                         <div class="modal-body">
@@ -56,7 +59,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class>
-                                                    <img src="{{ url('captcha') }}" id="captchaimg" height="50" width="350">
+                                                    <img src="{{ url('captcha-code') }}" id="captchaimg" height="50" width="350">
                                                 </div>
                                                 <fieldset class="mb-3">
                                                     Can't read the above code? <a class="ccc" href="javascript:void(0);" onClick="refreshCaptcha();">Refresh</a>
@@ -81,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer_part ps-0">
+        <!-- <div class="footer_part ps-0">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -91,7 +94,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper1.min.js') }}"></script>
@@ -100,7 +103,5 @@
     <script src="{{ asset('assets/finance-nrcp/scroll/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/finance-nrcp/scroll/scrollable-custom.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/captcha.js') }}"></script>
 </body>
 </html>

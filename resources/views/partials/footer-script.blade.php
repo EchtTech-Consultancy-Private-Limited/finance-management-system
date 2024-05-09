@@ -53,6 +53,7 @@
 <script src="{{ asset('assets/finance-nrcp/chart_am/animated.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/kelly.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/chart-custom.js') }}"></script>
+<script src="{{ asset('assets/finance-nrcp/chartjs/chartjs_init.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
