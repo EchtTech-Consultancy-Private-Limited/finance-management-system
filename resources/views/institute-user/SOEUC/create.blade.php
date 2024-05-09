@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="white_card_body">
-            <div class="card-body">
+            <div class="card-body pb-5">
                 <form>
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -95,7 +95,124 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+
+                   <div class="table-responsive fms-table mt-5">
+                    <table class="table table-bordered text-center">
+                   <thead>
+                    <tr class="table-color-head">
+                        <th>Heads</th>
+                        <th>Sanction Order Nos.</th>
+                        <th>Unspent Balance (GIA) as on 1st April</th>
+                        <th>GIA Received in F.Y</th>
+                        <th>Total Balance (a+b) excluding interest</th>
+                        <th>Actual Expenditure incurred during the current F.Y</th>
+                        <th>Unspent Balance</th>
+                        <th>Committed Liabilities (if any)</th>
+                        <th>Unspent Balance of (GIA) as on 31st March</th>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D=(B+C)</th>
+                        <th>E</th>
+                        <th>F=(D-E)</th>
+                        <th>G</th>
+                        <th>H=(F-G)</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr>
+                        <th>Man Power with Human Resource</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                    <tr>
+                        <th>Lab Strengthening Kits, Regents & Consumable (Recurring)</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                    <tr>
+                        <th>IEC</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                    <tr>
+                        <th>Office Expenses & Travel</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                    <tr>
+                        <th>Lab Strengthening (Non Recurring)</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                    <tr>
+                        <th>Other Activities</th>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Fill locked for HQ"></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder="Auto Calculate"></td>
+                    </tr>
+                   
+                   </tbody>
+                   <tfoot>                 
+                   
+                        <tr>
+                            <th>Grand Total</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                   </div>
+
+                   <div class="float-end">
+                   <button type="submit" class="btn btn-primary me-2">Save</button>
+                    <button type="reset" class="btn bg-cancel">Reset</button>
+                   </div>
                 </form>
             </div>
         </div>

@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SOEUCForm;
+use App\Models\PPCLLab;
 use Illuminate\Http\Request;
-use DB;
 
-class SOEUCFormController extends Controller
+class PPCLLabController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    protected $create = 'institute-user.SOEUC.create';   
-    protected $edit = 'institute-user.SOEUC.edit';   
-    protected $list = 'institute-user.SOEUC.list';   
-
     public function index()
     {
-        $stateList = DB::table('states')->where('status',1)->get();
-        return view($this->list,['state'=>$stateList]);
+        return view('national-user.PPCL-Lab');
     }
 
     /**
@@ -26,8 +20,7 @@ class SOEUCFormController extends Controller
      */
     public function create()
     {
-        $stateList = DB::table('states')->where('status',1)->get();
-        return view($this->create,['state'=>$stateList]);
+        //
     }
 
     /**
@@ -41,7 +34,7 @@ class SOEUCFormController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SOEUCForm $sOEUCForm)
+    public function show(PPCLLab $pPCLLab)
     {
         //
     }
@@ -49,7 +42,7 @@ class SOEUCFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SOEUCForm $sOEUCForm)
+    public function edit(PPCLLab $pPCLLab)
     {
         //
     }
@@ -57,7 +50,7 @@ class SOEUCFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SOEUCForm $sOEUCForm)
+    public function update(Request $request, PPCLLab $pPCLLab)
     {
         //
     }
@@ -65,7 +58,7 @@ class SOEUCFormController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SOEUCForm $sOEUCForm)
+    public function destroy(PPCLLab $pPCLLab)
     {
         //
     }

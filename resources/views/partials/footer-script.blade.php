@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer_iner text-center">
-                <p>2024 ©- Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
+                <p>Copyright © 2024 <a href="">NRCP Dashboard</a></p>
                 </div>
             </div>
         </div>
@@ -53,6 +53,5 @@
 <script src="{{ asset('assets/finance-nrcp/chart_am/animated.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/kelly.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/chart-custom.js') }}"></script>
-<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
