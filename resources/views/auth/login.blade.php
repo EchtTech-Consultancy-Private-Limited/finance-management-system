@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
     <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/captcha.js') }}"></script>
+    <script src="{{ asset('assets/js/captcharefresh.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 </head>
 <body class="crm_body_bg">
