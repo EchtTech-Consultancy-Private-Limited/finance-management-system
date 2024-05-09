@@ -43,48 +43,28 @@ class DashboardController extends Controller
     public function updateProfile(Request $request){
         $request->validate(
             [
-                'fname'=> 'required|string',
-                //'mname'=> 'required|string',
-                //'lname'=> 'required|string',
-                'dob'=> 'required',
-                'gender'=> 'required|string',
-                'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-                'mobile'=> 'required',
-                'designation'=> 'required|string',
-                'institute_name'=> 'required',
+                'oldpassword'=> 'required|string',
+                'newpassword'=> 'required|string',
                 
             ],[
-              'fname.required' => 'The first name field is required.',
-              'email.email' => 'The email must be a email.',
-              'dob.required' => 'The dob is required.',
-              'gender.required' => 'The gender is required.',
-              'mobile.required' => 'The mobile field is required.',
-              'designation.required' => 'The designation field is required',
-              'institute_name.required' => 'The institute name is required',
+              'oldpassword.required' => 'The old password field is required.',
+              'newpassword.required' => 'The New Password field is required.',
           ]);
        // DB::beginTransaction();
-        try {
-          $result = DB::table('users')->where('id',Auth::user()->id)->update([
-                                'name' => $request->fname,
-                                'mname' => $request->mname??'',
-                                'lname' => $request->lname??'',
-                                'email' => $request->email,
-                                'dob' => $request->dob,
-                                'gender' => $request->gender,
-                                'mobile' => $request->mobile,
-                                'landline' => $request->landline??'',
-                                'designation' => $request->designation,
-                                'institute_name' => $request->institute_name,
-                            ]);
-            if($result){
-                Toastr::success('Has been update successfully :)','Success');
-                return redirect()->back();
-            }
-        } catch(\Exception $e) {
-           // DB::rollback();
-            return redirect()->back();
-        }
-        Toastr::success('Has been update successfully :)','Success');
+        // try {
+        //   $result = DB::table('users')->where('id',Auth::user()->id)->update([
+        //                         'name' => $request->fname,
+        //                         'password' => $request->mname??'',
+        //                     ]);
+        //     if($result){
+        //         Toastr::success('Has been update successfully :)','Success');
+        //         return redirect()->back();
+        //     }
+        // } catch(\Exception $e) {
+        //    // DB::rollback();
+        //     return redirect()->back();
+        // }
+        // Toastr::success('Has been update successfully :)','Success');
         return redirect()->back();
     }
     /**
