@@ -10,6 +10,7 @@
  {{ __('List') }}
 @endsection
 @section('content')
+{!! Toastr::message() !!}
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
         <div class="white_card_header">
@@ -26,29 +27,31 @@
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
-                                <th scope="col">Year of UC</th>
+                                <th scope="col">Name of program</th>
+                                <th scope="col">Name of the Institute</th>
+                                <th scope="col">State</th>
                                 <th scope="col">Month</th>
-                                <th scope="col">UC File Upload</th>
-                                <th scope="col">UC Uploaded Date</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Financial Year</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($soeucForms as $soeucForm)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>2024 - 2025</td>
-                                <td>May</td>
-                                <td>abc.jpg</td>
-                                <td>22-05-2024</td>
-                                <td><a href="#" class="status_btn">Active</a></td>
+                                <th scope="row">{{ @$loop->iteration }}</th>
+                                <td>{{ @$soeucForm->program_name }}</td>
+                                <td>{{ @$soeucForm->institute_name }}</td>
+                                <td>{{ @$soeucForm->states->name }}</td>
+                                <td>{{ @$soeucForm->month }}</td>
+                                <td>{{ @$soeucForm->financial_year }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
-                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ route('institute-user.soe-uc-edit',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>

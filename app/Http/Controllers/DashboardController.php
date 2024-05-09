@@ -22,9 +22,8 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   $data['segment'] = $request->segment(1);
-
-
+    {   
+        $data['segment'] = $request->segment(1);
         return view('national-user.dashboard');
     }
     public function getUserProfile(Request $request, $id){
