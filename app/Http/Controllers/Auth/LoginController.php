@@ -58,7 +58,7 @@ class LoginController extends Controller
     public function generateCaptcha(){
 
       $CustomCaptchas = new CustomCaptcha;
-      $CustomCaptch = $CustomCaptchas->generateRandomAdditionExpression();
+      return $CustomCaptchas->generateRandomAdditionExpression();
 
     }
     public function showLoginForm(Request $request)
