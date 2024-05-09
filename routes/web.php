@@ -21,10 +21,10 @@ use App\Http\Controllers\PMABHIMSSSController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/captcha', [LoginController::class, 'generateCaptcha'])->name('captcha');
+
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('/');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login-dev', [LoginController::class, 'authenticateDev'])->name('authenticate-dev');
+Route::get('/captcha', [LoginController::class, 'generateCaptcha'])->name('captcha');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
