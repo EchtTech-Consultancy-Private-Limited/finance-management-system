@@ -10,6 +10,7 @@
  {{ __('List') }}
 @endsection
 @section('content')
+{!! Toastr::message() !!}
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
         <div class="white_card_header">
@@ -30,25 +31,35 @@
                             <th scope="col">Month</th>
                             <th scope="col">UC File Upload</th>
                             <th scope="col">UC Uploaded Date</th>
-                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                         <tbody>
+                            @foreach($sorUcLists as $sorUcList)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>2024 - 2025</td>
-                                <td>May</td>
-                                <td>abc.jpg</td>
-                                <td>22-05-2024</td>
-                                <td><a href="#" class="status_btn">Active</a></td>
+                                <th scope="row">{{ @$loop->iteration }}</th>
+                                <td>{{ $sorUcList->year }}</td>
+                                <td>{{ $sorUcList->month }}</td>
+                                <td>
+                                    @if ($sorUcList->file)
+                                        <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                            <span>Download ({{ $sorUcList->file_size }})</span>
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
-                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ route('institute-user.SOE-UC-upload-edit',$sorUcList->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+                                        <a href="{{ route('institute-user.SOE-UC-upload-destroy',$sorUcList->id) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach                            
                         </tbody>
                     </table>
                 </div>

@@ -43,13 +43,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('national-user.pmabhimsss');
     });
 
-    Route::prefix('institue-user')->group(function(){
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('institue-user.dashboard');
-        Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('institue-user.SOE-&-UC-list');
-        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('institue-user.SOE-&-UC');
-        Route::get('/SOE-UC-upload-list', [SOEUCUploadFormController::class, 'index'])->name('institue-user.SOE-UC-upload-list');
-        Route::get('/SOE-UC-upload', [SOEUCUploadFormController::class, 'create'])->name('institue-user.SOE-UC-upload');
-        Route::post('/save', [SOEUCUploadFormController::class, 'store'])->name('institue-user.save');
+    Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('SOE-&-UC-list');
+        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('SOE-&-UC');
+        Route::post('/soe-uc-save', [SOEUCFormController::class, 'store'])->name('soe-uc-save');
+        Route::get('/soe-uc-edit/{id}', [SOEUCFormController::class, 'edit'])->name('soe-uc-edit');
+        Route::post('/soe-uc-update/{id}', [SOEUCFormController::class, 'update'])->name('soe-uc-update');
+        Route::get('/soe-uc-destroy/{id}', [SOEUCFormController::class, 'destroy'])->name('soe-uc-destroy');
+        // SOE-UC-upload routes
+        Route::get('/SOE-UC-upload-list', [SOEUCUploadFormController::class, 'index'])->name('SOE-UC-upload-list');
+        Route::get('/SOE-UC-upload', [SOEUCUploadFormController::class, 'create'])->name('SOE-UC-upload');
+        Route::post('/save', [SOEUCUploadFormController::class, 'store'])->name('save');
+        Route::get('/SOE-UC-upload-edit/{id}', [SOEUCUploadFormController::class, 'edit'])->name('SOE-UC-upload-edit');
+        Route::post('/update/{id}', [SOEUCUploadFormController::class, 'update'])->name('update');
+        Route::get('/SOE-UC-upload-destroy/{id}', [SOEUCUploadFormController::class, 'destroy'])->name('SOE-UC-upload-destroy');
     });
     
 });
