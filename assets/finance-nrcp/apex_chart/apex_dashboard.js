@@ -93,6 +93,54 @@ var options = {
  var chart1 = new ApexCharts(document.querySelector("#chart-currently-again"), options);
  chart1.render();
 
+ var options = {
+   series: [60,40],
+   chart: {
+      height: 300,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#f79646"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["All Head Exp."]
+};
+ var chart2 = new ApexCharts(document.querySelector("#chart-currently-overall"), options);
+ chart2.render();
+
 
 
  options = {
@@ -165,7 +213,194 @@ var options = {
  };
 
 
+ var options = {
+   series: [84],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Expenditure"]
+};
+var chart3 = new ApexCharts(document.querySelector("#chart-Expenditure"), options);
+chart3.render();
 
+
+var options = {
+   series: [15],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#E5ECFF", "#E5ECFF"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#558ed5", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Progress"]
+};
+var chart4 = new ApexCharts(document.querySelector("#chart-currently-Fund"), options);
+chart4.render();
+
+var options = {
+   series: [10],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Progress"]
+};
+var chart5 = new ApexCharts(document.querySelector("#chart-currently-Interest-Earned"), options);
+chart5.render();
+
+var options = {
+   series: [90],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#E5ECFF", "#E5ECFF"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#558ed5", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Progress"]
+};
+var chart6 = new ApexCharts(document.querySelector("#chart-currently-Interest-DD"), options);
+chart6.render();
 
  (chart = new ApexCharts(document.querySelector("#management_bar"), options)).render();
  var options = {
@@ -286,3 +521,4 @@ var options = {
  };
  var chart = new ApexCharts(document.querySelector("#chart4"), options);
  chart.render();
+
