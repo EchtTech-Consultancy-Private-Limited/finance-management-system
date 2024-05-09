@@ -4612,11 +4612,53 @@ body::-webkit-scrollbar {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 30px
     }
+
+    .cs_modal .modal-header{padding: 16px 20px;}
+    .cs_modal .modal-header h5 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .cs_modal .modal-body {
+        padding: 25px 18px !important;
+    }
+    
+    .cs_modal .modal-body input, .cs_modal .modal-body .nice_Select {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+    }
+    .radio-btn-card {
+        margin-bottom: 5px !important;
+    }
+    
 }
+.form-check{padding-left: 0;}
+.cs_modal .modal-body .btn_1{margin-top: 0px !important;}
 
 @media only screen and (min-width:1440px) and (max-width:1679px) {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 60px
+    }
+
+    .main_content .main_content_iner.main_content_iner_padding {
+        padding: 0 30px
+    }
+
+    .cs_modal .modal-header{padding: 16px 20px;}
+    .cs_modal .modal-header h5 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+       
+    .cs_modal .modal-body input, .cs_modal .modal-body .nice_Select {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+    }
+    .radio-btn-card {
+        margin-bottom: 5px !important;
     }
 }
 
@@ -12269,4 +12311,14 @@ img#captchaimg {
 #DataTables_Table_0_info, .dataTables_paginate{margin-top: 20px;}
 ul.bullet-list li {
     list-style: disc;
+}
+.main_content.login-p {
+    padding: 0 !important;
+}
+
+.main_content.login-p .main_content_iner{height: 100%;}
+.main_content.login-p .main_content_iner .white_box{height: 100vh;}
+.main_content.login-p .main_content_iner .white_box .row{
+    height: 100%;
+    align-items: center;
 }
