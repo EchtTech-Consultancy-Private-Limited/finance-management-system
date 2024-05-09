@@ -12267,3 +12267,6 @@ img#captchaimg {
 }
 
 #DataTables_Table_0_info, .dataTables_paginate{margin-top: 20px;}
+ul.bullet-list li {
+    list-style: disc;
+}
