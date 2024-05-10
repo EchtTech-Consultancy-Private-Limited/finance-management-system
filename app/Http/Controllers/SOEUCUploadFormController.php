@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\SOEUCUploadForm;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use App\Services\FileSizeServices;
+use Exception;
 
 class SOEUCUploadFormController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    protected $create = 'institute-user.SOEUCUpload.create';   
-    protected $edit = 'institute-user.SOEUCUpload.edit';   
-    protected $list = 'institute-user.SOEUCUpload.list';   
+    protected $create = 'institute-user.SOEUCUpload.create';
+    protected $edit = 'institute-user.SOEUCUpload.edit';
+    protected $list = 'institute-user.SOEUCUpload.list';
 
     public function index()
     {
         $stateList = DB::table('states')->where('status',1)->get();
-        return view($this->list,['state'=>$stateList]);
+        $sorUcLists = SOEUCUploadForm::get();
+        return view($this->list,compact('sorUcLists'));
     }
 
     /**
@@ -27,42 +30,45 @@ class SOEUCUploadFormController extends Controller
     public function create()
     {
         $stateList = DB::table('states')->where('status',1)->get();
-        return view($this->create,['state'=>$stateList]);
+        $months = [];
+        for ($m=1; $m<=12; $m++) {
+            $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+        }
+        return view($this->create,compact('months'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {        
         $request->validate([
-            'yearofuc'    => 'required|string',
-            'month'     => 'required|string',
-            'ucuploaddate'     => 'required|string',
-            'ucfileupload'        => 'required|image',
+            'yearofuc'    => 'required',
+            'month'     => 'required',
+            'ucuploaddate'     => 'required',
+            'ucfileupload'        => 'required|mimes:jpeg,bmp,png,gif,svg,pdf',
         ]);
-        
-        DB::beginTransaction();
         try {
-           
-            $upload_file = rand() . '.' . $request->ucfileupload->extension();
-            $request->upload->move(storage_path('app/public/UCFileUpload/'), $upload_file);
-            if(!empty($request->upload)) {
-                $student = new SOEUCUploadForm;
-                $student->yearofuc   = $request->yearofuc;
-                $student->month    = $request->month;
-                $student->ucuploaddate= $request->ucuploaddate;
-                $student->ucfileupload = $ucfileupload;
-                $student->save();
-
-                Toastr::success('Has been add successfully :)','Success');
-                DB::commit();
+            DB::beginTransaction();
+            $ucFileUpload = $request->file('ucfileupload');
+            if ($ucFileUpload) {
+                $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
+                $ucFileUploadName = $ucFileUpload->getClientOriginalName();
+                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
             }
-            return redirect()->back();
-        } catch(\Exception $e) {
-            DB::rollback();
-            Toastr::error('fail, Add new student  :)','Error');
-            return redirect()->back();
+            SOEUCUploadForm::Create([
+                'year' => $request->yearofuc,
+                'month' => $request->month,
+                'file' => $ucFileUploadName ?? '',
+                'file_size' => $ucFileUploadSize ?? '',
+                'date' => $request->ucuploaddate,
+            ]);
+            DB::commit();
+            \Toastr::success('Has been add successfully :)','Success');
+            return redirect()->route('institute-user.SOE-UC-upload-list');
+        } catch(Exception $e) {
+            DB::rollBack();
+            \Toastr::error('fail, Add new student  :)','Error');
         }
 
     }
@@ -78,24 +84,63 @@ class SOEUCUploadFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SOEUCUploadForm $sOEUCUploadForm)
+    public function edit($id)
     {
-        //
+        try{
+            $breadCrum = "NHM Dashboard";
+            DB::beginTransaction();
+            $months = [];
+            for ($m=1; $m<=12; $m++) {
+                $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+            }
+            $soeUCUpload = SOEUCUploadForm::where('id',$id)->first();
+            DB::commit();
+            return view($this->edit,compact('months','soeUCUpload'));
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SOEUCUploadForm $sOEUCUploadForm)
+    public function update(Request $request, $id = '')
     {
-        //
+        try{
+            DB::beginTransaction();
+            $ucFileUpload = $request->file('ucfileupload');
+            if ($ucFileUpload) {
+                $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
+                $ucFileUploadName = $ucFileUpload->getClientOriginalName();
+                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
+            }else{
+                $ucFileUploadName = $request->old_file;
+                $ucFileUploadSize = $request->old_file_size;
+            }
+            SOEUCUploadForm::where('id', $id)->Update([
+                'year' => $request->yearofuc,
+                'month' => $request->month,
+                'file' => $ucFileUploadName ?? '',
+                'file_size' => $ucFileUploadSize ?? '',
+                'date' => $request->ucuploaddate,
+            ]);
+            DB::commit();
+            \Toastr::success('Has been update successfully :)','Success');
+            return redirect()->route('institute-user.SOE-UC-upload-list');
+        } catch(Exception $e) {
+            DB::rollBack();
+            \Toastr::error('fail, Add new student  :)','Error');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SOEUCUploadForm $sOEUCUploadForm)
+    public function destroy($id)
     {
-        //
+        SOEUCUploadForm::where('id', $id)->delete();
+        \Toastr::success('Has been delete successfully :)','Success');
+        return redirect()->back();
     }
 }
