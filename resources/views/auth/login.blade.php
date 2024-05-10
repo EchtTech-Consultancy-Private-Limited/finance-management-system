@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="baseURL" content="{{ asset('/') }}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Financial Management System | Login</title>
     <link rel="shortcut icon" href="{{ asset('assets-cms/media/logos/favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
@@ -59,7 +62,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class>
-                                                    <img src="{{ url('captcha-code') }}" id="captchaimg" height="50" width="350">
+                                                    <img src="{{ url('captcha-code') }}" id="captchaimg" height="50" width="350" onClick="javascript:reloadCaptcha()">
                                                 </div>
                                                 <fieldset class="mb-3">
                                                     Can't read the above code? <a class="ccc" href="javascript:void(0);" onClick="refreshCaptcha();">Refresh</a>
