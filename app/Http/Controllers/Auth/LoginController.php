@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Config;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Http\Helpers\CustomCaptcha;
+use App\Http\Helpers\phptextClass;
 
 class LoginController extends Controller
 {
@@ -58,7 +59,7 @@ class LoginController extends Controller
     public function generateCaptcha(){
 
       $CustomCaptchas = new CustomCaptcha;
-      return $CustomCaptchas->generateRandomAdditionExpression();
+      return  $CustomCaptchas->phpcaptcha('#162453','#fff',120,40,10,25);
 
     }
     public function showLoginForm(Request $request)
