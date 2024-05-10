@@ -136,6 +136,20 @@ var options = {
    stroke: {
       lineCap: "round",
    },
+   legend: {
+      show: false,
+      position: 'bottom',
+      fontSize: '13px',
+      offsetY: 8,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   },
    labels: ["All Head Exp."]
 };
  var chart2 = new ApexCharts(document.querySelector("#chart-currently-overall"), options);
