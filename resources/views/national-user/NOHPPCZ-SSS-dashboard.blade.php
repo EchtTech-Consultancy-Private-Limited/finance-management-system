@@ -33,11 +33,11 @@
 
 <div class="row">
 
-    <div class="pt-3 pb-3">
-        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+            <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -49,7 +49,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
@@ -412,11 +412,11 @@
         </div>
     </div>
 
-    <div class="mt-5 pb-3">
-        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
+            <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -428,7 +428,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
                                     class="text-danger">*</sup></b></label>
@@ -566,7 +566,8 @@
     </div>
 
 
-    <div class="white_card">
+    <div class="col-md-12">
+        <div class="white_card p-3">
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive-sm pt-3">
@@ -602,6 +603,7 @@
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
@@ -653,46 +655,221 @@
         </div>
     </div>
 
-    <!-- <div class="mt-5 pb-3">
-        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
-            <div class="row">
-                <div class="col-md-3 col-lg-3 mb-4">
-                   
-                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
-                        </select>
-                    
-                </div>
-                <div class="col-md-3 col-lg-3 mb-4">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Form Type<sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Form Type</option>
-                            <option value="">SOE</option>
-                            <option value="">UC</option>
-                        </select>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Select Months</option>
-                            <option value="">January</option>
-                            <option value="">Febuary</option>
-                            <option value="">March</option>
-                        </select>
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt_40">
+        <div class="crad white_card mb_30 p-4">
+            <div>
+                <form action="" class="select-form-s">
+                    <div class="row">                      
+                        <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year
+                                <sup class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Choose Financial Year</option>
+                                <option value="">2023-2024</option>
+                                <option value="">2022-2023</option>
+                                <option value="">2021-2022</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type
+                                <sup class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select From Type</option>
+                                <option value="">SOE</option>
+                                <option value="">UC</option>
+                            </select>
+                        </div>                       
+                        <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly 
+                                <sup class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select Months</option>
+                                <option value="">January</option>
+                                <option value="">Febuary</option>
+                                <option value="">March</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="float-end form-btn-sm mt-4 pt-2">
+                                <button type="submit" class="btn bg-cancel me-1">Search</button>
+                                <button type="reset" class="btn bg-danger me-1">Reset</button>
+                                <button type="submit" class="btn btn-primary">Export Excel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="white_card card_height_100 mb_30">
+
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <!-- <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Data table 1</h3>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="QA_table">
+                                <table class="table lms_table_active3 table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">title</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">View / Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-1 </a></th>
+                                            <td>1 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-2 </a></th>
+                                            <td>2 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-3 </a></th>
+                                            <td>3 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-4 </a></th>
+                                            <td>4 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-5 </a></th>
+                                            <td>5 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-6 </a></th>
+                                            <td>6 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-7 </a></th>
+                                            <td>7 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-8 </a></th>
+                                            <td>8 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-9 </a></th>
+                                            <td>9 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-10 </a></th>
+                                            <td>10 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-11 </a></th>
+                                            <td>11 September 2023</td>
+                                            <td class="download-icon-width">
+                                                <div class="download ">
+                                                    <a href="#"><span class="view">View</span></a>
+                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                                    <span class="size">(3.59MB)
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div> -->
+    </div>
  
 </div>
 
