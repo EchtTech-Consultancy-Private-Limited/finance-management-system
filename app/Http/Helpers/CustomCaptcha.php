@@ -106,7 +106,8 @@ class CustomCaptcha {
                 header('Content-Type: image/jpeg');/* defining the image type to be shown in browser widow */
                 imagedestroy($im);/* Destroying image instance */
                 if(isset($_SESSION)){
-                        $_SESSION['captcha_code'] = $text;/* set random text in session for captcha validation*/
+                   // $_SESSION['captcha_code'] = $text;/* set random text in session for captcha validation*/
+                    Session::put('captcha_code', $text);
                 }
         }
         

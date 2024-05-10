@@ -59,7 +59,7 @@ class LoginController extends Controller
     public function generateCaptcha(){
 
       $CustomCaptchas = new CustomCaptcha;
-      return  $CustomCaptchas->phpcaptcha('#162453','#fff',120,40,10,25);
+      return  $CustomCaptchas->phpcaptcha('#884ffb','#fff',120,40,10,25);
 
     }
     public function showLoginForm(Request $request)
