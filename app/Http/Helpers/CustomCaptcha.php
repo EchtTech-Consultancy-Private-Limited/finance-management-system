@@ -101,13 +101,12 @@ class CustomCaptcha {
                 imagefill($im,0,0,$backgroundColor);    
                 list($x, $y) = $this->ImageTTFCenter($im, $text, $font, $fontSize);  
                 imagettftext($im, $fontSize, 0, $x, $y, $textColor, $font, $text);              
-
-                imagejpeg($im,NULL,90);/* Showing image */
                 header('Content-Type: image/jpeg');/* defining the image type to be shown in browser widow */
+                imagejpeg($im);/* Showing image */
                 imagedestroy($im);/* Destroying image instance */
+                Session::put('captcha_code', $text);
                //if(isset($_SESSION)){
                    // $_SESSION['captcha_code'] = $text;/* set random text in session for captcha validation*/
-                    Session::put('captcha_code', $text);
                // }
         }
         
