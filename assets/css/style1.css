@@ -4608,7 +4608,7 @@ body::-webkit-scrollbar {
     }
 }
 
-@media(min-width:1200px) and (max-width:1500px) {
+@media(min-width:1200px) and (max-width:1550px) {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 30px
     }
@@ -4640,6 +4640,12 @@ body::-webkit-scrollbar {
         font-size: 10px;
         padding: 5px 10px;
     }
+
+    .white_card .white_card_header {
+        padding: 15px 15px !important;
+    }
+
+    .main-title h3{font-size: 16px;}
     
 }
 .form-check{padding-left: 0;}
