@@ -134,6 +134,30 @@ class SOEUCUploadFormController extends Controller
         }
     }
 
+
+    /**
+     *  @changeStatus of form
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function changeStatus(Request $request, $id = '')
+    {
+        try{
+            DB::beginTransaction();
+            SOEUCUploadForm::where('id', $id)->Update([
+                'reason' => $request->reason,
+                'status' => $request->status,
+            ]);
+            DB::commit();
+            \Toastr::success('Has been staus change successfully :)','Success');
+            return redirect()->route('institute-user.SOE-UC-upload-list');
+        } catch(Exception $e) {
+            DB::rollBack();
+            \Toastr::error('fail, Add new student  :)','Error');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      */

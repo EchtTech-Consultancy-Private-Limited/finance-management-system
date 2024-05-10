@@ -45,6 +45,16 @@
                   <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">List</a></li>
                </ul>
             </li>
+            <li class=>
+               <a href="{{ route('institute-user.report') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Report</span>
+                  </div>
+               </a>
+            </li>
             @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0)
             <li class>

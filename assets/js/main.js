@@ -77,3 +77,9 @@ $(document).ready(function() {
     }
 });
 // End- of calculation of SOEU Form
+
+// datatable
+$(document).ready(function() {
+    $('#datatable').dataTable();    
+     $("[data-toggle=tooltip]").tooltip();    
+} );

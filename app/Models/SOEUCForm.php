@@ -21,6 +21,8 @@ class SOEUCForm extends Model
        'nadal_officer_email',
        'month',
        'financial_year',
+       'reason',
+       'status',
     ];
 
     /**
