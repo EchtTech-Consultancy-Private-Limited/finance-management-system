@@ -12340,3 +12340,15 @@ ul.bullet-list li {
     height: 100%;
     align-items: center;
 }
+
+.p-relative {
+    position: relative;
+}
+.toggle-password.icon-psw {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #383838;
+}
