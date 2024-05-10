@@ -105,10 +105,10 @@ class CustomCaptcha {
                 imagejpeg($im,NULL,90);/* Showing image */
                 header('Content-Type: image/jpeg');/* defining the image type to be shown in browser widow */
                 imagedestroy($im);/* Destroying image instance */
-                if(isset($_SESSION)){
+               //if(isset($_SESSION)){
                    // $_SESSION['captcha_code'] = $text;/* set random text in session for captcha validation*/
                     Session::put('captcha_code', $text);
-                }
+               // }
         }
         
         /*function to convert hex value to rgb array*/
