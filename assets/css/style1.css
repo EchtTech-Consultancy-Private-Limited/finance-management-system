@@ -4588,7 +4588,7 @@ body::-webkit-scrollbar {
     position: relative;
     background: #f6f7fb;
     margin: 0;
-    z-index: 22;
+    z-index: auto;
     border-radius: 0;
     padding: 30px
 }
@@ -4608,7 +4608,7 @@ body::-webkit-scrollbar {
     }
 }
 
-@media(min-width:1200px) and (max-width:1500px) {
+@media(min-width:1200px) and (max-width:1550px) {
     .main_content .main_content_iner.main_content_iner_padding {
         padding: 0 30px
     }
@@ -4631,6 +4631,21 @@ body::-webkit-scrollbar {
     .radio-btn-card {
         margin-bottom: 5px !important;
     }
+
+    .form-btn-sm button.btn {
+        font-size: 15px;
+    }
+
+    .form-btn-sm button.btn {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .white_card .white_card_header {
+        padding: 15px 15px !important;
+    }
+
+    .main-title h3{font-size: 16px;}
     
 }
 .form-check{padding-left: 0;}
@@ -4659,6 +4674,9 @@ body::-webkit-scrollbar {
     }
     .radio-btn-card {
         margin-bottom: 5px !important;
+    }
+    .form-btn-sm button.btn {
+        font-size: 15px;
     }
 }
 
