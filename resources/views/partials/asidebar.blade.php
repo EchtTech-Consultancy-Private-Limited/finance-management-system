@@ -23,7 +23,7 @@
                      <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE & UC</span>
+                     <span>SOE</span>
                   </div>
                </a>
                <ul>
@@ -37,7 +37,7 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE | UC Upload</span>
+                     <span>UC Upload</span>
                   </div>
                </a>
                <ul>

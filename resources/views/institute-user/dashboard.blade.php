@@ -37,11 +37,14 @@
                 <div class="col-md-6 col-lg-4 mx-auto mb-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
+                        <select id="institute-user-fy" name="financial_year" class="form-control">
+                            <option value="">Select Financial Year</option>
+                            @for($i = date("Y")-10; $i <=date("Y")+10; $i++)
+                                @php
+                                    $selected = old('financial_year') == ($i) ? 'selected' : '';
+                                @endphp
+                                <option value="{{$i}}" {{$selected}}>{{$i}}</option>
+                            @endfor
                         </select>
                     </div>
                 </div>
@@ -56,7 +59,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>{{ @$totalArray['giaReceivedTotal'] }}</h4>
+                            <h4 id="giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
                             <p>GIA Received during the Current F.Y. </p>
                         </div>
                     </div>
@@ -70,7 +73,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
+                            <h4 id="committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
                             <p>Interest earned in C.Y. </p>
                         </div>
                     </div>
@@ -84,7 +87,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>{{ @$totalArray['totalBalanceTotal'] }}</h4>
+                            <h4 id="totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
                         </div>
                     </div>
@@ -107,7 +110,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>{{ @$totalArray['actualExpenditureTotal'] }}</h4>
+                            <h4 id="actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
@@ -131,7 +134,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
+                            <h4 id="unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
                         </div>
                     </div>

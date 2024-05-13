@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('s_o_e_u_c_forms', function (Blueprint $table) {
             $table->id();
-            $table->string('program_name')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('institute_program_id')->nullable();
             $table->foreignId('state')->nullable();
             $table->string('institute_name')->nullable();
             $table->string('finance_account_officer')->nullable();

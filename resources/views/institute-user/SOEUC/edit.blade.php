@@ -15,7 +15,7 @@
         <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">SOE & UC</h3>
+                    <h3 class="m-0">Statement of Expenditure (SOE) Edit</h3>
                 </div>
             </div>
         </div>
@@ -26,19 +26,19 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label" for="inputEmail4">Name of program<span class="text-danger">*</span></label>
-                            <select id="inputState" name="program_name" class="form-control">
+                            <select id="inputState" name="institute_program_id" class="form-control">
                                 <option value="">Select Program</option>
-                                <option value="First Program" {{ $soeForm->program_name == 'First Program' ? 'selected' : '' }}>First Program</option>
-                                <option value="Second Program" {{ $soeForm->program_name == 'Second Program' ? 'selected' : '' }}>Second Program</option>
-                                <option value="Third Program" {{ $soeForm->program_name == 'Third Program' ? 'selected' : '' }}>Third Program</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}" {{ $soeForm->institute_program_id == $value->id ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
-                            @error('program_name')
+                            @error('institute_program_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class=" col-md-6">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_name" value="{{ old('institute_name',$soeForm->institute_name) }}" id="inputPassword4" placeholder="Name of the Institute">
+                            <input type="text" class="form-control" name="institute_name" value="{{ old('institute_name',$soeForm->institute_name) }}" id="inputPassword4" readonly>
                             @error('institute_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
