@@ -56,7 +56,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4>{{ @$totalArray['giaReceivedTotal'] }}</h4>
                             <p>GIA Received during the Current F.Y. </p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4>{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
                             <p>Interest earned in C.Y. </p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4>{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4>{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4>{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
                         </div>
                     </div>

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
+use App\Models\SOEUCForm;
+use App\Models\SOEUCFormCalculatin;
+use App\Models\SOEUCUploadForm;
 
 class DashboardController extends Controller
 {
@@ -22,20 +25,64 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         $data['segment'] = $request->segment(1);
         if($data['segment'] == 'national-user'){
             $file = 'national-user.dashboard';
         }else{
             $file = 'institute-user.dashboard';
         }
-        
-        return view($file);
+        $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
+            ->where('financial_year', date('Y'))
+            ->get();
+
+            $finalArray = [];
+            foreach ($dataForms as $dataForm) {
+                $grandTotalGiaReceived = 0;
+                $grandTotalCommittedLiabilities = 0;
+                $grandTotalTotalBalance = 0;
+                $grandTotalActualExpenditure = 0;
+                $grandTotalUnspentBalance = 0;
+                foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
+                    if ($formCalculate->head == 'Grand Total') {
+                        $grandTotalGiaReceived += (int)$formCalculate->gia_received;
+                        $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
+                        $grandTotalTotalBalance += (int)$formCalculate->total_balance;
+                        $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
+                        $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
+                    }
+                }
+                $finalArray[] = [
+                    'gia_received_total' => $grandTotalGiaReceived,
+                    'committed_liabilities_total' => $grandTotalCommittedLiabilities,
+                    'total_balance_total' => $grandTotalTotalBalance,
+                    'actual_expenditure_total' => $grandTotalActualExpenditure,
+                    'unspent_balance_31st_total' => $grandTotalUnspentBalance,
+                ];
+            }
+            
+            $totalArray = [
+                'giaReceivedTotal' => 0,
+                'committedLiabilitiesTotal' => 0,
+                'totalBalanceTotal' => 0,
+                'actualExpenditureTotal' => 0,
+                'unspentBalance31stTotal' => 0,
+            ];
+            
+            foreach ($finalArray as $entry) {
+                $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
+                $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
+                $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
+                $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
+                $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
+            }
+        return view($file, compact('totalArray'));
     }
+
     public function getUserProfile(Request $request, $id){
-          
         return view('auth.profile');
-     }
+    }
+
     public function getUserPassword(Request $request,$id){
         return view('auth.password-update');
     }
