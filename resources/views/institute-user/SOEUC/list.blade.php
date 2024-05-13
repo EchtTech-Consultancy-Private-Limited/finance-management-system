@@ -16,7 +16,7 @@
         <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">SOE UC List</h3>
+                    <h3 class="m-0">Statement of Expenditure (SOE) List</h3>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                             @foreach($soeucForms as $soeucForm)
                             <tr>
                                 <th scope="row">{{ @$loop->iteration }}</th>
-                                <td>{{ @$soeucForm->program_name }}</td>
+                                <td>{{ @$soeucForm->instituteProgram->name }} - {{ @$soeucForm->instituteProgram->code }}</td>
                                 <td>{{ @$soeucForm->institute_name }}</td>
                                 <td>{{ @$soeucForm->states->name }}</td>
                                 <td>{{ @$soeucForm->month }}</td>

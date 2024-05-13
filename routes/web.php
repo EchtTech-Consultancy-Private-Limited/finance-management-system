@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/filter-dashboard', [DashboardController::class, 'instituteFilterDdashboard'])->name('filter-dashboard');
         Route::get('/report', [SOEUCFormController::class, 'report'])->name('report');
         Route::post('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
         Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('SOE-&-UC-list');

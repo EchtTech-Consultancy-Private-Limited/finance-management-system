@@ -83,3 +83,24 @@ $(document).ready(function() {
     $('#datatable').dataTable();    
      $("[data-toggle=tooltip]").tooltip();    
 } );
+
+// institute filter dashboard
+$(document).on('change', '#institute-user-fy', function() {
+    let financialYear = $(this).val();
+    // alert(financialYear);
+    $.ajax({
+        type: "GET",
+        url: "http://localhost/finance-management-system/institute-users/filter-dashboard",
+        data: {
+            'financial_year': financialYear
+        },
+        success: function(data) {
+            $("#giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
+            $("#committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
+            $("#totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
+            $("#actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
+            $("#unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);         
+        }
+    });
+
+});
