@@ -957,3 +957,356 @@ chart10.render();
 
 
  
+var options = {
+   series: [84],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Expenditure"]
+};
+var in_dashboard1 = new ApexCharts(document.querySelector("#integrated_dashboard_expenditure"), options);
+in_dashboard1.render();
+
+
+var options = {
+   series: [15],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#E5ECFF", "#E5ECFF"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#558ed5", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Unspent"]
+};
+var in_dashboard2 = new ApexCharts(document.querySelector("#integrated_dashboard_unspent"), options);
+in_dashboard2.render();
+
+
+
+var options = {
+   series: [85],
+   chart: {
+      height: 250,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Expenditure"]
+};
+var in_dashboard3 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-Expenditure"), options);
+in_dashboard3.render();
+
+
+var options = {
+   series: [15],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#E5ECFF", "#E5ECFF"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#558ed5", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Unspent"]
+};
+var in_dashboard4 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Fund"), options);
+in_dashboard4.render();
+
+var options = {
+   series: [10],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#00b050", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Intetest Earned"]
+};
+var in_dashboard5 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Interest-Earned"), options);
+in_dashboard5.render();
+
+var options = {
+   series: [90],
+   chart: {
+      height: 300,
+      type: 'radialBar',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "70%"
+         },
+         dataLabels: {
+            showOn: "always",
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#E5ECFF", "#E5ECFF"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#558ed5", "#E5ECFF"],
+   stroke: {
+      lineCap: "round",
+   },
+   labels: ["Interest DD Returned"]
+};
+var in_dashboard6 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Interest-DD"), options);
+in_dashboard6.render();
+
+
+
+var options = {
+   series: [40, 40, 5, 5, 10],
+   chart: {
+      height: 230,
+      type: 'donut',
+      offsetY: 0
+   },
+   plotOptions: {
+      radialBar: {
+         startAngle: -90,
+         endAngle: 90,
+         hollow: {
+            margin: 0,
+            size: "50%"
+         },
+         dataLabels: {
+            showOn: "always",
+            
+            name: {
+               show: true,
+               fontSize: "13px",
+               fontWeight: "700",
+               offsetY: -5,
+               color: ["#000000", "#E5ECFF"],
+            },
+            value: {
+               color: ["#000000", "#E5ECFF"],
+               fontSize: "30px",
+               fontWeight: "700",
+               offsetY: -40,
+               show: true
+            }
+         },
+         track: {
+            background: ["#f79646", "#00b050"],
+            strokeWidth: '100%'
+         }
+      }
+   },
+   colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+   stroke: {
+      lineCap: "round",
+   },
+
+
+   labels: ["NOHPPCZ-RCs-35", "NOHPPCZ-SSS-65 L", "NRCP-Lab-30 L", "PPCL-28 L", "PM-ABHIM- SSS- 12 L"],
+   legend: {
+      show: true,
+      position: 'right',
+      fontSize: '13px',
+      height: '100px',
+      gap:'20px', 
+      offsetY: 10,
+      labels: {
+         colors: ["#000000", "#E5ECFF"],
+      },
+      markers: {
+         width: 12,
+         height: 12,
+         radius: 6,
+      }
+   }
+};
+var in_dashboard7 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-overall-program-expenditure-amount"), options);
+in_dashboard7.render();
