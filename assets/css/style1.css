@@ -12352,3 +12352,54 @@ ul.bullet-list li {
     font-size: 16px;
     color: #383838;
 }
+
+.total-card h3{
+    font-size: 18px;
+    color: #000;
+    line-height: 1.5;
+}
+
+.total-card .total-card-child {
+    width: 122px;
+    height: 122px;
+    border: 10px solid #00a700;
+    border-radius: 100%;
+}
+
+.fund-card h3{
+    color: #007799;
+    font-size: 22px;
+    margin-bottom: 22px;
+}
+.fund-card .fund-card-child{
+text-align: center;
+margin-bottom: 8px;
+}
+.fund-card .fund-card-child span{
+    background: #ddd;
+    padding: 10px 33px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.integrated-expenditure .main-title {
+    background: #002060;
+    width: 100%;
+    padding: 17px;
+    text-align: center;
+}
+.integrated-expenditure .main-title h3{
+   color: #fff;
+}
+
+.integrated-expenditure .white_card_header{
+    padding: 0;
+}
+
+.apexcharts-legend.position-bottom.left, .apexcharts-legend.position-top.left, .apexcharts-legend.position-right, .apexcharts-legend.position-left{
+    gap: 15px;
+}
+
+.apexcharts-legend-marker {
+    margin-right: 10px !important;
+}
