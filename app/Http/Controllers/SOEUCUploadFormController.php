@@ -46,7 +46,7 @@ class SOEUCUploadFormController extends Controller
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
-            'ucfileupload'        => 'required|mimes:jpeg,bmp,png,gif,svg,pdf',
+            'ucfileupload'        => 'required|mimes:pdf',
         ]);
         try {
             DB::beginTransaction();
@@ -107,6 +107,12 @@ class SOEUCUploadFormController extends Controller
      */
     public function update(Request $request, $id = '')
     {
+        $request->validate([
+            'yearofuc'    => 'required',
+            'month'     => 'required',
+            'ucuploaddate'     => 'required',
+            'ucfileupload'        => 'required|mimes:pdf',
+        ]);
         try{
             DB::beginTransaction();
             $ucFileUpload = $request->file('ucfileupload');
