@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\SOEUCForm;
 use App\Models\SOEUCFormCalculatin;
+use App\Models\SOEUCUploadForm;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Carbon\Carbon;
+use Auth;
+use App\Exports\InstituteUserExport;
+use App\Models\InstituteProgram;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SOEUCFormController extends Controller
 {
@@ -20,7 +26,7 @@ class SOEUCFormController extends Controller
 
     public function index()
     {
-        $soeucForms =  SOEUCForm::with('states','SoeUcFormCalculation')->get();
+        $soeucForms =  SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram','instituteProgram')->get();
         return view($this->list,compact('soeucForms'));
     }
 
@@ -30,11 +36,12 @@ class SOEUCFormController extends Controller
     public function create()
     {
         $states = DB::table('states')->where('status',1)->get();
+        $institutePrograms = InstituteProgram::get();
         $months = [];
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
-        return view($this->create,compact('states','months'));
+        return view($this->create,compact('states','months','institutePrograms'));
     }
 
     /**
@@ -43,7 +50,7 @@ class SOEUCFormController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'program_name'    => 'required',
+            'institute_program_id'    => 'required',
             'institute_name'     => 'required',
             'finance_account_officer'     => 'required',
             'finance_account_officer_mobile'     => 'required',
@@ -55,7 +62,8 @@ class SOEUCFormController extends Controller
         try {
             DB::beginTransaction();
             $soeucFormId = SOEUCForm::Create([
-                'program_name' => $request->program_name,
+                'user_id' => Auth::id(),
+                'institute_program_id' => $request->institute_program_id,
                 'institute_name' => $request->institute_name,
                 'finance_account_officer' => $request->finance_account_officer,
                 'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
@@ -104,16 +112,16 @@ class SOEUCFormController extends Controller
     public function edit($id)
     {
         try{
-            $breadCrum = "NHM Dashboard";
             DB::beginTransaction();
             $states = DB::table('states')->where('status',1)->get();
             $months = [];
             for ($m=1; $m<=12; $m++) {
                 $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
-            }            
-            $soeForm = SOEUCForm::with('states','SoeUcFormCalculation')->where('id',$id)->first();
+            }
+            $institutePrograms = InstituteProgram::get();
+            $soeForm = SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram')->where('id',$id)->first();
             DB::commit();
-            return view($this->edit,compact('months','soeForm','states'));
+            return view($this->edit,compact('months','soeForm','states','institutePrograms'));
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -128,7 +136,8 @@ class SOEUCFormController extends Controller
         try{
             DB::beginTransaction();
             SOEUCForm::where('id', $id)->Update([
-                'program_name' => $request->program_name,
+                'user_id' => Auth::id(),
+                'institute_program_id' => $request->institute_program_id,
                 'institute_name' => $request->institute_name,
                 'finance_account_officer' => $request->finance_account_officer,
                 'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
@@ -162,6 +171,29 @@ class SOEUCFormController extends Controller
             \Toastr::error('fail, Add new student  :)','Error');
         }
     }
+    
+    /**
+     *  @changeStatus of form
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function changeStatus(Request $request, $id = '')
+    {
+        try{
+            DB::beginTransaction();
+            SOEUCForm::where('id', $id)->Update([
+                'reason' => $request->reason,
+                'status' => $request->status,
+            ]);
+            DB::commit();
+            \Toastr::success('Has been staus change successfully :)','Success');
+            return redirect()->route('institute-user.SOE-&-UC-list');
+        } catch(Exception $e) {
+            DB::rollBack();
+            \Toastr::error('fail, Add new student  :)','Error');
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -172,5 +204,59 @@ class SOEUCFormController extends Controller
         SOEUCFormCalculatin::where('soe_form_id', $id)->delete();
         \Toastr::success('Has been delete successfully :)','Success');
         return redirect()->back();
+    }
+    
+    /**
+     *  @report excel report generate
+     *
+     * @return void
+     */
+    public function report()
+    {
+        return view('institute-user.report');
+    }
+    
+    /**
+     * export excel file
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function export(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'modulename' => 'required',
+        ]);
+
+        // Parse the start and end date if provided
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+        } else {
+            // Set a wide range if start and end dates are empty
+            $start_date = Carbon::parse("1900-01-01 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->addYear(100)->format('Y-m-d H:i:s');
+        }
+        $fileName = '';
+        $arrays = [];
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'SOEUCUploadForm';
+                $query = SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram');
+                break;
+            case '2':
+                $fileName = 'SOEUCUploadForm';
+                $query = SOEUCUploadForm::query();
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $query->whereBetween('created_at', [$start_date, $end_date]);
+        }        
+        $arrays = [$query->get()->toArray()];
+        // dd($arrays);
+        return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }
 }

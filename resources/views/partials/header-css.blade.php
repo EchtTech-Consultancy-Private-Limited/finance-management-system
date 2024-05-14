@@ -1,6 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>Finance Management System</title>
+<meta name="baseURL" content="{{ asset('/') }}">
 <link rel="icon" href="{{ asset('assets/img/mini_logo.png') }}" type="image/png">
 <meta name="baseURL" content="{{ asset('/') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
@@ -23,5 +24,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+{{-- highchart --}}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>

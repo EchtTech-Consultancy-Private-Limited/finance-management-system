@@ -23,7 +23,7 @@
                      <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE & UC</span>
+                     <span>SOE</span>
                   </div>
                </a>
                <ul>
@@ -37,13 +37,33 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE | UC Upload</span>
+                     <span>UC Upload</span>
                   </div>
                </a>
                <ul>
                   <li><a href="{{ route('institute-user.SOE-UC-upload') }}">Create</a></li>
                   <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">List</a></li>
                </ul>
+            </li>
+            <li class=>
+               <a href="{{ asset('assets/img/pdf/uc_form.pdf') }}" target="_blank" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Form Download</span>
+                  </div>
+               </a>
+            </li>
+            <li class=>
+               <a href="{{ route('institute-user.report') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Report</span>
+                  </div>
+               </a>
             </li>
             @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0)

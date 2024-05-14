@@ -10,7 +10,8 @@ class SOEUCForm extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-       'program_name',
+       'institute_program_id',
+       'user_id',
        'state',
        'institute_name',
        'finance_account_officer',
@@ -21,6 +22,8 @@ class SOEUCForm extends Model
        'nadal_officer_email',
        'month',
        'financial_year',
+       'reason',
+       'status',
     ];
 
     /**
@@ -31,6 +34,16 @@ class SOEUCForm extends Model
     public function states()
     {
         return $this->belongsTo(State::class, 'state');
+    }
+    
+    /**
+     *  @instituteProgram
+     *
+     * @return void
+     */
+    public function instituteProgram()
+    {
+        return $this->belongsTo(InstituteProgram::class, 'institute_program_id');
     }
 
     /**

@@ -15,7 +15,7 @@
         <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">SOE & UC</h3>
+                    <h3 class="m-0">Statement of Expenditure (SOE) Edit</h3>
                 </div>
             </div>
         </div>
@@ -26,19 +26,19 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label" for="inputEmail4">Name of program<span class="text-danger">*</span></label>
-                            <select id="inputState" name="program_name" class="form-control">
+                            <select id="inputState" name="institute_program_id" class="form-control">
                                 <option value="">Select Program</option>
-                                <option value="First Program" {{ $soeForm->program_name == 'First Program' ? 'selected' : '' }}>First Program</option>
-                                <option value="Second Program" {{ $soeForm->program_name == 'Second Program' ? 'selected' : '' }}>Second Program</option>
-                                <option value="Third Program" {{ $soeForm->program_name == 'Third Program' ? 'selected' : '' }}>Third Program</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}" {{ $soeForm->institute_program_id == $value->id ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
-                            @error('program_name')
+                            @error('institute_program_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class=" col-md-6">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_name" value="{{ old('institute_name',$soeForm->institute_name) }}" id="inputPassword4" placeholder="Name of the Institute">
+                            <input type="text" class="form-control" name="institute_name" value="{{ old('institute_name',$soeForm->institute_name) }}" id="inputPassword4" readonly>
                             @error('institute_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -158,13 +158,14 @@
                     </tr>
                    </thead>
                    <tbody>
+                    @if(!$soeForm->SoeUcFormCalculation->isEmpty())
                     @foreach($soeForm->SoeUcFormCalculation as $key => $value)
                     @if($value->head != "Grand Total")
                     <tr>
                         <th>
                             {{ $value->head }}
-                            <input type="hidden" name="id[]" value="{{ $value->id }} }}">
-                            <input type="hidden" name="head[]" value="Man Power with Human Resource">
+                            <input type="hidden" name="id[]" value="{{ $value->id }}">
+                            <input type="hidden" name="head[]" value="{{ $value->head }}">
                         </th>
                         <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ $value->sanction_order }}"></td>
                         <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ $value->unspent_balance_1st }}"></td>
@@ -174,9 +175,96 @@
                         <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_last }}"></td>
                         <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ $value->committed_liabilities }}"></td>
                         <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_31st }}"></td>
-                    </tr>                        
+                    </tr>
                     @endif
                     @endforeach
+                    @else
+                    <tr>
+                        <th>
+                            Man Power with Human Resource
+                            <input type="hidden" name="head[]" value="Man Power with Human Resource">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.0') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.0') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.0') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly value="{{ old('total_balance.0') }}"></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.0') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly value="{{ old('unspent_balance_last.0') }}"></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.0') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly value="{{ old('unspent_balance_31st.0') }}"></td>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            Lab Strengthening Kits, Regents & Consumable (Recurring)
+                            <input type="hidden"name="head[]" value="Lab Strengthening Kits, Regents & Consumable (Recurring)">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.1') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.1') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.1') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" value="{{ old('total_balance.1') }}" readonly></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.1') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_last.1') }}" readonly></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.1') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_31st.1') }}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            IEC
+                            <input type="hidden"name="head[]" value="IEC">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.2') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.2') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.2') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" value="{{ old('total_balance.2') }}" readonly></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.2') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_last.2') }}" readonly></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.2') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_31st.2') }}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Office Expenses & Travel
+                            <input type="hidden"name="head[]" value="Office Expenses & Travel">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.3') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.3') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.3') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" value="{{ old('total_balance.3') }}" readonly></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.3') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_last.3') }}" readonly></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.3') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_31st.3') }}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lab Strengthening (Non Recurring)
+                            <input type="hidden"name="head[]" value="Lab Strengthening (Non Recurring)">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.4') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.4') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.4') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" value="{{ old('total_balance.4') }}" readonly></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.4') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_last.4') }}" readonly></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.4') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_31st.4') }}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Other Activities
+                            <input type="hidden"name="head[]" value="Other Activities">
+                        </th>
+                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ old('sanction_order.5') }}"></td>
+                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.5') }}"></td>
+                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ old('gia_received.5') }}"></td>
+                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" value="{{ old('total_balance.5') }}" readonly></td>
+                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.5') }}"></td>
+                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_last.5') }}" readonly></td>
+                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.5') }}"></td>
+                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_31st.5') }}" readonly></td>
+                    </tr>
+                    @endif
                    </tbody>
                    <tfoot>
                     @foreach($soeForm->SoeUcFormCalculation as $key => $value)
@@ -184,7 +272,7 @@
                     <tr>
                         <th>
                             Grand Total
-                            <input type="hidden" name="id[]" value="{{ $value->id }} }}">
+                            <input type="hidden" name="id[]" value="{{ $value->id }}">
                             <input type="hidden"name="head[]" value="Grand Total">
                         </th>
                         <th class="grandTotal-A">

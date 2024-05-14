@@ -46,7 +46,7 @@ class SOEUCUploadFormController extends Controller
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
-            'ucfileupload'        => 'required|mimes:jpeg,bmp,png,gif,svg,pdf',
+            'ucfileupload'        => 'required|mimes:pdf',
         ]);
         try {
             DB::beginTransaction();
@@ -107,6 +107,12 @@ class SOEUCUploadFormController extends Controller
      */
     public function update(Request $request, $id = '')
     {
+        $request->validate([
+            'yearofuc'    => 'required',
+            'month'     => 'required',
+            'ucuploaddate'     => 'required',
+            'ucfileupload'        => 'required|mimes:pdf',
+        ]);
         try{
             DB::beginTransaction();
             $ucFileUpload = $request->file('ucfileupload');
@@ -127,6 +133,30 @@ class SOEUCUploadFormController extends Controller
             ]);
             DB::commit();
             \Toastr::success('Has been update successfully :)','Success');
+            return redirect()->route('institute-user.SOE-UC-upload-list');
+        } catch(Exception $e) {
+            DB::rollBack();
+            \Toastr::error('fail, Add new student  :)','Error');
+        }
+    }
+
+
+    /**
+     *  @changeStatus of form
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function changeStatus(Request $request, $id = '')
+    {
+        try{
+            DB::beginTransaction();
+            SOEUCUploadForm::where('id', $id)->Update([
+                'reason' => $request->reason,
+                'status' => $request->status,
+            ]);
+            DB::commit();
+            \Toastr::success('Has been staus change successfully :)','Success');
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();

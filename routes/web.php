@@ -45,11 +45,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/filter-dashboard', [DashboardController::class, 'instituteFilterDdashboard'])->name('filter-dashboard');
+        Route::get('/report', [SOEUCFormController::class, 'report'])->name('report');
+        Route::post('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
         Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('SOE-&-UC-list');
         Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('SOE-&-UC');
         Route::post('/soe-uc-save', [SOEUCFormController::class, 'store'])->name('soe-uc-save');
         Route::get('/soe-uc-edit/{id}', [SOEUCFormController::class, 'edit'])->name('soe-uc-edit');
         Route::post('/soe-uc-update/{id}', [SOEUCFormController::class, 'update'])->name('soe-uc-update');
+        Route::post('/soe-uc-change-status/{id}', [SOEUCFormController::class, 'changeStatus'])->name('soe-uc-change-status');
         Route::get('/soe-uc-destroy/{id}', [SOEUCFormController::class, 'destroy'])->name('soe-uc-destroy');
         // SOE-UC-upload routes
         Route::get('/SOE-UC-upload-list', [SOEUCUploadFormController::class, 'index'])->name('SOE-UC-upload-list');
@@ -57,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/save', [SOEUCUploadFormController::class, 'store'])->name('save');
         Route::get('/SOE-UC-upload-edit/{id}', [SOEUCUploadFormController::class, 'edit'])->name('SOE-UC-upload-edit');
         Route::post('/update/{id}', [SOEUCUploadFormController::class, 'update'])->name('update');
+        Route::post('/soe-uc-update-change-status/{id}', [SOEUCUploadFormController::class, 'changeStatus'])->name('soe-uc-update-change-status');
         Route::get('/SOE-UC-upload-destroy/{id}', [SOEUCUploadFormController::class, 'destroy'])->name('SOE-UC-upload-destroy');
     });
     
