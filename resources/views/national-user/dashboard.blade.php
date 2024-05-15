@@ -304,7 +304,7 @@
                     <div class="main-title">
                         <h3 class="m-0">Total Expenditure in %</h3>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="white_card_body">
@@ -321,7 +321,7 @@
                     <div class="main-title">
                         <h3 class="m-0">Total Fund Unspent in %</h3>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="white_card_body">
@@ -338,7 +338,7 @@
                     <div class="main-title">
                         <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="white_card_body">
@@ -371,7 +371,7 @@
                     <div class="main-title">
                         <h3 class="m-0">Overall Program Expenditure Amount</h3>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="white_card_body">
@@ -381,15 +381,776 @@
         </div>
     </div>
 
-</div>
 
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+        <div class="crad white_card mb_30 p-4">
+            <div>
+                <form action="" class="select-form-s">
+                    <div class="row">
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select Program</option>
+                                <option value="">NOHPPCZ SSS</option>
+                                <option value="">NOHPPCZ RC's</option>
+                                <option value="">NRCP-Lab</option>
+                                <option value="">PPCL-Lab</option>
+                                <option value=""> PM-ABHIM-SSS</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select all Institute</option>
+                                <option value="">Institutes 1</option>
+                                <option value="">Institutes 2</option>
+                                <option value="">Institutes 3</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Choose Financial Year</option>
+                                <option value="">2023-2024</option>
+                                <option value="">2022-2023</option>
+                                <option value="">2021-2022</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="white_card card_height_100 ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-chart-currently-UC-Received"
+                                        class="border rounded mb-3 received-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="white_card card_height_100 ">
+                                <div class="">
+                                    <div id="integrated-dashboard-chart-currently-UC-not-Received"
+                                        class="border rounded mb-3 received-chart"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="">
+                                <div id="integrated-dashboard-chart-currently-Nos-UC-Received"
+                                    class="border rounded mb-0 received-chart"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="white_card card_height_100 ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
+                                        class="border rounded mb-0 received-chart"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-gauge1" class="border rounded mb-3 received-chart"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-gauge2" class="border rounded mb-3 received-chart"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-gauge3" class="border rounded mb-3 received-chart"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-gauge4" class="border rounded mb-3 received-chart"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="white_card p-3 mb_30">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive-sm pt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name of Institute</th>
+                                    <th>Year of UC</th>
+                                    <th>All UCs</th>
+                                    <th>UC Uploaded Date</th>
+                                    <th>UC Status</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Display Selected Name</td>
+                                    <td>Display Selected Financial Year</td>
+                                    <td>View UC</td>
+                                    <td>Display submission date</td>
+                                    <td><span class="approve badge bg-success">Approved</span></td>
+                                    <td>Remarks</td>
+                                </tr>
+                                <tr>
+                                    <td>Display Selected Name</td>
+                                    <td>Display Selected Financial Year</td>
+                                    <td>View UC</td>
+                                    <td>Display submission date</td>
+                                    <td><span class="rejected badge bg-danger">Rejected</span></td>
+                                    <td>Remarks</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-6">
+        <div class="white_card mb_30 card_height_100 ">
+            <div class="white_card_header">
+                <div class="row align-items-center justify-content-between flex-wrap">
+                    <div class="col-lg-8">
+                        <div class="main-title">
+                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-end d-flex justify-content-end">
+                        <select class="nice_Select2 max-width-220">
+                            <option value="1">Show by month</option>
+                            <option value="1">Show by year</option>
+                            <option value="1">Show by day</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="integrated-dashboard-program-wise-expenditure"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6">
+        <div class="white_card mb_30 card_height_100 ">
+            <div class="white_card_header">
+                <div class="row align-items-center justify-content-between flex-wrap">
+                    <div class="col-lg-8">
+                        <div class="main-title">
+                            <h3 class="m-0">Institute wise Yearly Expenditure</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-end d-flex justify-content-end">
+                        <select class="nice_Select2 max-width-220">
+                            <option value="1">Show by month</option>
+                            <option value="1">Show by year</option>
+                            <option value="1">Show by day</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="white_card_body">
+                <div id="integrated-dashboard-institute-wise-expenditure"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 ">
+        <div class="crad white_card mb_30 p-4">
+            <div class="mb_30">
+                <form action="" class="select-form-s">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select Program</option>
+                                <option value="">Program 1</option>
+                                <option value="">Program 2</option>
+                                <option value="">Program 3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Choose Financial Year</option>
+                                <option value="">2023-2024</option>
+                                <option value="">2022-2023</option>
+                                <option value="">2021-2022</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div id="integrated-dashboard-india-map2" class="border rounded mb-3"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state1" class="border rounded mb-3 "></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+                        <div class="">
+                            <div id="integrated-dashboard-state2" class="border rounded mb-3 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-2">
+                    <div class="">
+                        <div id="integrated-dashboard-state3" class="border rounded mb-0 "></div>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state4" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state5" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state6" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state7" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state8" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state9" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state10" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="white_card card_height_100 ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state11" class="border rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** -->
+    <div class="col-md-12">
+        <div class="crad white_card mb_30 p-4">
+            <div class="table-responsive-sm pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Institute</th>
+                            <th>Unspent Balance (GIA) as on 1st April.. </th>
+                            <th>GIA Received during the Current F.Y</th>
+                            <th>Actual Expenditure incurred during the current F.Y </th>
+                            <th>Unspent Balance (excluding Interest)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td> National Institute of Medical Health and Neuro Science, Bangalore </td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td> Infectious Disease and Beliaghata General Hospital, Kolkata </td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td> Viral Research and Diagnostic Laboratory, GMC, Amritsar </td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                            <th>0</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+        <div class="crad white_card mb_30 p-4">
+            <div class="row">
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Select Program</option>
+                        <option value="">Program 1</option>
+                        <option value="">Program 2</option>
+                        <option value="">Program 3</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Choose Financial Year</option>
+                        <option value="">2023-2024</option>
+                        <option value="">2022-2023</option>
+                        <option value="">2021-2022</option>
+                    </select>
+                </div>
+
+                <div class="col d-flex align-items-end justify-content-between">
+                    <div class="d-inline-block">
+
+                        <h3>OR</h3>
+                    </div>
+                    <div>
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
+                                    class="text-danger">*</sup></b></label>
+                        <select name="" class="form-control" id="">
+                            <option value="">Choose Financial Year</option>
+                            <option value="">2023-2024</option>
+                            <option value="">2022-2023</option>
+                            <option value="">2021-2022</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row my-4 d-flex justify-content-center">
+                <div class="col-md-3">
+                    <div class="expenditure-bar-chart-box  d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                alt=""></div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                alt=""></div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="white_card card_height_100 mb_30 integrated-expenditure">
+                        <div class="white_card_header">
+                            <div class="box_header m-0 p-3">
+                                <div class="main-title ">
+                                    <h3 class="m-0">Total Fund Unspent in %</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="graph-container">
+                                    <h2 class="chart-title"> NOHPPCZ-RCs</h2>
+                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
+                                        class="border border-1 m-3 p-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="graph-container">
+                                    <h2 class="chart-title"> NOHPPCZ-SSS</h2>
+                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
+                                        class="border border-1 m-3 p-2"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="graph-container">
+                                    <h2 class="chart-title">NRCP-Lab</h2>
+                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
+                                        class="border border-1 m-3 p-2"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="graph-container">
+                                    <h2 class="chart-title"> PPCL-Lab</h2>
+                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
+                                        class="border border-1 m-3 p-2"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="graph-container border border-1 m-3 p-2">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Program wise Unspent Balance Line Chart</h3>
+                                    </div>
+                                    <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="graph-container border border-1 m-3 p-2">
+
+                                    <div id="integrated-dashboard-state-graph" class=""></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-xl-12 ">
+        <div class="white_card   mb_30 p-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="crad white_card mb_30">
+                    <div>
+                        <form action="" class="select-form-s">
+                            <div class="row">
+                                <div class="col">
+
+                                    <select name="" class="form-control" id="">
+                                        <option value="">2024-25</option>
+                                        <option value="">2023-24</option>
+                                        <option value="">2022-23</option>
+                                        <option value="">2021-22</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="data-driven">
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    <div class="expenditure-bar-chart-box box1  d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img
+                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                        </div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="expenditure-bar-chart-box box2 d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img
+                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                        </div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="expenditure-bar-chart-box box3 d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img
+                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                        </div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="expenditure-bar-chart-box box4 d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img
+                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                        </div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="expenditure-bar-chart-box box5 d-flex">
+                        <div class="expenditure-bar-chart-box-child1"><img
+                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                        </div>
+                        <div class="expenditure-bar-chart-box-child2">
+                            <h3>Overall <br> Expenditure</h3>
+                            <span class="number">95%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="graph-container border border-1 m-3 me-0">
+                        <div id="integrated-dashboard-data-driven-graph1" class=""></div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div id="integrated-dashboard-data-driven-graph2" class=""></div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div id="integrated-dashboard-data-driven-graph3" class=""></div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div id="integrated-dashboard-data-driven-graph4" class=""></div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div id="integrated-dashboard-data-driven-graph5" class=""></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+       
+    </div>
+
+    <div class="col-xl-12 ">
+        <div class="crad white_card mb_30 p-4">
+            <div class="mb_30">
+                <form action="" class="select-form-s">
+                    <div class="row">
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select Program</option>
+                                <option value="">NOHPPCZ RC's</option>
+                                <option value="">NOHPPCZ SSS</option>
+                                <option value="">NRCP-Lab</option>
+                                <option value="">PPCL-Lab</option>
+                                <option value="">PM-ABHIM-SSS</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select Months</option>
+                                <option value="">January</option>
+                                <option value="">Febuary</option>
+                                <option value="">March</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Select all Institute</option>
+                                <option value="">Institutes 1</option>
+                                <option value="">Institutes 2</option>
+                                <option value="">Institutes 3</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="" class="form-control" id="">
+                                <option value="">Choose Financial Year</option>
+                                <option value="">2023-2024</option>
+                                <option value="">2022-2023</option>
+                                <option value="">2021-2022</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="border country-overall-data p-3 rounded-1">
+                    <ul>
+                        <li>
+                            <span class="arrow arrow-left"><span class="number">1</span></span> Lorem ipsum dolor sit
+                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
+                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
+                            ipsam. <span class="state-data-total">0</span>
+                        </li>
+                        <li>
+                            <span class="arrow arrow-left"><span class="number">2</span></span> Lorem ipsum dolor sit
+                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
+                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
+                            ipsam. <span class="state-data-total">0</span>
+                        </li>
+                        <li>
+                            <span class="arrow arrow-left"><span class="number">3</span></span> Lorem ipsum dolor sit
+                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
+                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
+                            ipsam. <span class="state-data-total">0</span>
+                        </li>
+                        <li>
+                            <span class="arrow arrow-left"><span class="number">4</span></span> Lorem ipsum dolor sit
+                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
+                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
+                            ipsam. <span class="state-data-total">0</span>
+                        </li>
+                        <li>
+                            <span class="arrow arrow-left"><span class="number">5</span></span> Lorem ipsum dolor sit
+                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
+                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
+                            ipsam. <span class="state-data-total">0</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="integrated-dashboard-india-map3" class="border rounded mb-3"></div>
+            </div>
+        </div>
+        </div>
+
+       
+    </div>
+
+</div>
 
 </div>
 
 
 <div class="row">
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="" class="select-form-s">
@@ -653,23 +1414,7 @@
                     </div>
                 </div>
             </div> -->
-        </div>
-    </div>
-
-    <div class="col-md-12">
-        <div class="white_card card_height_100 mb_30">
-
-            <div class="col-lg-12">
-                <div class="white_card card_height_100 mb_30">
-                    <!-- <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Data table 1</h3>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="white_card_body">
-                        <div class="QA_section">
+            <div class="QA_section">
                             <div class="QA_table">
                                 <table class="table lms_table_active3 table-bordered">
                                     <thead>
@@ -839,6 +1584,23 @@
                                 </table>
                             </div>
                         </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="white_card card_height_100 mb_30">
+
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <!-- <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Data table 1</h3>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="white_card_body">
+                       
                     </div>
                 </div>
             </div>
