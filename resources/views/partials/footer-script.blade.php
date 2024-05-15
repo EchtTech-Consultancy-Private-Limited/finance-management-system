@@ -64,3 +64,12 @@
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+<script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/highmaps.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/exporting.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/export-data.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/highcharts-more.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/solid-gauge.js') }}"></script>
+<script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
