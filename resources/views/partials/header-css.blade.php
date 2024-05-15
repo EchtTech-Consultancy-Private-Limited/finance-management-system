@@ -1,6 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>Finance Management System</title>
+<meta name="baseURL" content="{{ asset('/') }}">
 <link rel="icon" href="{{ asset('assets/img/mini_logo.png') }}" type="image/png">
 <meta name="baseURL" content="{{ asset('/') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />

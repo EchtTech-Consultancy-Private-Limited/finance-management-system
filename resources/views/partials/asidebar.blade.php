@@ -46,6 +46,16 @@
                </ul>
             </li>
             <li class=>
+               <a href="{{ asset('assets/img/pdf/uc_form.pdf') }}" target="_blank" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Form Download</span>
+                  </div>
+               </a>
+            </li>
+            <li class=>
                <a href="{{ route('institute-user.report') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
