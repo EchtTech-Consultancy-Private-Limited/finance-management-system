@@ -1,0 +1,31 @@
+
+@media (min-width:768px) and (max-width:1600px){
+     .custom-grid .col-md-4{
+        width: 50%;
+     }
+     .custom-grid .col-xl-2, .custom-grid .col-xl-3{
+      width: 33.333333%;
+     }
+     .custom-grid  .col-xl-4 {
+      width: 50%;
+  }
+  .custom-grid .col-md-3 {
+   width: 33.33%;
+  } 
+
+  .custom-grid  .col-md-2 {
+   width: 25%;
+   margin-bottom: 15px;
+   }
+   .custom-grid2 .col-md-2,  .custom-grid2 .col-md-3 {
+      width: 33%;
+      margin-bottom: 15px;
+  }
+}
+
+
+@media (min-width:1420px) and (max-width:1600px){
+     div#integrated-dashboard-india-map {
+    margin-top: 20px;
+   }
+}

@@ -296,7 +296,8 @@
         </div>
     </div>
 
-
+<div class="col-md-12">
+    <div class="row custom-grid">
     <div class="col-xl-2">
         <div class="white_card card_height_100 mb_30 integrated-expenditure">
             <div class="white_card_header">
@@ -381,6 +382,9 @@
         </div>
     </div>
 
+    </div>
+</div>
+  
 
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
@@ -424,7 +428,7 @@
                 </form>
             </div>
 
-            <div class="row mt-5">
+            <div class="row mt-5 custom-grid">
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
@@ -832,7 +836,7 @@
                 </div>
 
             </div>
-            <div class="row my-4 d-flex justify-content-center">
+            <div class="row my-4 d-flex justify-content-center custom-grid">
                 <div class="col-md-3">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
@@ -858,7 +862,7 @@
                 <div class="col-md-12">
                     <div class="white_card card_height_100 mb_30 integrated-expenditure">
                         <div class="white_card_header">
-                            <div class="box_header m-0 p-3">
+                            <div class="box_header m-0">
                                 <div class="main-title ">
                                     <h3 class="m-0">Total Fund Unspent in %</h3>
                                 </div>
@@ -950,11 +954,11 @@
             </div>
         </div>
         <div class="data-driven">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center custom-grid">
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box1  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -965,7 +969,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box2 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -976,7 +980,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box3 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -987,7 +991,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box4 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -998,7 +1002,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box5 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -1008,7 +1012,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row custom-grid2">
                 <div class="col-md-3">
                     <div class="graph-container border border-1 m-3 me-0">
                         <div id="integrated-dashboard-data-driven-graph1" class=""></div>
