@@ -73,7 +73,7 @@
                             Fund approved (in Cr.)
                         </h3>
                         <span class="fund-number">
-                            13
+                            {{ @$totalArray['unspentBalance1stTotal'] }}
                         </span>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             Fund Expenditure (in Cr.)
                         </h3>
                         <span class="fund-number">
-                            11
+                            {{ @$totalArray['actualExpenditureTotal'] }}
                         </span>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <div id="integrated_dashboard_expenditure"></div>
+                        <div id="national-total-expenditure-cr"></div>
 
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <div id="integrated_dashboard_unspent"></div>
+                        <div id="national-total-unspent-cr"></div>
 
                     </div>
                 </div>
@@ -164,11 +164,14 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                            <select id="national-user-fy" name="financial_year" class="form-control">
+                                <option value="">Select Financial Year</option>
+                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}}" {{$selected}}>{{$i}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>
@@ -185,7 +188,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
                             <p>GIA Received during the Current F.Y. </p>
                         </div>
                     </div>
@@ -199,7 +202,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
                             <p>Interest earned in C.Y. </p>
                         </div>
                     </div>
@@ -213,7 +216,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
                         </div>
                     </div>
@@ -249,7 +252,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
@@ -287,7 +290,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
                         </div>
                     </div>
@@ -309,7 +312,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="integrated-dashboard-chart-Expenditure"></div>
+                <div id="national-total-expenditure"></div>
 
             </div>
         </div>
@@ -326,7 +329,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="integrated-dashboard-chart-currently-Fund"></div>
+                <div id="national-total-fund-unspent"></div>
 
             </div>
         </div>

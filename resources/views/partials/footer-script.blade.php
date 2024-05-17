@@ -58,9 +58,10 @@
 <script src="{{ asset('assets/finance-nrcp/chart_am/kelly.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/chart-custom.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chartjs/chartjs_init.js') }}"></script>
-{{-- highchard --}}
+{{-- dashboard filter --}}
 <script src="{{ asset('assets/highchart/institute-dashboard.js') }}"></script>
-{{-- end highchart --}}
+<script src="{{ asset('assets/highchart/national-dashboard.js') }}"></script>
+{{-- end dashboard filter --}}
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>

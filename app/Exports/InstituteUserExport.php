@@ -19,16 +19,18 @@ class InstituteUserExport implements FromCollection
         foreach ($arrays as $array) {
             if (!empty($array) && isset($array[0])) {
                 foreach ($array as $row) {
-                    unset($row['deleted_at'], $row['updated_at']);
+                    unset($row['user_id'],$row['institute_program_id'],$row['state'],$row['deleted_at'], $row['updated_at']);
                     if (!$headerAdded) {
                         $output[] = array_keys($row); // Add header row only if not already added
                         $headerAdded = true;
                     }
 
                     $outputRow = [];
-                    foreach ($row as $key => $value) {                        
+                    foreach ($row as $key => $value) {
                         if ($key === 'states') {
                             $outputRow[$key] = $value['name'];
+                        }elseif ($key === 'institute_program') {
+                            $outputRow[$key] = $value['name'].' '.$value['code'];
                         } elseif ($key === 'soe_uc_form_calculation') {
                             foreach ($value as $soeCalculation) {
                                 // Remove 'created_at' and 'updated_at' keys from each row
@@ -36,15 +38,14 @@ class InstituteUserExport implements FromCollection
                                 $emptyRow = array_fill(0, count($row), ''); // Create an empty row
                                     $emptyRow['soe_uc_form_calculation'] = implode(', ',$soeCalculation); // Add soe_uc_form_calculation data
                                     $output[] = $emptyRow;
-                                // Add empty row with soe_uc_form_calculation data
                             }
-                            continue; // Skip adding soe_uc_form_calculation data to main row
+                            continue;
                         } else {
                             $outputRow[$key] = $value;
                         }
                     }
                     $output[] = $outputRow;
-                    $output[] = ['']; // Add empty row after each entry
+                    $output[] = [''];
                 }
             }
         }
