@@ -60,38 +60,45 @@ class SOEUCFormController extends Controller
             'financial_year'     => 'required',
         ]);
         try {
-            DB::beginTransaction();
-            $soeucFormId = SOEUCForm::Create([
-                'user_id' => Auth::id(),
-                'institute_program_id' => $request->institute_program_id,
-                'institute_name' => $request->institute_name,
-                'finance_account_officer' => $request->finance_account_officer,
-                'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
-                'finance_account_officer_email' => $request->finance_account_officer_email,
-                'nadal_officer' => $request->nadal_officer,
-                'nadal_officer_mobile' => $request->nadal_officer_mobile,
-                'nadal_officer_email' => $request->nadal_officer_email,
-                'state' => $request->state,
-                'month' => $request->month,
-                'financial_year' => $request->financial_year,
-            ])->id;
-            foreach($request->head as $key => $value){
-                SOEUCFormCalculatin::Create([
-                    'soe_form_id' => $soeucFormId,
-                    'head' => $request->head[$key],
-                    'sanction_order' => $request->sanction_order[$key],
-                    'unspent_balance_1st' => $request->unspent_balance_1st[$key],
-                    'gia_received' => $request->gia_received[$key],
-                    'total_balance' => $request->total_balance[$key],
-                    'actual_expenditure' => $request->actual_expenditure[$key],
-                    'unspent_balance_last' => $request->unspent_balance_last[$key],
-                    'committed_liabilities' => $request->committed_liabilities[$key],
-                    'unspent_balance_31st' => $request->unspent_balance_31st[$key],
-                ]);
+            $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
+            $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
+            if($programCount <= $programNumber->count ){
+                DB::beginTransaction();
+                $soeucFormId = SOEUCForm::Create([
+                    'user_id' => Auth::id(),
+                    'institute_program_id' => $request->institute_program_id,
+                    'institute_name' => $request->institute_name,
+                    'finance_account_officer' => $request->finance_account_officer,
+                    'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
+                    'finance_account_officer_email' => $request->finance_account_officer_email,
+                    'nadal_officer' => $request->nadal_officer,
+                    'nadal_officer_mobile' => $request->nadal_officer_mobile,
+                    'nadal_officer_email' => $request->nadal_officer_email,
+                    'state' => $request->state,
+                    'month' => $request->month,
+                    'financial_year' => $request->financial_year,
+                ])->id;
+                foreach($request->head as $key => $value){
+                    SOEUCFormCalculatin::Create([
+                        'soe_form_id' => $soeucFormId,
+                        'head' => $request->head[$key],
+                        'sanction_order' => $request->sanction_order[$key],
+                        'unspent_balance_1st' => $request->unspent_balance_1st[$key],
+                        'gia_received' => $request->gia_received[$key],
+                        'total_balance' => $request->total_balance[$key],
+                        'actual_expenditure' => $request->actual_expenditure[$key],
+                        'unspent_balance_last' => $request->unspent_balance_last[$key],
+                        'committed_liabilities' => $request->committed_liabilities[$key],
+                        'unspent_balance_31st' => $request->unspent_balance_31st[$key],
+                    ]);
+                }
+                DB::commit();
+                \Toastr::success('Has been add successfully :)','Success');
+                return redirect()->route('institute-user.SOE-&-UC-list');
+            }else{
+                \Toastr::error('fail, Program Number of count full  :)','Error');
+                return redirect()->route('institute-user.SOE-&-UC-list');
             }
-            DB::commit();
-            \Toastr::success('Has been add successfully :)','Success');
-            return redirect()->route('institute-user.SOE-&-UC-list');
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Add new student  :)','Error');
@@ -134,38 +141,46 @@ class SOEUCFormController extends Controller
     public function update(Request $request, $id = '')
     {
         try{
-            DB::beginTransaction();
-            SOEUCForm::where('id', $id)->Update([
-                'user_id' => Auth::id(),
-                'institute_program_id' => $request->institute_program_id,
-                'institute_name' => $request->institute_name,
-                'finance_account_officer' => $request->finance_account_officer,
-                'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
-                'finance_account_officer_email' => $request->finance_account_officer_email,
-                'nadal_officer' => $request->nadal_officer,
-                'nadal_officer_mobile' => $request->nadal_officer_mobile,
-                'nadal_officer_email' => $request->nadal_officer_email,
-                'state' => $request->state,
-                'month' => $request->month,
-                'financial_year' => $request->financial_year,
-            ]);
-            foreach($request->id as $key => $value){                
-                SOEUCFormCalculatin::where('id', $value)->Update([
-                    'soe_form_id' => $id,
-                    'head' => $request->head[$key],
-                    'sanction_order' => $request->sanction_order[$key],
-                    'unspent_balance_1st' => $request->unspent_balance_1st[$key],
-                    'gia_received' => $request->gia_received[$key],
-                    'total_balance' => $request->total_balance[$key],
-                    'actual_expenditure' => $request->actual_expenditure[$key],
-                    'unspent_balance_last' => $request->unspent_balance_last[$key],
-                    'committed_liabilities' => $request->committed_liabilities[$key],
-                    'unspent_balance_31st' => $request->unspent_balance_31st[$key],
+            $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
+            $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
+            if($programCount <= $programNumber->count ){
+                DB::beginTransaction();
+                SOEUCForm::where('id', $id)->Update([
+                    'user_id' => Auth::id(),
+                    'institute_program_id' => $request->institute_program_id,
+                    'institute_name' => $request->institute_name,
+                    'finance_account_officer' => $request->finance_account_officer,
+                    'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
+                    'finance_account_officer_email' => $request->finance_account_officer_email,
+                    'nadal_officer' => $request->nadal_officer,
+                    'nadal_officer_mobile' => $request->nadal_officer_mobile,
+                    'nadal_officer_email' => $request->nadal_officer_email,
+                    'state' => $request->state,
+                    'month' => $request->month,
+                    'financial_year' => $request->financial_year,
                 ]);
+                foreach($request->id as $key => $value){                
+                    SOEUCFormCalculatin::where('id', $value)->Update([
+                        'soe_form_id' => $id,
+                        'head' => $request->head[$key],
+                        'sanction_order' => $request->sanction_order[$key],
+                        'unspent_balance_1st' => $request->unspent_balance_1st[$key],
+                        'gia_received' => $request->gia_received[$key],
+                        'total_balance' => $request->total_balance[$key],
+                        'actual_expenditure' => $request->actual_expenditure[$key],
+                        'unspent_balance_last' => $request->unspent_balance_last[$key],
+                        'committed_liabilities' => $request->committed_liabilities[$key],
+                        'unspent_balance_31st' => $request->unspent_balance_31st[$key],
+                    ]);
+                }
+                DB::commit();
+                \Toastr::success('Has been update successfully :)','Success');
+                return redirect()->route('institute-user.SOE-&-UC-list');
+            }else{
+                \Toastr::error('fail, Program Number of count full  :)','Error');
+                return redirect()->route('institute-user.SOE-&-UC-list');
             }
-            DB::commit();
-            \Toastr::success('Has been update successfully :)','Success');
-            return redirect()->route('institute-user.SOE-&-UC-list');
+            \Toastr::error('fail, Program Number of count full  :)','Error');
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Add new student  :)','Error');

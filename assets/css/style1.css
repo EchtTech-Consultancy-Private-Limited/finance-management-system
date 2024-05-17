@@ -12583,3 +12583,10 @@ margin-bottom: 8px;
     border-radius: 3px;
     margin-left: 5px;
 }
+
+span.arrow.arrow-left::before {
+    content: '';
+    width: 30px;
+    height: 0;
+    display: block;
+}

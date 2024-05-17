@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}" id="colorSkinCSS">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 {{-- highchart --}}
 <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/highmaps.js') }}"></script>

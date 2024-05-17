@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('national-user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('national-user.dashboard');
+        Route::get('/filter-dashboard', [DashboardController::class, 'nationalFilterDdashboard'])->name('filter-dashboard');
         Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('national-user.nohppczrcs');
         Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('national-user.nohppczrsss');
         Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('national-user.nrcplab');

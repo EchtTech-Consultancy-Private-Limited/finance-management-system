@@ -73,7 +73,7 @@
                             Fund approved (in Cr.)
                         </h3>
                         <span class="fund-number">
-                            13
+                            {{ @$totalArray['unspentBalance1stTotal'] }}
                         </span>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             Fund Expenditure (in Cr.)
                         </h3>
                         <span class="fund-number">
-                            11
+                            {{ @$totalArray['actualExpenditureTotal'] }}
                         </span>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <div id="integrated_dashboard_expenditure"></div>
+                        <div id="national-total-expenditure-cr"></div>
 
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <div id="integrated_dashboard_unspent"></div>
+                        <div id="national-total-unspent-cr"></div>
 
                     </div>
                 </div>
@@ -164,11 +164,14 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                            <select id="national-user-fy" name="financial_year" class="form-control">
+                                <option value="">Select Financial Year</option>
+                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}}" {{$selected}}>{{$i}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>
@@ -185,7 +188,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
                             <p>GIA Received during the Current F.Y. </p>
                         </div>
                     </div>
@@ -199,7 +202,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
                             <p>Interest earned in C.Y. </p>
                         </div>
                     </div>
@@ -213,7 +216,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
                         </div>
                     </div>
@@ -249,7 +252,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
@@ -287,7 +290,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>0</h4>
+                            <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
                         </div>
                     </div>
@@ -296,7 +299,8 @@
         </div>
     </div>
 
-
+<div class="col-md-12">
+    <div class="row custom-grid">
     <div class="col-xl-2">
         <div class="white_card card_height_100 mb_30 integrated-expenditure">
             <div class="white_card_header">
@@ -308,7 +312,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="integrated-dashboard-chart-Expenditure"></div>
+                <div id="national-total-expenditure"></div>
 
             </div>
         </div>
@@ -325,7 +329,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="integrated-dashboard-chart-currently-Fund"></div>
+                <div id="national-total-fund-unspent"></div>
 
             </div>
         </div>
@@ -381,6 +385,9 @@
         </div>
     </div>
 
+    </div>
+</div>
+  
 
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
@@ -424,7 +431,7 @@
                 </form>
             </div>
 
-            <div class="row mt-5">
+            <div class="row mt-5 custom-grid">
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
@@ -832,7 +839,7 @@
                 </div>
 
             </div>
-            <div class="row my-4 d-flex justify-content-center">
+            <div class="row my-4 d-flex justify-content-center custom-grid">
                 <div class="col-md-3">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
@@ -858,7 +865,7 @@
                 <div class="col-md-12">
                     <div class="white_card card_height_100 mb_30 integrated-expenditure">
                         <div class="white_card_header">
-                            <div class="box_header m-0 p-3">
+                            <div class="box_header m-0">
                                 <div class="main-title ">
                                     <h3 class="m-0">Total Fund Unspent in %</h3>
                                 </div>
@@ -950,11 +957,11 @@
             </div>
         </div>
         <div class="data-driven">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center custom-grid">
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box1  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -965,7 +972,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box2 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -976,7 +983,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box3 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -987,7 +994,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box4 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -998,7 +1005,7 @@
                 <div class="col-md-2">
                     <div class="expenditure-bar-chart-box box5 d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img
-                                src="http://localhost/limitedfinance-management-system/assets/img/money.png" alt="">
+                                src="{{ asset('assets/img/money.png') }}" alt="">
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
@@ -1008,7 +1015,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row custom-grid2">
                 <div class="col-md-3">
                     <div class="graph-container border border-1 m-3 me-0">
                         <div id="integrated-dashboard-data-driven-graph1" class=""></div>
