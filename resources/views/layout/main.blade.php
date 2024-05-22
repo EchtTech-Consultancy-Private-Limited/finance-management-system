@@ -74,8 +74,14 @@
                            <img src="{{ asset('assets/img/client_img.png') }}" alt="#">
                            <div class="profile_info_iner">
                               <div class="profile_author_name">
-                                 <p>@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0) National User @else Institute User @endif </p>
-                                 <h5>{{Auth::user()->name}} {{Auth::user()->mname}} {{Auth::user()->lname}}</h5>
+                                 <div class="profile_img">
+                                    <img src="{{ asset('assets/img/client_img.png') }}" alt>
+                                 </div>
+                                 <div class="profile_img">
+                                    <p>@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0) National User @else Institute User @endif </p>
+                                    <h5>{{Auth::user()->name}} {{Auth::user()->mname}} {{Auth::user()->lname}}</h5>
+                                 </div>
+                                 
                               </div>
                               <div class="profile_info_details">
                                  <a href="{{ route('profile.edit',Auth::user()->id) }}">My Profile </a>

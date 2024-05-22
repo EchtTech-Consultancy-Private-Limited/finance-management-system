@@ -62,6 +62,7 @@ input:focus {
 }
 select.form-control{
     appearance: auto;
+    font-size: 14px;
 }
 
 .form-control:focus {
@@ -1537,7 +1538,8 @@ th:focus {
     font-size: 14px;
     font-weight: 500;
     background-color: #fff;
-    width: 100%
+    width: 100%;
+    margin-bottom: 0px;
 }
 
 .cs_modal .modal-body .nice_Select {
@@ -3395,9 +3397,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .profile_info .profile_info_iner .profile_author_name {
-    padding: 20px 25px;
+    padding: 7px;
     background: #567aed;
-    border-radius: 10px 15px 0 0
+    border-radius: 10px 15px 0 0;
+    text-align: center;
 }
 
 .profile_info .profile_info_iner a {
@@ -3405,15 +3408,16 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .profile_info .profile_info_iner p {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     color: #fff
 }
 
 .profile_info .profile_info_iner h5 {
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
-    font-weight: 600
+    font-weight: 600;
+    line-height: 1;
 }
 
 .profile_info:hover .profile_info_iner {
@@ -3423,14 +3427,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .profile_info .profile_info_details {
-    padding: 20px 25px
+    padding: 6px 20px;
 }
 
 .profile_info .profile_info_details a {
     color: #2e4765;
     font-size: 14px;
     display: block;
-    padding: 10px 0;
+    padding: 5px 0;
     font-weight: 400
 }
 
@@ -4341,8 +4345,8 @@ body::-webkit-scrollbar {
 .main-title h3 {
     font-family: mulish, sans-serif;
     font-weight: 700;
-    font-size: 18px;
-    color: #474d58
+    font-size: 16px;
+    color: #2d323a;
 }
 
 .main-title span {
@@ -5155,7 +5159,7 @@ body::-webkit-scrollbar {
 
 .QA_section .QA_table .question_content {
     color: #7e7172;
-    font-size: 13px
+    font-size: 14px
 }
 
 .QA_section .QA_table .question_content:hover {
@@ -5209,7 +5213,7 @@ body::-webkit-scrollbar {
 
 .QA_section .QA_table tbody th,
 .QA_section .QA_table tbody td {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     border-bottom: 0
 }
@@ -5256,7 +5260,7 @@ body::-webkit-scrollbar {
     border-bottom: 0 solid transparent;
     padding: 9px 15px;
     border: 0 solid transparent;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #474d58;
     white-space: nowrap;
@@ -6956,7 +6960,7 @@ canvas#highlights {
     color: #fff !important
 }
 
-.dataTables_paginate a:hover {
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: #884ffb !important;
     box-shadow: 0 5px 10px rgba(59, 118, 239, .3);
     border: 0 !important;
@@ -12256,12 +12260,13 @@ img#captchaimg {
 }
 .table thead tr th,.table tfoot tr th {
     background: #f6f7fb !important;
+    font-size: 15px;
 }
 
 .fms-table .table thead tr th, .fms-table .table tbody tr th, .fms-table .table tbody tr td{padding:9px 7px;} 
 .fms-table .table input.form-control {
     padding: 3px 7px;
-    font-size: 14px;
+    font-size: 15px;
 }
 .fms-table .table tbody tr th, .fms-table .table tbody tr td{vertical-align: middle;    padding: 5px 7px;}
 
@@ -12312,7 +12317,7 @@ img#captchaimg {
     color: #ff0000;
 }
 .table.lms_table_active3 span.size {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .table.lms_table_active3 thead tr th{background:#00539f !important;color: #fff !important;}
@@ -12589,4 +12594,13 @@ span.arrow.arrow-left::before {
     width: 30px;
     height: 0;
     display: block;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+label.font-16{
+    font-size: 16px !important;
 }
