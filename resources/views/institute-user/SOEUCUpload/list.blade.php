@@ -16,7 +16,7 @@
         <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">SOE UC Upload List</h3>
+                    <h3 class="m-0"> UC Upload List</h3>
                 </div>
             </div>
         </div>

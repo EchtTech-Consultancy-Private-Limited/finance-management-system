@@ -2,6 +2,10 @@
 function validateInput(input) {
     input.value = input.value.replace(/\D/g, '');
 }
+$(document).ready(function() {
+    $('.datatable').dataTable();    
+     $("[data-toggle=tooltip]").tooltip();    
+} );
 
 // calculation of SOEU Form
 $(document).ready(function() {

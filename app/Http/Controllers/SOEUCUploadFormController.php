@@ -47,7 +47,14 @@ class SOEUCUploadFormController extends Controller
             'month'     => 'required',
             'ucuploaddate'     => 'required',
             'ucfileupload'        => 'required|mimes:pdf',
-        ]);
+        ],
+        [
+            'month.required' => 'The Month field is required',
+            'yearofuc.required' => 'The Year of UC field is required',
+            'ucuploaddate.required' => 'The Year of UC Upload Date field is required',
+            'ucfileupload.required' => 'The Year of UC File Upload field is required'
+        ]
+    );
         try {
             DB::beginTransaction();
             $ucFileUpload = $request->file('ucfileupload');

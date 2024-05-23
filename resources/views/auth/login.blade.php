@@ -38,7 +38,7 @@
                                         </div>
                                         {!! Toastr::message() !!}
                                         <div class="modal-body">
-                                            <form method="POST" action="{{ route('authenticate') }}">
+                                            <form method="POST" action="{{ route('authenticate') }}" id="loginForm">
                                                 @csrf
                                                 <div class="form-check">
                                                     <div class="radio-btn-card d-flex mb-3">
@@ -55,7 +55,7 @@
                                                                 for="gridRadios2">Institute User</label>
                                                         </div>
                                                     </div>
-                                                    <div class>
+                                                    <div class="mb-3">
                                                         <input type="text" name="email" value="{{ old('email') }}"
                                                             class="form-control @error('email') is-invalid @enderror"
                                                             placeholder="Enter your email">
@@ -63,32 +63,32 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
-                                                    <div class="p-relative">
+                                                    <div class="p-relative mb-3">
                                                         <input type="password" name="password"
                                                             class="form-control @error('password') is-invalid @enderror"
                                                             placeholder="Password" id="pass_log_id">
                                                         <span toggle="#password-field"
-                                                            class="fa fa-fw fa-eye field_icon toggle-password icon-psw"></span>
+                                                            class="fa fa-fw fa-eye-slash field_icon toggle-password icon-psw"></span>
                                                         @error('password')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
-                                                    <div class>
+                                                    <div class="mb-3">
                                                         <img src="{{ url('captcha-code') }}" id="captchaimg" height="50"
                                                             width="350">
                                                     </div>
-                                                    <fieldset class="mb-3">
+                                                    <div class="mb-3">
                                                         Can't read the above code? <a class="ccc"
                                                             href="javascript:void(0);"
                                                             onClick="refreshCaptcha();">Refresh</a>
-                                                    </fieldset>
-                                                    <fieldset>
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <input placeholder="Enter Captcha" type="text"
                                                             name="captcha_code" tabindex="2" id="captcha_code">
                                                         @error('captcha_code')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
-                                                    </fieldset>
+                                                    </div>
                                                     <button type="submit" class="btn_1 full_width text-center">Log
                                                         in</button>
                                                     <div class="text-center">
@@ -121,7 +121,7 @@
 
     <script>
     $(".toggle-password.icon-psw").click(function() {
-        $(this).toggleClass("fa-eye fa-eye-slash");
+        $(this).toggleClass("fa-eye-slash fa-eye");
         input = $(this).parent().find("input");
         if (input.attr("type") == "password") {
             input.attr("type", "text");
@@ -129,6 +129,31 @@
             input.attr("type", "password");
         }
     });
+$(document).ready(function(){
+
+    $("#loginForm").validate({
+        rules: {
+				password: {
+					required: true,
+					minlength: 5
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				captcha_code:'required'
+			},
+			messages: {
+				
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				},
+				email: "Please enter a valid email address",
+                captcha_code:'Please enter captcha code'
+			}
+    }); 
+})
     </script>
 
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -138,6 +163,8 @@
     <script src="{{ asset('assets/finance-nrcp/scroll/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/finance-nrcp/scroll/scrollable-custom.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    
+    <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
 </body>
 
 </html>

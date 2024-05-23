@@ -93,7 +93,7 @@ class LoginController extends Controller
             'captcha_code' => 'required|in:'.Session::get('captcha_code')
         ],[
           'email.required' => 'The email field is required.',
-          'email.email' => 'The email must be a email.',
+          'email.email' => 'The email must be valid.',
           'usertype.required' => 'The field is required.',
           'password.required' => 'The Password is required.',
           'captcha_code.required' => 'The Captcha field is required.',
