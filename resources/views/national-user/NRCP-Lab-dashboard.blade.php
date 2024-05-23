@@ -24,7 +24,12 @@
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
                     <img src="{{ asset('assets/img/icon/calender_icon.svg') }}" alt>
-                    August 1, 2020 - August 31, 2020
+                    @php
+                        $currentYear = date('Y');
+                        $currentMonth = date('m');
+                        $endDate = strtotime("last day of $currentYear-$currentMonth");
+                    @endphp
+                    {{ date('F m ,Y') }} - {{ date('M jS ,Y', $endDate) }}
                 </div>
             </div>
         </div>
