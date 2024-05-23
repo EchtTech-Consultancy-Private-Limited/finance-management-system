@@ -111,7 +111,7 @@ class SOEUCUploadFormController extends Controller
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
-            'ucfileupload'        => 'required|mimes:pdf',
+            // 'ucfileupload'        => 'required|mimes:pdf',
         ]);
         try{
             DB::beginTransaction();

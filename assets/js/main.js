@@ -80,6 +80,5 @@ $(document).ready(function() {
 
 // datatable
 $(document).ready(function() {
-    $('#datatable').dataTable();    
-     $("[data-toggle=tooltip]").tooltip();    
+    $('#datatable').dataTable();
 } );
