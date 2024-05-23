@@ -54,7 +54,7 @@
                                 </td>
                                 <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                 <td>
-                                    <a href="#" class="action_btn mr_10" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $sorUcList->id }}"><i class="fas fa-ban"></i></a>
+                                    <a href="#" class="action_btn mr_10" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</a>
                                     <div class="modal fade" id="soe_uc_form_{{ $sorUcList->id }}" tabindex="-1" role="dialog" aria-labelledby="soe_uc_form_{{ $sorUcList->id }}Title"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

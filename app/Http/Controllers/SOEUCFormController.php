@@ -257,11 +257,11 @@ class SOEUCFormController extends Controller
         $arrays = [];
         switch ($request->modulename) {
             case '1':
-                $fileName = 'SOEUCUploadForm';
-                $query = SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram');
+                $fileName = 'SOEUForm';
+                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation');
                 break;
             case '2':
-                $fileName = 'SOEUCUploadForm';
+                $fileName = 'UCUpload';
                 $query = SOEUCUploadForm::query();
                 break;
             default:

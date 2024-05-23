@@ -30,8 +30,8 @@
                                 <label for="state">Module<span class="star">*</span></label>
                                 <select class="form-select" aria-label="Default select example" name="modulename" id="modulename">
                                     <option value="">Select Module</option>
-                                    <option value='1'>SOE & UC Form</option>
-                                    <option value='2'>SOE & UC Upload Form</option>
+                                    <option value='1'>SOE Form</option>
+                                    <option value='2'>UC Upload</option>
                                 </select>
                                 @error('modulename') 
                                     <span class="form-text text-danger">{{ $message }}</span>
