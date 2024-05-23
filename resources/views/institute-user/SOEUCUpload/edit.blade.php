@@ -69,12 +69,12 @@
                                     <span>Download ({{ $soeUCUpload->file_size }})</span>
                                     <i class="fa fa-download" aria-hidden="true"></i>
                                 </a>
-                            @else
+                            @endif
                             @error('ucfileupload')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
+                    </div>                    
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span class="text-danger">*</span></label>

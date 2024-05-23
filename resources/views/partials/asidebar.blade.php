@@ -23,12 +23,12 @@
                      <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE</span>
+                     <span>SOE Form</span>
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('institute-user.SOE-&-UC') }}">Create</a></li>
-                  <li><a href="{{ route('institute-user.SOE-&-UC-list') }}">List</a></li>
+                  <li><a href="{{ route('institute-user.SOE-&-UC') }}">SOE Form Entry</a></li>
+                  <li><a href="{{ route('institute-user.SOE-&-UC-list') }}">SOE Form Database</a></li>
                </ul>
             </li>
             <li class>
@@ -61,7 +61,7 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Report</span>
+                     <span>Generate Report Instead</span>
                   </div>
                </a>
             </li>

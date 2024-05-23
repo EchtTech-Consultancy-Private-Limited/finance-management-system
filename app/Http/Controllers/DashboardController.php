@@ -7,10 +7,10 @@ use App\Models\CMSModels\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-use DB;
 use App\Models\SOEUCForm;
 use App\Models\SOEUCFormCalculatin;
 use App\Models\SOEUCUploadForm;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -35,6 +35,8 @@ class DashboardController extends Controller
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
             ->where('financial_year', date('Y'))
             ->get();
+
+        $sorUcLists = SOEUCUploadForm::get();
 
             $finalArray = [];
             foreach ($dataForms as $dataForm) {
@@ -81,7 +83,7 @@ class DashboardController extends Controller
                 $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
             }
-        return view($file, compact('totalArray'));
+        return view($file, compact('totalArray','sorUcLists'));
     }
 
     public function instituteFilterDdashboard(Request $request)
@@ -186,7 +188,6 @@ class DashboardController extends Controller
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
-
         return response()->json(['totalArray'=>$totalArray], 200);
     }
 

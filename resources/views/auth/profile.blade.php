@@ -96,7 +96,7 @@
                     <div class="row mb-3">
                         <div class=" col-md-12">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_name" value="{{Auth::user()->institute_name??old('institute_name')}}" id="inputPassword4" placeholder="Name of the Institute">
+                            <input type="text" class="form-control" name="institute_name" value="{{Auth::user()->institute_name??old('institute_name')}}" id="inputPassword4" placeholder="Name of the Institute" readonly>
                             @error('institute_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
