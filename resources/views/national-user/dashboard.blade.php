@@ -45,7 +45,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div>
 
                         <h3>Total Regional Coordinator: 15 </h3>
@@ -54,7 +54,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="total-card-child d-flex align-items-center justify-content-center">
                         <h3>Total Value</h3>
                     </div>
