@@ -24,11 +24,10 @@
                 <div class="page_date_button d-flex align-items-center">
                     <img src="{{ asset('assets/img/icon/calender_icon.svg') }}" alt>
                     @php
-                        $currentYear = date('Y');
-                        $currentMonth = date('m');
-                        $endDate = strtotime("last day of $currentYear-$currentMonth");
+                        $first_date = date('F d ,Y',strtotime('first day of this month'));
+                        $last_date = date('F d ,Y',strtotime('last day of this month'));
                     @endphp
-                    {{ date('F m ,Y') }} - {{ date('M jS ,Y', $endDate) }}
+                    {{ $first_date }} - {{ $last_date }}
                 </div>
             </div>
         </div>
