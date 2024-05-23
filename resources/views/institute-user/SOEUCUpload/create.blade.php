@@ -28,7 +28,7 @@
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Year of UC<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="yearofuc">
-                                <option value="">Select Year...</option>
+                                <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                                     @php
                                         $selected = old('yearofuc') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
@@ -37,13 +37,13 @@
                                 @endfor
                             </select>                            
                             @error('yearofuc')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Month<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="month">
-                                <option value="">Select Month...</option>
+                                <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
                                     @php
                                         $selected = old('month') == $month ? 'selected' : '';
@@ -55,14 +55,14 @@
                             </select>
                             
                             @error('month')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">UC File Upload<span class="text-danger">*</span></label>
                             <input type="file" class="form-control" name="ucfileupload" id="inputAddress2">
                             @error('ucfileupload')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span class="text-danger">*</span></label>
                             <input type="date" class="form-control" name="ucuploaddate" value="{{ old('ucuploaddate') }}" id="inputAddress2" placeholder="">
                             @error('ucuploaddate')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>

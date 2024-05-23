@@ -18,7 +18,7 @@
                      <div class="line_icon open_miniSide d-none d-lg-block">
                         <img src="{{ asset('assets/img/line_img.png') }}" alt>
                      </div>
-                     <div class="serach_field-area d-flex align-items-center">
+                     <!-- <div class="serach_field-area d-flex align-items-center">
                         <div class="search_inner">
                            <form action="#">
                               <div class="search_field">
@@ -27,6 +27,9 @@
                               <button type="submit"> <img src="{{ asset('assets/img/icon/icon_search.svg') }}" alt> </button>
                            </form>
                         </div>
+                     </div> -->
+                     <div class="dashboard-title">
+                        <h1 class="title"> Finance Management System</h1>
                      </div>
                      <div class="header_right d-flex justify-content-between align-items-center">
                         <div class="header_notification_warp d-flex align-items-center">
@@ -84,9 +87,9 @@
                                  
                               </div>
                               <div class="profile_info_details">
-                                 <a href="{{ route('profile.edit',Auth::user()->id) }}">My Profile </a>
-                                 <a href="{{ route('password.update',Auth::user()->id) }}">Change Password</a>
-                                 <a href="{{ route('logout') }}">Log Out </a>
+                                 <a href="{{ route('profile.edit',Auth::user()->id) }}"> <i class="bi bi-person-circle"></i> My Profile </a>
+                                 <a href="{{ route('password.update',Auth::user()->id) }}"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</a>
+                                 <a href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i>Log Out </a>
                               </div>
                            </div>
                         </div>

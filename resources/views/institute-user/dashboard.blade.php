@@ -31,10 +31,10 @@
 </div>
 <div class="row">
 
-    <div class="crad white_card mb_30 p-4">
+    <div class="crad white_card mb_30 p-4 ">
         <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
             <div class="row">
-                <div class="col-md-6 col-lg-4 mx-auto mb-4">
+                <div class="col-md-6 col-lg-4 mx-auto mb-4 financial-year-select">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup class="text-danger">*</sup></b></label>
                         <select id="institute-user-fy" name="financial_year" class="form-control">

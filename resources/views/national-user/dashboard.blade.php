@@ -48,9 +48,9 @@
                 <div class="col-md-5">
                     <div>
 
-                        <h3>Total State + UT: 36 </h3>
-                        <h3>Total Sentinel Site: 45 </h3>
-                        <h3>Total PPCL Labs: 6 </h3>
+                        <h3>Total Regional Coordinator: 15 </h3>
+                        <h3>Total NRCP Labs: 10 </h3>
+                        <h3>Total PM ABHIM SSS: 12 </h3>
 
                     </div>
                 </div>
@@ -127,7 +127,7 @@
 
                         </div>
                     </div>
-                    <div class="white_card_body">
+                    <div class="white_card_body p-0">
                         <div id="national-total-expenditure-cr"></div>
 
                     </div>
@@ -145,7 +145,7 @@
 
                         </div>
                     </div>
-                    <div class="white_card_body">
+                    <div class="white_card_body p-0">
                         <div id="national-total-unspent-cr"></div>
 
                     </div>
@@ -160,18 +160,16 @@
             <div class="white_card card_height_100 mb_30 mt-4">
                 <div class="row">
 
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control">
                                 <option value="">Select Financial Year</option>
-                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i) ? 'selected' : '';
-                                    @endphp
-                                    <option value="{{$i}}" {{$selected}}>{{$i}}</option>
-                                @endfor
+                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i) ? 'selected' : '' ; @endphp <option
+                                    value="{{$i}}" {{$selected}}>{{$i}}</option>
+                                    @endfor
                             </select>
                         </div>
                     </div>
@@ -202,7 +200,8 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
+                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
+                            </h4>
                             <p>Interest earned in C.Y. </p>
                         </div>
                     </div>
@@ -299,60 +298,61 @@
         </div>
     </div>
 
-<div class="col-md-12">
-    <div class="row custom-grid">
-    <div class="col-xl-2">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Expenditure in %</h3>
-                    </div>
+    <div class="col-md-12">
+        <div class="row custom-grid">
+            <div class="col-xl-2">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Expenditure in %</h3>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="national-total-expenditure" class="overall-programm-total"></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="national-total-expenditure"></div>
 
-            </div>
-        </div>
-    </div>
+            <div class="col-xl-3">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Fund Unspent in %</h3>
+                            </div>
 
-    <div class="col-xl-3">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Fund Unspent in %</h3>
+                        </div>
                     </div>
+                    <div class="white_card_body">
+                        <div id="national-total-fund-unspent" class="overall-programm-total"></div>
 
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="national-total-fund-unspent"></div>
 
-            </div>
-        </div>
-    </div>
+            <div class="col-xl-3">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
+                            </div>
 
-    <div class="col-xl-3">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
+                        </div>
                     </div>
+                    <div class="white_card_body">
+                        <div id="integrated-dashboard-chart-currently-Interest-Earned" class="overall-programm-total">
+                        </div>
 
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="integrated-dashboard-chart-currently-Interest-Earned"></div>
 
-            </div>
-        </div>
-    </div>
-
-    <!-- <div class="col-xl-2">
+            <!-- <div class="col-xl-2">
         <div class="white_card card_height_100 mb_30 integrated-expenditure">
             <div class="white_card_header">
                 <div class="box_header m-0">
@@ -368,28 +368,28 @@
             </div>
         </div>
     </div> -->
-    <div class="col-xl-4">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Overall Program Expenditure Amount</h3>
-                    </div>
+            <div class="col-xl-4">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Overall Program Expenditure Amount</h3>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
 
-            </div>
         </div>
     </div>
 
-    </div>
-</div>
-  
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 white_card meter-graph user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="" class="select-form-s">
@@ -431,7 +431,7 @@
                 </form>
             </div>
 
-            <div class="row mt-5 custom-grid">
+            <div class="row mt-5 custom-grid ">
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
@@ -597,7 +597,7 @@
     </div>
 
     <div class="col-xl-12 ">
-        <div class="crad white_card mb_30 p-4">
+        <div class="crad white_card yellow-graph mb_30 p-4">
             <div class="mb_30">
                 <form action="" class="select-form-s">
                     <div class="row">
@@ -632,109 +632,265 @@
                 <div class="col-md-5">
                     <div id="integrated-dashboard-india-map2" class="border rounded mb-3"></div>
                 </div>
+                <div class="col-md-7">
+                    <div class="row state-graph-filter">
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state1" class=" state-filter-highchart rounded mb-3 ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+                                <div class="">
+                                    <div id="integrated-dashboard-state2"
+                                        class=" state-filter-highchart rounded mb-3 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="">
+                                <div id="integrated-dashboard-state3" class=" state-filter-highchart rounded mb-0 ">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state4"
+                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state5"
+                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state6"
+                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state7"
+                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state8"
+                                        class=" state-filter-highchart rounded mb-0 received-chart">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state9"
+                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state10"
+                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="white_card  ">
+
+                                <div class="">
+                                    <div id="integrated-dashboard-state11"
+                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+            <!-- <div class="row state-graph-filter">
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state1" class="border rounded mb-3 "></div>
+                            <div id="integrated-dashboard-state1" class=" state-filter-highchart rounded mb-3 ">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+                <div class="col">
+                    <div class="white_card  ">
                         <div class="">
-                            <div id="integrated-dashboard-state2" class="border rounded mb-3 received-chart"></div>
+                            <div id="integrated-dashboard-state2"
+                                class=" state-filter-highchart rounded mb-3 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-2">
+                <div class="col">
                     <div class="">
-                        <div id="integrated-dashboard-state3" class="border rounded mb-0 "></div>
+                        <div id="integrated-dashboard-state3" class=" state-filter-highchart rounded mb-0 "></div>
 
                     </div>
                 </div>
 
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state4" class="border rounded mb-0 received-chart"></div>
+                            <div id="integrated-dashboard-state4"
+                                class=" state-filter-highchart rounded mb-0 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state5" class="border rounded mb-0 received-chart"></div>
+                            <div id="integrated-dashboard-state5"
+                                class=" state-filter-highchart rounded mb-0 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state6" class="border rounded mb-0 received-chart"></div>
+                            <div id="integrated-dashboard-state6"
+                                class=" state-filter-highchart rounded mb-0 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state7" class="border rounded mb-0 received-chart"></div>
+                            <div id="integrated-dashboard-state7"
+                                class=" state-filter-highchart rounded mb-0 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
+                <div class="col">
+                    <div class="white_card  ">
 
                         <div class="">
-                            <div id="integrated-dashboard-state8" class="border rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state9" class="border rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state10" class="border rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="white_card card_height_100 ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state11" class="border rounded mb-0 received-chart"></div>
+                            <div id="integrated-dashboard-state8"
+                                class=" state-filter-highchart rounded mb-0 received-chart">
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
 
-            </div>
+
+
+
+                <div class="col">
+                    <div class="white_card  ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state9"
+                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="white_card  ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state10"
+                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="white_card  ">
+
+                        <div class="">
+                            <div id="integrated-dashboard-state11"
+                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div> -->
         </div>
     </div>
 
@@ -867,7 +1023,7 @@
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title ">
-                                    <h3 class="m-0">Total Fund Unspent in %</h3>
+                                    <h3 class="m-0">Program wise Expenditure Pie </h3>
                                 </div>
 
                             </div>
@@ -917,7 +1073,7 @@
                             <div class="col-md-12">
                                 <div class="graph-container border border-1 m-3 p-2">
 
-                                    <div id="integrated-dashboard-state-graph" class=""></div>
+                                    <div id="integrated-dashboard-state-graph" class="state-filter-highchart"></div>
                                 </div>
 
                             </div>
@@ -933,123 +1089,123 @@
 
     <div class="col-xl-12 ">
         <div class="white_card   mb_30 p-4">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="crad white_card mb_30">
-                    <div>
-                        <form action="" class="select-form-s">
-                            <div class="row">
-                                <div class="col">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="crad white_card mb_30">
+                        <div>
+                            <form action="" class="select-form-s">
+                                <div class="row">
+                                    <div class="col">
 
-                                    <select name="" class="form-control" id="">
-                                        <option value="">2024-25</option>
-                                        <option value="">2023-24</option>
-                                        <option value="">2022-23</option>
-                                        <option value="">2021-22</option>
-                                    </select>
+                                        <select name="" class="form-control" id="">
+                                            <option value="">2024-25</option>
+                                            <option value="">2023-24</option>
+                                            <option value="">2022-23</option>
+                                            <option value="">2021-22</option>
+                                        </select>
+                                    </div>
+
                                 </div>
+                            </form>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="data-driven">
+                <div class="row justify-content-center custom-grid">
+                    <div class="col-md-2">
+                        <div class="expenditure-bar-chart-box box1  d-flex">
+                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                    alt="">
                             </div>
-                        </form>
+                            <div class="expenditure-bar-chart-box-child2">
+                                <h3>Overall <br> Expenditure</h3>
+                                <span class="number">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="expenditure-bar-chart-box box2 d-flex">
+                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                    alt="">
+                            </div>
+                            <div class="expenditure-bar-chart-box-child2">
+                                <h3>Overall <br> Expenditure</h3>
+                                <span class="number">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="expenditure-bar-chart-box box3 d-flex">
+                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                    alt="">
+                            </div>
+                            <div class="expenditure-bar-chart-box-child2">
+                                <h3>Overall <br> Expenditure</h3>
+                                <span class="number">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="expenditure-bar-chart-box box4 d-flex">
+                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                    alt="">
+                            </div>
+                            <div class="expenditure-bar-chart-box-child2">
+                                <h3>Overall <br> Expenditure</h3>
+                                <span class="number">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="expenditure-bar-chart-box box5 d-flex">
+                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
+                                    alt="">
+                            </div>
+                            <div class="expenditure-bar-chart-box-child2">
+                                <h3>Overall <br> Expenditure</h3>
+                                <span class="number">95%</span>
+                            </div>
+                        </div>
                     </div>
 
+                </div>
+                <div class="row custom-grid2">
+                    <div class="col-md-3">
+                        <div class="graph-container border border-1 m-3 me-0">
+                            <div id="integrated-dashboard-data-driven-graph1" class=""></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                            <div id="integrated-dashboard-data-driven-graph2" class=""></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                            <div id="integrated-dashboard-data-driven-graph3" class=""></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                            <div id="integrated-dashboard-data-driven-graph4" class=""></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                            <div id="integrated-dashboard-data-driven-graph5" class=""></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="data-driven">
-            <div class="row justify-content-center custom-grid">
-                <div class="col-md-2">
-                    <div class="expenditure-bar-chart-box box1  d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img
-                                src="{{ asset('assets/img/money.png') }}" alt="">
-                        </div>
-                        <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="expenditure-bar-chart-box box2 d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img
-                                src="{{ asset('assets/img/money.png') }}" alt="">
-                        </div>
-                        <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="expenditure-bar-chart-box box3 d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img
-                                src="{{ asset('assets/img/money.png') }}" alt="">
-                        </div>
-                        <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="expenditure-bar-chart-box box4 d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img
-                                src="{{ asset('assets/img/money.png') }}" alt="">
-                        </div>
-                        <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="expenditure-bar-chart-box box5 d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img
-                                src="{{ asset('assets/img/money.png') }}" alt="">
-                        </div>
-                        <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-            <div class="row custom-grid2">
-                <div class="col-md-3">
-                    <div class="graph-container border border-1 m-3 me-0">
-                        <div id="integrated-dashboard-data-driven-graph1" class=""></div>
-                    </div>
-
-                </div>
-                <div class="col-md-2">
-                    <div class="graph-container border border-1 m-3 me-0 ms-0">
-                        <div id="integrated-dashboard-data-driven-graph2" class=""></div>
-                    </div>
-
-                </div>
-                <div class="col-md-2">
-                    <div class="graph-container border border-1 m-3 me-0 ms-0">
-                        <div id="integrated-dashboard-data-driven-graph3" class=""></div>
-                    </div>
-
-                </div>
-                <div class="col-md-2">
-                    <div class="graph-container border border-1 m-3 me-0 ms-0">
-                        <div id="integrated-dashboard-data-driven-graph4" class=""></div>
-                    </div>
-
-                </div>
-                <div class="col-md-3">
-                    <div class="graph-container border border-1 m-3 me-0 ms-0">
-                        <div id="integrated-dashboard-data-driven-graph5" class=""></div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        </div>
-       
     </div>
 
     <div class="col-xl-12 ">
@@ -1105,49 +1261,64 @@
                 </form>
             </div>
             <div class="row">
-            <div class="col-md-6">
-                <div class="border country-overall-data p-3 rounded-1">
-                    <ul>
-                        <li>
-                            <span class="arrow arrow-left"><span class="number">1</span></span> Lorem ipsum dolor sit
-                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
-                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
-                            ipsam. <span class="state-data-total">0</span>
-                        </li>
-                        <li>
-                            <span class="arrow arrow-left"><span class="number">2</span></span> Lorem ipsum dolor sit
-                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
-                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
-                            ipsam. <span class="state-data-total">0</span>
-                        </li>
-                        <li>
-                            <span class="arrow arrow-left"><span class="number">3</span></span> Lorem ipsum dolor sit
-                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
-                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
-                            ipsam. <span class="state-data-total">0</span>
-                        </li>
-                        <li>
-                            <span class="arrow arrow-left"><span class="number">4</span></span> Lorem ipsum dolor sit
-                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
-                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
-                            ipsam. <span class="state-data-total">0</span>
-                        </li>
-                        <li>
-                            <span class="arrow arrow-left"><span class="number">5</span></span> Lorem ipsum dolor sit
-                            amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis asperiores
-                            ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis illum
-                            ipsam. <span class="state-data-total">0</span>
-                        </li>
-                    </ul>
+                <div class="col-md-6">
+                    <div class="border country-overall-data p-3 rounded-1">
+                        <ul>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">1</span></span> Lorem ipsum dolor
+                                sit
+                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
+                                asperiores
+                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
+                                illum
+                                ipsam. <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">2</span></span> Lorem ipsum dolor
+                                sit
+                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
+                                asperiores
+                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
+                                illum
+                                ipsam. <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">3</span></span> Lorem ipsum dolor
+                                sit
+                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
+                                asperiores
+                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
+                                illum
+                                ipsam. <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">4</span></span> Lorem ipsum dolor
+                                sit
+                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
+                                asperiores
+                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
+                                illum
+                                ipsam. <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">5</span></span> Lorem ipsum dolor
+                                sit
+                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
+                                asperiores
+                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
+                                illum
+                                ipsam. <span class="state-data-total">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="integrated-dashboard-india-map3" class="border rounded mb-3"></div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div id="integrated-dashboard-india-map3" class="border rounded mb-3"></div>
-            </div>
-        </div>
         </div>
 
-       
+
     </div>
 
 </div>
@@ -1422,175 +1593,164 @@
                 </div>
             </div> -->
             <div class="QA_section">
-                            <div class="QA_table">
-                                <table class="table lms_table_active3 table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">View / Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-1
-                                                </a></th>
-                                            <td>1 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-2
-                                                </a></th>
-                                            <td>2 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-3
-                                                </a></th>
-                                            <td>3 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-4
-                                                </a></th>
-                                            <td>4 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-5
-                                                </a></th>
-                                            <td>5 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-6
-                                                </a></th>
-                                            <td>6 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-7
-                                                </a></th>
-                                            <td>7 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-8
-                                                </a></th>
-                                            <td>8 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-9
-                                                </a></th>
-                                            <td>9 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-10
-                                                </a></th>
-                                            <td>10 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-11
-                                                </a></th>
-                                            <td>11 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
+                <div class="QA_table">
+                    <table class="table lms_table_active3 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">title</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">View / Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-1
+                                    </a></th>
+                                <td>1 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-2
+                                    </a></th>
+                                <td>2 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-3
+                                    </a></th>
+                                <td>3 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-4
+                                    </a></th>
+                                <td>4 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-5
+                                    </a></th>
+                                <td>5 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-6
+                                    </a></th>
+                                <td>6 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-7
+                                    </a></th>
+                                <td>7 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-8
+                                    </a></th>
+                                <td>8 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-9
+                                    </a></th>
+                                <td>9 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-10
+                                    </a></th>
+                                <td>10 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-11
+                                    </a></th>
+                                <td>11 September 2023</td>
+                                <td class="download-icon-width">
+                                    <div class="download ">
+                                        <a href="#"><span class="view">View</span></a>
+                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
+                                        <span class="size">(3.59MB)
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1607,7 +1767,7 @@
                         </div>
                     </div> -->
                     <div class="white_card_body">
-                       
+
                     </div>
                 </div>
             </div>

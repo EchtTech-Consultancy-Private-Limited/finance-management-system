@@ -68,7 +68,7 @@
                                                             class="form-control @error('password') is-invalid @enderror"
                                                             placeholder="Password" id="pass_log_id">
                                                         <span toggle="#password-field"
-                                                            class="fa fa-fw fa-eye field_icon toggle-password icon-psw"></span>
+                                                            class="fa fa-fw fa-eye-slash field_icon toggle-password icon-psw"></span>
                                                         @error('password')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -121,7 +121,7 @@
 
     <script>
     $(".toggle-password.icon-psw").click(function() {
-        $(this).toggleClass("fa-eye fa-eye-slash");
+        $(this).toggleClass("fa-eye-slash fa-eye");
         input = $(this).parent().find("input");
         if (input.attr("type") == "password") {
             input.attr("type", "text");

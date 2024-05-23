@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="white_card_body">
-            <div class="card-body pb-5">
+            <div class="card-body pb-5 financial-year-institute-dashboard">
                 <form method="POST" action="{{ route('institute-user.soe-uc-save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
@@ -34,14 +34,14 @@
                                 @endforeach
                             </select>
                             @error('institute_program_id')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class=" col-md-6">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="institute_name" value="{{ Auth::user()->institute_name }}" id="inputPassword4" readonly>
                             @error('institute_name')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -50,14 +50,14 @@
                             <label class="form-label" for="inputAddress">Name of the Finance /Accounts officer<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="finance_account_officer" value="{{ old('finance_account_officer') }}" id="inputAddress" placeholder="Name of the Finance /Accounts officer">
                             @error('finance_account_officer')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2"> Finance/Accounts officer Mobile<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="finance_account_officer_mobile" value="{{ old('finance_account_officer_mobile') }}" id="inputAddress2" maxlength="10" oninput="validateInput(this)" placeholder="Mobile">
                             @error('finance_account_officer_mobile')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
@@ -70,14 +70,14 @@
                             <label class="form-label" for="inputAddress2">Name of Nodal/Program Officer<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer" value="{{ old('nadal_officer') }}" id="inputAddress2" placeholder="Name of Nodal/Program Officer">
                             @error('nadal_officer')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Mobile<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer_mobile" value="{{ old('nadal_officer_mobile') }}" maxlength="10" oninput="validateInput(this)" id="inputAddress2" placeholder="Mobile">
                             @error('nadal_officer_mobile')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
@@ -97,7 +97,7 @@
                                 @endforeach
                             </select>
                             @error('state')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
@@ -126,7 +126,7 @@
                                 @endfor
                             </select>
                             @error('financial_year')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -137,13 +137,13 @@
                     <tr class="table-color-head">
                         <th>Heads</th>
                         <th>Sanction Order Nos.</th>
-                        <th>unspent_balance_last (GIA) as on 1st April</th>
+                        <th>Unspent Balance (GIA) as on 1st April</th>
                         <th>GIA Received in F.Y</th>
-                        <th>total_balance (a+b) excluding interest</th>
-                        <th>actual_expenditure incurred during the current F.Y</th>
-                        <th>unspent_balance_last</th>
+                        <th>Total Balance (a+b) excluding interest</th>
+                        <th>Actual Expenditure incurred during the current F.Y</th>
+                        <th>Unspent Balance</th>
                         <th>Committed Liabilities (if any)</th>
-                        <th>unspent_balance_last of (GIA) as on 31st March</th>
+                        <th>Unspent Balance of (GIA) as on 31st March</th>
                     </tr>
 
                     <tr>
@@ -297,7 +297,7 @@
                     </table>
                    </div>
 
-                   <div class="float-end">
+                   <div class="float-end mt-3">
                    <button type="submit" class="btn btn-primary me-2">Save</button>
                     <button type="reset" class="btn bg-cancel">Reset</button>
                    </div>

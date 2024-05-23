@@ -62,9 +62,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2">
+                        <div class="col-md-2 pe-1">
                             <label class="form-label" for="inputAddress2">DOB<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" name="dob" value="{{Auth::user()->dob??old('dob')}}" id="dob" placeholder="DOB">
+                            <input type="date" class="form-control px-1" name="dob" value="{{Auth::user()->dob??old('dob')}}" id="dob" placeholder="DOB">
                             @error('dob')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -72,7 +72,7 @@
                         <div class="col-md-2">
                             <label class="form-label" for="inputAddress2">Gender<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="gender">
-                                <option value="">Gender...</option>
+                                <option value="">Gender</option>
                                 <option value="Male" @if(Auth::user()->gender == 'Male') selected @else '' @endif>Male</option>
                                 <option value="Female" @if(Auth::user()->gender == 'Female') selected @else '' @endif>Female</option>
                                 <option value="other" @if(Auth::user()->gender == 'other') selected @else '' @endif>other</option>

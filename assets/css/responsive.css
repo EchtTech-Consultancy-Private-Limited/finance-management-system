@@ -29,3 +29,28 @@
     margin-top: 20px;
    }
 }
+@media (min-width:1800px){
+   .row.state-graph-filter .col {
+      min-width: 120px !important;
+      max-width: 120px !important;
+      padding: 0;
+      /* height: 170px; */
+  }
+  .state-filter-highchart {
+   /* height: 174px; */
+}
+}
+
+@media (max-width:1300px){
+   /* .financial-year-select{
+      min-width: 50%;
+   } */
+}
+@media (max-width:1400px){
+   .financial-year-select{
+      min-width: 50%;
+   }
+   .col-md-6.col-lg-4.choose-financial-year-select {
+      width: 50%;
+  }
+}
