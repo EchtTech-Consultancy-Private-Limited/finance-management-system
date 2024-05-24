@@ -61,7 +61,7 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Generate Report Instead</span>
+                     <span>Generate Report</span>
                   </div>
                </a>
             </li>
@@ -77,7 +77,7 @@
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('national-user.soe-create') }}">SOE Expense Entry</a></li>
+                  <li><a href="{{ route('national-user.soe-expense-create') }}">SOE Expense Entry</a></li>
                </ul>
             </li>
             <li class>

@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $data['segment'] = $request->segment(1);
-        if($data['segment'] == 'national-user'){
+        if($data['segment'] == 'national-users'){
             $file = 'national-user.dashboard';
         }else{
             $file = 'institute-user.dashboard';

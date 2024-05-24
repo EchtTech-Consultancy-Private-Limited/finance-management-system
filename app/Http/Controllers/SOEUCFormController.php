@@ -14,6 +14,7 @@ use Auth;
 use App\Exports\InstituteUserExport;
 use App\Models\InstituteProgram;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\NationalSeoExpanse;
 
 class SOEUCFormController extends Controller
 {
@@ -41,19 +42,14 @@ class SOEUCFormController extends Controller
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
-        return view($this->create,compact('states','months','institutePrograms'));
-    }
-    
-    /**
-     *  @nationalCreate SOE Expense create form for national user
-     *
-     * @return void
-     */
-    public function nationalCreate()
-    {
-        $states = DB::table('states')->where('status',1)->get();
-        return view('national-user.soe-form.create',compact('states'));
-    }
+        $soeForm = NationalSeoExpanse::with('states','SoeUcFormCalculation','instituteProgram')->where('state_id',35)->first();
+        if(!is_null($soeForm)){
+            return view($this->create,compact('soeForm','states','months','institutePrograms'));
+        }else{
+            \Toastr::error('fail, No Permission)','Error');
+            return redirect()->route('institute-user.SOE-&-UC-list');
+        }
+    }    
 
     /**
      * Store a newly created resource in storage.
@@ -69,12 +65,10 @@ class SOEUCFormController extends Controller
             'nadal_officer_mobile'     => 'required|digits:10',
             'financial_year'     => 'required',
             'state'     => 'required',
-            'expanse_plan' => 'required_if:form_type,2',
         ],
         [
             'nadal_officer.required'=> 'The Nodal Officer field is required',
             'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
-            'expanse_plan.required_if'=> 'The Expanse Plan field is required'
         ]
     
     );

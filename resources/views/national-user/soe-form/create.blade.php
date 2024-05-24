@@ -10,7 +10,7 @@
  {{ __('Create') }}
 @endsection
 @section('content')
-
+{!! Toastr::message() !!}
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
         <div class="white_card_header">
@@ -22,11 +22,10 @@
         </div>
         <div class="white_card_body">
             <div class="card-body pb-5 financial-year-institute-dashboard">
-                <form method="POST" action="{{ route('institute-user.soe-uc-save') }}" enctype="multipart/form-data">
-                    @csrf                    
+                <form method="POST" action="{{ route('national-user.soe-expense-save') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <input type="hidden" name="form_type" value="2">
                             <label class="form-label" for="inputState">State<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="state">
                                 <option value="">Select state</option> 
@@ -58,7 +57,7 @@
                         </div>
                     </div>
                    <div class="table-responsive fms-table mt-5">
-                    <table class="table table-bordered text-center">
+                <table class="table table-bordered text-center">
                    <thead>
                     <tr class="table-color-head">
                         <th>Heads</th>

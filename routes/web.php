@@ -11,6 +11,7 @@ use App\Http\Controllers\NOHPPCZSSSController;
 use App\Http\Controllers\NRCPLABController;
 use App\Http\Controllers\PPCLLabController;
 use App\Http\Controllers\PMABHIMSSSController;
+use App\Http\Controllers\NationalSeoExpenseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,7 +44,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('ppcllab');
         Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
         // SOE Expense
-        Route::get('/soe-create', [SOEUCFormController::class, 'nationalCreate'])->name('soe-create');
+        Route::get('/soe-expense-create', [NationalSeoExpenseController::class, 'create'])->name('soe-expense-create');
+        Route::post('/soe-expense-save', [NationalSeoExpenseController::class, 'store'])->name('soe-expense-save');
         // end SOE Expense
     });
 
