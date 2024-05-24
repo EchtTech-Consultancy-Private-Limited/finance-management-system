@@ -20,9 +20,9 @@ class SOEUCFormController extends Controller
     /**
      * Display a listing of the resource.
      */
-    protected $create = 'institute-user.SOEUC.create';   
-    protected $edit = 'institute-user.SOEUC.edit';   
-    protected $list = 'institute-user.SOEUC.list';   
+    protected $create = 'institute-user.SOEUC.create';
+    protected $edit = 'institute-user.SOEUC.edit';
+    protected $list = 'institute-user.SOEUC.list';
 
     public function index()
     {
@@ -43,6 +43,17 @@ class SOEUCFormController extends Controller
         }
         return view($this->create,compact('states','months','institutePrograms'));
     }
+    
+    /**
+     *  @nationalCreate SOE Expense create form for national user
+     *
+     * @return void
+     */
+    public function nationalCreate()
+    {
+        $states = DB::table('states')->where('status',1)->get();
+        return view('national-user.soe-form.create',compact('states'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,15 +64,17 @@ class SOEUCFormController extends Controller
             'institute_program_id'    => 'required',
             'institute_name'     => 'required',
             'finance_account_officer'     => 'required',
-            'finance_account_officer_mobile'     => 'required',
+            'finance_account_officer_mobile'     => 'required|digits:10',
             'nadal_officer'     => 'required',
-            'nadal_officer_mobile'     => 'required',
-            'state'     => 'required',
+            'nadal_officer_mobile'     => 'required|digits:10',
             'financial_year'     => 'required',
+            'state'     => 'required',
+            'expanse_plan' => 'required_if:form_type,2',
         ],
         [
             'nadal_officer.required'=> 'The Nodal Officer field is required',
-            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required'
+            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
+            'expanse_plan.required_if'=> 'The Expanse Plan field is required'
         ]
     
     );
@@ -107,7 +120,7 @@ class SOEUCFormController extends Controller
             }
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Something went wrong !  :)','Error');
         }
     }
 

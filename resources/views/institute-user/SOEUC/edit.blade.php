@@ -136,13 +136,13 @@
                     <tr class="table-color-head">
                         <th>Heads</th>
                         <th>Sanction Order Nos.</th>
-                        <th>unspent_balance_last (GIA) as on 1st April</th>
+                        <th>Unspent Balance (GIA) as on 1st April</th>
                         <th>GIA Received in F.Y</th>
-                        <th>total_balance (a+b) excluding interest</th>
-                        <th>actual_expenditure incurred during the current F.Y</th>
-                        <th>unspent_balance_last</th>
+                        <th>Total Balance excluding interest</th>
+                        <th>Actual Expenditure incurred during the current F.Y</th>
+                        <th>Unspent Balance</th>
                         <th>Committed Liabilities (if any)</th>
-                        <th>unspent_balance_last of (GIA) as on 31st March</th>
+                        <th>Unspent Balance of (GIA) as on 31st March</th>
                     </tr>
 
                     <tr>
