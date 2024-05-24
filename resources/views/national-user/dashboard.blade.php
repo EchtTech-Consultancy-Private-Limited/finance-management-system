@@ -149,13 +149,9 @@
                         </span>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
     </div>
-
     <div class="col-xl-12 integrated-expenditure">
         <div class="row ">
             <div class="col-md-6">
@@ -197,10 +193,8 @@
     </div>
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  ">
-
             <div class="white_card card_height_100 mb_30 mt-4">
                 <div class="row">
-
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
@@ -225,7 +219,6 @@
                             </select>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="row card-mm">              
