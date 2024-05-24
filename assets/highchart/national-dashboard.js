@@ -301,11 +301,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             plotBackgroundColor: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            height: 250,
-            marginTop: -100,
-            // marginBottom: -20,
-            // marginLeft: -100,
-            // marginRight: -100
+            height:'250',
+            marginTop: -40,
         },
         credits: {
            enabled: false
@@ -314,18 +311,22 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null
+            text: null,
         },
+      
         subtitle: {
-            text: '85% <br> Expenditure',
+            text: '15% <br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
-            y: -5,
+            y: 10,
             style: {
                 fontSize: '16px',
-                color: '#000000',
+                color: '#000000'
             }
         },
+        // tooltip: {
+        //     pointFormat: 'name: <b>highchart</b>'
+        // },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -333,7 +334,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         plotOptions: {
             pie: {
-                colors: ['#00b050', '#f79646'],
+              colors: ['#00b050', '#f79646'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -344,10 +345,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 },
                 startAngle: -90,
                 endAngle: 90,
-                center: ['50%', '60%'],
-                size: '100%',
-                borderWidth: 0, // Remove border width to minimize space
-                shadow: false // Disable shadow to remove extra space
+                center: ['50%', '75%'],
+                size: '110%'
             }
         },
         series: [{
@@ -356,7 +355,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             innerSize: '60%',
             data: [
                 ['', 85],
-                ['', 15]
+                ['', 15],
+                
+               
             ]
         }]
     });
