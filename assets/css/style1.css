@@ -12707,7 +12707,7 @@ rect.highcharts-background {
 
 .profile-text:hover{
     background: #fff;
-    /* box-shadow: 0 0 10px #0000001a; */
+    transform: scale(1.05);
 }
 
 .profile-text .school-info-box {
