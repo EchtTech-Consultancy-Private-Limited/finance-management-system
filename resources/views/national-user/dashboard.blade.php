@@ -276,57 +276,79 @@
 
     <div class="col-md-12">
         <div class="row custom-grid">
-            <div class="col-xl-2">
+            <div class="col-md-8 custom-grid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Expenditure in %</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div id="national-total-expenditure" class="overall-programm-total"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Fund Unspent in %</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div id="national-total-fund-unspent" class="overall-programm-total"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div id="integrated-dashboard-chart-currently-Interest-Earned"
+                                    class="overall-programm-total">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
                 <div class="white_card  mb_30 integrated-expenditure">
                     <div class="white_card_header">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in %</h3>
+                                <h3 class="m-0">Overall Program Expenditure Amount</h3>
                             </div>
 
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <div id="national-total-expenditure" class="overall-programm-total"></div>
+                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-3">
-                <div class="white_card  mb_30 integrated-expenditure">
-                    <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Total Fund Unspent in %</h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="white_card_body">
-                        <div id="national-total-fund-unspent" class="overall-programm-total"></div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3">
-                <div class="white_card  mb_30 integrated-expenditure">
-                    <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="white_card_body">
-                        <div id="integrated-dashboard-chart-currently-Interest-Earned" class="overall-programm-total">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 
             <!-- <div class="col-xl-2">
         <div class="white_card card_height_100 mb_30 integrated-expenditure">
@@ -344,22 +366,7 @@
             </div>
         </div>
     </div> -->
-            <div class="col-xl-4">
-                <div class="white_card  mb_30 integrated-expenditure">
-                    <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Overall Program Expenditure Amount</h3>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="white_card_body">
-                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
@@ -456,16 +463,20 @@
                     <div class="">
                         <div class="row">
                             <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge1" class="border rounded mb-3 received-chart"></div>
+                                <div id="integrated-dashboard-gauge1"
+                                    class="border gauge-meter rounded mb-3 received-chart"></div>
                             </div>
                             <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge2" class="border rounded mb-3 received-chart"></div>
+                                <div id="integrated-dashboard-gauge2"
+                                    class="border gauge-meter rounded mb-3 received-chart"></div>
                             </div>
                             <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge3" class="border rounded mb-3 received-chart"></div>
+                                <div id="integrated-dashboard-gauge3"
+                                    class="border gauge-meter rounded mb-3 received-chart"></div>
                             </div>
                             <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge4" class="border rounded mb-3 received-chart"></div>
+                                <div id="integrated-dashboard-gauge4"
+                                    class="border gauge-meter rounded mb-3 received-chart"></div>
                             </div>
                         </div>
 
@@ -530,7 +541,7 @@
                 <div class="row align-items-center justify-content-between flex-wrap">
                     <div class="col-lg-8">
                         <div class="main-title">
-                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                            <h3 class="m-0">Program wise Yearly SOE Expenditure</h3>
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
@@ -931,7 +942,7 @@
     <div class="col-md-12">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col">
+                <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
                     <select name="" class="form-control" id="">
@@ -941,7 +952,7 @@
                         <option value="">Program 3</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-md-4 ">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                 class="text-danger">*</sup></b></label>
                     <select name="" class="form-control" id="">
@@ -952,11 +963,14 @@
                     </select>
                 </div>
 
-                <div class="col d-flex align-items-end justify-content-between">
+                <div class="col-md-1 expenditure-or">
                     <div class="d-inline-block">
 
                         <h3>OR</h3>
                     </div>
+                </div>
+                <div class="col-md-4 align-items-end justify-content-between">
+
                     <div>
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
                                     class="text-danger">*</sup></b></label>
@@ -972,7 +986,7 @@
 
             </div>
             <div class="row my-4 d-flex justify-content-center custom-grid">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
@@ -982,7 +996,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
@@ -1009,7 +1023,7 @@
                                 <div class="graph-container">
                                     <h2 class="chart-title"> NOHPPCZ-RCs</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
-                                        class="border border-1 m-3 p-2"></div>
+                                        class="border border-1 "></div>
                                 </div>
                             </div>
 
@@ -1017,7 +1031,7 @@
                                 <div class="graph-container">
                                     <h2 class="chart-title"> NOHPPCZ-SSS</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
-                                        class="border border-1 m-3 p-2"></div>
+                                        class="border border-1 "></div>
                                 </div>
 
                             </div>
@@ -1025,7 +1039,7 @@
                                 <div class="graph-container">
                                     <h2 class="chart-title">NRCP-Lab</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
-                                        class="border border-1 m-3 p-2"></div>
+                                        class="border border-1 "></div>
                                 </div>
 
                             </div>
@@ -1033,14 +1047,14 @@
                                 <div class="graph-container">
                                     <h2 class="chart-title"> PPCL-Lab</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
-                                        class="border border-1 m-3 p-2"></div>
+                                        class="border border-1 "></div>
                                 </div>
 
                             </div>
                             <div class="col-md-12">
                                 <div class="graph-container border border-1 m-3 p-2">
                                     <div class="main-title">
-                                        <h3 class="m-0">Program wise Unspent Balance Line Chart</h3>
+                                        <h3 class="m-0">Program wise Expenditure Line Chart</h3>
                                     </div>
                                     <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
                                 </div>

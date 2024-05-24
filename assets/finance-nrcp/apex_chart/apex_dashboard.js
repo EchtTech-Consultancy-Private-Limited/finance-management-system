@@ -1229,7 +1229,7 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
        plotBackgroundImage: null,
        plotBorderWidth: 0,
        plotShadow: false,
-       height: '70%'
+       height: '70%',
    },
 
    title: {
@@ -1905,11 +1905,9 @@ Highcharts.chart('integrated-dashboard-institute-wise-expenditure', {
    series: [{
        name: '',
        colors: [
-           '#9b20d9', '#9215ac', '#861ec9', '#7a17e6', '#7010f9', '#691af3',
-           '#6225ed', '#5b30e7', '#533be1', '#4c46db', '#4551d5', '#3e5ccf',
-           '#3667c9', '#2f72c3', '#277dbd', '#1f88b7', '#1693b1', '#0a9eaa',
-           '#03c69b',  '#00f194'
-       ],
+        '#399def', '#3ebbf0', '#35c3e8', '#2bc9dc', '#20cfe1', '#16d4e6',
+        '#0dd9db', '#03dfd0'
+    ],
        colorByPoint: true,
        groupPadding: 0,
        data: [
@@ -2971,9 +2969,10 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart2', {
       text: '50%',
       align: 'center',
       verticalAlign: 'middle',
-      y: 0,
+      y: 60,
       style: {
-          fontSize: '1.1em'
+          fontSize: '16px',
+          color:'#000'
       }
   },
   tooltip: {
@@ -3035,7 +3034,8 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart3', {
       verticalAlign: 'middle',
       y: 60,
       style: {
-          fontSize: '1.1em'
+        fontSize: '16px',
+        color:'#000'
       }
   },
   tooltip: {
@@ -3098,7 +3098,8 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       verticalAlign: 'middle',
       y: 60,
       style: {
-          fontSize: '1.1em'
+        fontSize: '16px',
+        color:'#000'
       }
   },
   tooltip: {
@@ -3634,9 +3635,9 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {
        text: '50%',
        floating: true,
        verticalAlign: 'middle',
-       y: 0,
+       y: 4,
        style: {
-           fontSize: '18px'
+           fontSize: '16px'
        }
    },
    credits: {
@@ -3652,7 +3653,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {
        verticalAlign: 'bottom',
        y: 0, // Adjusted position
        style: {
-           fontSize: '17px',
+           fontSize: '13px',
            color: '#000'
        }
    },
@@ -3702,9 +3703,9 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
        text: '20%',
        floating: true,
        verticalAlign: 'middle',
-       y: 0,
+       y: 4,
        style: {
-           fontSize: '18px'
+           fontSize: '16px'
        }
    },
    credits: {
@@ -3720,7 +3721,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
        verticalAlign: 'bottom',
        y: 0, // Adjusted position
        style: {
-           fontSize: '17px',
+           fontSize: '13px',
            color: '#000'
        }
    },
@@ -3770,9 +3771,9 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {
        text: '80 Nos.',
        floating: true,
        verticalAlign: 'middle',
-       y: 0,
+       y: 4,
        style: {
-           fontSize: '18px'
+           fontSize: '16px'
        }
    },
    credits: {
@@ -3788,7 +3789,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {
        verticalAlign: 'bottom',
        y: 0, // Adjusted position
        style: {
-           fontSize: '17px',
+           fontSize: '13px',
            color: '#000'
        }
    },
@@ -3838,9 +3839,9 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-not-Received', {
        text: '20 Nos.',
        floating: true,
        verticalAlign: 'middle',
-       y: 0,
+       y: 4,
        style: {
-           fontSize: '18px'
+           fontSize: '16px'
        }
    },
    credits: {
@@ -3856,7 +3857,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-not-Received', {
        verticalAlign: 'bottom',
        y: 0, // Adjusted position
        style: {
-           fontSize: '17px',
+           fontSize: '13px',
            color: '#000'
        }
    },
