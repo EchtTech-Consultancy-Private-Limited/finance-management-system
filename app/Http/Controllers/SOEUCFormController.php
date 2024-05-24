@@ -58,7 +58,13 @@ class SOEUCFormController extends Controller
             'nadal_officer_mobile'     => 'required',
             'state'     => 'required',
             'financial_year'     => 'required',
-        ]);
+        ],
+        [
+            'nadal_officer.required'=> 'The Nodal Officer field is required',
+            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required'
+        ]
+    
+    );
         try {
             $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
             $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
@@ -242,7 +248,12 @@ class SOEUCFormController extends Controller
         // Validate the incoming request data
         $request->validate([
             'modulename' => 'required',
-        ]);
+        ],
+
+        [
+            'modulename.required' => 'The Module Name field id required',
+        ]
+    );
 
         // Parse the start and end date if provided
         if (!empty($request->startdate) && !empty($request->enddate)) {

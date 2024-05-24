@@ -1100,7 +1100,8 @@ var options = {
    labels: ["Intetest Earned"]
 };
 var in_dashboard5 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Interest-Earned"), options);
-in_dashboard5.render();
+
+// in_dashboard5.render();
 
 var options = {
    series: [90],
@@ -1609,258 +1610,6 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
 });
 
 
-
-var options = {
-   series: [50,50],
-   chart: {
-      height: 240,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["% of UC Received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-
-var in_dashboard8 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-UC-Received"), options);
-in_dashboard8.render();
-
- var options = {
-   series: [80,20],
-   chart: {
-      height: 240,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["% of UC Received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-var in_dashboard9 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-UC-not-Received"), options);
-in_dashboard9.render();
-
- var options = {
-   series: [20,80],
-   chart: {
-      height: 240,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Nos. of UC received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-
-var in_dashboard10 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Nos-UC-Received"), options);
-in_dashboard10.render();
-
- var options = {
-   series: [80,20],
-   chart: {
-      height: 240,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Nos. of UC not received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-var in_dashboard11 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Nos-UC-not-Received"), options);
-in_dashboard11.render();
-
-
    (async () => {
       const topology = await fetch(
           'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
@@ -2194,16 +1943,26 @@ Highcharts.chart('integrated-dashboard-institute-wise-expenditure', {
 Highcharts.chart('integrated-dashboard-state1', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50,
+   //  marginBottom: 0,
   },
    title: {
       useHTML: true,
       text: '57%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2212,22 +1971,16 @@ Highcharts.chart('integrated-dashboard-state1', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+ 
    subtitle: {
       useHTML: true,
       text: '<div style="text-align:center;">UP</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2260,7 +2013,7 @@ Highcharts.chart('integrated-dashboard-state1', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
@@ -2278,14 +2031,20 @@ Highcharts.chart('integrated-dashboard-state1', {
 Highcharts.chart('integrated-dashboard-state2', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
       text: '21%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
          fontSize:'18px'
       }
@@ -2309,7 +2068,7 @@ Highcharts.chart('integrated-dashboard-state2', {
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2344,7 +2103,7 @@ Highcharts.chart('integrated-dashboard-state2', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
@@ -2362,14 +2121,20 @@ Highcharts.chart('integrated-dashboard-state2', {
 Highcharts.chart('integrated-dashboard-state3', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
       text: '17%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
          fontSize:'18px'
       }
@@ -2393,7 +2158,7 @@ Highcharts.chart('integrated-dashboard-state3', {
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2428,7 +2193,7 @@ Highcharts.chart('integrated-dashboard-state3', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
@@ -2446,16 +2211,22 @@ Highcharts.chart('integrated-dashboard-state3', {
 Highcharts.chart('integrated-dashboard-state4', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '17%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2464,20 +2235,14 @@ Highcharts.chart('integrated-dashboard-state4', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+ 
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">TN</div>', // Add the name at the bottom here
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2512,15 +2277,15 @@ Highcharts.chart('integrated-dashboard-state4', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
            name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 17],
+      ['', 83],
       
   ]
        }
@@ -2530,14 +2295,20 @@ Highcharts.chart('integrated-dashboard-state4', {
 Highcharts.chart('integrated-dashboard-state5', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
       text: '57%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
          fontSize:'18px'
       }
@@ -2557,11 +2328,11 @@ Highcharts.chart('integrated-dashboard-state5', {
    },
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">UK</div>', // Add the name at the bottom here
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2596,11 +2367,10 @@ Highcharts.chart('integrated-dashboard-state5', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
   data: [
       
       ['', 57],
@@ -2614,16 +2384,22 @@ Highcharts.chart('integrated-dashboard-state5', {
 Highcharts.chart('integrated-dashboard-state6', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '21%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2632,22 +2408,16 @@ Highcharts.chart('integrated-dashboard-state6', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+   
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">MH</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2680,15 +2450,15 @@ Highcharts.chart('integrated-dashboard-state6', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
            name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 21],
+      ['', 79],
       
   ]
        }
@@ -2698,16 +2468,22 @@ Highcharts.chart('integrated-dashboard-state6', {
 Highcharts.chart('integrated-dashboard-state7', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '17%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2716,20 +2492,14 @@ Highcharts.chart('integrated-dashboard-state7', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+ 
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">BR</div>', // Add the name at the bottom here
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2764,15 +2534,14 @@ Highcharts.chart('integrated-dashboard-state7', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 17],
+      ['', 83],
       
   ]
        }
@@ -2782,16 +2551,22 @@ Highcharts.chart('integrated-dashboard-state7', {
 Highcharts.chart('integrated-dashboard-state8', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '17%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2800,22 +2575,16 @@ Highcharts.chart('integrated-dashboard-state8', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+ 
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">OR</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2848,15 +2617,15 @@ Highcharts.chart('integrated-dashboard-state8', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
            name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 17],
+      ['', 83],
       
   ]
        }
@@ -2866,16 +2635,22 @@ Highcharts.chart('integrated-dashboard-state8', {
 Highcharts.chart('integrated-dashboard-state9', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '47%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2884,20 +2659,14 @@ Highcharts.chart('integrated-dashboard-state9', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">HR</div>', // Add the name at the bottom here
       align: 'center',
       fontSize:'20px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
          fontSize: '17px',
          color:'#000' // Increase the font size as needed
@@ -2932,15 +2701,14 @@ Highcharts.chart('integrated-dashboard-state9', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 47],
+      ['', 53],
       
   ]
        }
@@ -2950,16 +2718,22 @@ Highcharts.chart('integrated-dashboard-state9', {
 Highcharts.chart('integrated-dashboard-state10', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '21%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2968,22 +2742,16 @@ Highcharts.chart('integrated-dashboard-state10', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">RJ</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -3016,7 +2784,7 @@ Highcharts.chart('integrated-dashboard-state10', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
@@ -3034,16 +2802,22 @@ Highcharts.chart('integrated-dashboard-state10', {
 Highcharts.chart('integrated-dashboard-state11', {
    chart: {
       type: 'pie',
-      height: 300 // Adjust the height as needed
+      height: 150,
+      margin: [0,0,0,0],
+      spacingTop: 0,
+      spacingBottom: 0,
+      spacingLeft: 0,
+      spacingRight: 0,
+      marginTop: -50, // Adjust the height as needed
   },
    title: {
       useHTML: true,
-      text: '57%',
+      text: '17%',
       floating: true,
       verticalAlign: 'middle',
-      y: 0,
+      y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -3052,22 +2826,16 @@ Highcharts.chart('integrated-dashboard-state11', {
   exporting: {
    enabled: false
 },
-   subtitle: {
-       useHTML: true,
-       text: '57%',
-       floating: true,
-       verticalAlign: 'middle',
-       y: 0
-   },
+
    subtitle: {
       useHTML: true,
-      text: '<div style="text-align:center;">Name at the Bottom</div>', // Add the name at the bottom here
+      text: '<div style="text-align:center;">GJ</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
-      y: 0, // Adjust the vertical position as needed
+      y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -3100,15 +2868,14 @@ Highcharts.chart('integrated-dashboard-state11', {
            }
        }
    },
-   colors: ['#b64926', '#F8C4B4',],
+   colors: ['#b64926', '#eeece1',],
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
   data: [
       
-      ['', 57],
-      ['', 43],
+      ['', 17],
+      ['', 83],
       
   ]
        }
@@ -3143,7 +2910,8 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart1', {
        verticalAlign: 'middle',
        y: 60,
        style: {
-           fontSize: '1.1em'
+           fontSize: '1.1em',
+           color:"#000"
        }
    },
    tooltip: {
@@ -3203,7 +2971,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart2', {
       text: '50%',
       align: 'center',
       verticalAlign: 'middle',
-      y: 60,
+      y: 0,
       style: {
           fontSize: '1.1em'
       }
@@ -3854,3 +3622,274 @@ Highcharts.chart('integrated-dashboard-data-driven-graph5', {
    }]
 });
 
+
+Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {
+   chart: {
+       type: 'pie',
+       height: 210,
+      //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+   },
+   title: {
+       useHTML: true,
+       text: '50%',
+       floating: true,
+       verticalAlign: 'middle',
+       y: 0,
+       style: {
+           fontSize: '18px'
+       }
+   },
+   credits: {
+       enabled: false
+   },
+   exporting: {
+       enabled: false
+   },
+   subtitle: {
+       useHTML: true,
+       text: '<div style="text-align:center;">% of UC Received </div>',
+       align: 'center',
+       verticalAlign: 'bottom',
+       y: 0, // Adjusted position
+       style: {
+           fontSize: '17px',
+           color: '#000'
+       }
+   },
+   legend: {
+       enabled: false
+   },
+   tooltip: {
+       valueDecimals: 2,
+       valueSuffix: ''
+   },
+   plotOptions: {
+       pie: {
+           size: '100%',
+           innerSize: '70%', // Adjusted for a larger inner circle
+           dataLabels: {
+               enabled: true,
+               // distance: -30, // Adjusted to move labels closer
+               style: {
+                   fontWeight: 'bold',
+                   fontSize: '16px'
+               },
+               connectorWidth: 0
+           }
+       }
+   },
+   colors: ['#b64926', '#eeece1'],
+   series: [
+       {
+           type: 'pie',
+           name: 'Temperature',
+           data: [
+               ['', 50],
+               ['', 50],
+           ]
+       }
+   ]
+});
+
+Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
+   chart: {
+       type: 'pie',
+       height: 210,
+      //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+   },
+   title: {
+       useHTML: true,
+       text: '20%',
+       floating: true,
+       verticalAlign: 'middle',
+       y: 0,
+       style: {
+           fontSize: '18px'
+       }
+   },
+   credits: {
+       enabled: false
+   },
+   exporting: {
+       enabled: false
+   },
+   subtitle: {
+       useHTML: true,
+       text: '<div style="text-align:center;">% of UC not Received</div>',
+       align: 'center',
+       verticalAlign: 'bottom',
+       y: 0, // Adjusted position
+       style: {
+           fontSize: '17px',
+           color: '#000'
+       }
+   },
+   legend: {
+       enabled: false
+   },
+   tooltip: {
+       valueDecimals: 2,
+       valueSuffix: ''
+   },
+   plotOptions: {
+       pie: {
+           size: '100%',
+           innerSize: '70%', // Adjusted for a larger inner circle
+           dataLabels: {
+               enabled: true,
+               // distance: -30, // Adjusted to move labels closer
+               style: {
+                   fontWeight: 'bold',
+                   fontSize: '16px'
+               },
+               connectorWidth: 0
+           }
+       }
+   },
+   colors: ['#b64926', '#eeece1'],
+   series: [
+       {
+           type: 'pie',
+           name: 'Temperature',
+           data: [
+               ['', 20],
+               ['', 80],
+           ]
+       }
+   ]
+});
+
+Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {
+   chart: {
+       type: 'pie',
+       height: 210,
+      //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+   },
+   title: {
+       useHTML: true,
+       text: '80 Nos.',
+       floating: true,
+       verticalAlign: 'middle',
+       y: 0,
+       style: {
+           fontSize: '18px'
+       }
+   },
+   credits: {
+       enabled: false
+   },
+   exporting: {
+       enabled: false
+   },
+   subtitle: {
+       useHTML: true,
+       text: '<div style="text-align:center;">Nos. of UC Received</div>',
+       align: 'center',
+       verticalAlign: 'bottom',
+       y: 0, // Adjusted position
+       style: {
+           fontSize: '17px',
+           color: '#000'
+       }
+   },
+   legend: {
+       enabled: false
+   },
+   tooltip: {
+       valueDecimals: 2,
+       valueSuffix: ''
+   },
+   plotOptions: {
+       pie: {
+           size: '100%',
+           innerSize: '70%', // Adjusted for a larger inner circle
+           dataLabels: {
+               enabled: true,
+               // distance: -30, // Adjusted to move labels closer
+               style: {
+                   fontWeight: 'bold',
+                   fontSize: '16px'
+               },
+               connectorWidth: 0
+           }
+       }
+   },
+   colors: ['#b64926', '#eeece1'],
+   series: [
+       {
+           type: 'pie',
+           name: 'Temperature',
+           data: [
+               ['', 20],
+               ['', 80],
+           ]
+       }
+   ]
+});
+
+Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-not-Received', {
+   chart: {
+       type: 'pie',
+       height: 210,
+      //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+   },
+   title: {
+       useHTML: true,
+       text: '20 Nos.',
+       floating: true,
+       verticalAlign: 'middle',
+       y: 0,
+       style: {
+           fontSize: '18px'
+       }
+   },
+   credits: {
+       enabled: false
+   },
+   exporting: {
+       enabled: false
+   },
+   subtitle: {
+       useHTML: true,
+       text: '<div style="text-align:center;">Nos. of UC not received</div>',
+       align: 'center',
+       verticalAlign: 'bottom',
+       y: 0, // Adjusted position
+       style: {
+           fontSize: '17px',
+           color: '#000'
+       }
+   },
+   legend: {
+       enabled: false
+   },
+   tooltip: {
+       valueDecimals: 2,
+       valueSuffix: ''
+   },
+   plotOptions: {
+       pie: {
+           size: '100%',
+           innerSize: '70%', // Adjusted for a larger inner circle
+           dataLabels: {
+               enabled: true,
+               // distance: -30, // Adjusted to move labels closer
+               style: {
+                   fontWeight: 'bold',
+                   fontSize: '16px'
+               },
+               connectorWidth: 0
+           }
+       }
+   },
+   colors: ['#b64926', '#eeece1'],
+   series: [
+       {
+           type: 'pie',
+           data: [
+               ['', 20],
+               ['', 80],
+           ]
+       }
+   ]
+});

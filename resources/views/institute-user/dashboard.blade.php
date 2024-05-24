@@ -23,7 +23,11 @@
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
                     <img src="{{ asset('assets/img/icon/calender_icon.svg') }}" alt>
-                    August 1, 2020 - August 31, 2020
+                    @php
+                        $first_date = date('F d ,Y',strtotime('first day of this month'));
+                        $last_date = date('F d ,Y',strtotime('last day of this month'));
+                    @endphp
+                    {{ $first_date }} - {{ $last_date }}
                 </div>
             </div>
         </div>
@@ -31,10 +35,10 @@
 </div>
 <div class="row">
 
-    <div class="crad white_card mb_30 p-4">
+    <div class="crad white_card mb_30 p-4 ">
         <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
             <div class="row">
-                <div class="col-md-6 col-lg-4 mx-auto mb-4">
+                <div class="col-md-6 col-lg-4 mx-auto mb-4 financial-year-select">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup class="text-danger">*</sup></b></label>
                         <select id="institute-user-fy" name="financial_year" class="form-control">

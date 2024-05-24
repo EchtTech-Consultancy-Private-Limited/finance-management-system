@@ -1,5 +1,5 @@
 <div class="logo d-flex justify-content-between">
-            <a class="large_logo" ><img src="{{ asset('assets/img/logo_white.png') }}" alt></a>
+            <a class="large_logo" ><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt></a>
             <a class="small_logo"><img src="{{ asset('assets/img/mini_logo.png') }}" alt style="height: 25px;"></a>
             <div class="sidebar_close_icon d-lg-none">
                <i class="ti-close"></i>
