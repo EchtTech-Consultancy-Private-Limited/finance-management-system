@@ -1,8 +1,8 @@
 
 @media (min-width:768px) and (max-width:1600px){
-     .custom-grid .col-md-4{
-        width: 50%;
-     }
+   .col-md-8.custom-grid{
+      width: 100%;
+  }
      .custom-grid .col-xl-2, .custom-grid .col-xl-3{
       width: 33.333333%;
      }
@@ -21,13 +21,26 @@
       width: 33%;
       margin-bottom: 15px;
   }
+  .row.mt-5.custom-grid .col-md-4{
+   width: 50%;
+  }
 }
 
+@media (min-width:1600px){
 
-@media (min-width:1420px) and (max-width:1600px){
-     div#integrated-dashboard-india-map {
-    margin-top: 20px;
-   }
+   .gauge-meter{
+      padding-top: 18%;
+    }
+}
+@media (min-width:1350px) and (max-width:1450px){
+    .gauge-meter{
+      padding-top: 10%;
+    }
+}
+@media (min-width:768px) and (max-width:1350px){
+    .gauge-meter{
+      padding-top: 15%;
+    }
 }
 @media (min-width:1800px){
    .row.state-graph-filter .col {
