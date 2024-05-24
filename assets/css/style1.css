@@ -12284,8 +12284,9 @@ img#captchaimg {
     width: 100%;
 }
 .table thead tr th,.table tfoot tr th {
-    background: #f6f7fb !important;
+    background: #884ffb !important;
     font-size: 15px;
+    color: #fff;
 }
 
 .fms-table .table thead tr th, .fms-table .table tbody tr th, .fms-table .table tbody tr td{padding:9px 7px;} 

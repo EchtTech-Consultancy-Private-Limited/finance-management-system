@@ -3101,6 +3101,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
         fontSize: '16px',
         color:'#000'
       }
+      
   },
   tooltip: {
       pointFormat: 'name: <b>highchart</b>'
