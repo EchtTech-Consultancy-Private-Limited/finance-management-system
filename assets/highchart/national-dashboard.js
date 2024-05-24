@@ -425,7 +425,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                
             ]
         }]
-     });
+     })     ;
     Highcharts.chart('integrated-dashboard-chart-currently-Interest-Earned', {
         chart: {
             plotBackgroundColor: null,
