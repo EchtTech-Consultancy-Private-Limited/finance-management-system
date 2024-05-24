@@ -1097,7 +1097,7 @@
             </div>
             <div class="data-driven">
                 <div class="row justify-content-center custom-grid">
-                    <div class="col-md-2">
+                    <div class="col-md-4 mb-3">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1108,7 +1108,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4 mb-3">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1119,7 +1119,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4 mb-3">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1130,7 +1130,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1141,7 +1141,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1737,25 +1737,25 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
         <div class="white_card card_height_100 mb_30">
 
             <div class="col-lg-12">
                 <div class="white_card card_height_100 mb_30">
-                    <!-- <div class="white_card_header">
+                    <div class="white_card_header">
                         <div class="box_header m-0">
                             <div class="main-title">
                                 <h3 class="m-0">Data table 1</h3>
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                     <div class="white_card_body">
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 

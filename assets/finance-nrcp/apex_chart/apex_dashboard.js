@@ -1217,6 +1217,68 @@ var options = {
 };
 var in_dashboard7 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-overall-program-expenditure-amount"), options);
 in_dashboard7.render();
+// Highcharts.chart('integrated-dashboard-chart-overall-program-expenditure-amount', {
+//     chart: {
+//         type: 'pie',
+//         height: 280,
+//         marginRight: 100 // Add margin to the right to make space for the legend
+//     },
+//     title: {
+//         text: '<div>35295<br>All Program Exp</div>',
+//         align: 'center',
+//         floating: true,
+//         verticalAlign: 'middle',
+//         y: 30
+//     },
+//     legend: {
+//         enabled: true,
+//         layout: 'vertical',
+//         align: 'right',
+//         verticalAlign: 'middle',
+//         x: 0, // Adjust horizontal alignment if needed
+//         y: 0 // Adjust vertical alignment if needed
+//     },
+//     tooltip: {
+//         valueDecimals: 2,
+//         valueSuffix: ' TWh'
+//     },
+//     plotOptions: {
+//         pie: {
+//             size: '70%', // Adjust size to fit the chart with the legend
+//             innerSize: '60%',
+//             dataLabels: {
+//                 enabled: false,
+//                 crop: false,
+//                 distance: '-10%',
+//                 style: {
+//                     fontWeight: 'bold',
+//                     fontSize: '16px'
+//                 },
+//                 connectorWidth: 0
+//             }
+//         }
+//     },
+//     colors: ['#FCE700', '#F8C4B4', '#f6e1ea', '#B8E8FC', '#BCE29E'],
+//     series: [
+//         {
+//             type: 'pie',
+//             name: 'Nuclear energy production',
+//             data: [
+//                 { name: 'US', y: 30 },
+//                 { name: 'UK', y: 20 },
+//                 { name: 'France', y: 25 },
+//                 { name: 'Germany', y: 15 },
+//                 { name: 'Japan', y: 10 }
+//             ]
+//         }
+//     ],
+//     credits: {
+//         enabled: false
+//     },
+//     exporting: {
+//         enabled: false
+//     }
+// });
 
 
 // highchart 
@@ -2044,7 +2106,7 @@ Highcharts.chart('integrated-dashboard-state2', {
       verticalAlign: 'middle',
       y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2064,11 +2126,11 @@ Highcharts.chart('integrated-dashboard-state2', {
       useHTML: true,
       text: '<div style="text-align:center;">MP</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2134,7 +2196,7 @@ Highcharts.chart('integrated-dashboard-state3', {
       verticalAlign: 'middle',
       y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2154,11 +2216,11 @@ Highcharts.chart('integrated-dashboard-state3', {
       useHTML: true,
       text: '<div style="text-align:center;">WB</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2238,11 +2300,11 @@ Highcharts.chart('integrated-dashboard-state4', {
       useHTML: true,
       text: '<div style="text-align:center;">TN</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2308,7 +2370,7 @@ Highcharts.chart('integrated-dashboard-state5', {
       verticalAlign: 'middle',
       y: -10,
       style: {
-         fontSize:'18px'
+         fontSize:'16px'
       }
    },
    credits: {
@@ -2328,11 +2390,11 @@ Highcharts.chart('integrated-dashboard-state5', {
       useHTML: true,
       text: '<div style="text-align:center;">UK</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2495,11 +2557,11 @@ Highcharts.chart('integrated-dashboard-state7', {
       useHTML: true,
       text: '<div style="text-align:center;">BR</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2662,11 +2724,11 @@ Highcharts.chart('integrated-dashboard-state9', {
       useHTML: true,
       text: '<div style="text-align:center;">HR</div>', // Add the name at the bottom here
       align: 'center',
-      fontSize:'20px',
+      fontSize:'16px',
       verticalAlign: 'bottom', // Align the subtitle to the bottom
       y: -10, // Adjust the vertical position as needed
       style: {
-         fontSize: '17px',
+         fontSize: '16px',
          color:'#000' // Increase the font size as needed
      }
    },
@@ -2908,7 +2970,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart1', {
        verticalAlign: 'middle',
        y: 60,
        style: {
-           fontSize: '1.1em',
+           fontSize: '16px',
            color:"#000"
        }
    },
