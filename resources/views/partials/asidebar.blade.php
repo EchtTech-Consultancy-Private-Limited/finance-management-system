@@ -7,7 +7,7 @@
          </div>
          <ul id="sidebar_menu">
             <li class=>
-               <a href="@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==1) {{ route('institute-user.dashboard') }} @else {{ route('national-user.dashboard') }} @endif" aria-expanded="false">
+               <a href="@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==1) {{ route('institute-user.dashboard') }} @elseif(isset(Auth::user()->user_type) && Auth::user()->user_type ==0) {{ route('national-user.dashboard') }} @else {{ route('admin.dashboard') }} @endif" aria-expanded="false">
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/dashboard.svg') }}" alt>
                   </div>
@@ -16,6 +16,18 @@
                   </div>
                </a>
             </li>
+            @if(isset(Auth::user()->user_type) && Auth::user()->user_type =='admin')
+            <li class>
+               <a href="{{ route('admin.facility-mapping') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Facility Mapping</span>
+                  </div>
+               </a>
+            </li>
+            @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==1)
             <li class>
                <a class="has-arrow" href="#" aria-expanded="false">

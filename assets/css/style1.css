@@ -5265,7 +5265,7 @@ body::-webkit-scrollbar {
     border: 0 solid transparent;
     font-size: 14px;
     font-weight: 600;
-    color: #474d58;
+    color: #ffffff;
     white-space: nowrap;
     /* text-transform: capitalize; */
     font-family: mulish, sans-serif;
@@ -12770,6 +12770,9 @@ rect.highcharts-background {
 .expenditure-or h3{
     font-size: 18px;
 }
+<<<<<<< HEAD
+.hidetext { -webkit-text-security: disc;}
+=======
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.next i, .dataTables_wrapper .dataTables_paginate .paginate_button.previous i{
     color: #fff;
@@ -12793,3 +12796,4 @@ span.country-list-content {
 .col-md-12.overlall-expenditure .col-md-4 {
     padding-right: 0;
 }
+>>>>>>> 7fd291ee78ba4c1b45c60739b15da4b6d2ea37fe
