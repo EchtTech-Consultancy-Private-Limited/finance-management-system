@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('s_o_e_u_c_forms', function (Blueprint $table) {
+        Schema::create('national_seo_expanses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('state_id');
             $table->foreignId('city_id');
             $table->foreignId('institute_program_id')->nullable();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('s_o_e_u_c_forms');
+        Schema::dropIfExists('national_seo_expanses');
     }
 };

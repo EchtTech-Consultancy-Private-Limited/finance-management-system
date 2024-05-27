@@ -159,7 +159,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in Cr.</h3>
+                                <h3 class="m-0">Total Expendi</h3>
                             </div>
 
                         </div>
@@ -193,8 +193,10 @@
     </div>
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  ">
+
             <div class="white_card card_height_100 mb_30 mt-4">
                 <div class="row">
+
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
@@ -219,11 +221,12 @@
                             </select>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <div class="row card-mm">              
+            <div class="row card-mm">
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-1 p-0">                      
+                    <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
                             <p>GIA Received during the Current F.Y. </p>
@@ -231,7 +234,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-2 p-0">                       
+                    <div class="single_crm border-line-2 p-0">
                         <div class="crm_body">
                             <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
                             </h4>
@@ -240,7 +243,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-3 p-0">                       
+                    <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
@@ -248,7 +251,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-4 p-0">                        
+                    <div class="single_crm border-line-4 p-0">
                         <div class="crm_body">
                             <h4 id="national-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
@@ -256,7 +259,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-5 p-0">                      
+                    <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
                             <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
@@ -267,13 +270,13 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12 overlall-expenditure">
         <div class="row custom-grid">
-            <div class="col-md-8 custom-grid">
+            <div class="col-md-6 custom-grid">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="white_card_header">
+                            <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
                                         <h3 class="m-0">Total Expenditure in %</h3>
@@ -290,7 +293,7 @@
 
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="white_card_header">
+                            <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
                                         <h3 class="m-0">Total Fund Unspent in %</h3>
@@ -307,7 +310,7 @@
 
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="white_card_header">
+                            <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
                                         <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
@@ -323,23 +326,48 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <div class="col-xl-4">
-                <div class="white_card  mb_30 integrated-expenditure">
-                    <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Overall Program Expenditure Amount</h3>
-                            </div>
+            <div class="col-md-6 custom-grid w-40">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Interest DD</h3>
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div id="integrated-dashboard-total-interest-dd" class="overall-programm-total">
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="white_card_body">
-                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
 
+                    <div class="col-md-8">
+                        <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Overall Program Expenditure Amount</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body overall-program-expenditure-amount">
+                                <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
 
 
@@ -932,8 +960,12 @@
 
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12 integrated-expenditure expenditure-bar-chart">
+        <div class="main-title ">
+            <h3 class="m-0"> Expenditure Bar Chart (All Programs combined data)</h3>
+        </div>
         <div class="crad white_card mb_30 p-4">
+
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
@@ -979,6 +1011,7 @@
 
             </div>
             <div class="row my-4 d-flex justify-content-center custom-grid">
+
                 <div class="col-md-6">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
@@ -994,7 +1027,7 @@
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
                         <div class="expenditure-bar-chart-box-child2">
-                            <h3>Overall <br> Expenditure</h3>
+                            <h3>Overall Unspent <br> Balance</h3>
                             <span class="number">95%</span>
                         </div>
                     </div>
@@ -1002,6 +1035,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="white_card card_height_100 mb_30 integrated-expenditure">
                         <div class="">
                             <div class="box_header m-0">
@@ -1081,6 +1115,7 @@
                                     <div class="col">
 
                                         <select name="" class="form-control" id="">
+                                            <option value="">Select Financial Year</option>
                                             <option value="">2024-25</option>
                                             <option value="">2023-24</option>
                                             <option value="">2022-23</option>
@@ -1097,58 +1132,58 @@
             </div>
             <div class="data-driven">
                 <div class="row justify-content-center custom-grid">
-                    <div class="col-md-2">
+                    <div class="col-md-3 mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>Overall <br> Expenditure</h3>
-                                <span class="number">95%</span>
+                                <h3>NOHPPCZ-RCs</h3>
+                                <span class="number">35%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3 mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>Overall <br> Expenditure</h3>
-                                <span class="number">95%</span>
+                                <h3>NOHPPC-SSS</h3>
+                                <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3 mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>Overall <br> Expenditure</h3>
-                                <span class="number">95%</span>
+                                <h3>NRCP-Lab</h3>
+                                <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3 mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>Overall <br> Expenditure</h3>
-                                <span class="number">95%</span>
+                                <h3>PPCL-Lab</h3>
+                                <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>Overall <br> Expenditure</h3>
-                                <span class="number">95%</span>
+                                <h3>PM-ABHIM-SSS</h3>
+                                <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
@@ -1156,31 +1191,31 @@
                 </div>
                 <div class="row custom-grid2">
                     <div class="col-md-3">
-                        <div class="graph-container border border-1 m-3 me-0">
+                        <div class="graph-container border border-1 mt-3 me-0">
                             <div id="integrated-dashboard-data-driven-graph1" class=""></div>
                         </div>
 
                     </div>
                     <div class="col-md-2">
-                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph2" class=""></div>
                         </div>
 
                     </div>
                     <div class="col-md-2">
-                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph3" class=""></div>
                         </div>
 
                     </div>
                     <div class="col-md-2">
-                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph4" class=""></div>
                         </div>
 
                     </div>
                     <div class="col-md-3">
-                        <div class="graph-container border border-1 m-3 me-0 ms-0">
+                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph5" class=""></div>
                         </div>
 
@@ -1248,51 +1283,67 @@
                     <div class="border country-overall-data p-3 rounded-1">
                         <ul>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">1</span></span> Lorem ipsum dolor
-                                sit
-                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
-                                asperiores
-                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
-                                illum
-                                ipsam. <span class="state-data-total">0</span>
+                                <span class="arrow arrow-left"><span class="number">1</span></span><span
+                                    class="country-list-content">Unspent Balance (GIA) as on 1st April..</span> <span
+                                    class="state-data-total">0</span>
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">2</span></span> Lorem ipsum dolor
-                                sit
-                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
-                                asperiores
-                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
-                                illum
-                                ipsam. <span class="state-data-total">0</span>
+                                <span class="arrow arrow-left"><span class="number">2</span></span><span
+                                    class="country-list-content">GIA Received during the Current F.Y.</span> <span
+                                    class="state-data-total">0</span>
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">3</span></span> Lorem ipsum dolor
-                                sit
-                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
-                                asperiores
-                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
-                                illum
-                                ipsam. <span class="state-data-total">0</span>
+                                <span class="arrow arrow-left"><span class="number">3</span></span><span
+                                    class="country-list-content">Interest earned in C.Y.</span> <span
+                                    class="state-data-total">0</span>
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">4</span></span> Lorem ipsum dolor
-                                sit
-                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
-                                asperiores
-                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
-                                illum
-                                ipsam. <span class="state-data-total">0</span>
+                                <span class="arrow arrow-left"><span class="number">4</span></span><span
+                                    class="country-list-content">Total Balance (a+b) excluding interest</span> <span
+                                    class="state-data-total">0</span>
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">5</span></span> Lorem ipsum dolor
-                                sit
-                                amet consectetur, adipisicing elit. Unde officiis incidunt maxime eum veritatis
-                                asperiores
-                                ipsa libero mollitia tenetur sit quis, nobis maiores est. Ipsum hic aliquam officiis
-                                illum
-                                ipsam. <span class="state-data-total">0</span>
+                                <span class="arrow arrow-left"><span class="number">5</span></span><span
+                                    class="country-list-content">Actual Expenditure incurred during the current
+                                    F.Y</span> <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">6</span></span><span
+                                    class="country-list-content">Interest DD Returned to NCDC</span> <span
+                                    class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">7</span></span><span
+                                    class="country-list-content">Unspent Balance (excluding Interest)</span> <span
+                                    class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">8</span></span><span
+                                    class="country-list-content">Committed Liabilities (if any)</span> <span
+                                    class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">9</span></span><span
+                                    class="country-list-content">Unspent Balance as on 31st January 2024 (g-h)</span>
+                                <span class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">10</span></span><span
+                                    class="country-list-content">Fund Utilization (%)</span> <span
+                                    class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">11</span></span><span
+                                    class="country-list-content">Fund non utilization (%)</span> <span
+                                    class="state-data-total">0</span>
+                            </li>
+                            <li>
+                                <span class="arrow arrow-left"><span class="number">12</span></span><span
+                                    class="country-list-content">UC Uploaded</span> <span
+                                    class="state-data-total">0</span>
                             </li>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -1732,26 +1783,6 @@
 
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-12">
-        <div class="white_card card_height_100 mb_30">
-
-            <div class="col-lg-12">
-                <div class="white_card card_height_100 mb_30">
-                    <!-- <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Data table 1</h3>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="white_card_body">
-
-                    </div>
                 </div>
             </div>
         </div>

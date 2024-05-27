@@ -3704,7 +3704,7 @@ table.dataTable {
 
 .table td,
 .table th {
-    padding: .75rem;
+    /* padding: .75rem; */
     vertical-align: top;
     border-top: 0 !important
 }
@@ -5160,8 +5160,8 @@ body::-webkit-scrollbar {
     vertical-align: middle
 }
 
-.QA_section .QA_table .question_content {
-    color: #7e7172;
+.QA_section .QA_table .question_content, table.dataTable tbody td{
+    color: #000;
     font-size: 14px
 }
 
@@ -12336,7 +12336,7 @@ img#captchaimg {
     font-size: 14px;
 }
 
-.table.lms_table_active3 thead tr th{background:#00539f !important;color: #fff !important;}
+.table.lms_table_active3 thead tr th{background:#834eed !important;color: #fff !important;}
 
 .table.table-bordered td, .table.table-bordered tbody th {
     border-bottom: 1px solid #eee !important;
@@ -12409,7 +12409,7 @@ ul.bullet-list li {
 .integrated-expenditure .main-title {
     background: #002060;
     width: 100%;
-    padding: 17px;
+    padding: 17px 7px;
     text-align: center;
     border-radius: 8px 8px 0px 0px;
 
@@ -12561,24 +12561,30 @@ ul.bullet-list li {
 
 .arrow{
     position: relative;
-    width: calc(54px);
+    /* width: calc(54px); */
     background-image: url(../img/arrow.png);
-    height: 41px;
+    height: 40px;
     line-height: 32px;
     text-align: center;
     color: #fff;
     /* transform: rotate(90deg); */
     display: inline-block;
-    margin-right: 15px;
-  }
+    margin-right: 10px;
+}
 
   .country-overall-data ul li{
     display: flex;
-    margin: 15px 0;
+    margin: 9px 0;
     border-bottom: 1px solid #bbb;
-    padding: 0 0 16px 0px;
+    padding: 0 0 10px 0px;
+    align-items: center;
   }
   
+  .country-overall-data ul li:last-child{
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+  }
 /* .arrow-left:before{
     content: "";
     position: absolute;
@@ -12622,7 +12628,7 @@ span.arrow.arrow-left::before {
 
 .error {
     color: red;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 label.font-16{
@@ -12646,7 +12652,7 @@ i.fas.fa-ellipsis-h.f_s_11.white_text {
 }
 
 .overall-programm-total {
-    height: 208px;
+    height: 192px;
 }
 
 .state-filter-highchart{
@@ -12764,4 +12770,30 @@ rect.highcharts-background {
 .expenditure-or h3{
     font-size: 18px;
 }
+<<<<<<< HEAD
 .hidetext { -webkit-text-security: disc;}
+=======
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next i, .dataTables_wrapper .dataTables_paginate .paginate_button.previous i{
+    color: #fff;
+}
+div#integrated-dashboard-india-map {
+    height: 441px;
+}
+
+.table.lms_table_active3 .download .view {
+    color: #0d6efd;
+}
+i.fas.fa-file-pdf {
+    color: #cd0000;
+}
+
+
+span.country-list-content {
+    width: calc(100% - 56px);
+}
+
+.col-md-12.overlall-expenditure .col-md-4 {
+    padding-right: 0;
+}
+>>>>>>> 7fd291ee78ba4c1b45c60739b15da4b6d2ea37fe

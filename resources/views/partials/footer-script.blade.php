@@ -70,3 +70,6 @@
 <script src="{{ asset('assets/js/highcharts/highcharts-more.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/solid-gauge.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
+<!-- nhopcs highchart -->
+<script src="{{ asset('assets/highchart/national_nohpcc.js') }}"></script>
+

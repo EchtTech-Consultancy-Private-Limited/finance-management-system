@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SOEUCForm extends Model
+class NationalSeoExpanse extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-       'institute_program_id',
        'user_id',
        'state_id',
        'city_id',
+       'institute_program_id',
        'expanse_plan',
        'institute_name',
        'finance_account_officer',
@@ -35,7 +35,17 @@ class SOEUCForm extends Model
      */
     public function states()
     {
-        return $this->belongsTo(State::class, 'state');
+        return $this->belongsTo(State::class, 'state_id');
+    }
+
+    /**
+     * @cities
+     *
+     * @return void
+     */
+    public function cities()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
     
     /**
@@ -55,6 +65,6 @@ class SOEUCForm extends Model
      */
     public function SoeUcFormCalculation()
     {
-        return $this->hasMany(SOEUCFormCalculatin::class, 'soe_form_id');
+        return $this->hasMany(NationalSeoExpanseCalculation::class, 'national_seo_expanse_id');
     }
 }
