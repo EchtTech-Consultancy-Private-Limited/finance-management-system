@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SOEUCFormController;
 use App\Http\Controllers\SOEUCUploadFormController;
@@ -33,6 +34,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
     Route::get('password/{id}/update', [DashboardController::class, 'getUserPassword'])->name('password.update');
     Route::post('update-profile', [DashboardController::class, 'updateProfile'])->name('update-profile');
+
+    Route::prefix('admin')->group(function(){
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
+        Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('admin.facility-mapping');
+        Route::post('/update-facility-mapping', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
+       
+    });
 
     Route::prefix('national-user')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('national-user.dashboard');

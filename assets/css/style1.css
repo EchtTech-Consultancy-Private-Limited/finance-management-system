@@ -5265,7 +5265,7 @@ body::-webkit-scrollbar {
     border: 0 solid transparent;
     font-size: 14px;
     font-weight: 600;
-    color: #474d58;
+    color: #ffffff;
     white-space: nowrap;
     /* text-transform: capitalize; */
     font-family: mulish, sans-serif;
@@ -12764,3 +12764,4 @@ rect.highcharts-background {
 .expenditure-or h3{
     font-size: 18px;
 }
+.hidetext { -webkit-text-security: disc;}
