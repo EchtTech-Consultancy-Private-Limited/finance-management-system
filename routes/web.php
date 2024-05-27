@@ -39,9 +39,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('admin')->group(function(){
             Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-            Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
+           // Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
             Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('admin.facility-mapping');
-            Route::post('/update-facility-mapping', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
+            Route::post('/update-facility-mapping/{id?}', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
         
         });
 

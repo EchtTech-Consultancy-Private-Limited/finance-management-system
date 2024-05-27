@@ -21,7 +21,7 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.update-facility-mapping') }}">
+                <form method="POST" action="{{ url('admin/update-facility-mapping/'.$user->id) }}">
                 @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -49,7 +49,7 @@
                             <select id="inputState" class="form-control" name="program_id" id="program_id">
                                 <option value="">Program</option>
                                 @foreach($institutePrograms as $instituteProgram)
-                                 <option value="{{ $instituteProgram->id }}">{{ $instituteProgram->name }} -{{ $instituteProgram->code }}   -{{ $instituteProgram->count }} Nos Institutes</option>
+                                 <option value="{{ $instituteProgram->id }}" @if($instituteProgram->id == $user->program_id) selected @else '' @endif>{{ $instituteProgram->name }} -{{ $instituteProgram->code }}   -{{ $instituteProgram->count }} Nos Institutes</option>
                                 @endforeach
                             </select>
                             @error('program_id')
@@ -61,7 +61,7 @@
                             <select id="state_name" class="form-control" name="state_name">
                                 <option value="">State Name</option>
                                 @foreach($state as $statelist)
-                                 <option value="{{ $statelist->id }}">{{ $statelist->name }}</option>
+                                    <option value="{{ $statelist->id }}" @if($statelist->id == $user->state_id) selected @else '' @endif>{{ $statelist->name }}</option>
                                 @endforeach
                             </select>
                             @error('state_name')
@@ -70,10 +70,11 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">District<span class="text-danger">*</span></label>
-                            <select id="inputState" class="form-control" name="district" id="district">
+                            <select id="filter-city" class="form-control" name="city_id">
+                                <option value="">Select District</option>
                             </select>
-                            @error('district')
-                                <span class="text-danger">{{ $message }}</span>
+                            @error('city_id')
+                                <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -142,8 +143,8 @@
                             @foreach($allUser as $key=>$allUsers)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>N/A</td>
-                                    <td>N/A</td>
+                                    <td>{{ $allUsers->pname??'N/A' }}</td>
+                                    <td>{{ $allUsers->state_name??'N/A' }}</td>
                                     <td>{{$allUsers->institute_name??'N/A'}}</td>
                                     <td>{{str_repeat('*', strlen(explode('@',$allUsers->email)[0]))}}{{'@'}}{{explode('@',$allUsers->email)[1]}}</td>
                                     <td class="hidetext">{{ Str::limit($allUsers->password, 4) }}</td>
@@ -160,4 +161,19 @@
         </div>
     </div>
 </div>
+<script>
+        $(document).on('change', '#state_name', function() {
+        let state_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: "{{route('filterCity')}}",
+            data: {
+                'state_id': state_id
+            },
+            success: function(data) {
+                $("#filter-city").html(data);
+            }
+        });
+    });
+</script>
 @endsection
