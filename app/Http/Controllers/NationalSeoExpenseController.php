@@ -83,7 +83,7 @@ class NationalSeoExpenseController extends Controller
             }
             DB::commit();
             \Toastr::success('Has been add successfully :)','Success');
-            return redirect()->route('national-user.soe-expense-create');            
+            return redirect()->route('national-user.soe-expense-index');            
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Something went wrong !  :)','Error');

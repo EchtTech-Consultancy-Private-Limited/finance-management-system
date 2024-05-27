@@ -12,7 +12,9 @@ class SOEUCForm extends Model
     protected $fillable = [
        'institute_program_id',
        'user_id',
-       'state',
+       'state_id',
+       'city_id',
+       'expanse_plan',
        'institute_name',
        'finance_account_officer',
        'finance_account_officer_mobile',

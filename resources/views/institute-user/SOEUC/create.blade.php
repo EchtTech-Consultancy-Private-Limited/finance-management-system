@@ -26,6 +26,9 @@
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
+                            <input type="hidden" name="state_id" value="{{ $soeForm->state_id }}">
+                            <input type="hidden" name="city_id" value="{{ $soeForm->city_id }}">
+                            <input type="hidden" name="expanse_plan" value="{{ $soeForm->expanse_plan }}">
                             <label class="form-label" for="inputEmail4">Name of program<span class="text-danger">*</span></label>
                             <select id="inputState" name="institute_program_id" class="form-control">
                                 <option value="">Select Program</option>
@@ -221,7 +224,7 @@
                     </table>
                     </div>     
                     <div class="float-end">
-                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                        <button type="submit" class="btn btn-primary me-2">Save</button>
                         <button type="reset" class="btn bg-cancel">Reset</button>
                     </div>
                 </form>
