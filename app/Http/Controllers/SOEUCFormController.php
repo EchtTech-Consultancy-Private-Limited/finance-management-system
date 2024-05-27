@@ -36,7 +36,7 @@ class SOEUCFormController extends Controller
      */
     public function create()
     {
-        $states = DB::table('states')->where('status',1)->get();
+        $states = State::get();
         $institutePrograms = InstituteProgram::get();
         $months = [];
         for ($m=1; $m<=12; $m++) {
@@ -133,7 +133,7 @@ class SOEUCFormController extends Controller
     {
         try{
             DB::beginTransaction();
-            $states = DB::table('states')->where('status',1)->get();
+            $states = State::get();
             $months = [];
             for ($m=1; $m<=12; $m++) {
                 $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));

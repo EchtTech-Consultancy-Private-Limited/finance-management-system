@@ -12,6 +12,7 @@ class NationalSeoExpanse extends Model
     protected $fillable = [
        'user_id',
        'state_id',
+       'city_id',
        'institute_program_id',
        'expanse_plan',
        'institute_name',
@@ -35,6 +36,16 @@ class NationalSeoExpanse extends Model
     public function states()
     {
         return $this->belongsTo(State::class, 'state_id');
+    }
+
+    /**
+     * @cities
+     *
+     * @return void
+     */
+    public function cities()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
     
     /**

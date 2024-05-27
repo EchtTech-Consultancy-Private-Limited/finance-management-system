@@ -10,6 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Models\SOEUCForm;
 use App\Models\SOEUCFormCalculatin;
 use App\Models\SOEUCUploadForm;
+use App\Models\City;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -191,7 +192,28 @@ class DashboardController extends Controller
         return response()->json(['totalArray'=>$totalArray], 200);
     }
 
-    
+    /**
+     * @filterCity
+     * show city name 
+     * 
+     * @param  mixed $request
+     * @return void
+     */
+    public function filterCity(Request $request)
+    {
+        $output = "";
+        $count = 0;
+        $cities = City::where('state_id', $request->state_id)->get();
+        if ($cities) {
+            foreach ($cities as $city) {
+                $count++;
+                $output .='<option value="'.$city->id.'">' . $city->name . '</option>';
+            }
+        } else {
+            $output .= 'Oops somthing went wrong';
+        }
+        return $output;
+    }
 
     public function getUserProfile(Request $request, $id){
         return view('auth.profile');

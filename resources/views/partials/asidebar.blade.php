@@ -79,6 +79,9 @@
                <ul>
                   <li><a href="{{ route('national-user.soe-expense-create') }}">SOE Expense Entry</a></li>
                </ul>
+               <ul>
+                  <li><a href="{{ route('national-user.soe-expense-index') }}">SOE Expense List</a></li>
+               </ul>
             </li>
             <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
