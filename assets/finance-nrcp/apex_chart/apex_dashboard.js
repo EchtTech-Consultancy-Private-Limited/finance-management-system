@@ -1160,6 +1160,7 @@ var options = {
       offsetY: 0
    },
    plotOptions: {
+
       radialBar: {
          startAngle: -90,
          endAngle: 90,
@@ -1168,10 +1169,10 @@ var options = {
             size: "50%"
          },
          dataLabels: {
-            showOn: "always",
+            showOn: "never",
             
             name: {
-               show: true,
+               show: false,
                fontSize: "13px",
                fontWeight: "700",
                offsetY: -5,
@@ -1182,7 +1183,7 @@ var options = {
                fontSize: "30px",
                fontWeight: "700",
                offsetY: -40,
-               show: true
+               show: false
             }
          },
          track: {

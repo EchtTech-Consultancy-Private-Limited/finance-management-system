@@ -12768,3 +12768,13 @@ rect.highcharts-background {
 .dataTables_wrapper .dataTables_paginate .paginate_button.next i, .dataTables_wrapper .dataTables_paginate .paginate_button.previous i{
     color: #fff;
 }
+div#integrated-dashboard-india-map {
+    height: 441px;
+}
+
+.table.lms_table_active3 .download .view {
+    color: #0d6efd;
+}
+i.fas.fa-file-pdf {
+    color: #cd0000;
+}
