@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SOEUCUploadForm;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Services\FileSizeServices;
@@ -19,7 +20,7 @@ class SOEUCUploadFormController extends Controller
 
     public function index()
     {
-        $stateList = DB::table('states')->where('status',1)->get();
+        $stateList = State::get();
         $sorUcLists = SOEUCUploadForm::get();
         return view($this->list,compact('sorUcLists'));
     }
@@ -29,7 +30,7 @@ class SOEUCUploadFormController extends Controller
      */
     public function create()
     {
-        $stateList = DB::table('states')->where('status',1)->get();
+        $stateList = State::get();
         $months = [];
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));

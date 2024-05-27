@@ -3704,7 +3704,7 @@ table.dataTable {
 
 .table td,
 .table th {
-    padding: .75rem;
+    /* padding: .75rem; */
     vertical-align: top;
     border-top: 0 !important
 }
@@ -5160,8 +5160,8 @@ body::-webkit-scrollbar {
     vertical-align: middle
 }
 
-.QA_section .QA_table .question_content {
-    color: #7e7172;
+.QA_section .QA_table .question_content, table.dataTable tbody td{
+    color: #000;
     font-size: 14px
 }
 
@@ -12284,8 +12284,9 @@ img#captchaimg {
     width: 100%;
 }
 .table thead tr th,.table tfoot tr th {
-    background: #f6f7fb !important;
+    background: #884ffb !important;
     font-size: 15px;
+    color: #fff;
 }
 
 .fms-table .table thead tr th, .fms-table .table tbody tr th, .fms-table .table tbody tr td{padding:9px 7px;} 
@@ -12335,7 +12336,7 @@ img#captchaimg {
     font-size: 14px;
 }
 
-.table.lms_table_active3 thead tr th{background:#00539f !important;color: #fff !important;}
+.table.lms_table_active3 thead tr th{background:#834eed !important;color: #fff !important;}
 
 .table.table-bordered td, .table.table-bordered tbody th {
     border-bottom: 1px solid #eee !important;
@@ -12621,7 +12622,7 @@ span.arrow.arrow-left::before {
 
 .error {
     color: red;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 label.font-16{
@@ -12707,7 +12708,7 @@ rect.highcharts-background {
 
 .profile-text:hover{
     background: #fff;
-    /* box-shadow: 0 0 10px #0000001a; */
+    transform: scale(1.05);
 }
 
 .profile-text .school-info-box {
@@ -12762,4 +12763,8 @@ rect.highcharts-background {
 
 .expenditure-or h3{
     font-size: 18px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next i, .dataTables_wrapper .dataTables_paginate .paginate_button.previous i{
+    color: #fff;
 }

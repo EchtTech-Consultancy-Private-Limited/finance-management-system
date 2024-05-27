@@ -3,7 +3,7 @@
 $(document).ready(function(){
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-user/filter-dashboard",
+        url: BASE_URL + "national-users/filter-dashboard",
         data: {
             'financial_year': new Date().getFullYear()
         },
@@ -174,7 +174,6 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
     //     }]
     // });
     // Total Fund unspent in Cr.
-
     Highcharts.chart('national-total-unspent-cr', {
         chart: {
             plotBackgroundColor: null,
@@ -425,7 +424,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                
             ]
         }]
-     });
+     })     ;
     Highcharts.chart('integrated-dashboard-chart-currently-Interest-Earned', {
         chart: {
             plotBackgroundColor: null,
