@@ -193,8 +193,10 @@
     </div>
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  ">
+
             <div class="white_card card_height_100 mb_30 mt-4">
                 <div class="row">
+
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
@@ -219,6 +221,7 @@
                             </select>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="row card-mm">              
@@ -1003,7 +1006,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="white_card card_height_100 mb_30 integrated-expenditure">
-                        <div class="">
+                        <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title ">
                                     <h3 class="m-0">Program wise Expenditure Pie </h3>
@@ -1045,7 +1048,7 @@
 
                             </div>
                             <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
+                                <div class="graph-container border border-1 m-3 p-2">
                                     <div class="main-title">
                                         <h3 class="m-0">Program wise Expenditure Line Chart</h3>
                                     </div>
@@ -1054,7 +1057,7 @@
 
                             </div>
                             <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
+                                <div class="graph-container border border-1 m-3 p-2">
 
                                     <div id="integrated-dashboard-state-graph" class="state-filter-highchart"></div>
                                 </div>
@@ -1097,7 +1100,7 @@
             </div>
             <div class="data-driven">
                 <div class="row justify-content-center custom-grid">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1108,7 +1111,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1119,7 +1122,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1130,7 +1133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1141,7 +1144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1737,25 +1740,25 @@
         </div>
     </div>
 
-    <!-- <div class="col-md-12">
+    <div class="col-md-12">
         <div class="white_card card_height_100 mb_30">
 
             <div class="col-lg-12">
                 <div class="white_card card_height_100 mb_30">
-                    <div class="white_card_header">
+                    <!-- <div class="white_card_header">
                         <div class="box_header m-0">
                             <div class="main-title">
                                 <h3 class="m-0">Data table 1</h3>
                             </div>
                         </div>
-                    </div> 
+                    </div> -->
                     <div class="white_card_body">
 
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 </div>
 
