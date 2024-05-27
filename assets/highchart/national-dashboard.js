@@ -300,8 +300,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             plotBackgroundColor: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            height:'250',
-            marginTop: -40,
+            height:'200',
+            // marginTop: -40,
         },
         credits: {
            enabled: false
@@ -317,7 +317,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: '15% <br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
-            y: 10,
+            y: 50,
             style: {
                 fontSize: '16px',
                 color: '#000000'
@@ -365,8 +365,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             plotBackgroundColor: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            height:'250',
-            marginTop: -40,
+            height:'200',
+            // marginTop: -40,
         },
         credits: {
            enabled: false
@@ -382,7 +382,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: '15% <br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
-            y: 10,
+            y: 50,
             style: {
                 fontSize: '16px',
                 color: '#000000'
@@ -430,8 +430,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             plotBackgroundColor: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            height:'250',
-            marginTop: -40,
+            height:'200',
+            // marginTop: -40,
         },
         credits: {
            enabled: false
@@ -447,7 +447,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: '10% <br> Interest Earned',
             align: 'center',
             verticalAlign: 'middle',
-            y: 10,
+            y: 50,
             style: {
                 fontSize: '16px',
                 color: '#000000'
@@ -464,6 +464,72 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         plotOptions: {
             pie: {
               colors: ['#00b050', '#f79646'],
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%'],
+                size: '110%'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '',
+            innerSize: '60%',
+            data: [
+                ['', 10],
+                ['', 90],
+                
+               
+            ]
+        }]
+     });
+
+     Highcharts.chart('integrated-dashboard-total-interest-dd', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
+            height:'200',
+            // marginTop: ,
+        },
+        credits: {
+           enabled: false
+        },
+        exporting: {
+           enabled: false
+        },
+        title: {
+            text: null,
+        },
+      
+        subtitle: {
+            text: '90% <br> Interest DD Returned',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 50,
+            style: {
+                fontSize: '16px',
+                color: '#000000'
+            }
+        },
+        // tooltip: {
+        //     pointFormat: 'name: <b>highchart</b>'
+        // },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+              colors: ['#558ed5', '#c6d9f1'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,

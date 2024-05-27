@@ -1155,11 +1155,12 @@ in_dashboard6.render();
 var options = {
    series: [40, 40, 5, 5, 10],
    chart: {
-      height: 230,
+      height: 212,
       type: 'donut',
       offsetY: 0
    },
    plotOptions: {
+
       radialBar: {
          startAngle: -90,
          endAngle: 90,
@@ -1168,10 +1169,10 @@ var options = {
             size: "50%"
          },
          dataLabels: {
-            showOn: "always",
+            showOn: "never",
             
             name: {
-               show: true,
+               show: false,
                fontSize: "13px",
                fontWeight: "700",
                offsetY: -5,
@@ -1182,7 +1183,7 @@ var options = {
                fontSize: "30px",
                fontWeight: "700",
                offsetY: -40,
-               show: true
+               show: false
             }
          },
          track: {
@@ -3201,6 +3202,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       ]
   }]
 });
+
 
 // Program wise Unspent Balance Line Chart
 Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
