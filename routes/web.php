@@ -11,6 +11,7 @@ use App\Http\Controllers\NOHPPCZSSSController;
 use App\Http\Controllers\NRCPLABController;
 use App\Http\Controllers\PPCLLabController;
 use App\Http\Controllers\PMABHIMSSSController;
+use App\Http\Controllers\NationalSeoExpenseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,15 +34,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
     Route::get('password/{id}/update', [DashboardController::class, 'getUserPassword'])->name('password.update');
     Route::post('update-profile', [DashboardController::class, 'updateProfile'])->name('update-profile');
+    Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
 
-    Route::prefix('national-user')->group(function(){
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('national-user.dashboard');
+    Route::group(['prefix' => 'national-users', 'as' => 'national-user.'], function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/filter-dashboard', [DashboardController::class, 'nationalFilterDdashboard'])->name('filter-dashboard');
-        Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('national-user.nohppczrcs');
-        Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('national-user.nohppczrsss');
-        Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('national-user.nrcplab');
-        Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('national-user.ppcllab');
-        Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('national-user.pmabhimsss');
+        Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');
+        Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('nohppczrsss');
+        Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('nrcplab');
+        Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('ppcllab');
+        Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
+        // SOE Expense
+        Route::get('/soe-expense-list', [NationalSeoExpenseController::class, 'index'])->name('soe-expense-index');
+        Route::get('/soe-expense-create', [NationalSeoExpenseController::class, 'create'])->name('soe-expense-create');
+        Route::post('/soe-expense-save', [NationalSeoExpenseController::class, 'store'])->name('soe-expense-save');
+        Route::post('/soe-change-status/{id}', [NationalSeoExpenseController::class, 'changeStatus'])->name('soe-change-status');
+        Route::get('/soe-edit/{id}', [NationalSeoExpenseController::class, 'edit'])->name('soe-edit');
+        Route::post('/soe-update/{id}', [NationalSeoExpenseController::class, 'update'])->name('soe-update');
+        Route::get('/soe-destroy/{id}', [NationalSeoExpenseController::class, 'destroy'])->name('soe-destroy');
+        // end SOE Expense
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {

@@ -14,15 +14,16 @@ use Auth;
 use App\Exports\InstituteUserExport;
 use App\Models\InstituteProgram;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\NationalSeoExpanse;
 
 class SOEUCFormController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    protected $create = 'institute-user.SOEUC.create';   
-    protected $edit = 'institute-user.SOEUC.edit';   
-    protected $list = 'institute-user.SOEUC.list';   
+    protected $create = 'institute-user.SOEUC.create';
+    protected $edit = 'institute-user.SOEUC.edit';
+    protected $list = 'institute-user.SOEUC.list';
 
     public function index()
     {
@@ -35,14 +36,20 @@ class SOEUCFormController extends Controller
      */
     public function create()
     {
-        $states = DB::table('states')->where('status',1)->get();
+        $states = State::get();
         $institutePrograms = InstituteProgram::get();
         $months = [];
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
-        return view($this->create,compact('states','months','institutePrograms'));
-    }
+        $soeForm = NationalSeoExpanse::with('states','SoeUcFormCalculation','instituteProgram')->where(['state_id' => 35,'city_id' => 3120])->first();
+        if(!is_null($soeForm)){
+            return view($this->create,compact('soeForm','states','months','institutePrograms'));
+        }else{
+            \Toastr::error('fail, No Permission)','Error');
+            return redirect()->route('institute-user.SOE-&-UC-list');
+        }
+    }    
 
     /**
      * Store a newly created resource in storage.
@@ -53,26 +60,49 @@ class SOEUCFormController extends Controller
             'institute_program_id'    => 'required',
             'institute_name'     => 'required',
             'finance_account_officer'     => 'required',
-            'finance_account_officer_mobile'     => 'required',
+            'finance_account_officer_mobile'     => 'required|digits:10',
             'nadal_officer'     => 'required',
-            'nadal_officer_mobile'     => 'required',
-            'state'     => 'required',
+            'nadal_officer_mobile'     => 'required|digits:10',
             'financial_year'     => 'required',
         ],
         [
             'nadal_officer.required'=> 'The Nodal Officer field is required',
-            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required'
-        ]
-    
-    );
+            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
+        ]);
         try {
+            $currentDate = Carbon::now();
             $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
             $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
+            $expansePlanCheck = 0;
+            $expansePlan = $request->expanse_plan;
+            $query = SOEUCForm::where('state_id', $request->state_id)
+                ->where('city_id', $request->city_id)
+                ->where('expanse_plan', $expansePlan);
+
+            if ($expansePlan == 1) {
+                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)->count();
+            } elseif ($expansePlan == 2) {
+                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)
+                    ->whereMonth('created_at', $currentDate->month)->count();
+            } elseif ($expansePlan == 3) {
+                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)->count();
+            }
+
+            if (($expansePlan == 1 && $expansePlanCheck >= 1) ||
+                ($expansePlan == 2 && $expansePlanCheck >= 1) ||
+                ($expansePlan == 3 && $expansePlanCheck >= 3)) {
+                \Toastr::error('Expanse plan limit exceeded', 'Error');
+                return redirect()->route('institute-user.SOE-&-UC-list');
+            }
+
             if($programCount <= $programNumber->count ){
                 DB::beginTransaction();
                 $soeucFormId = SOEUCForm::Create([
                     'user_id' => Auth::id(),
                     'institute_program_id' => $request->institute_program_id,
+                    'state_id' => $request->state_id,
+                    'city_id' => $request->city_id,
+                    'expanse_plan' => $request->expanse_plan,
                     'institute_name' => $request->institute_name,
                     'finance_account_officer' => $request->finance_account_officer,
                     'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
@@ -80,7 +110,6 @@ class SOEUCFormController extends Controller
                     'nadal_officer' => $request->nadal_officer,
                     'nadal_officer_mobile' => $request->nadal_officer_mobile,
                     'nadal_officer_email' => $request->nadal_officer_email,
-                    'state' => $request->state,
                     'month' => $request->month,
                     'financial_year' => $request->financial_year,
                 ])->id;
@@ -107,7 +136,7 @@ class SOEUCFormController extends Controller
             }
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Something went wrong !  :)','Error');
         }
     }
 
@@ -126,7 +155,7 @@ class SOEUCFormController extends Controller
     {
         try{
             DB::beginTransaction();
-            $states = DB::table('states')->where('status',1)->get();
+            $states = State::get();
             $months = [];
             for ($m=1; $m<=12; $m++) {
                 $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
@@ -146,6 +175,19 @@ class SOEUCFormController extends Controller
      */
     public function update(Request $request, $id = '')
     {
+        $request->validate([
+            'institute_program_id'    => 'required',
+            'institute_name'     => 'required',
+            'finance_account_officer'     => 'required',
+            'finance_account_officer_mobile'     => 'required|digits:10',
+            'nadal_officer'     => 'required',
+            'nadal_officer_mobile'     => 'required|digits:10',
+            'financial_year'     => 'required',
+        ],
+        [
+            'nadal_officer.required'=> 'The Nodal Officer field is required',
+            'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
+        ]);
         try{
             $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
             $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
@@ -153,6 +195,9 @@ class SOEUCFormController extends Controller
                 DB::beginTransaction();
                 SOEUCForm::where('id', $id)->Update([
                     'user_id' => Auth::id(),
+                    'state_id' => $request->state_id,
+                    'city_id' => $request->city_id,
+                    'expanse_plan' => $request->expanse_plan,
                     'institute_program_id' => $request->institute_program_id,
                     'institute_name' => $request->institute_name,
                     'finance_account_officer' => $request->finance_account_officer,
@@ -161,7 +206,6 @@ class SOEUCFormController extends Controller
                     'nadal_officer' => $request->nadal_officer,
                     'nadal_officer_mobile' => $request->nadal_officer_mobile,
                     'nadal_officer_email' => $request->nadal_officer_email,
-                    'state' => $request->state,
                     'month' => $request->month,
                     'financial_year' => $request->financial_year,
                 ]);
