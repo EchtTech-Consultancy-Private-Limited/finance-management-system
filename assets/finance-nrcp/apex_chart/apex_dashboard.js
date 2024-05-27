@@ -1155,7 +1155,7 @@ in_dashboard6.render();
 var options = {
    series: [40, 40, 5, 5, 10],
    chart: {
-      height: 230,
+      height: 212,
       type: 'donut',
       offsetY: 0
    },
@@ -3202,6 +3202,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       ]
   }]
 });
+
 
 // Program wise Unspent Balance Line Chart
 Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
