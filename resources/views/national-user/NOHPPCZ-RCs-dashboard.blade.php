@@ -25,9 +25,9 @@
                 <div class="page_date_button d-flex align-items-center">
                     <img src="{{ asset('assets/img/icon/calender_icon.svg') }}" alt>
                     @php
-                        $currentYear = date('Y');
-                        $currentMonth = date('m');
-                        $endDate = strtotime("last day of $currentYear-$currentMonth");
+                    $currentYear = date('Y');
+                    $currentMonth = date('m');
+                    $endDate = strtotime("last day of $currentYear-$currentMonth");
                     @endphp
                     {{ date('F m ,Y') }} - {{ date('M jS ,Y', $endDate) }}
                 </div>
@@ -41,7 +41,7 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col-lg-2"></div>
+
                 <div class="col-md-6 col-lg-4">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
@@ -70,108 +70,59 @@
 
         </div>
     </div>
+    <div class="col-xl-12 integrated-expenditure">
+        <div class="row ">
 
-    <div class="col-xl-3">
-        <div class="white_card card_height_100 mb_30">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Expenditure in Lakhs</h3>
-                    </div>
-                    <div class="header_more_tool">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                                <i class="ti-more-alt"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+            <div class="col-md-4">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Expenditure in Lakhs</h3>
                             </div>
+
                         </div>
                     </div>
+                    <div class="white_card_body p-0">
+                        <div id="national-total-expenditure-cr"></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="chart-currently"></div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3">
-        <div class="white_card card_height_100 mb_30">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Fund Unspent in Lakhs</h3>
-                    </div>
-                    <div class="header_more_tool">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                                <i class="ti-more-alt"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
+            <div class="col-md-4">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Fund unspent in Lakhs</h3>
                             </div>
+
                         </div>
                     </div>
+                    <div class="white_card_body p-0">
+                        <div id="national-total-unspent-cr"></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body">
-                <div id="chart-currently-again"></div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-6">
-        <div class="white_card card_height_100 mb_30">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Overall Head Expenditure</h3>
-                    </div>
-                    <div class="header_more_tool">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                                <i class="ti-more-alt"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-                                <a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-                            </div>
+           
+            <div class="col-md-4">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Overall Head Expenditure</h3>
+                            </div>                            
                         </div>
                     </div>
+                    <div class="white_card_body">
+                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="white_card_body row">
 
-                <div class="col-md-8">
-                    <div id="chart-currently-overall"></div>
-                </div>
-
-                <div class="col-md-4">
-                    <ul class="bullet-list pt-3">
-                        <li>Current Man Power</li>
-                        <li>Meetings, Training & Research</li>
-                        <li>Lab Strengthening Kits, Regents & Consumable(Recurring)</li>
-                        <li>IEC</li>
-                        <li>Office Expenses & Travel</li>
-                        <li>Lab Strengthening (Non Recurring)</li>
-                        <li>Other Activities</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
