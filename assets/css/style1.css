@@ -12770,9 +12770,7 @@ rect.highcharts-background {
 .expenditure-or h3{
     font-size: 18px;
 }
-<<<<<<< HEAD
 .hidetext { -webkit-text-security: disc;}
-=======
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.next i, .dataTables_wrapper .dataTables_paginate .paginate_button.previous i{
     color: #fff;
@@ -12796,4 +12794,25 @@ span.country-list-content {
 .col-md-12.overlall-expenditure .col-md-4 {
     padding-right: 0;
 }
->>>>>>> 7fd291ee78ba4c1b45c60739b15da4b6d2ea37fe
+
+.crm_head.d-flex{
+    display: none !important;
+} 
+
+.btn-tab-group .btn.btn-tab-admin {
+    background: #ddd;
+    margin-right: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.btn-tab-group .btn.btn-tab-admin.active, .btn-tab-group .btn.btn-tab-admin:hover {
+    background: #f76b2e;
+    color: #fff;
+}
+
+.user_crm_wrapper .special-card .single_crm{
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
