@@ -159,7 +159,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expendi</h3>
+                                <h3 class="m-0">Total Expenditure in Cr.</h3>
                             </div>
 
                         </div>
@@ -201,7 +201,7 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-user-fy" name="financial_year" class="form-control">
+                            <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Financial Year</option>
                                 @for($i = date("Y")-10; $i <=date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i) ? 'selected' : '' ; @endphp <option
@@ -215,9 +215,11 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Program Wise <sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-user-fy" name="financial_year" class="form-control">
+                            <select id="national-program-wise" name="institute_program_id" class="form-control national_user_card">
                                 <option value="">Select Program</option>
-                                <option value="">Program 1</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -360,7 +362,7 @@
                                 </div>
                             </div>
                             <div class="white_card_body overall-program-expenditure-amount">
-                                <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+                                <div id="overall-Program-expenditure-amount"></div>
 
                             </div>
                         </div>
