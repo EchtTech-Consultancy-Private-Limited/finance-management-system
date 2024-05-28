@@ -48,6 +48,7 @@
 <script src="{{ asset('assets/finance-nrcp/vectormap-home/vectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/apex_chart/apex-chart2.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/apex_chart/apex_dashboard.js') }}"></script>
+<script src="{{ asset('assets/finance-nrcp/apex_chart/apex_admin.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/core.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/charts.js') }}"></script>
 <script src="{{ asset('assets/finance-nrcp/chart_am/animated.js') }}"></script>

@@ -12809,3 +12809,10 @@ span.country-list-content {
     background: #f76b2e;
     color: #fff;
 }
+
+.user_crm_wrapper .special-card .single_crm{
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -439,8 +439,7 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100 ">
-
+                            <div class="white_card card_height_100">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-UC-Received"
                                         class="border rounded mb-3 received-chart"></div>
