@@ -3,7 +3,6 @@
 <title>Finance Management System</title>
 <meta name="baseURL" content="{{ asset('/') }}">
 <link rel="icon" href="{{ asset('assets/img/mini_logo.png') }}" type="image/png">
-<meta name="baseURL" content="{{ asset('/') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/themefy_icon/themify-icons.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/niceselect/css/nice-select.css') }}" />

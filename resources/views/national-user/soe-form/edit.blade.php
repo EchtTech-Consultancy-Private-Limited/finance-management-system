@@ -26,7 +26,7 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputState">State<span class="text-danger">*</span></label>
-                            <select id="nationalState" class="form-control" name="state">
+                            <select id="state_name" class="form-control" name="state">
                                 <option value="">Select state</option> 
                                 @foreach ($states as $key => $state)
                                     <option value="{{ $state->id }}" {{ $state->id == $nationalSeoExpans->state_id ? 'selected' : '' }}>
@@ -167,19 +167,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).on('change', '#nationalState', function() {
-    let state_id = $(this).val();
-    $.ajax({
-        type: "GET",
-        url: "{{route('filterCity')}}",
-        data: {
-            'state_id': state_id
-        },
-        success: function(data) {
-            $("#filter-city").html(data);
-        }
-    });
-});
-</script>
 @endsection
