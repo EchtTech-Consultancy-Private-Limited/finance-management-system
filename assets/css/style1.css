@@ -45,7 +45,7 @@ body {
 input:hover,
 input:focus {
     outline: none !important;
-    box-shadow: 0 0 0 0 transparent !important
+    /* box-shadow: 0 0 0 0 transparent !important */
 }
 
 :focus {
@@ -3001,8 +3001,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .action_btn {
-    width: 32px;
-    height: 32px;
+    /* width: 32px;
+    height: 32px; */
     border-radius: 6px;
     background: 0 0;
     line-height: 30px;
@@ -5279,12 +5279,12 @@ body::-webkit-scrollbar {
 }
 
 .QA_section .QA_table .table thead th:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 0px;
     border-left: 1px solid #e5ecff !important
 }
 
 .QA_section .QA_table .table thead th:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 0px 0;
     border-right: 1px solid #e5ecff !important
 }
 
@@ -12801,4 +12801,7 @@ span.country-list-content {
     width: 100%;
     height: 14px !important;
     filter: invert(1);
+}
+.card-body{
+    padding: 0;
 }
