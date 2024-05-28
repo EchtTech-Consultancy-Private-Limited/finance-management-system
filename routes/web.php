@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SOEUCFormController;
 use App\Http\Controllers\SOEUCUploadFormController;
@@ -30,12 +31,19 @@ Route::post('login', [LoginController::class, 'authenticate'])->name('authentica
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    
+        
     Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
     Route::get('password/{id}/update', [DashboardController::class, 'getUserPassword'])->name('password.update');
     Route::post('update-profile', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
 
+    Route::prefix('admin')->group(function(){
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        // Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
+        Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('admin.facility-mapping');
+        Route::post('/update-facility-mapping/{id?}', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
+    
+    });
     Route::group(['prefix' => 'national-users', 'as' => 'national-user.'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/filter-dashboard', [DashboardController::class, 'nationalFilterDdashboard'])->name('filter-dashboard');
@@ -75,6 +83,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [SOEUCUploadFormController::class, 'update'])->name('update');
         Route::post('/soe-uc-update-change-status/{id}', [SOEUCUploadFormController::class, 'changeStatus'])->name('soe-uc-update-change-status');
         Route::get('/SOE-UC-upload-destroy/{id}', [SOEUCUploadFormController::class, 'destroy'])->name('SOE-UC-upload-destroy');
+
     });
 });
-

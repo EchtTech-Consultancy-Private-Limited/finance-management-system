@@ -42,7 +42,7 @@ class SOEUCFormController extends Controller
         for ($m=1; $m<=12; $m++) {
             $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
-        $soeForm = NationalSeoExpanse::with('states','SoeUcFormCalculation','instituteProgram')->where(['state_id' => 35,'city_id' => 3120])->first();
+        $soeForm = NationalSeoExpanse::with('states','SoeUcFormCalculation','instituteProgram')->where(['state_id' => Auth::user()->state_id,'city_id' => Auth::user()->district_id])->first();
         if(!is_null($soeForm)){
             return view($this->create,compact('soeForm','states','months','institutePrograms'));
         }else{

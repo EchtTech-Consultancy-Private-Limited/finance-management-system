@@ -126,8 +126,10 @@ class LoginController extends Controller
           // Authentication passed...
           if(Auth::user()->user_type == 0){
             $redirectUrl = redirect()->intended('national-users/dashboard')->getTargetUrl();
-          }else{
+          }elseif(Auth::user()->user_type == 1){
             $redirectUrl = redirect()->intended('institute-users/dashboard')->getTargetUrl();
+          }else{
+            $redirectUrl = redirect()->intended('admin/dashboard')->getTargetUrl();
           }
           
           //for tracking

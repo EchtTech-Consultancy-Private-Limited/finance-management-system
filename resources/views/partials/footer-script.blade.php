@@ -15,11 +15,6 @@
         <i class="ti-angle-up"></i>
     </a>
 </div>
-
-
-
-
-
 <script src="{{ asset('assets/js/jquery1-3.4.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper1.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap1.min.js') }}"></script>
@@ -66,6 +61,7 @@
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/get_district.js') }}"></script>
 
 <script src="{{ asset('assets/js/highcharts/highmaps.js') }}"></script>
 <script src="{{ asset('assets/js/highcharts/highcharts.js') }}"></script>
