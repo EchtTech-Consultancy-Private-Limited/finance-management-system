@@ -75,7 +75,7 @@ class AdminController extends Controller
                     'user_type'=>$request->user_type,
                     'status'=>$request->status,
                 ]);
-          Toastr::success('Has been add successfully :)','Success');
+          Toastr::success('Has been update successfully :)','Success');
           return redirect()->back();
     }
     public function getDistrict(Request $request, $id=null){

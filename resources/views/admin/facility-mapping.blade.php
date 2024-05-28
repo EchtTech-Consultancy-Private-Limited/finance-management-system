@@ -21,7 +21,8 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form method="POST" action="{{ url('admin/update-facility-mapping/'.$user->id) }}">
+                @php if($user !=''){ $id=$user->id;  }else{ $id=''; } @endphp
+                <form method="POST" action="{{ url('admin/update-facility-mapping/'.$id) }}">
                 @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -49,7 +50,7 @@
                             <select id="inputState" class="form-control" name="program_id" id="program_id">
                                 <option value="">Program</option>
                                 @foreach($institutePrograms as $instituteProgram)
-                                 <option value="{{ $instituteProgram->id }}" @if($instituteProgram->id == $user->program_id) selected @else '' @endif>{{ $instituteProgram->name }} -{{ $instituteProgram->code }}   -{{ $instituteProgram->count }} Nos Institutes</option>
+                                 <option value="{{ $instituteProgram->id??'' }}" @if(isset($user->program_id) && $user->program_id== $instituteProgram->id) selected @else '' @endif>{{ $instituteProgram->name }} -{{ $instituteProgram->code }}   -{{ $instituteProgram->count }} Nos Institutes</option>
                                 @endforeach
                             </select>
                             @error('program_id')
@@ -61,7 +62,7 @@
                             <select id="state_name" class="form-control" name="state_name">
                                 <option value="">State Name</option>
                                 @foreach($state as $statelist)
-                                    <option value="{{ $statelist->id }}" @if($statelist->id == $user->state_id) selected @else '' @endif>{{ $statelist->name }}</option>
+                                    <option value="{{ $statelist->id }}" @if(isset($user->state_id) && $user->state_id==$statelist->id) selected @else '' @endif>{{ $statelist->name }}</option>
                                 @endforeach
                             </select>
                             @error('state_name')
@@ -87,8 +88,8 @@
                             <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="user_type">
                                 <option value="">Assign Role</option>
-                                <option value="0" @if($user->user_type == 0) selected @else '' @endif>National</option>
-                                <option value="1" @if($user->user_type == 1) selected @else '' @endif>Institute</option>
+                                <option value="0" @if(isset($user->user_type) && $user->user_type == 0) selected @else '' @endif>National</option>
+                                <option value="1" @if(isset($user->user_type) && $user->user_type == 1) selected @else '' @endif>Institute</option>
                             </select>
                             @error('user_type')
                                 <span class="text-danger">{{ $message }}</span>
@@ -98,8 +99,8 @@
                             <label class="form-label" for="inputAddress2">Status<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="status">
                                 <option value="">status</option>
-                                <option value="1" @if($user->status == 1) selected @else '' @endif>Enable</option>
-                                <option value="0" @if($user->status == 0) selected @else '' @endif>Disable</option>
+                                <option value="1" @if(isset($user->status) && $user->status == 1) selected @else '' @endif>Enable</option>
+                                <option value="0" @if(isset($user->status) && $user->status == 0) selected @else '' @endif>Disable</option>
                             </select>
                             @error('status')
                                 <span class="text-danger">{{ $message }}</span>
