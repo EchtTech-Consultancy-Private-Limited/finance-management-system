@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">State<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="state">
                                 <option value=""> Select state</option> 
@@ -101,7 +101,7 @@
                             @error('state')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Month</label>
                             <select id="inputState" class="form-control" name="month">
