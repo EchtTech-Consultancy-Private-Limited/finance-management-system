@@ -75,9 +75,10 @@
       min-width: 50%;
    } */
 
-   .expenditure_lacks{
+   .expenditure_lacks {
       padding: 0 10px;
-   }
+      height: 190px;
+  }
    .white_card_body.overall-program-expenditure-amount{
       /* padding: 0; */
    }

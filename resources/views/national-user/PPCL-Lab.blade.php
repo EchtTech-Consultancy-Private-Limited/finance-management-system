@@ -42,7 +42,7 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -54,7 +54,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="white_card_body p-0">
-                        <div id="national-total-expenditure-lac" class="expenditure_lacks"></div>
+                        <div id="national-total-expenditure-lac-ppcl-lab" class="expenditure_lacks"></div>
 
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="white_card_body p-0">
-                        <div id="national-total-unspent-lac" class="expenditure_lacks"></div>
+                        <div id="national-total-unspent-lac-ppcl-lab" class="expenditure_lacks"></div>
 
                     </div>
                 </div>
@@ -146,7 +146,7 @@
 
                 <div class="expenditure_height">
                     
-                    <div id="national_expenditure_percentage_nohppcz_rc" class="overall-programm-total"></div>
+                    <div id="national_expenditure_percentage_nohppcz_ppcl_lab" class="overall-programm-total"></div>
                 </div>
 
                 </div>
@@ -166,7 +166,7 @@
                 <div class="white_card_body">
                 <div class="expenditure_height">
                     
-                    <div id="national_fund_unspent_percentage_nohppcz_rc" class="overall-programm-total"></div>
+                    <div id="national_fund_unspent_percentage_nohppcz_ppcl_lab" class="overall-programm-total"></div>
                     </div>
 
                 </div>
@@ -186,7 +186,7 @@
                 <div class="white_card_body">
                 <div class="expenditure_height">
                     
-                    <div id="national_interest_earned_cy_percentage_nohppcz_rc" class="overall-programm-total">
+                    <div id="national_interest_earned_cy_percentage_nohppcz_ppcl_lab" class="overall-programm-total">
                     </div>
                     </div>
 
@@ -206,7 +206,7 @@
                 <div class="white_card_body">
                 <div class="expenditure_height">
                     
-                    <div id="national_dd_percentage_nohppcz_rc" class="overall-programm-total">
+                    <div id="national_dd_percentage_nohppcz_ppcl_lab" class="overall-programm-total">
                     </div>
                     </div>
 
@@ -266,8 +266,8 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-md-6 col-lg-4">
+                
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -279,7 +279,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
                                     class="text-danger">*</sup></b></label>
@@ -300,7 +300,7 @@
             <div class="white_card  ">
 
                 <div class="white_card">
-                    <div id="nohppz_rc_chart_currently_UC_Received" class=" mb-3 received-chart"></div>
+                    <div id="nohppz_rc_chart_currently_UC_Received_ppcl_lab" class=" mb-3 received-chart"></div>
                 </div>
             </div>
         </div>
@@ -308,7 +308,7 @@
         <div class="col-md-3">
             <div class="white_card  ">
                 <div class="">
-                    <div id="nohppz_rc_chart_currently_UC_not_Received" class=" mb-3 received-chart"></div>
+                    <div id="nohppz_rc_chart_currently_UC_not_Received_ppcl_lab" class=" mb-3 received-chart"></div>
 
                 </div>
             </div>
@@ -316,7 +316,7 @@
 
         <div class="col-md-3">
             <div class="white_card">
-                <div id="nohppz_rc_chart_currently_Nos_UC_Received" class=" mb-0 received-chart"></div>
+                <div id="nohppz_rc_chart_currently_Nos_UC_Received_ppcl_lab" class=" mb-0 received-chart"></div>
 
             </div>
         </div>
@@ -325,7 +325,7 @@
             <div class="white_card  ">
 
                 <div class="">
-                    <div id="nohppz_rc_chart_currently_Nos_UC_not_Received" class=" mb-0 received-chart"></div>
+                    <div id="nohppz_rc_chart_currently_Nos_UC_not_Received_ppcl_lab" class=" mb-0 received-chart"></div>
 
                 </div>
             </div>
@@ -391,7 +391,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="national_expnediture_nohppcz_rc"></div>
+                <div id="national_expnediture_nohppcz_ppcl_lab"></div>
             </div>
         </div>
     </div>
@@ -415,7 +415,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="national_instiute_wise_yearly_nohppcz_rc"></div>
+                <div id="national_instiute_wise_yearly_nohppcz_ppcl_lab"></div>
             </div>
         </div>
     </div>

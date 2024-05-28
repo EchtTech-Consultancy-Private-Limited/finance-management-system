@@ -72,4 +72,8 @@
 <script src="{{ asset('assets/js/highcharts/accessibility.js') }}"></script>
 <!-- nhopcs highchart -->
 <script src="{{ asset('assets/highchart/national_nohpcc.js') }}"></script>
+<script src="{{ asset('assets/highchart/national_nohppcz_sss.js') }}"></script>
+<script src="{{ asset('assets/highchart/national_nrcp_lab.js') }}"></script>
+<script src="{{ asset('assets/highchart/national_ppcl_lab.js') }}"></script>
+<script src="{{ asset('assets/highchart/national_pm_abhim.js') }}"></script>
 
