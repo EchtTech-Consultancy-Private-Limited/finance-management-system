@@ -2,7 +2,7 @@ $(document).on('change', '#state_name', function() {
     let state_id = $(this).val();
     $.ajax({
         type: "GET",
-        url: "{{route('filterCitys')}}",
+        url: BASE_URL + 'filter',
         data: {
             'state_id': state_id
         },

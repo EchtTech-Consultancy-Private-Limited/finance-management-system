@@ -162,7 +162,7 @@
         </div>
     </div>
 </div>
-<script>
+{{-- <script>
         $(document).on('change', '#state_name', function() {
         let state_id = $(this).val();
         $.ajax({
@@ -176,5 +176,5 @@
             }
         });
     });
-</script>
+</script> --}}
 @endsection
