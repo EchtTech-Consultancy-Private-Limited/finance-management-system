@@ -86,3 +86,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#datatable').dataTable();
 } );
+
+$(".btn-tab-admin").click(function(){
+    $(".btn-tab-admin.active").removeClass('active');
+    $(this).addClass('active');
+})

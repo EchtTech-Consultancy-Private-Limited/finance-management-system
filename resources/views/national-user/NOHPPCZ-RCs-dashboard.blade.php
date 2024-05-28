@@ -267,7 +267,7 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -279,7 +279,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
                                     class="text-danger">*</sup></b></label>
