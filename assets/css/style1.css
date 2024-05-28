@@ -12794,3 +12794,18 @@ span.country-list-content {
 .col-md-12.overlall-expenditure .col-md-4 {
     padding-right: 0;
 }
+
+.crm_head.d-flex{
+    display: none !important;
+} 
+
+.btn-tab-group .btn.btn-tab-admin {
+    background: #ddd;
+    margin-right: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.btn-tab-group .btn.btn-tab-admin.active, .btn-tab-group .btn.btn-tab-admin:hover {
+    background: #f76b2e;
+    color: #fff;
+}
