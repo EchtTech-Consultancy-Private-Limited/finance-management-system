@@ -1011,9 +1011,9 @@
                 </div>
 
             </div>
-            <div class="row my-4 d-flex justify-content-center custom-grid">
+            <div class="row my-4 d-flex justify-content-center">
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
@@ -1023,7 +1023,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
@@ -1132,7 +1133,7 @@
                 </div>
             </div>
             <div class="data-driven">
-                <div class="row justify-content-center custom-grid">
+                <div class="row justify-content-center custom-grid financial-card-w">
                     <div class="col-md-3 mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
@@ -1197,19 +1198,19 @@
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph2" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph3" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph4" class=""></div>
                         </div>

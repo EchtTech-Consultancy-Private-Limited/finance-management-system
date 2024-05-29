@@ -12472,7 +12472,7 @@ ul.bullet-list li {
 .expenditure-bar-chart-box-child2 span.number {
     font-size: 30px;
     font-weight: bold;
-    margin-right: 70px;
+    margin-right: 50px;
     color: #000;
 }
 
@@ -12816,3 +12816,4 @@ span.country-list-content {
     justify-content: center;
     align-items: center;
 }
+
