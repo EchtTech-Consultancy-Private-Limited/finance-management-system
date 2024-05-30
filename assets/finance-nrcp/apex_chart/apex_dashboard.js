@@ -1945,6 +1945,7 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
        groupPadding: 0,
        data: [
            ['2024-25', 4500],
+           ['2023-24', 4500],
            ['2022-23', 800],
            ['2021-22', 700],
            ['2020-21', 600],
@@ -2019,6 +2020,7 @@ Highcharts.chart('integrated-dashboard-institute-wise-expenditure', {
        groupPadding: 0,
        data: [
            ['2024-25', 4500],
+           ['2023-24', 4500],
            ['2022-23', 800],
            ['2021-22', 700],
            ['2020-21', 600],
@@ -3200,7 +3202,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       text: '',
   },
   subtitle: {
-      text: '72%',
+      text: '75%',
       align: 'center',
       verticalAlign: 'middle',
       y: 60,
@@ -3240,8 +3242,8 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       name: '',
       innerSize: '50%',
       data: [
-          ['', 72],
-          ['', 28],
+          ['', 75],
+          ['', 25],
           
       ]
   }]
@@ -3268,7 +3270,7 @@ Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
    },
    yAxis: {
        title: {
-           text: 'Temperature (°C)'
+           text: 'Institute-wise Patient / Sample Received'
        }
    },
    plotOptions: {
@@ -3276,6 +3278,7 @@ Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
            dataLabels: {
                enabled: true
            },
+           
            enableMouseTracking: false
        }
    },
@@ -3294,111 +3297,97 @@ Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
 // state graph
 
 Highcharts.chart('integrated-dashboard-state-graph', {
-   chart: {
-       type: 'column'
-   },
-   title: {
-   text: ''
-   },
-//    subtitle: {
-//     useHTML: true,
-//     text: '<div style="text-align:center;">Expenditure</div>',
-//     align: 'center',
-//     verticalAlign: 'bottom',
-//     y: 50, // Adjusted position
-//     style: {
-//         fontSize: '13px',
-//         color: '#000'
-//     }
-// },
-   credits: {
-      enabled: false
-  },
-   exporting: {
-      enabled: false
-   },
-   subtitle: {
-       text: ''
-   },
-   xAxis: {
-       type: 'category',
-       labels: {
-           autoRotation: [-45, -90],
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   },
-   yAxis: {
-       min: 0,
-       title: {
-           text: 'Population (millions)'
-       }
-   },
-   legend: {
-       enabled: true
-   },
-   tooltip: {
-       pointFormat: ''
-   },
-   series: [{
-       name: 'Expenditure',
-       colors: [
-           '#9b20d9', '#9215ac', '#861ec9', '#7a17e6', '#7010f9', '#691af3',
-           '#6225ed', '#5b30e7', '#533be1', '#4c46db', '#4551d5', '#3e5ccf',
-           '#3667c9', '#2f72c3', '#277dbd', '#1f88b7', '#1693b1', '#0a9eaa',
-           '#03c69b',  '#00f194'
-       ],
-       colorByPoint: true,
-       groupPadding: 0,
-       data: [
-         ['Uttar Pradesh', 4.3],
-         ['Maharashtra', 2.5],
-         ['Bihar', 3.5],
-         ['West Bengal', 4.5],
-         ['Madhya Pradesh', 2],
-         ['Tamil Nadu', 1.2],
-         ['Rajasthan', 2.4],
-         ['Karnataka', 3.1],
-         ['Gujarat', 3.4],
-         ['Andhra Pradesh', 4],
-         ['Odisha', 4.4],
-         ['Telangana', 2.8],
-         ['Kerala', 4],
-         ['Jharkhand', 4],
-         ['Assam', 2],
-         ['Punjab', 3],
-         ['Chhattisgarh', 1],
-         ['Haryana', 4],
-         ['Uttarakhand', 4],
-         ['Himachal Pradesh', 4],
-         ['Tripura', 4],
-         ['Meghalaya', 4],
-         ['Manipur', 4],
-         ['Nagaland', 4],
-         ['Goa', 4],
-         ['Arunachal Pradesh', 4],
-         ['Mizoram', 4],
-         ['Sikkim', 4],
-         ['Delhi', 5] // Considering Delhi as a Union Territory
-       ],
-       dataLabels: {
-           enabled: true,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-           format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   }]
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            autoRotation: [-45, -90],
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: null
+        }
+    },
+    legend: {
+        enabled: true
+    },
+    tooltip: {
+        pointFormat: ''
+    },
+    series: [{
+        name: 'Expenditure',
+        type: 'column',
+        colorByPoint: true,
+        colors: [
+           '#ffc147'
+        ],
+        data: [
+            ['Uttar Pradesh', 4.3],
+            ['Maharashtra', 2.5],
+            ['Bihar', 3.5],
+            ['West Bengal', 4.5],
+            ['Madhya Pradesh', 2],
+            ['Tamil Nadu', 1.2],
+            ['Rajasthan', 2.4],
+            ['Karnataka', 3.1],
+            ['Gujarat', 3.4],
+            ['Andhra Pradesh', 4],
+            ['Odisha', 4.4],
+            ['Telangana', 2.8],
+            ['Kerala', 4],
+            ['Jharkhand', 4],
+            ['Assam', 2],
+            ['Punjab', 3],
+            ['Chhattisgarh', 1],
+            ['Haryana', 4],
+            ['Uttarakhand', 4],
+            ['Himachal Pradesh', 4],
+            ['Tripura', 4],
+            ['Meghalaya', 4],
+            ['Manipur', 4],
+            ['Nagaland', 4],
+            ['Goa', 4],
+            ['Arunachal Pradesh', 4],
+            ['Mizoram', 4],
+            ['Sikkim', 4],
+            ['Delhi', 5] // Considering Delhi as a Union Territory
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            inside: true,
+            verticalAlign: 'top',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+]
 });
-
 
 
 // data driven graph
@@ -3433,17 +3422,19 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
    yAxis: {
        min: 0,
        title: {
-           text: 'Population (millions)'
+           text: null
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+    name: 'Head',
+    type: 'column',
+    colorByPoint: true,
        colors: [
           '#f49d00'
        ],
@@ -3501,17 +3492,17 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
    yAxis: {
        min: 0,
        title: {
-           text: 'Population (millions)'
+           text: null
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+       name: 'Head',
        colors: [
            '#43cdd9'
        ],
@@ -3569,17 +3560,17 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
    yAxis: {
        min: 0,
        title: {
-           text: 'Population (millions)'
+           text: null
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+       name: 'Head',
        colors: [
            '#dd5f00'
        ],
@@ -3637,17 +3628,17 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
    yAxis: {
        min: 0,
        title: {
-           text: 'Population (millions)'
+           text: null
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+       name: 'Head',
        colors: [
            '#00b0f0'
        ],
@@ -3705,17 +3696,17 @@ Highcharts.chart('integrated-dashboard-data-driven-graph5', {
    yAxis: {
        min: 0,
        title: {
-           text: 'Population (millions)'
+           text: null
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+       name: 'Head',
        colors: [
            '#92d050'
        ],
@@ -3973,7 +3964,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-not-Received', {
    },
    subtitle: {
        useHTML: true,
-       text: '<div style="text-align:center;">Nos. of UC not received</div>',
+       text: '<div style="text-align:center;">Nos. of UC not Received</div>',
        align: 'center',
        verticalAlign: 'bottom',
        y: 0, // Adjusted position
