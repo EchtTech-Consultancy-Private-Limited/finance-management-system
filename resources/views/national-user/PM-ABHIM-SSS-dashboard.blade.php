@@ -486,7 +486,7 @@
                                 <table class="table lms_table_active3 table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">title</th>
+                                            <th scope="col">Title</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">View / Download</th>
                                         </tr>

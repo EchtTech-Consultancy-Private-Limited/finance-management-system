@@ -5263,7 +5263,7 @@ body::-webkit-scrollbar {
     border-bottom: 0 solid transparent;
     padding: 9px 15px;
     border: 0 solid transparent;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: #ffffff;
     white-space: nowrap;
@@ -5275,7 +5275,8 @@ body::-webkit-scrollbar {
     background: 0 0;
     border-top: 1px solid #e5ecff !important;
     border-bottom: 1px solid #e5ecff !important;
-    position: relative
+    position: relative;
+    text-align: center;
 }
 
 .QA_section .QA_table .table thead th:first-child {
@@ -9926,7 +9927,7 @@ a.pswp__share--download:hover {
     border-radius: 10px;
     position: absolute;
     right: 0;
-    width: 350px;
+    width: 258px;
     transform: translateY(30px) translateX(20px);
     opacity: 0;
     visibility: hidden;
@@ -9955,11 +9956,12 @@ a.pswp__share--download:hover {
 .Menu_NOtification_Wrap .notification_Header {
     padding: 15px 20px;
     border-radius: 10px 10px 0 0;
-    background: #8950fc
+    background: #567aed;
+    text-align: center;
 }
 
 .Menu_NOtification_Wrap .notification_Header h4 {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     color: #fff;
     margin-bottom: 0
@@ -9967,10 +9969,57 @@ a.pswp__share--download:hover {
 
 .Menu_NOtification_Wrap .Notification_body {
     padding: 20px;
-    height: 300px;
-    overflow: auto
+    /* height: 254x; */
+    overflow: auto;
+    text-align: center;
+    background-color: #567aed0f;
 }
 
+.Menu_NOtification_Wrap .Notification_body::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: -10px;
+    right: 15px;
+    border-width: 0 11px 12px;
+    border-color: transparent transparent #567aed transparent;
+    z-index: 2;
+}
+.Menu_NOtification_Wrap .Notification_body h2{
+    font-size: 24px;
+    color: #001540;
+    margin: auto;
+    width: 57px;
+    height: 57px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+}
+.Menu_NOtification_Wrap .Notification_body h4{
+    font-size: 18px;
+    color: #001540;
+}
+
+.Menu_NOtification_Wrap .Notification_body h5{
+    font-size: 14px;
+    color: #000;
+}
+.Menu_NOtification_Wrap .Notification_body .status span{
+    color: red;
+}
+.Menu_NOtification_Wrap .Notification_body  .status {
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 1px;
+}
+.Menu_NOtification_Wrap .Notification_body .total-resolved {
+    border-bottom: 3px solid #f45b0f;
+}
 .Menu_NOtification_Wrap .Notification_body .single_notify {
     margin-bottom: 10px
 }
@@ -12285,8 +12334,16 @@ img#captchaimg {
 }
 .table thead tr th,.table tfoot tr th {
     background: #884ffb !important;
-    font-size: 15px;
+    font-size: 16px;
     color: #fff;
+    text-align: center;
+}
+table thead tr th, table tfoot tr th {
+    background: #884ffb !important;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+
 }
 
 .fms-table .table thead tr th, .fms-table .table tbody tr th, .fms-table .table tbody tr td{padding:9px 7px;} 
@@ -12501,8 +12558,9 @@ ul.bullet-list li {
     color: #000;
     font-weight: 700;
     top: 16px;
-    left: 20%;
+    left: 0;
     width: 100%;
+    text-align: center;
 }
 
 .data-driven .expenditure-bar-chart-box.box1{
@@ -12533,6 +12591,7 @@ ul.bullet-list li {
 .data-driven .expenditure-bar-chart-box-child2 h3{
     font-size: 15px;
     text-shadow: 1px 1px #6a6a6a;
+    margin-bottom: 8px;
 }
 
 .data-driven  .expenditure-bar-chart-box-child1 {
@@ -12880,3 +12939,6 @@ span.country-list-content {
     align-items: center;
 }
 
+.action_btn:hover i.fas.fa-trash{
+      color: #fff !important;
+}

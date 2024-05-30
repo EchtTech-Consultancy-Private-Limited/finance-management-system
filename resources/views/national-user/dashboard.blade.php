@@ -1092,7 +1092,7 @@
                             <div class="col-md-12">
                                 <div class="graph-container border border-1 mt-3 p-2">
 
-                                    <div id="integrated-dashboard-state-graph" class="state-filter-highchart"></div>
+                                    <div id="integrated-dashboard-state-graph" class=""></div>
                                 </div>
 
                             </div>
@@ -1633,7 +1633,7 @@
                     <table class="table lms_table_active3 table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">title</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">View / Download</th>
                             </tr>
