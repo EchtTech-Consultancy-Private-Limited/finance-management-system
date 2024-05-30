@@ -49,6 +49,11 @@
       width: 33.33333333% !important;
    }
 
+   
+.special-card-w-44 {
+   width: 41.66666667%;
+}
+
    .user_crm_wrapper .special-card .single_crm {
       min-height: 80px;
       margin-top: 35px;
@@ -109,6 +114,10 @@
    .financial-card-w .expenditure-bar-chart-box-child2 span.number {
       margin-right: 0px !important;
    }
+
+   /* .d-none-lg {
+    display: none;
+} */
 
 }
 
