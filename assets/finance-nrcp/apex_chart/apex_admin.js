@@ -528,7 +528,6 @@ Highcharts.chart('admin-dashboard-Average-Login-Hours',  {
     ).then(response => response.json());
  
  
- 
     Highcharts.mapChart('integrated-dashboard-india-map-admin', {
         chart: {
             map: topology,
@@ -583,82 +582,124 @@ Highcharts.chart('admin-dashboard-Average-Login-Hours',  {
  })();
  
 
- 
-  Highcharts.chart('integrated-dashboard-program-wise-expenditure', {
-   chart: {
-       type: 'column'
-   },
-   title: {
-       text: ''
-   },
-   subtitle: {
-       text: ''
-   },
-   xAxis: {
-       type: 'category',
-       labels: {
-           autoRotation: [-45, -45],
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   },
-   exporting: {
-      enabled: false
-  },
-  credits: {
-   enabled: false
-},
-   yAxis: {
-       min: 0,
-       title: {
-           text: 'Values'
-       }
-   },
-   legend: {
-       enabled: false
-   },
-   tooltip: {
-       pointFormat: ''
-   },
-   series: [{
-       name: '',
-       colors: [
-           '#399def', '#3ebbf0', '#35c3e8', '#2bc9dc', '#20cfe1', '#16d4e6',
-           '#0dd9db', '#03dfd0'
-       ],
-       colorByPoint: true,
-       groupPadding: 0,
-       data: [
-           ['2024-25', 4500],
-           ['2022-23', 800],
-           ['2021-22', 700],
-           ['2020-21', 600],
-           ['2019-20', 3600],
-           ['2018-19', 4100],
-           ['2017-18', 3800],
-           
-       ],
-       dataLabels: {
-           enabled: false,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-         //   format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   }]
-});
-
-
 // Program wise Unspent Balance Line Chart
 Highcharts.chart('integrated-dashboard-unspent-Sessions', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: ''
+    },
+    credits: {
+       enabled: false
+   },
+    exporting: {
+     enabled: false
+    },
+   
+    xAxis: {
+        categories: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '01', '02']
+    },
+    yAxis: {
+        title: {
+            text: ''
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: true
+        }
+    },
+    series: [{
+        name: '2021/11',
+        data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
+    }]
+ });
+
+
+ var options = {
+    series: [40, 30, 20, 10],
+    chart: {
+       height: 300,
+       type: 'donut',
+       offsetY: 0
+    },
+    plotOptions: {
+ 
+       radialBar: {
+          startAngle: -90,
+          endAngle: 90,
+          hollow: {
+             margin: 0,
+             size: "50%"
+          },
+          dataLabels: {
+             showOn: "never",
+             
+             name: {
+                show: false,
+                fontSize: "13px",
+                fontWeight: "700",
+                offsetY: -5,
+                color: ["#000000", "#E5ECFF"],
+             },
+             value: {
+                color: ["#000000", "#E5ECFF"],
+                fontSize: "30px",
+                fontWeight: "700",
+                offsetY: 0,
+                show: false
+             }
+          },
+          track: {
+             background: ["#f79646", "#00b050"],
+             strokeWidth: '100%'
+          }
+       }
+    },
+    colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb"],
+    stroke: {
+       lineCap: "round",
+    },
+ 
+ 
+    labels: ["NOHPPCZ-RCs", "NOHPPCZ-SSS", "NRCP", "PPCL"],
+    legend: {
+       show: true,
+       position: 'bottom',
+       fontSize: '12px',
+    //    height: '100px',
+       align:'center',
+       gap:'20px', 
+       offsetY: 0,
+       labels: {
+          colors: ["#000000", "#E5ECFF"],
+       },
+       markers: {
+          width: 12,
+          height: 12,
+          radius: 6,
+       }
+    }
+ };
+ var in_dashboard7 = new ApexCharts(document.querySelector("#admin-dashboard-calls-qtr"), options);
+ in_dashboard7.render();
+
+ function show1(){
+    $("#admin-dashboard-Months-bar").toggleClass("d-none");
+    $("#admin-dashboard-Months-pie").toggleClass("d-none");  
+
+  }
+  function show2(){   
+        $("#admin-dashboard-Months-bar").toggleClass("d-none");
+        $("#admin-dashboard-Months-pie").toggleClass("d-none");   
+  }
+
+
+  Highcharts.chart('admin-dashboard-Months-pie', {
     chart: {
         type: 'line'
     },
@@ -677,7 +718,7 @@ Highcharts.chart('integrated-dashboard-unspent-Sessions', {
     },
     yAxis: {
         title: {
-            text: 'Temperature (°C)'
+            text: ''
         }
     },
     plotOptions: {
@@ -685,17 +726,61 @@ Highcharts.chart('integrated-dashboard-unspent-Sessions', {
             dataLabels: {
                 enabled: true
             },
-            enableMouseTracking: false
+            enableMouseTracking: true
         }
     },
     series: [{
-        name: 'Reggane',
-        data: [16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-            22.0, 17.8]
-    }, {
-        name: 'Tallinn',
-        data: [-2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5,
-            2.0, -0.9]
+        name: '2021/11',
+        data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
     }]
  });
+
  
+ Highcharts.chart('admin-dashboard-Months-bar', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    credits: {
+       enabled: false
+   },
+    exporting: {
+     enabled: false
+    },
+   
+    // xAxis: {
+    //     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    // },
+    // yAxis: {
+    //     title: {
+    //         text: ''
+    //     }
+    // },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: true
+        }
+    },
+    xAxis: {
+        categories: [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+            'Oct', 'Nov', 'Dec'
+        ]
+    },
+    series: [{
+        type: 'column',
+        name: 'Unemployed',
+        borderRadius: 5,
+        colorByPoint: true,
+        data: [
+            5412, 4977, 4730, 4437, 3947, 3707, 4143, 3609,
+            3311, 3072, 2899, 2887
+        ],
+        showInLegend: false
+    }]
+ });
