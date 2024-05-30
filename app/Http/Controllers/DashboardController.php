@@ -12,6 +12,7 @@ use App\Models\SOEUCFormCalculatin;
 use App\Models\SOEUCUploadForm;
 use App\Models\City;
 use Illuminate\Support\Facades\DB;
+use App\Models\InstituteProgram;
 
 class DashboardController extends Controller
 {
@@ -33,6 +34,7 @@ class DashboardController extends Controller
         }else{
             $file = 'institute-user.dashboard';
         }
+        $institutePrograms = InstituteProgram::get();
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
             ->where('financial_year', date('Y'))
             ->get();
@@ -84,7 +86,7 @@ class DashboardController extends Controller
                 $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
             }
-        return view($file, compact('totalArray','sorUcLists'));
+        return view($file, compact('totalArray','sorUcLists','institutePrograms'));
     }
 
     public function instituteFilterDdashboard(Request $request)
@@ -145,10 +147,33 @@ class DashboardController extends Controller
      */
     public function nationalFilterDdashboard(Request $request)
     {
-        $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
-            ->where('financial_year', $request->financial_year)
-            ->get();
+        $query = SOEUCForm::with('states', 'SoeUcFormCalculation');
+        if ($request->has('financial_year') && $request->financial_year) {
+            $query->where('financial_year', $request->financial_year);
+        }
+        if ($request->has('program_wise') && $request->program_wise) {
+            $query->where('institute_program_id', $request->program_wise);
+        }
+        // number of percentage program wise
+        $institutePrograms = InstituteProgram::get();
+        $programNames = [];
+        $programPercentages = [];
+        $programDetails = [];
+        $numberCount = SOEUCForm::count();
+        foreach($institutePrograms as $key => $instituteProgram){
+            $programCount = SOEUCForm::where('institute_program_id', $instituteProgram->id)->count();
+            $programPercentage = $programCount / $numberCount * 100;
+            $programNames[] = $instituteProgram->name . '-' . $instituteProgram->code. '-' . $instituteProgram->count;
+            $programPercentages[] = $programPercentage;
+        }
+        $programDetails[] = [
+                'program_names' => $programNames,
+                'program_percentages' => $programPercentages,
+            ];
+        // End number of percentage program wise
 
+        $dataForms = $query->get();
+        
         $finalArray = [];
         foreach ($dataForms as $dataForm) {
             $grandTotalGiaReceived = 0;
@@ -189,7 +214,7 @@ class DashboardController extends Controller
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
-        return response()->json(['totalArray'=>$totalArray], 200);
+        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails], 200);
     }
 
     /**

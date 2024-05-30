@@ -8,22 +8,25 @@ $(document).ready(function(){
             'financial_year': new Date().getFullYear()
         },
         success: function(data) {
+            var programDetails = data.programDetails[0];
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails);         
         }
     });
 });
 
-$(document).on('change', '#national-user-fy', function() {
-    let financialYear = $(this).val();
+$(document).on('change', '.national_user_card', function() {
+    let financialYear = $('#national-user-fy').find(":selected").val();
+    const programWise = $('#national-program-wise').find(":selected").val();
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-user/filter-dashboard",
+        url: BASE_URL + "national-users/filter-dashboard",
         data: {
-            'financial_year': financialYear
+            'financial_year': financialYear,
+            'program_wise' : programWise
         },
         success: function(data) {     
             $("#national-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
@@ -31,16 +34,17 @@ $(document).on('change', '#national-user-fy', function() {
             $("#national-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
             $("#national-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
             $("#national-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
+            var programDetails = data.programDetails[0];
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails);         
         }
     });
 });
 
-function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance)
+function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails)
 {
     // Total Expenditure in Cr.
     Highcharts.chart('national-total-expenditure-cr', {
@@ -65,7 +69,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: null
         },
         subtitle: {
-            text: '85% <br> Expenditure',
+            text: percentageExpenditure + ' %<br> Expenditure',
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -103,76 +107,11 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             name: '',
             innerSize: '60%',
             data: [
-                ['', 85],
-                ['', 15]
+                ['', totalExpenditure],
+                ['', totalUnspentBalance]
             ]
         }]
     });
-    
-    // Highcharts.chart('national-total-expenditure-cr', {
-    //     chart: {
-    //         height: 200,
-    //         plotBackgroundColor: null,
-    //         plotBorderWidth: 0,
-    //         plotShadow: false
-    //     },
-    //     credits: {
-    //         enabled: false
-    //     },
-    //     exporting: {
-    //      enabled: false
-    //   },
-      
-    //     title: {
-    //         text: percentageExpenditure + '% <br>Expenditure ',
-    //         align: 'center',
-    //         verticalAlign: 'middle',
-    //         y: 60,
-    //         style: {
-    //             fontSize: '1.1em'
-    //         }
-    //     },
-    //     accessibility: {
-    //         point: {
-    //             valueSuffix: '%'
-    //         }
-    //     },
-    //     plotOptions: {
-    //         series: {
-    //             borderWidth: 0,
-    //             colorByPoint: true,
-    //             type: 'pie',
-    //             size: '100%',
-    //             innerSize: '60%',
-    //             dataLabels: {
-    //                 enabled: true,
-    //                 crop: false,
-    //                 distance: '-10%',
-    //                 style: {
-    //                     fontWeight: 'bold',
-    //                     fontSize: '16px'
-    //                 },
-    //                 connectorWidth: 0
-    //             }
-    //         }
-    //     },
-    //     colors: ['#b64926', '#F8C4B4',],
-    //     data: [
-      
-    //         ['', 17],
-    //         ['', 83],
-            
-    //     ],
-    //     series: [{
-    //         type: 'pie',
-    //         // name: 'Expenditure',
-    //         innerSize: '60%',
-    //         // data: [
-    //         //     ['E', totalExpenditure],
-    //         //     ['U', totalUnspentBalance]
-    //         // ]
-    //     }]
-    // });
     // Total Fund unspent in Cr.
     Highcharts.chart('national-total-unspent-cr', {
         chart: {
@@ -192,7 +131,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
       
         subtitle: {
-            text: '15% <br> Unspent',
+            text: percentageUnspentBalance + '% <br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -231,68 +170,13 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             name: '',
             innerSize: '60%',
             data: [
-                ['', 15],
-                ['', 85],
+                ['', totalUnspentBalance],
+                ['', totalExpenditure],
                 
                
             ]
         }]
      });
-
-    // Highcharts.chart('national-total-unspent-cr', {
-    //     chart: {
-    //         height: 200,
-    //         plotBackgroundColor: null,
-    //         plotBorderWidth: 0,
-    //         plotShadow: false
-    //     },
-    //     title: {
-    //         text: percentageUnspentBalance + '% <br>Unspent ',
-    //         align: 'center',
-    //         verticalAlign: 'middle',
-    //         y: 60,
-    //         style: {
-    //             fontSize: '1.1em'
-    //         }
-    //     },
-    //     credits: {
-    //         enabled: false
-    //     },
-    //     exporting: {
-    //      enabled: false
-    //   },
-      
-    //     accessibility: {
-    //         point: {
-    //             valueSuffix: '%'
-    //         }
-    //     },
-    //     plotOptions: {
-    //         pie: {
-    //             dataLabels: {
-    //                 enabled: true,
-    //                 distance: -50,
-    //                 style: {
-    //                     fontWeight: 'bold',
-    //                     color: 'white'
-    //                 }
-    //             },
-    //             startAngle: -90,
-    //             endAngle: 90,
-    //             center: ['50%', '75%'],
-    //             size: '170%'
-    //         }
-    //     },
-    //     series: [{
-    //         type: 'pie',
-    //         // name: 'Expenditure',
-    //         innerSize: '50%',
-    //         data: [
-    //             ['E', totalUnspentBalance],
-    //             ['U', totalExpenditure]
-    //         ]
-    //     }]
-    // });
 
     // expenditure chart
     Highcharts.chart('national-total-expenditure', {
@@ -314,7 +198,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
       
         subtitle: {
-            text: '15% <br> Unspent',
+            text: percentageExpenditure + '% <br> Expenditure',
             align: 'center',
             verticalAlign: 'middle',
             y: 50,
@@ -353,8 +237,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             name: '',
             innerSize: '60%',
             data: [
-                ['', 85],
-                ['', 15],
+                ['', totalExpenditure],
+                ['', totalUnspentBalance],
                 
                
             ]
@@ -379,7 +263,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
       
         subtitle: {
-            text: '15% <br> Unspent',
+            text: percentageUnspentBalance + '% <br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
             y: 50,
@@ -418,8 +302,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             name: '',
             innerSize: '60%',
             data: [
-                ['', 15],
-                ['', 85],
+                ['', totalUnspentBalance],
+                ['', totalExpenditure],
                 
                
             ]
@@ -557,114 +441,72 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }]
      });
 
-    // Highcharts.chart('national-total-expenditure', {
-    //     chart: {
-    //         height: 180,
-    //         plotBackgroundColor: null,
-    //         plotBorderWidth: 0,
-    //         plotShadow: false
-    //     },
-    //     title: {
-    //         text: percentageExpenditure + '% <br>Expenditure ',
-    //         align: 'center',
-    //         verticalAlign: 'middle',
-    //         y: 60,
-    //         style: {
-    //             fontSize: '1.1em'
-    //         }
-    //     },
-    //     credits: {
-    //         enabled: false
-    //     },
-    //     exporting: {
-    //      enabled: false
-    //   },
-      
-    //     // tooltip: {
-    //     //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    //     // },
-    //     accessibility: {
-    //         point: {
-    //             valueSuffix: '%'
-    //         }
-    //     },
-    //     plotOptions: {
-    //         pie: {
-    //             dataLabels: {
-    //                 enabled: true,
-    //                 distance: -50,
-    //                 style: {
-    //                     fontWeight: 'bold',
-    //                     color: 'white'
-    //                 }
-    //             },
-    //             startAngle: -90,
-    //             endAngle: 90,
-    //             center: ['50%', '75%'],
-    //             size: '170%'
-    //         }
-    //     },
-    //     series: [{
-    //         type: 'pie',
-    //         // name: 'Expenditure',
-    //         innerSize: '50%',
-    //         data: [
-    //             ['E', totalExpenditure],
-    //             ['U', totalUnspentBalance]
-    //         ]
-    //     }]
-    // });
-
-    // unspects balance chart
-    // Highcharts.chart('national-total-fund-unspent', {
-    //     chart: {
-    //         height: 200,
-    //         plotBackgroundColor: null,
-    //         plotBorderWidth: 0,
-    //         plotShadow: false
-    //     },
-    //     title: {
-    //         text: percentageUnspentBalance + '% <br>Unspent ',
-    //         align: 'center',
-    //         verticalAlign: 'middle',
-    //         y: 60,
-    //         style: {
-    //             fontSize: '1.1em'
-    //         }
-    //     },
-    //     // tooltip: {
-    //     //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    //     // },
-    //     accessibility: {
-    //         point: {
-    //             valueSuffix: '%'
-    //         }
-    //     },
-    //     plotOptions: {
-    //         pie: {
-    //             dataLabels: {
-    //                 enabled: true,
-    //                 distance: -50,
-    //                 style: {
-    //                     fontWeight: 'bold',
-    //                     color: 'white'
-    //                 }
-    //             },
-    //             startAngle: -90,
-    //             endAngle: 90,
-    //             center: ['50%', '75%'],
-    //             size: '170%'
-    //         }
-    //     },
-    //     series: [{
-    //         type: 'pie',
-    //         // name: 'Expenditure',
-    //         innerSize: '50%',
-    //         data: [
-    //             ['U', totalUnspentBalance],
-    //             ['E', totalExpenditure]
-    //         ]
-    //     }]
-    // });
+    // Overall Program Expenditure Amount
+    var options = {
+        series: programDetails.program_percentages,
+        chart: {
+           height: 212,
+           type: 'donut',
+           offsetY: 0
+        },
+        plotOptions: {
+     
+           radialBar: {
+              startAngle: -90,
+              endAngle: 90,
+              hollow: {
+                 margin: 0,
+                 size: "50%"
+              },
+              dataLabels: {
+                 showOn: "never",
+                 
+                 name: {
+                    show: false,
+                    fontSize: "13px",
+                    fontWeight: "700",
+                    offsetY: -5,
+                    color: ["#000000", "#E5ECFF"],
+                 },
+                 value: {
+                    color: ["#000000", "#E5ECFF"],
+                    fontSize: "30px",
+                    fontWeight: "700",
+                    offsetY: -40,
+                    show: false
+                 }
+              },
+              track: {
+                 background: ["#f79646", "#00b050"],
+                 strokeWidth: '100%'
+              }
+           }
+        },
+        colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],   
+        stroke: {
+           lineCap: "round",
+        },
+     
+     
+        labels: programDetails.program_names,
+        legend: {
+           show: true,
+           position: 'right',
+           fontSize: '13px',
+           height: '100px',
+           gap:'20px', 
+           offsetY: 10,
+           labels: {
+              colors: ["#000000", "#E5ECFF"],
+           },
+           markers: {
+              width: 12,
+              height: 12,
+              radius: 6,
+           }
+        }
+     };
+     var in_dashboard7 = new ApexCharts(document.querySelector("#overall-Program-expenditure-amount"), options);
+     in_dashboard7.render();
 }
 // end national dashboard
