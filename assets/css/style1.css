@@ -12942,3 +12942,10 @@ span.country-list-content {
 .action_btn:hover i.fas.fa-trash{
       color: #fff !important;
 }
+
+.data-driven .expenditure-bar-chart-box-child2 br{
+    display: none;
+   }
+   th{
+    text-align: center;
+   }

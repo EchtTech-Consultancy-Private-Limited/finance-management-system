@@ -1,3 +1,4 @@
+
 @media (min-width:768px) and (max-width:1600px) {
    .col-md-8.custom-grid {
       width: 100%;
@@ -17,9 +18,10 @@
    }
 
    .custom-grid .col-md-2 {
-      width: 25%;
+      width: 20%;
       margin-bottom: 15px;
-   }
+      padding-right: 0;
+  }
 
    .custom-grid2 .col-md-2,
    .custom-grid2 .col-md-3 {
@@ -66,10 +68,34 @@
    }
 
    .expenditure-bar-chart-box-child2 h3 {
-      font-size: 19px !important;
+      font-size: 15px !important;
    }
-}
 
+   .data-driven .expenditure-bar-chart-box-child1 {
+      width: 55px;
+      height: 55px;
+  }
+  .data-driven .expenditure-bar-chart-box-child2 span.number {
+   font-size: 16px;
+   font-weight: bold;
+   /* text-shadow: 2px 1px black; */
+}
+}
+@media (min-width:768px) and (max-width:1350px) {
+   .data-driven .expenditure-bar-chart-box-child2 {
+      width: calc(100% - 44px);
+      gap: 9px;
+      margin-left: 5px;
+  }
+  .data-driven .expenditure-bar-chart-box-child2 br{
+   display: block;
+  }
+  .data-driven .expenditure-bar-chart-box-child2 h3 {
+   font-size: 15px;
+   text-shadow: 1px 1px #6a6a6a;
+   margin-bottom: 0px;
+}
+}
 @media (min-width:1600px) {
 
    .gauge-meter {

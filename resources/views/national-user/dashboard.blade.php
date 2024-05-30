@@ -1140,7 +1140,7 @@
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NOHPPCZ-RCs</h3>
+                                <h3>NOHPPCZ-<br>RCs</h3>
                                 <span class="number">35%</span>
                             </div>
                         </div>
@@ -1151,7 +1151,7 @@
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NOHPPC-SSS</h3>
+                                <h3>NOHPPC-<br>SSS</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
@@ -1162,7 +1162,7 @@
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NRCP-Lab</h3>
+                                <h3>NRCP-<br>Lab</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
@@ -1173,7 +1173,7 @@
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>PPCL-Lab</h3>
+                                <h3>PPCL-<br>Lab</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
