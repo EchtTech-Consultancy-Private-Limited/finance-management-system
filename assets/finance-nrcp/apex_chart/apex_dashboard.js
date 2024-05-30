@@ -1298,6 +1298,17 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
    title: {
        text: ''
    },
+   subtitle: {
+    useHTML: true,
+    text: '<div style="text-align:center;">Net Profit Margin</div>',
+    align: 'center',
+    verticalAlign: 'bottom',
+    y: 20, // Adjusted position
+    style: {
+        fontSize: '13px',
+        color: '#000'
+    }
+},
    credits: {
       enabled: false
   },
@@ -1395,6 +1406,17 @@ Highcharts.chart('integrated-dashboard-gauge2',  {
    title: {
        text: ''
    },
+   subtitle: {
+    useHTML: true,
+    text: '<div style="text-align:center;">Gross Profit margin</div>',
+    align: 'center',
+    verticalAlign: 'bottom',
+    y: 20, // Adjusted position
+    style: {
+        fontSize: '13px',
+        color: '#000'
+    }
+},
    credits: {
       enabled: false
   },
@@ -1492,6 +1514,17 @@ Highcharts.chart('integrated-dashboard-gauge3',  {
    title: {
        text: ''
    },
+   subtitle: {
+    useHTML: true,
+    text: '<div style="text-align:center;">Burn Rate</div>',
+    align: 'center',
+    verticalAlign: 'bottom',
+    y: 20, // Adjusted position
+    style: {
+        fontSize: '13px',
+        color: '#000'
+    }
+},
    credits: {
       enabled: false
   },
@@ -1589,6 +1622,17 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
    title: {
        text: ''
    },
+   subtitle: {
+    useHTML: true,
+    text: '<div style="text-align:center;">Sales Growth</div>',
+    align: 'center',
+    verticalAlign: 'bottom',
+    y: 20, // Adjusted position
+    style: {
+        fontSize: '13px',
+        color: '#000'
+    }
+},
    credits: {
       enabled: false
   },
@@ -3254,8 +3298,19 @@ Highcharts.chart('integrated-dashboard-state-graph', {
        type: 'column'
    },
    title: {
-       text: ''
+   text: ''
    },
+//    subtitle: {
+//     useHTML: true,
+//     text: '<div style="text-align:center;">Expenditure</div>',
+//     align: 'center',
+//     verticalAlign: 'bottom',
+//     y: 50, // Adjusted position
+//     style: {
+//         fontSize: '13px',
+//         color: '#000'
+//     }
+// },
    credits: {
       enabled: false
   },
@@ -3282,13 +3337,13 @@ Highcharts.chart('integrated-dashboard-state-graph', {
        }
    },
    legend: {
-       enabled: false
+       enabled: true
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'State',
+       name: 'Expenditure',
        colors: [
            '#9b20d9', '#9215ac', '#861ec9', '#7a17e6', '#7010f9', '#691af3',
            '#6225ed', '#5b30e7', '#533be1', '#4c46db', '#4551d5', '#3e5ccf',
@@ -3773,12 +3828,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
            fontSize: '16px'
        }
    },
-   credits: {
-       enabled: false
-   },
-   exporting: {
-       enabled: false
-   },
+
    subtitle: {
        useHTML: true,
        text: '<div style="text-align:center;">% of UC not Received</div>',
@@ -3822,7 +3872,13 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
                ['', 80],
            ]
        }
-   ]
+   ],
+   credits: {
+    enabled: false
+},
+exporting: {
+    enabled: false
+}
 });
 
 Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {

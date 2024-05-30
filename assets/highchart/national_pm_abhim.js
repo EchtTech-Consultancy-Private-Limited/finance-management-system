@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ['', 85]
     ];
     
-    let interest_earned_cy_nohppczRC_subtitle1 = '15% <br> Expenditure';
+    let interest_earned_cy_nohppczRC_subtitle1 = 'Interest <br> Earned';
 
     initializePieChart('national_interest_earned_cy_percentage_nohppcz_pm_abhiim', interest_earned_cy_nohppczRC_subtitle1, interest_earned_cy_nohppczRC, color1);
     // interest returned dd in percente
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ['', 90]
     ];
     
-    let interest_dd_nohppczRC_subtitle1 = '10% <br> Expenditure';
+    let interest_dd_nohppczRC_subtitle1 = 'Interest<br>  DD Returned';
 
     initializePieChart('national_dd_percentage_nohppcz_pm_abhiim', interest_dd_nohppczRC_subtitle1, interest_dd_nohppczRC, color2);
 });
