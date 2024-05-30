@@ -501,8 +501,6 @@
                                     class="border gauge-meter rounded mb-3 received-chart"></div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -520,7 +518,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive-sm pt-3">
-                        <table class="table table-bordered">
+                        <table id="datatable" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -532,22 +530,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
-                                    <td>Display Selected Name</td>
-                                    <td>Display Selected Financial Year</td>
-                                    <td>View UC</td>
-                                    <td>Display submission date</td>
-                                    <td><span class="approve badge bg-success">Approved</span></td>
-                                    <td>Remarks</td>
+                                    <td>{{ @$sorUcList->users->institute_name }}</td>
+                                    <td>{{ @$sorUcList->year }}</td>
+                                    <td>
+                                        @if ($sorUcList->file)
+                                        <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                            <span>Download ({{ $sorUcList->file_size }})</span>
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                    <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
+                                    <td><span class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</span></td>
+                                    <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Display Selected Name</td>
-                                    <td>Display Selected Financial Year</td>
-                                    <td>View UC</td>
-                                    <td>Display submission date</td>
-                                    <td><span class="rejected badge bg-danger">Rejected</span></td>
-                                    <td>Remarks</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
