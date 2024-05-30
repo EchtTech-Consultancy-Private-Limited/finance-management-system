@@ -90,4 +90,10 @@
    .col-md-6.col-lg-4.choose-financial-year-select {
       width: 50%;
   }
+  .row.state-driven{
+   flex-wrap: wrap !important;
+  }
+  .row.state-driven .col-graph {
+   width: 33.3333333%;
+}
 }
