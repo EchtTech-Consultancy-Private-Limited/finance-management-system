@@ -156,28 +156,30 @@
                     <div class="main-title text-white ps-3 pr-3">
                         <div class="row">
                             <div class="col-md-4">
-                              <div class="d-flex align-items-center">
-                                <label for="" class="text-nowrap me-3 font-16"><b>Program</b></label>
-                                <select name="" class="form-control">
-                                    <option value="">Select Program</option>
-                                    <option value="">NOHPPCZ-RC's</option>
-                                    <option value="">NOHPPCZ-SSS</option>
-                                    <option value="">NRCP </option>
-                                    <option value="">PPCL</option>                               
-                                </select>
-                              </div>
+                                <div class="d-flex align-items-center">
+                                    <label for="" class="text-nowrap me-3 font-16"><b>Program</b></label>
+                                    <select name="" class="form-control">
+                                        <option value="">Select Program</option>
+                                        <option value="">NOHPPCZ-RC's</option>
+                                        <option value="">NOHPPCZ-SSS</option>
+                                        <option value="">NRCP </option>
+                                        <option value="">PPCL</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="col-md-8">
                                 <div class="radio-group float-right">
-                                    <input type="radio" id="Pie" name="Hit_Months" value="Pie" checked onclick="show1();">
+                                    <input type="radio" id="Pie" name="Hit_Months" value="Pie" checked
+                                        onclick="show1();">
                                     <label for="Pie"><img src="{{ asset('assets/img/pie.png') }}" alt=""></label>
-                                    <input type="radio" id="Bar" name="Hit_Months" value="Bar" class="ms-3" onclick="show2();">
+                                    <input type="radio" id="Bar" name="Hit_Months" value="Bar" class="ms-3"
+                                        onclick="show2();">
                                     <label for="Bar"><img src="{{ asset('assets/img/bar-chart.png') }}" alt=""></label>
                                 </div>
                             </div>
 
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -186,20 +188,20 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="white_card_body">
-                         <div id="admin-dashboard-calls-qtr" class="mt-5 mb-5"></div>
+                        <div id="admin-dashboard-calls-qtr" class="mt-5 mb-5"></div>
                     </div>
                 </div>
 
                 <div class="col-md-7">
-                     <div class="white_card_body">
-                         <div id="admin-dashboard-Months-pie" class="mt-5 mb-5"></div>
-                         <div id="admin-dashboard-Months-bar" class="mt-5 mb-5 d-none"></div>
-                     </div>
+                    <div class="white_card_body">
+                        <div id="admin-dashboard-Months-pie" class="mt-5 mb-5"></div>
+                        <div id="admin-dashboard-Months-bar" class="mt-5 mb-5 d-none"></div>
+                    </div>
                 </div>
             </div>
 
 
-           
+
         </div>
     </div>
 
