@@ -45,7 +45,7 @@ body {
 input:hover,
 input:focus {
     outline: none !important;
-    box-shadow: 0 0 0 0 transparent !important
+    /* box-shadow: 0 0 0 0 transparent !important */
 }
 
 :focus {
@@ -3001,8 +3001,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .action_btn {
-    width: 32px;
-    height: 32px;
+    /* width: 32px;
+    height: 32px; */
     border-radius: 6px;
     background: 0 0;
     line-height: 30px;
@@ -5279,12 +5279,12 @@ body::-webkit-scrollbar {
 }
 
 .QA_section .QA_table .table thead th:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 0px;
     border-left: 1px solid #e5ecff !important
 }
 
 .QA_section .QA_table .table thead th:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 0px 0;
     border-right: 1px solid #e5ecff !important
 }
 
@@ -12437,6 +12437,7 @@ ul.bullet-list li {
     /* padding: 15px; */
     border-radius: 60px 0 0 60px;
     color: #fff;
+    align-items: center;
 }
 .expenditure-bar-chart-box-child1 {
     width: 90px;
@@ -12559,25 +12560,53 @@ ul.bullet-list li {
     background:  #92d050;
 }
 
-.arrow{
+.arrow {
     position: relative;
-    /* width: calc(54px); */
+    width: 20px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow-left::before {
+    content: "";
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: url(../img/arrow.png) no-repeat center / cover;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  
+  .number {
+    z-index: 1;
+    color: white;
+    line-height: 4px;
+    font-size: 13px;
+    
+  }
+  
+/* .arrow{
+    position: relative;
+    width: calc(54px);
     background-image: url(../img/arrow.png);
     height: 40px;
     line-height: 32px;
     text-align: center;
     color: #fff;
-    /* transform: rotate(90deg); */
+    transform: rotate(90deg);
     display: inline-block;
     margin-right: 10px;
-}
+} */
 
   .country-overall-data ul li{
     display: flex;
-    margin: 9px 0;
-    border-bottom: 1px solid #bbb;
-    padding: 0 0 10px 0px;
-    align-items: center;
+    margin: 0px 0;
+    /* border-bottom: 1px solid #bbb; */
+    padding: 0 0 0px 0px;
+    align-items: baseline;
   }
   
   .country-overall-data ul li:last-child{
@@ -12609,8 +12638,8 @@ ul.bullet-list li {
 } */
 
 .country-overall-data span.state-data-total {
-    width: calc(52px);
-    height: calc(40px);
+    width: calc(31px);
+    height: calc(25px);
     background: #f6d0cc;
     display: flex;
     align-items: center;
@@ -12619,12 +12648,12 @@ ul.bullet-list li {
     margin-left: 5px;
 }
 
-span.arrow.arrow-left::before {
+/* span.arrow.arrow-left::before {
     content: '';
     width: 30px;
     height: 0;
     display: block;
-}
+} */
 
 .error {
     color: red;
@@ -12789,6 +12818,11 @@ i.fas.fa-file-pdf {
 
 span.country-list-content {
     width: calc(100% - 56px);
+    border: 1px solid #e84c22;
+    padding: 2px 4px;
+    margin-top: -10px;
+    border-radius: 0px 7px 7px 0px;
+    height: 25px;
 }
 
 .col-md-12.overlall-expenditure .col-md-4 {
@@ -12810,6 +12844,35 @@ span.country-list-content {
     color: #fff;
 }
 
+.data-driven .expenditure-bar-chart-box-child2{
+    display: block;
+}
+
+.row.state-driven .col-graph {
+    width: 20%;
+ }
+
+ td.pending a{
+    background-color: #f76b2e;
+    text-transform: capitalize;
+    color: #fff;
+ }
+
+ td.approved a{
+    background-color: #00a700;
+    color: #fff;
+    text-transform: capitalize;
+ }
+
+ td.not-approved a{
+    background-color: red;
+    color: #fff;
+    text-transform: capitalize;
+ }
+
+ td.approved a, td.not-approved a, td.pending a{
+    padding: 0 10px;
+ }
 .user_crm_wrapper .special-card .single_crm{
     min-height: 180px;
     display: flex;
