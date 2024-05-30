@@ -42,7 +42,7 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -54,7 +54,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
@@ -266,7 +266,7 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col-lg-2"></div>
+                
                 <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
@@ -486,7 +486,7 @@
                                 <table class="table lms_table_active3 table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">title</th>
+                                            <th scope="col">Title</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">View / Download</th>
                                         </tr>

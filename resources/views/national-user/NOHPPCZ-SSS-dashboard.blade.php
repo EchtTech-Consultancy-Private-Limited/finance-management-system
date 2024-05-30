@@ -378,7 +378,7 @@
                 <div class="row align-items-center justify-content-between flex-wrap">
                     <div class="col-lg-8">
                         <div class="main-title">
-                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ SSS</h3>
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
@@ -486,7 +486,7 @@
                                 <table class="table lms_table_active3 table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">title</th>
+                                            <th scope="col">Title</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">View / Download</th>
                                         </tr>

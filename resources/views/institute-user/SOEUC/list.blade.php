@@ -45,8 +45,8 @@
                                 <td>{{ ucwords(@$soeucForm->states->name) }}</td>
                                 <td>{{ @$soeucForm->month }}</td>
                                 <td>{{ @$soeucForm->financial_year }}</td>
-                                <td>
-                                    <a href="#" class="action_btn mr_10" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Not-Approved' : 'Pending') }}</a>
+                                <td class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'not-approved' : 'pending') }}">
+                                    <a href="#" class="action_btn" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Not-Approved' : 'Pending') }}</a>
                                     <div class="modal fade" id="soe_uc_form_{{ $soeucForm->id }}" tabindex="-1" role="dialog" aria-labelledby="soe_uc_form_{{ $soeucForm->id }}Title"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -86,7 +86,7 @@
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('institute-user.soe-uc-edit',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn"> <i class="fas fa-trash text-danger"></i> </a>
                                     </div>
                                 </td>
                             </tr>
