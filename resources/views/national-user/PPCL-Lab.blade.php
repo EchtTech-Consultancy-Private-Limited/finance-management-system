@@ -15,10 +15,10 @@
     <div class="col-12">
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
-                <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -RC's Dashboard</h3>
+                <h3 class="f_s_25 f_w_700 dark_text mr_30">PPCL-Lab Dashboard</h3>
                 <ol class="breadcrumb page_bradcam mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-                    <li class="breadcrumb-item active">NOHPPCZ -RC's Dashboard</li>
+                    <li class="breadcrumb-item active">PPCL-Lab Dashboard</li>
                 </ol>
             </div>
             <div class="page_title_right">
@@ -378,7 +378,7 @@
                 <div class="row align-items-center justify-content-between flex-wrap">
                     <div class="col-lg-8">
                         <div class="main-title">
-                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                            <h3 class="m-0">Yearly SOE Expenditure under PPCL-Lab</h3>
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">

@@ -50,8 +50,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
     Highcharts.chart('national-total-expenditure-cr', {
         chart: {
             plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
+            // plotBorderWidth: 0,
+            // plotShadow: false,
             height: 250,
             margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
             spacingTop: 0,

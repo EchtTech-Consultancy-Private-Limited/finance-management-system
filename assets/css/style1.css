@@ -12965,3 +12965,9 @@ span.country-list-content {
       color: #fff !important;
 }
 
+.data-driven .expenditure-bar-chart-box-child2 br{
+    display: none;
+   }
+th{
+text-align: center;
+}
