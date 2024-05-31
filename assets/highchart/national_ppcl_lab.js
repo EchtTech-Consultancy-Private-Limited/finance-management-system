@@ -30,7 +30,7 @@ function initializePieChart(containerId, subtitleText, data, colors, chart_heigh
             text: subtitleText,
             align: 'center',
             verticalAlign: 'middle',
-            y: 20,
+            y: window.innerWidth>1300 && window.innerWidth<2200 ? 60 :20,
             style: {
                 fontSize: '16px',
                 color: '#000000'
