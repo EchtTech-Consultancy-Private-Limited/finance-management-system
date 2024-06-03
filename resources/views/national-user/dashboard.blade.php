@@ -921,34 +921,34 @@
 
                         <tr>
                             <td> National Institute of Medical Health and Neuro Science, Bangalore </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
                             <td> Infectious Disease and Beliaghata General Hospital, Kolkata </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
                             <td> Viral Research and Diagnostic Laboratory, GMC, Amritsar </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
-                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td > State Public Health and Clinical Laboratory, Trivandrum </td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
-                            <th>Total</th>
+                            <th class="text-center">Total</th>
                             <th>0</th>
                             <th>0</th>
                             <th>0</th>

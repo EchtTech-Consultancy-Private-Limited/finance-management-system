@@ -69,7 +69,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: null
         },
         subtitle: {
-            text: percentageExpenditure + ' %<br> Expenditure',
+            text: percentageExpenditure + '<br> Expenditure',
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -98,8 +98,6 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 endAngle: 90,
                 center: ['50%', '75%'],
                 size: '110%',
-                borderWidth: 0, // Remove border width to minimize space
-                shadow: false // Disable shadow to remove extra space
             }
         },
         series: [{
@@ -131,7 +129,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
       
         subtitle: {
-            text: percentageUnspentBalance + '% <br> Unspent',
+            text: percentageUnspentBalance + '<br> Unspent',
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
