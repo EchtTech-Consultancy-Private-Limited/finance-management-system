@@ -1,133 +1,482 @@
 
 // reusable function for highchart 
 
-function initializePieChart(containerId, subtitleText, data, colors, chart_height) {
-    let totalExpenitureMargin = window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
-    Highcharts.chart(containerId, {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
-            height: chart_height,
-            // margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
-            spacingTop: 0,
-            spacingBottom: 0,
-            spacingLeft: 0,
-            spacingRight: 0,
-            marginTop: totalExpenitureMargin,
-            
-        },
-        credits: {
-           enabled: false
-        },
-        exporting: {
-           enabled: false
-        },
-        title: {
-            text: null
-        },
-        subtitle: {
-            text: subtitleText,
-            align: 'center',
-            verticalAlign: 'middle',
-            y: window.innerWidth>1300 && window.innerWidth<2200 ? 60 :20,
-            style: {
-                fontSize: '16px',
-                color: '#000000'
-            }
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                colors: colors,
-                dataLabels: {
-                    enabled: true,
-                    distance: -50,
-                    style: {
-                        fontWeight: 'bold',
-                        color: 'white'
-                    }
-                },
-                startAngle: -90,
-                endAngle: 90,
-                center: ['50%', '75%'],
-                size: '110%',
-                borderWidth: 0, // Remove border width to minimize space
-                shadow: false // Disable shadow to remove extra space
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: '',
-            innerSize: '60%',
-            data: data
-        }]
-    });
-}
-// call the function for highchart
-document.addEventListener('DOMContentLoaded', function() {
-    let data1 = [
-        ['', 85],
-        ['', 15]
-    ];
-    let chart_height = 250;
-    let color1 = ['#00b050', '#f79646'];
-    let color2 = ['#558ed5', '#c6d9f1'];
-    let subtitle1 = '85% <br> Expenditure';
-// Total Fund unspent in Lakhs
-    initializePieChart('national-total-expenditure-lac-ppcl-lab', subtitle1, data1, color1, chart_height);
-    let unspent_data1 = [
-        ['', 15],
-        ['', 85]
-    ];
-    
-    let expenditure_percentage1 = '15% <br> Expenditure';
-
-    initializePieChart('national-total-unspent-lac-ppcl-lab', expenditure_percentage1, unspent_data1, color2, chart_height);
-
-    // total expenditure in percente
-    let expenditure_percentage_data1 = [
-        ['', 85],
-        ['', 15]
-    ];
-    
-    let expenditure_percentage1_subtitle1 = '85% <br> Expenditure';
-
-    initializePieChart('national_expenditure_percentage_nohppcz_ppcl_lab', expenditure_percentage1_subtitle1, expenditure_percentage_data1, color1);
-    // total fund in percente
-    let fund_unspent_nohppczRC_percentage_data1 = [
-        ['', 15],
-        ['', 85]
-    ];
-    let fund_unspent_nohppczRC_percentage_subtitle1 = '15% <br> Unspent';
-
-    initializePieChart('national_fund_unspent_percentage_nohppcz_ppcl_lab', fund_unspent_nohppczRC_percentage_subtitle1, fund_unspent_nohppczRC_percentage_data1, color2);
-    // total interest in percente
-    let interest_earned_cy_nohppczRC = [
-        ['', 15],
-        ['', 85]
-    ];
-    
-    let interest_earned_cy_nohppczRC_subtitle1 = 'Interest <br> Earned';
-
-    initializePieChart('national_interest_earned_cy_percentage_nohppcz_ppcl_lab', interest_earned_cy_nohppczRC_subtitle1, interest_earned_cy_nohppczRC, color1);
-    // interest returned dd in percente
-    let interest_dd_nohppczRC = [
-        ['', 10],
-        ['', 90]
-    ];
-    
-    let interest_dd_nohppczRC_subtitle1 = 'Interest <br> DD Returned';
-
-    initializePieChart('national_dd_percentage_nohppcz_ppcl_lab', interest_dd_nohppczRC_subtitle1, interest_dd_nohppczRC, color2);
-});
-
 // ****************************************************
   
+// **********************expenditure
+
+Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
+    chart: {
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: ` <div class="graph-title" style="color:#00b050; ">
+       85L
+    </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: 30,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    subtitle: {
+        text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                
+                <span>Expenditure</span>
+            </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: 60,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#00b050", "#f79646"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 85],
+                ["", 15],
+            ],
+        },
+    ],
+    });
+    
+    Highcharts.chart("national-total-unspent-lac-ppcl-lab", {
+    chart: {
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    
+    title: {
+        text: ` <div class="graph-title" style="color:#3a7ed3; ">
+        15L
+        </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: 30,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    
+    subtitle: {
+        text: `
+        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+            
+            <span>Unspent</span>
+        </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: 60,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    // tooltip: {
+    //     pointFormat: 'name: <b>highchart</b>'
+    // },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#558ed5", "#c6d9f1"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 15],
+                ["", 85],
+            ],
+        },
+    ],
+    });
+    
+    Highcharts.chart("national_expenditure_percentage_nohppcz_ppcl_lab", {
+    chart: {
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+        marginTop: totalExpenitureMargin,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: ` <div class="graph-title" style="color:#00b050; ">
+        85%
+        </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureTitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    
+    subtitle: {
+        text: `
+        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">  <span>Expenditure</span>    </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureSubtitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    // tooltip: {
+    //     pointFormat: 'name: <b>highchart</b>'
+    // },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#00b050", "#f79646"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 85],
+                ["", 15],
+            ],
+        },
+    ],
+    });
+    
+    Highcharts.chart("national_fund_unspent_percentage_nohppcz_ppcl_lab", {
+    chart: {
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+        marginTop: totalExpenitureMargin,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: ` <div class="graph-title" style="color:#3a7ed3; ">
+        15%
+        </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureTitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    
+    subtitle: {
+        text: `
+        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+            <span>Unspent</span>
+        </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureSubtitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    // tooltip: {
+    //     pointFormat: 'name: <b>highchart</b>'
+    // },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#558ed5", "#c6d9f1"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 15],
+                ["", 85],
+            ],
+        },
+    ],
+    });
+    Highcharts.chart("national_interest_earned_cy_percentage_nohppcz_ppcl_lab", {
+    chart: {
+        plotBackgroundColor: null,
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+        marginTop: totalExpenitureMargin,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: ` <div class="graph-title" style="color:#00b050; "> 10% </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureTitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    subtitle: {
+        text: `
+                <div class="graph-title" style="color:#00b050; "> <span>Interest Earned</span> </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureSubtitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    // tooltip: {
+    //     pointFormat: 'name: <b>highchart</b>'
+    // },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#00b050", "#f79646"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 10],
+                ["", 90],
+            ],
+        },
+    ],
+    });
+    
+    Highcharts.chart("national_dd_percentage_nohppcz_ppcl_lab", {
+    chart: {
+        plotBackgroundColor: null,
+        height: expenditureHeight,
+        margin: [0, 0, 0, 0],
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0,
+        marginTop: totalExpenitureMargin,
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: ` <div class="graph-title" style="color:#3a7ed3; ">10%</div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureTitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    subtitle: {
+        text: `
+        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px"> <span>Interest <br> DD Returned</span> </div>`,
+        align: "center",
+        verticalAlign: "middle",
+        y: expenditureSubtitleY,
+        style: {
+            fontSize: "16px",
+            color: "#000000",
+        },
+    },
+    // tooltip: {
+    //     pointFormat: 'name: <b>highchart</b>'
+    // },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#558ed5", "#c6d9f1"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "60%",
+            data: [
+                ["", 10],
+                ["", 90],
+            ],
+        },
+    ],
+    });
+
 //   percentage of uc recevied
 
 Highcharts.chart('nohppz_rc_chart_currently_UC_Received_ppcl_lab', {

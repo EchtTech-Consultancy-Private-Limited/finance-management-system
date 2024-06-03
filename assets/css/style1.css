@@ -12970,3 +12970,11 @@ table tr th:first-child{
 text-align: left;
 }
 
+tspan.graph-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+tspan.graph-title tspan{
+    font-size: 16px;
+    font-weight: 600;
+}

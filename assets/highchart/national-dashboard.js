@@ -66,10 +66,23 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null
+            text: ` <div class="graph-title" style="color:#00b050; ">
+            ${percentageExpenditure}
+        </div>`,
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 30,
+            style: {
+                fontSize: '16px',
+                color: '#000000'
+            }   
         },
         subtitle: {
-            text: percentageExpenditure + '<br> Expenditure',
+            text: `
+                <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                    
+                    <span>Expenditure</span>
+                </div>`,
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -78,6 +91,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
+        
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -124,19 +138,36 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         exporting: {
            enabled: false
         },
+        
         title: {
-            text: '',
-        },
-      
-        subtitle: {
-            text: percentageUnspentBalance + '<br> Unspent',
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">
+            ${percentageUnspentBalance}
+            </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 60,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
             }
+        },
+      
+        subtitle: {
+
+            text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                
+                <span>Unspent</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
+
+          
         },
         // tooltip: {
         //     pointFormat: 'name: <b>highchart</b>'
@@ -192,18 +223,31 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: percentageExpenditure + '% <br> Expenditure',
+            text: ` <div class="graph-title" style="color:#00b050; ">
+            ${percentageExpenditure}%
+            </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 35,
             style: {
                 fontSize: '16px',
                 color: '#000000'
-            }
+            }  
+        },
+      
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                
+                <span>Expenditure</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
         },
         // tooltip: {
         //     pointFormat: 'name: <b>highchart</b>'
@@ -257,18 +301,30 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: percentageUnspentBalance + '% <br> Unspent',
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">
+            ${percentageUnspentBalance}%
+            </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 35,
             style: {
                 fontSize: '16px',
                 color: '#000000'
             }
+        },
+      
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                <span>Unspent</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
         },
         // tooltip: {
         //     pointFormat: 'name: <b>highchart</b>'
@@ -322,18 +378,28 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: '10% <br> Interest Earned',
+            text: ` <div class="graph-title" style="color:#00b050; "> 10% </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
-            }
+            }   
+        },
+            subtitle: {
+                text: `
+                    <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                        
+                        <span>Interest Earned</span>
+                    </div>`,
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 60,
+                style: {
+                    fontSize: '16px',
+                    color: '#000000'
+                }
         },
         // tooltip: {
         //     pointFormat: 'name: <b>highchart</b>'
@@ -388,18 +454,30 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: '90% <br> Interest DD Returned',
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
             }
+        },
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                
+                <span>Interest DD Returned</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 65,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
+
+          
         },
         // tooltip: {
         //     pointFormat: 'name: <b>highchart</b>'
