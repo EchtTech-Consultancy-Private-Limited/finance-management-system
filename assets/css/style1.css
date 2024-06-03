@@ -12666,6 +12666,7 @@ ul.bullet-list li {
     /* border-bottom: 1px solid #bbb; */
     padding: 0 0 0px 0px;
     align-items: baseline;
+    font-weight: 600;
   }
   
   .country-overall-data ul li:last-child{
@@ -12974,3 +12975,4 @@ text-align: center;
 table tr th:first-child{
 text-align: left;
 }
+

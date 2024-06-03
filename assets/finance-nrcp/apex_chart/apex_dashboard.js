@@ -3295,7 +3295,6 @@ Highcharts.chart('integrated-dashboard-unspent-balance-line-chart', {
 
 
 // state graph
-
 Highcharts.chart('integrated-dashboard-state-graph', {
     chart: {
         type: 'column'
@@ -3310,14 +3309,7 @@ Highcharts.chart('integrated-dashboard-state-graph', {
         enabled: false
     },
     subtitle: {
-        text:  '<div class="graph-subtitle">Expenditure',
-        align: 'center',
-        verticalAlign: 'bottom',
-        y: 0,
-        style: {
-            fontSize: '16px',
-            color: '#000000'
-        }
+        text: ''
     },
     xAxis: {
         type: 'category',
@@ -3336,7 +3328,19 @@ Highcharts.chart('integrated-dashboard-state-graph', {
         }
     },
     legend: {
-        enabled: false
+        enabled: true,
+        itemStyle: {
+            color: '#000000' // Change legend item color
+        },
+        itemHiddenStyle: {
+            color: '#cccccc' // Change legend item hidden color (optional)
+        },
+        // Disable legend item functionality
+        itemEvents: {
+            legendItemClick: function (event) {
+                event.preventDefault();
+            }
+        }
     },
     tooltip: {
         pointFormat: ''
@@ -3388,12 +3392,11 @@ Highcharts.chart('integrated-dashboard-state-graph', {
             format: '{point.y:.1f}', // one decimal
             y: 10, // 10 pixels down from the top
             style: {
-                fontSize: '13px',
+                fontSize: '12px',
                 fontFamily: 'Verdana, sans-serif'
             }
         }
-    },
-]
+    }]
 });
 
 

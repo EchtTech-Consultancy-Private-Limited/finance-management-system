@@ -86,7 +86,7 @@
    /* text-shadow: 2px 1px black; */
 }
 }
-@media (min-width:768px) and (max-width:1350px) {
+@media (min-width:768px) and (max-width:1365px) {
    .data-driven .expenditure-bar-chart-box-child2 {
       width: calc(100% - 44px);
       gap: 9px;
