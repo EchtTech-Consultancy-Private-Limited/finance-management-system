@@ -3329,18 +3329,13 @@ Highcharts.chart('integrated-dashboard-state-graph', {
     },
     legend: {
         enabled: true,
-        itemStyle: {
-            color: '#000000' // Change legend item color
-        },
-        itemHiddenStyle: {
-            color: '#cccccc' // Change legend item hidden color (optional)
-        },
-        // Disable legend item functionality
-        itemEvents: {
-            legendItemClick: function (event) {
-                event.preventDefault();
-            }
-        }
+        useHTML: true,
+        // labelFormatter: function() {
+        //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+        //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+        // }
+    
+    allowPointSelect: false,
     },
     tooltip: {
         pointFormat: ''
@@ -3348,10 +3343,12 @@ Highcharts.chart('integrated-dashboard-state-graph', {
     series: [{
         name: 'Expenditure',
         type: 'column',
-        colorByPoint: true,
-        colors: [
-           '#ffc147'
-        ],
+        color:"#ffc147",
+        events: {
+            legendItemClick: function (e) {
+                e.preventDefault();
+            }
+        },
         data: [
             ['Uttar Pradesh', 4.3],
             ['Maharashtra', 2.5],
@@ -3436,7 +3433,12 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
        }
    },
    legend: {
-       enabled: true
+        enabled: true,
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'top',
+        y: 7, // Adjust this value to fine-tune the vertical position
+        symbolRadius: 0,
    },
    tooltip: {
        pointFormat: ''
@@ -3444,12 +3446,13 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
    series: [{
     name: 'Head',
     type: 'column',
-    colorByPoint: true,
-       colors: [
-          '#f49d00'
-       ],
-       colorByPoint: true,
-       groupPadding: 0,
+    color:"#f49d00",
+    events: {
+        legendItemClick: function (e) {
+            e.preventDefault();
+        }
+    },
+      
        data: [
          [' Current Man Power', 4.3],
          ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
@@ -3506,17 +3509,25 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
        }
    },
    legend: {
-       enabled: true
+        enabled: true,
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'top',
+        y: 7, 
+        symbolRadius: 0,
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
        name: 'Head',
-       colors: [
-           '#43cdd9'
-       ],
-       colorByPoint: true,
+       type: 'column',
+       color:"#43cdd9",
+       events: {
+           legendItemClick: function (e) {
+               e.preventDefault();
+           }
+       },
        groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
@@ -3574,17 +3585,26 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
        }
    },
    legend: {
-       enabled: true
+    enabled: true,
+    layout: 'horizontal',
+    align: 'center',
+    verticalAlign: 'top',
+    y: 7, 
+    symbolRadius: 0,
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'Head',
-       colors: [
-           '#dd5f00'
-       ],
-       colorByPoint: true,
+    name: 'Head',
+    type: 'column',
+    color:"#dd5f00",
+    events: {
+        legendItemClick: function (e) {
+            e.preventDefault();
+        }
+    },
+    //    colorByPoint: true,
        groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
@@ -3642,17 +3662,25 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
        }
    },
    legend: {
-       enabled: true
+    enabled: true,
+    layout: 'horizontal',
+    align: 'center',
+    verticalAlign: 'top',
+    y: 7, 
+    symbolRadius: 0,
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'Head',
-       colors: [
-           '#00b0f0'
-       ],
-       colorByPoint: true,
+    name: 'Head',
+    type: 'column',
+    color:"#00b0f0",
+    events: {
+        legendItemClick: function (e) {
+            e.preventDefault();
+        }
+    },
        groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
@@ -3710,17 +3738,25 @@ Highcharts.chart('integrated-dashboard-data-driven-graph5', {
        }
    },
    legend: {
-       enabled: true
+    enabled: true,
+    layout: 'horizontal',
+    align: 'center',
+    verticalAlign: 'top',
+    y: 7, 
+    symbolRadius: 0,
    },
    tooltip: {
        pointFormat: ''
    },
    series: [{
-       name: 'Head',
-       colors: [
-           '#92d050'
-       ],
-      
+    name: 'Head',
+    type: 'column',
+    color:"#92d050",
+    events: {
+        legendItemClick: function (e) {
+            e.preventDefault();
+        }
+    },
        data: [
          [' Current Man Power', 4.3],
          ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
