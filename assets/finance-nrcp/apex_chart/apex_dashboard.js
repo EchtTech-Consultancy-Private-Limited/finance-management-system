@@ -3310,7 +3310,14 @@ Highcharts.chart('integrated-dashboard-state-graph', {
         enabled: false
     },
     subtitle: {
-        text: ''
+        text:  '<div class="graph-subtitle">Expenditure',
+        align: 'center',
+        verticalAlign: 'bottom',
+        y: 0,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
     },
     xAxis: {
         type: 'category',
@@ -3329,7 +3336,7 @@ Highcharts.chart('integrated-dashboard-state-graph', {
         }
     },
     legend: {
-        enabled: true
+        enabled: false
     },
     tooltip: {
         pointFormat: ''

@@ -12216,7 +12216,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 @media(max-width:1499px) {
     .select-form-s select.form-control {
-        font-size: 12px;
+        /* font-size: 12px; */
         padding: 6px 6px;
     }
 }
@@ -12834,7 +12834,7 @@ rect.highcharts-background {
     }
     .profile-text p{
         line-height: 20px;
-    font-size: 13px;
+    font-size: 14px;
     }
     .fund-card h3, .total-card h3{
         font-size: 14px;
@@ -12970,4 +12970,7 @@ span.country-list-content {
    }
 th{
 text-align: center;
+}
+table tr th:first-child{
+text-align: left;
 }
