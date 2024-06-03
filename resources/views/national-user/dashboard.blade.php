@@ -416,7 +416,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
@@ -910,7 +910,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Institute</th>
+                            <th class="text-center">Institute</th>
                             <th>Unspent Balance (GIA) as on 1st April.. </th>
                             <th>GIA Received during the Current F.Y</th>
                             <th>Actual Expenditure incurred during the current F.Y </th>
@@ -1001,10 +1001,9 @@
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
                                     class="text-danger">*</sup></b></label>
                         <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
+                            <option value="">Select Expenditure/Unspent Balance</option>
+                            <option value="">Expenditure</option>
+                            <option value="">Unspent Balance</option>
                         </select>
                     </div>
 
@@ -1260,7 +1259,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
@@ -1332,12 +1331,12 @@
                             <li>
                                 <span class="arrow arrow-left"><span class="number">10</span></span><span
                                     class="country-list-content">Fund Utilization (%)</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total">0%</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">11</span></span><span
                                     class="country-list-content">Fund non utilization (%)</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total">0%</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">12</span></span><span
@@ -1402,7 +1401,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
