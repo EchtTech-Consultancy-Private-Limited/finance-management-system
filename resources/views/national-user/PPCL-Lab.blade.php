@@ -59,7 +59,7 @@
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
                         <select name="" class="form-control" id="">
-                            <option value="">Select Months</option>
+                            <option value="">Select Month</option>
                             <option value="">January</option>
                             <option value="">Febuary</option>
                             <option value="">March</option>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="white_card_body p-0">
                         
-                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount-ppcl-lab"></div>
 
                     </div>
                 </div>
@@ -447,7 +447,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly
                                     <sup class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
+                                <option value="">Select Month</option>
                                 <option value="">January</option>
                                 <option value="">Febuary</option>
                                 <option value="">March</option>

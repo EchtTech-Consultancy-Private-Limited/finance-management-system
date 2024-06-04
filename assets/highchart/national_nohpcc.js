@@ -6,12 +6,14 @@
 let totalExpenitureMargin =
     window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
 let expenditureHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
-let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 200;
+let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 210 : 200;
 
 let expenditureTitleY =
-    window.innerWidth > 768 && window.innerWidth < 1360 ? 40 : 30;
+    // window.innerWidth > 768 && window.innerWidth < 1360 ? 45 : 40;
+    window.innerWidth > 768 && window.innerWidth < 1300 ? 10 : (window.innerWidth > 1299  ? 45 : 45);
 let expenditureSubtitleY =
-    window.innerWidth > 768 && window.innerWidth < 1360 ? 70 : 60;
+    // window.innerWidth > 768 && window.innerWidth < 1360 ? 75 : 70;
+    window.innerWidth > 768 && window.innerWidth < 1300 ? 40 : (window.innerWidth > 1299  ? 68 : 68);
 Highcharts.chart("national-total-expenditure-lac", {
     chart: {
         plotBackgroundColor: null,
@@ -64,7 +66,7 @@ Highcharts.chart("national-total-expenditure-lac", {
         pie: {
             colors: ["#00b050", "#f79646"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -83,8 +85,8 @@ Highcharts.chart("national-total-expenditure-lac", {
             name: "",
             innerSize: "60%",
             data: [
-                ["", 85],
-                ["", 15],
+                ["Expenditure", 85],
+                ["Unspent", 15],
             ],
         },
     ],
@@ -146,7 +148,7 @@ Highcharts.chart("national-total-unspent-lac", {
         pie: {
             colors: ["#558ed5", "#c6d9f1"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -165,12 +167,89 @@ Highcharts.chart("national-total-unspent-lac", {
             name: "",
             innerSize: "60%",
             data: [
-                ["", 15],
-                ["", 85],
+                ["Unspent", 15],
+                ["Expenditure", 85],
             ],
         },
     ],
 });
+
+
+
+// **********************
+
+let overallChart_rc = Highcharts.chart('integrated-dashboard-chart-overall-program-expenditure-amount-rc', {
+    chart: {
+        type: 'pie',
+        height: window.innerWidth<1300 ? 190: 250,
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    title: null,
+    subtitle: null,
+    legend: {
+        enabled: false,
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        itemStyle: {
+            color: '#000000',
+            fontSize: '13px'
+        },
+        itemMarginBottom: 10,
+        labelFormatter: function () {
+            return this.name;
+        },
+        // symbolRadius: 0,
+        // symbolHeight: 12,
+        // symbolWidth: 12,
+        // symbolPadding: 10,
+        // itemDistance: 20
+    },
+    plotOptions: {
+        pie: {
+            startAngle: 0,
+            endAngle: 360,
+            colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            center: ['40%', '50%'],
+            size: '80%',
+            borderWidth: 0,
+            shadow: false
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Expenditure',
+        innerSize: '80%',
+        data: [
+            { name: "NOHPPCZ-RCs-35", y: 40, color: "#add73d" },
+            { name: "NOHPPCZ-SSS-65 L", y: 40, color: "#35a8df" },
+            { name: "NRCP-Lab-30 L", y: 5, color: "#d962bf" },
+            { name: "PPCL-28 L", y: 5, color: "#91d2fb" },
+            { name: "PM-ABHIM- SSS- 12 L", y: 10, color: "#f5ad45" }
+        ]
+    }]
+});
+
+
+//Set No data text
+var textX = overallChart_rc.plotLeft + (overallChart_rc.plotWidth * 0.4);
+var textY = overallChart_rc.plotTop + (overallChart_rc.plotHeight * 0.35);
+var textWidth = 500;
+textX = textX - (textWidth / 2);
+
+overallChart_rc.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">32,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
+        .css({
+            fontSize: '16px',
+        }).add();
 
 Highcharts.chart("national_expenditure_percentage_nohppcz_rc", {
     chart: {
@@ -213,9 +292,9 @@ Highcharts.chart("national_expenditure_percentage_nohppcz_rc", {
             color: "#000000",
         },
     },
-    // tooltip: {
-    //     pointFormat: 'name: <b>highchart</b>'
-    // },
+    tooltip: {
+        enabled: false,
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -225,7 +304,7 @@ Highcharts.chart("national_expenditure_percentage_nohppcz_rc", {
         pie: {
             colors: ["#00b050", "#f79646"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -294,9 +373,9 @@ Highcharts.chart("national_fund_unspent_percentage_nohppcz_rc", {
             color: "#000000",
         },
     },
-    // tooltip: {
-    //     pointFormat: 'name: <b>highchart</b>'
-    // },
+    tooltip: {
+        enabled: false,
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -306,7 +385,7 @@ Highcharts.chart("national_fund_unspent_percentage_nohppcz_rc", {
         pie: {
             colors: ["#558ed5", "#c6d9f1"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -360,19 +439,23 @@ Highcharts.chart("national_interest_earned_cy_percentage_nohppcz_rc", {
         },
     },
     subtitle: {
-        text: `
-                <div class="graph-title" style="color:#00b050; "> <span>Interest Earned</span> </div>`,
+        text: `<div class="graph-title" style="color:#00b050; white-space: nowrap; "><span>Interest Earned</span></div>`,
         align: "center",
         verticalAlign: "middle",
         y: expenditureSubtitleY,
         style: {
             fontSize: "16px",
             color: "#000000",
+            "text-align": "center",
+            "border-bottom": "2px solid green",
+            "width": '100%',
+            "display": 'block',
+            "left": 0
         },
     },
-    // tooltip: {
-    //     pointFormat: 'name: <b>highchart</b>'
-    // },
+    tooltip: {
+        enabled: false,
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -382,7 +465,7 @@ Highcharts.chart("national_interest_earned_cy_percentage_nohppcz_rc", {
         pie: {
             colors: ["#00b050", "#f79646"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -437,7 +520,7 @@ Highcharts.chart("national_dd_percentage_nohppcz_rc", {
     },
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px"> <span>Interest <br> DD Returned</span> </div>`,
+        <div class="graph-title" style="color:#00b050; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
         align: "center",
         verticalAlign: "middle",
         y: expenditureSubtitleY,
@@ -446,9 +529,9 @@ Highcharts.chart("national_dd_percentage_nohppcz_rc", {
             color: "#000000",
         },
     },
-    // tooltip: {
-    //     pointFormat: 'name: <b>highchart</b>'
-    // },
+    tooltip: {
+        enabled: false,
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -458,7 +541,7 @@ Highcharts.chart("national_dd_percentage_nohppcz_rc", {
         pie: {
             colors: ["#558ed5", "#c6d9f1"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -522,15 +605,14 @@ Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {
         enabled: false,
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
+        enabled:false
     },
     plotOptions: {
         pie: {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -544,7 +626,7 @@ Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
+            
             data: [
                 ["", 50],
                 ["", 50],
@@ -590,15 +672,14 @@ Highcharts.chart("nohppz_rc_chart_currently_UC_not_Received", {
         enabled: false,
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
+        enabled:false
     },
     plotOptions: {
         pie: {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -612,7 +693,6 @@ Highcharts.chart("nohppz_rc_chart_currently_UC_not_Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
             data: [
                 ["", 20],
                 ["", 80],
@@ -658,15 +738,14 @@ Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_Received", {
         enabled: false,
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
+        enabled:false
     },
     plotOptions: {
         pie: {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -680,7 +759,6 @@ Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
             data: [
                 ["", 20],
                 ["", 80],
@@ -726,15 +804,14 @@ Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_not_Received", {
         enabled: false,
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
+        enabled:false
     },
     plotOptions: {
         pie: {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -961,7 +1038,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart1", {
         pie: {
             colors: ["#eb5034", "#434348"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -1024,7 +1101,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart2", {
     plotOptions: {
         pie: {
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -1088,7 +1165,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart3", {
         pie: {
             colors: ["#d7c706", "#434348"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -1152,7 +1229,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
         pie: {
             colors: ["#eb5034", "#434348"],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 distance: -50,
                 style: {
                     fontWeight: "bold",
@@ -1217,7 +1294,7 @@ Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
     plotOptions: {
         line: {
             dataLabels: {
-                enabled: true,
+                enabled: false,
             },
             enableMouseTracking: false,
         },
@@ -1339,7 +1416,7 @@ Highcharts.chart("integrated-dashboard-state-graph", {
                 ["Delhi", 5], // Considering Delhi as a Union Territory
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1411,7 +1488,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph1", {
                 ["IEC", 2],
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1481,7 +1558,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph2", {
                 ["IEC", 2],
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1551,7 +1628,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph3", {
                 ["IEC", 2],
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1621,7 +1698,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph4", {
                 ["IEC", 2],
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1690,7 +1767,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph5", {
                 ["IEC", 2],
             ],
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 rotation: -90,
                 color: "#FFFFFF",
                 inside: true,
@@ -1751,7 +1828,7 @@ Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -1765,7 +1842,6 @@ Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
             data: [
                 ["", 50],
                 ["", 50],
@@ -1819,7 +1895,7 @@ Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -1833,7 +1909,6 @@ Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
             data: [
                 ["", 20],
                 ["", 80],
@@ -1887,7 +1962,7 @@ Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",
@@ -1901,7 +1976,6 @@ Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
     series: [
         {
             type: "pie",
-            name: "Temperature",
             data: [
                 ["", 20],
                 ["", 80],
@@ -1955,7 +2029,7 @@ Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-not-Received", {
             size: "100%",
             innerSize: "70%", // Adjusted for a larger inner circle
             dataLabels: {
-                enabled: true,
+                enabled: false,
                 // distance: -30, // Adjusted to move labels closer
                 style: {
                     fontWeight: "bold",

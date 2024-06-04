@@ -1,1223 +1,82 @@
- var options = {
-   series: [60,40],
-   chart: {
-      height: 300,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#f79646"],
-   stroke: {
-      lineCap: "round",
-   },
-   legend: {
-      show: false,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   },
-   labels: ["All Head Exp."]
-};
- var chart2 = new ApexCharts(document.querySelector("#chart-currently-overall"), options);
- chart2.render();
 
 
+// **********************
 
- options = {
+let overallChart = Highcharts.chart('national-dashboard-overall-Program-expenditure-amount', {
     chart: {
-       height: 339,
-       type: "line",
-       stacked: !1,
-       toolbar: {
-          show: !1
-       }
+        type: 'pie',
+        height: window.innerWidth<1300 ? 218: 215,
     },
-    stroke: {
-       width: [0, 2, 4],
-       curve: "smooth"
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    title: null,
+    subtitle: null,
+    legend: {
+        enabled: true,
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        itemStyle: {
+            color: '#000000',
+            fontSize: '13px'
+        },
+        itemMarginBottom: 10,
+        labelFormatter: function () {
+            return this.name;
+        },
+        // symbolRadius: 0,
+        // symbolHeight: 12,
+        // symbolWidth: 12,
+        // symbolPadding: 10,
+        // itemDistance: 20
     },
     plotOptions: {
-       bar: {
-          columnWidth: "30%"
-       }
+        pie: {
+            startAngle: 0,
+            endAngle: 360,
+            colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            center: ['40%', '50%'],
+            size: '80%',
+            borderWidth: 0,
+            shadow: false
+        }
     },
-    colors: ["#9767FD", "#dfe2e6", "#f1b44c"],
     series: [{
-       name: "Desktops",
-       type: "column",
-       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-    }, {
-       name: "Laptops",
-       type: "area",
-       data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-    }, {
-       name: "Tablets",
-       type: "line",
-       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
-    }, ],
-    fill: {
-       opacity: [0.85, 0.25, 1],
-       gradient: {
-          inverseColors: !1,
-          shade: "light",
-          type: "vertical",
-          opacityFrom: 0.85,
-          opacityTo: 0.55,
-          stops: [0, 100, 100, 100]
-       }
-    },
-    labels: ["01/01/2003", "02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003", "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"],
-    markers: {
-       size: 0
-    },
-    xaxis: {
-       type: "datetime"
-    },
-    yaxis: {
-       title: {
-          text: "Points"
-       }
-    },
-    tooltip: {
-       shared: !0,
-       intersect: !1,
-       y: {
-          formatter: function (e) {
-             return void 0 !== e ? e.toFixed(0) + " points" : e;
-          },
-       },
-    },
-    grid: {
-       borderColor: "#f1f1f1"
-    },
- };
+        type: 'pie',
+        name: 'Expenditure',
+        innerSize: '80%',
+        data: [
+            { name: "NOHPPCZ-RCs-35", y: 40, color: "#add73d" },
+            { name: "NOHPPCZ-SSS-65 L", y: 40, color: "#35a8df" },
+            { name: "NRCP-Lab-30 L", y: 5, color: "#d962bf" },
+            { name: "PPCL-28 L", y: 5, color: "#91d2fb" },
+            { name: "PM-ABHIM- SSS- 12 L", y: 10, color: "#f5ad45" }
+        ]
+    }]
+});
 
 
- var options = {
-   series: [84],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Expenditure"]
-};
-var chart3 = new ApexCharts(document.querySelector("#chart-Expenditure"), options);
-chart3.render();
+//Set No data text
+var textX = overallChart.plotLeft + (overallChart.plotWidth * 0.4);
+var textY = overallChart.plotTop + (overallChart.plotHeight * 0.35);
+var textWidth = 500;
+textX = textX - (textWidth / 2);
+
+overallChart.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">32,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
+        .css({
+            fontSize: '16px',
+        }).add();
 
 
-var options = {
-   series: [15],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#E5ECFF", "#E5ECFF"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#558ed5", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Progress"]
-};
-var chart4 = new ApexCharts(document.querySelector("#chart-currently-Fund"), options);
-chart4.render();
-
-var options = {
-   series: [10],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Progress"]
-};
-var chart5 = new ApexCharts(document.querySelector("#chart-currently-Interest-Earned"), options);
-chart5.render();
-
-var options = {
-   series: [90],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#E5ECFF", "#E5ECFF"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#558ed5", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Progress"]
-};
-var chart6 = new ApexCharts(document.querySelector("#chart-currently-Interest-DD"), options);
-chart6.render();
-
-options = {
-   chart: {
-      height: 339,
-      type: "bar",
-      stacked: !1,
-      toolbar: {
-         show: !1
-      }
-   },
-   stroke: {
-      width: [0, 2, 4],
-      curve: "smooth"
-   },
-   plotOptions: {
-      bar: {
-         columnWidth: "30%"
-      }
-   },
-   colors: ["#9767FD", "#dfe2e6", "#f1b44c"],
-   series: [{
-      name: "Desktops",
-      type: "column",
-      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-   }, {
-      name: "Laptops",
-      type: "area",
-      data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-   }, {
-      name: "Tablets",
-      type: "line",
-      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
-   }, ],
-   fill: {
-      opacity: [0.85, 0.25, 1],
-      gradient: {
-         inverseColors: !1,
-         shade: "light",
-         type: "vertical",
-         opacityFrom: 0.85,
-         opacityTo: 0.55,
-         stops: [0, 100, 100, 100]
-      }
-   },
-   labels: ["01/01/2003", "02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003", "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"],
-   markers: {
-      size: 0
-   },
-   xaxis: {
-      type: "datetime"
-   },
-   yaxis: {
-      title: {
-         text: "Values"
-      }
-   },
-   legend: {
-      show: false,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   },
-   tooltip: {
-      shared: !0,
-      intersect: !1,
-      y: {
-         formatter: function (e) {
-            return void 0 !== e ? e.toFixed(0) + " points" : e;
-         },
-      },
-   },
-   grid: {
-      borderColor: "#f1f1f1"
-   },
-};
- (chart = new ApexCharts(document.querySelector("#management_bar"), options)).render();
-
-options = {
-   chart: {
-      height: 339,
-      type: "bar",
-      stacked: !1,
-      toolbar: {
-         show: !1
-      }
-   },
-   stroke: {
-      width: [0, 2, 4],
-      curve: "smooth"
-   },
-   plotOptions: {
-      bar: {
-         columnWidth: "30%"
-      }
-   },
-   colors: ["#9767FD", "#dfe2e6", "#f1b44c"],
-   series: [{
-      name: "Desktops",
-      type: "column",
-      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-   }, {
-      name: "Laptops",
-      type: "area",
-      data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
-   }, {
-      name: "Tablets",
-      type: "line",
-      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
-   }, ],
-   fill: {
-      opacity: [0.85, 0.25, 1],
-      gradient: {
-         inverseColors: !1,
-         shade: "light",
-         type: "vertical",
-         opacityFrom: 0.85,
-         opacityTo: 0.55,
-         stops: [0, 100, 100, 100]
-      }
-   },
-   labels: ["01/01/2003", "02/01/2003", "03/01/2003", "04/01/2003", "05/01/2003", "06/01/2003", "07/01/2003", "08/01/2003", "09/01/2003", "10/01/2003", "11/01/2003"],
-   markers: {
-      size: 0
-   },
-   xaxis: {
-      type: "datetime"
-   },
-   yaxis: {
-      title: {
-         text: "Values"
-      }
-   },
-   legend: {
-      show: false,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   },
-   tooltip: {
-      shared: !0,
-      intersect: !1,
-      y: {
-         formatter: function (e) {
-            return void 0 !== e ? e.toFixed(0) + " points" : e;
-         },
-      },
-   },
-   grid: {
-      borderColor: "#f1f1f1"
-   },
-};
- (chart = new ApexCharts(document.querySelector("#management_Institute_wise"), options)).render();
-
-
- var options = {
-    series: [{
-       name: 'Net Profit',
-       data: [30, 25, 45, 30, 55, 55]
-    }],
-    chart: {
-       type: 'area',
-       height: 270,
-       offsetY: 0,
-       toolbar: {
-          show: false
-       },
-       zoom: {
-          enabled: false
-       },
-       sparkline: {
-          enabled: true
-       }
-    },
-    plotOptions: {},
-    legend: {
-       show: false
-    },
-    dataLabels: {
-       enabled: false
-    },
-    fill: {
-       type: 'solid',
-       opacity: .2
-    },
-    stroke: {
-       curve: 'smooth',
-       show: true,
-       width: 3,
-       colors: ["#9767FD", "#E5ECFF"],
-    },
-    xaxis: {
-       categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-       axisBorder: {
-          show: false,
-       },
-       axisTicks: {
-          show: false
-       },
-       labels: {
-          show: false,
-          style: {
-             fontSize: '12px',
-          }
-       },
-       crosshairs: {
-          show: false,
-          position: 'front',
-          stroke: {
-             color: ["#9767FD", "#E5ECFF"],
-             width: 1,
-             dashArray: 3
-          }
-       },
-       tooltip: {
-          enabled: true,
-          formatter: undefined,
-          offsetY: 0,
-          style: {
-             fontSize: '12px',
-          }
-       }
-    },
-    yaxis: {
-       min: 0,
-       max: 60,
-       labels: {
-          show: false,
-          style: {
-             fontSize: '12px',
-          }
-       }
-    },
-    states: {
-       normal: {
-          filter: {
-             type: 'none',
-             value: 0
-          }
-       },
-       hover: {
-          filter: {
-             type: 'none',
-             value: 0
-          }
-       },
-       active: {
-          allowMultipleDataPointsSelection: false,
-          filter: {
-             type: 'none',
-             value: 0
-          }
-       }
-    },
-    tooltip: {
-       style: {
-          fontSize: '12px',
-       },
-       y: {
-          formatter: function (val) {
-             return "$" + val + " thousands"
-          }
-       }
-    },
-    colors: ["#9767FD", "#E5ECFF"],
-    markers: {
-       colors: ["#9767FD", "#E5ECFF"],
-       strokeColor: ["#9767FD", "#E5ECFF"],
-       strokeWidth: 3
-    }
- };
- var chart = new ApexCharts(document.querySelector("#chart4"), options);
- chart.render();
-
-
-
- var options = {
-   series: [50,50],
-   chart: {
-      height: 300,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["% of UC Received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-
-var chart7 = new ApexCharts(document.querySelector("#chart-currently-UC-Received"), options);
-chart7.render();
-
- var options = {
-   series: [80,20],
-   chart: {
-      height: 300,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["% of UC Received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-var chart8 = new ApexCharts(document.querySelector("#chart-currently-UC-not-Received"), options);
-chart8.render();
-
- var options = {
-   series: [20,80],
-   chart: {
-      height: 300,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Nos. of UC received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-
-var chart9 = new ApexCharts(document.querySelector("#chart-currently-Nos-UC-Received"), options);
-chart9.render();
-
- var options = {
-   series: [80,20],
-   chart: {
-      height: 300,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "always",
-            
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#b64926", "#f8905c"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Nos. of UC not received", "Blank"],
-   legend: {
-      show: true,
-      position: 'bottom',
-      fontSize: '13px',
-      offsetY: 8,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-var chart10 = new ApexCharts(document.querySelector("#chart-currently-Nos-UC-not-Received"), options);
-chart10.render();
-
-
- 
-var options = {
-   series: [84],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Expenditure"]
-};
-var in_dashboard1 = new ApexCharts(document.querySelector("#integrated_dashboard_expenditure"), options);
-in_dashboard1.render();
-
-
-var options = {
-   series: [15],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#E5ECFF", "#E5ECFF"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#558ed5", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Unspent"]
-};
-var in_dashboard2 = new ApexCharts(document.querySelector("#integrated_dashboard_unspent"), options);
-in_dashboard2.render();
-
-
-
-var options = {
-   series: [85],
-   chart: {
-      height: 250,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Expenditure"]
-};
-var in_dashboard3 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-Expenditure"), options);
-in_dashboard3.render();
-
-
-var options = {
-   series: [15],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#E5ECFF", "#E5ECFF"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#558ed5", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Unspent"]
-};
-var in_dashboard4 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Fund"), options);
-in_dashboard4.render();
-
-var options = {
-   series: [10],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#00b050", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Intetest Earned"]
-};
-var in_dashboard5 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Interest-Earned"), options);
-
-// in_dashboard5.render();
-
-var options = {
-   series: [90],
-   chart: {
-      height: 300,
-      type: 'radialBar',
-      offsetY: 0
-   },
-   plotOptions: {
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "70%"
-         },
-         dataLabels: {
-            showOn: "always",
-            name: {
-               show: true,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: true
-            }
-         },
-         track: {
-            background: ["#E5ECFF", "#E5ECFF"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#558ed5", "#E5ECFF"],
-   stroke: {
-      lineCap: "round",
-   },
-   labels: ["Interest DD Returned"]
-};
-var in_dashboard6 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-currently-Interest-DD"), options);
-in_dashboard6.render();
-
-
-
-var options = {
-   series: [40, 40, 5, 5, 10],
-   chart: {
-      height: 212,
-      type: 'donut',
-      offsetY: 0
-   },
-   plotOptions: {
-
-      radialBar: {
-         startAngle: -90,
-         endAngle: 90,
-         hollow: {
-            margin: 0,
-            size: "50%"
-         },
-         dataLabels: {
-            showOn: "never",
-            
-            name: {
-               show: false,
-               fontSize: "13px",
-               fontWeight: "700",
-               offsetY: -5,
-               color: ["#000000", "#E5ECFF"],
-            },
-            value: {
-               color: ["#000000", "#E5ECFF"],
-               fontSize: "30px",
-               fontWeight: "700",
-               offsetY: -40,
-               show: false
-            }
-         },
-         track: {
-            background: ["#f79646", "#00b050"],
-            strokeWidth: '100%'
-         }
-      }
-   },
-   colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
-   stroke: {
-      lineCap: "round",
-   },
-
-
-   labels: ["NOHPPCZ-RCs-35", "NOHPPCZ-SSS-65 L", "NRCP-Lab-30 L", "PPCL-28 L", "PM-ABHIM- SSS- 12 L"],
-   legend: {
-      show: true,
-      position: 'right',
-      fontSize: '13px',
-      height: '100px',
-      gap:'20px', 
-      offsetY: 10,
-      labels: {
-         colors: ["#000000", "#E5ECFF"],
-      },
-      markers: {
-         width: 12,
-         height: 12,
-         radius: 6,
-      }
-   }
-};
-var in_dashboard7 = new ApexCharts(document.querySelector("#integrated-dashboard-chart-overall-program-expenditure-amount"), options);
-in_dashboard7.render();
+// **********************
 // Highcharts.chart('integrated-dashboard-chart-overall-program-expenditure-amount', {
 //     chart: {
 //         type: 'pie',
@@ -1362,7 +221,7 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
        name: 'Speed',
        data: [80],
        tooltip: {
-         //   valueSuffix: ' km/h'
+        enabled: false,
        },
        dataLabels: {
          //   format: '{y} km/h',
@@ -1470,7 +329,7 @@ Highcharts.chart('integrated-dashboard-gauge2',  {
        name: 'Speed',
        data: [80],
        tooltip: {
-         //   valueSuffix: ' km/h'
+        enabled: false,
        },
        dataLabels: {
          //   format: '{y} km/h',
@@ -1578,7 +437,7 @@ Highcharts.chart('integrated-dashboard-gauge3',  {
        name: 'Speed',
        data: [80],
        tooltip: {
-         //   valueSuffix: ' km/h'
+        enabled: false,
        },
        dataLabels: {
          //   format: '{y} km/h',
@@ -1686,7 +545,7 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
        name: 'Speed',
        data: [80],
        tooltip: {
-         //   valueSuffix: ' km/h'
+        enabled: false,
        },
        dataLabels: {
          //   format: '{y} km/h',
@@ -2097,8 +956,7 @@ Highcharts.chart('integrated-dashboard-state1', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+    enabled: false,
    },
 
    plotOptions: {
@@ -2124,7 +982,7 @@ Highcharts.chart('integrated-dashboard-state1', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 57],
@@ -2187,8 +1045,7 @@ Highcharts.chart('integrated-dashboard-state2', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2214,7 +1071,7 @@ Highcharts.chart('integrated-dashboard-state2', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 21],
@@ -2277,8 +1134,7 @@ Highcharts.chart('integrated-dashboard-state3', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2304,7 +1160,7 @@ Highcharts.chart('integrated-dashboard-state3', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 17],
@@ -2361,8 +1217,7 @@ Highcharts.chart('integrated-dashboard-state4', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2388,7 +1243,7 @@ Highcharts.chart('integrated-dashboard-state4', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 17],
@@ -2451,8 +1306,7 @@ Highcharts.chart('integrated-dashboard-state5', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2534,8 +1388,7 @@ Highcharts.chart('integrated-dashboard-state6', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2561,7 +1414,7 @@ Highcharts.chart('integrated-dashboard-state6', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 21],
@@ -2618,8 +1471,7 @@ Highcharts.chart('integrated-dashboard-state7', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2701,8 +1553,7 @@ Highcharts.chart('integrated-dashboard-state8', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2728,7 +1579,7 @@ Highcharts.chart('integrated-dashboard-state8', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 17],
@@ -2785,8 +1636,7 @@ Highcharts.chart('integrated-dashboard-state9', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2868,8 +1718,7 @@ Highcharts.chart('integrated-dashboard-state10', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -2895,7 +1744,7 @@ Highcharts.chart('integrated-dashboard-state10', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
   data: [
       
       ['', 57],
@@ -2952,8 +1801,7 @@ Highcharts.chart('integrated-dashboard-state11', {
    },
 
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
 
    plotOptions: {
@@ -3022,7 +1870,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart1', {
        }
    },
    tooltip: {
-       pointFormat: 'name: <b>highchart</b>'
+    enabled: false,
    },
    accessibility: {
        point: {
@@ -3085,7 +1933,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart2', {
       }
   },
   tooltip: {
-      pointFormat: 'name: <b>highchart</b>'
+    enabled: false,
   },
   accessibility: {
       point: {
@@ -3148,7 +1996,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart3', {
       }
   },
   tooltip: {
-      pointFormat: 'name: <b>highchart</b>'
+    enabled: false,
   },
   accessibility: {
       point: {
@@ -3213,7 +2061,7 @@ Highcharts.chart('integrated-dashboard-program-wise-expenditure-bar-chart4', {
       
   },
   tooltip: {
-      pointFormat: 'name: <b>highchart</b>'
+    enabled: false,
   },
   accessibility: {
       point: {
@@ -3338,7 +2186,7 @@ Highcharts.chart('integrated-dashboard-state-graph', {
     allowPointSelect: false,
     },
     tooltip: {
-        pointFormat: ''
+        enabled: false,
     },
     series: [{
         name: 'Expenditure',
@@ -3441,7 +2289,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
         symbolRadius: 0,
    },
    tooltip: {
-       pointFormat: ''
+    enabled: false,
    },
    series: [{
     name: 'Head',
@@ -3517,7 +2365,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
         symbolRadius: 0,
    },
    tooltip: {
-       pointFormat: ''
+    enabled: false,
    },
    series: [{
        name: 'Head',
@@ -3593,7 +2441,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
     symbolRadius: 0,
    },
    tooltip: {
-       pointFormat: ''
+    enabled: false,
    },
    series: [{
     name: 'Head',
@@ -3670,7 +2518,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
     symbolRadius: 0,
    },
    tooltip: {
-       pointFormat: ''
+    enabled: false,
    },
    series: [{
     name: 'Head',
@@ -3746,7 +2594,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph5', {
     symbolRadius: 0,
    },
    tooltip: {
-       pointFormat: ''
+    enabled: false,
    },
    series: [{
     name: 'Head',
@@ -3818,8 +2666,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {
        enabled: false
    },
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
    plotOptions: {
        pie: {
@@ -3840,7 +2687,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
            data: [
                ['', 50],
                ['', 50],
@@ -3881,8 +2728,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
        enabled: false
    },
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+    enabled: false,
    },
    plotOptions: {
        pie: {
@@ -3903,7 +2749,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-UC-not-Received', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
            data: [
                ['', 20],
                ['', 80],
@@ -3955,8 +2801,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {
        enabled: false
    },
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+    enabled: false,
    },
    plotOptions: {
        pie: {
@@ -3977,7 +2822,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-Received', {
    series: [
        {
            type: 'pie',
-           name: 'Temperature',
+           
            data: [
                ['', 20],
                ['', 80],
@@ -4023,8 +2868,7 @@ Highcharts.chart('integrated-dashboard-chart-currently-Nos-UC-not-Received', {
        enabled: false
    },
    tooltip: {
-       valueDecimals: 2,
-       valueSuffix: ''
+      enabled: false,
    },
    plotOptions: {
        pie: {
