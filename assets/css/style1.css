@@ -5008,7 +5008,7 @@ body::-webkit-scrollbar {
 }
 
 .white_card .white_card_body {
-    padding: 5px 30px 25px
+    padding: 5px 10px 25px
 }
 
 .white_box_50px {
@@ -11848,7 +11848,12 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 .sidebar.mini_sidebar .small_logo {
-    display: block
+    display: block;
+    height: 13px;
+}
+.sidebar.mini_sidebar .small_logo img{
+    height: 100% !important;
+    filter: invert(1);
 }
 
 .sidebar.mini_sidebar .has-arrow::before {
@@ -12336,7 +12341,7 @@ img#captchaimg {
     background: #884ffb !important;
     font-size: 16px;
     color: #fff;
-    text-align: center !important;
+    text-align: left !important;
 }
 
 
@@ -12977,4 +12982,11 @@ tspan.graph-title {
 tspan.graph-title tspan{
     font-size: 16px;
     font-weight: 600;
+}
+.row.expenditure_percentage .col-md-3 {
+    padding-right: 0;
+    padding-left: 8px;
+}
+.row.expenditure_percentage {
+    padding-right: 0;
 }

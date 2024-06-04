@@ -361,8 +361,8 @@
 
                                 </div>
                             </div>
-                            <div class="white_card_body overall-program-expenditure-amount">
-                                <div id="overall-Program-expenditure-amount"></div>
+                            <div class="white_card_body overall-program-expenditure-amount pb-0">
+                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
 
                             </div>
                         </div>
@@ -1183,7 +1183,7 @@
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>PM-ABHIM-SSS</h3>
+                                <h3>PM-ABHIM-<br>SSS</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
@@ -1249,7 +1249,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
+                                <option value="">Select Month</option>
                                 <option value="">January</option>
                                 <option value="">Febuary</option>
                                 <option value="">March</option>
@@ -1411,7 +1411,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
+                                <option value="">Select Month</option>
                                 <option value="">January</option>
                                 <option value="">Febuary</option>
                                 <option value="">March</option>

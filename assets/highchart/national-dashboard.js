@@ -169,9 +169,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
 
           
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -249,9 +249,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             color: '#000000'
         }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -326,9 +326,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             color: '#000000'
         }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -401,9 +401,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                     color: '#000000'
                 }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -479,9 +479,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
 
           
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
