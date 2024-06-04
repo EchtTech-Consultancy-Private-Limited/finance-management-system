@@ -471,7 +471,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             </div>`,
         align: 'center',
         verticalAlign: 'middle',
-        y: 65,
+        y: 60,
         style: {
             fontSize: '16px',
             color: '#000000'

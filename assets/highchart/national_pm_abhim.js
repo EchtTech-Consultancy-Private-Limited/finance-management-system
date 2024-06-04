@@ -166,7 +166,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
     Highcharts.chart("national_expenditure_percentage_nohppcz_pm_abhiim", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -245,7 +245,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
     Highcharts.chart("national_fund_unspent_percentage_nohppcz_pm_abhiim", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -326,7 +326,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
     chart: {
         plotBackgroundColor: null,
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -402,7 +402,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
     Highcharts.chart("national_dd_percentage_nohppcz_pm_abhiim", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
