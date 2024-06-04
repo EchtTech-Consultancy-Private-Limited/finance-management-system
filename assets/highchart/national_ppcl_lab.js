@@ -168,7 +168,7 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
     Highcharts.chart("national_expenditure_percentage_nohppcz_ppcl_lab", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -247,7 +247,7 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
     Highcharts.chart("national_fund_unspent_percentage_nohppcz_ppcl_lab", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -328,7 +328,7 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
     chart: {
         plotBackgroundColor: null,
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
@@ -404,7 +404,7 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
     Highcharts.chart("national_dd_percentage_nohppcz_ppcl_lab", {
     chart: {
         plotBackgroundColor: null,
-        height: expenditureHeight,
+        height: expenditurPercentageeHeight,
         margin: [0, 0, 0, 0],
         spacingTop: 0,
         spacingBottom: 0,
