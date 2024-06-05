@@ -5151,7 +5151,7 @@ body::-webkit-scrollbar {
     background: #fff;
     border-radius: 10px;
     margin-bottom: 35px;
-    padding-top: 10px
+    padding-top: 0px
 }
 
 .QA_section .QA_table th,
@@ -13035,4 +13035,14 @@ form.select-form-s.export-excel-form .col:not(:last-child) {
 }
 .form-btn-sm button.btn:hover{
     color: #fff;
+}
+.overall-expenditure ul li{
+    list-style: disc;
+    font-size: 14px;
+    color: #000;
+}
+.overall-content{
+    padding: 5px 0px 5px 20px;
+    margin-left: -27px;
+    margin-right: 20px;
 }

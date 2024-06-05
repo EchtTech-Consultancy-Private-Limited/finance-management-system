@@ -120,10 +120,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="white_card_body p-0">
+                    <div class="white_card_body p-0 overall-expenditure">
+                    <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-chart-overall-program-expenditure-amount-pm-abhim"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-light  rounded-2 overall-content">
+                                    <ul>
+                                        <li>Current Man Power</li>
+                                        <li>Meetings, Training & Research</li>
+                                        <li>Lab Strengthening Kits, Regents & Consumable (Recurring)</li>
+                                        <li>IEC</li>
+                                        <li>Office Expenses & Travel</li>
+                                        <li>Lab Strengthening (Non Recurring)</li>
+                                        <li>Other Activities</li>
+                                    </ul>
+                                </div>
 
-                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount-pm-abhim"></div>
 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
