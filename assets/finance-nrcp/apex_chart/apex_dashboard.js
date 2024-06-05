@@ -70,7 +70,7 @@ var textY = overallChart.plotTop + (overallChart.plotHeight * 0.35);
 var textWidth = 500;
 textX = textX - (textWidth / 2);
 
-overallChart.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
+overallChart.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
         .css({
             fontSize: '16px',
         }).add();

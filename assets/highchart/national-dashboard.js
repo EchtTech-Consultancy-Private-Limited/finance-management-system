@@ -111,7 +111,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '110%',
+                size: '100%',
             }
         },
         series: [{
@@ -124,13 +124,17 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             ]
         }]
     });
-    // Total Fund unspent in Cr.
     Highcharts.chart('national-total-unspent-cr', {
         chart: {
             plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
-            height:'250'
+            // plotBorderWidth: 0,
+            // plotShadow: false,
+            height: 250,
+            margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0
         },
         credits: {
            enabled: false
@@ -138,40 +142,33 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         exporting: {
            enabled: false
         },
-        
         title: {
-            text: ` <div class="graph-title" style="color:#3a7ed3; ">
+            text: ` <div class="graph-title" style="color:#00b050; ">
             ${percentageUnspentBalance}
-            </div>`,
+        </div>`,
             align: 'center',
             verticalAlign: 'middle',
             y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
+            }   
+        },
+        subtitle: {
+            text: `
+                <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                    
+                    <span>Unspent</span>
+                </div>`,
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 60,
+            style: {
+                fontSize: '16px',
+                color: '#000000'
             }
         },
-      
-        subtitle: {
-
-            text: `
-            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
-                
-                <span>Unspent</span>
-            </div>`,
-        align: 'center',
-        verticalAlign: 'middle',
-        y: 60,
-        style: {
-            fontSize: '16px',
-            color: '#000000'
-        }
-
-          
-        },
-        tooltip: {
-            enabled: false,
-        },
+        
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -179,7 +176,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         plotOptions: {
             pie: {
-              colors: ['#558ed5', '#c6d9f1'],
+                colors: ['#00b050', '#f79646'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -191,7 +188,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '110%'
+                size: '100%',
             }
         },
         series: [{
@@ -201,11 +198,11 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             data: [
                 ['', totalUnspentBalance],
                 ['', totalExpenditure],
-                
-               
             ]
         }]
-     });
+    });
+    // Total Fund unspent in Cr.
+   
 
     // expenditure chart
     Highcharts.chart('national-total-expenditure', {

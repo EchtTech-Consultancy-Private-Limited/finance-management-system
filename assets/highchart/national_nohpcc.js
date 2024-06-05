@@ -192,7 +192,7 @@ let overallChart_rc = Highcharts.chart('integrated-dashboard-chart-overall-progr
     title: null,
     subtitle: null,
     legend: {
-        enabled: false,
+        enabled: true,
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle',
@@ -209,6 +209,11 @@ let overallChart_rc = Highcharts.chart('integrated-dashboard-chart-overall-progr
         // symbolWidth: 12,
         // symbolPadding: 10,
         // itemDistance: 20
+    },
+    tooltip:{
+            backgroundColor:'#fff',
+            position:'relative',
+            zIndex:999999
     },
     plotOptions: {
         pie: {
@@ -246,7 +251,7 @@ var textY = overallChart_rc.plotTop + (overallChart_rc.plotHeight * 0.35);
 var textWidth = 500;
 textX = textX - (textWidth / 2);
 
-overallChart_rc.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">32,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
+overallChart_rc.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Head <br> Exp.</span></div>', textX, textY, null, null, null, true)
         .css({
             fontSize: '16px',
         }).add();

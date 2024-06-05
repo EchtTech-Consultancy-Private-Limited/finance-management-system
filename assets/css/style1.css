@@ -13033,3 +13033,6 @@ div#DataTables_Table_1_wrapper {
 form.select-form-s.export-excel-form .col:not(:last-child) {
     padding-right: 0;
 }
+.form-btn-sm button.btn:hover{
+    color: #fff;
+}

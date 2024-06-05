@@ -266,31 +266,39 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Choose the Institute</option>
+                        <option value="">Institute Name</option>
+                        <option value="">Institute Name</option>
+                        <option value="">Institute Name</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly <sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Select Month</option>
+                        <option value="">January</option>
+                        <option value="">Febuary</option>
+                        <option value="">March</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Choose Financial Year</option>
+                        <option value="">2023-2024</option>
+                        <option value="">2022-2023</option>
+                        <option value="">2021-2022</option>
+                    </select>
+                </div>
 
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose the Institute</option>
-                            <option value="">Institute Name</option>
-                            <option value="">Institute Name</option>
-                            <option value="">Institute Name</option>
-                        </select>
-                    </div>
-                </div>
+
+
             </div>
 
         </div>
