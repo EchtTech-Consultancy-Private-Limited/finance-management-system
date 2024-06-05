@@ -457,7 +457,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 30,
+            y: 40,
             style: {
                 fontSize: '16px',
                 color: '#000000'
@@ -465,13 +465,12 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         subtitle: {
             text: `
-            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
-                
+            <div class="graph-title" style="color:#00b050; white-space:nowrap;">
                 <span>Interest DD Returned</span>
             </div>`,
         align: 'center',
         verticalAlign: 'middle',
-        y: 60,
+        y: 70,
         style: {
             fontSize: '16px',
             color: '#000000'
