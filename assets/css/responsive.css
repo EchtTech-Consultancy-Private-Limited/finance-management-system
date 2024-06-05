@@ -181,7 +181,17 @@
    }
 }
 
+@media (max-width:1580px) {
+   .SOE-UC-list{
+      display: block !important;
+   }
+   .SOE-UC-list .mr_10{
+      margin: 0 !important;
+   }
+}
+
 @media (max-width:1400px) {
+
    .financial-year-select {
       min-width: 50%;
    }

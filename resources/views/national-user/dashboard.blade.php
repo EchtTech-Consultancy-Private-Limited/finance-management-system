@@ -520,7 +520,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive-sm pt-3">
-                        <table class="table table-bordered">
+                        <table class="table datatable table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -1366,7 +1366,7 @@
     <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
-                <form action="" class="select-form-s">
+                <form action="" class="select-form-s export-excel-form">
                     <div class="row">
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
@@ -1392,7 +1392,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select From Type</option>
+                                <option value="">Select Form Type</option>
                                 <option value="">SOE</option>
                                 <option value="">UC</option>
                             </select>
@@ -1629,7 +1629,7 @@
             </div> -->
             <div class="QA_section">
                 <div class="QA_table">
-                    <table class="table lms_table_active3 table-bordered">
+                    <table class="table datatable table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Title</th>

@@ -3,7 +3,29 @@ function validateInput(input) {
     input.value = input.value.replace(/\D/g, '');
 }
 $(document).ready(function() {
-    $('.datatable').dataTable();    
+    $('.datatable').dataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print" aria-hidden="true"></i>',
+                // title: 'Custom Table Title',
+                // messageTop: 'This is a custom message at the top of the print view',
+                // messageBottom: 'This is a custom message at the bottom of the print view',
+                // customize: function (win) {
+                //     $(win.document.body)
+                //         .css('font-size', '10pt')
+                //         .prepend(
+                //             '<img src="https://example.com/logo.png" style="position:absolute; top:0; left:0;" />'
+                //         );
+ 
+                //     $(win.document.body).find('table')
+                //         .addClass('compact')
+                //         .css('font-size', 'inherit');
+                // }
+            }
+        ]
+    });    
      $("[data-toggle=tooltip]").tooltip();    
 } );
 

@@ -779,7 +779,7 @@ Highcharts.chart('nohppz_nrcp_lab_chart_currently_UC_Received_nrcp_lab', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC not received</div>',
+        text: '<div style="text-align:center;">Nos. of UC not Received</div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: 0, // Adjusted position
@@ -1947,7 +1947,7 @@ Highcharts.chart('nohppz_nrcp_lab_chart_currently_UC_Received_nrcp_lab', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC not received</div>',
+        text: '<div style="text-align:center;">Nos. of UC not Received</div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: 0, // Adjusted position
