@@ -337,7 +337,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive-sm pt-3">
-                        <table class="table table-bordered">
+                        <table class="table datatable table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -424,10 +424,10 @@
             <div>
                 <form action="" class="select-form-s">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-8">
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year
                                             <sup class="text-danger">*</sup></b></label>
                                     <select name="" class="form-control" id="">
@@ -437,21 +437,17 @@
                                         <option value="">2021-2022</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type
                                             <sup class="text-danger">*</sup></b></label>
                                     <select name="" class="form-control" id="">
-                                        <option value="">Select From Type</option>
+                                        <option value="">Select Form Type</option>
                                         <option value="">SOE</option>
                                         <option value="">UC</option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
 
-                            <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly
                                             <sup class="text-danger">*</sup></b></label>
                                     <select name="" class="form-control" id="">
@@ -461,14 +457,13 @@
                                         <option value="">March</option>
                                     </select>
                                 </div>
-
-                                <div class="col-md-7">
-                                    <div class="float-end form-btn-sm mt-4 pt-2">
-                                        <button type="submit" class="btn bg-cancel me-1">Search</button>
-                                        <button type="reset" class="btn bg-danger me-1">Reset</button>
-                                        <button type="submit" class="btn btn-primary">Export Excel</button>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="float-end form-btn-sm mt-4 pt-2">
+                                <button type="submit" class="btn bg-cancel me-1">Search</button>
+                                <button type="reset" class="btn bg-danger me-1">Reset</button>
+                                <button type="submit" class="btn btn-primary">Export Excel</button>
                             </div>
                         </div>
 
@@ -495,7 +490,7 @@
                     <div class="white_card_body">
                         <div class="QA_section">
                             <div class="QA_table">
-                                <table class="table lms_table_active3 table-bordered">
+                                <table class="table datatable table-bordered">
                                     <thead>
                                         <tr>
                                             <th scope="col">Title</th>

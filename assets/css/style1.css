@@ -3424,8 +3424,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 .profile_info:hover .profile_info_iner {
     opacity: 1;
     visibility: visible;
-    top: 77px;
+    top: 48px;
     box-shadow: 0px 2px 7px #ddd;
+    right: -10px;
 }
 
 .profile_info .profile_info_details {
@@ -5150,7 +5151,7 @@ body::-webkit-scrollbar {
     background: #fff;
     border-radius: 10px;
     margin-bottom: 35px;
-    padding-top: 20px
+    padding-top: 10px
 }
 
 .QA_section .QA_table th,
@@ -12342,6 +12343,8 @@ img#captchaimg {
     font-size: 16px;
     color: #fff;
     text-align: left !important;
+    font-weight: 600;
+    padding: 8px;
 }
 
 
@@ -12396,8 +12399,11 @@ img#captchaimg {
 
 .table.table-bordered td, .table.table-bordered tbody th {
     border-bottom: 1px solid #eee !important;
-    padding: 3px 15px 2px !important;
+    padding: 3px 5px 2px !important;
     vertical-align: middle;
+}
+table thead th:not(:last-child){
+    border-right: 1px solid #fff;
 }
 .QA_section .QA_table tbody tr:first-child td {
     padding-top: 0;
@@ -12988,5 +12994,42 @@ tspan.graph-title tspan{
     padding-left: 8px;
 }
 .row.expenditure_percentage {
+    padding-right: 0;
+}
+
+button.dt-button.buttons-print {
+    background: #7a3bf9;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    padding: 4px 11px;
+    transition: 0.3s ease-in-out;
+}
+button.dt-button.buttons-print:hover, button.dt-button.buttons-print:focus {
+    background: #7a3bf9;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    padding: 4px 11px;
+}
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em;
+    border-color: #ddd;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 5px 4px;
+}
+.white_card_body.SOE-UC-list-container .main-title{
+    padding: 5px 0 20px;
+}
+.white_card_body.SOE-UC-list-container {
+    padding: 15px 20px;
+}
+div#DataTables_Table_1_wrapper {
+    margin-top: 15px;
+}
+
+form.select-form-s.export-excel-form .col:not(:last-child) {
     padding-right: 0;
 }

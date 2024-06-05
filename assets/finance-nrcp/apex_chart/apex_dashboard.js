@@ -159,10 +159,10 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center;">Net Profit Margin</div>',
+    text: '<div style="text-align:center; ">Net Profit Margin</div>',
     align: 'center',
     verticalAlign: 'bottom',
-    y: 20, // Adjusted position
+    y: -20, // Adjusted position
     style: {
         fontSize: '13px',
         color: '#000'
@@ -193,11 +193,8 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
        tickWidth: 2,
        minorTickInterval: null,
        labels: {
-           distance: 20,
-           style: {
-               fontSize: '14px'
-           }
-       },
+        enabled: false
+    },
        lineWidth: 0,
        plotBands: [{
            from: 0,
@@ -225,6 +222,7 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
        },
        dataLabels: {
          //   format: '{y} km/h',
+         enabled:false,
            borderWidth: 0,
            color: (
                Highcharts.defaultOptions.title &&
@@ -301,11 +299,8 @@ Highcharts.chart('integrated-dashboard-gauge2',  {
        tickWidth: 2,
        minorTickInterval: null,
        labels: {
-           distance: 20,
-           style: {
-               fontSize: '14px'
-           }
-       },
+        enabled: false
+    },
        lineWidth: 0,
        plotBands: [{
            from: 0,
@@ -333,6 +328,7 @@ Highcharts.chart('integrated-dashboard-gauge2',  {
        },
        dataLabels: {
          //   format: '{y} km/h',
+         enabled:false,
            borderWidth: 0,
            color: (
                Highcharts.defaultOptions.title &&
@@ -409,11 +405,8 @@ Highcharts.chart('integrated-dashboard-gauge3',  {
        tickWidth: 2,
        minorTickInterval: null,
        labels: {
-           distance: 20,
-           style: {
-               fontSize: '14px'
-           }
-       },
+        enabled: false
+    },
        lineWidth: 0,
        plotBands: [{
            from: 0,
@@ -441,6 +434,7 @@ Highcharts.chart('integrated-dashboard-gauge3',  {
        },
        dataLabels: {
          //   format: '{y} km/h',
+           enabled:false,
            borderWidth: 0,
            color: (
                Highcharts.defaultOptions.title &&
@@ -517,11 +511,8 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
        tickWidth: 2,
        minorTickInterval: null,
        labels: {
-           distance: 20,
-           style: {
-               fontSize: '14px'
-           }
-       },
+        enabled: false
+    },
        lineWidth: 0,
        plotBands: [{
            from: 0,
@@ -549,6 +540,7 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
        },
        dataLabels: {
          //   format: '{y} km/h',
+         enabled:false,
            borderWidth: 0,
            color: (
                Highcharts.defaultOptions.title &&
