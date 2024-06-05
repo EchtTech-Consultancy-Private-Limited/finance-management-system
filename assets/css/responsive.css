@@ -144,6 +144,7 @@
    .row.custom-grid2 .col-md-3 {
       width: 20%;
   }
+  
 }
 
 @media (min-width:768px) and (max-width:1350px) {
@@ -193,5 +194,9 @@
   }
   .row.state-driven .col-graph {
    width: 33.3333333%;
+}
+.select-form-s select.form-control {
+   /* font-size: 12px; */
+   padding: 6px 0px;
 }
 }
