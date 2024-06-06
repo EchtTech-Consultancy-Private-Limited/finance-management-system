@@ -31,6 +31,9 @@ Highcharts.chart("national-total-expenditure-lac-nrcp-lab", {
             color: "#000000",
         },
     },
+    tooltip:{
+        enabled: false
+    },
     subtitle: {
         text: `
             <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
@@ -45,7 +48,9 @@ Highcharts.chart("national-total-expenditure-lac-nrcp-lab", {
             color: "#000000",
         },
     },
-    
+    tooltip:{
+        enabled: false
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -110,7 +115,9 @@ Highcharts.chart("national-total-expenditure-lac-nrcp-lab", {
             color: "#000000",
         },
     },
-    
+    tooltip:{
+        enabled: false
+    },
     subtitle: {
         text: `
         <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
@@ -212,6 +219,9 @@ let overallChart_nrcp_lab = Highcharts.chart('integrated-dashboard-chart-overall
             borderWidth: 0,
             shadow: false
         }
+    },
+    tooltip: {
+        enabled: false,
     },
     series: [{
         type: 'pie',

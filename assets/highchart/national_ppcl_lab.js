@@ -47,7 +47,9 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
             color: "#000000",
         },
     },
-    
+    tooltip:{
+        enabled: false
+    },
     accessibility: {
         point: {
             valueSuffix: "%",
@@ -76,8 +78,8 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
             name: "",
             innerSize: "60%",
             data: [
-                ["Unspent", 85],
-                ["Expenditure", 15],
+                ["Expenditure ", 85],
+                ["Unspent", 15],
             ],
         },
     ],
@@ -112,7 +114,9 @@ Highcharts.chart("national-total-expenditure-lac-ppcl-lab", {
             color: "#000000",
         },
     },
-    
+    tooltip:{
+        enabled: false
+    },
     subtitle: {
         text: `
         <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
@@ -199,6 +203,9 @@ let overallChart_ppcl_lab = Highcharts.chart('integrated-dashboard-chart-overall
         // symbolWidth: 12,
         // symbolPadding: 10,
         // itemDistance: 20
+    },
+    tooltip: {
+        enabled: false,
     },
     plotOptions: {
         pie: {

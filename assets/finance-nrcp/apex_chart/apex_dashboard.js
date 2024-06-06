@@ -5,7 +5,7 @@
 let overallChart = Highcharts.chart('national-dashboard-overall-Program-expenditure-amount', {
     chart: {
         type: 'pie',
-        height: window.innerWidth<1300 ? 218: 215,
+        height: window.innerWidth < 1300 ? 218 : 215,
     },
     credits: {
         enabled: false
@@ -28,17 +28,16 @@ let overallChart = Highcharts.chart('national-dashboard-overall-Program-expendit
         labelFormatter: function () {
             return this.name;
         },
-        // symbolRadius: 0,
-        // symbolHeight: 12,
-        // symbolWidth: 12,
-        // symbolPadding: 10,
-        // itemDistance: 20
+        className: 'custom-legend'
     },
+      tooltip: {
+            enabled: false,
+        },
     plotOptions: {
         pie: {
             startAngle: 0,
             endAngle: 360,
-            colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+            // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
             dataLabels: {
                 enabled: false
             },
@@ -46,7 +45,19 @@ let overallChart = Highcharts.chart('national-dashboard-overall-Program-expendit
             center: ['40%', '50%'],
             size: '80%',
             borderWidth: 0,
-            shadow: false
+            shadow: false,
+            point: {
+                events: {
+                    legendItemClick: function () {
+                        if (this.visible) {
+                            this.setVisible(false);
+                        } else {
+                            this.setVisible(true);
+                        }
+                        return false;
+                    }
+                }
+            }
         }
     },
     series: [{
@@ -54,14 +65,15 @@ let overallChart = Highcharts.chart('national-dashboard-overall-Program-expendit
         name: 'Expenditure',
         innerSize: '80%',
         data: [
-            { name: "NOHPPCZ-RCs-35", y: 40, color: "#add73d" },
-            { name: "NOHPPCZ-SSS-65 L", y: 40, color: "#35a8df" },
-            { name: "NRCP-Lab-30 L", y: 5, color: "#d962bf" },
-            { name: "PPCL-28 L", y: 5, color: "#91d2fb" },
-            { name: "PM-ABHIM- SSS- 12 L", y: 10, color: "#f5ad45" }
+            { name: "NOHPPCZ-RCs", y: 40, color: "#add73d" },
+            { name: "NOHPPCZ-SSS", y: 40, color: "#35a8df" },
+            { name: "<span style='position:relative; z-index:9;'>NRCP-Lab</span>", y: 5, color: "#d962bf" },
+            { name: "<span style='position:relative; z-index:9;'>PPCL</span>", y: 5, color: "#91d2fb" },
+            { name: "PM-ABHIM- SSS", y: 10, color: "#f5ad45" }
         ]
     }]
 });
+
 
 
 //Set No data text
@@ -70,7 +82,7 @@ var textY = overallChart.plotTop + (overallChart.plotHeight * 0.35);
 var textWidth = 500;
 textX = textX - (textWidth / 2);
 
-overallChart.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
+overallChart.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center;  position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>', textX, textY, null, null, null, true)
         .css({
             fontSize: '16px',
         }).add();
@@ -2154,7 +2166,7 @@ Highcharts.chart('integrated-dashboard-state-graph', {
     xAxis: {
         type: 'category',
         labels: {
-            autoRotation: [-45, -90],
+            autoRotation: [-60, -90],
             style: {
                 fontSize: '13px',
                 fontFamily: 'Verdana, sans-serif'

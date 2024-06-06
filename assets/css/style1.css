@@ -13050,3 +13050,7 @@ form.select-form-s.export-excel-form .col:not(:last-child) {
 li.breadcrumb-item.acctive a {
     color: #0072ff;
 }
+
+.highcharts-label span {
+    z-index: -9;
+}
