@@ -5735,7 +5735,9 @@ tspan {
     font-size: 13px;
     font-weight: 300;
     color: #7e7172;
-    text-transform: capitalize
+    text-transform: capitalize;
+    stroke: none;
+    fill: none !important;
 }
 
 .morris-hover.morris-default-style .morris-hover-point {
@@ -13053,4 +13055,7 @@ li.breadcrumb-item.acctive a {
 
 .highcharts-label span {
     z-index: -9;
+}
+.line_icon.open_miniSide.d-none.d-lg-block{
+    cursor: pointer;
 }

@@ -2166,7 +2166,7 @@ Highcharts.chart('integrated-dashboard-state-graph', {
     xAxis: {
         type: 'category',
         labels: {
-            autoRotation: [-60, -90],
+            autoRotation: [-70, -90],
             style: {
                 fontSize: '13px',
                 fontFamily: 'Verdana, sans-serif'
@@ -2242,8 +2242,11 @@ Highcharts.chart('integrated-dashboard-state-graph', {
             y: 10, // 10 pixels down from the top
             style: {
                 fontSize: '12px',
-                fontFamily: 'Verdana, sans-serif'
-            }
+                fontFamily: 'Verdana, sans-serif',
+                textShadow: "none",
+                color:"red"
+            },  
+            textShadow: "none"
         }
     }]
 });
