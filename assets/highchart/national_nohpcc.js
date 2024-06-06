@@ -124,7 +124,7 @@ Highcharts.chart("national-total-unspent-lac", {
 
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+        <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
             
             <span>Unspent</span>
         </div>`,
@@ -251,7 +251,7 @@ var textY = overallChart_rc.plotTop + (overallChart_rc.plotHeight * 0.35);
 var textWidth = 500;
 textX = textX - (textWidth / 2);
 
-overallChart_rc.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Head <br> Exp.</span></div>', textX, textY, null, null, null, true)
+overallChart_rc.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Head <br> Exp.</span></div>', textX, textY, null, null, null, true)
         .css({
             fontSize: '16px',
         }).add();
@@ -367,7 +367,7 @@ Highcharts.chart("national_fund_unspent_percentage_nohppcz_rc", {
 
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+        <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
             <span>Unspent</span>
         </div>`,
         align: "center",
@@ -514,7 +514,7 @@ Highcharts.chart("national_dd_percentage_nohppcz_rc", {
         enabled: false,
     },
     title: {
-        text: ` <div class="graph-title" style="color:#3a7ed3; ">10%</div>`,
+        text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
         align: "center",
         verticalAlign: "middle",
         y: expenditureTitleY,
@@ -525,7 +525,7 @@ Highcharts.chart("national_dd_percentage_nohppcz_rc", {
     },
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
+        <div class="graph-title" style="color:#3a7ed3; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
         align: "center",
         verticalAlign: "middle",
         y: expenditureSubtitleY,

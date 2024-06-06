@@ -13046,3 +13046,7 @@ form.select-form-s.export-excel-form .col:not(:last-child) {
     margin-left: -27px;
     margin-right: 20px;
 }
+
+li.breadcrumb-item.acctive a {
+    color: #0072ff;
+}

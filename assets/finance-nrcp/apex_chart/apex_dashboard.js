@@ -162,7 +162,7 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
     text: '<div style="text-align:center; ">Net Profit Margin</div>',
     align: 'center',
     verticalAlign: 'bottom',
-    y: -20, // Adjusted position
+    // y: 0, // Adjusted position
     style: {
         fontSize: '13px',
         color: '#000'
@@ -2259,7 +2259,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
    xAxis: {
        type: 'category',
        labels: {
-           autoRotation: [-45, -90],
+          rotation: -70,
            style: {
                fontSize: '13px',
                fontFamily: 'Verdana, sans-serif'
@@ -2281,7 +2281,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
         symbolRadius: 0,
    },
    tooltip: {
-    enabled: false,
+    enabled: true,
    },
    series: [{
     name: 'Head',
@@ -2293,27 +2293,25 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
         }
     },
       
-       data: [
-         [' Current Man Power', 4.3],
-         ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
-         ['Lab Strengthening Kits', 3.5],
-         ['IEC', 2],
-        
-       ],
-       dataLabels: {
-           enabled: true,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-           format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif',
-               textShadow: 0
-           }
-       }
+    data: [
+        ['Current Man Power', 4.3],
+        ['Meetings, Training<br> & Research', 2.5],
+        ['Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)', 3.5],
+        ['IEC', 2]
+    ],
+    dataLabels: {
+        enabled: true,
+        rotation: -90,
+        color: '#FFFFFF',
+        inside: true,
+        verticalAlign: 'top',
+        format: '{point.y:.1f}', // One decimal
+        y: 10, // 10 pixels down from the top
+        style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+        }
+    }
    }]
 });
 
@@ -2336,7 +2334,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
    xAxis: {
        type: 'category',
        labels: {
-           autoRotation: [-45, -90],
+          rotation: -70,
            style: {
                fontSize: '13px',
                fontFamily: 'Verdana, sans-serif'
@@ -2358,7 +2356,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
         symbolRadius: 0,
    },
    tooltip: {
-    enabled: false,
+    enabled: true,
    },
    series: [{
        name: 'Head',
@@ -2370,9 +2368,9 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
            }
        },
        data: [
-         [' Current Man Power', 4.3],
-         ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
-         ['Lab Strengthening Kits', 3.5],
+         ['Office Expenses <br> & Travel', 4.3],
+         ['Meetings, Training<br> & Research ', 2.5],
+         ['Other Activities', 3.5],
          ['IEC', 2],
         
        ],
@@ -2411,7 +2409,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
    xAxis: {
        type: 'category',
        labels: {
-           autoRotation: [-45, -90],
+          rotation: -70,
            style: {
                fontSize: '13px',
                fontFamily: 'Verdana, sans-serif'
@@ -2433,7 +2431,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
     symbolRadius: 0,
    },
    tooltip: {
-    enabled: false,
+    enabled: true,
    },
    series: [{
     name: 'Head',
@@ -2444,26 +2442,25 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
             e.preventDefault();
         }
     },
-       data: [
-         [' Current Man Power', 4.3],
-         ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
-         ['Lab Strengthening Kits', 3.5],
-         ['IEC', 2],
-        
-       ],
-       dataLabels: {
-           enabled: true,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-           format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
+    data: [
+        ['Current Man Power', 4.3],
+        ['Meetings, Training<br> & Research', 2.5],
+        ['Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)', 3.5],
+        ['IEC', 2]
+    ],
+    dataLabels: {
+        enabled: true,
+        rotation: -90,
+        color: '#FFFFFF',
+        inside: true,
+        verticalAlign: 'top',
+        format: '{point.y:.1f}', // One decimal
+        y: 10, // 10 pixels down from the top
+        style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+        }
+    }
    }]
 });
 
@@ -2486,7 +2483,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
    xAxis: {
        type: 'category',
        labels: {
-           autoRotation: [-45, -90],
+           rotation: -70,
            style: {
                fontSize: '13px',
                fontFamily: 'Verdana, sans-serif'
@@ -2508,7 +2505,7 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
     symbolRadius: 0,
    },
    tooltip: {
-    enabled: false,
+    enabled: true,
    },
    series: [{
     name: 'Head',
@@ -2519,103 +2516,113 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
             e.preventDefault();
         }
     },
-       data: [
-         [' Current Man Power', 4.3],
-         ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
-         ['Lab Strengthening Kits', 3.5],
-         ['IEC', 2],
-        
-       ],
-       dataLabels: {
-           enabled: true,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-           format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
+    data: [
+        ['Current Man Power', 4.3],
+        ['Meetings, Training<br> & Research', 2.5],
+        ['Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)', 3.5],
+        ['IEC', 2]
+    ],
+    dataLabels: {
+        enabled: true,
+        rotation: -90,
+        color: '#FFFFFF',
+        inside: true,
+        verticalAlign: 'top',
+        format: '{point.y:.1f}', // One decimal
+        y: 10, // 10 pixels down from the top
+        style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+        }
+    }
    }]
 });
 
 Highcharts.chart('integrated-dashboard-data-driven-graph5', {
-   chart: {
-       type: 'column'
-   },
-   title: {
-       text: ''
-   },
-   credits: {
-      enabled: false
-  },
-   exporting: {
-      enabled: false
-   },
-   subtitle: {
-       text: ''
-   },
-   xAxis: {
-       type: 'category',
-       labels: {
-           autoRotation: [-45, -90],
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   },
-   yAxis: {
-       min: 0,
-       title: {
-           text: null
-       }
-   },
-   legend: {
-    enabled: true,
-    layout: 'horizontal',
-    align: 'center',
-    verticalAlign: 'top',
-    y: 7, 
-    symbolRadius: 0,
-   },
-   tooltip: {
-    enabled: false,
-   },
-   series: [{
-    name: 'Head',
-    type: 'column',
-    color:"#92d050",
-    events: {
-        legendItemClick: function (e) {
-            e.preventDefault();
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    credits: {
+        enabled: false
+    },
+    exporting: {
+        enabled: false
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            rotation: -70, // Rotating labels to prevent overlap
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif',
+                whiteSpace: 'nowrap', // Preventing text wrap
+                textOverflow: 'ellipsis' // Adding ellipsis for overflow text
+            }
+        },
+        // categories: [
+        //     'Current Man Power',
+        //     'Meetings, Training & Research',
+        //     'Lab Strengthening <br> Kits, Regents &<br> Consumable (Recurring)',
+        //     'IEC',
+        //     'Office Expenses & Travel',
+        //     'Lab Strengthening (Non Recurring)',
+        //     'Other Activities'
+        // ],
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: null
         }
     },
-       data: [
-         [' Current Man Power', 4.3],
-         ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
-         ['Lab Strengthening Kits', 3.5],
-         ['IEC', 2],
-        
-       ],
-       dataLabels: {
-           enabled: true,
-           rotation: -90,
-           color: '#FFFFFF',
-           inside: true,
-           verticalAlign: 'top',
-           format: '{point.y:.1f}', // one decimal
-           y: 10, // 10 pixels down from the top
-           style: {
-               fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
-           }
-       }
-   }]
+    legend: {
+        enabled: true,
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'top',
+        y: 7,
+        symbolRadius: 0
+    },
+    tooltip: {
+        enabled: true
+    },
+    series: [{
+        name: 'Head',
+        type: 'column',
+        color: "#92d050",
+        events: {
+            legendItemClick: function (e) {
+                e.preventDefault();
+            }
+        },
+        data: [
+            ['Current Man Power', 4.3],
+            ['Meetings, Training<br> & Research', 2.5],
+            ['Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)', 3.5],
+            ['IEC', 2]
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            inside: true,
+            verticalAlign: 'top',
+            format: '{point.y:.1f}', // One decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
 });
+
 
 
 Highcharts.chart('integrated-dashboard-chart-currently-UC-Received', {

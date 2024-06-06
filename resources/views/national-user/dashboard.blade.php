@@ -15,10 +15,10 @@
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
                 <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-                <ol class="breadcrumb page_bradcam mb-0">
+                <!-- <ol class="breadcrumb page_bradcam mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+                </ol> -->
             </div>
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
@@ -1133,7 +1133,7 @@
             </div>
             <div class="data-driven">
                 <div class="row justify-content-between custom-grid">
-                    <div class="col-md-2 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1144,7 +1144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1155,7 +1155,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1166,7 +1166,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
@@ -1177,7 +1177,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">

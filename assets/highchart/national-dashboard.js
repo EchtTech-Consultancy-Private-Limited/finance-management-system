@@ -312,7 +312,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
       
         subtitle: {
             text: `
-            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
                 <span>Unspent</span>
             </div>`,
         align: 'center',
@@ -386,13 +386,10 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
             subtitle: {
                 text: `
-                    <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
-                        
-                        <span>Interest Earned</span>
-                    </div>`,
+                <div class="graph-title" style="color:#00b050; "> <span>Interest Earned</span> </div>`,
                 align: 'center',
                 verticalAlign: 'middle',
-                y: 60,
+                y: 70,
                 style: {
                     fontSize: '16px',
                     color: '#000000'
@@ -454,7 +451,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 40,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
@@ -462,9 +459,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         subtitle: {
             text: `
-            <div class="graph-title" style="color:#00b050; white-space:nowrap;">
-                <span>Interest DD Returned</span>
-            </div>`,
+            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
         align: 'center',
         verticalAlign: 'middle',
         y: 70,
