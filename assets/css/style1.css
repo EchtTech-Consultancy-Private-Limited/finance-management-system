@@ -5735,6 +5735,12 @@ tspan {
     font-size: 13px;
     font-weight: 300;
     color: #7e7172;
+    text-transform: capitalize
+}
+tspan.highcharts-text-outline{
+    font-size: 13px;
+    font-weight: 300;
+    color: #7e7172;
     text-transform: capitalize;
     stroke: none;
     fill: none !important;
