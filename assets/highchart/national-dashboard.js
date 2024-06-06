@@ -91,7 +91,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
-        
+        tooltip:{
+            enabled: false
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -168,7 +170,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
-        
+        tooltip:{
+            enabled: false
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'

@@ -62,6 +62,9 @@ Highcharts.chart("national-total-expenditure-lac", {
             valueSuffix: "%",
         },
     },
+    tooltip:{
+        enabled: false
+    },
     plotOptions: {
         pie: {
             colors: ["#00b050", "#f79646"],
@@ -101,6 +104,9 @@ Highcharts.chart("national-total-unspent-lac", {
         spacingBottom: 0,
         spacingLeft: 0,
         spacingRight: 0,
+    },
+    tooltip:{
+        enabled: false
     },
     credits: {
         enabled: false,
@@ -211,6 +217,7 @@ let overallChart_rc = Highcharts.chart('integrated-dashboard-chart-overall-progr
         // itemDistance: 20
     },
     tooltip:{
+        enabled: false,
             backgroundColor:'#fff',
             position:'relative',
             zIndex:999999

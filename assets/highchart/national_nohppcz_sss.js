@@ -23,6 +23,9 @@ credits: {
 exporting: {
     enabled: false,
 },
+tooltip:{
+    enabled: false
+},
 title: {
     text: ` <div class="graph-title" style="color:#00b050; ">
    85L
@@ -114,7 +117,9 @@ title: {
         color: "#000000",
     },
 },
-
+tooltip:{
+    enabled: false
+},
 subtitle: {
     text: `
     <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
@@ -201,6 +206,9 @@ let overallChart_sss = Highcharts.chart('integrated-dashboard-chart-overall-prog
         // symbolWidth: 12,
         // symbolPadding: 10,
         // itemDistance: 20
+    },
+    tooltip: {
+        enabled: false,
     },
     plotOptions: {
         pie: {
