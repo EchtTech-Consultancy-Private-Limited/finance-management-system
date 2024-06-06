@@ -184,7 +184,7 @@ let overallChart_sss = Highcharts.chart('integrated-dashboard-chart-overall-prog
     title: null,
     subtitle: null,
     legend: {
-        enabled: true,
+        enabled: false,
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle',

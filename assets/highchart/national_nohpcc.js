@@ -192,7 +192,7 @@ let overallChart_rc = Highcharts.chart('integrated-dashboard-chart-overall-progr
     title: null,
     subtitle: null,
     legend: {
-        enabled: true,
+        enabled: false,
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle',

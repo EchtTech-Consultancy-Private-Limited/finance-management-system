@@ -2310,7 +2310,8 @@ Highcharts.chart('integrated-dashboard-data-driven-graph1', {
            y: 10, // 10 pixels down from the top
            style: {
                fontSize: '13px',
-               fontFamily: 'Verdana, sans-serif'
+               fontFamily: 'Verdana, sans-serif',
+               textShadow: 0
            }
        }
    }]
@@ -2368,7 +2369,6 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
                e.preventDefault();
            }
        },
-       groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
          ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
@@ -2444,8 +2444,6 @@ Highcharts.chart('integrated-dashboard-data-driven-graph3', {
             e.preventDefault();
         }
     },
-    //    colorByPoint: true,
-       groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
          ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],
@@ -2521,7 +2519,6 @@ Highcharts.chart('integrated-dashboard-data-driven-graph4', {
             e.preventDefault();
         }
     },
-       groupPadding: 0,
        data: [
          [' Current Man Power', 4.3],
          ['Meetings, Training & Research Regents and consumable (Recuring)', 2.5],

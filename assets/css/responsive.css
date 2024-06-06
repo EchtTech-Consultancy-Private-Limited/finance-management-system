@@ -104,6 +104,9 @@
    text-shadow: 1px 1px #6a6a6a;
    margin-bottom: 0px;
 }
+.overall-expenditure ul li{
+   font-size: 12px !important;
+}
 }
 @media (min-width:1600px) {
 
@@ -151,6 +154,8 @@
    .gauge-meter {
       padding-top: 15%;
    }
+
+   
 }
 
 @media (min-width:1800px) {
@@ -188,10 +193,16 @@
    .SOE-UC-list .mr_10{
       margin: 0 !important;
    }
+   .overall-expenditure ul li{
+      font-size: 13px;
+  }
 }
 
 @media (max-width:1400px) {
-
+ 
+  .overall-content {
+   margin-right: 0px;
+}
    .financial-year-select {
       min-width: 50%;
    }

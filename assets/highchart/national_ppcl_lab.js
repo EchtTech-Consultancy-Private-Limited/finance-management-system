@@ -182,7 +182,7 @@ let overallChart_ppcl_lab = Highcharts.chart('integrated-dashboard-chart-overall
     title: null,
     subtitle: null,
     legend: {
-        enabled: true,
+        enabled: false,
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle',
