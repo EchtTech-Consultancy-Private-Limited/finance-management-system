@@ -86,6 +86,11 @@
    /* text-shadow: 2px 1px black; */
 }
 }
+@media (min-width:768px) and (max-width:1499px) {
+   .data-driven .expenditure-bar-chart-box-child2 br{
+      display: block;
+     }
+}
 @media (min-width:768px) and (max-width:1365px) {
    tspan.graph-title tspan {
       font-size: 15px;
@@ -96,9 +101,7 @@
       gap: 9px;
       margin-left: 5px;
   }
-  .data-driven .expenditure-bar-chart-box-child2 br{
-   display: block;
-  }
+  
   .data-driven .expenditure-bar-chart-box-child2 h3 {
    font-size: 15px;
    text-shadow: 1px 1px #6a6a6a;

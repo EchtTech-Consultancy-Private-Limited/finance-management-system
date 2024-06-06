@@ -113,7 +113,7 @@ Highcharts.chart("national-total-expenditure-lac-nrcp-lab", {
     
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+        <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
             
             <span>Unspent</span>
         </div>`,
@@ -350,7 +350,7 @@ overallChart_nrcp_lab.renderer.label('<div style="width: ' + textWidth + 'px; te
     
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+        <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
             <span>Unspent</span>
         </div>`,
         align: "center",
@@ -504,7 +504,7 @@ overallChart_nrcp_lab.renderer.label('<div style="width: ' + textWidth + 'px; te
     },
     subtitle: {
         text: `
-        <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
+        <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
         align: "center",
         verticalAlign: "middle",
         y: expenditureSubtitleY,

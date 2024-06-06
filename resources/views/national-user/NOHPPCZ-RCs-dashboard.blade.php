@@ -15,9 +15,9 @@
     <div class="col-12">
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
-                <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -RC's Dashboard</h3>
+                <!-- <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -RC's Dashboard</h3> -->
                 <ol class="breadcrumb page_bradcam mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                    <li class="breadcrumb-item acctive"><a href="{{url('/national-users/dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active">NOHPPCZ -RC's Dashboard</li>
                 </ol>
             </div>
@@ -286,7 +286,7 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col">
+                <div class="col-md-6">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                 class="text-danger">*</sup></b></label>
                     <select name="" class="form-control" id="">
@@ -296,17 +296,8 @@
                         <option value="">Institute Name</option>
                     </select>
                 </div>
-                <div class="col">
-                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly <sup
-                                class="text-danger">*</sup></b></label>
-                    <select name="" class="form-control" id="">
-                        <option value="">Select Month</option>
-                        <option value="">January</option>
-                        <option value="">Febuary</option>
-                        <option value="">March</option>
-                    </select>
-                </div>
-                <div class="col">
+               
+                <div class="col-md-6">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
                                 class="text-danger">*</sup></b></label>
                     <select name="" class="form-control" id="">

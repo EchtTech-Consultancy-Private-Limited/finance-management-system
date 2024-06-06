@@ -15,10 +15,11 @@
     <div class="col-12">
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
-                <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -SSS Dashboard</h3>
+                <!-- <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -SSS Dashboard</h3> -->
+               
                 <ol class="breadcrumb page_bradcam mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-                    <li class="breadcrumb-item active">NOHPPCZ -SSS Dashboard</li>
+                    <li class="breadcrumb-item acctive"><a href="{{url('/national-users/dashboard')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item active">NOHPPCZ SSS Dashboard</li>
                 </ol>
             </div>
             <div class="page_title_right">
@@ -286,7 +287,7 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
                                     class="text-danger">*</sup></b></label>
@@ -298,8 +299,17 @@
                         </select>
                     </div>
                 </div>
-                
-                <div class="col-md-6">
+                <div class="col">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly <sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Select Month</option>
+                        <option value="">January</option>
+                        <option value="">Febuary</option>
+                        <option value="">March</option>
+                    </select>
+                </div>
+                <div class="col">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
