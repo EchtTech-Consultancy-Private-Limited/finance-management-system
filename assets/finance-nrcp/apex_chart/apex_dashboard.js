@@ -171,7 +171,7 @@ Highcharts.chart('integrated-dashboard-gauge1',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center; ">Net Profit Margin</div>',
+    text: '<div style="text-align:center; ">Net Profit Margin - 50%</div>',
     align: 'center',
     verticalAlign: 'bottom',
     // y: 0, // Adjusted position
@@ -277,7 +277,7 @@ Highcharts.chart('integrated-dashboard-gauge2',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center;">Gross Profit margin</div>',
+    text: '<div style="text-align:center;">Gross Profit margin - 55%</div>',
     align: 'center',
     verticalAlign: 'bottom',
     y: 20, // Adjusted position
@@ -383,7 +383,7 @@ Highcharts.chart('integrated-dashboard-gauge3',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center;">Burn Rate</div>',
+    text: '<div style="text-align:center;">Burn Rate - 80%</div>',
     align: 'center',
     verticalAlign: 'bottom',
     y: 20, // Adjusted position
@@ -489,7 +489,7 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center;">Sales Growth</div>',
+    text: '<div style="text-align:center;">Sales Growth - 30%</div>',
     align: 'center',
     verticalAlign: 'bottom',
     y: 20, // Adjusted position
@@ -2383,8 +2383,8 @@ Highcharts.chart('integrated-dashboard-data-driven-graph2', {
            }
        },
        data: [
-         ['Office Expenses <br> & Travel', 4.3],
-         ['Meetings, Training<br> & Research ', 2.5],
+         ['Office Expenses  & Travel', 4.3],
+         ['Lab Strengthening <br>(Non Recurring)', 2.5],
          ['Other Activities', 3.5],
          ['IEC', 2],
         

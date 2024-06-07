@@ -32,3 +32,7 @@
 //     }
 // })
 
+let open_miniSide = $(".line_icon.open_miniSide");
+open_miniSide.on('click', ()=>{
+    $(".header_iner").toggleClass("long_sidebar");
+})

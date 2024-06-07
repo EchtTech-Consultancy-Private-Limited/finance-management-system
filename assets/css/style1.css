@@ -13065,3 +13065,13 @@ li.breadcrumb-item.acctive a {
 .line_icon.open_miniSide.d-none.d-lg-block{
     cursor: pointer;
 }
+.btn {
+   transition: 0.2s ease-in-out;
+}
+.btn:hover {
+    color: #fff !important;
+  
+}
+.header_iner.long_sidebar {
+    width: calc(100% - 123px);
+}
