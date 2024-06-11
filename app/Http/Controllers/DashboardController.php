@@ -39,7 +39,7 @@ class DashboardController extends Controller
             ->where('financial_year', date('Y'))
             ->get();
 
-        $sorUcLists = SOEUCUploadForm::get();
+        $sorUcLists = SOEUCUploadForm::with('users')->get();
 
             $finalArray = [];
             foreach ($dataForms as $dataForm) {

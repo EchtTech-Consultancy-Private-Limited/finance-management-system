@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('s_o_e_u_c_upload_forms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('year',255)->nullable();
             $table->string('month',255)->nullable();
             $table->string('file',255)->nullable();
