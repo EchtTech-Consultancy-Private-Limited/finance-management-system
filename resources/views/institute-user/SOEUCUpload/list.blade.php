@@ -53,7 +53,7 @@
                                     @endif
                                 </td>
                                 <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                <td>
+                                <td class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'not-approved' : 'pending') }}">
                                     <a href="#" class="action_btn mr_10" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</a>
                                     <div class="modal fade" id="soe_uc_form_{{ $sorUcList->id }}" tabindex="-1" role="dialog" aria-labelledby="soe_uc_form_{{ $sorUcList->id }}Title"
                                         aria-hidden="true">
@@ -94,7 +94,7 @@
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('institute-user.SOE-UC-upload-edit',$sorUcList->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="{{ route('institute-user.SOE-UC-upload-destroy',$sorUcList->id) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ route('institute-user.SOE-UC-upload-destroy',$sorUcList->id) }}" class="action_btn"> <i class="fas fa-trash text-danger"></i> </a>
                                     </div>
                                 </td>
                             </tr>

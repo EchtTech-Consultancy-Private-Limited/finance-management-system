@@ -1,97 +1,180 @@
 
-@media (min-width:768px) and (max-width:1600px){
-   .col-md-8.custom-grid{
+@media (min-width:768px) and (max-width:1600px) {
+   .col-md-8.custom-grid {
       width: 100%;
-  }
-     .custom-grid .col-xl-2, .custom-grid .col-xl-3{
-      width: 33.333333%;
-     }
-     .custom-grid  .col-xl-4 {
-      width: 50%;
-  }
-  .custom-grid .col-md-3 {
-   width: 25%;
-  } 
-
-  .custom-grid  .col-md-2 {
-   width: 25%;
-   margin-bottom: 15px;
    }
-   .custom-grid2 .col-md-2,  .custom-grid2 .col-md-3 {
+
+   .custom-grid .col-xl-2,
+   .custom-grid .col-xl-3 {
+      width: 33.333333%;
+   }
+
+   .custom-grid .col-xl-4 {
+      width: 50%;
+   }
+
+   .custom-grid .col-md-3 {
+      width: 33%;
+   }
+
+   .custom-grid .col-md-2 {
+      width: 20%;
+      margin-bottom: 15px;
+      padding-right: 0;
+  }
+
+   .custom-grid2 .col-md-2,
+   .custom-grid2 .col-md-3 {
       width: 33%;
       margin-bottom: 15px;
+   }
+
+   .row.mt-5.custom-grid .col-md-4 {
+      width: 50%;
+   }
+
+   .col-md-4.w-40 {
+      width: 40% !important;
+   }
+
+   .row.custom-grid .col-md-6.custom-grid {
+      width: 100%;
+   }
+
+   .spaicel-card-w-66 {
+      width: 66.66666667% !important;
+   }
+
+   .special-card-w-33 {
+      width: 33.33333333% !important;
+   }
+
+   
+.special-card-w-44 {
+   width: 41.66666667%;
+}
+
+   .user_crm_wrapper .special-card .single_crm {
+      min-height: 80px;
+      margin-top: 35px;
+   }
+
+   .user_crm_wrapper .special-card .single_crm .crm_body {
+      padding: 15px 8px;
+   }
+
+   .user_crm_wrapper .special-card .single_crm .crm_body p {
+      font-size: 13px;
+   }
+
+
+   .expenditure-bar-chart-box-child2 span.number {
+      margin-right: 15px !important;
+   }
+
+   .expenditure-bar-chart-box-child2 h3 {
+      font-size: 15px !important;
+   }
+
+   .data-driven .expenditure-bar-chart-box-child1 {
+      width: 55px;
+      height: 55px;
   }
-  .row.mt-5.custom-grid .col-md-4{
-   width: 50%;
+  .data-driven .expenditure-bar-chart-box-child2 span.number {
+   font-size: 16px;
+   font-weight: bold;
+   /* text-shadow: 2px 1px black; */
+}
+}
+@media (min-width:768px) and (max-width:1499px) {
+   .data-driven .expenditure-bar-chart-box-child2 br{
+      display: block;
+     }
+}
+@media (min-width:768px) and (max-width:1365px) {
+   tspan.graph-title tspan {
+      font-size: 15px;
+      font-weight: 600;
   }
-  .col-md-4.w-40{
-   width: 40% !important;
+   .data-driven .expenditure-bar-chart-box-child2 {
+      width: calc(100% - 44px);
+      gap: 9px;
+      margin-left: 5px;
+  }
+  
+  .data-driven .expenditure-bar-chart-box-child2 h3 {
+   font-size: 15px;
+   text-shadow: 1px 1px #6a6a6a;
+   margin-bottom: 0px;
 }
-.row.custom-grid .col-md-6.custom-grid{
-   width: 100%;
+.overall-expenditure ul li{
+   font-size: 12px !important;
+}
+}
+@media (min-width:1600px) {
+
+   .gauge-meter {
+      padding-top: 10%;
+   }
+
+   .financial-card-w .col-md-3 {
+      width: 20%;
+   }
+
+   .financial-card-w .expenditure-bar-chart-box-child2 span.number {
+      margin-right: 0px !important;
+   }
+
+   /* .d-none-lg {
+    display: none;
+} */
+
 }
 
-.spaicel-card-w-66{
-   width: 66.66666667% !important;
-}
-
-.special-card-w-33{
-   width: 33.33333333% !important;
-}
-
-.user_crm_wrapper .special-card .single_crm{
-   min-height: 80px;
-   margin-top: 35px;
-}
-
-.user_crm_wrapper .special-card .single_crm .crm_body {
-   padding: 15px 8px;
-}
-
-.user_crm_wrapper .special-card .single_crm .crm_body p{font-size: 13px;}
-
-
-}
-
-@media (min-width:1600px){
-
-   .gauge-meter{
-      padding-top: 18%;
-    }
-}
-@media (min-width:768px) and (max-width:1299px){
-   .expenditure_height{
+@media (min-width:768px) and (max-width:1299px) {
+   .expenditure_height {
       height: 142px;
    }
 }
-@media (min-width:1350px) and (max-width:1450px){
-    .gauge-meter{
+
+@media (min-width:1350px) and (max-width:1450px) {
+   .gauge-meter {
       padding-top: 10%;
-    }
-}
-@media (min-width:1400px){
-   .expenditure_percentage br{
-      display: none;
    }
 }
-@media (min-width:768px) and (max-width:1350px){
-    .gauge-meter{
-      padding-top: 15%;
-    }
+
+@media (min-width:1400px) {
+   .expenditure_percentage br {
+      display: none;
+   }
+   .row.custom-grid2 .col-md-3 {
+      width: 20%;
+  }
+  
 }
-@media (min-width:1800px){
+
+@media (min-width:768px) and (max-width:1350px) {
+   .gauge-meter {
+      padding-top: 15%;
+   }
+
+   
+}
+
+@media (min-width:1800px) {
    .row.state-graph-filter .col {
       min-width: 120px !important;
       max-width: 120px !important;
       padding: 0;
       /* height: 170px; */
-  }
-  .state-filter-highchart {
-   /* height: 174px; */
-}
+   }
+
+   .state-filter-highchart {
+      /* height: 174px; */
+   }
 }
 
-@media (max-width:1300px){
+@media (max-width:1300px) {
    /* .financial-year-select{
       min-width: 50%;
    } */
@@ -99,16 +182,45 @@
    .expenditure_lacks {
       padding: 0 10px;
       height: 190px;
-  }
-   .white_card_body.overall-program-expenditure-amount{
+   }
+
+   .white_card_body.overall-program-expenditure-amount {
       /* padding: 0; */
    }
 }
-@media (max-width:1400px){
-   .financial-year-select{
+
+@media (max-width:1580px) {
+   .SOE-UC-list{
+      display: block !important;
+   }
+   .SOE-UC-list .mr_10{
+      margin: 0 !important;
+   }
+   .overall-expenditure ul li{
+      font-size: 13px;
+  }
+}
+
+@media (max-width:1400px) {
+ 
+  .overall-content {
+   margin-right: 0px;
+}
+   .financial-year-select {
       min-width: 50%;
    }
+
    .col-md-6.col-lg-4.choose-financial-year-select {
       width: 50%;
   }
+  .row.state-driven{
+   flex-wrap: wrap !important;
+  }
+  .row.state-driven .col-graph {
+   width: 33.3333333%;
+}
+.select-form-s select.form-control {
+   /* font-size: 12px; */
+   padding: 6px 0px;
+}
 }

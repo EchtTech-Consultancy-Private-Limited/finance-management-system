@@ -15,9 +15,9 @@
     <div class="col-12">
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
-                <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -RC's Dashboard</h3>
+                <!-- <h3 class="f_s_25 f_w_700 dark_text mr_30">NOHPPCZ -RC's Dashboard</h3> -->
                 <ol class="breadcrumb page_bradcam mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                    <li class="breadcrumb-item acctive"><a href="{{url('/national-users/dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active">NOHPPCZ -RC's Dashboard</li>
                 </ol>
             </div>
@@ -42,7 +42,7 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
@@ -54,12 +54,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 ">
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
                         <select name="" class="form-control" id="">
-                            <option value="">Select Months</option>
+                            <option value="">Select Month</option>
                             <option value="">January</option>
                             <option value="">Febuary</option>
                             <option value="">March</option>
@@ -72,45 +72,45 @@
     </div>
     <div class="col-xl-12 integrated-expenditure">
         <div class="row ">
- 
-           <div class="col-md-7">
-             <div class="row">
-             <div class="col-md-6">
-                <div class="white_card card_height_100 mb_30">
-                    <div class="">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in Lakhs</h3>
-                            </div>
 
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Expenditure in Lakhs</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body p-0">
+                                <div id="national-total-expenditure-lac" class="expenditure_lacks"></div>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="white_card_body p-0">
-                        <div id="national-total-expenditure-lac" class="expenditure_lacks"></div>
 
+                    <div class="col-md-6">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Total Fund unspent in Lakhs</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body p-0">
+                                <div id="national-total-unspent-lac" class="expenditure_lacks"></div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="white_card card_height_100 mb_30">
-                    <div class="">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Total Fund unspent in Lakhs</h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="white_card_body p-0">
-                        <div id="national-total-unspent-lac" class="expenditure_lacks"></div>
-
-                    </div>
-                </div>
-            </div>
-             </div>
-           </div>
-          
             <div class="col-md-5">
                 <div class="white_card card_height_100 mb_30">
                     <div class="">
@@ -120,9 +120,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="white_card_body p-0">
-                        
-                        <div id="integrated-dashboard-chart-overall-program-expenditure-amount"></div>
+                    <div class="white_card_body p-0 overall-expenditure">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div id="integrated-dashboard-chart-overall-program-expenditure-amount-rc"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-light  rounded-2 overall-content">
+                                    <ul>
+                                        <li>Current Man Power</li>
+                                        <li>Meetings, Training & Research</li>
+                                        <li>Lab Strengthening Kits, Regents & Consumable (Recurring)</li>
+                                        <li>IEC</li>
+                                        <li>Office Expenses & Travel</li>
+                                        <li>Lab Strengthening (Non Recurring)</li>
+                                        <li>Other Activities</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -144,10 +164,10 @@
                 </div>
                 <div class="white_card_body">
 
-                <div class="expenditure_height">
-                    
-                    <div id="national_expenditure_percentage_nohppcz_rc" class="overall-programm-total"></div>
-                </div>
+                    <div class="expenditure_height">
+
+                        <div id="national_expenditure_percentage_nohppcz_rc" class="overall-programm-total"></div>
+                    </div>
 
                 </div>
             </div>
@@ -164,9 +184,9 @@
                     </div>
                 </div>
                 <div class="white_card_body">
-                <div class="expenditure_height">
-                    
-                    <div id="national_fund_unspent_percentage_nohppcz_rc" class="overall-programm-total"></div>
+                    <div class="expenditure_height">
+
+                        <div id="national_fund_unspent_percentage_nohppcz_rc" class="overall-programm-total"></div>
                     </div>
 
                 </div>
@@ -184,10 +204,10 @@
                     </div>
                 </div>
                 <div class="white_card_body">
-                <div class="expenditure_height">
-                    
-                    <div id="national_interest_earned_cy_percentage_nohppcz_rc" class="overall-programm-total">
-                    </div>
+                    <div class="expenditure_height">
+
+                        <div id="national_interest_earned_cy_percentage_nohppcz_rc" class="overall-programm-total">
+                        </div>
                     </div>
 
                 </div>
@@ -204,10 +224,10 @@
                     </div>
                 </div>
                 <div class="white_card_body">
-                <div class="expenditure_height">
-                    
-                    <div id="national_dd_percentage_nohppcz_rc" class="overall-programm-total">
-                    </div>
+                    <div class="expenditure_height">
+
+                        <div id="national_dd_percentage_nohppcz_rc" class="overall-programm-total">
+                        </div>
                     </div>
 
                 </div>
@@ -266,31 +286,35 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
-                        </select>
-                    </div>
+                <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Choose the Institute</option>
+                        <option value="">Institute Name</option>
+                        <option value="">Institute Name</option>
+                        <option value="">Institute Name</option>
+                    </select>
                 </div>
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Name of the Institutes<sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose the Institute</option>
-                            <option value="">Institute Name</option>
-                            <option value="">Institute Name</option>
-                            <option value="">Institute Name</option>
-                        </select>
-                    </div>
                 </div>
+               
+                <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
+                                class="text-danger">*</sup></b></label>
+                    <select name="" class="form-control" id="">
+                        <option value="">Choose Financial Year</option>
+                        <option value="">2023-2024</option>
+                        <option value="">2022-2023</option>
+                        <option value="">2021-2022</option>
+                    </select>
+                </div>
+                </div>
+
+
+
+
             </div>
 
         </div>
@@ -330,14 +354,14 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
     <div class="col-md-12">
         <div class="white_card p-3 mb-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive-sm pt-3">
-                        <table class="table table-bordered">
+                        <table class="table datatable table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -395,7 +419,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="col-xl-6">
         <div class="white_card mb_30 card_height_100 ">
             <div class="white_card_header">
@@ -424,43 +448,50 @@
             <div>
                 <form action="" class="select-form-s">
                     <div class="row">
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year
-                                    <sup class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type
-                                    <sup class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Select From Type</option>
-                                <option value="">SOE</option>
-                                <option value="">UC</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly
-                                    <sup class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
-                                <option value="">January</option>
-                                <option value="">Febuary</option>
-                                <option value="">March</option>
-                            </select>
-                        </div>
+                        <div class="col-md-8">
 
-                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year
+                                            <sup class="text-danger">*</sup></b></label>
+                                    <select name="" class="form-control" id="">
+                                        <option value="">Choose Financial Year</option>
+                                        <option value="">2023-2024</option>
+                                        <option value="">2022-2023</option>
+                                        <option value="">2021-2022</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type
+                                            <sup class="text-danger">*</sup></b></label>
+                                    <select name="" class="form-control" id="">
+                                        <option value="">Select Form Type</option>
+                                        <option value="">SOE</option>
+                                        <option value="">UC</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly
+                                            <sup class="text-danger">*</sup></b></label>
+                                    <select name="" class="form-control" id="">
+                                        <option value="">Select Month</option>
+                                        <option value="">January</option>
+                                        <option value="">Febuary</option>
+                                        <option value="">March</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="float-end form-btn-sm mt-4 pt-2">
                                 <button type="submit" class="btn bg-cancel me-1">Search</button>
                                 <button type="reset" class="btn bg-danger me-1">Reset</button>
                                 <button type="submit" class="btn btn-primary">Export Excel</button>
                             </div>
                         </div>
+
+
                     </div>
                 </form>
             </div>
@@ -483,10 +514,10 @@
                     <div class="white_card_body">
                         <div class="QA_section">
                             <div class="QA_table">
-                                <table class="table lms_table_active3 table-bordered">
+                                <table class="table datatable table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">title</th>
+                                            <th scope="col">Title</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">View / Download</th>
                                         </tr>

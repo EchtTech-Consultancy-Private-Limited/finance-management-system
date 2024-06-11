@@ -15,10 +15,10 @@
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
                 <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-                <ol class="breadcrumb page_bradcam mb-0">
+                <!-- <ol class="breadcrumb page_bradcam mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+                </ol> -->
             </div>
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
@@ -361,8 +361,8 @@
 
                                 </div>
                             </div>
-                            <div class="white_card_body overall-program-expenditure-amount">
-                                <div id="overall-Program-expenditure-amount"></div>
+                            <div class="white_card_body overall-program-expenditure-amount pb-0">
+                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
 
                             </div>
                         </div>
@@ -416,7 +416,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
@@ -912,7 +912,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Institute</th>
+                            <th class="text-center">Institute</th>
                             <th>Unspent Balance (GIA) as on 1st April.. </th>
                             <th>GIA Received during the Current F.Y</th>
                             <th>Actual Expenditure incurred during the current F.Y </th>
@@ -923,34 +923,34 @@
 
                         <tr>
                             <td> National Institute of Medical Health and Neuro Science, Bangalore </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
                             <td> Infectious Disease and Beliaghata General Hospital, Kolkata </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
                             <td> Viral Research and Diagnostic Laboratory, GMC, Amritsar </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
-                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td > State Public Health and Clinical Laboratory, Trivandrum </td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
+                            <td class="text-center">0</td>
                         </tr>
                         <tr>
-                            <th>Total</th>
+                            <th class="text-center">Total</th>
                             <th>0</th>
                             <th>0</th>
                             <th>0</th>
@@ -1003,19 +1003,18 @@
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
                                     class="text-danger">*</sup></b></label>
                         <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
+                            <option value="">Select Expenditure/Unspent Balance</option>
+                            <option value="">Expenditure</option>
+                            <option value="">Unspent Balance</option>
                         </select>
                     </div>
 
                 </div>
 
             </div>
-            <div class="row my-4 d-flex justify-content-center custom-grid">
+            <div class="row my-4 d-flex justify-content-center">
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
@@ -1025,13 +1024,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                 alt=""></div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall Unspent <br> Balance</h3>
-                            <span class="number">95%</span>
+                            <span class="number">5%</span>
                         </div>
                     </div>
                 </div>
@@ -1093,7 +1093,7 @@
                             <div class="col-md-12">
                                 <div class="graph-container border border-1 mt-3 p-2">
 
-                                    <div id="integrated-dashboard-state-graph" class="state-filter-highchart"></div>
+                                    <div id="integrated-dashboard-state-graph" class=""></div>
                                 </div>
 
                             </div>
@@ -1134,90 +1134,90 @@
                 </div>
             </div>
             <div class="data-driven">
-                <div class="row justify-content-center custom-grid">
-                    <div class="col-md-3 mb-2">
+                <div class="row justify-content-between custom-grid">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NOHPPCZ-RCs</h3>
+                                <h3>NOHPPCZ-<br>RCs</h3>
                                 <span class="number">35%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NOHPPC-SSS</h3>
+                                <h3>NOHPPC-<br>SSS</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>NRCP-Lab</h3>
+                                <h3>NRCP-<br>Lab</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-2">
+                    <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>PPCL-Lab</h3>
+                                <h3>PPCL-<br>Lab</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
                                     alt="">
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
-                                <h3>PM-ABHIM-SSS</h3>
+                                <h3>PM-ABHIM-<br>SSS</h3>
                                 <span class="number">60%</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="row custom-grid2">
-                    <div class="col-md-3">
+                <div class="row custom-grid2 state-driven">
+                    <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0">
                             <div id="integrated-dashboard-data-driven-graph1" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph2" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph3" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph4" class=""></div>
                         </div>
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph5" class=""></div>
                         </div>
@@ -1251,7 +1251,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
+                                <option value="">Select Month</option>
                                 <option value="">January</option>
                                 <option value="">Febuary</option>
                                 <option value="">March</option>
@@ -1261,7 +1261,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
@@ -1333,12 +1333,12 @@
                             <li>
                                 <span class="arrow arrow-left"><span class="number">10</span></span><span
                                     class="country-list-content">Fund Utilization (%)</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total">0%</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">11</span></span><span
                                     class="country-list-content">Fund non utilization (%)</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total">0%</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">12</span></span><span
@@ -1368,7 +1368,7 @@
     <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
-                <form action="" class="select-form-s">
+                <form action="" class="select-form-s export-excel-form">
                     <div class="row">
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
@@ -1394,7 +1394,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select From Type</option>
+                                <option value="">Select Form Type</option>
                                 <option value="">SOE</option>
                                 <option value="">UC</option>
                             </select>
@@ -1403,7 +1403,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select all Institute</option>
+                                <option value="">Select Institute</option>
                                 <option value="">Institutes 1</option>
                                 <option value="">Institutes 2</option>
                                 <option value="">Institutes 3</option>
@@ -1413,7 +1413,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="" class="form-control" id="">
-                                <option value="">Select Months</option>
+                                <option value="">Select Month</option>
                                 <option value="">January</option>
                                 <option value="">Febuary</option>
                                 <option value="">March</option>
@@ -1631,10 +1631,10 @@
             </div> -->
             <div class="QA_section">
                 <div class="QA_table">
-                    <table class="table lms_table_active3 table-bordered">
+                    <table class="table datatable table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">title</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">View / Download</th>
                             </tr>

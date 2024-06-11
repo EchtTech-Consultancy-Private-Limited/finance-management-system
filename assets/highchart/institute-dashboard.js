@@ -41,29 +41,62 @@ $(document).on('change', '#institute-user-fy', function() {
         }
     });
 });
+// **************************************************
+// reusable function for highchart 
 
+
+// **************************************************
 function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance)
 {
+    let totalExpenitureMargin = window.innerWidth > 768 && window.innerWidth < 1299 ? -80 : -20;
     // expenditure chart
     Highcharts.chart('chart-currently', {
         chart: {
-            height: 200,
             plotBackgroundColor: null,
             plotBorderWidth: 0,
-            plotShadow: false
+            plotShadow: false,
+            height: 250,
+            // margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0,
+            // marginTop: totalExpenitureMargin,
+            
+        },
+        credits: {
+           enabled: false
+        },
+        exporting: {
+           enabled: false
         },
         title: {
-            text: percentageExpenditure + '% <br>Expenditure ',
-            align: 'center',
-            verticalAlign: 'middle',
-            y: 60,
+            text: ` <div class="graph-title" style="color:#00b050; ">
+           ${percentageExpenditure}L
+        </div>`,
+            align: "center",
+            verticalAlign: "middle",
+            y: 40,
             style: {
-                fontSize: '1.1em'
-            }
+                fontSize: "16px",
+                color: "#000000",
+            },
         },
-        // tooltip: {
-        //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        // },
+        subtitle: {
+            text: `
+                <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                    
+                    <span>Expenditure</span>
+                </div>`,
+            align: "center",
+            verticalAlign: "middle",
+            y: 70,
+            style: {
+                fontSize: "16px",
+                color: "#000000",
+            },
+        },
+    
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -71,6 +104,7 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
         },
         plotOptions: {
             pie: {
+                colors: ['#00b050', '#f79646'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -82,40 +116,71 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '170%'
+                size: '100%',
+                shadow: false // Disable shadow to remove extra space
             }
         },
         series: [{
             type: 'pie',
-            // name: 'Expenditure',
-            innerSize: '50%',
-            data: [
-                ['E', totalExpenditure],
-                ['U', totalUnspentBalance]
+            name: '',
+            innerSize: '60%',
+            data:  [
+                ['', totalExpenditure],
+                ['', totalUnspentBalance]
             ]
         }]
     });
 
+    
     // unspects balance chart
     Highcharts.chart('chart-currently-again', {
         chart: {
-            height: 200,
             plotBackgroundColor: null,
             plotBorderWidth: 0,
-            plotShadow: false
+            plotShadow: false,
+            height: 250,
+            // margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0,
+            // marginTop: totalExpenitureMargin,
+            
+        },
+        credits: {
+           enabled: false
+        },
+        exporting: {
+           enabled: false
         },
         title: {
-            text: percentageUnspentBalance + '% <br>Unspent ',
-            align: 'center',
-            verticalAlign: 'middle',
-            y: 60,
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">
+            ${percentageUnspentBalance}L
+            </div>`,
+            align: "center",
+            verticalAlign: "middle",
+            y: 40,
             style: {
-                fontSize: '1.1em'
-            }
+                fontSize: "16px",
+                color: "#000000",
+            },
         },
-        // tooltip: {
-        //     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        // },
+    
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
+                
+                <span>Unspent</span>
+            </div>`,
+            align: "center",
+            verticalAlign: "middle",
+            y: 70,
+            style: {
+                fontSize: "16px",
+                color: "#000000",
+            },
+        },
+        
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -123,6 +188,7 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
         },
         plotOptions: {
             pie: {
+                colors: ['#00b050', '#f79646'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -134,18 +200,21 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '170%'
+                size: '100%',
+                shadow: false // Disable shadow to remove extra space
             }
         },
         series: [{
             type: 'pie',
-            // name: 'Expenditure',
-            innerSize: '50%',
-            data: [
-                ['U', totalUnspentBalance],
-                ['E', totalExpenditure]
+            name: '',
+            innerSize: '60%',
+            data:  [
+                ['', totalUnspentBalance],
+                ['', totalExpenditure]
             ]
         }]
     });
+
+    
 }
 // end institute dashboard

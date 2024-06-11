@@ -50,8 +50,8 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
     Highcharts.chart('national-total-expenditure-cr', {
         chart: {
             plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
+            // plotBorderWidth: 0,
+            // plotShadow: false,
             height: 250,
             margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
             spacingTop: 0,
@@ -66,10 +66,23 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null
+            text: ` <div class="graph-title" style="color:#00b050; ">
+            ${percentageExpenditure}
+        </div>`,
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 30,
+            style: {
+                fontSize: '16px',
+                color: '#000000'
+            }   
         },
         subtitle: {
-            text: percentageExpenditure + ' %<br> Expenditure',
+            text: `
+                <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                    
+                    <span>Expenditure</span>
+                </div>`,
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -77,6 +90,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 fontSize: '16px',
                 color: '#000000'
             }
+        },
+        tooltip:{
+            enabled: false
         },
         accessibility: {
             point: {
@@ -97,9 +113,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '110%',
-                borderWidth: 0, // Remove border width to minimize space
-                shadow: false // Disable shadow to remove extra space
+                size: '100%',
             }
         },
         series: [{
@@ -112,13 +126,17 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             ]
         }]
     });
-    // Total Fund unspent in Cr.
     Highcharts.chart('national-total-unspent-cr', {
         chart: {
             plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
-            height:'250'
+            // plotBorderWidth: 0,
+            // plotShadow: false,
+            height: 250,
+            margin: [0, 0, 0, 0], // Adjusted margins to remove extra space
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0
         },
         credits: {
            enabled: false
@@ -127,11 +145,23 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: '',
+            text: ` <div class="graph-title" style="color:#00b050; ">
+            ${percentageUnspentBalance}
+        </div>`,
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 30,
+            style: {
+                fontSize: '16px',
+                color: '#000000'
+            }   
         },
-      
         subtitle: {
-            text: percentageUnspentBalance + '% <br> Unspent',
+            text: `
+                <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                    
+                    <span>Unspent</span>
+                </div>`,
             align: 'center',
             verticalAlign: 'middle',
             y: 60,
@@ -140,9 +170,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        tooltip:{
+            enabled: false
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -150,7 +180,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         plotOptions: {
             pie: {
-              colors: ['#558ed5', '#c6d9f1'],
+                colors: ['#00b050', '#f79646'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -162,7 +192,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 startAngle: -90,
                 endAngle: 90,
                 center: ['50%', '75%'],
-                size: '110%'
+                size: '100%',
             }
         },
         series: [{
@@ -172,11 +202,11 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             data: [
                 ['', totalUnspentBalance],
                 ['', totalExpenditure],
-                
-               
             ]
         }]
-     });
+    });
+    // Total Fund unspent in Cr.
+   
 
     // expenditure chart
     Highcharts.chart('national-total-expenditure', {
@@ -194,22 +224,35 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: percentageExpenditure + '% <br> Expenditure',
+            text: ` <div class="graph-title" style="color:#00b050; ">
+            ${percentageExpenditure}%
+            </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 35,
             style: {
                 fontSize: '16px',
                 color: '#000000'
-            }
+            }  
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+      
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#00b050; font-size:16px !important; height:100px">
+                
+                <span>Expenditure</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
+        },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -259,22 +302,34 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: percentageUnspentBalance + '% <br> Unspent',
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">
+            ${percentageUnspentBalance}%
+            </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 35,
             style: {
                 fontSize: '16px',
                 color: '#000000'
             }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+      
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px">
+                <span>Unspent</span>
+            </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 60,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
+        },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -324,22 +379,29 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: '10% <br> Interest Earned',
+            text: ` <div class="graph-title" style="color:#00b050; "> 10% </div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
-            }
+            }   
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+            subtitle: {
+                text: `
+                <div class="graph-title" style="color:#00b050; "> <span>Interest Earned</span> </div>`,
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 70,
+                style: {
+                    fontSize: '16px',
+                    color: '#000000'
+                }
+        },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -390,22 +452,31 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: null,
-        },
-      
-        subtitle: {
-            text: '90% <br> Interest DD Returned',
+            text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
             align: 'center',
             verticalAlign: 'middle',
-            y: 50,
+            y: 30,
             style: {
                 fontSize: '16px',
                 color: '#000000'
             }
         },
-        // tooltip: {
-        //     pointFormat: 'name: <b>highchart</b>'
-        // },
+        subtitle: {
+            text: `
+            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 70,
+        style: {
+            fontSize: '16px',
+            color: '#000000'
+        }
+
+          
+        },
+        tooltip: {
+            enabled: false,
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
