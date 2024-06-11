@@ -13075,3 +13075,16 @@ li.breadcrumb-item.acctive a {
 .header_iner.long_sidebar {
     width: calc(100% - 123px);
 }
+table, thead {
+    box-sizing: border-box;
+}
+table {
+    overflow-x: auto;
+}
+table{
+	overflow-x: auto;
+}
+
+.dataTables_wrapper{
+    margin-top: 15px;
+}
