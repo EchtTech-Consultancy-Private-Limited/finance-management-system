@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Services\FileSizeServices;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class SOEUCUploadFormController extends Controller
 {
@@ -42,7 +43,7 @@ class SOEUCUploadFormController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {        
+    {
         $request->validate([
             'yearofuc'    => 'required',
             'month'     => 'required',
@@ -65,6 +66,7 @@ class SOEUCUploadFormController extends Controller
                 $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
             }
             SOEUCUploadForm::Create([
+                'user_id' => Auth::id(),
                 'year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',
@@ -133,6 +135,7 @@ class SOEUCUploadFormController extends Controller
                 $ucFileUploadSize = $request->old_file_size;
             }
             SOEUCUploadForm::where('id', $id)->Update([
+                'user_id' => Auth::id(),
                 'year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',
