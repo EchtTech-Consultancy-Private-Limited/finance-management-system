@@ -684,7 +684,7 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
            color: "#fff",
            states: {
                select: {
-                   color: '#fcad95'
+                   color: '#ab4024'
                }
            }
        }],
@@ -699,6 +699,8 @@ Highcharts.chart('integrated-dashboard-gauge4',  {
    });
 
 })();
+
+
   (async () => {
    const topology = await fetch(
        'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'

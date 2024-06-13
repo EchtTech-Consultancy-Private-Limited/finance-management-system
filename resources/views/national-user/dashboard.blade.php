@@ -519,8 +519,8 @@
         <div class="white_card p-3 mb_30">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive-sm pt-3">
-                        <table id="datatable" class="table table-bordered">
+                    <div class="QA_table pt-3">
+                        <table class="table datatable table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -910,7 +910,7 @@
     <!-- ***** -->
     <div class="col-md-12">
         <div class="crad white_card mb_30 p-4">
-            <div class="table-responsive-sm pt-3">
+            <div class="QA_table pt-3">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
