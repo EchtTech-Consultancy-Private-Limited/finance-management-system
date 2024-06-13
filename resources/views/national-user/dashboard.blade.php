@@ -46,7 +46,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total State + UT</p>
-                                <span class="studentNumber">36</span>
+                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total Sentinel Site</p>
-                                <span class="studentNumber">45</span>
+                                <input type="text" name="total_sentinel_site" value="{{ @$totalcard->total_sentinel_site }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total PPCL Labs</p>
-                                <span class="studentNumber">6</span>
+                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total Regional Coordinator</p>
-                                <span class="studentNumber">15</span>
+                                <input type="text" name="total_regional_coordinator" value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total NRCP Labs</p>
-                                <span class="studentNumber">10</span>
+                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total PM ABHIM SSS</p>
-                                <span class="studentNumber">12</span>
+                                <input type="text" name="total_pm_abhim_sss" value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -202,11 +202,13 @@
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
-                                <option value="">Select Financial Year</option>
-                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++) @php
-                                    $selected=old('financial_year')==($i) ? 'selected' : '' ; @endphp <option
-                                    value="{{$i}}" {{$selected}}>{{$i}}</option>
-                                    @endfor
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>

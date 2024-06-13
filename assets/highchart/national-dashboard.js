@@ -5,7 +5,7 @@ $(document).ready(function(){
         type: "GET",
         url: BASE_URL + "national-users/filter-dashboard",
         data: {
-            'financial_year': new Date().getFullYear()
+            'financial_year': new Date().getFullYear()+ ' - ' + (new Date().getFullYear()+1)
         },
         success: function(data) {
             var programDetails = data.programDetails[0];
@@ -92,7 +92,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             }
         },
         tooltip:{
-            enabled: false
+            enabled: true
         },
         accessibility: {
             point: {
@@ -171,7 +171,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             }
         },
         tooltip:{
-            enabled: false
+            enabled: true
         },
         accessibility: {
             point: {
@@ -251,7 +251,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -328,7 +328,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -400,7 +400,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -475,7 +475,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
           
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -581,3 +581,36 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
      in_dashboard7.render();
 }
 // end national dashboard
+
+// editable mode double click
+$(document).ready(function() {
+    $(".editmode").dblclick(function() {
+        $(this).removeAttr("readonly").focus();
+    });
+
+    $(".editmode").change(function() {
+        var $this = $(this);
+        var updatedValue = $this.val();
+        var fieldName = $this.attr('name');
+        var confirmation = confirm("Are you sure you want to change the value?");
+        
+        if (confirmation) {
+            $.ajax({
+                url: BASE_URL + "national-users/total-card",
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                data: { value: updatedValue, fieldName: fieldName },
+                success: function(response) {
+                    $this.prop('readonly', true);
+                },
+                error: function(xhr, status, error) {
+                    $this.prop('readonly', true);
+                }
+            });
+        } else {
+            $this.val($this.prop('defaultValue')).prop('readonly', true);
+        }
+    });
+});
+// End editable mode double click
+

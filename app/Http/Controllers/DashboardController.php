@@ -13,6 +13,8 @@ use App\Models\SOEUCUploadForm;
 use App\Models\City;
 use Illuminate\Support\Facades\DB;
 use App\Models\InstituteProgram;
+use App\Models\NationalDashboardTotalCards;
+use Exception;
 
 class DashboardController extends Controller
 {
@@ -34,10 +36,13 @@ class DashboardController extends Controller
         }else{
             $file = 'institute-user.dashboard';
         }
+        $currentFY = date('Y').' - '.date('Y')+1;
         $institutePrograms = InstituteProgram::get();
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
-            ->where('financial_year', date('Y'))
+            ->where('financial_year', $currentFY)
             ->get();
+
+        $totalcard = NationalDashboardTotalCards::first();
 
         $sorUcLists = SOEUCUploadForm::with('users')->get();
 
@@ -86,7 +91,7 @@ class DashboardController extends Controller
                 $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
             }
-        return view($file, compact('totalArray','sorUcLists','institutePrograms'));
+        return view($file, compact('totalArray','sorUcLists','institutePrograms','totalcard'));
     }
 
     public function instituteFilterDdashboard(Request $request)
@@ -247,97 +252,27 @@ class DashboardController extends Controller
     public function getUserPassword(Request $request,$id){
         return view('auth.password-update');
     }
-
-    public function updateProfile(Request $request){
-        $request->validate(
-            [
-                'oldpassword'=> 'required|string',
-                'newpassword'=> 'required|string',
-                
-            ],[
-              'oldpassword.required' => 'The old password field is required.',
-              'newpassword.required' => 'The New Password field is required.',
-          ]);
-       // DB::beginTransaction();
-        // try {
-        //   $result = DB::table('users')->where('id',Auth::user()->id)->update([
-        //                         'name' => $request->fname,
-        //                         'password' => $request->mname??'',
-        //                     ]);
-        //     if($result){
-        //         Toastr::success('Has been update successfully :)','Success');
-        //         return redirect()->back();
-        //     }
-        // } catch(\Exception $e) {
-        //    // DB::rollback();
-        //     return redirect()->back();
-        // }
-        // Toastr::success('Has been update successfully :)','Success');
-        return redirect()->back();
-    }
+    
     /**
-     * Show the form for creating a new resource.
+     * totalCard
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function create()
+    public function totalCard(Request $request)
     {
-        //
-    }
+        DB::beginTransaction();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Dashboard  $dashboard
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Dashboard $dashboard)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Dashboard  $dashboard
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Dashboard $dashboard)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dashboard  $dashboard
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Dashboard $dashboard)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Dashboard  $dashboard
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Dashboard $dashboard)
-    {
-        //
+        try {
+            NationalDashboardTotalCards::where('id', 1)->update([
+                $request->fieldName => $request->value,
+            ]);
+            DB::commit();
+            \Toastr::success('Dashboard card updated successfully :)','Success');
+            return response()->json(['message' => 'Dashboard card updated successfully'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Toastr::error('Fail, No Update :)', 'Error');
+            return response()->json(['message' => 'Failed to update'], 500);
+        }
     }
 }

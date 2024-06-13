@@ -82,7 +82,7 @@
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('national-user.soe-edit',$nationalSeoExpanse->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="{{ route('national-user.soe-destroy',$nationalSeoExpanse->id) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ route('national-user.soe-destroy',$nationalSeoExpanse->id) }}" class="action_btn" onclick="return confirm('Are you sure you want to delete this record?');"> <i class="fas fa-trash"></i> </a>
                                     </div>
                                 </td>
                             </tr>

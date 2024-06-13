@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>Finance Management System</title>
 <meta name="baseURL" content="{{ asset('/') }}">
+<meta name="csrf_token" content="{{ csrf_token() }}" />
 <link rel="icon" href="{{ asset('assets/img/mini_logo.png') }}" type="image/png">
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap1.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/finance-nrcp/themefy_icon/themify-icons.css') }}" />
