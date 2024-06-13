@@ -36,3 +36,22 @@ let open_miniSide = $(".line_icon.open_miniSide");
 open_miniSide.on('click', ()=>{
     $(".header_iner").toggleClass("long_sidebar");
 })
+
+let QA_table_width = $('.QA_table').innerWidth();
+let datatableWidth = $('table thead').innerWidth();
+let theadWidth = $('.datatable thead').innerWidth();
+
+// Optional: Check if the width measurements are as expected
+console.log("QA_table width:", QA_table_width);
+console.log("table thead width:", datatableWidth);
+console.log("datatable thead width:", theadWidth);
+
+let resTable = $('table');
+
+// Compare widths and apply display property accordingly
+if (datatableWidth <= QA_table_width) {
+    resTable.css("display", "table");
+} else {
+    resTable.css("display", "block");
+}
+// alert("all is well")

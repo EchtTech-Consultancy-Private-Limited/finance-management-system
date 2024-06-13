@@ -119,13 +119,13 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Financial Year<span class="text-danger">*</span></label>
-                            <select id="inputState" name="financial_year" class="form-control">
-                                <option value="">Select Financial Year</option>
-                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++)
+                            <select id="institute-user-fy" name="financial_year" class="form-control">
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                                     @php
-                                        $selected = old('financial_year') == ($i) ? 'selected' : '';
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
                                     @endphp
-                                    <option value="{{$i}}" {{$selected}}>{{$i}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
                                 @endfor
                             </select>
                             @error('financial_year')

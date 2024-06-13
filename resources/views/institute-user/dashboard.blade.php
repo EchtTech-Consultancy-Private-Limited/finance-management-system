@@ -43,12 +43,15 @@
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
-                        <select id="institute-user-fy" name="financial_year" class="form-control">
-                            <option value="">Select Financial Year</option>
-                            @for($i = date("Y")-10; $i <=date("Y")+10; $i++) @php $selected=old('financial_year')==($i)
-                                ? 'selected' : '' ; @endphp <option value="{{$i}}" {{$selected}}>{{$i}}</option>
+                            <select id="institute-user-fy" name="financial_year" class="form-control">
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
                                 @endfor
-                        </select>
+                            </select>
                     </div>
                 </div>
             </div>

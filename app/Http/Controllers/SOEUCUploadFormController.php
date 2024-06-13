@@ -54,7 +54,7 @@ class SOEUCUploadFormController extends Controller
             'month.required' => 'The Month field is required',
             'yearofuc.required' => 'The Year of UC field is required',
             'ucuploaddate.required' => 'The Year of UC Upload Date field is required',
-            'ucfileupload.required' => 'The Year of UC File Upload field is required'
+            'ucfileupload.required' => 'The UC File Upload field must contain a pdf file'
         ]
     );
         try {

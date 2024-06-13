@@ -5,7 +5,7 @@ $(document).ready(function(){
         type: "GET",
         url: BASE_URL + "institute-users/filter-dashboard",
         data: {
-            'financial_year': new Date().getFullYear()
+            'financial_year': new Date().getFullYear()+ ' - ' + (new Date().getFullYear()+1)
         },
         success: function(data) {
             var totalExpenditure = data.totalArray.actualExpenditureTotal;

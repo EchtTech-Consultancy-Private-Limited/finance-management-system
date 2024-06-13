@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer_iner text-center">
-                <p>Copyright © 2024 <a href="#">Finance Management System</a></p>
+                <!-- <p>Copyright © 2024 <a href="#">Finance Management System</a></p> -->
                 </div>
             </div>
         </div>

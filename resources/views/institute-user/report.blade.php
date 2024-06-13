@@ -16,7 +16,7 @@
         <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">Report</h3>
+                    <h3 class="m-0">Generate Report</h3>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                                 @enderror 
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-6 search-reset d-flex align-self-end">
+                        <div class="col-lg-3 col-md-3 col-6 insitute-search-reset d-flex ">
                             <div class="apply-filter    ">
                                 <button type="submit" class="btn bg-primary search-patient-btn mt-0 mr-3" name="bthValue" value="excel">Export Excel</button>
                                 <!-- <button type="submit" class="btn bg-primary mr-3" name="bthValue" value="pdf">Download PDF</button> -->

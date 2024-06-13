@@ -46,7 +46,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total State + UT</p>
-                                <span class="studentNumber">36</span>
+                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total Sentinel Site</p>
-                                <span class="studentNumber">45</span>
+                                <input type="text" name="total_sentinel_site" value="{{ @$totalcard->total_sentinel_site }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total PPCL Labs</p>
-                                <span class="studentNumber">6</span>
+                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total Regional Coordinator</p>
-                                <span class="studentNumber">15</span>
+                                <input type="text" name="total_regional_coordinator" value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total NRCP Labs</p>
-                                <span class="studentNumber">10</span>
+                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="profile-text">
                             <div class="school-info-box">
                                 <p>Total PM ABHIM SSS</p>
-                                <span class="studentNumber">12</span>
+                                <input type="text" name="total_pm_abhim_sss" value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
@@ -202,11 +202,13 @@
                             <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
-                                <option value="">Select Financial Year</option>
-                                @for($i = date("Y")-10; $i <=date("Y")+10; $i++) @php
-                                    $selected=old('financial_year')==($i) ? 'selected' : '' ; @endphp <option
-                                    value="{{$i}}" {{$selected}}>{{$i}}</option>
-                                    @endfor
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                @endfor
                             </select>
                         </div>
                     </div>
@@ -281,7 +283,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Expenditure in %</h3>
+                                        <h3 class="m-0">Total Expenditure <br> in %</h3>
                                     </div>
 
                                 </div>
@@ -298,7 +300,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Fund Unspent in %</h3>
+                                        <h3 class="m-0">Total Fund Unspent <br> in %</h3>
                                     </div>
 
                                 </div>
@@ -315,7 +317,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
+                                        <h3 class="m-0">Total Interest Earned <br> in C.Y. %</h3>
                                     </div>
 
                                 </div>
@@ -338,7 +340,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Interest DD</h3>
+                                        <h3 class="m-0">Total Interest <br> DD</h3>
                                     </div>
 
                                 </div>
@@ -356,7 +358,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Overall Program Expenditure Amount</h3>
+                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
                                     </div>
 
                                 </div>
@@ -403,13 +405,11 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select id="national-program" name="institute_program_id" class="form-control">
                                 <option value="">Select Program</option>
-                                <option value="">NOHPPCZ SSS</option>
-                                <option value="">NOHPPCZ RC's</option>
-                                <option value="">NRCP-Lab</option>
-                                <option value="">PPCL-Lab</option>
-                                <option value=""> PM-ABHIM-SSS</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
@@ -425,11 +425,14 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                            <select id="uc-financial-year" name="uc_financial_year" class="form-control">
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                @endfor
                             </select>
                         </div>
 
@@ -517,8 +520,8 @@
         <div class="white_card p-3 mb_30">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive-sm pt-3">
-                        <table id="datatable" class="table table-bordered">
+                    <div class="QA_table pt-3">
+                        <table class="table datatable table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name of Institute</th>
@@ -615,21 +618,24 @@
                         <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select id="national-program-map" name="institute_program_id" class="form-control">
                                 <option value="">Select Program</option>
-                                <option value="">Program 1</option>
-                                <option value="">Program 2</option>
-                                <option value="">Program 3</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                            <select id="national-user-fy-map" name="financial_year_map" class="form-control national_user_card">
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                    @php
+                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                @endfor
                             </select>
                         </div>
 
@@ -774,141 +780,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="row state-graph-filter">
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state1" class=" state-filter-highchart rounded mb-3 ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-                        <div class="">
-                            <div id="integrated-dashboard-state2"
-                                class=" state-filter-highchart rounded mb-3 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="">
-                        <div id="integrated-dashboard-state3" class=" state-filter-highchart rounded mb-0 "></div>
-
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state4"
-                                class=" state-filter-highchart rounded mb-0 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state5"
-                                class=" state-filter-highchart rounded mb-0 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state6"
-                                class=" state-filter-highchart rounded mb-0 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state7"
-                                class=" state-filter-highchart rounded mb-0 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state8"
-                                class=" state-filter-highchart rounded mb-0 received-chart">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state9"
-                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state10"
-                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="white_card  ">
-
-                        <div class="">
-                            <div id="integrated-dashboard-state11"
-                                class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div> -->
         </div>
     </div>
 
     <!-- ***** -->
     <div class="col-md-12">
         <div class="crad white_card mb_30 p-4">
-            <div class="table-responsive-sm pt-3">
+            <div class="QA_table pt-3">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -973,21 +851,24 @@
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                    <select name="" class="form-control" id="">
-                        <option value="">Select Program</option>
-                        <option value="">Program 1</option>
-                        <option value="">Program 2</option>
-                        <option value="">Program 3</option>
-                    </select>
+                        <select id="national-program-barchart" name="institute_program_id" class="form-control">
+                            <option value="">Select Program</option>
+                            @foreach($institutePrograms as $key => $value)
+                            <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                            @endforeach
+                        </select>
                 </div>
                 <div class="col-md-4 ">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                 class="text-danger">*</sup></b></label>
-                    <select name="" class="form-control" id="">
-                        <option value="">Choose Financial Year</option>
-                        <option value="">2023-2024</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2021-2022</option>
+                    <select id="national-user-fy-barchart" name="financial_year" class="form-control national_user_card">
+                        <option value="">Select Year</option>
+                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                            @php
+                                $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
+                            @endphp
+                            <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                        @endfor
                     </select>
                 </div>
 

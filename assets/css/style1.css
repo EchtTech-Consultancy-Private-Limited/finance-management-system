@@ -5270,9 +5270,8 @@ body::-webkit-scrollbar {
     white-space: nowrap;
     /* text-transform: capitalize; */
     font-family: mulish, sans-serif;
-    border: 0;
+    /* border: 0; */
     background: #fff;
-    border: 0 !important;
     background: 0 0;
     border-top: 1px solid #e5ecff !important;
     border-bottom: 1px solid #e5ecff !important;
@@ -11813,7 +11812,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     overflow: visible !important;
     min-width: 136px;
     max-width: 136px;
-    position: absolute;
+    position: fixed;
     z-index: 9999999;
     height: auto;
     top: 0;
@@ -13074,4 +13073,68 @@ li.breadcrumb-item.acctive a {
 }
 .header_iner.long_sidebar {
     width: calc(100% - 123px);
+}
+table, thead {
+    box-sizing: border-box;
+}
+table {
+    overflow-x: auto;
+}
+table{
+	overflow-x: auto;
+}
+
+.dataTables_wrapper{
+    margin-top: 15px;
+}
+
+table.dataTable thead .sorting {
+    position: relative;
+}
+
+th.sorting::before, .sorting_desc::before, th.sorting_asc::before {
+    content: '\f176';
+    font-family: 'FontAwesome';
+    content: '\f0dc';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding-right: 5px;
+    position: absolute;
+    right: 0px;
+}
+table thead th{
+    border-right: 1px solid #fff !important;
+}
+table thead th{
+    border-right: 1px solid #fff !important;
+}
+
+span.highcharts-title{
+    z-index: -1;
+}
+
+.col-md-5:has(#admin-dashboard-calls-qtr){
+    border-right: 1px solid #ddd;
+}
+
+.insitute-search-reset {
+    margin-top: 26px;
+}
+input[type="date"] {
+    text-transform: uppercase;
+}
+.dataTables_info {
+    color: #102272 !important;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+}
+
+.col-md-12.overlall-expenditure .integrated-expenditure .main-title br{
+    display: none;
+ }
+
+ td .modal-title {
+    text-transform: capitalize;
 }

@@ -20,7 +20,7 @@
                 </div>
             <div class="QA_section">
                 <div class="QA_table mb_30">
-                    <table id="datatable" class="datatable table table-responsive table-bordered SOE-UC-list" cellspacing="0" width="100%">
+                    <table id="datatable" class="datatable table  table-bordered SOE-UC-list" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
@@ -83,7 +83,7 @@
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('institute-user.soe-uc-edit',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn"> <i class="fas fa-trash text-danger"></i> </a>
+                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn" onclick="return confirm('Are you sure you want to delete this record?');"> <i class="fas fa-trash text-danger"></i> </a>
                                     </div>
                                 </td>
                             </tr>
