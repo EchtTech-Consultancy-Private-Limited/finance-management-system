@@ -26,8 +26,8 @@
                 @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label class="form-label" for="inputAddress">First Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="fname" value="{{Auth::user()->name??old('fname')}}" id="fname" placeholder="First Name ">
+                            <label class="form-label" for="inputAddress">Username<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="fname" value="{{Auth::user()->name??old('fname')}}" id="fname" placeholder="Enter User Name">
                             @error('fname')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
