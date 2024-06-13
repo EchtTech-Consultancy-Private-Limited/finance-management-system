@@ -513,6 +513,10 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
      });
 
     // Overall Program Expenditure Amount
+    let seriesData = programDetails.program_names.map((name, index) => ({
+        name: name,
+        y: programDetails.program_percentages[index]
+    }));
     let overallChart = Highcharts.chart(
         "national-dashboard-overall-Program-expenditure-amount",
         {
@@ -572,27 +576,13 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                         },
                     },
                 },
-            },
+            },            
             series: [
                 {
                     type: "pie",
                     name: "Expenditure",
                     innerSize: "80%",
-                    data: [
-                        { name: "NOHPPCZ-RCs", y: 40, color: "#add73d" },
-                        { name: "NOHPPCZ-SSS", y: 40, color: "#35a8df" },
-                        {
-                            name: "<span style='position:relative; z-index:9;'>NRCP-Lab</span>",
-                            y: 5,
-                            color: "#d962bf",
-                        },
-                        {
-                            name: "<span style='position:relative; z-index:9;'>PPCL</span>",
-                            y: 5,
-                            color: "#91d2fb",
-                        },
-                        { name: "PM-ABHIM- SSS", y: 10, color: "#f5ad45" },
-                    ],
+                    data: seriesData,
                 },
             ],
         }
@@ -608,7 +598,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         .label(
             '<div style="width: ' +
                 textWidth +
-                'px; text-align: center;  position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
+                'px; text-align: center;  position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">'+programDetails.allProgramTotalExpenditure+'</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
             textX,
             textY,
             null,
@@ -621,6 +611,71 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         })
         .add();
     // End Overall Program Expenditure Amount
+
+    // Program wise Unspent Balance Line Chart
+    Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
+        chart: {
+            type: "line",
+        },
+        title: {
+            text: "",
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        xAxis: {
+            categories: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ],
+        },
+        yAxis: {
+            title: {
+                text: "Institute-wise Patient / Sample Received",
+            },
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true,
+                },
+
+                enableMouseTracking: false,
+            },
+        },
+        series: [
+            {
+                name: "Reggane",
+                data: [
+                    16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
+                    22.0, 17.8,
+                ],
+            },
+            {
+                name: "Tallinn",
+                data: [
+                    -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
+                    -0.9,
+                ],
+            },
+        ],
+    });
 }
 // end national dashboard
 
@@ -2623,69 +2678,6 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
             data: [
                 ["", 75],
                 ["", 25],
-            ],
-        },
-    ],
-});
-
-// Program wise Unspent Balance Line Chart
-Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
-    chart: {
-        type: "line",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    xAxis: {
-        categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ],
-    },
-    yAxis: {
-        title: {
-            text: "Institute-wise Patient / Sample Received",
-        },
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true,
-            },
-
-            enableMouseTracking: false,
-        },
-    },
-    series: [
-        {
-            name: "Reggane",
-            data: [
-                16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-                22.0, 17.8,
-            ],
-        },
-        {
-            name: "Tallinn",
-            data: [
-                -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
-                -0.9,
             ],
         },
     ],

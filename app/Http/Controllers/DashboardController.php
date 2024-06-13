@@ -165,15 +165,25 @@ class DashboardController extends Controller
         $programPercentages = [];
         $programDetails = [];
         $numberCount = SOEUCForm::count();
+        $allProgramTotalExpenditure = SOEUCForm::with('SoeUcFormCalculation')
+            ->get()
+            ->pluck('SoeUcFormCalculation')
+            ->flatten()
+            ->sum('actual_expenditure');
+
         foreach($institutePrograms as $key => $instituteProgram){
-            $programCount = SOEUCForm::where('institute_program_id', $instituteProgram->id)->count();
-            $programPercentage = $programCount / $numberCount * 100;
-            $programNames[] = $instituteProgram->name . '-' . $instituteProgram->code. '-' . $instituteProgram->count;
+            $programCount = SOEUCForm::with('SoeUcFormCalculation')->where('institute_program_id', $instituteProgram->id)->get()
+            ->pluck('SoeUcFormCalculation')
+            ->flatten()
+            ->sum('actual_expenditure');
+            $programPercentage = $programCount;
+            $programNames[] = $instituteProgram->name . '-' . $instituteProgram->code;
             $programPercentages[] = $programPercentage;
         }
         $programDetails[] = [
                 'program_names' => $programNames,
                 'program_percentages' => $programPercentages,
+                'allProgramTotalExpenditure' => $allProgramTotalExpenditure,
             ];
         // End number of percentage program wise
 
