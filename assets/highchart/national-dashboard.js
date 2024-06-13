@@ -612,5 +612,6 @@ $(document).ready(function() {
         }
     });
 });
+
 // End editable mode double click
 
