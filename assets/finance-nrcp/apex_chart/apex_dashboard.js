@@ -285,6 +285,7 @@ $(".line_icon.open_miniSide").on("click", function () {
 
 // highchart
 let guageHeight = window.innerWidth>1450 && ( window.innerWidth<1600 ) ? 210 : 175;
+let gaugeSubtitleY = window.innerWidth>1600 ? -10 : -20
 Highcharts.chart("integrated-dashboard-gauge1", {
     chart: {
         type: "gauge",
@@ -292,7 +293,7 @@ Highcharts.chart("integrated-dashboard-gauge1", {
         plotBackgroundImage: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        marginTop: window.innerWidth>1450 ? 20 : 0,
+        marginTop: window.innerWidth>1450 ? 20 : -20,
         height:  guageHeight
     },
 
@@ -304,7 +305,7 @@ Highcharts.chart("integrated-dashboard-gauge1", {
         text: '<div style="text-align:center; ">Net Profit Margin - 50%</div>',
         align: "center",
         verticalAlign: "bottom",
-        y: -20, // Adjusted position
+        y: gaugeSubtitleY, // Adjusted position
         style: {
             fontSize: "13px",
             color: "#000",
@@ -414,7 +415,7 @@ Highcharts.chart("integrated-dashboard-gauge2", {
         text: '<div style="text-align:center;">Gross Profit margin - 55%</div>',
         align: "center",
         verticalAlign: "bottom",
-        y:  -20, // Adjusted position
+        y:  gaugeSubtitleY, // Adjusted position
         style: {
             fontSize: "13px",
             color: "#000",
@@ -524,7 +525,7 @@ Highcharts.chart("integrated-dashboard-gauge3", {
         text: '<div style="text-align:center;">Burn Rate - 80%</div>',
         align: "center",
         verticalAlign: "bottom",
-        y:  -20, // Adjusted position
+        y:  gaugeSubtitleY, // Adjusted position
         style: {
             fontSize: "13px",
             color: "#000",
@@ -634,7 +635,7 @@ Highcharts.chart("integrated-dashboard-gauge4", {
         text: '<div style="text-align:center;">Sales Growth - 30%</div>',
         align: "center",
         verticalAlign: "bottom",
-        y:  -20, // Adjusted position
+        y:  gaugeSubtitleY, // Adjusted position
         style: {
             fontSize: "13px",
             color: "#000",
