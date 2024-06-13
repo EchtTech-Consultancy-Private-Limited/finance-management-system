@@ -130,7 +130,11 @@
 } */
 
 }
-
+@media (min-width:1600px) and (max-width:1800px){
+   .col-md-12.overlall-expenditure .integrated-expenditure .main-title br{
+      display: block;
+   }
+}
 @media (min-width:768px) and (max-width:1299px) {
    .expenditure_height {
       height: 142px;

@@ -325,7 +325,7 @@
 
         </div>
     </div>
-    <div class="row ">
+    <div class="row pe-0">
         <div class="col-md-3">
             <div class="white_card  ">
 
@@ -351,7 +351,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 pe-0">
             <div class="white_card  ">
 
                 <div class="">

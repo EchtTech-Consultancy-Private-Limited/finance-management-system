@@ -283,7 +283,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Expenditure in %</h3>
+                                        <h3 class="m-0">Total Expenditure <br> in %</h3>
                                     </div>
 
                                 </div>
@@ -300,7 +300,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Fund Unspent in %</h3>
+                                        <h3 class="m-0">Total Fund Unspent <br> in %</h3>
                                     </div>
 
                                 </div>
@@ -317,7 +317,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Interest Earned in C.Y. %</h3>
+                                        <h3 class="m-0">Total Interest Earned <br> in C.Y. %</h3>
                                     </div>
 
                                 </div>
@@ -340,7 +340,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Interest DD</h3>
+                                        <h3 class="m-0">Total Interest <br> DD</h3>
                                     </div>
 
                                 </div>
@@ -358,7 +358,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Overall Program Expenditure Amount</h3>
+                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
                                     </div>
 
                                 </div>
