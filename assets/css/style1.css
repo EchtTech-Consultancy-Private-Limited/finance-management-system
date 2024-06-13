@@ -13116,3 +13116,25 @@ span.highcharts-title{
 .col-md-5:has(#admin-dashboard-calls-qtr){
     border-right: 1px solid #ddd;
 }
+
+.insitute-search-reset {
+    margin-top: 26px;
+}
+input[type="date"] {
+    text-transform: uppercase;
+}
+.dataTables_info {
+    color: #102272 !important;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+}
+
+.col-md-12.overlall-expenditure .integrated-expenditure .main-title br{
+    display: none;
+ }
+
+ td .modal-title {
+    text-transform: capitalize;
+}

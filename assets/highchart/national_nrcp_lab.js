@@ -177,6 +177,14 @@ let overallChart_nrcp_lab = Highcharts.chart('integrated-dashboard-chart-overall
     chart: {
         type: 'pie',
         height: window.innerWidth<1300 ? 190: 250,
+        events: {
+            load: function() {
+                addTextLabel(this);
+            },
+            redraw: function() {
+                updateTextLabel(this);
+            }
+        }
     },
     credits: {
         enabled: false
@@ -239,15 +247,63 @@ let overallChart_nrcp_lab = Highcharts.chart('integrated-dashboard-chart-overall
 
 
 //Set No data text
-var textX = overallChart_nrcp_lab.plotLeft + (overallChart_nrcp_lab.plotWidth * 0.4);
-var textY = overallChart_nrcp_lab.plotTop + (overallChart_nrcp_lab.plotHeight * 0.35);
-var textWidth = 500;
-textX = textX - (textWidth / 2);
+// Function to add and position the text label
+function addTextLabel(chart) {
+    var textWidth = 500;
+    var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
+    var textY = chart.plotTop + chart.plotHeight * 0.35;
 
-overallChart_nrcp_lab.renderer.label('<div style="width: ' + textWidth + 'px; text-align: center; z-index: -1; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Head <br> Exp.</span></div>', textX, textY, null, null, null, true)
+    chart.customLabel = chart.renderer
+        .label(
+            '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
+            textX,
+            textY,
+            null,
+            null,
+            null,
+            true
+        )
         .css({
-            fontSize: '16px',
-        }).add();
+            fontSize: "16px",
+        })
+        .add();
+}
+
+// Function to update the text label position
+function updateTextLabel(chart) {
+    var textWidth = 500;
+    var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
+    var textY = chart.plotTop + chart.plotHeight * 0.35;
+
+    if (chart.customLabel) {
+        chart.customLabel.attr({
+            x: textX,
+            y: textY
+        });
+    }
+}
+
+// Highcharts chart creation
+
+// Function to handle zoom detection and update
+function handleZoomDetection() {
+    var px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+
+    $(window).resize(function() {
+        var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+        if (newPx_ratio != px_ratio) {
+            px_ratio = newPx_ratio;
+            updateTextLabel(overallChart);
+            console.log("zooming");
+        } else {
+            console.log("just resizing");
+        }
+    });
+}
+
+// Run the zoom detection function
+handleZoomDetection();
+
 
     Highcharts.chart("national_expenditure_percentage_nohppcz_nrcp_lab", {
     chart: {
