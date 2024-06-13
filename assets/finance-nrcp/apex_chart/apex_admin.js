@@ -24,7 +24,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">Overall User Active </div>',
+        text: '<div style="text-align:center; z-index:-2;">Overall User Active </div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: -5, // Adjusted position
@@ -59,7 +59,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'Overall User Active ',
             data: [
                 ['', 80],
                 ['', 20],
@@ -93,7 +93,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">NOHPPCZ-RCs User </div>',
+        text: '<div style="text-align:center; z-index:-1;">NOHPPCZ-RCs User </div>',
         align: 'center',
         verticalAlign: 'bottom',
         y:-10, // Adjusted position
@@ -108,6 +108,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     tooltip: {
         valueDecimals: 2,
         valueSuffix: ''
+      
     },
     plotOptions: {
         pie: {
@@ -128,7 +129,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'NOHPPCZ-RCs User',
             data: [
                 ['', 50],
                 ['', 50],
@@ -162,7 +163,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">NOHPPCZ-SSS User </div>',
+        text: '<div style="text-align:center; z-index:-1;">NOHPPCZ-SSS User </div>',
         align: 'center',
         verticalAlign: 'bottom',
         y:-10, // Adjusted position
@@ -197,7 +198,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'NOHPPCZ-SSS User',
             data: [
                 ['', 76],
                 ['', 24],
@@ -231,7 +232,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">NRCP <br class="d-none-lg"> User </div>',
+        text: '<div style="text-align:center; z-index:-1;">NRCP <br class="d-none-lg"> User </div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: -10, // Adjusted position
@@ -266,7 +267,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'NRCP User',
             data: [
                 ['', 50],
                 ['', 50],
@@ -300,7 +301,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">PPCL <br class="d-none-lg"> User</div>',
+        text: '<div style="text-align:center; z-index:-1;">PPCL <br class="d-none-lg"> User</div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: -10, // Adjusted position
@@ -335,7 +336,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'PPCL User',
             data: [
                 ['', 76],
                 ['', 24],
@@ -369,7 +370,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     },
     subtitle: {
         useHTML: true,
-        text: '<div style="text-align:center;">PM-ABHIM <br class="d-none-lg"> User </div>',
+        text: '<div style="text-align:center; z-index:-1;">PM-ABHIM <br class="d-none-lg"> User </div>',
         align: 'center',
         verticalAlign: 'bottom',
         y: -10, // Adjusted position
@@ -404,7 +405,7 @@ Highcharts.chart('admin-dashboard-Overall-User-Active', {
     series: [
         {
             type: 'pie',
-            name: 'Temperature',
+            name: 'PM-ABHIM  User',
             data: [
                 ['', 50],
                 ['', 50],
@@ -432,7 +433,7 @@ Highcharts.chart('admin-dashboard-Average-Login-Hours',  {
    },
    subtitle: {
     useHTML: true,
-    text: '<div style="text-align:center;">Average Login Hours </div>',
+    text: '<div style="text-align:center; z-index:-1;">Average Login Hours </div>',
     align: 'center',
     verticalAlign: 'bottom',
     y: 10, // Adjusted position
@@ -488,7 +489,7 @@ Highcharts.chart('admin-dashboard-Average-Login-Hours',  {
     },
  
     series: [{
-        name: 'Speed',
+        name: 'Average Login Hours',
         data: [72],
         tooltip: {
           //   valueSuffix: ' km/h'
@@ -615,8 +616,16 @@ Highcharts.chart('integrated-dashboard-unspent-Sessions', {
     },
     series: [{
         name: '2021/11',
+        events: {
+            legendItemClick: function (e) {
+                e.preventDefault();
+            },
+        },
+      
         data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
-    }]
+    }],
+      
+   
  });
 
 
@@ -685,8 +694,97 @@ Highcharts.chart('integrated-dashboard-unspent-Sessions', {
        }
     }
  };
- var in_dashboard7 = new ApexCharts(document.querySelector("#admin-dashboard-calls-qtr"), options);
- in_dashboard7.render();
+
+//  var in_dashboard7 = new ApexCharts(document.querySelector("#admin-dashboard-calls-qtr"), options);
+//  in_dashboard7.render();
+
+// **********************************************admin-dashboard-calls-qtr
+Highcharts.chart(
+    "admin-dashboard-calls-qtr",
+    {
+        chart: {
+            type: "pie",
+            height: window.innerWidth < 1300 ? 300 : 350,
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        title: null,
+        subtitle: null,
+        legend: {
+            enabled: true,
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+            itemStyle: {
+                color: "#000000",
+                fontSize: "13px",
+            },
+            itemMarginBottom: 10,
+            labelFormatter: function () {
+                return this.name;
+            },
+            className: "custom-legend",
+        },
+        tooltip: {
+            enabled: true,
+        },
+        plotOptions: {
+            pie: {
+                startAngle: 0,
+                endAngle: 360,
+                // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+                dataLabels: {
+                    enabled: true,
+                },
+                showInLegend: true,
+                center: ["40%", "50%"],
+                size: "80%",
+                borderWidth: 0,
+                shadow: false,
+                point: {
+                    events: {
+                        legendItemClick: function () {
+                            if (this.visible) {
+                                this.setVisible(false);
+                            } else {
+                                this.setVisible(true);
+                            }
+                            return false;
+                        },
+                    },
+                },
+            },
+        },
+        series: [
+            {
+                type: "pie",
+                name: "Expenditure",
+                innerSize: "0%",
+                data: [
+                    { name: "NOHPPCZ-RCs", y: 40, color: "#add73d" },
+                    { name: "NOHPPCZ-SSS", y: 40, color: "#35a8df" },
+                    {
+                        name: "<span style='position:relative; z-index:9;'>NRCP-Lab</span>",
+                        y: 5,
+                        color: "#d962bf",
+                    },
+                    {
+                        name: "<span style='position:relative; z-index:9;'>PPCL</span>",
+                        y: 5,
+                        color: "#91d2fb",
+                    },
+                    { name: "PM-ABHIM- SSS", y: 10, color: "#f5ad45" },
+                ],
+            },
+        ],
+    }
+);
+
+// **********************************************admin-dashboard-calls-qtr
 
  function show1(){
     $("#admin-dashboard-Months-bar").toggleClass("d-none");

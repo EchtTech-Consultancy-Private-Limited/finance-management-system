@@ -15,10 +15,10 @@
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
                 <h3 class="f_s_25 f_w_700 dark_text mr_30">Admin Dashboard</h3>
-                <ol class="breadcrumb page_bradcam mb-0">
+                <!-- <ol class="breadcrumb page_bradcam mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+                </ol> -->
             </div>
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
@@ -188,13 +188,13 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="white_card_body">
-                        <div id="admin-dashboard-calls-qtr" class="mt-5 mb-5"></div>
+                        <div id="admin-dashboard-calls-qtr" class="mt-5 "></div>
                     </div>
                 </div>
 
                 <div class="col-md-7">
                     <div class="white_card_body">
-                        <div id="admin-dashboard-Months-pie" class="mt-5 mb-5"></div>
+                        <div id="admin-dashboard-Months-pie" class="mt-5 "></div>
                         <div id="admin-dashboard-Months-bar" class="mt-5 mb-5 d-none"></div>
                     </div>
                 </div>
