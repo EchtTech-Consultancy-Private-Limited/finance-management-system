@@ -3094,6 +3094,9 @@ Highcharts.chart("integrated-dashboard-data-driven-graph1", {
         verticalAlign: "top",
         y: 7, // Adjust this value to fine-tune the vertical position
         symbolRadius: 0,
+        style:{
+            fontSize: "13px",
+        }
     },
     tooltip: {
         enabled: true,
