@@ -5,7 +5,7 @@ $(document).ready(function(){
         type: "GET",
         url: BASE_URL + "national-users/filter-dashboard",
         data: {
-            'financial_year': new Date().getFullYear()
+            'financial_year': new Date().getFullYear()+ ' - ' + (new Date().getFullYear()+1)
         },
         success: function(data) {
             var programDetails = data.programDetails[0];
@@ -92,7 +92,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             }
         },
         tooltip:{
-            enabled: false
+            enabled: true
         },
         accessibility: {
             point: {
@@ -171,7 +171,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             }
         },
         tooltip:{
-            enabled: false
+            enabled: true
         },
         accessibility: {
             point: {
@@ -251,7 +251,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -328,7 +328,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -400,7 +400,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 }
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -475,7 +475,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
           
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -513,195 +513,109 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
      });
 
     // Overall Program Expenditure Amount
-    var options = {
-        series: programDetails.program_percentages,
-        chart: {
-           height: 212,
-           type: 'donut',
-           offsetY: 0
-        },
-        plotOptions: {
-     
-           radialBar: {
-              startAngle: -90,
-              endAngle: 90,
-              hollow: {
-                 margin: 0,
-                 size: "50%"
-              },
-              dataLabels: {
-                 showOn: "never",
-                 
-                 name: {
-                    show: false,
-                    fontSize: "13px",
-                    fontWeight: "700",
-                    offsetY: -5,
-                    color: ["#000000", "#E5ECFF"],
-                 },
-                 value: {
-                    color: ["#000000", "#E5ECFF"],
-                    fontSize: "30px",
-                    fontWeight: "700",
-                    offsetY: -40,
-                    show: false
-                 }
-              },
-              track: {
-                 background: ["#f79646", "#00b050"],
-                 strokeWidth: '100%'
-              }
-           }
-        },
-        colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],   
-        stroke: {
-           lineCap: "round",
-        },
-     
-     
-        labels: programDetails.program_names,
-        legend: {
-           show: true,
-           position: 'right',
-           fontSize: '13px',
-           height: '100px',
-           gap:'20px', 
-           offsetY: 10,
-           labels: {
-              colors: ["#000000", "#E5ECFF"],
-           },
-           markers: {
-              width: 12,
-              height: 12,
-              radius: 6,
-           }
-        }
-     };
-     var in_dashboard7 = new ApexCharts(document.querySelector("#overall-Program-expenditure-amount"), options);
-     in_dashboard7.render();
-}
-// end national dashboard
-
-
-// ***************************apex js file code ***************************
-// **********************
-
-let overallChart = Highcharts.chart(
-    "national-dashboard-overall-Program-expenditure-amount",
-    {
-        chart: {
-            type: "pie",
-            height: window.innerWidth < 1300 ? 218 : 215,
-            events: {
-                load: function() {
-                    addTextLabel(this);
-                },
-                redraw: function() {
-                    updateTextLabel(this);
+    let seriesData = programDetails.program_names.map((name, index) => ({
+        name: name,
+        y: programDetails.program_percentages[index]
+    }));
+    let overallChart = Highcharts.chart(
+        "national-dashboard-overall-Program-expenditure-amount",
+        {
+            chart: {
+                type: "pie",
+                height: window.innerWidth < 1300 ? 218 : 215,
+                events: {
+                    load: function() {
+                        addTextLabel(this);
+                    },
+                    redraw: function() {
+                        updateTextLabel(this);
+                    }
                 }
-            }
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        title: null,
-        subtitle: null,
-        legend: {
-            enabled: true,
-            layout: "vertical",
-            align: "right",
-            verticalAlign: "middle",
-            itemStyle: {
-                color: "#000000",
-                fontSize: "13px",
             },
-            itemMarginBottom: 10,
-            labelFormatter: function () {
-                return this.name;
+            credits: {
+                enabled: false,
             },
-            className: "custom-legend",
-        },
-        tooltip: {
-            enabled: false,
-        },
-        plotOptions: {
-            pie: {
-                startAngle: 0,
-                endAngle: 360,
-                // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
-                dataLabels: {
-                    enabled: false,
+            exporting: {
+                enabled: false,
+            },
+            title: null,
+            subtitle: null,
+            legend: {
+                enabled: true,
+                layout: "vertical",
+                align: "right",
+                verticalAlign: "middle",
+                itemStyle: {
+                    color: "#000000",
+                    fontSize: "13px",
                 },
-                showInLegend: true,
-                center: ["40%", "50%"],
-                size: "80%",
-                borderWidth: 0,
-                shadow: false,
-                point: {
-                    events: {
-                        legendItemClick: function () {
-                            if (this.visible) {
-                                this.setVisible(false);
-                            } else {
-                                this.setVisible(true);
-                            }
-                            return false;
+                itemMarginBottom: 10,
+                labelFormatter: function () {
+                    return this.name;
+                },
+                className: "custom-legend",
+            },
+            tooltip: {
+                enabled: true,
+            },
+            plotOptions: {
+                pie: {
+                    startAngle: 0,
+                    endAngle: 360,
+                    // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    showInLegend: true,
+                    center: ["40%", "50%"],
+                    size: "80%",
+                    borderWidth: 0,
+                    shadow: false,
+                    point: {
+                        events: {
+                            legendItemClick: function () {
+                                if (this.visible) {
+                                    this.setVisible(false);
+                                } else {
+                                    this.setVisible(true);
+                                }
+                                return false;
+                            },
                         },
                     },
                 },
-            },
-        },
-        series: [
-            {
-                type: "pie",
-                name: "Expenditure",
-                innerSize: "80%",
-                data: [
-                    { name: "NOHPPCZ-RCs", y: 40, color: "#add73d" },
-                    { name: "NOHPPCZ-SSS", y: 40, color: "#35a8df" },
-                    {
-                        name: "<span style='position:relative; z-index:9;'>NRCP-Lab</span>",
-                        y: 5,
-                        color: "#d962bf",
-                    },
-                    {
-                        name: "<span style='position:relative; z-index:9;'>PPCL</span>",
-                        y: 5,
-                        color: "#91d2fb",
-                    },
-                    { name: "PM-ABHIM- SSS", y: 10, color: "#f5ad45" },
-                ],
-            },
-        ],
+            },            
+            series: [
+                {
+                    type: "pie",
+                    name: "Expenditure",
+                    innerSize: "80%",
+                    data: seriesData,
+                },
+            ],
+        }
+    );
+    function addTextLabel(chart) {
+        var textWidth = 500;
+        var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
+        var textY = chart.plotTop + chart.plotHeight * 0.35;
+    
+        chart.customLabel = chart.renderer
+            .label(
+                '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">'+programDetails.allProgramTotalExpenditure+'</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
+                textX,
+                textY,
+                null,
+                null,
+                null,
+                true
+            )
+            .css({
+                fontSize: "16px",
+            })
+            .add();
     }
-);
-
-//Set No data text
-// Function to add and position the text label
-function addTextLabel(chart) {
-    var textWidth = 500;
-    var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-    var textY = chart.plotTop + chart.plotHeight * 0.35;
-
-    chart.customLabel = chart.renderer
-        .label(
-            '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
-            textX,
-            textY,
-            null,
-            null,
-            null,
-            true
-        )
-        .css({
-            fontSize: "16px",
-        })
-        .add();
-}
-
+    
 // Function to update the text label position
 function updateTextLabel(chart) {
     var textWidth = 500;
@@ -737,182 +651,108 @@ function handleZoomDetection() {
 // Run the zoom detection function
 handleZoomDetection();
 
-
-$(".line_icon.open_miniSide").on("click", function () {
-    setTimeout(function(){
-
-        let overallChart = Highcharts.chart(
-            "national-dashboard-overall-Program-expenditure-amount",
-            {
-                chart: {
-                    type: "pie",
-                    height: window.innerWidth < 1300 ? 218 : 215,
-                },
-                credits: {
-                    enabled: false,
-                },
-                exporting: {
-                    enabled: false,
-                },
-                title: null,
-                subtitle: null,
-                legend: {
+    // Program wise Unspent Balance Line Chart
+    Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
+        chart: {
+            type: "line",
+        },
+        title: {
+            text: "",
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        xAxis: {
+            categories: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ],
+        },
+        yAxis: {
+            title: {
+                text: "Institute-wise Patient / Sample Received",
+            },
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
                     enabled: true,
-                    layout: "vertical",
-                    align: "right",
-                    verticalAlign: "middle",
-                    itemStyle: {
-                        color: "#000000",
-                        fontSize: "13px",
-                    },
-                    itemMarginBottom: 10,
-                    labelFormatter: function () {
-                        return this.name;
-                    },
-                    className: "custom-legend",
                 },
-                tooltip: {
-                    enabled: false,
-                },
-                plotOptions: {
-                    pie: {
-                        startAngle: 0,
-                        endAngle: 360,
-                        // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
-                        dataLabels: {
-                            enabled: false,
-                        },
-                        showInLegend: true,
-                        center: ["40%", "50%"],
-                        size: "80%",
-                        borderWidth: 0,
-                        shadow: false,
-                        point: {
-                            events: {
-                                legendItemClick: function () {
-                                    if (this.visible) {
-                                        this.setVisible(false);
-                                    } else {
-                                        this.setVisible(true);
-                                    }
-                                    return false;
-                                },
-                            },
-                        },
-                    },
-                },
-                series: [
-                    {
-                        type: "pie",
-                        name: "Expenditure",
-                        innerSize: "80%",
-                        data: [
-                            { name: "NOHPPCZ-RCs", y: 40, color: "#add73d" },
-                            { name: "NOHPPCZ-SSS", y: 40, color: "#35a8df" },
-                            {
-                                name: "<span style='position:relative; z-index:9;'>NRCP-Lab</span>",
-                                y: 5,
-                                color: "#d962bf",
-                            },
-                            {
-                                name: "<span style='position:relative; z-index:9;'>PPCL</span>",
-                                y: 5,
-                                color: "#91d2fb",
-                            },
-                            { name: "PM-ABHIM- SSS", y: 10, color: "#f5ad45" },
-                        ],
-                    },
-                ],
-            }
-        );
-            var textX = overallChart.plotLeft + overallChart.plotWidth * 0.4;
-            var textY = overallChart.plotTop + overallChart.plotHeight * 0.35;
-            var textWidth = 500;
-            textX = textX - textWidth / 2;
-        
-            overallChart.renderer
-                .label(
-                    '<div style="width: ' +
-                        textWidth +
-                        'px; text-align: center;  position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
-                    textX,
-                    textY,
-                    null,
-                    null,
-                    null,
-                    true
-                )
-                .css({
-                    fontSize: "16px",
-                })
-                .add();
-    }, 1000)
-    
-});
-// **********************
-// Highcharts.chart('integrated-dashboard-chart-overall-program-expenditure-amount', {
-//     chart: {
-//         type: 'pie',
-//         height: 280,
-//         marginRight: 100 // Add margin to the right to make space for the legend
-//     },
-//     title: {
-//         text: '<div>35295<br>All Program Exp</div>',
-//         align: 'center',
-//         floating: true,
-//         verticalAlign: 'middle',
-//         y: 30
-//     },
-//     legend: {
-//         enabled: true,
-//         layout: 'vertical',
-//         align: 'right',
-//         verticalAlign: 'middle',
-//         x: 0, // Adjust horizontal alignment if needed
-//         y: 0 // Adjust vertical alignment if needed
-//     },
-//     tooltip: {
-//         valueDecimals: 2,
-//         valueSuffix: ' TWh'
-//     },
-//     plotOptions: {
-//         pie: {
-//             size: '70%', // Adjust size to fit the chart with the legend
-//             innerSize: '60%',
-//             dataLabels: {
-//                 enabled: false,
-//                 crop: false,
-//                 distance: '-10%',
-//                 style: {
-//                     fontWeight: 'bold',
-//                     fontSize: '16px'
-//                 },
-//                 connectorWidth: 0
-//             }
-//         }
-//     },
-//     colors: ['#FCE700', '#F8C4B4', '#f6e1ea', '#B8E8FC', '#BCE29E'],
-//     series: [
-//         {
-//             type: 'pie',
-//             name: 'Nuclear energy production',
-//             data: [
-//                 { name: 'US', y: 30 },
-//                 { name: 'UK', y: 20 },
-//                 { name: 'France', y: 25 },
-//                 { name: 'Germany', y: 15 },
-//                 { name: 'Japan', y: 10 }
-//             ]
-//         }
-//     ],
-//     credits: {
-//         enabled: false
-//     },
-//     exporting: {
-//         enabled: false
-//     }
-// });
 
+                enableMouseTracking: false,
+            },
+        },
+        series: [
+            {
+                name: "Reggane",
+                data: [
+                    16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
+                    22.0, 17.8,
+                ],
+            },
+            {
+                name: "Tallinn",
+                data: [
+                    -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
+                    -0.9,
+                ],
+            },
+        ],
+    });
+}
+// end national dashboard
+
+// editable mode double click
+$(document).ready(function() {
+    $(".editmode").dblclick(function() {
+        $(this).removeAttr("readonly").focus();
+    });
+
+    $(".editmode").change(function() {
+        var $this = $(this);
+        var updatedValue = $this.val();
+        var fieldName = $this.attr('name');
+        var confirmation = confirm("Are you sure you want to change the value?");
+        
+        if (confirmation) {
+            $.ajax({
+                url: BASE_URL + "national-users/total-card",
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
+                data: { value: updatedValue, fieldName: fieldName },
+                success: function(response) {
+                    $this.prop('readonly', true);
+                },
+                error: function(xhr, status, error) {
+                    $this.prop('readonly', true);
+                }
+            });
+        } else {
+            $this.val($this.prop('defaultValue')).prop('readonly', true);
+        }
+    });
+});
+
+// End editable mode double click
+
+
+// ***************************apex js file code ***************************
 // highchart
 let guageHeight = window.innerWidth>1450 && ( window.innerWidth<1600 ) ? 210 : 175;
 let gaugeSubtitleY = window.innerWidth>1600 ? -10 : -20
@@ -2877,69 +2717,6 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
             data: [
                 ["", 75],
                 ["", 25],
-            ],
-        },
-    ],
-});
-
-// Program wise Unspent Balance Line Chart
-Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
-    chart: {
-        type: "line",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    xAxis: {
-        categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ],
-    },
-    yAxis: {
-        title: {
-            text: "Institute-wise Patient / Sample Received",
-        },
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true,
-            },
-
-            enableMouseTracking: false,
-        },
-    },
-    series: [
-        {
-            name: "Expenditure",
-            data: [
-                16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-                22.0, 17.8,
-            ],
-        },
-        {
-            name: "Unspent",
-            data: [
-                -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
-                -0.9,
             ],
         },
     ],
