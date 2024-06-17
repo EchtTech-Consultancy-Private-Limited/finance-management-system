@@ -36,65 +36,81 @@
 
 <div class="row">
 
+    <!-- <div class="title mb_30">
+        <h3> All Programs combined data</h3>
+    </div> -->
 
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
-        <div class="crad mb_30 p-2 pe-0 total-card">
-            <div class="row">
-                <div class="col-md-9 row p-0">
+    <div class="row">
+                <div class="col-md-9 ">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total State + UT</p>
+                                    <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}"
+                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total Sentinel Site</p>
+                                    <input type="text" name="total_sentinel_site"
+                                        value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
+                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total PPCL Labs</p>
+                                    <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}"
+                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total Regional Coordinator</p>
+                                    <input type="text" name="total_regional_coordinator"
+                                        value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
+                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total NRCP Labs</p>
+                                    <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}"
+                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="profile-text">
+                                <div class="school-info-box">
+                                    <p>Total PM ABHIM SSS</p>
+                                    <input type="text" name="total_pm_abhim_sss"
+                                        value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
+                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total State + UT</p>
-                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total Sentinel Site</p>
-                                <input type="text" name="total_sentinel_site" value="{{ @$totalcard->total_sentinel_site }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total PPCL Labs</p>
-                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total Regional Coordinator</p>
-                                <input type="text" name="total_regional_coordinator" value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total NRCP Labs</p>
-                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total PM ABHIM SSS</p>
-                                <input type="text" name="total_pm_abhim_sss" value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
-                <div class="col-md-3 pe-0">
-                    <div class="white_card graph-card-h">
+                <div class="col-md-3 total-card">
+                    <div class="white_card graph-card-h m-0">
                         <div class="total-card-child d-flex align-items-center justify-content-center">
                             <h3>Total Value</h3>
                         </div>
@@ -102,11 +118,10 @@
                 </div>
             </div>
 
-        </div>
     </div>
 
-    <div class="col-xl-12 white_card  user_crm_wrapper">
-        <div class="crad mb_30 p-2 fund-card">
+    <div class="col-xl-12 white_card  user_crm_wrapper mt_30" >
+        <div class="crad mb_30 fund-card">
             <div class="row">
                 <div class="col-md-3">
                     <div class="fund-card-child">
@@ -203,12 +218,10 @@
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    @endfor
                             </select>
                         </div>
                     </div>
@@ -217,7 +230,8 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Program Wise <sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program-wise" name="institute_program_id" class="form-control national_user_card">
+                            <select id="national-program-wise" name="institute_program_id"
+                                class="form-control national_user_card">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -427,12 +441,10 @@
                                         class="text-danger">*</sup></b></label>
                             <select id="uc-financial-year" name="uc_financial_year" class="form-control">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    @endfor
                             </select>
                         </div>
 
@@ -539,17 +551,20 @@
                                     <td>{{ @$sorUcList->year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
-                                        <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
-                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                        <a class="nhm-file"
+                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                         </a>
                                         @else
-                                            N/A
+                                        N/A
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                    <td><span class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</span></td>
+                                    <td><span
+                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</span>
+                                    </td>
                                     <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
                                 @endforeach
@@ -628,14 +643,13 @@
                         <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-user-fy-map" name="financial_year_map" class="form-control national_user_card">
+                            <select id="national-user-fy-map" name="financial_year_map"
+                                class="form-control national_user_card">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    @endfor
                             </select>
                         </div>
 
@@ -821,7 +835,7 @@
                             <td class="text-center">0</td>
                         </tr>
                         <tr>
-                            <td > State Public Health and Clinical Laboratory, Trivandrum </td>
+                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
                             <td class="text-center">0</td>
                             <td class="text-center">0</td>
                             <td class="text-center">0</td>
@@ -851,24 +865,23 @@
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                        <select id="national-program-barchart" name="institute_program_id" class="form-control">
-                            <option value="">Select Program</option>
-                            @foreach($institutePrograms as $key => $value)
-                            <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
-                            @endforeach
-                        </select>
+                    <select id="national-program-barchart" name="institute_program_id" class="form-control">
+                        <option value="">Select Program</option>
+                        @foreach($institutePrograms as $key => $value)
+                        <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4 ">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                 class="text-danger">*</sup></b></label>
-                    <select id="national-user-fy-barchart" name="financial_year" class="form-control national_user_card">
+                    <select id="national-user-fy-barchart" name="financial_year"
+                        class="form-control national_user_card">
                         <option value="">Select Year</option>
-                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                            @php
-                                $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                            @endphp
-                            <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                        @endfor
+                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
+                            . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
+                            {{$selected}}>{{$i}} - {{$i+1}}</option>
+                            @endfor
                     </select>
                 </div>
 

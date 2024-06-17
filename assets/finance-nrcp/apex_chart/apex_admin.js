@@ -738,7 +738,7 @@ Highcharts.chart(
                 endAngle: 360,
                 // colors: ["#add73d", "#35a8df", "#d962bf", "#91d2fb", "#f5ad45"],
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                 },
                 showInLegend: true,
                 center: ["40%", "50%"],
@@ -829,6 +829,11 @@ Highcharts.chart(
     },
     series: [{
         name: '2021/11',
+        events: {
+            legendItemClick: function (e) {
+                e.preventDefault();
+            },
+        },
         data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
     }]
  });
