@@ -130,7 +130,7 @@
 } */
 
 }
-@media (min-width:1600px) and (max-width:1800px){
+@media (min-width:1600px) and (max-width:1850px){
    .col-md-12.overlall-expenditure .integrated-expenditure .main-title br{
       display: block;
    }
@@ -192,8 +192,13 @@
       /* padding: 0; */
    }
 }
-
+@media (max-width:1600px) {
+   .col-md-12.overlall-expenditure .col-md-4 {
+      padding-right: 12px;
+  }
+}
 @media (max-width:1580px) {
+
  
    .SOE-UC-list .mr_10{
       margin: 0 !important;

@@ -71,6 +71,9 @@
 
         </div>
     </div>
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="col-xl-12 integrated-expenditure">
         <div class="row ">
 
@@ -148,7 +151,9 @@
 
         </div>
     </div>
-
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="row expenditure_percentage">
         <div class="col-md-3">
             <div class="white_card  mb_30 integrated-expenditure">
