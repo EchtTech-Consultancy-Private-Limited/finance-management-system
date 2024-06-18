@@ -37,11 +37,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-profile', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
 
-    Route::prefix('admin')->group(function(){
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/filter-dashboard', [AdminController::class, 'adminFilterDdashboard'])->name('filter-dashboard');
         // Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
-        Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('admin.facility-mapping');
-        Route::post('/update-facility-mapping/{id?}', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
+        Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('facility-mapping');
+        Route::post('/update-facility-mapping/{id?}', [AdminController::class, 'facilityMappingUpdate'])->name('update-facility-mapping');
     
     });
     Route::group(['prefix' => 'national-users', 'as' => 'national-user.'], function () {

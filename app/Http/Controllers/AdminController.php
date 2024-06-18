@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Validator;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Models\InstituteProgram;
+use Carbon\Carbon;
+use App\Models\State;
 
 class AdminController extends Controller
 {
@@ -19,8 +22,58 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
+    {        
+        $institutePrograms = InstituteProgram::get();
+        $registerUser = DB::table('users')->count();
+        $login_status = DB::table('users')->where('login_status',1)->count();        
+        return view('admin.dashboard',compact('registerUser','login_status','institutePrograms'));
+    }
+    
+    /**
+     * adminFilterDdashboard
+     *
+     * @return void
+     */
+    public function adminFilterDdashboard(Request $request)
     {
-        return view('admin.dashboard');
+        $oneHourAgo = Carbon::now()->subHour();
+        $states = State::get();
+        $institutePrograms = InstituteProgram::get();
+        $totalUser = DB::table('users')->count();
+        $login_status = DB::table('users')->where('login_status',1)->count();
+        $programUserDetails = [];
+        $stateUserDetails = [];
+
+        $loginCountHour = DB::table('users')
+        ->where('login_status', 1)
+        ->where('updated_at', '>=', $oneHourAgo)
+        ->count();
+        
+        foreach ($institutePrograms as $instituteProgram) {
+            $programUserCount = DB::table('users')->where('program_id', $instituteProgram->id)->count();
+            $programNames = $instituteProgram->name;
+        
+            $programUserDetails[] = [
+                'program_name' => $programNames,
+                'user_count' => $programUserCount,
+                'totalUser' => $totalUser,
+            ];
+        }
+
+        foreach ($states as $state) {
+            $programUserCount = DB::table('users')->where('state_id', $state->id)->count();
+            $stateName = $state->name;
+        
+            // Add the state and user count details to the array
+            $stateUserDetails[] = [
+                'hc-key' => $stateName,
+                'value' => $programUserCount,
+            ];
+        }
+        // Overall active user
+        $overallActiveUser = round($login_status/$totalUser*100);
+
+        return response()->json(['programUserDetails'=>$programUserDetails,'loginCountHour'=>$loginCountHour,'overallActiveUser'=>$overallActiveUser,'stateUserDetails'=>$stateUserDetails], 200);
     }
 
     public function facilityMapping(Request $request, $id=null){

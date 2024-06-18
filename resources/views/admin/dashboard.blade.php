@@ -49,7 +49,7 @@
                     <div class="col-md-6">
                         <div class="single_crm border-line-3 p-0">
                             <div class="crm_body">
-                                <h4>0</h4>
+                                <h4>{{ @$registerUser }}</h4>
                                 <p>Registered User </p>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                     <div class="col-md-6">
                         <div class="single_crm border-line-1 p-0">
                             <div class="crm_body">
-                                <h4>0</h4>
+                                <h4>{{ @$login_status }}</h4>
                                 <p>Active User </p>
                             </div>
                         </div>
@@ -68,35 +68,35 @@
                     <div class="col p-0">
                         <div class="white_card card_height_100">
                             <div class="">
-                                <div id="admin-dashboard-NOHPPCZ-RCs-User" class="rounded mb-3 received-chart"></div>
+                                <div id="admin-dashboard-0" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
                         <div class="white_card card_height_100">
                             <div class="">
-                                <div id="admin-dashboard-NOHPPCZ-SSS-User" class="rounded mb-3 received-chart"></div>
+                                <div id="admin-dashboard-1" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
                         <div class="white_card card_height_100">
                             <div class="">
-                                <div id="admin-dashboard-NRCP-User" class="rounded mb-3 received-chart"></div>
+                                <div id="admin-dashboard-2" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
                         <div class="white_card card_height_100">
                             <div class="">
-                                <div id="admin-dashboard-PPCL-User" class="rounded mb-3 received-chart"></div>
+                                <div id="admin-dashboard-3" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
                         <div class="white_card card_height_100">
                             <div class="">
-                                <div id="admin-dashboard-PM-ABHIM-User" class="rounded mb-3 received-chart"></div>
+                                <div id="admin-dashboard-4" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
@@ -158,12 +158,11 @@
                             <div class="col-md-4">
                                 <div class="d-flex align-items-center">
                                     <label for="" class="text-nowrap me-3 font-16"><b>Program</b></label>
-                                    <select name="" class="form-control">
+                                    <select name="user_program" id="user_program" class="form-control">
                                         <option value="">Select Program</option>
-                                        <option value="">NOHPPCZ-RC's</option>
-                                        <option value="">NOHPPCZ-SSS</option>
-                                        <option value="">NRCP </option>
-                                        <option value="">PPCL</option>
+                                        @foreach($institutePrograms as $key => $value)
+                                        <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -199,9 +198,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 
