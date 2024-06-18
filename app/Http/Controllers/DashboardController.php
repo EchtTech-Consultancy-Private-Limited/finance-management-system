@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\SOEUCForm;
 use App\Models\SOEUCFormCalculatin;
+use Carbon\Carbon;
 use App\Models\SOEUCUploadForm;
 use App\Models\City;
 use Illuminate\Support\Facades\DB;
 use App\Models\InstituteProgram;
 use App\Models\NationalDashboardTotalCards;
 use Exception;
+use App\Exports\InstituteUserExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -35,6 +38,10 @@ class DashboardController extends Controller
             $file = 'national-user.dashboard';
         }else{
             $file = 'institute-user.dashboard';
+        }
+        $months = [];
+        for ($m=1; $m<=12; $m++) {
+            $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
         }
         $currentFY = date('Y').' - '.date('Y')+1;
         $institutePrograms = InstituteProgram::get();
@@ -91,7 +98,7 @@ class DashboardController extends Controller
                 $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
             }
-        return view($file, compact('totalArray','sorUcLists','institutePrograms','totalcard'));
+        return view($file, compact('totalArray','sorUcLists','institutePrograms','totalcard','months'));
     }
 
     public function instituteFilterDdashboard(Request $request)
@@ -185,7 +192,42 @@ class DashboardController extends Controller
                 'program_percentages' => $programPercentages,
                 'allProgramTotalExpenditure' => $allProgramTotalExpenditure,
             ];
-        // End number of percentage program wise
+        // End number of percentage program wise       
+
+        // Retrieve all institute programs
+        $balanceLineChartPrograms = InstituteProgram::get();
+        $balanceProgramDetails = [];
+
+        foreach ($balanceLineChartPrograms as $balanceLineChartProgram) {
+            // Initialize an array to hold expenditures for each month
+            $monthlyExpenditures = array_fill(0, 12, 0);
+
+            // Get expenditures grouped by month for each program
+            $expenditures = SOEUCForm::with('SoeUcFormCalculation')
+                ->where('institute_program_id', $balanceLineChartProgram->id)
+                ->get()
+                ->groupBy('month')
+                ->map(function ($group) {
+                    return $group->pluck('SoeUcFormCalculation')
+                                ->flatten()
+                                ->sum('actual_expenditure');
+                });
+
+            // Map the expenditures to the correct month index
+            foreach ($expenditures as $month => $expenditure) {
+                $monthIndex = date('n', strtotime($month)) - 1; // Convert month to index (0-11)
+                $monthlyExpenditures[$monthIndex] = $expenditure;
+            }
+
+            $balanceProgramDetails[] = [
+                'name' => $balanceLineChartProgram->name . '-' . $balanceLineChartProgram->code,
+                'data' => $monthlyExpenditures,
+            ];
+        }
+        $balanceProgramLineChart = [
+            'programs' => $balanceProgramDetails,
+        ];
+        // End number of percentage program wise for balance-line-chart
 
         $dataForms = $query->get();
         
@@ -229,7 +271,7 @@ class DashboardController extends Controller
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
-        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails], 200);
+        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails,'balanceProgramLineChart'=>$balanceProgramLineChart], 200);
     }
 
     /**
@@ -285,4 +327,58 @@ class DashboardController extends Controller
             return response()->json(['message' => 'Failed to update'], 500);
         }
     }
+
+    /**
+     *  @report excel report generate
+     *
+     * @return void
+     */
+    public function report()
+    {
+        return view('national-user.report');
+    }
+    
+    /**
+     * export
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function export(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'modulename' => 'required',
+        ],
+        [
+            'modulename.required' => 'The Module Name field is required',
+        ]);
+        
+        $fileName = '';
+        $query = null;
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'SOEUForm';
+                $query = SOEUCForm::with('states', 'instituteProgram', 'SoeUcFormCalculation');
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        // Add filters based on the request data
+        if ($request->filled('program_name')) {
+            $query->where('institute_program_id', $request->program_name);
+        }
+        if ($request->filled('financial_year')) {
+            $query->where('financial_year', $request->financial_year);
+        }
+        if ($request->filled('institute_name')) {
+            $query->where('institute_name', $request->institute_name);
+        }
+        if ($request->filled('month')) {
+            $query->where('month', $request->month);
+        }
+        $arrays = [$query->get()->toArray()];
+        return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
+    }
+
 }

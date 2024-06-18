@@ -8,12 +8,13 @@ $(document).ready(function(){
             'financial_year': new Date().getFullYear()+ ' - ' + (new Date().getFullYear()+1)
         },
         success: function(data) {
+            var balanceProgramLineChart = data.balanceProgramLineChart.programs;
             var programDetails = data.programDetails[0];
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart);                 
         }
     });
 });
@@ -35,16 +36,17 @@ $(document).on('change', '.national_user_card', function() {
             $("#national-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
             $("#national-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
             var programDetails = data.programDetails[0];
+            var balanceProgramLineChart = data.balanceProgramLineChart.programs;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart);         
         }
     });
 });
 
-function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails)
+function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart)
 {
     // Total Expenditure in Cr.
     Highcharts.chart('national-total-expenditure-cr', {
@@ -616,40 +618,40 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             .add();
     }
     
-// Function to update the text label position
-function updateTextLabel(chart) {
-    var textWidth = 500;
-    var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-    var textY = chart.plotTop + chart.plotHeight * 0.35;
+    // Function to update the text label position
+    function updateTextLabel(chart) {
+        var textWidth = 500;
+        var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
+        var textY = chart.plotTop + chart.plotHeight * 0.35;
 
-    if (chart.customLabel) {
-        chart.customLabel.attr({
-            x: textX,
-            y: textY
+        if (chart.customLabel) {
+            chart.customLabel.attr({
+                x: textX,
+                y: textY
+            });
+        }
+    }
+
+    // Highcharts chart creation
+
+    // Function to handle zoom detection and update
+    function handleZoomDetection() {
+        var px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+
+        $(window).resize(function() {
+            var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+            if (newPx_ratio != px_ratio) {
+                px_ratio = newPx_ratio;
+                updateTextLabel(overallChart);
+                console.log("zooming");
+            } else {
+                console.log("just resizing");
+            }
         });
     }
-}
 
-// Highcharts chart creation
-
-// Function to handle zoom detection and update
-function handleZoomDetection() {
-    var px_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-
-    $(window).resize(function() {
-        var newPx_ratio = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-        if (newPx_ratio != px_ratio) {
-            px_ratio = newPx_ratio;
-            updateTextLabel(overallChart);
-            console.log("zooming");
-        } else {
-            console.log("just resizing");
-        }
-    });
-}
-
-// Run the zoom detection function
-handleZoomDetection();
+    // Run the zoom detection function
+    handleZoomDetection();
 
     // Program wise Unspent Balance Line Chart
     Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
@@ -698,27 +700,12 @@ handleZoomDetection();
                 enableMouseTracking: false,
             },
         },
-        series: [
-            {
-                name: "Reggane",
-                data: [
-                    16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-                    22.0, 17.8,
-                ],
-            },
-            {
-                name: "Tallinn",
-                data: [
-                    -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
-                    -0.9,
-                ],
-            },
-        ],
+        series: balanceProgramLineChart,
     });
 }
 // end national dashboard
 
-// editable mode double click
+// Custom action Js
 $(document).ready(function() {
     $(".editmode").dblclick(function() {
         $(this).removeAttr("readonly").focus();
@@ -747,9 +734,25 @@ $(document).ready(function() {
             $this.val($this.prop('defaultValue')).prop('readonly', true);
         }
     });
+
+    // List change on form type select
+    $(document).on('change', '#form_type', function() {
+        var value = $(this).val();
+        if (value === '1') {
+            $(".form_type_uc_list").hide();
+            $("#form_type_export_button").show();
+        } else if (value === '2') {
+            $(".form_type_uc_list").show();
+            $("#form_type_export_button").hide();
+        } else {
+            $(".form_type_uc_list").show();
+            $("#form_type_export_button").show();
+        }
+    });    
+    // End List change on form type select
 });
 
-// End editable mode double click
+// End Custom action Js
 
 
 // ***************************apex js file code ***************************

@@ -62,6 +62,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/soe-update/{id}', [NationalSeoExpenseController::class, 'update'])->name('soe-update');
         Route::get('/soe-destroy/{id}', [NationalSeoExpenseController::class, 'destroy'])->name('soe-destroy');
         // end SOE Expense
+        // Report Generate
+        Route::get('/report', [DashboardController::class, 'report'])->name('report');
+        Route::post('report-export', [DashboardController::class, 'export'])->name('report-export');
+        // End Report Generate
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {

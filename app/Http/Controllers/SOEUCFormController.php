@@ -326,7 +326,6 @@ class SOEUCFormController extends Controller
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }        
         $arrays = [$query->get()->toArray()];
-        // dd($arrays);
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }
 }

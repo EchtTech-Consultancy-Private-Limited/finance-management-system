@@ -165,5 +165,15 @@
                   <li><a href="#">List</a></li>
                </ul> -->
             </li>
+            <li class=>
+               <a href="{{ route('national-user.report') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Generate Report</span>
+                  </div>
+               </a>
+            </li>
          </ul>
          @endif
