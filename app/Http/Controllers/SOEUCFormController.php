@@ -128,7 +128,7 @@ class SOEUCFormController extends Controller
                     ]);
                 }
                 DB::commit();
-                \Toastr::success('Has been add successfully :)','Success');
+                \Toastr::success('The Reconrd has been deleted successfully.','Success');
                 return redirect()->route('institute-user.SOE-&-UC-list');
             }else{
                 \Toastr::error('fail, Program Number of count full  :)','Error');
@@ -224,7 +224,7 @@ class SOEUCFormController extends Controller
                     ]);
                 }
                 DB::commit();
-                \Toastr::success('Has been update successfully :)','Success');
+                \Toastr::success('The Reconrd has been updated successfully.','Success');
                 return redirect()->route('institute-user.SOE-&-UC-list');
             }else{
                 \Toastr::error('fail, Program Number of count full  :)','Error');
@@ -267,7 +267,7 @@ class SOEUCFormController extends Controller
     {
         SOEUCForm::where('id', $id)->delete();
         SOEUCFormCalculatin::where('soe_form_id', $id)->delete();
-        \Toastr::success('Has been delete successfully :)','Success');
+        \Toastr::success('The Reconrd has been deleted successfully.','Success');
         return redirect()->back();
     }
     

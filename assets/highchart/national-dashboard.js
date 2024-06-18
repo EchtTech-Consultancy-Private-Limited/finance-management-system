@@ -2855,8 +2855,10 @@ Highcharts.chart("integrated-dashboard-data-driven-graph1", {
         labels: {
             rotation: -70,
             style: {
-                fontSize: "13px",
+                fontSize: "11px",
+                fontWeight:400,
                 fontFamily: "Verdana, sans-serif",
+                color:'#000'
             },
         },
     },
@@ -2874,6 +2876,9 @@ Highcharts.chart("integrated-dashboard-data-driven-graph1", {
         verticalAlign: "top",
         y: 7, // Adjust this value to fine-tune the vertical position
         symbolRadius: 0,
+        style:{
+            fontSize: "13px",
+        }
     },
     tooltip: {
         enabled: true,
@@ -2936,8 +2941,10 @@ Highcharts.chart("integrated-dashboard-data-driven-graph2", {
         labels: {
             rotation: -70,
             style: {
-                fontSize: "13px",
+                fontSize: "11px",
+                fontWeight:400,
                 fontFamily: "Verdana, sans-serif",
+                color:'#000'
             },
         },
     },
@@ -3012,8 +3019,10 @@ Highcharts.chart("integrated-dashboard-data-driven-graph3", {
         labels: {
             rotation: -70,
             style: {
-                fontSize: "13px",
+                fontSize: "11px",
+                fontWeight:400,
                 fontFamily: "Verdana, sans-serif",
+                color:'#000'
             },
         },
     },
@@ -3086,13 +3095,16 @@ Highcharts.chart("integrated-dashboard-data-driven-graph4", {
     subtitle: {
         text: "",
     },
+    
     xAxis: {
         type: "category",
         labels: {
             rotation: -70,
             style: {
-                fontSize: "13px",
+                fontSize: "11px",
+                fontWeight:400,
                 fontFamily: "Verdana, sans-serif",
+                color:'#000'
             },
         },
     },
@@ -3118,6 +3130,10 @@ Highcharts.chart("integrated-dashboard-data-driven-graph4", {
             name: "Head",
             type: "column",
             color: "#00b0f0",
+            style: {
+                fontSize: "12px",
+                fontFamily: "Verdana, sans-serif",
+            },
             events: {
                 legendItemClick: function (e) {
                     e.preventDefault();
@@ -3131,6 +3147,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph4", {
                     3.5,
                 ],
                 ["IEC", 2],
+                
             ],
             dataLabels: {
                 enabled: true,
@@ -3141,7 +3158,7 @@ Highcharts.chart("integrated-dashboard-data-driven-graph4", {
                 format: "{point.y:.1f}", // One decimal
                 y: 10, // 10 pixels down from the top
                 style: {
-                    fontSize: "13px",
+                    fontSize: "12px",
                     fontFamily: "Verdana, sans-serif",
                 },
             },
@@ -3170,9 +3187,10 @@ Highcharts.chart("integrated-dashboard-data-driven-graph5", {
         labels: {
             rotation: -70, // Rotating labels to prevent overlap
             style: {
-                fontSize: "13px",
+                fontSize: "11px",
+                fontWeight:400,
                 fontFamily: "Verdana, sans-serif",
-                whiteSpace: "nowrap", // Preventing text wrap
+                color:'#000',
                 textOverflow: "ellipsis", // Adding ellipsis for overflow text
             },
         },

@@ -70,6 +70,7 @@
 
         </div>
     </div>
+   
     <div class="col-xl-12 integrated-expenditure">
         <div class="row ">
 
@@ -150,7 +151,7 @@
 
         </div>
     </div>
-
+   
     <div class="row expenditure_percentage">
         <div class="col-md-3">
             <div class="white_card  mb_30 integrated-expenditure">
@@ -237,7 +238,7 @@
 
 
 
-    <div class="white_card_body col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="white_card_body col-xl-12 white_card card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
             <div class="col-md-4 col-lg">
                 <div class="single_crm border-line-1 p-0">
@@ -282,8 +283,10 @@
             </div>
         </div>
     </div>
-
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-3">
+    <div class="devider-line">
+        <div></div>
+    </div>
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-1">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-md-6">
@@ -443,7 +446,10 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt_40">
+    <div class="devider-line">
+        <div></div>
+    </div>
+    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper ">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="" class="select-form-s">

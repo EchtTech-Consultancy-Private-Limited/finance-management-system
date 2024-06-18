@@ -5277,6 +5277,7 @@ body::-webkit-scrollbar {
     border-bottom: 1px solid #e5ecff !important;
     position: relative;
     text-align: center;
+    padding-right: 21px;
 }
 
 .QA_section .QA_table .table thead th:first-child {
@@ -12595,7 +12596,7 @@ ul.bullet-list li {
     background: linear-gradient(90deg, #92d050 70%, transparent);
 }
 .data-driven .expenditure-bar-chart-box-child2 {
-    width: calc(100% - 100px);
+    width: calc(100% - 90px);
     gap: 9px;
     margin-left: 5px;
 }
@@ -12643,7 +12644,7 @@ ul.bullet-list li {
   .arrow-left::before {
     content: "";
     position: absolute;
-    top: 56%;
+    top: 96%;
     left: 50%;
     width: 100%;
     height: 100%;
@@ -12658,6 +12659,16 @@ ul.bullet-list li {
     font-size: 13px;
     
   }
+  
+  .country-overall-data  li span.arrow.arrow-left .number {
+    z-index: 1;
+    color: white;
+    line-height: 20px;
+    font-size: 13px;
+    position: absolute;
+    top: 27px;
+}
+  
   
 /* .arrow{
     position: relative;
@@ -12832,6 +12843,7 @@ rect.highcharts-background {
     color: red;
     font-size: 16px;
     font-weight: 500;
+    max-width: 100%;
 }
 .graph-card-h {
     height: 100%;
@@ -12891,10 +12903,10 @@ i.fas.fa-file-pdf {
 span.country-list-content {
     width: calc(100% - 56px);
     border: 1px solid #e84c22;
-    padding: 2px 4px;
-    margin-top: -10px;
+    padding: 1px 4px;
+    margin-top: 6px;
     border-radius: 0px 7px 7px 0px;
-    height: 25px;
+    height: 24px;
 }
 
 .col-md-12.overlall-expenditure .col-md-4 {
@@ -12922,6 +12934,7 @@ span.country-list-content {
 
 .row.state-driven .col-graph {
     width: 20%;
+    padding-right: 0;
  }
 
  td.pending a{
@@ -13093,9 +13106,7 @@ table.dataTable thead .sorting {
 }
 
 th.sorting::before, .sorting_desc::before, th.sorting_asc::before {
-    content: '\f176';
-    font-family: 'FontAwesome';
-    content: '\f0dc';
+    content: '\f0dc' !important;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     padding-right: 5px;
@@ -13104,6 +13115,7 @@ th.sorting::before, .sorting_desc::before, th.sorting_asc::before {
 }
 table thead th{
     border-right: 1px solid #fff !important;
+    position: relative !important;
 }
 table thead th{
     border-right: 1px solid #fff !important;
@@ -13138,3 +13150,79 @@ input[type="date"] {
  td .modal-title {
     text-transform: capitalize;
 }
+/* code for devider */
+.devider-line{
+   padding: 0 16px;
+}
+.devider-line div{
+    width: 100%;
+    height: 0;
+    /* background: #f79646; */
+    margin-bottom: 30px;
+    border-radius: 0;
+    border-bottom: 3px dotted #ff7300;
+    position: relative;
+}
+.devider-line div::before {
+    content: '';
+    height: 20px;
+    width: 0;
+    position: absolute;
+    top: -9px;
+    border-left: 3px dotted #ff7300;
+    left: -4px;
+}
+.devider-line div::after {
+    content: '';
+    height: 20px;
+    width: 0;
+    position: absolute;
+    top: -9px;
+    border-left: 3px dotted #ff7300;
+    right: -4px;
+}
+title {
+    padding: 0px 11px;
+    border-radius: 17px !important;
+}
+.title h3 {
+    color: #002060;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 23px;
+    text-transform: capitalize;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 14px;
+    background: #002060;
+    border-radius: 5px;
+}
+
+.mt_30{
+    margin-top: 30px;
+}
+td.not-approved{
+    white-space: nowrap;
+}
+.modal label {
+    color: #000;
+    text-transform: capitalize;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #000;
+}
+
+.dataTables_filter {
+    margin-bottom: 10px;
+}
+/* expenditure icons */
+.expenditure-bar-chart-box-child1 i {
+    font-size: 30px;
+}
+

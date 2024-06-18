@@ -85,15 +85,15 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE Expence</span>
+                     <span>SOE Expense</span>
                   </div>
                </a>
                <ul>
                   <li><a href="{{ route('national-user.soe-expense-create') }}">SOE Expense Entry</a></li>
-               </ul>
-               <ul>
                   <li><a href="{{ route('national-user.soe-expense-index') }}">SOE Expense List</a></li>
                </ul>
+               <!-- <ul>
+               </ul> -->
             </li>
             <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
