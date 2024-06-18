@@ -280,7 +280,7 @@
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
                             <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
-                            <p>Unspent Balance (excluding Interest ) </p>
+                            <p>Unspent Balance (excluding Interest) </p>
                         </div>
                     </div>
                 </div>
@@ -918,8 +918,10 @@
 
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box  d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                alt=""></div>
+                        <div class="expenditure-bar-chart-box-child1">
+                           
+                            <i class="fas fa-balance-scale"></i>
+                            </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
                             <span class="number">95%</span>
@@ -929,8 +931,10 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
-                        <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                alt=""></div>
+                        <div class="expenditure-bar-chart-box-child1">
+                           
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall Unspent <br> Balance</h3>
                             <span class="number">5%</span>
@@ -1043,8 +1047,9 @@
                 <div class="row justify-content-between custom-grid">
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
-                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                    alt="">
+                            <div class="expenditure-bar-chart-box-child1">
+                                
+                                <i class="fas fa-school"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPCZ-<br>RCs</h3>
@@ -1054,8 +1059,9 @@
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
-                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                    alt="">
+                            <div class="expenditure-bar-chart-box-child1">
+                                
+                                <i class="fas fa-hands-helping"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPC-<br>SSS</h3>
@@ -1065,8 +1071,9 @@
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
-                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                    alt="">
+                            <div class="expenditure-bar-chart-box-child1">
+                               
+                                <i class="fas fa-flask"></i> 
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NRCP-<br>Lab</h3>
@@ -1076,8 +1083,9 @@
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
-                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                    alt="">
+                            <div class="expenditure-bar-chart-box-child1">
+                               
+                                <i class="fas fa-vials"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PPCL-<br>Lab</h3>
@@ -1087,8 +1095,9 @@
                     </div>
                     <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
-                            <div class="expenditure-bar-chart-box-child1"><img src="{{ asset('assets/img/money.png') }}"
-                                    alt="">
+                            <div class="expenditure-bar-chart-box-child1">
+                            <i class="fas fa-stethoscope"></i>
+                                <!-- <i class="fas fa-heartbeat"></i> -->
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PM-ABHIM-<br>SSS</h3>

@@ -12843,6 +12843,7 @@ rect.highcharts-background {
     color: red;
     font-size: 16px;
     font-weight: 500;
+    max-width: 100%;
 }
 .graph-card-h {
     height: 100%;
@@ -13220,3 +13221,8 @@ td.not-approved{
 .dataTables_filter {
     margin-bottom: 10px;
 }
+/* expenditure icons */
+.expenditure-bar-chart-box-child1 i {
+    font-size: 30px;
+}
+
