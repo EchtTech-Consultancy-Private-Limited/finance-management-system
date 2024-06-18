@@ -41,86 +41,83 @@
     </div> -->
 
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
-    <div class="row">
-                <div class="col-md-9 ">
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total State + UT</p>
-                                    <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}"
-                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
-                                        readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total Sentinel Site</p>
-                                    <input type="text" name="total_sentinel_site"
-                                        value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
-                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total PPCL Labs</p>
-                                    <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}"
-                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
-                                        readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total Regional Coordinator</p>
-                                    <input type="text" name="total_regional_coordinator"
-                                        value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
-                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total NRCP Labs</p>
-                                    <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}"
-                                        maxlength="5" oninput="validateInput(this)" class="studentNumber editmode"
-                                        readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="profile-text">
-                                <div class="school-info-box">
-                                    <p>Total PM ABHIM SSS</p>
-                                    <input type="text" name="total_pm_abhim_sss"
-                                        value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
-                                        oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                                </div>
+        <div class="row">
+            <div class="col-md-9 ">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total State + UT</p>
+                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}"
+                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
                             </div>
                         </div>
                     </div>
-
-
+                    <div class="col-md-4 mb-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total Sentinel Site</p>
+                                <input type="text" name="total_sentinel_site"
+                                    value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
+                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total PPCL Labs</p>
+                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}"
+                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total Regional Coordinator</p>
+                                <input type="text" name="total_regional_coordinator"
+                                    value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
+                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total NRCP Labs</p>
+                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}"
+                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-text">
+                            <div class="school-info-box">
+                                <p>Total PM ABHIM SSS</p>
+                                <input type="text" name="total_pm_abhim_sss"
+                                    value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
+                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-md-3 total-card">
-                    <div class="white_card graph-card-h m-0">
-                        <div class="total-card-child d-flex align-items-center justify-content-center">
-                            <h3>Total Value</h3>
-                        </div>
+
+            </div>
+
+            <div class="col-md-3 total-card">
+                <div class="white_card graph-card-h m-0">
+                    <div class="total-card-child d-flex align-items-center justify-content-center">
+                        <h3>Total Value</h3>
                     </div>
                 </div>
             </div>
+        </div>
 
     </div>
 
-    <div class="col-xl-12 white_card  user_crm_wrapper mt_30" >
+    <div class="col-xl-12 white_card  user_crm_wrapper mt_30">
         <div class="crad mb_30 fund-card">
             <div class="row">
                 <div class="col-md-3">
@@ -205,6 +202,9 @@
             </div>
         </div>
 
+    </div>
+    <div class="devider-line">
+        <div></div>
     </div>
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  ">
@@ -410,7 +410,9 @@
         </div>
     </div>
 
-
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="col-xl-12 white_card meter-graph user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
             <div>
@@ -575,7 +577,9 @@
             </div>
         </div>
     </div>
-
+    <div class="devider-line">
+        <div></div>
+    </div>
 
     <div class="col-xl-6">
         <div class="white_card mb_30 card_height_100 ">
@@ -624,7 +628,9 @@
             </div>
         </div>
     </div>
-
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="col-xl-12 ">
         <div class="crad white_card yellow-graph mb_30 p-4">
             <div class="mb_30">
@@ -854,7 +860,9 @@
         </div>
 
     </div>
-
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="col-md-12 integrated-expenditure expenditure-bar-chart">
         <div class="main-title ">
             <h3 class="m-0"> Expenditure Bar Chart (All Programs combined data)</h3>
@@ -1000,7 +1008,9 @@
 
     </div>
 
-
+    <div class="devider-line">
+        <div></div>
+    </div>
     <div class="col-xl-12 ">
         <div class="white_card   mb_30 p-4">
             <div class="row">
@@ -1027,6 +1037,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="data-driven">
                 <div class="row justify-content-between custom-grid">
                     <div class="col mb-2">
@@ -1177,7 +1189,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="border country-overall-data p-3 rounded-1">
+                    <div class="border country-overall-data p-3 rounded-1 pt-0">
                         <ul>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">1</span></span><span
@@ -1256,7 +1268,9 @@
 
 </div>
 
-
+<div class="devider-line">
+    <div></div>
+</div>
 <div class="row">
 
     <div class="col-xl-12 ">
