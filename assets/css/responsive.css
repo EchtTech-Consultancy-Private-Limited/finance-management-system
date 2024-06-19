@@ -48,14 +48,18 @@
    .special-card-w-33 {
       width: 33.33333333% !important;
    }
-
-   
+   .special-card-w-70{
+      width: 65% !important;
+   }
+   .special-card-w-53{
+      width: 53% !important;
+   }
 .special-card-w-44 {
    width: 41.66666667%;
 }
 
    .user_crm_wrapper .special-card .single_crm {
-      min-height: 80px;
+      min-height: 135px;
       margin-top: 35px;
    }
 

@@ -43,7 +43,7 @@
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Month<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="month">
-                                <option value="">Select Month...</option>
+                                <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
                                     @php
                                         $selected = $soeUCUpload->month == $month ? 'selected' : '';
