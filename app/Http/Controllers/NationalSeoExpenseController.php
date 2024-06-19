@@ -82,7 +82,7 @@ class NationalSeoExpenseController extends Controller
                 ]);
             }
             DB::commit();
-            \Toastr::success('Has been add successfully :)','Success');
+            \Toastr::success('The Record has been Saved successfully.','Success');
             return redirect()->route('national-user.soe-expense-index');            
         } catch(Exception $e) {
             DB::rollBack();
@@ -144,7 +144,7 @@ class NationalSeoExpenseController extends Controller
                 ]);
             }
             DB::commit();
-            \Toastr::success('Has been update successfully :)','Success');
+            \Toastr::success('The Record has been Updated successfully.','Success');
             return redirect()->route('national-user.soe-expense-index');
         } catch(Exception $e) {
             DB::rollBack();
@@ -168,7 +168,7 @@ class NationalSeoExpenseController extends Controller
                 'status' => $request->status,
             ]);
             DB::commit();
-            \Toastr::success('Has been staus change successfully :)','Success');
+            \Toastr::success('The status has been changed successfully.','Success');
             return redirect()->back();
         } catch(Exception $e) {
             DB::rollBack();
@@ -183,7 +183,7 @@ class NationalSeoExpenseController extends Controller
     {
         NationalSeoExpanse::where('id', $id)->delete();
         // SOEUCFormCalculatin::where('soe_form_id', $id)->delete();
-        \Toastr::success('Has been delete successfully :)','Success');
+        \Toastr::success('The Reconrd has been deleted successfully.','Success');
         return redirect()->back();
     }
 }

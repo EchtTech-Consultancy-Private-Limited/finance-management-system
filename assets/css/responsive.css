@@ -178,6 +178,15 @@
    }
 }
 
+@media (max-width:1270px) {
+   form.select-form-s.export-excel-form .col{
+      flex: 0 0 33.33333%;
+      margin-bottom: 15px;
+   }
+   .meter-graph .received-chart {
+      margin-bottom: 13px !important;
+  }
+}
 @media (max-width:1300px) {
    /* .financial-year-select{
       min-width: 50%;

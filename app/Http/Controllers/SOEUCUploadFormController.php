@@ -74,7 +74,7 @@ class SOEUCUploadFormController extends Controller
                 'date' => $request->ucuploaddate,
             ]);
             DB::commit();
-            \Toastr::success('Has been add successfully :)','Success');
+            \Toastr::success('The Record has been Saved successfully.','Success');
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();
@@ -143,11 +143,11 @@ class SOEUCUploadFormController extends Controller
                 'date' => $request->ucuploaddate,
             ]);
             DB::commit();
-            \Toastr::success('Has been update successfully :)','Success');
+            \Toastr::success('The Reconrd has been updated successfully.','Success');
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Add new student','Error');
         }
     }
 
@@ -167,7 +167,7 @@ class SOEUCUploadFormController extends Controller
                 'status' => $request->status,
             ]);
             DB::commit();
-            \Toastr::success('Has been staus change successfully :)','Success');
+            \Toastr::success('The status has been changed successfully.','Success');
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();
@@ -181,7 +181,7 @@ class SOEUCUploadFormController extends Controller
     public function destroy($id)
     {
         SOEUCUploadForm::where('id', $id)->delete();
-        \Toastr::success('Has been delete successfully :)','Success');
+        \Toastr::success('The Reconrd has been deleted successfully.','Success');
         return redirect()->back();
     }
 }

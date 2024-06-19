@@ -12843,6 +12843,7 @@ rect.highcharts-background {
     color: red;
     font-size: 16px;
     font-weight: 500;
+    max-width: 100%;
 }
 .graph-card-h {
     height: 100%;
@@ -12933,6 +12934,7 @@ span.country-list-content {
 
 .row.state-driven .col-graph {
     width: 20%;
+    padding-right: 0;
  }
 
  td.pending a{
@@ -13154,10 +13156,30 @@ input[type="date"] {
 }
 .devider-line div{
     width: 100%;
-    height: 10px;
-    background: #f79646;
+    height: 0;
+    /* background: #f79646; */
     margin-bottom: 30px;
-    border-radius: 11px;
+    border-radius: 0;
+    border-bottom: 3px dotted #ff7300;
+    position: relative;
+}
+.devider-line div::before {
+    content: '';
+    height: 20px;
+    width: 0;
+    position: absolute;
+    top: -9px;
+    border-left: 3px dotted #ff7300;
+    left: -4px;
+}
+.devider-line div::after {
+    content: '';
+    height: 20px;
+    width: 0;
+    position: absolute;
+    top: -9px;
+    border-left: 3px dotted #ff7300;
+    right: -4px;
 }
 title {
     padding: 0px 11px;
@@ -13199,3 +13221,8 @@ td.not-approved{
 .dataTables_filter {
     margin-bottom: 10px;
 }
+/* expenditure icons */
+.expenditure-bar-chart-box-child1 i {
+    font-size: 30px;
+}
+
