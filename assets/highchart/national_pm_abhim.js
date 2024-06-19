@@ -786,8 +786,7 @@ Highcharts.chart('nohppz_rc_chart_currently_UC_Received_pm_abhiim', {
         enabled: false
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: ''
+       enabled:false
     },
     plotOptions: {
         pie: {
