@@ -17,6 +17,8 @@ use App\Models\InstituteProgram;
 use App\Models\NationalDashboardTotalCards;
 use Exception;
 use App\Exports\InstituteUserExport;
+use App\Models\Institute;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
@@ -164,7 +166,7 @@ class DashboardController extends Controller
             $query->where('financial_year', $request->financial_year);
         }
         if ($request->has('program_wise') && $request->program_wise) {
-            $query->where('institute_program_id', $request->program_wise);
+            $query->where('program_id', $request->program_wise);
         }
         // number of percentage program wise
         $institutePrograms = InstituteProgram::get();
@@ -179,7 +181,7 @@ class DashboardController extends Controller
             ->sum('actual_expenditure');
 
         foreach($institutePrograms as $key => $instituteProgram){
-            $programCount = SOEUCForm::with('SoeUcFormCalculation')->where('institute_program_id', $instituteProgram->id)->get()
+            $programCount = SOEUCForm::with('SoeUcFormCalculation')->where('program_id', $instituteProgram->id)->get()
             ->pluck('SoeUcFormCalculation')
             ->flatten()
             ->sum('actual_expenditure');
@@ -204,7 +206,7 @@ class DashboardController extends Controller
 
             // Get expenditures grouped by month for each program
             $expenditures = SOEUCForm::with('SoeUcFormCalculation')
-                ->where('institute_program_id', $balanceLineChartProgram->id)
+                ->where('program_id', $balanceLineChartProgram->id)
                 ->get()
                 ->groupBy('month')
                 ->map(function ($group) {
@@ -296,9 +298,62 @@ class DashboardController extends Controller
         }
         return $output;
     }
+    
+    /**
+     * filterProgram
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function filterProgram(Request $request)
+    {
+        $output = "";
+        $count = 0;
+        $institutes = Institute::where('program_id', $request->program_id)->get();
+        if ($institutes) {
+            foreach ($institutes as $institute) {
+                $count++;
+                $output .='<option value="'.$institute->id.'">' . $institute->name . '</option>';
+            }
+        } else {
+            $output .= 'Oops somthing went wrong';
+        }
+        return $output;
+    }
 
-    public function getUserProfile(Request $request, $id){
-        return view('auth.profile');
+    public function getUserProfile(Request $request, $id)
+    {
+        $user = User::with('state','city','program','institute')->where('id', Auth::id())->first();
+        return view('auth.profile',compact('user'));
+    }
+    
+    /**
+     * updateProfile
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
+    public function updateProfile(Request $request, $id = '')
+    {
+        $data = [
+            'name' => $request->fname,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'landline' => $request->landline,
+            'dob' => $request->dob,
+            'gender' => $request->gender,
+            'designation' => $request->designation,
+        ];
+        if ($id) {
+            // Update existing user
+            DB::table('users')->where('id', $id)->update($data);
+            Toastr::success('Record has been updated successfully :)', 'Success');
+        }
+
+        return redirect()->back();
     }
 
     public function getUserPassword(Request $request,$id){
@@ -366,7 +421,7 @@ class DashboardController extends Controller
         }
         // Add filters based on the request data
         if ($request->filled('program_name')) {
-            $query->where('institute_program_id', $request->program_name);
+            $query->where('program_id', $request->program_name);
         }
         if ($request->filled('financial_year')) {
             $query->where('financial_year', $request->financial_year);

@@ -13,7 +13,7 @@ class NationalSeoExpanse extends Model
        'user_id',
        'state_id',
        'city_id',
-       'institute_program_id',
+       'program_id',
        'expanse_plan',
        'institute_name',
        'finance_account_officer',
@@ -55,7 +55,7 @@ class NationalSeoExpanse extends Model
      */
     public function instituteProgram()
     {
-        return $this->belongsTo(InstituteProgram::class, 'institute_program_id');
+        return $this->belongsTo(InstituteProgram::class, 'program_id');
     }
 
     /**

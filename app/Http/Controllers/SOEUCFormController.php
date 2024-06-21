@@ -27,7 +27,7 @@ class SOEUCFormController extends Controller
 
     public function index()
     {
-        $soeucForms =  SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram','instituteProgram')->get();
+        $soeucForms =  SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram','instituteProgram')->where('user_id', Auth::id())->get();
         return view($this->list,compact('soeucForms'));
     }
 
@@ -57,7 +57,7 @@ class SOEUCFormController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'institute_program_id'    => 'required',
+            'program_id'    => 'required',
             'institute_name'     => 'required',
             'finance_account_officer'     => 'required',
             'finance_account_officer_mobile'     => 'required|digits:10',
@@ -71,8 +71,8 @@ class SOEUCFormController extends Controller
         ]);
         try {
             $currentDate = Carbon::now();
-            $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
-            $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
+            $programCount = SOEUCForm::where('program_id', $request->program_id)->count();
+            $programNumber = InstituteProgram::where('id', $request->program_id)->first();
             $expansePlanCheck = 0;
             $expansePlan = $request->expanse_plan;
             $query = SOEUCForm::where('state_id', $request->state_id)
@@ -99,7 +99,7 @@ class SOEUCFormController extends Controller
                 DB::beginTransaction();
                 $soeucFormId = SOEUCForm::Create([
                     'user_id' => Auth::id(),
-                    'institute_program_id' => $request->institute_program_id,
+                    'program_id' => $request->program_id,
                     'state_id' => $request->state_id,
                     'city_id' => $request->city_id,
                     'expanse_plan' => $request->expanse_plan,
@@ -176,7 +176,7 @@ class SOEUCFormController extends Controller
     public function update(Request $request, $id = '')
     {
         $request->validate([
-            'institute_program_id'    => 'required',
+            'program_id'    => 'required',
             'institute_name'     => 'required',
             'finance_account_officer'     => 'required',
             'finance_account_officer_mobile'     => 'required|digits:10',
@@ -189,8 +189,8 @@ class SOEUCFormController extends Controller
             'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
         ]);
         try{
-            $programCount = SOEUCForm::where('institute_program_id', $request->institute_program_id)->count();
-            $programNumber = InstituteProgram::where('id', $request->institute_program_id)->first();
+            $programCount = SOEUCForm::where('program_id', $request->program_id)->count();
+            $programNumber = InstituteProgram::where('id', $request->program_id)->first();
             if($programCount <= $programNumber->count ){
                 DB::beginTransaction();
                 SOEUCForm::where('id', $id)->Update([
@@ -198,7 +198,7 @@ class SOEUCFormController extends Controller
                     'state_id' => $request->state_id,
                     'city_id' => $request->city_id,
                     'expanse_plan' => $request->expanse_plan,
-                    'institute_program_id' => $request->institute_program_id,
+                    'program_id' => $request->program_id,
                     'institute_name' => $request->institute_name,
                     'finance_account_officer' => $request->finance_account_officer,
                     'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
@@ -278,7 +278,9 @@ class SOEUCFormController extends Controller
      */
     public function report()
     {
-        return view('institute-user.report');
+        $programs = InstituteProgram::get();
+        $sorUcLists = SOEUCUploadForm::with('users')->get();
+        return view('institute-user.report',compact('programs','sorUcLists'));
     }
     
     /**
@@ -293,12 +295,9 @@ class SOEUCFormController extends Controller
         $request->validate([
             'modulename' => 'required',
         ],
-
         [
             'modulename.required' => 'The Module Name field id required',
-        ]
-    );
-
+        ]);
         // Parse the start and end date if provided
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
@@ -322,9 +321,17 @@ class SOEUCFormController extends Controller
             default:
                 return response()->json(['error' => 'Invalid module name'], 400);
         }
+        if(!empty($request->program_id)){
+            $query->where('program_id', $request->program_id);
+        }
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
-        }        
+        }
+        if ($request->modulename == '2') {
+            $sorUcLists = $query->get();
+            $programs = InstituteProgram::get();
+            return view('institute-user.report',compact('programs','sorUcLists'));
+        }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }

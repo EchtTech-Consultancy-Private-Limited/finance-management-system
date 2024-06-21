@@ -230,7 +230,7 @@
                         <div class="d-flex align-items-center">
                             <label for="" class="text-nowrap me-3 font-16"><b>Program Wise <sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program-wise" name="institute_program_id"
+                            <select id="national-program-wise" name="program_id"
                                 class="form-control national_user_card">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
@@ -421,7 +421,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program" name="institute_program_id" class="form-control">
+                            <select id="national-program" name="program_id" class="form-control">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -639,7 +639,7 @@
                         <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program-map" name="institute_program_id" class="form-control">
+                            <select id="national-program-map" name="program_id" class="form-control">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -873,7 +873,7 @@
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                    <select id="national-program-barchart" name="institute_program_id" class="form-control">
+                    <select id="national-program-barchart" name="program_id" class="form-control">
                         <option value="">Select Program</option>
                         @foreach($institutePrograms as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>

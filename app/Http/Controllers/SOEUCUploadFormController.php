@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InstituteProgram;
 use App\Models\SOEUCUploadForm;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Services\FileSizeServices;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class SOEUCUploadFormController extends Controller
 {
@@ -21,8 +23,7 @@ class SOEUCUploadFormController extends Controller
 
     public function index()
     {
-        $stateList = State::get();
-        $sorUcLists = SOEUCUploadForm::get();
+        $sorUcLists = SOEUCUploadForm::with('program')->get();
         return view($this->list,compact('sorUcLists'));
     }
 
@@ -31,12 +32,15 @@ class SOEUCUploadFormController extends Controller
      */
     public function create()
     {
-        $stateList = State::get();
         $months = [];
-        for ($m=1; $m<=12; $m++) {
-            $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-04-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
         }
-        return view($this->create,compact('months'));
+        $programs = InstituteProgram::get();
+        return view($this->create,compact('months','programs'));
     }
 
     /**
@@ -45,12 +49,16 @@ class SOEUCUploadFormController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'qtr_uc' => 'required',
+            'program_id' => 'required',
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
             'ucfileupload'        => 'required|mimes:pdf',
         ],
         [
+            'qtr_uc.required' => 'The QTR UC field is required',
+            'program_id.required' => 'The Program field is required',
             'month.required' => 'The Month field is required',
             'yearofuc.required' => 'The Year of UC field is required',
             'ucuploaddate.required' => 'The Year of UC Upload Date field is required',
@@ -67,6 +75,8 @@ class SOEUCUploadFormController extends Controller
             }
             SOEUCUploadForm::Create([
                 'user_id' => Auth::id(),
+                'qtr_uc' => $request->qtr_uc,
+                'program_id' => $request->program_id,
                 'year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',
@@ -97,15 +107,18 @@ class SOEUCUploadFormController extends Controller
     public function edit($id)
     {
         try{
-            $breadCrum = "NHM Dashboard";
             DB::beginTransaction();
             $months = [];
-            for ($m=1; $m<=12; $m++) {
-                $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+            $currentYear = date('Y');
+            for ($m = 0; $m < 12; $m++) {
+                $month = new DateTime("$currentYear-04-01");
+                $month->modify("+$m months");
+                $months[] = $month->format('F');
             }
+            $programs = InstituteProgram::get();
             $soeUCUpload = SOEUCUploadForm::where('id',$id)->first();
             DB::commit();
-            return view($this->edit,compact('months','soeUCUpload'));
+            return view($this->edit,compact('months','soeUCUpload','programs'));
         }catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
@@ -118,6 +131,8 @@ class SOEUCUploadFormController extends Controller
     public function update(Request $request, $id = '')
     {
         $request->validate([
+            'qtr_uc' => 'required',
+            'program_id' => 'required',
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
@@ -136,6 +151,8 @@ class SOEUCUploadFormController extends Controller
             }
             SOEUCUploadForm::where('id', $id)->Update([
                 'user_id' => Auth::id(),
+                'qtr_uc' => $request->qtr_uc,
+                'program_id' => $request->program_id,
                 'year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',

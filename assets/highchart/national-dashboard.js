@@ -733,23 +733,7 @@ $(document).ready(function() {
         } else {
             $this.val($this.prop('defaultValue')).prop('readonly', true);
         }
-    });
-
-    // List change on form type select
-    $(document).on('change', '#form_type', function() {
-        var value = $(this).val();
-        if (value === '1') {
-            $(".form_type_uc_list").hide();
-            $("#form_type_export_button").show();
-        } else if (value === '2') {
-            $(".form_type_uc_list").show();
-            $("#form_type_export_button").hide();
-        } else {
-            $(".form_type_uc_list").show();
-            $("#form_type_export_button").show();
-        }
     });    
-    // End List change on form type select
 });
 
 // End Custom action Js

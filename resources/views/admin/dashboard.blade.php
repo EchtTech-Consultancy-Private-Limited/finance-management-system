@@ -36,10 +36,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-tab-group mb-4">
-                        <button class="btn btn-tab-admin active">Summary</button>
-                        <button class="btn btn-tab-admin">Weekly Performance </button>
-                        <button class="btn btn-tab-admin">Monthly Performance</button>
-                        <button class="btn btn-tab-admin">Yearly Performance</button>
+                        <button class="btn btn-tab-admin active performance" data-val="summery">Summary</button>
+                        <button class="btn btn-tab-admin performance" data-val="week">Weekly Performance </button>
+                        <button class="btn btn-tab-admin performance" data-val="month">Monthly Performance</button>
+                        <button class="btn btn-tab-admin performance" data-val="year">Yearly Performance</button>
                     </div>
                 </div>
             </div>

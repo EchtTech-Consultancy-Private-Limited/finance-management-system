@@ -23,7 +23,7 @@
                      <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Facility Mapping</span>
+                     <span>Facility Center Mapping</span>
                   </div>
                </a>
             </li>
@@ -53,8 +53,8 @@
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('institute-user.SOE-UC-upload') }}">Create</a></li>
-                  <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">List</a></li>
+                  <li><a href="{{ route('institute-user.SOE-UC-upload') }}">UC Upload</a></li>
+                  <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">UC Upload List</a></li>
                </ul>
             </li>
             <li class=>
@@ -63,7 +63,7 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Form Download</span>
+                     <span>UC Download</span>
                   </div>
                </a>
             </li>

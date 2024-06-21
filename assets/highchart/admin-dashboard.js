@@ -14,30 +14,35 @@ $(document).ready(function(){
     });
 });
 
-// $(document).on('change', '#institute-user-fy', function() {
-//     let financialYear = $(this).val();
-//     // alert(financialYear);    
-//     $.ajax({
-//         type: "GET",
-//         url: BASE_URL + "admin/filter-dashboard",
-//         data: {
-//             'financial_year': financialYear
-//         },
-//         success: function(data) {
-//             console.log(data);       
-//             $("#giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
-//             $("#committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
-//             $("#totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
-//             $("#actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
-//             $("#unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
-//             var totalExpenditure = data.totalArray.actualExpenditureTotal;
-//             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-//             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
-//             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-//             instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance);         
-//         }
-//     });
-// });
+$(document).on('click', '.performance', function() {
+    let performance = $(this).attr('data-val');
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "admin/filter-dashboard",
+        data: {
+            'performance': performance
+        },
+        success: function(data) {
+            var programUserDetails = data.programUserDetails;  
+            adminDashboardChart(data,programUserDetails);         
+        }
+    });
+});
+$(document).on('change', '#user_program', function() {
+    let programName = $(this).val();
+    // alert(programName);  
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "admin/filter-dashboard",
+        data: {
+            'programName': programName
+        },
+        success: function(data) {
+            var programUserDetails = data.programUserDetails;  
+            adminDashboardChart(data,programUserDetails);         
+        }
+    });
+});
 // **************************************************
 // reusable function for highchart 
 
@@ -423,7 +428,6 @@ function adminDashboardChart(data,programUserDetailsArray) {
             y: detail.user_count
         };
     });
-    console.log(seriesData);
     Highcharts.chart(
         "admin-dashboard-calls-qtr",
         {
@@ -527,8 +531,8 @@ function adminDashboardChart(data,programUserDetailsArray) {
             }
         },
         series: [{
-            name: '2021/11',
-            data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
+            name: 'User',
+            data: data.adminMonthPie.month_data
         }]
     });
 
@@ -546,15 +550,6 @@ function adminDashboardChart(data,programUserDetailsArray) {
         exporting: {
          enabled: false
         },
-       
-        // xAxis: {
-        //     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        // },
-        // yAxis: {
-        //     title: {
-        //         text: ''
-        //     }
-        // },
         plotOptions: {
             line: {
                 dataLabels: {
@@ -571,13 +566,10 @@ function adminDashboardChart(data,programUserDetailsArray) {
         },
         series: [{
             type: 'column',
-            name: 'Unemployed',
+            name: 'User',
             borderRadius: 5,
             colorByPoint: true,
-            data: [
-                5412, 4977, 4730, 4437, 3947, 3707, 4143, 3609,
-                3311, 3072, 2899, 2887
-            ],
+            data: data.adminMonthPie.month_data,
             showInLegend: false
         }]
     });

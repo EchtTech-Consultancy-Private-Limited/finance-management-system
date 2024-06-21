@@ -113,3 +113,66 @@ $(".btn-tab-admin").click(function(){
     $(".btn-tab-admin.active").removeClass('active');
     $(this).addClass('active');
 })
+
+// get institute program wise
+
+$(document).on('change', '#program_id', function() {    
+    let program_id = $(this).val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + 'filter-program',
+        data: {
+            'program_id': program_id
+        },
+        success: function(data) {
+            $("#institute_name").html(data);
+        }
+    });
+});
+
+// validate integer length and remove validation error after fill the field
+function validateInput(input) {
+    input.value = input.value.replace(/\D/g, '');
+}
+// error msg hide
+jQuery( document ).ready(function() {
+    $('form input[type=text]').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+    
+    $('form input[type=number]').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+
+    $('form input[type=date]').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+
+    $('form input[type=file]').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+
+    $('form input[type=email]').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+
+    $('select').focus(function(){
+        $(this).siblings(".text-danger").hide();
+    });
+});
+
+// List change on form type select
+$(document).on('change', '#form_type', function() {
+    var value = $(this).val();
+    if (value === '1') {
+        $(".form_type_uc_list").hide();
+        $("#form_type_export_button").show();
+    } else if (value === '2') {
+        $(".form_type_uc_list").show();
+        $("#form_type_export_button").hide();
+    } else {
+        $(".form_type_uc_list").show();
+        $("#form_type_export_button").show();
+    }
+});    
+// End List change on form type select
