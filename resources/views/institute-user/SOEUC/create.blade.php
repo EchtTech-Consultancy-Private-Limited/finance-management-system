@@ -192,7 +192,7 @@
                                 <input type="hidden" name="head[]" value="Man Power with Human Resource">
                             </th>
                             <td rowspan="7" class="vertical-align-top">
-                           <textarea name="sanction_order[]" class="form-control" id="manpower-A" rows="16"></textarea>
+                                <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order[]" class="form-control textarea-h" id="manpower-A" rows="16"></textarea></td>
                         </td>
                             <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
                             <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
