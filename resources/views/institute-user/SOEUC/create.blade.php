@@ -188,37 +188,37 @@
                         <tr>
                             <th>
                                 Man Power with Human Resource
-                                <input type="hidden" name="id[]" value="1">
+                                <input type="hidden" name="id[]" value="">
                                 <input type="hidden" name="head[]" value="Man Power with Human Resource">
                             </th>
-                            <td rowspan="7" class="vertical-align-top">                                
+                            <td rowspan="7" class="vertical-align-top">
                            <textarea name="sanction_order[]" class="form-control" id="manpower-A" rows="16"></textarea>
                         </td>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="44"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="444" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="488"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="223"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="265"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="22222"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-21957"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C abc" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
                                 Meetings, Training &amp; Research
                                 <input type="hidden" name="id[]" value="2">
-                                <input type="hidden" name="head[]" value="Meetings, Training &amp; Research">
+                                <input type="hidden" name="head[]" value="Meetings, Training Research">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="44"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="3332" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="3376"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="20"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="3356"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="33333"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-29977"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
@@ -226,15 +226,15 @@
                                 <input type="hidden" name="id[]" value="3">
                                 <input type="hidden" name="head[]" value="Lab Strengthening Kits, Regents &amp; Consumable (Recurring)">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="40"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="222" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="262"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="34"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="228"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="44444"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-44216"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
@@ -242,15 +242,15 @@
                                 <input type="hidden" name="id[]" value="4">
                                 <input type="hidden" name="head[]" value="IEC">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="40"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="666" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="706"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="20"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="686"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="5555"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-4869"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
@@ -258,15 +258,15 @@
                                 <input type="hidden" name="id[]" value="5">
                                 <input type="hidden" name="head[]" value="Office Expenses &amp; Travel">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="40"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="595"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="20"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="575"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="5555"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-4980"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
@@ -274,15 +274,15 @@
                                 <input type="hidden" name="id[]" value="6">
                                 <input type="hidden" name="head[]" value="Lab Strengthening (Non Recurring)">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="43"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="332" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="375"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="22"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="353"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="6666"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-6313"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
                         <tr>
                             <th>
@@ -290,15 +290,15 @@
                                 <input type="hidden" name="id[]" value="7">
                                 <input type="hidden" name="head[]" value="Other Activities">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="555" readonly=""></td>
-                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="44"></td>
-                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="222" readonly=""></td>
-                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="266"></td>
-                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="44"></td>
-                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="222"></td>
-                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="666"></td>
-                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="-444"></td>
+                            <td><input type="text" name="previous_month_expenditure" class="form-control" id="previous_month_expenditure" value="" readonly=""></td>
+                            <td><input type="text" name="previous_month_total" class="form-control" id="previous_month_total" value="" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C" oninput="validateArthmeticInput(this)" value=""></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value=""></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value=""></td>
                         </tr>
 
                     </tbody>
@@ -326,7 +326,7 @@
                                     id="manpower-A" value="" readonly>
                             </th>
                             <th class="grandTotal-C">
-                                <input type="text" name="gia_received[]" class="form-control grandTotal-C"
+                                <input type="text" name="gia_received[]" class="form-contal-C grandTotal-C"
                                     id="manpower-A" value="" readonly>
                             </th>
                             <th class="grandTotal-D">

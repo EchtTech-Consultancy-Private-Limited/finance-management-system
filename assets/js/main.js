@@ -1,7 +1,3 @@
-// on focus only number
-function validateInput(input) {
-    input.value = input.value.replace(/\D/g, '');
-}
 $(document).ready(function() {
     $('.datatable').dataTable({
         dom: 'Bfrtip',
@@ -31,17 +27,15 @@ $(document).ready(function() {
 
 // calculation of SOEU Form
 $(document).ready(function() {
-    // Attach event listeners for input fields
     $('input[type="text"]').on('input', function() {
         calculateFields($(this));
         calculateGrandTotal();
     });
-
     // Function to calculate individual fields
     function calculateFields(input) {
         var row = input.closest('tr');
         var B = parseFloat(row.find('.manpower-B').val()) || 0;
-        var C = parseFloat(row.find('.manpower-C').val()) || 0;
+        var C = evaluateExpression(row.find('.manpower-C').val()) || 0;
         var D = B + C;
         var E = parseFloat(row.find('.manpower-E').val()) || 0;
         var F = D - E;
@@ -52,7 +46,6 @@ $(document).ready(function() {
         row.find('.manpower-F').val(F);
         row.find('.manpower-H').val(H);
     }
-
     // Function to calculate Grand Total
     function calculateGrandTotal() {
         var grandTotal = {
@@ -65,22 +58,18 @@ $(document).ready(function() {
             G: 0,
             H: 0
         };
-
-        // Loop through each row to accumulate values
         $('tbody tr').each(function() {
             var row = $(this);
 
-            // Get values from input fields
             var A = parseFloat(row.find('#manpower-A').val()) || 0;
             var B = parseFloat(row.find('.manpower-B').val()) || 0;
-            var C = parseFloat(row.find('.manpower-C').val()) || 0;
+            var C = evaluateExpression(row.find('.manpower-C').val()) || 0; // Evaluate the expression in C
             var D = B + C;
             var E = parseFloat(row.find('.manpower-E').val()) || 0;
             var F = D - E;
             var G = parseFloat(row.find('.manpower-G').val()) || 0;
             var H = F - G;
 
-            // Update grand total values
             grandTotal.A += A;
             grandTotal.B += B;
             grandTotal.C += C;
@@ -90,7 +79,6 @@ $(document).ready(function() {
             grandTotal.G += G;
             grandTotal.H += H;
         });
-
         // Update grand total in footer
         $('.grandTotal-A').val(grandTotal.A);
         $('.grandTotal-B').val(grandTotal.B);
@@ -101,7 +89,39 @@ $(document).ready(function() {
         $('.grandTotal-G').val(grandTotal.G);
         $('.grandTotal-H').val(grandTotal.H);
     }
+
+    // Function to evaluate arithmetic expressions
+    function evaluateExpression(expression) {
+        try {
+            var index = expression.indexOf('=');
+            if (index !== -1) {
+                var result = expression.substring(0, index);
+                var evaluatedResult = eval(result);
+                if (isNaN(evaluatedResult)) {
+                    throw new Error('Invalid expression');
+                }
+                return evaluatedResult;
+            } else {
+                return new Function('return ' + expression)();
+            }
+        } catch (e) {
+            return 0;
+        }
+    }
+
+    $('.manpower-C').on('blur', function() {
+        try {
+            var result = evaluateExpression($(this).val());
+            if(result !== undefined){
+                $(this).val($(this).val() + '=' + result);
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    });
 });
+
+
 // End- of calculation of SOEU Form
 
 // datatable
@@ -129,6 +149,11 @@ $(document).on('change', '#program_id', function() {
         }
     });
 });
+
+// on focus only number arthmetic operator allow
+function validateArthmeticInput(input) {
+    input.value = input.value.replace(/[^0-9+\-*/]/g, '');
+}
 
 // validate integer length and remove validation error after fill the field
 function validateInput(input) {
