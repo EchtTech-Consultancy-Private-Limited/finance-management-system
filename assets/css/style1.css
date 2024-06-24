@@ -12949,13 +12949,13 @@ span.country-list-content {
     text-transform: capitalize;
  }
 
- td.not-approved a{
+ td.returned_by_nhq a{
     background-color: red;
     color: #fff;
     text-transform: capitalize;
  }
 
- td.approved a, td.not-approved a, td.pending a{
+ td.approved a, td.returned_by_nhq a, td.pending a{
     padding: 0 10px;
  }
 .user_crm_wrapper .special-card .single_crm{

@@ -58,6 +58,7 @@
 {{-- dashboard filter --}}
 <script src="{{ asset('assets/highchart/institute-dashboard.js') }}"></script>
 <script src="{{ asset('assets/highchart/national-dashboard.js') }}"></script>
+<script src="{{ asset('assets/highchart/admin-dashboard.js') }}"></script>
 {{-- end dashboard filter --}}
 <script src="{{ asset('assets/js/dashboard_init.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>

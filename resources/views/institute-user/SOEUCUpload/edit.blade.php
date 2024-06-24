@@ -26,6 +26,31 @@
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
+                            <label class="form-label" for="inputAddress2">QTR UC<span class="text-danger">*</span></label>
+                            <select id="qtr_uc" class="form-control" name="qtr_uc">
+                                <option value="">Select QTR UC</option>
+                                <option value="30 June" {{($soeUCUpload->qtr_uc == "30 June") ? 'selected':''}}>30 June</option>
+                                <option value="30 September" {{($soeUCUpload->qtr_uc == "30 September") ? 'selected':''}}>30 September</option>
+                                <option value="31 December" {{($soeUCUpload->qtr_uc == "31 December") ? 'selected':''}}>31 December</option>
+                                <option value="31 March" {{($soeUCUpload->qtr_uc == "31 March") ? 'selected':''}}>31 March</option>                                
+                            </select>
+                            @error('qtr_uc')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="inputAddress2">Program<span class="text-danger">*</span></label>
+                            <select id="program" class="form-control" name="program_id">
+                                <option value="">Select Program</option>
+                                @foreach($programs as $program)
+                                <option value="{{ $program->id }}" {{($soeUCUpload->program_id == $program->id) ? 'selected':''}} >{{ $program->name }} - {{ $program->code }}</option>
+                                @endforeach
+                            </select>
+                            @error('program_id')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Year of UC<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="yearofuc">
                                 <option value="">Select Year...</option>
@@ -40,6 +65,9 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        
+                    </div>                    
+                    <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Month<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="month">
@@ -74,8 +102,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>                    
-                    <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span class="text-danger">*</span></label>
                             <input type="date" class="form-control" name="ucuploaddate" value="{{ old('ucuploaddate',$soeUCUpload->date) }}" id="inputAddress2" placeholder="">

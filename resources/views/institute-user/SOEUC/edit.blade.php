@@ -29,13 +29,13 @@
                             <input type="hidden" name="city_id" value="{{ $soeForm->city_id }}">
                             <input type="hidden" name="expanse_plan" value="{{ $soeForm->expanse_plan }}">
                             <label class="form-label" for="inputEmail4">Name of program<span class="text-danger">*</span></label>
-                            <select id="inputState" name="institute_program_id" class="form-control">
+                            <select id="inputState" name="program_id" class="form-control">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}" {{ $soeForm->institute_program_id == $value->id ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}" {{ $soeForm->program_id == $value->id ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
                                 @endforeach
                             </select>
-                            @error('institute_program_id')
+                            @error('program_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

@@ -34,15 +34,17 @@ Route::middleware(['auth'])->group(function () {
         
     Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
     Route::get('password/{id}/update', [DashboardController::class, 'getUserPassword'])->name('password.update');
-    Route::post('update-profile', [DashboardController::class, 'updateProfile'])->name('update-profile');
+    Route::post('update-profile/{id}', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
+    Route::get('/filter-program', [DashboardController::class, 'filterProgram'])->name('filterProgram');
 
-    Route::prefix('admin')->group(function(){
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-        // Route::get('/get_district/{id}', [AdminController::class, 'getDistrict'])->name('admin.get_district');
-        Route::get('/facility-mapping/{id?}', [AdminController::class, 'facilityMapping'])->name('admin.facility-mapping');
-        Route::post('/update-facility-mapping/{id?}', [AdminController::class, 'facilityMappingUpdate'])->name('admin.update-facility-mapping');
-    
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/filter-dashboard', [AdminController::class, 'adminFilterDdashboard'])->name('filter-dashboard');
+        Route::get('/facility-mapping', [AdminController::class, 'facilityMapping'])->name('facility-mapping');
+        Route::post('/create-facility-mapping', [AdminController::class, 'facilityMappingCreate'])->name('create-facility-mapping');
+        Route::get('/edit-facility-mapping/{id}', [AdminController::class, 'facilityMappingEdit'])->name('facility-mapping-edit');
+        Route::post('/update-facility-mapping/{id}', [AdminController::class, 'facilityMappingUpdate'])->name('update-facility-mapping');
     });
     Route::group(['prefix' => 'national-users', 'as' => 'national-user.'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -62,15 +64,19 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/soe-update/{id}', [NationalSeoExpenseController::class, 'update'])->name('soe-update');
         Route::get('/soe-destroy/{id}', [NationalSeoExpenseController::class, 'destroy'])->name('soe-destroy');
         // end SOE Expense
+        // Report Generate
+        Route::get('/report', [DashboardController::class, 'report'])->name('report');
+        Route::post('report-export', [DashboardController::class, 'export'])->name('report-export');
+        // End Report Generate
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/filter-dashboard', [DashboardController::class, 'instituteFilterDdashboard'])->name('filter-dashboard');
         Route::get('/report', [SOEUCFormController::class, 'report'])->name('report');
-        Route::post('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
-        Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('SOE-&-UC-list');
-        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('SOE-&-UC');
+        Route::get('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
+        Route::get('/soe-form-list', [SOEUCFormController::class, 'index'])->name('soe-form-list');
+        Route::get('/soe-form', [SOEUCFormController::class, 'create'])->name('soe-form');
         Route::post('/soe-uc-save', [SOEUCFormController::class, 'store'])->name('soe-uc-save');
         Route::get('/soe-uc-edit/{id}', [SOEUCFormController::class, 'edit'])->name('soe-uc-edit');
         Route::post('/soe-uc-update/{id}', [SOEUCFormController::class, 'update'])->name('soe-uc-update');

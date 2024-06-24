@@ -23,7 +23,7 @@
                      <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Facility Mapping</span>
+                     <span>Facility Center Mapping</span>
                   </div>
                </a>
             </li>
@@ -39,8 +39,8 @@
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('institute-user.SOE-&-UC') }}">SOE Form Entry</a></li>
-                  <li><a href="{{ route('institute-user.SOE-&-UC-list') }}">SOE Form Database</a></li>
+                  <li><a href="{{ route('institute-user.soe-form') }}">SOE Form Entry</a></li>
+                  <li><a href="{{ route('institute-user.soe-form-list') }}">SOE Form Database</a></li>
                </ul>
             </li>
             <li class>
@@ -53,8 +53,8 @@
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('institute-user.SOE-UC-upload') }}">Create</a></li>
-                  <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">List</a></li>
+                  <li><a href="{{ route('institute-user.SOE-UC-upload') }}">UC Upload</a></li>
+                  <li><a href="{{ route('institute-user.SOE-UC-upload-list') }}">UC Upload List</a></li>
                </ul>
             </li>
             <li class=>
@@ -63,7 +63,7 @@
                      <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>Form Download</span>
+                     <span>UC Download</span>
                   </div>
                </a>
             </li>
@@ -164,6 +164,16 @@
                   <li><a href="#">Create</a></li>
                   <li><a href="#">List</a></li>
                </ul> -->
+            </li>
+            <li class=>
+               <a href="{{ route('national-user.report') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>Generate Report</span>
+                  </div>
+               </a>
             </li>
          </ul>
          @endif
