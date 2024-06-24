@@ -13231,3 +13231,7 @@ table.dataTable thead th, table.dataTable thead td {
     padding: 5px 20px 8px 5px !important;
     white-space: nowrap;
 }
+
+.vertical-align-top{
+    vertical-align: top !important;
+}
