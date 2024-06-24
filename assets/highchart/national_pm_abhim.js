@@ -252,7 +252,7 @@ function addTextLabel(chart) {
 
     chart.customLabel = chart.renderer
         .label(
-            '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
+            '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">35,295</span><br><span style="font-size:14px;">All Head <br> Exp</span></div>',
             textX,
             textY,
             null,
@@ -786,8 +786,7 @@ Highcharts.chart('nohppz_rc_chart_currently_UC_Received_pm_abhiim', {
         enabled: false
     },
     tooltip: {
-        valueDecimals: 2,
-        valueSuffix: ''
+       enabled:false
     },
     plotOptions: {
         pie: {

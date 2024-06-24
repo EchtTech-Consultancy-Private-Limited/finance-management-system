@@ -55,3 +55,33 @@ if (datatableWidth <= QA_table_width) {
     resTable.css("display", "block");
 }
 // alert("all is well")
+
+
+let selectBox = $('select');
+selectBox.each(function () {
+    let valueArr = $(this).find(':selected').text().trim().split(' ');
+    if (valueArr.includes('select') || valueArr.includes('Select')) {
+        $(this).css('color', 'grey');
+    } else {
+        $(this).css('color', '#000');
+    }
+    
+});
+
+let selectBoxes = $("select");
+
+selectBoxes.each((index, element) => {
+    let select = $(element);
+    let selectedText = select.find(':selected').text();
+    let selectWords = selectedText.split(' ');
+
+    select.on('change', function () {
+        let selectedValue = $(this).find(':selected').text();
+        let selectedWords = selectedValue.split(' ');
+        if (selectedWords.includes('select') || selectedWords.includes('Select')) {
+            $(this).css('color', 'grey');
+        } else {
+            $(this).css('color', '#000');
+        }
+    });
+});

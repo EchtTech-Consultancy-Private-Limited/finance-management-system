@@ -12756,7 +12756,7 @@ select.form-control {
 
 .financial-year-institute-dashboard select.form-control, .financial-year-institute-dashboard .form-control{
     font-size: 13px;
-    color: grey;
+    color: #000;
 }
 
 i.fas.fa-ellipsis-h.f_s_11.white_text {
@@ -13226,3 +13226,8 @@ td.not-approved{
     font-size: 30px;
 }
 
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 5px 20px 8px 5px !important;
+    white-space: nowrap;
+}
