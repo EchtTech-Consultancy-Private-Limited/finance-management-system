@@ -39,8 +39,8 @@
                   </div>
                </a>
                <ul>
-                  <li><a href="{{ route('institute-user.SOE-&-UC') }}">SOE Form Entry</a></li>
-                  <li><a href="{{ route('institute-user.SOE-&-UC-list') }}">SOE Form Database</a></li>
+                  <li><a href="{{ route('institute-user.soe-form') }}">SOE Form Entry</a></li>
+                  <li><a href="{{ route('institute-user.soe-form-list') }}">SOE Form Database</a></li>
                </ul>
             </li>
             <li class>

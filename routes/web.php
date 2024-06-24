@@ -75,8 +75,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/filter-dashboard', [DashboardController::class, 'instituteFilterDdashboard'])->name('filter-dashboard');
         Route::get('/report', [SOEUCFormController::class, 'report'])->name('report');
         Route::get('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
-        Route::get('/SOE-&-UC-list', [SOEUCFormController::class, 'index'])->name('SOE-&-UC-list');
-        Route::get('/SOE-&-UC', [SOEUCFormController::class, 'create'])->name('SOE-&-UC');
+        Route::get('/soe-form-list', [SOEUCFormController::class, 'index'])->name('soe-form-list');
+        Route::get('/soe-form', [SOEUCFormController::class, 'create'])->name('soe-form');
         Route::post('/soe-uc-save', [SOEUCFormController::class, 'store'])->name('soe-uc-save');
         Route::get('/soe-uc-edit/{id}', [SOEUCFormController::class, 'edit'])->name('soe-uc-edit');
         Route::post('/soe-uc-update/{id}', [SOEUCFormController::class, 'update'])->name('soe-uc-update');
