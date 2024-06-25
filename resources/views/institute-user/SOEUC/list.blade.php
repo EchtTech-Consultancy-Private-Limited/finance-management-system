@@ -26,7 +26,6 @@
                                 <th scope="col">Sr. No.</th>
                                 <th scope="col">Name of program</th>
                                 <th scope="col">Name of the Institute</th>
-                                <th scope="col">State</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">Financial Year</th>
                                 <th scope="col">Status</th>
@@ -38,8 +37,7 @@
                             <tr>
                                 <th scope="row">{{ @$loop->iteration }}</th>
                                 <td>{{ @$soeucForm->instituteProgram->name }} - {{ @$soeucForm->instituteProgram->code }}</td>
-                                <td>{{ @$soeucForm->institute_name }}</td>
-                                <td>{{ ucwords(@$soeucForm->states->name) }}</td>
+                                <td>{{ @$soeucForm->institute->name }}</td>
                                 <td>{{ @$soeucForm->month }}</td>
                                 <td>{{ @$soeucForm->financial_year }}</td>
                                 <td class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'not-approved' : 'pending') }}">

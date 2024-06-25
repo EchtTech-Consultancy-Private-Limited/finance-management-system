@@ -111,14 +111,19 @@ $(document).ready(function() {
 
     $('.manpower-C').on('blur', function() {
         try {
-            var result = evaluateExpression($(this).val());
-            if(result !== undefined){
-                $(this).val($(this).val() + '=' + result);
+            var value = $(this).val();
+            if (value.includes("=")) {
+                value = value.split('=')[0];
+            }
+            var result = evaluateExpression(value);
+            if(result !== undefined && value.includes("+")){
+                $(this).val(value + '=' + result);
             }
         } catch (error) {
             console.error(error.message);
         }
     });
+    
 });
 
 
@@ -149,11 +154,6 @@ $(document).on('change', '#program_id', function() {
         }
     });
 });
-
-// on focus only number arthmetic operator allow
-function validateArthmeticInput(input) {
-    input.value = input.value.replace(/[^0-9+\-*/]/g, '');
-}
 
 // validate integer length and remove validation error after fill the field
 function validateInput(input) {

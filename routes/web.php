@@ -77,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('report-export', [SOEUCFormController::class, 'export'])->name('report-export');
         Route::get('/soe-form-list', [SOEUCFormController::class, 'index'])->name('soe-form-list');
         Route::get('/soe-form', [SOEUCFormController::class, 'create'])->name('soe-form');
-        Route::post('/soe-uc-save', [SOEUCFormController::class, 'store'])->name('soe-uc-save');
+        Route::post('/soe-save', [SOEUCFormController::class, 'store'])->name('soe-save');
         Route::get('/soe-uc-edit/{id}', [SOEUCFormController::class, 'edit'])->name('soe-uc-edit');
         Route::post('/soe-uc-update/{id}', [SOEUCFormController::class, 'update'])->name('soe-uc-update');
         Route::post('/soe-uc-change-status/{id}', [SOEUCFormController::class, 'changeStatus'])->name('soe-uc-change-status');

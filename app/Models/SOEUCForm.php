@@ -14,8 +14,7 @@ class SOEUCForm extends Model
        'user_id',
        'state_id',
        'city_id',
-       'expanse_plan',
-       'institute_name',
+       'institute_id',
        'finance_account_officer',
        'finance_account_officer_mobile',
        'finance_account_officer_email',
@@ -46,6 +45,16 @@ class SOEUCForm extends Model
     public function instituteProgram()
     {
         return $this->belongsTo(InstituteProgram::class, 'program_id');
+    }
+    
+    /**
+     * institute
+     *
+     * @return void
+     */
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class, 'institute_id');
     }
 
     /**

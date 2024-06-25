@@ -16,9 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('state_id');
             $table->foreignId('city_id');
-            $table->foreignId('program_id')->nullable();
-            $table->string('expanse_plan')->nullable()->comment('1=>year, 2=>month, 3=>quarter');
-            $table->string('institute_name')->nullable();
+            $table->foreignId('program_id')->nullable();            
+            $table->string('institute_id')->nullable();
             $table->string('finance_account_officer')->nullable();
             $table->string('finance_account_officer_mobile')->nullable();
             $table->string('finance_account_officer_email')->nullable();

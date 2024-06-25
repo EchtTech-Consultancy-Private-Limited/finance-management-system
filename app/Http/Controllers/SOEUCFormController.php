@@ -14,7 +14,7 @@ use Auth;
 use App\Exports\InstituteUserExport;
 use App\Models\InstituteProgram;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\NationalSeoExpanse;
+use DateTime;
 
 class SOEUCFormController extends Controller
 {
@@ -27,7 +27,7 @@ class SOEUCFormController extends Controller
 
     public function index()
     {
-        $soeucForms =  SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram','instituteProgram')->where('user_id', Auth::id())->get();
+        $soeucForms =  SOEUCForm::with('SoeUcFormCalculation','instituteProgram','institute')->where('user_id', Auth::id())->get();
         return view($this->list,compact('soeucForms'));
     }
 
@@ -36,15 +36,51 @@ class SOEUCFormController extends Controller
      */
     public function create()
     {
-        $states = State::get();
-        $institutePrograms = InstituteProgram::get();
-        $months = [];
-        for ($m=1; $m<=12; $m++) {
-            $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+        $financialYearMonths = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-04-01");
+            $month->modify("+$m months");
+            $financialYearMonths[] = $month->format('F');
         }
-        return view($this->create,compact('states','months','institutePrograms'));
-       
-    }    
+        $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', Auth::id())->get();
+        $previous_month_expenditure = [];
+        $previous_month_total = [];
+        $final_data = [];
+        if ($soeForms) {
+            foreach ($soeForms as $soeForm) {
+                if ($soeForm->SoeUcFormCalculation) {
+                    foreach ($soeForm->SoeUcFormCalculation as $calculation) {
+                        $head = $calculation->head;
+                        $month = $calculation->previous_month_expenditure;
+                        $total = $calculation->previous_month_total;
+                        if (!isset($previous_month_expenditure[$head])) {
+                            $previous_month_expenditure[$head] = [];
+                            $previous_month_total[$head] = 0;
+                        }
+                        $previous_month_expenditure[$head][] = $month;
+                        $previous_month_expenditure[$head]['total'][] = $total;
+                        $previous_month_total[$head] += $total;
+                    }
+                }
+            }
+        }
+        foreach ($previous_month_expenditure as $head => $months) {
+            $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];
+            unset($months['total']);
+            $months_str = implode(', ', $months);
+            $final_data[$head] = [
+                $months_str,
+                $total_str,
+                "Overall total of every head"
+            ];
+        }
+        $overall_total = array_sum($previous_month_total);
+        foreach ($final_data as $head => &$data) {
+            $data[2] = $overall_total;
+        }
+        return view($this->create,compact('financialYearMonths','final_data'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,11 +89,12 @@ class SOEUCFormController extends Controller
     {
         $request->validate([
             'program_id'    => 'required',
-            'institute_name'     => 'required',
+            'institute_id'     => 'required',
             'finance_account_officer'     => 'required',
             'finance_account_officer_mobile'     => 'required|digits:10',
             'nadal_officer'     => 'required',
             'nadal_officer_mobile'     => 'required|digits:10',
+            'month'     => 'required',
             'financial_year'     => 'required',
         ],
         [
@@ -65,40 +102,13 @@ class SOEUCFormController extends Controller
             'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
         ]);
         try {
-            $currentDate = Carbon::now();
-            $programCount = SOEUCForm::where('program_id', $request->program_id)->count();
-            $programNumber = InstituteProgram::where('id', $request->program_id)->first();
-            $expansePlanCheck = 0;
-            $expansePlan = $request->expanse_plan;
-            $query = SOEUCForm::where('state_id', $request->state_id)
-                ->where('city_id', $request->city_id)
-                ->where('expanse_plan', $expansePlan);
-
-            if ($expansePlan == 1) {
-                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)->count();
-            } elseif ($expansePlan == 2) {
-                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)
-                    ->whereMonth('created_at', $currentDate->month)->count();
-            } elseif ($expansePlan == 3) {
-                $expansePlanCheck = $query->whereYear('created_at', $currentDate->year)->count();
-            }
-
-            if (($expansePlan == 1 && $expansePlanCheck >= 1) ||
-                ($expansePlan == 2 && $expansePlanCheck >= 1) ||
-                ($expansePlan == 3 && $expansePlanCheck >= 3)) {
-                \Toastr::error('Expanse plan limit exceeded', 'Error');
-                return redirect()->route('institute-user.SOE-&-UC-list');
-            }
-
-            if($programCount <= $programNumber->count ){
                 DB::beginTransaction();
                 $soeucFormId = SOEUCForm::Create([
                     'user_id' => Auth::id(),
                     'program_id' => $request->program_id,
                     'state_id' => $request->state_id,
                     'city_id' => $request->city_id,
-                    'expanse_plan' => $request->expanse_plan,
-                    'institute_name' => $request->institute_name,
+                    'institute_id' => $request->institute_id,
                     'finance_account_officer' => $request->finance_account_officer,
                     'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
                     'finance_account_officer_email' => $request->finance_account_officer_email,
@@ -112,7 +122,9 @@ class SOEUCFormController extends Controller
                     SOEUCFormCalculatin::Create([
                         'soe_form_id' => $soeucFormId,
                         'head' => $request->head[$key],
-                        'sanction_order' => $request->sanction_order[$key],
+                        'sanction_order' => $request->sanction_order,
+                        'previous_month_expenditure' => $request->month,
+                        'previous_month_total' => $request->actual_expenditure[$key],
                         'unspent_balance_1st' => $request->unspent_balance_1st[$key],
                         'gia_received' => $request->gia_received[$key],
                         'total_balance' => $request->total_balance[$key],
@@ -123,12 +135,8 @@ class SOEUCFormController extends Controller
                     ]);
                 }
                 DB::commit();
-                \Toastr::success('The Reconrd has been deleted successfully.','Success');
-                return redirect()->route('institute-user.SOE-&-UC-list');
-            }else{
-                \Toastr::error('fail, Program Number of count full  :)','Error');
-                return redirect()->route('institute-user.SOE-&-UC-list');
-            }
+                \Toastr::success('The Reconrd has been create successfully.','Success');
+                return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Something went wrong !  :)','Error');
@@ -220,10 +228,10 @@ class SOEUCFormController extends Controller
                 }
                 DB::commit();
                 \Toastr::success('The Reconrd has been updated successfully.','Success');
-                return redirect()->route('institute-user.SOE-&-UC-list');
+                return redirect()->route('institute-user.soe-form-list');
             }else{
                 \Toastr::error('fail, Program Number of count full  :)','Error');
-                return redirect()->route('institute-user.SOE-&-UC-list');
+                return redirect()->route('institute-user.soe-form-list');
             }
             \Toastr::error('fail, Program Number of count full  :)','Error');
         } catch(Exception $e) {
@@ -248,7 +256,7 @@ class SOEUCFormController extends Controller
             ]);
             DB::commit();
             \Toastr::success('Has been staus change successfully :)','Success');
-            return redirect()->route('institute-user.SOE-&-UC-list');
+            return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Add new student  :)','Error');
