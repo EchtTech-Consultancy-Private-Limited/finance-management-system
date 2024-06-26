@@ -21,29 +21,33 @@
         </div>
         <div class="white_card_body">
             <div class="card-body pb-5">
-                <form method="POST" action="{{ route('institute-user.soe-uc-update',$soeForm->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('institute-user.soe-update',$soeForm->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <input type="hidden" name="state_id" value="{{ $soeForm->state_id }}">
                             <input type="hidden" name="city_id" value="{{ $soeForm->city_id }}">
-                            <input type="hidden" name="expanse_plan" value="{{ $soeForm->expanse_plan }}">
                             <label class="form-label" for="inputEmail4">Name of program<span class="text-danger">*</span></label>
                             <select id="inputState" name="program_id" class="form-control">
-                                <option value="">Select Program</option>
-                                @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}" {{ $soeForm->program_id == $value->id ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
-                                @endforeach
+                                <option value="{{ @$soeForm->instituteProgram->id }}">{{ @$soeForm->instituteProgram->name }} - {{ @$soeForm->instituteProgram->code }}</option>
                             </select>
                             @error('program_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class=" col-md-6">
-                            <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_name" value="{{ old('institute_name',$soeForm->institute_name) }}" id="inputPassword4" readonly>
+                            <label class="form-label" for="inputPassword4">Name of the Institute<span
+                                    class="text-danger">*</span></label>
+                            <select id="inputState" name="institute_id" class="form-control">
+                                <option value="{{ @$soeForm->institute->id }}">{{ @$soeForm->institute->name }}</option>
+                                {{-- @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}"
+                                    {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
+                                    {{ $value->code }}</option>
+                                @endforeach --}}
+                            </select>
                             @error('institute_name')
-                                <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
@@ -106,7 +110,7 @@
                             <label class="form-label" for="inputAddress2">Month</label>
                             <select id="inputState" class="form-control" name="month">
                                 <option value="">Select Month</option>
-                                @foreach ($months as $key => $month)
+                                @foreach ($financialYearMonths as $key => $month)
                                     @php
                                         $selected = $soeForm->month == $month ? 'selected' : '';
                                     @endphp
@@ -139,6 +143,8 @@
                     <tr class="table-color-head">
                         <th>Heads</th>
                         <th>Sanction Order Nos.</th>
+                        <th>Previous Month Expenditure</th>
+                        <th>Previous Month Total</th>
                         <th>Unspent Balance (GIA) as on 1st April</th>
                         <th>GIA Received in F.Y</th>
                         <th>Total Balance excluding interest</th>
@@ -148,9 +154,11 @@
                         <th>Unspent Balance of (GIA) as on 31st March</th>
                     </tr>
 
-                    <tr>
+                    <tr class="table-color-th">
                         <th></th>
                         <th>A</th>
+                        <th></th>
+                        <th></th>
                         <th>B</th>
                         <th>C</th>
                         <th>D=(B+C)</th>
@@ -162,27 +170,50 @@
                    </thead>
                    <tbody>
                     @if(!$soeForm->SoeUcFormCalculation->isEmpty())
-                    @foreach($soeForm->SoeUcFormCalculation as $key => $value)
-                    @if($value->head != "Grand Total")
-                    <tr>
-                        <th>
-                            {{ $value->head }}
-                            <input type="hidden" name="id[]" value="{{ $value->id }}">
-                            <input type="hidden" name="head[]" value="{{ $value->head }}">
-                        </th>
-                        <td><input type="text" name="sanction_order[]" class="form-control" id="manpower-A" maxlength="5" oninput="validateInput(this)" value="{{ $value->sanction_order }}" readonly></td>
-                        <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ $value->unspent_balance_1st }}"></td>
-                        <td><input type="text" name="gia_received[]" class="form-control manpower-C" maxlength="5" oninput="validateInput(this)" value="{{ $value->gia_received }}" readonly></td>
-                        <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->total_balance }}"></td>
-                        <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ $value->actual_expenditure }}"></td>
-                        <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_last }}"></td>
-                        <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ $value->committed_liabilities }}"></td>
-                        <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_31st }}"></td>
-                    </tr>
+                        @foreach($soeForm->SoeUcFormCalculation as $key => $value)
+                            @if($value->head != "Grand Total")
+                                <tr>
+                                    <th>
+                                        {{ $value->head }}
+                                        <input type="hidden" name="id[]" value="{{ $value->id }}">
+                                        <input type="hidden" name="head[]" value="{{ $value->head }}">
+                                    </th>
+                                    @if($value->head == 'Man Power with Human Resource')
+                                        <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order" class="form-control textarea-h" id="manpower-A" rows="16">{{ $value->sanction_order }}</textarea></td>
+                                    @endif
+                                    <td>
+                                        <input type="text" name="previous_month_expenditure[]" value="{{ $final_data[$value->head][0] ?? '' }}" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="previous_month_total[]" value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ $value->unspent_balance_1st }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="gia_received[]" class="form-control manpower-C" value="{{ $value->gia_received }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->total_balance }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ $value->actual_expenditure }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_last }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ $value->committed_liabilities }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly value="{{ $value->unspent_balance_31st }}">
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endif
-                    @endforeach                    
-                    @endif
-                   </tbody>
+                </tbody>
+                
                    <tfoot>
                     @foreach($soeForm->SoeUcFormCalculation as $key => $value)
                     @if($value->head == "Grand Total")
@@ -192,8 +223,14 @@
                             <input type="hidden" name="id[]" value="{{ $value->id }}">
                             <input type="hidden"name="head[]" value="Grand Total">
                         </th>
-                        <th class="grandTotal-A">
-                            <input type="text" name="sanction_order[]" class="form-control grandTotal-A" id="manpower-A" value="{{ $value->sanction_order }}" readonly>
+                        <th class="grandTotal-A"></th>
+                        <th class="grandTotal-B">
+                            <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
+                                id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
+                        </th>
+                        <th class="grandTotal-B">
+                            <input type="text" name="previous_month_total[]" class="form-control grandTotal-B"
+                                id="manpower-A" value="{{ old('previous_month_total.7', $final_data[$value->head][2] ?? '') }}" readonly>
                         </th>
                         <th class="grandTotal-B">
                             <input type="text" name="unspent_balance_1st[]" class="form-control grandTotal-B" id="manpower-A" value="{{ $value->unspent_balance_1st }}" readonly>

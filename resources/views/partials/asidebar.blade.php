@@ -80,20 +80,14 @@
             @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0)
             <li class>
-               <a class="has-arrow" href="#" aria-expanded="false">
+               <a class="" href="{{ route('national-user.soe-expense-index') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                     <img src="{{ asset('assets/img/menu-icon/4.svg') }}" alt>
                   </div>
                   <div class="nav_title">
-                     <span>SOE Expense</span>
+                     <span>SOE Uploded List</span>
                   </div>
                </a>
-               <ul>
-                  <li><a href="{{ route('national-user.soe-expense-create') }}">SOE Expense Entry</a></li>
-                  <li><a href="{{ route('national-user.soe-expense-index') }}">SOE Expense List</a></li>
-               </ul>
-               <!-- <ul>
-               </ul> -->
             </li>
             <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">

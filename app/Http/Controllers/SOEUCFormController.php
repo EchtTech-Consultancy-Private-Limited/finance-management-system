@@ -142,13 +142,67 @@ class SOEUCFormController extends Controller
             \Toastr::error('fail, Something went wrong !  :)','Error');
         }
     }
-
+    
     /**
-     * Display the specified resource.
+     * view
+     *
+     * @param  mixed $id
+     * @return void
      */
-    public function show(SOEUCForm $sOEUCForm)
+    public function view($id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $financialYearMonths = [];
+            $currentYear = date('Y');
+            for ($m = 0; $m < 12; $m++) {
+                $month = new DateTime("$currentYear-04-01");
+                $month->modify("+$m months");
+                $financialYearMonths[] = $month->format('F');
+            }
+            $soeForm = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')->where('id', $id)->first();
+            $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', $soeForm->user_id)->get();
+            $previous_month_expenditure = [];
+            $previous_month_total = [];
+            $final_data = [];
+            if ($soeForms) {
+                foreach ($soeForms as $soeFormPrev) {
+                    if ($soeFormPrev->SoeUcFormCalculation) {
+                        foreach ($soeFormPrev->SoeUcFormCalculation as $calculation) {
+                            $head = $calculation->head;
+                            $month = $calculation->previous_month_expenditure;
+                            $total = $calculation->previous_month_total;
+                            if (!isset($previous_month_expenditure[$head])) {
+                                $previous_month_expenditure[$head] = [];
+                                $previous_month_total[$head] = 0;
+                            }
+                            $previous_month_expenditure[$head][] = $month;
+                            $previous_month_expenditure[$head]['total'][] = $total;
+                            $previous_month_total[$head] += $total;
+                        }
+                    }
+                }
+            }
+            foreach ($previous_month_expenditure as $head => $months) {
+                $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];
+                unset($months['total']);
+                $months_str = implode(', ', $months);
+                $final_data[$head] = [
+                    $months_str,
+                    $total_str,
+                    "Overall total of every head"
+                ];
+            }
+            $overall_total = array_sum($previous_month_total);
+            foreach ($final_data as $head => &$data) {
+                $data[2] = $overall_total;
+            }
+            DB::commit();
+            return view('institute-user.SOEUC.view', compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
@@ -156,22 +210,60 @@ class SOEUCFormController extends Controller
      */
     public function edit($id)
     {
-        try{
+        try {
             DB::beginTransaction();
-            $states = State::get();
-            $months = [];
-            for ($m=1; $m<=12; $m++) {
-                $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+            $financialYearMonths = [];
+            $currentYear = date('Y');
+            for ($m = 0; $m < 12; $m++) {
+                $month = new DateTime("$currentYear-04-01");
+                $month->modify("+$m months");
+                $financialYearMonths[] = $month->format('F');
             }
-            $institutePrograms = InstituteProgram::get();
-            $soeForm = SOEUCForm::with('states','SoeUcFormCalculation','instituteProgram')->where('id',$id)->first();
+            $soeForm = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')->where('id', $id)->first();
+            $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', Auth::id())->get();
+            $previous_month_expenditure = [];
+            $previous_month_total = [];
+            $final_data = [];
+            if ($soeForms) {
+                foreach ($soeForms as $soeFormPrev) {
+                    if ($soeFormPrev->SoeUcFormCalculation) {
+                        foreach ($soeFormPrev->SoeUcFormCalculation as $calculation) {
+                            $head = $calculation->head;
+                            $month = $calculation->previous_month_expenditure;
+                            $total = $calculation->previous_month_total;
+                            if (!isset($previous_month_expenditure[$head])) {
+                                $previous_month_expenditure[$head] = [];
+                                $previous_month_total[$head] = 0;
+                            }
+                            $previous_month_expenditure[$head][] = $month;
+                            $previous_month_expenditure[$head]['total'][] = $total;
+                            $previous_month_total[$head] += $total;
+                        }
+                    }
+                }
+            }
+            foreach ($previous_month_expenditure as $head => $months) {
+                $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];
+                unset($months['total']);
+                $months_str = implode(', ', $months);
+                $final_data[$head] = [
+                    $months_str,
+                    $total_str,
+                    "Overall total of every head"
+                ];
+            }
+            $overall_total = array_sum($previous_month_total);
+            foreach ($final_data as $head => &$data) {
+                $data[2] = $overall_total;
+            }
             DB::commit();
-            return view($this->edit,compact('months','soeForm','states','institutePrograms'));
-        }catch (Exception $e) {
+            return view($this->edit, compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total'));
+        } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -180,11 +272,12 @@ class SOEUCFormController extends Controller
     {
         $request->validate([
             'program_id'    => 'required',
-            'institute_name'     => 'required',
+            'institute_id'     => 'required',
             'finance_account_officer'     => 'required',
             'finance_account_officer_mobile'     => 'required|digits:10',
             'nadal_officer'     => 'required',
             'nadal_officer_mobile'     => 'required|digits:10',
+            'month'     => 'required',
             'financial_year'     => 'required',
         ],
         [
@@ -192,48 +285,41 @@ class SOEUCFormController extends Controller
             'nadal_officer_mobile.required'=> 'The Nodal Officer mobile field is required',
         ]);
         try{
-            $programCount = SOEUCForm::where('program_id', $request->program_id)->count();
-            $programNumber = InstituteProgram::where('id', $request->program_id)->first();
-            if($programCount <= $programNumber->count ){
-                DB::beginTransaction();
-                SOEUCForm::where('id', $id)->Update([
-                    'user_id' => Auth::id(),
-                    'state_id' => $request->state_id,
-                    'city_id' => $request->city_id,
-                    'expanse_plan' => $request->expanse_plan,
-                    'program_id' => $request->program_id,
-                    'institute_name' => $request->institute_name,
-                    'finance_account_officer' => $request->finance_account_officer,
-                    'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
-                    'finance_account_officer_email' => $request->finance_account_officer_email,
-                    'nadal_officer' => $request->nadal_officer,
-                    'nadal_officer_mobile' => $request->nadal_officer_mobile,
-                    'nadal_officer_email' => $request->nadal_officer_email,
-                    'month' => $request->month,
-                    'financial_year' => $request->financial_year,
+            DB::beginTransaction();
+            SOEUCForm::where('id', $id)->Update([
+                'user_id' => Auth::id(),
+                'program_id' => $request->program_id,
+                'state_id' => $request->state_id,
+                'city_id' => $request->city_id,
+                'institute_id' => $request->institute_id,
+                'finance_account_officer' => $request->finance_account_officer,
+                'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
+                'finance_account_officer_email' => $request->finance_account_officer_email,
+                'nadal_officer' => $request->nadal_officer,
+                'nadal_officer_mobile' => $request->nadal_officer_mobile,
+                'nadal_officer_email' => $request->nadal_officer_email,
+                'month' => $request->month,
+                'financial_year' => $request->financial_year,
+            ]);
+            foreach($request->id as $key => $value){                
+                SOEUCFormCalculatin::where('id', $value)->Update([
+                    'soe_form_id' => $id,
+                    'head' => $request->head[$key],
+                    'sanction_order' => $request->sanction_order,
+                    'previous_month_expenditure' => $request->month,
+                    'previous_month_total' => $request->actual_expenditure[$key],
+                    'unspent_balance_1st' => $request->unspent_balance_1st[$key],
+                    'gia_received' => $request->gia_received[$key],
+                    'total_balance' => $request->total_balance[$key],
+                    'actual_expenditure' => $request->actual_expenditure[$key],
+                    'unspent_balance_last' => $request->unspent_balance_last[$key],
+                    'committed_liabilities' => $request->committed_liabilities[$key],
+                    'unspent_balance_31st' => $request->unspent_balance_31st[$key],
                 ]);
-                foreach($request->id as $key => $value){                
-                    SOEUCFormCalculatin::where('id', $value)->Update([
-                        'soe_form_id' => $id,
-                        'head' => $request->head[$key],
-                        'sanction_order' => $request->sanction_order[$key],
-                        'unspent_balance_1st' => $request->unspent_balance_1st[$key],
-                        'gia_received' => $request->gia_received[$key],
-                        'total_balance' => $request->total_balance[$key],
-                        'actual_expenditure' => $request->actual_expenditure[$key],
-                        'unspent_balance_last' => $request->unspent_balance_last[$key],
-                        'committed_liabilities' => $request->committed_liabilities[$key],
-                        'unspent_balance_31st' => $request->unspent_balance_31st[$key],
-                    ]);
-                }
-                DB::commit();
-                \Toastr::success('The Reconrd has been updated successfully.','Success');
-                return redirect()->route('institute-user.soe-form-list');
-            }else{
-                \Toastr::error('fail, Program Number of count full  :)','Error');
-                return redirect()->route('institute-user.soe-form-list');
             }
-            \Toastr::error('fail, Program Number of count full  :)','Error');
+            DB::commit();
+            \Toastr::success('The Reconrd has been updated successfully.','Success');
+            return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
             \Toastr::error('fail, Add new student  :)','Error');

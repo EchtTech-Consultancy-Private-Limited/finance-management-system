@@ -29,6 +29,7 @@
                                 <th scope="col">Month</th>
                                 <th scope="col">Financial Year</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Remark</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -40,8 +41,8 @@
                                 <td>{{ @$soeucForm->institute->name }}</td>
                                 <td>{{ @$soeucForm->month }}</td>
                                 <td>{{ @$soeucForm->financial_year }}</td>
-                                <td class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'not-approved' : 'pending') }}">
-                                    <a href="#" class="action_btn" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Not-Approved' : 'Pending') }}</a>
+                                <td class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'returned_by_nhq' : '') }}">
+                                    <a href="#" class="action_btn" data-bs-toggle="modal" data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Returned by NHQ' : '') }}</a>
                                     <div class="modal fade" id="soe_uc_form_{{ $soeucForm->id }}" tabindex="-1" role="dialog" aria-labelledby="soe_uc_form_{{ $soeucForm->id }}Title"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -63,9 +64,8 @@
                                                             <label for="statusSelect">Status:</label>
                                                             <select class="form-control" id="statusSelect" name="status">
                                                                 <option value="">Select Status</option>
-                                                                <option value="1" {{ $soeucForm->status == '1' ? 'selected' : '' }}>Approve</option>
-                                                                <option value="3" {{ $soeucForm->status == '3' ? 'selected' : '' }}>Pending</option>
-                                                                <option value="2" {{ $soeucForm->status == '2' ? 'selected' : '' }}>Not Approved</option>
+                                                                <option value="1" {{ $soeucForm->status == '1' ? 'selected' : '' }}>Approved</option>
+                                                                <option value="2" {{ $soeucForm->status == '2' ? 'selected' : '' }}>Returned by NHQ</option>                                                                
                                                             </select>
                                                         </div>
                                                         <div class="modal-footer">
@@ -78,10 +78,12 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td>{{ @$soeucForm->reason ?? 'N/A' }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
-                                        <a href="{{ route('institute-user.soe-uc-edit',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                        <a href="{{ route('institute-user.soe-uc-destroy',$soeucForm->id) }}" class="action_btn" onclick="return confirm('Are you sure you want to delete this record?');"> <i class="fas fa-trash text-danger"></i> </a>
+                                        <a href="{{ route('institute-user.soe-edit',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+                                        <a href="{{ route('institute-user.soe-view',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-eye"></i> </a>
+                                        <a href="{{ route('institute-user.soe-destroy',$soeucForm->id) }}" class="action_btn" onclick="return confirm('Are you sure you want to delete this record?');"> <i class="fas fa-trash text-danger"></i> </a>
                                     </div>
                                 </td>
                             </tr>

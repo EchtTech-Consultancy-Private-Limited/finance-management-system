@@ -190,7 +190,7 @@ p {
     line-height: 24px;
     font-size: 14px;
     margin-bottom: 0;
-    color: #828bb2;
+    /* color: #828bb2; */
     font-family: mulish, sans-serif;
     font-weight: 300
 }
@@ -12360,6 +12360,10 @@ img#captchaimg {
 .fms-table .table input.form-control {
     padding: 3px 7px;
     font-size: 15px;
+    text-align: right;
+}
+table tr.table-color-th th {
+    text-align: center !important;
 }
 .fms-table .table tbody tr th, .fms-table .table tbody tr td{vertical-align: middle;    padding: 5px 7px;}
 

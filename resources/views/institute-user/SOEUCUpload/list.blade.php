@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ @$sorUcList->reason }}</td>
+                                <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('institute-user.SOE-UC-upload-edit',$sorUcList->id) }}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>

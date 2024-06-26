@@ -113,7 +113,7 @@
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                     <td>{{ ($sorUcList->status == 1) ? 'Approved' : (($sorUcList->status == 2) ? 'Returned by NHQ' : '') }}</td>
-                                    <td>{{ $sorUcList->reason }}</td>
+                                    <td>{{ $sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
                                 @endforeach
 

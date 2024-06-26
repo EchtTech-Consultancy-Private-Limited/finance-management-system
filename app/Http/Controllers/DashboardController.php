@@ -390,7 +390,9 @@ class DashboardController extends Controller
      */
     public function report()
     {
-        return view('national-user.report');
+        $programs = InstituteProgram::get();
+        $sorUcLists = SOEUCUploadForm::with('users')->get();
+        return view('national-user.report',compact('programs','sorUcLists'));
     }
     
     /**
@@ -406,31 +408,41 @@ class DashboardController extends Controller
             'modulename' => 'required',
         ],
         [
-            'modulename.required' => 'The Module Name field is required',
+            'modulename.required' => 'The Module Name field id required',
         ]);
-        
+        // Parse the start and end date if provided
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $start_date = Carbon::parse("$request->startdate 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::parse("$request->enddate 23:59:59")->format('Y-m-d H:i:s');
+        } else {
+            // Set a wide range if start and end dates are empty
+            $start_date = Carbon::parse("1900-01-01 00:00:00")->format('Y-m-d H:i:s');
+            $end_date = Carbon::now()->addYear(100)->format('Y-m-d H:i:s');
+        }
         $fileName = '';
-        $query = null;
+        $arrays = [];
         switch ($request->modulename) {
             case '1':
                 $fileName = 'SOEUForm';
-                $query = SOEUCForm::with('states', 'instituteProgram', 'SoeUcFormCalculation');
+                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation');
+                break;
+            case '2':
+                $fileName = 'UCUpload';
+                $query = SOEUCUploadForm::query();
                 break;
             default:
                 return response()->json(['error' => 'Invalid module name'], 400);
         }
-        // Add filters based on the request data
-        if ($request->filled('program_name')) {
-            $query->where('program_id', $request->program_name);
+        if(!empty($request->program_id)){
+            $query->where('program_id', $request->program_id);
         }
-        if ($request->filled('financial_year')) {
-            $query->where('financial_year', $request->financial_year);
+        if (!empty($request->startdate) && !empty($request->enddate)) {
+            $query->whereBetween('created_at', [$start_date, $end_date]);
         }
-        if ($request->filled('institute_name')) {
-            $query->where('institute_name', $request->institute_name);
-        }
-        if ($request->filled('month')) {
-            $query->where('month', $request->month);
+        if ($request->modulename == '2') {
+            $sorUcLists = $query->get();
+            $programs = InstituteProgram::get();
+            return view('national-user.report',compact('programs','sorUcLists'));
         }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');

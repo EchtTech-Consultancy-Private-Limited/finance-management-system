@@ -31,7 +31,7 @@
                             <label class="form-label" for="inputEmail4">Name of program<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="program_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->program)->id }}">{{ optional(Auth::user()->program)->name }}</option>
+                                <option value="{{ optional(Auth::user()->program)->id }}">{{ optional(Auth::user()->program)->name }} - {{ optional(Auth::user()->program)->code }}</option>
                                 {{-- @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}"
                                     {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
@@ -178,7 +178,7 @@
                             <th>Unspent Balance of (GIA) as on 31st March</th>
                         </tr>
 
-                        <tr>
+                        <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
                             <th></th>

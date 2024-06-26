@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('month')->nullable();
             $table->string('financial_year')->nullable();
             $table->string('reason')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('1=>approve,2=>not-approved,3=>pending');
+            $table->tinyInteger('status')->default('1')->nullable()->comment('1=>approve,2=>not-approved,3=>pending');
             $table->softDeletes();
             $table->timestamps();
         });
