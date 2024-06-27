@@ -98,7 +98,7 @@
                                     <th scope="row">{{ @$loop->iteration }}</th>
                                     <td>{{ $sorUcList->qtr_uc }}</td>
                                     <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
-                                    <td>{{ $sorUcList->year }}</td>
+                                    <td>{{ $sorUcList->financial_year }}</td>
                                     <td>{{ $sorUcList->month }}</td>                                    
                                     <td>
                                         @if ($sorUcList->file)

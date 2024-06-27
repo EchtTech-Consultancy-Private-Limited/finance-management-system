@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('program_id')->nullable();
             $table->string('qtr_uc',255)->nullable();
-            $table->string('year',255)->nullable();
+            $table->string('financial_year',255)->nullable();
             $table->string('month',255)->nullable();
             $table->string('file',255)->nullable();
             $table->string('file_size',255)->nullable();

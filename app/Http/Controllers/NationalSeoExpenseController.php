@@ -104,7 +104,7 @@ class NationalSeoExpenseController extends Controller
             return redirect()->route('national-user.soe-expense-index');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Has been staus change successfully :)','Error');
         }
     }
 }

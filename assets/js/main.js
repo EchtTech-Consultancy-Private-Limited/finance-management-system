@@ -5,25 +5,25 @@ $(document).ready(function() {
             {
                 extend: 'print',
                 text: '<i class="fa fa-print" aria-hidden="true"></i>',
-                // title: 'Custom Table Title',
-                // messageTop: 'This is a custom message at the top of the print view',
-                // messageBottom: 'This is a custom message at the bottom of the print view',
-                // customize: function (win) {
-                //     $(win.document.body)
-                //         .css('font-size', '10pt')
-                //         .prepend(
-                //             '<img src="https://example.com/logo.png" style="position:absolute; top:0; left:0;" />'
-                //         );
- 
-                //     $(win.document.body).find('table')
-                //         .addClass('compact')
-                //         .css('font-size', 'inherit');
-                // }
             }
         ]
     });    
      $("[data-toggle=tooltip]").tooltip();    
-} );
+});
+
+$(document).ready(function() {
+    $('.national_uc_datatable').dataTable({
+        pageLength: 5,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print" aria-hidden="true"></i>',
+            }
+        ]
+    });    
+     $("[data-toggle=tooltip]").tooltip();    
+});
 
 // calculation of SOEU Form
 $(document).ready(function() {
@@ -129,18 +129,12 @@ $(document).ready(function() {
 
 // End- of calculation of SOEU Form
 
-// datatable
-$(document).ready(function() {
-    $('#datatable').dataTable();
-} );
-
 $(".btn-tab-admin").click(function(){
     $(".btn-tab-admin.active").removeClass('active');
     $(this).addClass('active');
 })
 
-// get institute program wise
-
+// get institute program wise for admin 
 $(document).on('change', '#program_id', function() {    
     let program_id = $(this).val();
     $.ajax({

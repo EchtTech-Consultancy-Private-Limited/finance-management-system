@@ -11,9 +11,15 @@
                   <div class="nav_icon_small">
                      <img src="{{ asset('assets/img/menu-icon/dashboard.svg') }}" alt>
                   </div>
-                  <div class="nav_title">
-                     <span>Dashboard</span>
-                  </div>
+                  @if(Auth::user()->user_type == 0)
+                     <div class="nav_title">
+                        <span>Integrated Dashboard</span>
+                     </div>
+                  @else
+                     <div class="nav_title">
+                        <span>Dashboard</span>
+                     </div>
+                  @endif
                </a>
             </li>
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type =='admin')

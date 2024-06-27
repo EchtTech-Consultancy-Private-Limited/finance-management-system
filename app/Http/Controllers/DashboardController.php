@@ -3,12 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\CMSModels\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\SOEUCForm;
-use App\Models\SOEUCFormCalculatin;
 use Carbon\Carbon;
 use App\Models\SOEUCUploadForm;
 use App\Models\City;
@@ -20,6 +18,7 @@ use App\Exports\InstituteUserExport;
 use App\Models\Institute;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
+use DateTime;
 
 class DashboardController extends Controller
 {
@@ -42,18 +41,31 @@ class DashboardController extends Controller
             $file = 'institute-user.dashboard';
         }
         $months = [];
-        for ($m=1; $m<=12; $m++) {
-            $months[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-04-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
         }
         $currentFY = date('Y').' - '.date('Y')+1;
         $institutePrograms = InstituteProgram::get();
+        $institutes = Institute::get();
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
             ->where('financial_year', $currentFY)
             ->get();
 
         $totalcard = NationalDashboardTotalCards::first();
+        $totalSum = collect($totalcard)->only([
+            'total_sentinel_site',
+            'total_ppcl_labs',
+            'total_regional_coordinator',
+            'total_nrcp_labs',
+            'total_pm_abhim_sss'
+        ])->sum(function($value) {
+            return (int) $value;
+        });
 
-        $sorUcLists = SOEUCUploadForm::with('users')->get();
+        $sorUcLists = SOEUCUploadForm::with('users')->orderBy('id','desc')->get();
 
             $finalArray = [];
             foreach ($dataForms as $dataForm) {
@@ -100,7 +112,7 @@ class DashboardController extends Controller
                 $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
             }
-        return view($file, compact('totalArray','sorUcLists','institutePrograms','totalcard','months'));
+        return view($file, compact('totalArray','sorUcLists','institutePrograms','institutes','totalcard','totalSum','months'));
     }
 
     public function instituteFilterDdashboard(Request $request)
@@ -443,6 +455,79 @@ class DashboardController extends Controller
             $sorUcLists = $query->get();
             $programs = InstituteProgram::get();
             return view('national-user.report',compact('programs','sorUcLists'));
+        }
+        $arrays = [$query->get()->toArray()];
+        return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
+    }
+    
+    /**
+     * dashboardReport
+     *
+     * @return void
+     */
+    public function dashboardReport(Request $request)
+    {
+        $fileName = '';
+        $arrays = [];
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'SOEUForm';
+                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation');
+                break;
+            case '2':
+                $fileName = 'UCUpload';
+                $query = SOEUCUploadForm::with('program');
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        if(!empty($request->program_id)){
+            $query->where('program_id', $request->program_id);
+        }
+        if(!empty($request->financial_year)){
+            $query->where('financial_year', $request->financial_year);
+        }        
+        if(!empty($request->month)){
+            $query->where('month', $request->month);
+        }
+        if ($request->modulename == '2') {
+            $sorUcLists = $query->get();
+            $output = "";
+            $count = 0;
+            if ($sorUcLists) {
+                foreach ($sorUcLists as $sorUcList) {
+                    $count++;
+                    $output .= '<tr>
+                                    <td>' . $count . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->qtr_uc) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->program->name) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->financial_year) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->month) . '</td>
+
+
+                                    <td>';
+                    if ($sorUcList->file) {
+                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                        <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </a>';
+                    } else {
+                        $output .= 'N/A';
+                    }
+                    $output .= '</td>
+                                    <td>' . date('d-m-Y', strtotime($sorUcList->date)) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->status == '1' ? 'Approved' : 'Returened') . '</td>
+                                    <td>' . ($sorUcList->reason ?? 'N/A') . '</td>
+                    </tr>';
+                }
+            } else {
+                $output .= 'Oops, something went wrong';
+            }
+            return $output;
+        }
+        if(!empty($request->national_institute_name)){
+            $query->where('institute_id', $request->national_institute_name);
         }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');

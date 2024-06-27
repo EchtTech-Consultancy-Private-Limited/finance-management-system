@@ -242,8 +242,8 @@ class SOEUCFormController extends Controller
                     }
                 }
             }
-            foreach ($previous_month_expenditure as $head => $months) {
-                $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];
+            foreach ($previous_month_expenditure as $head => $months) {                
+                $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];                
                 unset($months['total']);
                 $months_str = implode(', ', $months);
                 $final_data[$head] = [
@@ -252,6 +252,7 @@ class SOEUCFormController extends Controller
                     "Overall total of every head"
                 ];
             }
+            
             $overall_total = array_sum($previous_month_total);
             foreach ($final_data as $head => &$data) {
                 $data[2] = $overall_total;

@@ -109,7 +109,10 @@
             <div class="col-md-3 total-card">
                 <div class="white_card graph-card-h m-0">
                     <div class="total-card-child d-flex align-items-center justify-content-center">
-                        <h3>Total Value</h3>
+                        <h3 class="text-center">
+                            {{ $totalSum }}<br>
+                            Total Institute
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -535,12 +538,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="QA_table pt-3">
-                        <table class="table datatable table-bordered">
+                        <table class="table national_uc_datatable table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Name of Institute</th>
+                                    <th scope="col">QTR UC</th>
+                                    <th scope="col">Program</th>
                                     <th>Year of UC</th>
-                                    <th>All UCs</th>
+                                    <th>UC File Upload</th>
                                     <th>UC Uploaded Date</th>
                                     <th>UC Status</th>
                                     <th>Remarks</th>
@@ -549,7 +553,8 @@
                             <tbody>
                                 @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
-                                    <td>{{ @$sorUcList->users->institute_name }}</td>
+                                    <td>{{ $sorUcList->qtr_uc }}</td>
+                                    <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
                                     <td>{{ @$sorUcList->year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
@@ -565,7 +570,7 @@
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                     <td><span
-                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</span>
+                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned' : 'Pending') }}</span>
                                     </td>
                                     <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
@@ -1295,13 +1300,13 @@
     <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
-                <form action="{{ route('national-user.report-export') }}" method="post" id="institute-report">
+                <form action="{{ route('national-user.dashboard-report') }}" method="get" id="institute-report">
                     @csrf
                     <div class="row">
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="program_name" class="form-control" id="">
+                            <select name="program_name" class="form-control" id="national_program_id">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -1311,7 +1316,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-user-list-show" name="financial_year" class="form-control national_user_card">
+                            <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                                     @php
@@ -1322,28 +1327,32 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select name="modulename" class="form-control" id="form_type">
-                                <option value="">Select Form Type</option>
-                                <option value="1">SOE</option>
-                                <option value="2">UC</option>
+                            <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
+                                <select class="form-control"  name="modulename" id="form_type" required>
+                                <option value="">Select Module</option>
+                                <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form</option>
+                                <option value='2' {{  request('modulename') == '2' ? 'selected' : '' }}>UC Upload</option>
                             </select>
+                            @error('modulename') 
+                                <span class="form-text text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control" id="">
+                            <select name="institute_name" class="form-control" id="national_institute_name">
                                 <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
+                                @foreach($institutes as $institute)
+                                    <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                        {{ $institute->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="month" class="form-control" id="">
+                            <select name="month" class="form-control" id="national_month">
                                 <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
                                     @php
@@ -1358,7 +1367,7 @@
 
                         <div class="col-md-12">
                             <div class="float-end mt-4">
-                                <button type="submit" class="btn bg-cancel me-3 form_type_uc_list">Search</button>
+                                <button type="button" class="btn bg-cancel me-3 form_type_uc_list" id="form_type_uc_list">Search</button>
                                 <button type="reset" class="btn bg-danger me-3 form_type_uc_list">Reset</button>
                                 <button type="submit" class="btn btn-primary" id="form_type_export_button">Export Excel</button>
                             </div>
@@ -1368,33 +1377,21 @@
             </div>
             <div class="QA_section">
                 <div class="QA_table form_type_uc_list" id="form_type_uc_list">
-                    <table class="table datatable table-bordered">
+                    <table class="table national_uc_filter_datatable table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">View / Download</th>
+                                <th scope="col">Sr. No.</th>
+                                <th scope="col">QTR UC</th>
+                                <th scope="col">Program</th>
+                                <th scope="col">Year of UC</th>
+                                <th scope="col">Month</th>
+                                <th scope="col">UC File Upload</th>
+                                <th scope="col">UC Uploaded Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Remarks</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($sorUcLists as $key => $sorUcList)
-                                <tr>
-                                    <td>{{ @$sorUcList->users->institute_name }}</td>
-                                    <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                    <td>
-                                        @if ($sorUcList->file)
-                                        <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
-                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
-                                            <span>Download ({{ $sorUcList->file_size }})</span>
-                                            <i class="fa fa-download" aria-hidden="true"></i>
-                                        </a>
-                                        @else
-                                            N/A
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-
+                        <tbody id="national_report_data">
                         </tbody>
                     </table>
                 </div>

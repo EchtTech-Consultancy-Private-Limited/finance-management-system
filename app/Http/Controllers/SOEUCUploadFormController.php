@@ -23,7 +23,7 @@ class SOEUCUploadFormController extends Controller
 
     public function index()
     {
-        $sorUcLists = SOEUCUploadForm::with('program')->get();
+        $sorUcLists = SOEUCUploadForm::with('program')->orderBy('id','desc')->get();
         return view($this->list,compact('sorUcLists'));
     }
 
@@ -77,7 +77,7 @@ class SOEUCUploadFormController extends Controller
                 'user_id' => Auth::id(),
                 'qtr_uc' => $request->qtr_uc,
                 'program_id' => $request->program_id,
-                'year' => $request->yearofuc,
+                'financial_year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',
                 'file_size' => $ucFileUploadSize ?? '',
@@ -153,7 +153,7 @@ class SOEUCUploadFormController extends Controller
                 'user_id' => Auth::id(),
                 'qtr_uc' => $request->qtr_uc,
                 'program_id' => $request->program_id,
-                'year' => $request->yearofuc,
+                'financial_year' => $request->yearofuc,
                 'month' => $request->month,
                 'file' => $ucFileUploadName ?? '',
                 'file_size' => $ucFileUploadSize ?? '',

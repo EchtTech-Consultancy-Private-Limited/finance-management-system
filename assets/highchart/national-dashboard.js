@@ -736,6 +736,74 @@ $(document).ready(function() {
     });    
 });
 
+// get institute program wise for national dashboard
+$(document).on('change', '#national_program_id', function() {    
+    let program_id = $(this).val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + 'filter-program',
+        data: {
+            'program_id': program_id
+        },
+        success: function(data) {
+            $("#national_institute_name").html(data);
+        }
+    });
+});
+
+// Dashboard report filter export and show list
+$(document).ready(function() {
+    // Initialize DataTable on page load
+    var nationalDataTable = $('.national_uc_filter_datatable').DataTable({
+        pageLength: 5,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print" aria-hidden="true"></i>',
+            }
+        ]
+    });
+
+    function fetchData() {       
+        let program_id = $("#national_program_id").val();
+        let financial_year = $("#financial_year").val();
+        let form_type = $("#form_type").val() || '2';
+        let national_institute_name = $("#national_institute_name").val();
+        let month = $("#national_month").val();
+        
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + 'national-users/dashboard-report',
+            data: {
+                'program_id': program_id,
+                'financial_year': financial_year,
+                'modulename': form_type,
+                'national_institute_name': national_institute_name,
+                'month': month,
+            },
+            success: function(data) {                    
+                // Clear existing rows and add new data
+                nationalDataTable.clear().rows.add($(data)).draw();
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error: ', status, error);
+            }
+        });
+    }    
+
+    // Initial data fetch
+    fetchData();
+
+    // Handle click event to fetch new data
+    $(document).on('click', '#form_type_uc_list', function(event) {
+        event.preventDefault();
+        fetchData();
+    });
+});
+
+
+
 // End Custom action Js
 
 

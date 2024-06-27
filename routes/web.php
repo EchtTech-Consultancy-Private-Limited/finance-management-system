@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/soe-change-status/{id}', [NationalSeoExpenseController::class, 'changeStatus'])->name('soe-change-status');
         Route::get('/report', [DashboardController::class, 'report'])->name('report');
         Route::get('report-export', [DashboardController::class, 'export'])->name('report-export');
+        Route::get('dashboard-report', [DashboardController::class, 'dashboardReport'])->name('dashboard-report');
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.','middleware' => ['checkUserType:institute']], function () {
