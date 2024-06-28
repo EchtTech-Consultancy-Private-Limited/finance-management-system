@@ -390,26 +390,6 @@
 
 
             </div>
-
-
-            <!-- <div class="col-xl-2">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Interest DD</h3>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="white_card_body">
-                <div id="integrated-dashboard-chart-currently-Interest-DD"></div>
-
-            </div>
-        </div>
-    </div> -->
-
-
         </div>
     </div>
 
@@ -424,7 +404,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program" name="program_id" class="form-control">
+                            <select id="national-program-ucform" name="program_id" class="form-control filter_program_id national_ucForm_filter">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -434,17 +414,19 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="institute_name" class="form-control national_institute_name" id="national_institute_name">
                                 <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
+                                @foreach($institutes as $institute)
+                                    <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                        {{ $institute->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="uc-financial-year" name="uc_financial_year" class="form-control">
+                            <select id="national-ucform-fy" name="uc_financial_year" class="form-control national_ucForm_filter">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
@@ -489,41 +471,14 @@
 
                         <div class="col-xl-6">
                             <div class="white_card card_height_100 ">
-
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
                                         class="border rounded mb-0 received-chart"></div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-
-                    <div class="">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge1"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge2"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge3"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge4"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-md-4">
                     <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
                 </div>
@@ -1306,7 +1261,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="program_name" class="form-control" id="national_program_id">
+                            <select name="program_name" class="form-control filter_program_id" id="national_program_id">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -1340,7 +1295,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control" id="national_institute_name">
+                            <select name="institute_name" class="form-control national_institute_name" id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
                                     <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>

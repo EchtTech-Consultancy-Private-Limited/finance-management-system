@@ -16,6 +16,7 @@ use App\Models\NationalDashboardTotalCards;
 use Exception;
 use App\Exports\InstituteUserExport;
 use App\Models\Institute;
+use App\Models\State;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
@@ -285,8 +286,82 @@ class DashboardController extends Controller
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
-        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails,'balanceProgramLineChart'=>$balanceProgramLineChart], 200);
+        // UC Reveived or not map code
+            $UcUploadCount = SOEUCUploadForm::count();
+            $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
+            $UcUploadNotApproved = SOEUCUploadForm::where('status', '2')->count();
+            $UcUploadDetails = [
+                'UcApprovedPercentage' => ($UcUploadApproved / $UcUploadCount) * 100,
+                'UcNotApprovedPercentage' => ($UcUploadNotApproved / $UcUploadCount) * 100,
+                'UcApprovedNumber' => $UcUploadApproved,
+                'UcNotApprovedNumber' => $UcUploadNotApproved,
+                'TotalUcForm' => $UcUploadCount,
+            ];
+
+            $UcFormstateDetails = [];
+            $states = State::all();
+            foreach ($states as $state) {
+                $UcFormCount = SOEUCUploadForm::whereHas('users', function ($query) use ($state) {
+                    $query->where('state_id', $state->id);
+                })->count();
+                $UcFormstateDetails[] = [
+                    'hc-key' => $state->name,
+                    'value' => $UcFormCount,
+                ];
+            }
+        // End UC Reveived or not map code
+        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails,'balanceProgramLineChart'=>$balanceProgramLineChart,'UcUploadDetails'=>$UcUploadDetails,'UcFormstateDetails'=>$UcFormstateDetails], 200);
     }
+    
+    /**
+     * nationalFilterUcFormDdashboard
+     *
+     * @return void
+     */
+    public function nationalFilterUcFormDashboard(Request $request)
+    {
+        $query = SOEUCUploadForm::query();
+        
+        if ($request->has('nationalUcformFy') && $request->nationalUcformFy) {
+            $query->where('financial_year', $request->nationalUcformFy);
+        }        
+        
+        if ($request->has('nationalProgramUcForm') && $request->nationalProgramUcForm) {
+            $query->where('program_id', $request->nationalProgramUcForm);
+        }
+        
+        $UcUploadCount = $query->count();
+        $UcUploadApproved = clone $query;
+        $UcUploadApprovedCount = $UcUploadApproved->where('status', 1)->count();
+        $UcUploadNotApproved = clone $query;
+        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('status', 2)->count();
+        
+        $UcUploadDetails = [
+            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
+            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
+            'UcApprovedNumber' => $UcUploadApprovedCount,
+            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
+            'TotalUcForm' => $UcUploadCount,
+        ];
+
+        // Initialize array for state details
+        $UcFormstateDetails = [];
+        $states = State::all();
+        foreach ($states as $state) {
+            $UcUploadMap = clone $query;
+            $UcFormCount = $UcUploadMap->whereHas('users', function ($query) use ($state) {
+                $query->where('state_id', $state->id);
+            })->count();
+            $UcFormstateDetails[] = [
+                'hc-key' => $state->name,
+                'value' => $UcFormCount,
+            ];
+        }
+        return response()->json(['UcUploadDetails' => $UcUploadDetails, 'UcFormstateDetails' => $UcFormstateDetails], 200);
+    }
+
+
+
 
     /**
      * @filterCity

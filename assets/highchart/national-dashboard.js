@@ -12,9 +12,12 @@ $(document).ready(function(){
             var programDetails = data.programDetails[0];
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
+            var UcUploadDetails = data.UcUploadDetails;
+            var UcFormstateDetails = data.UcFormstateDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
             nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart);                 
+            nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);
         }
     });
 });
@@ -39,9 +42,29 @@ $(document).on('change', '.national_user_card', function() {
             var balanceProgramLineChart = data.balanceProgramLineChart.programs;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
+            var UcUploadDetails = data.UcUploadDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,UcUploadDetails);         
+        }
+    });
+});
+
+// filter for only SOEUCUpload form data
+$(document).on('change', '.national_ucForm_filter', function() {
+    var nationalUcformFy = $('#national-ucform-fy').find(":selected").val();
+    const nationalProgramUcForm = $('#national-program-ucform').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/filter-uc-form-dashboard",
+        data: {
+            'nationalUcformFy': nationalUcformFy,
+            'nationalProgramUcForm' : nationalProgramUcForm
+        },
+        success: function(data) {           
+            var UcUploadDetails = data.UcUploadDetails;
+            var UcFormstateDetails = data.UcFormstateDetails;           
+            nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);         
         }
     });
 });
@@ -705,6 +728,351 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
 }
 // end national dashboard
 
+function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
+    // UC Received and not received graph
+    Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+        },        
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)} %`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">% of UC Received </div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}%`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                data: [
+                    ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],
+                    ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
+                ],
+            },
+        ],
+    });
+
+    Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)} %`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+    
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">% of UC not Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}%`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                    data: [
+                        ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
+                        ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],                        
+                    ],
+            },
+        ],
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+    });
+    
+    Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcApprovedNumber} Nos`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">Nos. of UC Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+    
+                data: [
+                    ["Approved", UcUploadDetails.UcApprovedNumber],
+                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
+                ],
+            },
+        ],
+    });
+    
+    Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-not-Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcNotApprovedNumber} Nos`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">Nos. of UC not Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function(){
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: true,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                data: [
+                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
+                    ["Approved", UcUploadDetails.UcApprovedNumber],
+                ],
+            },
+        ],
+    });
+    // End UC Received and not received graph
+
+    // UCUploadForm map
+    (async () => {
+        const topology = await fetch(
+            'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
+        ).then(response => response.json());
+    
+        Highcharts.mapChart('integrated-dashboard-india-map', {
+            chart: {
+                map: topology,
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: ''
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            colorAxis: {
+                min: 0,
+                max: 100,
+                minColor: '#fcad95',
+                maxColor: '#ab4024',
+                labels: {
+                    format: '{value}',
+                },
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: false,
+                        format: '{point.value}' // Customize the format as needed
+                    }
+                }
+            },
+            series: [{
+                data: UcFormstateDetails,
+                name: '',
+                allowPointSelect: true,
+                cursor: 'pointer',
+                color: '#fff',
+                states: {
+                    select: {
+                        color: '#fcad95'
+                    }
+                }
+            }],
+            exporting: {
+                enabled: true,
+                buttons: {
+                    contextButton: {
+                        menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                    }
+                }
+            }
+        });
+    
+    })();
+    // End UCUploadForm map    
+}
+
 // Custom action Js
 $(document).ready(function() {
     $(".editmode").dblclick(function() {
@@ -737,7 +1105,7 @@ $(document).ready(function() {
 });
 
 // get institute program wise for national dashboard
-$(document).on('change', '#national_program_id', function() {    
+$(document).on('change', '.filter_program_id', function() {    
     let program_id = $(this).val();
     $.ajax({
         type: "GET",
@@ -746,7 +1114,7 @@ $(document).on('change', '#national_program_id', function() {
             'program_id': program_id
         },
         success: function(data) {
-            $("#national_institute_name").html(data);
+            $(".national_institute_name").html(data);
         }
     });
 });
@@ -802,520 +1170,11 @@ $(document).ready(function() {
     });
 });
 
-
-
 // End Custom action Js
 
 
 // ***************************apex js file code ***************************
 // highchart
-let guageHeight = window.innerWidth>1450 && ( window.innerWidth<1600 ) ? 210 : 175;
-let gaugeSubtitleY = window.innerWidth>1600 ? -10 : -20
-Highcharts.chart("integrated-dashboard-gauge1", {
-    chart: {
-        type: "gauge",
-        plotBackgroundColor: null,
-        plotBackgroundImage: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        marginTop: window.innerWidth>1450 ? 20 : -20,
-        height:  guageHeight
-    },
-
-    title: {
-        text: "",
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center; ">Net Profit Margin - 50%</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: gaugeSubtitleY, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    pane: {
-        startAngle: -90,
-        endAngle: 89.9,
-        background: null,
-        center: ["50%", "75%"],
-        size: "110%",
-    },
-
-    // the value axis
-    yAxis: {
-        min: 0,
-        max: 200,
-        tickPixelInterval: 72,
-        tickPosition: "inside",
-        tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
-        tickLength: 20,
-        tickWidth: 2,
-        minorTickInterval: null,
-        labels: {
-            enabled: false,
-        },
-        lineWidth: 0,
-        plotBands: [
-            {
-                from: 0,
-                to: 120,
-                color: "#55BF3B", // green
-                thickness: 20,
-            },
-            {
-                from: 120,
-                to: 160,
-                color: "#DDDF0D", // yellow
-                thickness: 20,
-            },
-            {
-                from: 160,
-                to: 200,
-                color: "#DF5353", // red
-                thickness: 20,
-            },
-        ],
-    },
-
-    series: [
-        {
-            name: "Net Profit Margin",
-            data: [80],
-            tooltip: {
-                enabled: false,
-            },
-            dataLabels: {
-                //   format: '{y} km/h',
-                enabled: false,
-                borderWidth: 0,
-                color:
-                    (Highcharts.defaultOptions.title &&
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color) ||
-                    "#333333",
-                style: {
-                    fontSize: "16px",
-                },
-            },
-            dial: {
-                radius: "80%",
-                backgroundColor: "gray",
-                baseWidth: 12,
-                baseLength: "0%",
-                rearLength: "0%",
-            },
-            pivot: {
-                backgroundColor: "gray",
-                radius: 6,
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-gauge2", {
-    chart: {
-        type: "gauge",
-        plotBackgroundColor: null,
-        plotBackgroundImage: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        marginTop: window.innerWidth>1450 ? 20 : -20,
-        height: guageHeight
-    },
-
-    title: {
-        text: "",
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Gross Profit margin - 55%</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y:  gaugeSubtitleY, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    pane: {
-        startAngle: -90,
-        endAngle: 89.9,
-        background: null,
-        center: ["50%", "75%"],
-        size: "110%",
-    },
-
-    // the value axis
-    yAxis: {
-        min: 0,
-        max: 200,
-        tickPixelInterval: 72,
-        tickPosition: "inside",
-        tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
-        tickLength: 20,
-        tickWidth: 2,
-        minorTickInterval: null,
-        labels: {
-            enabled: false,
-        },
-        lineWidth: 0,
-        plotBands: [
-            {
-                from: 0,
-                to: 120,
-                color: "#55BF3B", // green
-                thickness: 20,
-            },
-            {
-                from: 120,
-                to: 160,
-                color: "#DDDF0D", // yellow
-                thickness: 20,
-            },
-            {
-                from: 160,
-                to: 200,
-                color: "#DF5353", // red
-                thickness: 20,
-            },
-        ],
-    },
-
-    series: [
-        {
-            name: "Gross Profit margin",
-            data: [80],
-            tooltip: {
-                enabled: false,
-            },
-            dataLabels: {
-                //   format: '{y} km/h',
-                enabled: false,
-                borderWidth: 0,
-                color:
-                    (Highcharts.defaultOptions.title &&
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color) ||
-                    "#333333",
-                style: {
-                    fontSize: "16px",
-                },
-            },
-            dial: {
-                radius: "80%",
-                backgroundColor: "gray",
-                baseWidth: 12,
-                baseLength: "0%",
-                rearLength: "0%",
-            },
-            pivot: {
-                backgroundColor: "gray",
-                radius: 6,
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-gauge3", {
-    chart: {
-        type: "gauge",
-        plotBackgroundColor: null,
-        plotBackgroundImage: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        marginTop: window.innerWidth>1450 ? 20 : -20,
-        height:  guageHeight
-    },
-
-    title: {
-        text: "",
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Burn Rate - 80%</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y:  gaugeSubtitleY, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    pane: {
-        startAngle: -90,
-        endAngle: 89.9,
-        background: null,
-        center: ["50%", "75%"],
-        size: "110%",
-    },
-
-    // the value axis
-    yAxis: {
-        min: 0,
-        max: 200,
-        tickPixelInterval: 72,
-        tickPosition: "inside",
-        tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
-        tickLength: 20,
-        tickWidth: 2,
-        minorTickInterval: null,
-        labels: {
-            enabled: false,
-        },
-        lineWidth: 0,
-        plotBands: [
-            {
-                from: 0,
-                to: 120,
-                color: "#55BF3B", // green
-                thickness: 20,
-            },
-            {
-                from: 120,
-                to: 160,
-                color: "#DDDF0D", // yellow
-                thickness: 20,
-            },
-            {
-                from: 160,
-                to: 200,
-                color: "#DF5353", // red
-                thickness: 20,
-            },
-        ],
-    },
-
-    series: [
-        {
-            name: "Burn Rate",
-            data: [80],
-            tooltip: {
-                enabled: false,
-            },
-            dataLabels: {
-                //   format: '{y} km/h',
-                enabled: false,
-                borderWidth: 0,
-                color:
-                    (Highcharts.defaultOptions.title &&
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color) ||
-                    "#333333",
-                style: {
-                    fontSize: "16px",
-                },
-            },
-            dial: {
-                radius: "80%",
-                backgroundColor: "gray",
-                baseWidth: 12,
-                baseLength: "0%",
-                rearLength: "0%",
-            },
-            pivot: {
-                backgroundColor: "gray",
-                radius: 6,
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-gauge4", {
-    chart: {
-        type: "gauge",
-        plotBackgroundColor: null,
-        plotBackgroundImage: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        marginTop: window.innerWidth>1450 ? 20 : -20,
-        height: guageHeight
-    },
-
-    title: {
-        text: "",
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Sales Growth - 30%</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y:  gaugeSubtitleY, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    pane: {
-        startAngle: -90,
-        endAngle: 89.9,
-        background: null,
-        center: ["50%", "75%"],
-        size: "110%",
-    },
-
-    // the value axis
-    yAxis: {
-        min: 0,
-        max: 200,
-        tickPixelInterval: 72,
-        tickPosition: "inside",
-        tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
-        tickLength: 20,
-        tickWidth: 2,
-        minorTickInterval: null,
-        labels: {
-            enabled: false,
-        },
-        lineWidth: 0,
-        plotBands: [
-            {
-                from: 0,
-                to: 120,
-                color: "#55BF3B", // green
-                thickness: 20,
-            },
-            {
-                from: 120,
-                to: 160,
-                color: "#DDDF0D", // yellow
-                thickness: 20,
-            },
-            {
-                from: 160,
-                to: 200,
-                color: "#DF5353", // red
-                thickness: 20,
-            },
-        ],
-    },
-
-    series: [
-        {
-            name: "Sales Growth",
-            data: [80],
-            tooltip: {
-                enabled: false,
-            },
-            dataLabels: {
-                //   format: '{y} km/h',
-                enabled: false,
-                borderWidth: 0,
-                color:
-                    (Highcharts.defaultOptions.title &&
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color) ||
-                    "#333333",
-                style: {
-                    fontSize: "16px",
-                },
-            },
-            dial: {
-                radius: "80%",
-                backgroundColor: "gray",
-                baseWidth: 12,
-                baseLength: "0%",
-                rearLength: "0%",
-            },
-            pivot: {
-                backgroundColor: "gray",
-                radius: 6,
-            },
-        },
-    ],
-});
-
-(async () => {
-    const topology = await fetch(
-        "https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json"
-    ).then((response) => response.json());
-
-    Highcharts.mapChart("integrated-dashboard-india-map", {
-        chart: {
-            map: topology,
-        },
-        title: {
-            text: "",
-        },
-        credits: {
-            enabled: false,
-        },
-        subtitle: {
-            text: "",
-        },
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: "bottom",
-            },
-        },
-        colorAxis: {
-            min: 0,
-            max: 100,
-            minColor: "#fcad95",
-            maxColor: "#ab4024",
-            labels: {
-                format: "{value}",
-            },
-        },
-
-        series: [
-            {
-                //   data: data,
-                name: "",
-                allowPointSelect: false,
-                cursor: "pointer",
-                color: "#fff",
-                states: {
-                    select: {
-                        color: "#fcad95",
-                    },
-                },
-            },
-        ],
-        exporting: {
-            enabled: false,
-            buttons: {
-                contextButton: {
-                    menuItems: [
-                        "printChart",
-                        "separator",
-                        "downloadPNG",
-                        "downloadJPEG",
-                        "downloadPDF",
-                        "downloadSVG",
-                    ],
-                },
-            },
-        },
-    });
-})();
 
 (async () => {
     const topology = await fetch(
@@ -3305,274 +3164,6 @@ Highcharts.chart("integrated-dashboard-data-driven-graph5", {
                     fontFamily: "Verdana, sans-serif",
                 },
             },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "50%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC Received </div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 50],
-                ["", 50],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "80 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-not-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: true,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
         },
     ],
 });
