@@ -210,7 +210,7 @@
         <div></div>
     </div>
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
-        <div class="white_card_body  white_card  ">
+        <div class="white_card_body  white_card  p-4">
 
             <div class="white_card card_height_100 mb_30 mt-4">
                 <div class="row">
@@ -489,7 +489,7 @@
 
 
     <div class="col-md-12">
-        <div class="white_card p-3 mb_30">
+        <div class="white_card p-3 mb_30 p-4">
             <div class="row">
                 <div class="col-md-12">
                     <div class="QA_table pt-3">
