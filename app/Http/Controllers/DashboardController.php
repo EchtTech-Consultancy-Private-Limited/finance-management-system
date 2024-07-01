@@ -20,6 +20,7 @@ use App\Models\State;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
+use NunoMaduro\Collision\Adapters\Laravel\Inspector;
 
 class DashboardController extends Controller
 {
@@ -198,14 +199,14 @@ class DashboardController extends Controller
             ->pluck('SoeUcFormCalculation')
             ->flatten()
             ->sum('actual_expenditure');
-            $programPercentage = $programCount;
+            $programPercentage = $programCount/2;
             $programNames[] = $instituteProgram->name . '-' . $instituteProgram->code;
             $programPercentages[] = $programPercentage;
         }
         $programDetails[] = [
                 'program_names' => $programNames,
                 'program_percentages' => $programPercentages,
-                'allProgramTotalExpenditure' => $allProgramTotalExpenditure,
+                'allProgramTotalExpenditure' => $allProgramTotalExpenditure/2,
             ];
         // End number of percentage program wise       
 
@@ -231,7 +232,7 @@ class DashboardController extends Controller
             // Map the expenditures to the correct month index
             foreach ($expenditures as $month => $expenditure) {
                 $monthIndex = date('n', strtotime($month)) - 1; // Convert month to index (0-11)
-                $monthlyExpenditures[$monthIndex] = $expenditure;
+                $monthlyExpenditures[$monthIndex] = $expenditure/2;
             }
 
             $balanceProgramDetails[] = [
@@ -244,6 +245,24 @@ class DashboardController extends Controller
         ];
         // End number of percentage program wise for balance-line-chart
 
+        // program wise expenditure column institute wise
+        $institutes = Institute::get();
+        $instituteColumnDetails = [];
+
+        foreach($institutes as $key => $institute){
+            $instituteCount = SOEUCForm::with('SoeUcFormCalculation')
+                ->where('institute_id', $institute->id)
+                ->get()
+                ->pluck('SoeUcFormCalculation')
+                ->flatten()
+                ->sum('actual_expenditure');
+            $instituteExpenditure = $instituteCount / 2;
+            $instituteColumnDetails[] = [$institute->name . '-' . $institute->code, $instituteExpenditure];
+        }
+        $instituteColumnDetails = [
+                'data' => $instituteColumnDetails
+            ];
+        // end program wise expenditure column institute wise
         $dataForms = $query->get();
         
         $finalArray = [];
@@ -286,6 +305,27 @@ class DashboardController extends Controller
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
+
+        // yearly soe expenditure
+        $yearlySoeExpenditure = [];
+        $query = SOEUCForm::with('SoeUcFormCalculation');
+        $expenditures = $query->get()
+            ->groupBy('financial_year')
+            ->map(function ($group) {
+                return $group->pluck('SoeUcFormCalculation')
+                            ->flatten()
+                            ->sum('actual_expenditure');
+            });
+        foreach ($expenditures as $financialYear => $expenditure) {
+            $yearlySoeExpenditure[] = [$financialYear, $expenditure / 2];
+        }
+
+        $yearlySoeDetails = [
+            'program' => $yearlySoeExpenditure,
+            'institute' => $yearlySoeExpenditure,
+        ];
+        // end Soe Expenditure
+
         // UC Reveived or not map code
             $UcUploadCount = SOEUCUploadForm::count();
             $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
@@ -310,8 +350,85 @@ class DashboardController extends Controller
                 ];
             }
         // End UC Reveived or not map code
-        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails,'balanceProgramLineChart'=>$balanceProgramLineChart,'UcUploadDetails'=>$UcUploadDetails,'UcFormstateDetails'=>$UcFormstateDetails], 200);
+        return response()->json(['totalArray'=>$totalArray,'programDetails'=>$programDetails,'balanceProgramLineChart'=>$balanceProgramLineChart,'UcUploadDetails'=>$UcUploadDetails,'UcFormstateDetails'=>$UcFormstateDetails,'yearlySoeDetails'=>$yearlySoeDetails,'instituteColumnDetails'=>$instituteColumnDetails], 200);
     }
+
+    public function yearlySoeExpenditureFilter(Request $request)
+    {
+        $yearlySoeExpenditure = [];
+        $yearlySoeExpenditureProgram = [];
+        $yearlySoeExpenditureInstitute = [];        
+        $query = SOEUCForm::with('SoeUcFormCalculation');
+        if ($request->filled('program_wise_yearly')) {
+            $query->where('program_id', $request->program_wise_yearly);
+        }
+        if ($request->filled('institute_wise_yearly')) {
+            $query->where('institute_id', $request->institute_wise_yearly);
+        }        
+        if ($request->filled('program_wise_yearly')) {
+            $queryProgram = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('program_id', $request->program_wise_yearly)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+            foreach ($queryProgram as $financialYear => $expenditure) {
+                $yearlySoeExpenditureProgram[] = [$financialYear, $expenditure / 2];
+            }
+        }else {
+            $queryProgram = SOEUCForm::with('SoeUcFormCalculation')
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+    
+            foreach ($queryProgram as $financialYear => $expenditure) {
+                $yearlySoeExpenditureProgram[] = [$financialYear, $expenditure / 2];
+            }
+        }
+        
+        if ($request->filled('institute_wise_yearly')) {
+            $queryInstitute = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('institute_id', $request->institute_wise_yearly)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+
+            foreach ($queryInstitute as $financialYear => $expenditure) {
+                $yearlySoeExpenditureInstitute[] = [$financialYear, $expenditure / 2];
+            }
+        }else {
+            $queryInstitute = SOEUCForm::with('SoeUcFormCalculation')
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+    
+            foreach ($queryInstitute as $financialYear => $expenditure) {
+                $yearlySoeExpenditureInstitute[] = [$financialYear, $expenditure / 2];
+            }
+        }
+
+        $yearlySoeDetails = [
+            'program' => $yearlySoeExpenditureProgram,
+            'institute' => $yearlySoeExpenditureInstitute,
+        ];
+        return response()->json(['yearlySoeDetails' => $yearlySoeDetails], 200);
+    }
+
     
     /**
      * nationalFilterUcFormDdashboard

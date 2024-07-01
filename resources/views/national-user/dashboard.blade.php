@@ -551,10 +551,11 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select id="program_wise_yearly" name="program_wise_yearly" class="form-control yearly_soe_expenditure">
+                            <option value="">Select Program</option>
+                            @foreach($institutePrograms as $key => $value)
+                            <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -575,10 +576,13 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select name="institute_wise" class="form-control institute_wise yearly_soe_expenditure" id="institute_wise">
+                            <option value="">Select Institute</option>
+                            @foreach($institutes as $institute)
+                                <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

@@ -13,15 +13,19 @@ $(document).ready(function(){
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var UcUploadDetails = data.UcUploadDetails;
-            var UcFormstateDetails = data.UcFormstateDetails;
+            var UcFormstateDetails = data.UcFormstateDetails;            
+            var programWiseExpenditure = data.yearlySoeDetails;
+            var instituteColumnDetails = data.instituteColumnDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart);                 
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails);                 
             nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);
+            yearlySoeExpenditure(programWiseExpenditure);
         }
     });
 });
 
+// overAll filter 
 $(document).on('change', '.national_user_card', function() {
     let financialYear = $('#national-user-fy').find(":selected").val();
     const programWise = $('#national-program-wise').find(":selected").val();
@@ -50,6 +54,24 @@ $(document).on('change', '.national_user_card', function() {
     });
 });
 
+// program wise and institute wise filter only
+$(document).on('change', '.yearly_soe_expenditure', function() {
+    const programWiseYearly = $('#program_wise_yearly').find(":selected").val();
+    const instituteWiseYearly = $('#institute_wise').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/yearly-soe-expenditure-filter",
+        data: {
+            'program_wise_yearly' : programWiseYearly,
+            'institute_wise_yearly' :instituteWiseYearly
+        },
+        success: function(data) {
+            var programWiseExpenditure = data.yearlySoeDetails;
+            yearlySoeExpenditure(programWiseExpenditure);         
+        }
+    });
+});
+
 // filter for only SOEUCUpload form data
 $(document).on('change', '.national_ucForm_filter', function() {
     var nationalUcformFy = $('#national-ucform-fy').find(":selected").val();
@@ -68,8 +90,8 @@ $(document).on('change', '.national_ucForm_filter', function() {
         }
     });
 });
-
-function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart)
+// national dashboard
+function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails)
 {
     // Total Expenditure in Cr.
     Highcharts.chart('national-total-expenditure-cr', {
@@ -725,6 +747,228 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         series: balanceProgramLineChart,
     });
+
+    // program wise expenditure column institute wise
+    Highcharts.chart("integrated-dashboard-state-graph", {
+        chart: {
+            type: "column",
+        },
+        title: {
+            text: "",
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            text: "",
+        },
+        xAxis: {
+            type: "category",
+            labels: {
+                autoRotation: [-70, -90],
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null,
+            },
+        },
+        legend: {
+            enabled: true,
+            useHTML: true,
+            // labelFormatter: function() {
+            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+            // }
+    
+            allowPointSelect: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [
+            {
+                name: "Expenditure",
+                type: "column",
+                color: "#ffc147",
+                events: {
+                    legendItemClick: function (e) {
+                        e.preventDefault();
+                    },
+                },
+                data: instituteColumnDetails.data,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: "#FFFFFF",
+                    inside: true,
+                    verticalAlign: "top",
+                    format: "{point.y:.1f}", // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: "12px",
+                        fontFamily: "Verdana, sans-serif",
+                        textShadow: "none",
+                        color: "red",
+                    },
+                    textShadow: "none",
+                },
+            },
+        ],
+    });
+}
+
+function yearlySoeExpenditure(programWiseExpenditure){
+    // yearly program wise
+    Highcharts.chart("integrated-dashboard-program-wise-expenditure", {
+        chart: {
+            type: "column",
+        },
+        title: {
+            text: "",
+        },
+        subtitle: {
+            text: "",
+        },
+        xAxis: {
+            type: "category",
+            labels: {
+                autoRotation: [-45, -45],
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
+        },
+        exporting: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Values",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [
+            {
+                name: "",
+                colors: [
+                    "#399def",
+                    "#3ebbf0",
+                    "#35c3e8",
+                    "#2bc9dc",
+                    "#20cfe1",
+                    "#16d4e6",
+                    "#0dd9db",
+                    "#03dfd0",
+                ],
+                colorByPoint: true,
+                groupPadding: 0,
+                data: programWiseExpenditure.program,
+                dataLabels: {
+                    enabled: false,
+                    rotation: -90,
+                    color: "#FFFFFF",
+                    inside: true,
+                    verticalAlign: "top",
+                    //   format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: "13px",
+                        fontFamily: "Verdana, sans-serif",
+                    },
+                },
+            },
+        ],
+    });
+    // yearly institute wise
+    Highcharts.chart("integrated-dashboard-institute-wise-expenditure", {
+        chart: {
+            type: "column",
+        },
+        title: {
+            text: "",
+        },
+        subtitle: {
+            text: "",
+        },
+        xAxis: {
+            type: "category",
+            labels: {
+                autoRotation: [-45, -45],
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
+        },
+        exporting: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Values",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+        },
+        series: [
+            {
+                name: "",
+                colors: [
+                    "#399def",
+                    "#3ebbf0",
+                    "#35c3e8",
+                    "#2bc9dc",
+                    "#20cfe1",
+                    "#16d4e6",
+                    "#0dd9db",
+                    "#03dfd0",
+                ],
+                colorByPoint: true,
+                groupPadding: 0,
+                data: programWiseExpenditure.institute,
+                dataLabels: {
+                    enabled: false,
+                    rotation: -90,
+                    color: "#FFFFFF",
+                    inside: true,
+                    verticalAlign: "top",
+                    //   format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: "13px",
+                        fontFamily: "Verdana, sans-serif",
+                    },
+                },
+            },
+        ],
+    });
 }
 // end national dashboard
 
@@ -1307,166 +1551,6 @@ $(document).ready(function() {
         },
     });
 })();
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 4500],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-institute-wise-expenditure", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 4500],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
 
 // program wise expenditure state filter highchart
 Highcharts.chart("integrated-dashboard-state1", {
@@ -2635,114 +2719,6 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
         },
     ],
 });
-
-// state graph
-Highcharts.chart("integrated-dashboard-state-graph", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-70, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        useHTML: true,
-        // labelFormatter: function() {
-        //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
-        //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
-        // }
-
-        allowPointSelect: false,
-    },
-    tooltip: {
-        enabled: false,
-    },
-    series: [
-        {
-            name: "Expenditure",
-            type: "column",
-            color: "#ffc147",
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-            data: [
-                ["Uttar Pradesh", 4.3],
-                ["Maharashtra", 2.5],
-                ["Bihar", 3.5],
-                ["West Bengal", 4.5],
-                ["Madhya Pradesh", 2],
-                ["Tamil Nadu", 1.2],
-                ["Rajasthan", 2.4],
-                ["Karnataka", 3.1],
-                ["Gujarat", 3.4],
-                ["Andhra Pradesh", 4],
-                ["Odisha", 4.4],
-                ["Telangana", 2.8],
-                ["Kerala", 4],
-                ["Jharkhand", 4],
-                ["Assam", 2],
-                ["Punjab", 3],
-                ["Chhattisgarh", 1],
-                ["Haryana", 4],
-                ["Uttarakhand", 4],
-                ["Himachal Pradesh", 4],
-                ["Tripura", 4],
-                ["Meghalaya", 4],
-                ["Manipur", 4],
-                ["Nagaland", 4],
-                ["Goa", 4],
-                ["Arunachal Pradesh", 4],
-                ["Mizoram", 4],
-                ["Sikkim", 4],
-                ["Delhi", 5], // Considering Delhi as a Union Territory
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "12px",
-                    fontFamily: "Verdana, sans-serif",
-                    textShadow: "none",
-                    color: "red",
-                },
-                textShadow: "none",
-            },
-        },
-    ],
-});
-
 // data driven graph
 
 Highcharts.chart("integrated-dashboard-data-driven-graph1", {
