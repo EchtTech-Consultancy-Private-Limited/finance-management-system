@@ -58,8 +58,7 @@ function adminDashboardChart(data,programUserDetailsArray) {
     ];
 
     programUserDetailsArray.forEach((programUserDetails, index) => {
-        const chartContainerId = `admin-dashboard-${index}`; 
-        const container = document.createElement('div');
+        const chartContainerId = `admin-dashboard-${index}`;
         Highcharts.chart(chartContainerId, {
             chart: {
                 type: 'pie',

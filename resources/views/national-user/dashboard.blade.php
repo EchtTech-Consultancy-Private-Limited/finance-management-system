@@ -174,7 +174,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in Cr.</h3>
+                                <h3 class="m-0">Total Expenditure in Lakh.</h3>
                             </div>
 
                         </div>
@@ -192,7 +192,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Fund unspent in Cr.</h3>
+                                <h3 class="m-0">Total Fund unspent in Lakh.</h3>
                             </div>
 
                         </div>
@@ -255,15 +255,6 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-2 p-0">
-                        <div class="crm_body">
-                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
-                            </h4>
-                            <p>Interest earned in C.Y. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -278,12 +269,21 @@
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
-                </div>
+                </div>                
                 <div class="col-md-4 col-lg">
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
                             <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest) </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg">
+                    <div class="single_crm border-line-2 p-0">
+                        <div class="crm_body">
+                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
+                            </h4>
+                            <p>Committed Liabilities</p>
                         </div>
                     </div>
                 </div>
@@ -334,7 +334,7 @@
                             <div class="">
                                 <div class="box_header m-0">
                                     <div class="main-title">
-                                        <h3 class="m-0">Total Interest Earned <br> in C.Y. %</h3>
+                                        <h3 class="m-0">Committed Liabilities <br> in %</h3>
                                     </div>
 
                                 </div>
@@ -606,7 +606,7 @@
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                    <select id="national-program-barchart" name="program_id" class="form-control">
+                    <select id="national-program-barchart" name="national-program-barchart" class="form-control national_program_barchart">
                         <option value="">Select Program</option>
                         @foreach($institutePrograms as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -617,7 +617,7 @@
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                 class="text-danger">*</sup></b></label>
                     <select id="national-user-fy-barchart" name="financial_year"
-                        class="form-control national_user_card">
+                        class="form-control national_program_barchart">
                         <option value="">Select Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
                             . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
@@ -625,22 +625,15 @@
                             @endfor
                     </select>
                 </div>
-
-                <div class="col-md-1 expenditure-or">
-                    <div class="d-inline-block">
-
-                        <h3>OR</h3>
-                    </div>
-                </div>
                 <div class="col-md-4 align-items-end justify-content-between">
 
                     <div>
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
                                     class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
+                        <select id="expenditure_unspent" name="expenditure_unspent" class="form-control national_program_barchart">
                             <option value="">Select Expenditure/Unspent Balance</option>
-                            <option value="">Expenditure</option>
-                            <option value="">Unspent Balance</option>
+                            <option value="expenditure">Expenditure</option>
+                            <option value="unspent">Unspent Balance</option>
                         </select>
                     </div>
 
@@ -657,7 +650,7 @@
                             </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
+                            <span class="number" id="overall_expenditure_chart"></span>
                         </div>
                     </div>
                 </div>
@@ -670,7 +663,7 @@
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall Unspent <br> Balance</h3>
-                            <span class="number">5%</span>
+                            <span class="number" id="overall_unspent_chart"></span>
                         </div>
                     </div>
                 </div>
@@ -718,7 +711,6 @@
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
                                         class="border border-1 "></div>
                                 </div>
-
                             </div>
                             <div class="col">
                                 <div class="graph-container">
@@ -726,8 +718,8 @@
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart5"
                                         class="border border-1 "></div>
                                 </div>
-
                             </div>
+
                             <div class="col-md-12">
                                 <div class="graph-container border border-1 mt-3 p-2">
                                     <div class="main-title">
@@ -742,7 +734,6 @@
 
                                     <div id="integrated-dashboard-state-graph" class=""></div>
                                 </div>
-
                             </div>
                         </div>
 

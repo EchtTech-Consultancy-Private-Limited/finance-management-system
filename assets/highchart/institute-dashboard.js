@@ -72,7 +72,7 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
         },
         title: {
             text: ` <div class="graph-title" style="color:#00b050; ">
-           ${percentageExpenditure}L
+           ${percentageExpenditure} %
         </div>`,
             align: "center",
             verticalAlign: "middle",
@@ -96,7 +96,19 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
                 color: "#000000",
             },
         },
-    
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'
@@ -155,7 +167,7 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
         },
         title: {
             text: ` <div class="graph-title" style="color:#3a7ed3; ">
-            ${percentageUnspentBalance}L
+            ${percentageUnspentBalance} %
             </div>`,
             align: "center",
             verticalAlign: "middle",
@@ -180,7 +192,19 @@ function instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,
                 color: "#000000",
             },
         },
-        
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
         accessibility: {
             point: {
                 valueSuffix: '%'

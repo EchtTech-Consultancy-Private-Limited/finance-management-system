@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/filter-dashboard', [DashboardController::class, 'nationalFilterDdashboard'])->name('filter-dashboard');
         Route::get('/yearly-soe-expenditure-filter', [DashboardController::class, 'yearlySoeExpenditureFilter'])->name('yearly-soe-expenditure-filter');
+        Route::get('/expenditure-bar-chart-pie-filter', [DashboardController::class, 'expenditureBarChartPieFilter'])->name('expenditure-bar-chart-pie-filter');
         Route::get('/filter-uc-form-dashboard', [DashboardController::class, 'nationalFilterUcFormDashboard'])->name('filter-uc-form-dashboard');
         Route::post('/total-card', [DashboardController::class, 'totalCard'])->name('total-card');
         Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');

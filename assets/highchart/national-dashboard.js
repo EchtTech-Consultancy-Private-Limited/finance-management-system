@@ -9,7 +9,8 @@ $(document).ready(function(){
         },
         success: function(data) {
             var balanceProgramLineChart = data.balanceProgramLineChart.programs;
-            var programDetails = data.programDetails[0];
+            var programDetails = data.programDetails[0];            
+            var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var UcUploadDetails = data.UcUploadDetails;
@@ -18,9 +19,28 @@ $(document).ready(function(){
             var instituteColumnDetails = data.instituteColumnDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails);                 
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);                 
             nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);
             yearlySoeExpenditure(programWiseExpenditure);
+        }
+    });
+});
+// Expenditure Bar Chart (All Programs combined data) on load
+$(document).ready(function(){
+    const programWiseYearly = $('#national-program-barchart').find(":selected").val();
+    const financial_year = $('#national-user-fy-barchart').find(":selected").val();
+    const expenditure_unspent = $('#expenditure_unspent').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/expenditure-bar-chart-pie-filter",
+        data: {
+            'program_wise_yearly' : programWiseYearly,
+            'financial_year' :financial_year,
+            'expenditure_unspent' : expenditure_unspent
+        },
+        success: function(data) {
+            var programUserDetails = data.programUserDetails;            
+            expenditureBarChart(programUserDetails);         
         }
     });
 });
@@ -44,13 +64,13 @@ $(document).on('change', '.national_user_card', function() {
             $("#national-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
             var programDetails = data.programDetails[0];
             var balanceProgramLineChart = data.balanceProgramLineChart.programs;
+            var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-            var UcUploadDetails = data.UcUploadDetails;
             var instituteColumnDetails = data.instituteColumnDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);         
         }
     });
 });
@@ -72,7 +92,26 @@ $(document).on('change', '.yearly_soe_expenditure', function() {
         }
     });
 });
-
+// Expenditure Bar Chart (All Programs combined data)
+$(document).on('change', '.national_program_barchart', function() {
+    const programWiseYearly = $('#national-program-barchart').find(":selected").val();
+    const financial_year = $('#national-user-fy-barchart').find(":selected").val();
+    const expenditure_unspent = $('#expenditure_unspent').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/expenditure-bar-chart-pie-filter",
+        data: {
+            'program_wise_yearly' : programWiseYearly,
+            'financial_year' :financial_year,
+            'expenditure_unspent' : expenditure_unspent
+        },
+        success: function(data) {
+            var programUserDetails = data.programUserDetails;
+            expenditureBarChart(programUserDetails);         
+        }
+    });
+});
+// End Expenditure Bar Chart (All Programs combined data)
 // filter for only SOEUCUpload form data
 $(document).on('change', '.national_ucForm_filter', function() {
     var nationalUcformFy = $('#national-ucform-fy').find(":selected").val();
@@ -92,7 +131,7 @@ $(document).on('change', '.national_ucForm_filter', function() {
     });
 });
 // national dashboard
-function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails)
+function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities)
 {
     // Total Expenditure in Cr.
     Highcharts.chart('national-total-expenditure-cr', {
@@ -115,7 +154,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         title: {
             text: ` <div class="graph-title" style="color:#00b050; ">
-            ${percentageExpenditure}
+            ${percentageExpenditure} %
         </div>`,
             align: 'center',
             verticalAlign: 'middle',
@@ -139,8 +178,18 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
-        tooltip:{
-            enabled: true
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -194,7 +243,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         title: {
             text: ` <div class="graph-title" style="color:#00b050; ">
-            ${percentageUnspentBalance}
+            ${percentageUnspentBalance} %
         </div>`,
             align: 'center',
             verticalAlign: 'middle',
@@ -218,8 +267,18 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 color: '#000000'
             }
         },
-        tooltip:{
-            enabled: true
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -300,6 +359,16 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         tooltip: {
             enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -377,6 +446,16 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         tooltip: {
             enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalExpenditure) {
+                        return `Expenditure: ${this.y}`;
+                    } else if (this.point.y === totalUnspentBalance) {
+                        return `Unspent Balance: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -427,7 +506,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
            enabled: false
         },
         title: {
-            text: ` <div class="graph-title" style="color:#00b050; "> 10% </div>`,
+            text: ` <div class="graph-title" style="color:#00b050; "> ${totalcommittedLiabilities} </div>`,
             align: 'center',
             verticalAlign: 'middle',
             y: 30,
@@ -438,7 +517,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
             subtitle: {
                 text: `
-                <div class="graph-title" style="color:#00b050; "> <span>Interest Earned</span> </div>`,
+                <div class="graph-title" style="color:#00b050; "> <span>Committed Liabilities</span> </div>`,
                 align: 'center',
                 verticalAlign: 'middle',
                 y: 70,
@@ -449,6 +528,14 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         tooltip: {
             enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalcommittedLiabilities) {
+                        return `Interest Earned: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -477,8 +564,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             name: '',
             innerSize: '60%',
             data: [
-                ['', 10],
-                ['', 90],
+                ['', totalcommittedLiabilities]
                 
                
             ]
@@ -970,6 +1056,95 @@ function yearlySoeExpenditure(programWiseExpenditure){
             },
         ],
     });
+}
+
+function expenditureBarChart(programUserDetailsArray){
+    var percentageExpenditureAll = 0;
+    var percentageUnspentBalanceAll = 0;
+    programUserDetailsArray.forEach((programUserDetails, index) => {
+        var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
+        var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
+        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+        var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+        percentageExpenditureAll += parseInt(percentageExpenditure);
+        percentageUnspentBalanceAll += parseInt(percentageUnspentBalance);
+        $("#overall_expenditure_chart").text(percentageExpenditureAll + '%');
+        $("#overall_unspent_chart").text(percentageUnspentBalanceAll + '%');
+        const chartContainerId = `integrated-dashboard-program-wise-expenditure-bar-chart${index+1}`;        
+        Highcharts.chart(chartContainerId, {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false,
+                height: window.innerWidth > 1600 ? "250" : "200",
+            },
+            credits: {
+                enabled: false,
+            },
+            exporting: {
+                enabled: false,
+            },
+            title: {
+                text: "",
+            },
+            subtitle: {
+                text: `${percentageExpenditure} %`,
+                align: "center",
+                verticalAlign: "middle",
+                y: 60,
+                style: {
+                    fontSize: "16px",
+                    color: "#000",
+                },
+            },
+            tooltip: {
+                enabled: true,
+                formatter: function() {
+                    if (this.point.name === '') {
+                        if (this.point.y === programUserDetails.totalArray.actualExpenditureTotal) {
+                            return `Expenditure: ${this.y}`;
+                        } else if (this.point.y === programUserDetails.totalArray.unspentBalance31stTotal) {
+                            return `Unspent Balance: ${this.y}`;
+                        }
+                    }
+                    return `${this.point.name}: ${this.y}`;
+                },
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: "%",
+                },
+            },
+            plotOptions: {
+                pie: {
+                    colors: ["#f49e04", "#00b050"],
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: "bold",
+                            color: "white",
+                        },
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ["50%", "75%"],
+                    size: "110%",
+                },
+            },
+            series: [
+                {
+                    type: "pie",
+                    name: "",
+                    innerSize: "50%",
+                    data: [
+                        ["", programUserDetails.totalArray.actualExpenditureTotal],
+                        ["", programUserDetails.totalArray.unspentBalance31stTotal],
+                    ],
+                },
+            ],
+        });
+    });    
 }
 // end national dashboard
 
@@ -1649,326 +1824,6 @@ Highcharts.chart("integrated-dashboard-institute-wise-expenditure", {
     ],
 });
 
-// Expenditure Bar Chart (All Programs combined data)
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart1", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height:   window.innerWidth>1600 ? "250" : "200",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-
-    subtitle: {
-        text: "80%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#eb5034", "#434348"],
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 80],
-                ["", 20],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart2", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: window.innerWidth>1600 ? "250" : "200",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "50%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 50],
-                ["", 50],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart3", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: window.innerWidth>1600 ? "250" : "200",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "99%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#d7c706", "#434348"],
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 99],
-                ["", 1],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: window.innerWidth>1600 ? "250" : "200",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "75%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#eb5034", "#434348"],
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 75],
-                ["", 25],
-            ],
-        },
-    ],
-});
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart5", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: window.innerWidth>1600 ? "250" : "200",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "75%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#eb5034", "#434348"],
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 75],
-                ["", 25],
-            ],
-        },
-    ],
-});
 // data driven graph
 
 Highcharts.chart("integrated-dashboard-data-driven-graph1", {

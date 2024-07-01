@@ -428,7 +428,76 @@ class DashboardController extends Controller
         ];
         return response()->json(['yearlySoeDetails' => $yearlySoeDetails], 200);
     }
+    
+    /**
+     * expenditureBarChartPieFilter
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function expenditureBarChartPieFilter(Request $request)
+    {
+        $query = SOEUCForm::with('states', 'SoeUcFormCalculation');
 
+        if ($request->has('financial_year') && $request->financial_year) {
+            $query->where('financial_year', $request->financial_year);
+        }
+        if ($request->has('program_wise_yearly') && $request->program_wise_yearly) {
+            $query->where('program_id', $request->program_wise_yearly);
+        }
+        
+        $expenditureSelected = $request->has('expenditure_unspent') && $request->expenditure_unspent === 'expenditure';
+        $unspentSelected = $request->has('expenditure_unspent') && $request->expenditure_unspent === 'unspent';
+        $filterSelected = $expenditureSelected || $unspentSelected;
+        
+        $institutePrograms = InstituteProgram::get();
+        $programUserDetails = [];
+        
+        foreach ($institutePrograms as $instituteProgram) {
+            $programNames = $instituteProgram->name;
+            $finalArray = [];
+        
+            // Clone the original query instance to avoid modifying it directly
+            $programQuery = clone $query;
+            $programQuery->where('program_id', $instituteProgram->id);
+        
+            $dataForms = $programQuery->get();
+        
+            foreach ($dataForms as $dataForm) {
+                $grandTotalActualExpenditure = 0;
+                $grandTotalUnspentBalance = 0;
+        
+                foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
+                    if ($formCalculate->head == 'Grand Total') {
+                        $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
+                        $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
+                    }
+                }
+        
+                $finalArray[] = [
+                    'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : 0) : $grandTotalActualExpenditure,
+                    'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : 0) : $grandTotalUnspentBalance,
+                ];
+            }
+        
+            $totalArray = [
+                'actualExpenditureTotal' => 0,
+                'unspentBalance31stTotal' => 0,
+            ];
+        
+            foreach ($finalArray as $entry) {
+                $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
+                $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
+            }
+        
+            $programUserDetails[] = [
+                'program_name' => $programNames . '-' . $instituteProgram->code,
+                'totalArray' => $totalArray,
+            ];
+        }
+        
+        return response()->json(['programUserDetails' => $programUserDetails], 200);        
+    }
     
     /**
      * nationalFilterUcFormDdashboard
