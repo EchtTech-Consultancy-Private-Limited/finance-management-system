@@ -11,55 +11,72 @@
 @endsection
 @section('content')
 
-<div class="col-lg-12">
+<div class="col-lg-12 institute">
+    <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+        <div class="page_title_left d-flex align-items-center">
+            <h3 class="f_s_25 f_w_700 dark_text mr_30">Statement of Expenditure (SOE)</h3>
+            <!-- <ol class="breadcrumb page_bradcam mb-0">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol> -->
+        </div>
+        <div class="page_title_right">
+            <div class="page_date_button d-flex align-items-center">
+                <img src="http://localhost/limitedfinance-management-system/assets/img/icon/calender_icon.svg" alt="">
+                July 01 ,2024 - July 31 ,2024
+            </div>
+        </div>
+    </div>
     <div class="white_card card_height_100 mb_30">
-        <div class="white_card_header">
+        <!-- <div class="white_card_header">
             <div class="box_header m-0">
                 <div class="main-title">
                     <h3 class="m-0">Statement of Expenditure (SOE)</h3>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="white_card_body">
             <div class="card-body pb-5 financial-year-institute-dashboard">
                 <form method="POST" action="{{ route('institute-user.soe-save') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-3">
-                        <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
                             <input type="hidden" name="state_id" value="{{ optional(Auth::user()->state)->id }}">
                             <input type="hidden" name="city_id" value="{{ optional(Auth::user()->city)->id }}">
                             <label class="form-label" for="inputEmail4">Name of program<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="program_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->program)->id }}">{{ optional(Auth::user()->program)->name }} - {{ optional(Auth::user()->program)->code }}</option>
+                                <option value="{{ optional(Auth::user()->program)->id }}">
+                                    {{ optional(Auth::user()->program)->name }} -
+                                    {{ optional(Auth::user()->program)->code }}</option>
                                 {{-- @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}"
-                                    {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
-                                    {{ $value->code }}</option>
+                                {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
+                                {{ $value->code }}</option>
                                 @endforeach --}}
                             </select>
                             @error('program_id')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class=" col-md-6">
+                        <div class=" col-md-4 mb-4">
                             <label class="form-label" for="inputPassword4">Name of the Institute<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="institute_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->institute)->id }}">{{ optional(Auth::user()->institute)->name }}</option>
+                                <option value="{{ optional(Auth::user()->institute)->id }}">
+                                    {{ optional(Auth::user()->institute)->name }}</option>
                                 {{-- @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}"
-                                    {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
-                                    {{ $value->code }}</option>
+                                {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
+                                {{ $value->code }}</option>
                                 @endforeach --}}
                             </select>
                             @error('institute_name')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-4">
+                   
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress">Name of the Finance /Accounts officer<span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="finance_account_officer"
@@ -69,7 +86,7 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2"> Finance/Accounts officer Mobile<span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="finance_account_officer_mobile"
@@ -79,15 +96,14 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2"> Finance/Accounts officer Email</label>
                             <input type="text" class="form-control" name="finance_account_officer_email"
                                 value="{{ old('finance_account_officer_email') }}" id="inputAddress2"
                                 placeholder="Email">
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-4">
+                  
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2">Name of Nodal/Program Officer<span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer"
@@ -97,7 +113,7 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Mobile<span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer_mobile"
@@ -107,14 +123,13 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Email</label>
                             <input type="text" class="form-control" name="nadal_officer_email"
                                 value="{{ old('nadal_officer_email') }}" id="inputAddress2" placeholder="Email">
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        {{-- <div class="col-md-4">
+                   
+                        {{-- <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2">State<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="state">
                                 <option value=""> Select state</option> 
@@ -128,7 +143,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                         @enderror
                     </div> --}}
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label" for="inputAddress2">Month</label>
                         <select id="inputState" class="form-control" name="month">
                             <option value="">Select Month</option>
@@ -145,7 +160,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label" for="inputAddress2">Financial Year<span
                                 class="text-danger">*</span></label>
                         <select id="institute-user-fy" name="financial_year" class="form-control">
@@ -194,152 +209,287 @@
                     </thead>
                     <tbody>
                         @if(!empty($final_data))
-                            @foreach($final_data as $head => $previousTotalMonth)
-                            @if($head != 'Grand Total')
-                            <tr>
-                                <th>
-                                    {{ @$head }}
-                                    <input type="hidden" name="head[]" value="{{ @$head }}">
-                                </th>
-                                @if($head == 'Man Power with Human Resource')
-                                    <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order" class="form-control textarea-h" id="manpower-A" rows="16">{{ old('sanction_order') }}</textarea></td>
-                                @endif
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ @$previousTotalMonth['0'] }}" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ @$previousTotalMonth['1'] }}" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.' . $loop->iteration) }}"></td>
-                                <td><input type="text" name="gia_received[]" class="form-control manpower-C" value="{{ old('gia_received.0') }}"></td>
-                                <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('total_balance.' . $loop->iteration) }}"></td>
-                                <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.'. $loop->iteration) }}"></td>
-                                <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('unspent_balance_last.'. $loop->iteration) }}"></td>
-                                <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.'. $loop->iteration) }}"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('unspent_balance_31st.'. $loop->iteration) }}"></td>
-                            </tr>
+                        @foreach($final_data as $head => $previousTotalMonth)
+                        @if($head != 'Grand Total')
+                        <tr>
+                            <th>
+                                {{ @$head }}
+                                <input type="hidden" name="head[]" value="{{ @$head }}">
+                            </th>
+                            @if($head == 'Man Power with Human Resource')
+                            <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order"
+                                    class="form-control textarea-h" id="manpower-A"
+                                    rows="16">{{ old('sanction_order') }}</textarea></td>
                             @endif
-                            @endforeach
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ @$previousTotalMonth['0'] }}" class="form-control"
+                                    id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]" value="{{ @$previousTotalMonth['1'] }}"
+                                    class="form-control" id="previous_month_total" maxlength="5"
+                                    oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('unspent_balance_1st.' . $loop->iteration) }}"></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C"
+                                    value="{{ old('gia_received.0') }}"></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
+                                    oninput="validateInput(this)" readonly=""
+                                    value="{{ old('total_balance.' . $loop->iteration) }}"></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('actual_expenditure.'. $loop->iteration) }}"></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""
+                                    value="{{ old('unspent_balance_last.'. $loop->iteration) }}"></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('committed_liabilities.'. $loop->iteration) }}"></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""
+                                    value="{{ old('unspent_balance_31st.'. $loop->iteration) }}"></td>
+                        </tr>
+                        @endif
+                        @endforeach
                         @else
-                            <tr>
-                                <th>
-                                    Man Power with Human Resource
-                                    <input type="hidden" name="head[]" value="Man Power with Human Resource">
-                                </th>
-                                <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order" class="form-control textarea-h" id="manpower-A" rows="16">{{ old('sanction_order') }}</textarea></td>
-                                <td><input type="text" name="previous_month_expenditure[]" class="form-control" id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value="" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" class="form-control" id="previous_month_total" maxlength="5" oninput="validateInput(this)" value="" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)" value="{{ old('unspent_balance_1st.0') }}"></td>
-                                <td><input type="text" name="gia_received[]" class="form-control manpower-C" value="{{ old('gia_received.0') }}"></td>
-                                <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('total_balance.0') }}"></td>
-                                <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)" value="{{ old('actual_expenditure.0') }}"></td>
-                                <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('unspent_balance_last.0') }}"></td>
-                                <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)" value="{{ old('committed_liabilities.0') }}"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly="" value="{{ old('unspent_balance_31st.0') }}"></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Meetings, Training &amp; Research
-                                    
-                                    <input type="hidden" name="head[]" value="Meetings, Training Research">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.1') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.1') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.1') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.1') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.1') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.1') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.1') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.1') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.1') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Lab Strengthening Kits, Regents &amp; Consumable (Recurring)
-                                    
-                                    <input type="hidden" name="head[]" value="Lab Strengthening Kits, Regents &amp; Consumable (Recurring)">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.2') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.2') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.2') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.2') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.2') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.2') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.2') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.2') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.2') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    IEC
-                                    
-                                    <input type="hidden" name="head[]" value="IEC">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.3') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.3') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.3') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.3') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.3') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.3') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.3') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.3') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.3') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Office Expenses &amp; Travel
-                                    
-                                    <input type="hidden" name="head[]" value="Office Expenses &amp; Travel">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.4') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.4') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.4') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.4') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.4') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.4') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.4') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.4') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.4') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Lab Strengthening (Non Recurring)
-                                    
-                                    <input type="hidden" name="head[]" value="Lab Strengthening (Non Recurring)">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.5') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.5') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.5') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.5') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.5') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.5') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.5') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.5') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.5') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Other Activities
-                                    
-                                    <input type="hidden" name="head[]" value="Other Activities">
-                                </th>
-                                <td><input type="text" name="previous_month_expenditure[]" value="{{ old('previous_month_expenditure.6') }}" class="form-control" id="previous_month_expenditure" readonly=""></td>
-                                <td><input type="text" name="previous_month_total[]" value="{{ old('previous_month_total.6') }}" class="form-control" id="previous_month_total" readonly=""></td>
-                                <td><input type="text" name="unspent_balance_1st[]" value="{{ old('unspent_balance_1st.6') }}" class="form-control manpower-B" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="gia_received[]" value="{{ old('gia_received.6') }}" class="form-control manpower-C"></td>
-                                <td><input type="text" name="total_balance[]" value="{{ old('total_balance.6') }}" class="form-control manpower-D" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.6') }}" class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_last[]" value="{{ old('unspent_balance_last.6') }}" class="form-control manpower-F" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                                <td><input type="text" name="committed_liabilities[]" value="{{ old('committed_liabilities.6') }}" class="form-control manpower-G" maxlength="5" oninput="validateInput(this)"></td>
-                                <td><input type="text" name="unspent_balance_31st[]" value="{{ old('unspent_balance_31st.6') }}" class="form-control manpower-H" maxlength="5" oninput="validateInput(this)" readonly=""></td>
-                            </tr>
+                        <tr>
+                            <th>
+                                Man Power with Human Resource
+                                <input type="hidden" name="head[]" value="Man Power with Human Resource">
+                            </th>
+                            <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order"
+                                    class="form-control textarea-h" id="manpower-A"
+                                    rows="16">{{ old('sanction_order') }}</textarea></td>
+                            <td><input type="text" name="previous_month_expenditure[]" class="form-control"
+                                    id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value=""
+                                    readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]" class="form-control"
+                                    id="previous_month_total" maxlength="5" oninput="validateInput(this)" value=""
+                                    readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('unspent_balance_1st.0') }}"></td>
+                            <td><input type="text" name="gia_received[]" class="form-control manpower-C"
+                                    value="{{ old('gia_received.0') }}"></td>
+                            <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
+                                    oninput="validateInput(this)" readonly="" value="{{ old('total_balance.0') }}"></td>
+                            <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('actual_expenditure.0') }}"></td>
+                            <td><input type="text" name="unspent_balance_last[]" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""
+                                    value="{{ old('unspent_balance_last.0') }}"></td>
+                            <td><input type="text" name="committed_liabilities[]" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"
+                                    value="{{ old('committed_liabilities.0') }}"></td>
+                            <td><input type="text" name="unspent_balance_31st[]" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""
+                                    value="{{ old('unspent_balance_31st.0') }}"></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Meetings, Training &amp; Research
+
+                                <input type="hidden" name="head[]" value="Meetings, Training Research">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.1') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.1') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.1') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.1') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.1') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.1') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.1') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.1') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.1') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Lab Strengthening Kits, Regents &amp; Consumable (Recurring)
+
+                                <input type="hidden" name="head[]"
+                                    value="Lab Strengthening Kits, Regents &amp; Consumable (Recurring)">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.2') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.2') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.2') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.2') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.2') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.2') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.2') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.2') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.2') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                IEC
+
+                                <input type="hidden" name="head[]" value="IEC">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.3') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.3') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.3') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.3') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.3') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.3') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.3') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.3') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.3') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Office Expenses &amp; Travel
+
+                                <input type="hidden" name="head[]" value="Office Expenses &amp; Travel">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.4') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.4') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.4') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.4') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.4') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.4') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.4') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.4') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.4') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Lab Strengthening (Non Recurring)
+
+                                <input type="hidden" name="head[]" value="Lab Strengthening (Non Recurring)">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.5') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.5') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.5') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.5') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.5') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.5') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.5') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.5') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.5') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Other Activities
+
+                                <input type="hidden" name="head[]" value="Other Activities">
+                            </th>
+                            <td><input type="text" name="previous_month_expenditure[]"
+                                    value="{{ old('previous_month_expenditure.6') }}" class="form-control"
+                                    id="previous_month_expenditure" readonly=""></td>
+                            <td><input type="text" name="previous_month_total[]"
+                                    value="{{ old('previous_month_total.6') }}" class="form-control"
+                                    id="previous_month_total" readonly=""></td>
+                            <td><input type="text" name="unspent_balance_1st[]"
+                                    value="{{ old('unspent_balance_1st.6') }}" class="form-control manpower-B"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="gia_received[]" value="{{ old('gia_received.6') }}"
+                                    class="form-control manpower-C"></td>
+                            <td><input type="text" name="total_balance[]" value="{{ old('total_balance.6') }}"
+                                    class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
+                                    readonly=""></td>
+                            <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.6') }}"
+                                    class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_last[]"
+                                    value="{{ old('unspent_balance_last.6') }}" class="form-control manpower-F"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                            <td><input type="text" name="committed_liabilities[]"
+                                    value="{{ old('committed_liabilities.6') }}" class="form-control manpower-G"
+                                    maxlength="5" oninput="validateInput(this)"></td>
+                            <td><input type="text" name="unspent_balance_31st[]"
+                                    value="{{ old('unspent_balance_31st.6') }}" class="form-control manpower-H"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""></td>
+                        </tr>
                         @endif
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>
                                 Grand Total
-                                
+
                                 <input type="hidden" name="head[]" value="Grand Total">
                             </th>
                             <th class="grandTotal-A">
-                                
+
                             </th>
                             <th class="grandTotal-B">
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
@@ -347,7 +497,8 @@
                             </th>
                             <th class="grandTotal-B">
                                 <input type="text" name="previous_month_total[]" class="form-control grandTotal-B"
-                                    id="manpower-A" value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>
+                                    id="manpower-A"
+                                    value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>
                             </th>
                             <th class="grandTotal-B">
                                 <input type="text" name="unspent_balance_1st[]" class="form-control grandTotal-B"

@@ -12,14 +12,23 @@
 @section('content')
 {!! Toastr::message() !!}
 <div class="col-lg-12">
-    <div class="white_card card_height_100 mb_30">
-        <div class="white_card_header">
-            <div class="box_header m-0">
-                <div class="main-title">
-                    <h3 class="m-0">Create UC</h3>
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+            <div class="page_title_left d-flex align-items-center">
+                <h3 class="f_s_25 f_w_700 dark_text mr_30">Create UC</h3>
+                <!-- <ol class="breadcrumb page_bradcam mb-0">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol> -->
+            </div>
+            <div class="page_title_right">
+                <div class="page_date_button d-flex align-items-center">
+                    <img src="http://localhost/limitedfinance-management-system/assets/img/icon/calender_icon.svg" alt="">
+                                        July 01 ,2024 - July 31 ,2024
                 </div>
             </div>
         </div>
+    <div class="white_card card_height_100 mb_30">
+       
         <div class="white_card_body">
             <div class="card-body">
                 <form method="POST" action="{{ route('institute-user.save') }}" enctype="multipart/form-data">

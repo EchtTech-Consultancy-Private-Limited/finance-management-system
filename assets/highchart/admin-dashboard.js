@@ -369,6 +369,9 @@ function adminDashboardChart(data,programUserDetailsArray) {
                         menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
                     }
                 }
+            },
+            credits:{
+                enabled:false
             }
         });
     
@@ -445,9 +448,9 @@ function adminDashboardChart(data,programUserDetailsArray) {
             subtitle: null,
             legend: {
                 enabled: true,
-                layout: "vertical",
-                align: "right",
-                verticalAlign: "middle",
+                // layout: "vertical",
+                align: "center",
+                verticalAlign: "bottom",
                 itemStyle: {
                     color: "#000000",
                     fontSize: "13px",
@@ -470,8 +473,8 @@ function adminDashboardChart(data,programUserDetailsArray) {
                         enabled: true,
                     },
                     showInLegend: true,
-                    center: ["40%", "50%"],
-                    size: "80%",
+                    center: ["50%", "50%"],
+                    size: "90%",
                     borderWidth: 0,
                     shadow: false,
                     point: {
