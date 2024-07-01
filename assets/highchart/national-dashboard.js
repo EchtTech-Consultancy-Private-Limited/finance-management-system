@@ -1066,6 +1066,9 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                         menuItems: ['printChart', 'separator', 'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
                     }
                 }
+            },
+            credits:{
+                enabled:false
             }
         });
     
@@ -1209,6 +1212,7 @@ $(document).ready(function() {
             maxColor: "#ab4024",
             labels: {
                 format: "{value}",
+                
             },
         },
 
@@ -1241,6 +1245,9 @@ $(document).ready(function() {
                 },
             },
         },
+        credits:{
+            enabled:false
+        }
     });
 })();
 

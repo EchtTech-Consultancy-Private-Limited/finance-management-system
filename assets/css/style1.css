@@ -12941,6 +12941,8 @@ span.country-list-content {
 
 .row.state-driven .col-graph {
     width: 20%;
+ }
+.row.state-driven .col-graph:not(:last-child) {
     padding-right: 0;
  }
 
@@ -13167,9 +13169,10 @@ input[type="date"] {
     /* background: #f79646; */
     margin-bottom: 30px;
     border-radius: 0;
-    border-bottom: 3px dotted #ff7300;
+    border-bottom: 1px solid #002060;
     position: relative;
 }
+/* 
 .devider-line div::before {
     content: '';
     height: 20px;
@@ -13187,7 +13190,7 @@ input[type="date"] {
     top: -9px;
     border-left: 3px dotted #ff7300;
     right: -4px;
-}
+} */
 title {
     padding: 0px 11px;
     border-radius: 17px !important;
