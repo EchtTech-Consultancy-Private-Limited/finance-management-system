@@ -41,7 +41,9 @@ body {
 .message_submit_form:focus {
     outline: none
 }
-
+.h6, h6 {
+    font-size: 0.9rem;
+}
 input:hover,
 input:focus {
     outline: none !important;
@@ -3079,7 +3081,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     position: fixed;
     top: 0;
     z-index: 99999;
-    padding: 20px 30px;
+    padding: 10px 30px;
     /* position: relative; */
     border-radius: 0;
     width: calc(100% - 270px);
@@ -12347,7 +12349,7 @@ img#captchaimg {
     width: 100%;
 }
 .table thead tr th,.table tfoot tr th {
-    background: #884ffb !important;
+    background: #6c33df !important;
     font-size: 16px;
     color: #fff;
     text-align: left !important;
@@ -12754,8 +12756,8 @@ select.form-control {
     text-transform: capitalize;
 }
 .form-label {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .financial-year-institute-dashboard select.form-control, .financial-year-institute-dashboard .form-control{
@@ -12810,8 +12812,9 @@ rect.highcharts-background {
 }
 
 .dashboard-title h1.title{
-    font-size: 1.5rem;
+    font-size:1.3rem;
     color: #242a34;
+    font-weight: 600;
 }
 
 /* Gireesh css */
@@ -12954,7 +12957,7 @@ span.country-list-content {
  }
 
  td.returned_by_nhq a{
-    background-color: red;
+    background-color: #f74875;
     color: #fff;
     text-transform: capitalize;
  }
@@ -13239,3 +13242,13 @@ table.dataTable thead th, table.dataTable thead td {
 .vertical-align-top{
     vertical-align: top !important;
 }
+
+
+.program-wise-expenditure-pie .col{
+    padding-right: 0 ;
+    flex: 20%;
+    width: 20%;
+}
+.program-wise-expenditure-pie .col:nth-child(5){
+    padding-right: 12px !important ;
+  }

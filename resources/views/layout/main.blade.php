@@ -30,7 +30,7 @@
                      </div> -->
                      <div class="dashboard-title">
                         <h1 class="title"> Finance Management System</h1>
-                        <h6 class="text-center">{{ optional(Auth::user()->institute)->name }}</h6>
+                        <h6 class="text-center mb-1">{{ optional(Auth::user()->institute)->name }}</h6>
                      </div>
                      <div class="header_right d-flex justify-content-between align-items-center">
                         <div class="header_notification_warp d-flex align-items-center">

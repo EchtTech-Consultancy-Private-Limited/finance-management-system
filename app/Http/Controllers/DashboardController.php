@@ -257,7 +257,7 @@ class DashboardController extends Controller
                 ->flatten()
                 ->sum('actual_expenditure');
             $instituteExpenditure = $instituteCount / 2;
-            $instituteColumnDetails[] = [$institute->name . '-' . $institute->code, $instituteExpenditure];
+            $instituteColumnDetails[] = [$institute->name . '' . $institute->code, $instituteExpenditure];
         }
         $instituteColumnDetails = [
                 'data' => $instituteColumnDetails

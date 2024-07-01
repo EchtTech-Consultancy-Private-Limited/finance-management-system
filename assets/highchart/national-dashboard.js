@@ -47,9 +47,10 @@ $(document).on('change', '.national_user_card', function() {
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var UcUploadDetails = data.UcUploadDetails;
+            var instituteColumnDetails = data.instituteColumnDetails;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,UcUploadDetails);         
+            nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails);         
         }
     });
 });
@@ -1020,7 +1021,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 size: "100%",
                 innerSize: "70%", // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: "bold",
@@ -1084,7 +1085,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 size: "100%",
                 innerSize: "70%", // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: "bold",
@@ -1159,7 +1160,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 size: "100%",
                 innerSize: "70%", // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: "bold",
@@ -1229,7 +1230,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 size: "100%",
                 innerSize: "70%", // Adjusted for a larger inner circle
                 dataLabels: {
-                    enabled: true,
+                    enabled: false,
                     // distance: -30, // Adjusted to move labels closer
                     style: {
                         fontWeight: "bold",
@@ -1420,71 +1421,7 @@ $(document).ready(function() {
 // ***************************apex js file code ***************************
 // highchart
 
-(async () => {
-    const topology = await fetch(
-        "https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json"
-    ).then((response) => response.json());
 
-    Highcharts.mapChart("integrated-dashboard-india-map2", {
-        chart: {
-            map: topology,
-        },
-        title: {
-            text: "",
-        },
-        credits: {
-            enabled: false,
-        },
-        subtitle: {
-            text: "",
-        },
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: "bottom",
-            },
-        },
-        colorAxis: {
-            min: 0,
-            max: 100,
-            minColor: "#fcad95",
-            maxColor: "#ab4024",
-            labels: {
-                format: "{value}",
-            },
-        },
-
-        series: [
-            {
-                //   data: data,
-                name: "",
-                allowPointSelect: false,
-                cursor: "pointer",
-                color: "#fff",
-                states: {
-                    select: {
-                        color: "#ab4024",
-                    },
-                },
-            },
-        ],
-        exporting: {
-            enabled: false,
-            buttons: {
-                contextButton: {
-                    menuItems: [
-                        "printChart",
-                        "separator",
-                        "downloadPNG",
-                        "downloadJPEG",
-                        "downloadPDF",
-                        "downloadSVG",
-                    ],
-                },
-            },
-        },
-    });
-})();
 
 (async () => {
     const topology = await fetch(
@@ -1552,912 +1489,162 @@ $(document).ready(function() {
     });
 })();
 
-// program wise expenditure state filter highchart
-Highcharts.chart("integrated-dashboard-state1", {
+Highcharts.chart("integrated-dashboard-program-wise-expenditure", {
     chart: {
-        type: "pie",
-        height: 150,
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50,
-        //  marginBottom: 0,
+        type: "column",
     },
     title: {
-        useHTML: true,
-        text: "57%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
+        text: "",
     },
-    credits: {
-        enabled: false,
+    subtitle: {
+        text: "",
+    },
+    xAxis: {
+        type: "category",
+        labels: {
+            autoRotation: [-45, -45],
+            style: {
+                fontSize: "13px",
+                fontFamily: "Verdana, sans-serif",
+            },
+        },
     },
     exporting: {
         enabled: false,
     },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">UP</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
+    credits: {
+        enabled: false,
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: "Values",
         },
     },
-
     legend: {
         enabled: false,
     },
-
     tooltip: {
-        enabled: false,
+        pointFormat: "",
     },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
     series: [
         {
-            type: "pie",
-
-            data: [
-                ["", 57],
-                ["", 43],
+            name: "",
+            colors: [
+                "#399def",
+                "#3ebbf0",
+                "#35c3e8",
+                "#2bc9dc",
+                "#20cfe1",
+                "#16d4e6",
+                "#0dd9db",
+                "#03dfd0",
             ],
+            colorByPoint: true,
+            groupPadding: 0,
+            data: [
+                ["2024-25", 4500],
+                ["2023-24", 4500],
+                ["2022-23", 800],
+                ["2021-22", 700],
+                ["2020-21", 600],
+                ["2019-20", 3600],
+                ["2018-19", 4100],
+                ["2017-18", 3800],
+            ],
+            dataLabels: {
+                enabled: false,
+                rotation: -90,
+                color: "#FFFFFF",
+                inside: true,
+                verticalAlign: "top",
+                //   format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
         },
     ],
 });
 
-Highcharts.chart("integrated-dashboard-state2", {
+Highcharts.chart("integrated-dashboard-institute-wise-expenditure", {
     chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
+        type: "column",
     },
     title: {
-        useHTML: true,
-        text: "21%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
+        text: "",
     },
-    credits: {
-        enabled: false,
+    subtitle: {
+        text: "",
+    },
+    xAxis: {
+        type: "category",
+        labels: {
+            autoRotation: [-45, -45],
+            style: {
+                fontSize: "13px",
+                fontFamily: "Verdana, sans-serif",
+            },
+        },
     },
     exporting: {
         enabled: false,
     },
-    subtitle: {
-        useHTML: true,
-        text: "21%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 0,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">MP</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 21],
-                ["", 79],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state3", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
     credits: {
         enabled: false,
     },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 0,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">WB</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
+    yAxis: {
+        min: 0,
+        title: {
+            text: "Values",
         },
     },
-
     legend: {
         enabled: false,
     },
-
     tooltip: {
-        enabled: false,
+        pointFormat: "",
     },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
     series: [
         {
-            type: "pie",
-
-            data: [
-                ["", 17],
-                ["", 83],
+            name: "",
+            colors: [
+                "#399def",
+                "#3ebbf0",
+                "#35c3e8",
+                "#2bc9dc",
+                "#20cfe1",
+                "#16d4e6",
+                "#0dd9db",
+                "#03dfd0",
             ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state4", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">TN</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
             colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
+            groupPadding: 0,
             data: [
-                ["", 17],
-                ["", 83],
+                ["2024-25", 4500],
+                ["2023-24", 4500],
+                ["2022-23", 800],
+                ["2021-22", 700],
+                ["2020-21", 600],
+                ["2019-20", 3600],
+                ["2018-19", 4100],
+                ["2017-18", 3800],
             ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state5", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "57%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: "57%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 0,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">UK</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
             dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
+                enabled: false,
+                rotation: -90,
+                color: "#FFFFFF",
+                inside: true,
+                verticalAlign: "top",
+                //   format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
                 style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
                 },
-                connectorWidth: 0,
             },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 57],
-                ["", 43],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state6", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "21%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">MH</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 21],
-                ["", 79],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state7", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">BR</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 17],
-                ["", 83],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state8", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">OR</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 17],
-                ["", 83],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state9", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "47%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">HR</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 47],
-                ["", 53],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state10", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "21%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">RJ</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-
-            data: [
-                ["", 57],
-                ["", 43],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-state11", {
-    chart: {
-        type: "pie",
-        height: 150,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: -50, // Adjust the height as needed
-    },
-    title: {
-        useHTML: true,
-        text: "17%",
-        floating: true,
-        verticalAlign: "middle",
-        y: -10,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">GJ</div>', // Add the name at the bottom here
-        align: "center",
-        fontSize: "16px",
-        verticalAlign: "bottom", // Align the subtitle to the bottom
-        y: -10, // Adjust the vertical position as needed
-        style: {
-            fontSize: "16px",
-            color: "#000", // Increase the font size as needed
-        },
-    },
-
-    legend: {
-        enabled: false,
-    },
-
-    tooltip: {
-        enabled: false,
-    },
-
-    plotOptions: {
-        series: {
-            borderWidth: 0,
-            colorByPoint: true,
-            type: "pie",
-            size: "100%",
-            innerSize: "60%",
-            dataLabels: {
-                enabled: true,
-                crop: false,
-                distance: "-10%",
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 17],
-                ["", 83],
-            ],
         },
     ],
 });
@@ -2469,7 +1656,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart1", {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: "250",
+        height:   window.innerWidth>1600 ? "250" : "200",
     },
     credits: {
         enabled: false,
@@ -2534,7 +1721,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart2", {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: "250",
+        height: window.innerWidth>1600 ? "250" : "200",
     },
     credits: {
         enabled: false,
@@ -2597,7 +1784,7 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart3", {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: "250",
+        height: window.innerWidth>1600 ? "250" : "200",
     },
     credits: {
         enabled: false,
@@ -2661,7 +1848,70 @@ Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
         plotBackgroundColor: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: "250",
+        height: window.innerWidth>1600 ? "250" : "200",
+    },
+    credits: {
+        enabled: false,
+    },
+    exporting: {
+        enabled: false,
+    },
+    title: {
+        text: "",
+    },
+    subtitle: {
+        text: "75%",
+        align: "center",
+        verticalAlign: "middle",
+        y: 60,
+        style: {
+            fontSize: "16px",
+            color: "#000",
+        },
+    },
+    tooltip: {
+        enabled: false,
+    },
+    accessibility: {
+        point: {
+            valueSuffix: "%",
+        },
+    },
+    plotOptions: {
+        pie: {
+            colors: ["#eb5034", "#434348"],
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: "bold",
+                    color: "white",
+                },
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ["50%", "75%"],
+            size: "110%",
+        },
+    },
+    series: [
+        {
+            type: "pie",
+            name: "",
+            innerSize: "50%",
+            data: [
+                ["", 75],
+                ["", 25],
+            ],
+        },
+    ],
+});
+Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart5", {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false,
+        height: window.innerWidth>1600 ? "250" : "200",
     },
     credits: {
         enabled: false,

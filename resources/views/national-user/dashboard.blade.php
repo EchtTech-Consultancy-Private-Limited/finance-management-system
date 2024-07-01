@@ -592,238 +592,7 @@
             </div>
         </div>
     </div>
-    <div class="devider-line">
-        <div></div>
-    </div>
-    <div class="col-xl-12 ">
-        <div class="crad white_card yellow-graph mb_30 p-4">
-            <div class="mb_30">
-                <form action="" class="select-form-s">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select id="national-program-map" name="program_id" class="form-control">
-                                <option value="">Select Program</option>
-                                @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select id="national-user-fy-map" name="financial_year_map"
-                                class="form-control national_user_card">
-                                <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
-                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                    @endfor
-                            </select>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-
-
-            <div class="row">
-                <div class="col-md-5">
-                    <div id="integrated-dashboard-india-map2" class="border rounded mb-3"></div>
-                </div>
-                <div class="col-md-7">
-                    <div class="row state-graph-filter">
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state1" class=" state-filter-highchart rounded mb-3 ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-                                <div class="">
-                                    <div id="integrated-dashboard-state2"
-                                        class=" state-filter-highchart rounded mb-3 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                <div id="integrated-dashboard-state3" class=" state-filter-highchart rounded mb-0 ">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state4"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state5"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state6"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state7"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state8"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state9"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state10"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state11"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ***** -->
-    <div class="col-md-12">
-        <div class="crad white_card mb_30 p-4">
-            <div class="QA_table pt-3">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Institute</th>
-                            <th>Unspent Balance (GIA) as on 1st April.. </th>
-                            <th>GIA Received during the Current F.Y</th>
-                            <th>Actual Expenditure incurred during the current F.Y </th>
-                            <th>Unspent Balance (excluding Interest)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td> National Institute of Medical Health and Neuro Science, Bangalore </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> Infectious Disease and Beliaghata General Hospital, Kolkata </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> Viral Research and Diagnostic Laboratory, GMC, Amritsar </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Total</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div>
+    
     <div class="devider-line">
         <div></div>
     </div>
@@ -918,8 +687,8 @@
 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
+                        <div class="row program-wise-expenditure-pie">
+                            <div class="col">
                                 <div class="graph-container">
                                     <h2 class="chart-title"> NOHPPCZ-RCs</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
@@ -927,7 +696,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col">
                                 <div class="graph-container">
                                     <h2 class="chart-title"> NOHPPCZ-SSS</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
@@ -935,7 +704,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col">
                                 <div class="graph-container">
                                     <h2 class="chart-title">NRCP-Lab</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
@@ -943,10 +712,18 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col">
                                 <div class="graph-container">
                                     <h2 class="chart-title"> PPCL-Lab</h2>
                                     <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
+                                        class="border border-1 "></div>
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <div class="graph-container">
+                                    <h2 class="chart-title"> PM-ABHIM-SSS</h2>
+                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart5"
                                         class="border border-1 "></div>
                                 </div>
 
