@@ -116,11 +116,87 @@ class DashboardController extends Controller
             }
         return view($file, compact('totalArray','sorUcLists','institutePrograms','institutes','totalcard','totalSum','months'));
     }
+    
+    /**
+     * instituteDashboard
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function instituteDashboard(Request $request)
+    {
+        $months = [];
+        $currentYear = date('Y');
+        for ($m = 0; $m < 12; $m++) {
+            $month = new DateTime("$currentYear-04-01");
+            $month->modify("+$m months");
+            $months[] = $month->format('F');
+        }
+        $currentFY = date('Y').' - '.date('Y')+1;
+        $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
+            ->where('financial_year', $currentFY)
+            ->where('user_id', Auth::id())
+            ->get();
 
+            $finalArray = [];
+            foreach ($dataForms as $dataForm) {
+                $grandTotalGiaReceived = 0;
+                $grandTotalCommittedLiabilities = 0;
+                $grandTotalTotalBalance = 0;
+                $grandTotalActualExpenditure = 0;
+                $grandTotalUnspentFirst = 0;
+                $grandTotalUnspentBalance = 0;
+                foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
+                    if ($formCalculate->head == 'Grand Total') {
+                        $grandTotalGiaReceived += (int)$formCalculate->gia_received;
+                        $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
+                        $grandTotalTotalBalance += (int)$formCalculate->total_balance;
+                        $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
+                        $grandTotalUnspentFirst += (int)$formCalculate->unspent_balance_1st;
+                        $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
+                    }
+                }
+                $finalArray[] = [
+                    'gia_received_total' => $grandTotalGiaReceived,
+                    'committed_liabilities_total' => $grandTotalCommittedLiabilities,
+                    'total_balance_total' => $grandTotalTotalBalance,
+                    'actual_expenditure_total' => $grandTotalActualExpenditure,
+                    'unspent_balance_1st' => $grandTotalUnspentFirst,
+                    'unspent_balance_31st_total' => $grandTotalUnspentBalance,
+                ];
+            }
+            
+            $totalArray = [
+                'giaReceivedTotal' => 0,
+                'committedLiabilitiesTotal' => 0,
+                'totalBalanceTotal' => 0,
+                'actualExpenditureTotal' => 0,
+                'unspentBalance1stTotal' => 0,
+                'unspentBalance31stTotal' => 0,
+            ];
+            
+            foreach ($finalArray as $entry) {
+                $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
+                $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
+                $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
+                $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
+                $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
+                $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
+            }
+        return view('institute-user.dashboard', compact('totalArray','months'));
+    }
+    
+    /**
+     * instituteFilterDdashboard
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function instituteFilterDdashboard(Request $request)
     {
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
             ->where('financial_year', $request->financial_year)
+            ->where('user_id', Auth::id())
             ->get();
 
         $finalArray = [];
@@ -466,17 +542,55 @@ class DashboardController extends Controller
             foreach ($dataForms as $dataForm) {
                 $grandTotalActualExpenditure = 0;
                 $grandTotalUnspentBalance = 0;
+                // Head Expenditure
+                $manPowerwithHumanResource = 0;
+                $meetingsTrainingResearch = 0;
+                $labStrengtheningKitsRegents = 0;
+                $iec = 0;
+                $officeExpensesTravel = 0;
+                $labStrengthening = 0;
+                $otherActivities = 0;
         
                 foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                     if ($formCalculate->head == 'Grand Total') {
                         $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
                         $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
                     }
+                    // Head Expenditure
+                    if ($formCalculate->head == 'Man Power with Human Resource') {
+                        $manPowerwithHumanResource += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'Meetings, Training Research') {
+                        $meetingsTrainingResearch += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'Lab Strengthening Kits, Regents & Consumable (Recurring)') {
+                        $labStrengtheningKitsRegents += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'IEC') {
+                        $iec += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'Office Expenses & Travel') {
+                        $officeExpensesTravel += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'Lab Strengthening (Non Recurring)') {
+                        $labStrengthening += (int)$formCalculate->actual_expenditure;
+                    }
+                    if ($formCalculate->head == 'Other Activities') {
+                        $otherActivities += (int)$formCalculate->actual_expenditure;
+                    }
                 }
         
                 $finalArray[] = [
                     'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : 0) : $grandTotalActualExpenditure,
                     'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : 0) : $grandTotalUnspentBalance,
+                    // Head Expenditure
+                    'man_power_with_human_resource' => $manPowerwithHumanResource,
+                    'meetings_training_research' => $meetingsTrainingResearch,
+                    'lab_strengthening_kits_regents' => $labStrengtheningKitsRegents,
+                    'iec' => $iec,
+                    'office_expenses_travel' => $officeExpensesTravel,
+                    'lab_strengthening' => $labStrengthening,
+                    'other_activities' => $otherActivities,
                 ];
             }
         
@@ -484,20 +598,159 @@ class DashboardController extends Controller
                 'actualExpenditureTotal' => 0,
                 'unspentBalance31stTotal' => 0,
             ];
+            // Head Expenditure Total
+            $totalHeads = [
+                'Man Power with Human Resource' => 0,
+                'Meetings, Training Research' => 0,
+                'Lab Strengthening Kits, Regents & Consumable (Recurring)' => 0,
+                'IEC' => 0,
+                'Office Expenses & Travel' => 0,
+                'Lab Strengthening (Non Recurring)' => 0,
+                'Other Activities' => 0,
+            ];
         
             foreach ($finalArray as $entry) {
                 $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
                 $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
+                // Head Expenditure
+                $totalHeads['Man Power with Human Resource'] += $entry['man_power_with_human_resource'];
+                $totalHeads['Meetings, Training Research'] += $entry['meetings_training_research'];
+                $totalHeads['Lab Strengthening Kits, Regents & Consumable (Recurring)'] += $entry['lab_strengthening_kits_regents'];
+                $totalHeads['IEC'] += $entry['iec'];
+                $totalHeads['Office Expenses & Travel'] += $entry['office_expenses_travel'];
+                $totalHeads['Lab Strengthening (Non Recurring)'] += $entry['lab_strengthening'];
+                $totalHeads['Other Activities'] += $entry['other_activities'];
             }
-        
+            // Convert $totalHeads to the desired format
+            $headExpenditureFormatted = [];
+            foreach ($totalHeads as $head => $amount) {
+                $headExpenditureFormatted[] = [$head, $amount];
+            }
             $programUserDetails[] = [
                 'program_name' => $programNames . '-' . $instituteProgram->code,
                 'totalArray' => $totalArray,
+                'totalHeads' =>  $headExpenditureFormatted,
             ];
         }
         
         return response()->json(['programUserDetails' => $programUserDetails], 200);        
     }
+    
+    /**
+     * allFormMapFilter
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function allFormMapFilter(Request $request)
+    {
+        $applyFilters = function ($query, $request) {
+            if ($request->has('program_wise') && $request->program_wise) {
+                $query->where('program_id', $request->program_wise);
+            }
+            if ($request->has('institute_wise') && $request->institute_wise) {
+                $query->where('institute_id', $request->institute_wise);
+            }
+            if ($request->has('month') && $request->month) {
+                $query->where('month', $request->month);
+            }
+            if ($request->has('financial_year') && $request->financial_year) {
+                $query->where('financial_year', $request->financial_year);
+            }
+        };
+
+        // Apply filters to SOEUCForm model
+        $soeucFormsQuery = SOEUCForm::with('SoeUcFormCalculation');
+        $applyFilters($soeucFormsQuery, $request);
+        $soeucForms = $soeucFormsQuery->get();
+        
+        // Apply filters to SOEUCUploadForm model
+        $soeucUploadFormsQuery = SOEUCUploadForm::query();
+        $applyFilters($soeucUploadFormsQuery, $request);
+        $soeucUploadForms = $soeucUploadFormsQuery->count();
+        $aggregatedData = [];
+        foreach ($soeucForms as $dataForm) {
+            if (!isset($aggregatedData[$dataForm->state_id])) {
+                $aggregatedData[$dataForm->state_id] = [
+                    'gia_received_total' => 0,
+                    'committed_liabilities_total' => 0,
+                    'total_balance_total' => 0,
+                    'actual_expenditure_total' => 0,
+                    'unspent_balance_1st_total' => 0,
+                    'unspent_balance_last_total' => 0,
+                    'unspent_balance_31st_total' => 0,
+                ];
+            }
+            foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
+                if ($formCalculate->head == 'Grand Total') {
+                    $aggregatedData[$dataForm->state_id]['gia_received_total'] += (int)$formCalculate->gia_received;
+                    $aggregatedData[$dataForm->state_id]['committed_liabilities_total'] += (int)$formCalculate->committed_liabilities;
+                    $aggregatedData[$dataForm->state_id]['total_balance_total'] += (int)$formCalculate->total_balance;
+                    $aggregatedData[$dataForm->state_id]['actual_expenditure_total'] += (int)$formCalculate->actual_expenditure;
+                    $aggregatedData[$dataForm->state_id]['unspent_balance_1st_total'] += (int)$formCalculate->unspent_balance_1st;
+                    $aggregatedData[$dataForm->state_id]['unspent_balance_last_total'] += (int)$formCalculate->unspent_balance_last;
+                    $aggregatedData[$dataForm->state_id]['unspent_balance_31st_total'] += (int)$formCalculate->unspent_balance_31st;
+                }
+            }
+        }
+        $totalArray = [
+            'giaReceivedTotal' => 0,
+            'committedLiabilitiesTotal' => 0,
+            'totalBalanceTotal' => 0,
+            'actualExpenditureTotal' => 0,
+            'unspentBalance1stTotal' => 0,
+            'unspentBalanceLastTotal' => 0,
+            'unspentBalance31stTotal' => 0,
+            'soeucUploadForms' => $soeucUploadForms ?? '0',
+        ];
+
+        foreach ($aggregatedData as $entry) {
+            $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
+            $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
+            $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
+            $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st_total'];
+            $totalArray['unspentBalanceLastTotal'] += $entry['unspent_balance_last_total'];
+            $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
+        }
+
+        // Initialize array for state details
+        $UcFormstateDetails = [];
+        $states = State::all();
+        foreach ($states as $state) {
+            $UcUploadMap = clone $soeucUploadFormsQuery;
+            $UcFormCount = $UcUploadMap->whereHas('users', function ($query) use ($state) {
+                $query->where('state_id', $state->id);
+            })->count();
+            
+            $soeucFormData = isset($aggregatedData[$state->id]) ? $aggregatedData[$state->id] : [
+                'gia_received_total' => 0,
+                'committed_liabilities_total' => 0,
+                'total_balance_total' => 0,
+                'actual_expenditure_total' => 0,
+                'unspent_balance_1st_total' => 0,
+                'unspent_balance_last_total' => 0,
+                'unspent_balance_31st_total' => 0,
+            ];
+
+            $UcFormstateDetails[] = [
+                'hc-key' => $state->name,
+                'value' => $UcFormCount,
+                'gia_received_total' => $soeucFormData['gia_received_total'],
+                'committed_liabilities_total' => $soeucFormData['committed_liabilities_total'],
+                'total_balance_total' => $soeucFormData['total_balance_total'],
+                'actual_expenditure_total' => $soeucFormData['actual_expenditure_total'],
+                'unspent_balance_1st_total' => $soeucFormData['unspent_balance_1st_total'],
+                'unspent_balance_last_total' => $soeucFormData['unspent_balance_last_total'],
+                'unspent_balance_31st_total' => $soeucFormData['unspent_balance_31st_total'],
+            ];
+        }
+
+        return response()->json(['totalArray' => $totalArray, 'UcFormstateDetails' => $UcFormstateDetails], 200);
+    }
+
+
+
     
     /**
      * nationalFilterUcFormDdashboard
@@ -583,13 +836,14 @@ class DashboardController extends Controller
         $output = "";
         $count = 0;
         $institutes = Institute::where('program_id', $request->program_id)->get();
-        if ($institutes) {
+        if (!$institutes->isEmpty()) {
             foreach ($institutes as $institute) {
                 $count++;
+                $output .='<option value="">Select Institute</option>';
                 $output .='<option value="'.$institute->id.'">' . $institute->name . '</option>';
             }
         } else {
-            $output .= 'Oops somthing went wrong';
+            $output .='<option value="">Select Institute</option>';
         }
         return $output;
     }

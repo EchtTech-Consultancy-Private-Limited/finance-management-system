@@ -369,7 +369,7 @@ class SOEUCFormController extends Controller
     public function report()
     {
         $programs = InstituteProgram::get();
-        $sorUcLists = SOEUCUploadForm::with('users')->get();
+        $sorUcLists = SOEUCUploadForm::with('users')->where('user_id', Auth::id())->get();
         return view('institute-user.report',compact('programs','sorUcLists'));
     }
     
@@ -402,11 +402,11 @@ class SOEUCFormController extends Controller
         switch ($request->modulename) {
             case '1':
                 $fileName = 'SOEUForm';
-                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation');
+                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation')->where('user_id', Auth::id());
                 break;
             case '2':
                 $fileName = 'UCUpload';
-                $query = SOEUCUploadForm::query();
+                $query = SOEUCUploadForm::where('user_id', Auth::id());
                 break;
             default:
                 return response()->json(['error' => 'Invalid module name'], 400);

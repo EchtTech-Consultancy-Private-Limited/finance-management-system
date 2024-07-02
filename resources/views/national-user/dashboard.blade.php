@@ -757,25 +757,22 @@
                                 <div class="row">
                                     <div class="col">
 
-                                        <select name="" class="form-control" id="">
-                                            <option value="">Select Financial Year</option>
-                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                                @php
-                                                    $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                                @endphp
-                                                <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                            @endfor
+                                        <select id="national-user-fy-barchart-head" name="financial_year"
+                                            class="form-control">
+                                            <option value="">Select Year</option>
+                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
+                                                . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
+                                                {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                                @endfor
                                         </select>
                                     </div>
 
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
-
 
             <div class="data-driven">
                 <div class="row justify-content-between custom-grid">
@@ -787,7 +784,7 @@
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPCZ-<br>RCs</h3>
-                                <span class="number">35%</span>
+                                <span class="number" id="program_percentagedriven_graph1"></span>
                             </div>
                         </div>
                     </div>
@@ -799,7 +796,7 @@
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPC-<br>SSS</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph2"></span>
                             </div>
                         </div>
                     </div>
@@ -811,7 +808,7 @@
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NRCP-<br>Lab</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph3"></span>
                             </div>
                         </div>
                     </div>
@@ -823,7 +820,7 @@
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PPCL-<br>Lab</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph4"></span>
                             </div>
                         </div>
                     </div>
@@ -835,7 +832,7 @@
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PM-ABHIM-<br>SSS</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph5"></span>
                             </div>
                         </div>
                     </div>
@@ -846,31 +843,26 @@
                         <div class="graph-container border border-1 mt-3 me-0">
                             <div id="integrated-dashboard-data-driven-graph1" class=""></div>
                         </div>
-
                     </div>
                     <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph2" class=""></div>
                         </div>
-
                     </div>
                     <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph3" class=""></div>
                         </div>
-
                     </div>
                     <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph4" class=""></div>
                         </div>
-
                     </div>
                     <div class="col-graph">
                         <div class="graph-container border border-1 mt-3 me-0 ms-0">
                             <div id="integrated-dashboard-data-driven-graph5" class=""></div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -886,20 +878,29 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="program_wise" class="form-control filter_program_id national_all_form_map" id="program_wise_all_form">
                                 <option value="">Select Program</option>
-                                <option value="">NOHPPCZ RC's</option>
-                                <option value="">NOHPPCZ SSS</option>
-                                <option value="">NRCP-Lab</option>
-                                <option value="">PPCL-Lab</option>
-                                <option value="">PM-ABHIM-SSS</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
                         </div>
-
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="institute_wise" class="form-control national_institute_name national_all_form_map" id="institute_wise_all_form">
+                                <option value="">Select Institute</option>
+                                @foreach($institutes as $institute)
+                                    <option value="{{ $institute->id }}">
+                                        {{ $institute->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="month_name_all_form" class="form-control national_all_form_map" id="month_wise_all_form">
                                 <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
                                 @php
@@ -910,21 +911,11 @@
                                 </option>
                             @endforeach
                             </select>
-                        </div>
-                        <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
-                            </select>
-                        </div>
+                        </div>                        
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="financial_year" class="form-control national_all_form_map" id="financial_wise_all_form">
                                 <option value="">Choose Financial Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                                     @php
@@ -945,62 +936,42 @@
                             <li>
                                 <span class="arrow arrow-left"><span class="number">1</span></span><span
                                     class="country-list-content">Unspent Balance (GIA) as on 1st April..</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total" id="unspent_balance_1st_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">2</span></span><span
-                                    class="country-list-content">GIA Received during the Current F.Y.</span> <span
-                                    class="state-data-total">0</span>
+                                    class="country-list-content">GIA Received in F.Y</span> <span
+                                    class="state-data-total" id="gia_received_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">3</span></span><span
-                                    class="country-list-content">Interest earned in C.Y.</span> <span
-                                    class="state-data-total">0</span>
+                                    class="country-list-content">Total Balance excluding interest</span> <span
+                                    class="state-data-total" id="total_balance_excluding_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">4</span></span><span
-                                    class="country-list-content">Total Balance (a+b) excluding interest</span> <span
-                                    class="state-data-total">0</span>
+                                    class="country-list-content">Actual Expenditure incurred during the current F.Y
+                                    </span> <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">5</span></span><span
-                                    class="country-list-content">Actual Expenditure incurred during the current
-                                    F.Y</span> <span class="state-data-total">0</span>
+                                    class="country-list-content">Unspent Balance F=(D-E)</span> <span
+                                    class="state-data-total" id="unspent_balance_d_e_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">6</span></span><span
-                                    class="country-list-content">Interest DD Returned to NCDC</span> <span
-                                    class="state-data-total">0</span>
+                                    class="country-list-content">Committed Liabilities (if any)</span> <span
+                                    class="state-data-total" id="committed_liabilities_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">7</span></span><span
-                                    class="country-list-content">Unspent Balance (excluding Interest)</span> <span
-                                    class="state-data-total">0</span>
+                                    class="country-list-content">Unspent Balance of (GIA) as on 31st March H=(F-G)</span>
+                                <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
                             </li>
                             <li>
                                 <span class="arrow arrow-left"><span class="number">8</span></span><span
-                                    class="country-list-content">Committed Liabilities (if any)</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">9</span></span><span
-                                    class="country-list-content">Unspent Balance as on 31st January 2024 (g-h)</span>
-                                <span class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">10</span></span><span
-                                    class="country-list-content">Fund Utilization (%)</span> <span
-                                    class="state-data-total">0%</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">11</span></span><span
-                                    class="country-list-content">Fund non utilization (%)</span> <span
-                                    class="state-data-total">0%</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">12</span></span><span
                                     class="country-list-content">UC Uploaded</span> <span
-                                    class="state-data-total">0</span>
+                                    class="state-data-total" id="uc_uploads_total">0</span>
                             </li>
                         </ul>
 

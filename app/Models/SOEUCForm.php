@@ -34,7 +34,7 @@ class SOEUCForm extends Model
      */
     public function states()
     {
-        return $this->belongsTo(State::class, 'state');
+        return $this->belongsTo(State::class, 'state_id');
     }
     
     /**

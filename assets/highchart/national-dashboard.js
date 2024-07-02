@@ -40,7 +40,20 @@ $(document).ready(function(){
         },
         success: function(data) {
             var programUserDetails = data.programUserDetails;            
-            expenditureBarChart(programUserDetails);         
+            expenditureBarChart(programUserDetails);
+            expenditureBarChartHead(programUserDetails);   
+        }
+    });
+});
+// collect all data of all form module with map
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/all-form-map-filter",
+        success: function(data) {
+            var totalData = data.totalArray;
+            var mapDetails = data.UcFormstateDetails;
+            allFormMapFilter(totalData,mapDetails);         
         }
     });
 });
@@ -74,7 +87,6 @@ $(document).on('change', '.national_user_card', function() {
         }
     });
 });
-
 // program wise and institute wise filter only
 $(document).on('change', '.yearly_soe_expenditure', function() {
     const programWiseYearly = $('#program_wise_yearly').find(":selected").val();
@@ -95,7 +107,7 @@ $(document).on('change', '.yearly_soe_expenditure', function() {
 // Expenditure Bar Chart (All Programs combined data)
 $(document).on('change', '.national_program_barchart', function() {
     const programWiseYearly = $('#national-program-barchart').find(":selected").val();
-    const financial_year = $('#national-user-fy-barchart').find(":selected").val();
+    const financial_year = $("#national-user-fy-barchart").find(":selected").val();
     const expenditure_unspent = $('#expenditure_unspent').find(":selected").val();
     $.ajax({
         type: "GET",
@@ -108,6 +120,21 @@ $(document).on('change', '.national_program_barchart', function() {
         success: function(data) {
             var programUserDetails = data.programUserDetails;
             expenditureBarChart(programUserDetails);         
+        }
+    });
+});
+
+$(document).on('change', '#national-user-fy-barchart-head', function() {
+    const financial_year = $("#national-user-fy-barchart-head").find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/expenditure-bar-chart-pie-filter",
+        data: {
+            'financial_year' :financial_year,
+        },
+        success: function(data) {
+            var programUserDetails = data.programUserDetails;
+            expenditureBarChartHead(programUserDetails);         
         }
     });
 });
@@ -130,7 +157,33 @@ $(document).on('change', '.national_ucForm_filter', function() {
         }
     });
 });
-// national dashboard
+
+// collect all data of all form module with map
+$(document).on('change', '.national_all_form_map', function() {
+    const program_wise =  $('#program_wise_all_form').find(":selected").val();
+    const institute_wise =  $('#institute_wise_all_form').find(":selected").val();
+    const month =  $('#month_wise_all_form').find(":selected").val();
+    const financial_year =  $('#financial_wise_all_form').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/all-form-map-filter",
+        data: {
+            'program_wise' : program_wise,
+            'institute_wise' :institute_wise,
+            'month' : month,
+            'financial_year' : financial_year,
+        },
+        success: function(data) {
+            var totalData = data.totalArray;
+            var mapDetails = data.UcFormstateDetails;
+            allFormMapFilter(totalData,mapDetails);         
+        }
+    });
+});
+// End collect all data of all form module with map
+
+
+// national dashboard chart function
 function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities)
 {
     // Total Expenditure in Cr.
@@ -1059,6 +1112,7 @@ function yearlySoeExpenditure(programWiseExpenditure){
 }
 
 function expenditureBarChart(programUserDetailsArray){
+    const colors = ["#f49d00", "#43cdd9", "#dd5f00", "#00b0f0", "#92d050"];
     var percentageExpenditureAll = 0;
     var percentageUnspentBalanceAll = 0;
     programUserDetailsArray.forEach((programUserDetails, index) => {
@@ -1144,7 +1198,97 @@ function expenditureBarChart(programUserDetailsArray){
                 },
             ],
         });
-    });    
+    });
+}
+function expenditureBarChartHead(programUserDetailsArray){
+    const colors = ["#f49d00", "#43cdd9", "#dd5f00", "#00b0f0", "#92d050"];
+    var percentageExpenditureAll = 0;
+    var percentageUnspentBalanceAll = 0;
+    programUserDetailsArray.forEach((programUserDetails, index) => {
+        var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
+        var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
+        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+        // data driven graph
+        $(`#program_percentagedriven_graph${index+1}`).text(parseInt(percentageExpenditure) + '%');
+        const chartDrivenGraphId = `integrated-dashboard-data-driven-graph${index+1}`;        
+        Highcharts.chart(chartDrivenGraphId, {
+            chart: {
+                type: "column",
+            },
+            title: {
+                text: "",
+            },
+            credits: {
+                enabled: false,
+            },
+            exporting: {
+                enabled: false,
+            },
+            subtitle: {
+                text: "",
+            },
+            xAxis: {
+                type: "category",
+                labels: {
+                    rotation: -70,
+                    style: {
+                        fontSize: "11px",
+                        fontWeight:400,
+                        fontFamily: "Verdana, sans-serif",
+                        color:'#000'
+                    },
+                },
+            },
+
+            yAxis: {
+                min: 0,
+                title: {
+                    text: null,
+                },
+            },
+            legend: {
+                enabled: true,
+                layout: "horizontal",
+                align: "center",
+                verticalAlign: "top",
+                y: 7, // Adjust this value to fine-tune the vertical position
+                symbolRadius: 0,
+                style:{
+                    fontSize: "13px",
+                }
+            },
+            tooltip: {
+                enabled: true,
+            },
+            series: [
+                {
+                    name: programUserDetails.program_name,
+                    type: "column",
+                    color: colors[index % colors.length],
+                    events: {
+                        legendItemClick: function (e) {
+                            e.preventDefault();
+                        },
+                    },
+
+                    data: programUserDetails.totalHeads,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: "#FFFFFF",
+                        inside: true,
+                        verticalAlign: "top",
+                        format: "{point.y:.1f}", // One decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: "13px",
+                            fontFamily: "Verdana, sans-serif",
+                        },
+                    },
+                },
+            ],
+        });
+    });
 }
 // end national dashboard
 
@@ -1496,6 +1640,103 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
     // End UCUploadForm map    
 }
 
+// allFormMapFilter
+function allFormMapFilter(totalData,mapDetails){
+    $("#gia_received_total").text(totalData.giaReceivedTotal);
+    $("#total_balance_excluding_total").text(totalData.totalBalanceTotal);
+    $("#actual_expenditure_incurred_total").text(totalData.actualExpenditureTotal);
+    $("#committed_liabilities_total").text(totalData.committedLiabilitiesTotal);
+    $("#unspent_balance_1st_total").text(totalData.unspentBalance1stTotal);
+    $("#unspent_balance_d_e_total").text(totalData.unspentBalanceLastTotal);
+    $("#unspent_balance_31st_march_total").text(totalData.unspentBalance31stTotal);
+    $("#uc_uploads_total").text(totalData.soeucUploadForms);
+
+    // map chart
+    (async () => {
+        const topology = await fetch(
+            "https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json"
+        ).then((response) => response.json());
+    
+        Highcharts.mapChart("integrated-dashboard-india-map3", {
+            chart: {
+                map: topology,
+            },
+            title: {
+                text: "",
+            },
+            credits: {
+                enabled: false,
+            },
+            subtitle: {
+                text: "",
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: "bottom",
+                },
+            },
+            colorAxis: {
+                min: 0,
+                max: 100,
+                minColor: "#fcad95",
+                maxColor: "#ab4024",
+                labels: {
+                    format: "{value}",
+                },
+            },
+            series: [
+                {
+                    data: mapDetails,
+                    name: "",
+                    allowPointSelect: false,
+                    cursor: "pointer",
+                    color: "#fff",
+                    states: {
+                        select: {
+                            color: "#fcad95",
+                        },
+                    },
+                    tooltip: {
+                        pointFormatter: function() {
+                            return '' +
+                                this.name + '<br/>' +
+                                'UC Form Count: ' + this.value + '<br/>' +
+                                'GIA Received Total: ' + this.gia_received_total + '<br/>' +
+                                'Committed Liabilities Total: ' + this.committed_liabilities_total + '<br/>' +
+                                'Total Balance Total: ' + this.total_balance_total + '<br/>' +
+                                'Actual Expenditure Total: ' + this.actual_expenditure_total + '<br/>' +
+                                'Unspent Balance 1st Total: ' + this.unspent_balance_1st_total + '<br/>' +
+                                'Unspent Balance Last Total: ' + this.unspent_balance_last_total + '<br/>' +
+                                'Unspent Balance 31st Total: ' + this.unspent_balance_31st_total;
+                        }
+                    }
+                },
+            ],
+            exporting: {
+                enabled: false,
+                buttons: {
+                    contextButton: {
+                        menuItems: [
+                            "printChart",
+                            "separator",
+                            "downloadPNG",
+                            "downloadJPEG",
+                            "downloadPDF",
+                            "downloadSVG",
+                        ],
+                    },
+                },
+            },
+            credits:{
+                enabled:false
+            }
+        });        
+    })();
+}
+
+
+
 // Custom action Js
 $(document).ready(function() {
     $(".editmode").dblclick(function() {
@@ -1596,662 +1837,5 @@ $(document).ready(function() {
 // End Custom action Js
 
 
-// ***************************apex js file code ***************************
-// highchart
 
 
-
-(async () => {
-    const topology = await fetch(
-        "https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json"
-    ).then((response) => response.json());
-
-    Highcharts.mapChart("integrated-dashboard-india-map3", {
-        chart: {
-            map: topology,
-        },
-        title: {
-            text: "",
-        },
-        credits: {
-            enabled: false,
-        },
-        subtitle: {
-            text: "",
-        },
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: "bottom",
-            },
-        },
-        colorAxis: {
-            min: 0,
-            max: 100,
-            minColor: "#fcad95",
-            maxColor: "#ab4024",
-            labels: {
-                format: "{value}",
-                
-            },
-        },
-
-        series: [
-            {
-                //   data: data,
-                name: "",
-                allowPointSelect: false,
-                cursor: "pointer",
-                color: "#fff",
-                states: {
-                    select: {
-                        color: "#fcad95",
-                    },
-                },
-            },
-        ],
-        exporting: {
-            enabled: false,
-            buttons: {
-                contextButton: {
-                    menuItems: [
-                        "printChart",
-                        "separator",
-                        "downloadPNG",
-                        "downloadJPEG",
-                        "downloadPDF",
-                        "downloadSVG",
-                    ],
-                },
-            },
-        },
-        credits:{
-            enabled:false
-        }
-    });
-})();
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 4500],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-institute-wise-expenditure", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 4500],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-// data driven graph
-
-Highcharts.chart("integrated-dashboard-data-driven-graph1", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            rotation: -70,
-            style: {
-                fontSize: "11px",
-                fontWeight:400,
-                fontFamily: "Verdana, sans-serif",
-                color:'#000'
-            },
-        },
-    },
-
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        layout: "horizontal",
-        align: "center",
-        verticalAlign: "top",
-        y: 7, // Adjust this value to fine-tune the vertical position
-        symbolRadius: 0,
-        style:{
-            fontSize: "13px",
-        }
-    },
-    tooltip: {
-        enabled: true,
-    },
-    series: [
-        {
-            name: "Head",
-            type: "column",
-            color: "#f49d00",
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-
-            data: [
-                ["Current Man Power", 4.3],
-                ["Meetings, Training<br> & Research", 2.5],
-                [
-                    "Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)",
-                    3.5,
-                ],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // One decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph2", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            rotation: -70,
-            style: {
-                fontSize: "11px",
-                fontWeight:400,
-                fontFamily: "Verdana, sans-serif",
-                color:'#000'
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        layout: "horizontal",
-        align: "center",
-        verticalAlign: "top",
-        y: 7,
-        symbolRadius: 0,
-    },
-    tooltip: {
-        enabled: true,
-    },
-    series: [
-        {
-            name: "Head",
-            type: "column",
-            color: "#43cdd9",
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-            data: [
-                ["Office Expenses  & Travel", 4.3],
-                ["Lab Strengthening <br>(Non Recurring)", 2.5],
-                ["Other Activities", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph3", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            rotation: -70,
-            style: {
-                fontSize: "11px",
-                fontWeight:400,
-                fontFamily: "Verdana, sans-serif",
-                color:'#000'
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        layout: "horizontal",
-        align: "center",
-        verticalAlign: "top",
-        y: 7,
-        symbolRadius: 0,
-    },
-    tooltip: {
-        enabled: true,
-    },
-    series: [
-        {
-            name: "Head",
-            type: "column",
-            color: "#dd5f00",
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-            data: [
-                ["Current Man Power", 4.3],
-                ["Meetings, Training<br> & Research", 2.5],
-                [
-                    "Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)",
-                    3.5,
-                ],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // One decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph4", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    
-    xAxis: {
-        type: "category",
-        labels: {
-            rotation: -70,
-            style: {
-                fontSize: "11px",
-                fontWeight:400,
-                fontFamily: "Verdana, sans-serif",
-                color:'#000'
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        layout: "horizontal",
-        align: "center",
-        verticalAlign: "top",
-        y: 7,
-        symbolRadius: 0,
-    },
-    tooltip: {
-        enabled: true,
-    },
-    series: [
-        {
-            name: "Head",
-            type: "column",
-            color: "#00b0f0",
-            style: {
-                fontSize: "12px",
-                fontFamily: "Verdana, sans-serif",
-            },
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-            data: [
-                ["Current Man Power", 4.3],
-                ["Meetings, Training<br> & Research", 2.5],
-                [
-                    "Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)",
-                    3.5,
-                ],
-                ["IEC", 2],
-                
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // One decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "12px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph5", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            rotation: -70, // Rotating labels to prevent overlap
-            style: {
-                fontSize: "11px",
-                fontWeight:400,
-                fontFamily: "Verdana, sans-serif",
-                color:'#000',
-                textOverflow: "ellipsis", // Adding ellipsis for overflow text
-            },
-        },
-        // categories: [
-        //     'Current Man Power',
-        //     'Meetings, Training & Research',
-        //     'Lab Strengthening <br> Kits, Regents &<br> Consumable (Recurring)',
-        //     'IEC',
-        //     'Office Expenses & Travel',
-        //     'Lab Strengthening (Non Recurring)',
-        //     'Other Activities'
-        // ],
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: null,
-        },
-    },
-    legend: {
-        enabled: true,
-        layout: "horizontal",
-        align: "center",
-        verticalAlign: "top",
-        y: 7,
-        symbolRadius: 0,
-    },
-    tooltip: {
-        enabled: true,
-    },
-    series: [
-        {
-            name: "Head",
-            type: "column",
-            color: "#92d050",
-            events: {
-                legendItemClick: function (e) {
-                    e.preventDefault();
-                },
-            },
-            data: [
-                ["Current Man Power", 4.3],
-                ["Meetings, Training<br> & Research", 2.5],
-                [
-                    "Lab Strengthening Kits,<br> Regents  & Consumable<br> (Recurring)",
-                    3.5,
-                ],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // One decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
