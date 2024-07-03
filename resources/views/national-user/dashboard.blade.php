@@ -352,7 +352,7 @@
             </div>
             <div class="col-md-6 custom-grid w-40">
                 <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
                             <div class="">
                                 <div class="box_header m-0">
@@ -368,7 +368,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-8">
                         <div class="white_card  mb_30 integrated-expenditure">

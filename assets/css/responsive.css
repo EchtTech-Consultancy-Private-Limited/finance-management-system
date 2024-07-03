@@ -151,8 +151,14 @@
 
 @media (min-width:768px) and (max-width:1299px) {
    .expenditure_height {
-      height: 142px;
+      height: 150px;
    }
+   .expenditure-count span:nth-child(1) {
+      font-size: 19px !important;
+  }
+   .expenditure-count span:nth-child(2) {
+      font-size: 13px !important;
+  }
 }
 
 @media (min-width:1350px) and (max-width:1450px) {

@@ -151,7 +151,7 @@
     </div>
  
     <div class="row expenditure_percentage">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="white_card  mb_30 integrated-expenditure">
                 <div class="">
                     <div class="box_header m-0">
@@ -172,7 +172,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="white_card  mb_30 integrated-expenditure">
                 <div class="">
                     <div class="box_header m-0">
@@ -193,7 +193,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="white_card  mb_30 integrated-expenditure">
                 <div class="">
                     <div class="box_header m-0">
@@ -214,7 +214,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div class="white_card  mb_30 integrated-expenditure">
                 <div class="">
                     <div class="box_header m-0">
@@ -233,7 +233,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 
