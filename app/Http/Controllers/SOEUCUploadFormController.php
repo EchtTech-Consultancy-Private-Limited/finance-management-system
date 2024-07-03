@@ -23,7 +23,7 @@ class SOEUCUploadFormController extends Controller
 
     public function index()
     {
-        $sorUcLists = SOEUCUploadForm::with('program')->orderBy('id','desc')->get();
+        $sorUcLists = SOEUCUploadForm::with('program')->where('user_id', Auth::id())->orderBy('id','desc')->get();
         return view($this->list,compact('sorUcLists'));
     }
 

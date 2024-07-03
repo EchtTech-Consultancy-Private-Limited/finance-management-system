@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/filter-dashboard', [DashboardController::class, 'nationalFilterDdashboard'])->name('filter-dashboard');
         Route::get('/yearly-soe-expenditure-filter', [DashboardController::class, 'yearlySoeExpenditureFilter'])->name('yearly-soe-expenditure-filter');
         Route::get('/expenditure-bar-chart-pie-filter', [DashboardController::class, 'expenditureBarChartPieFilter'])->name('expenditure-bar-chart-pie-filter');
+        Route::get('/all-form-map-filter', [DashboardController::class, 'allFormMapFilter'])->name('all-form-map-filter');
         Route::get('/filter-uc-form-dashboard', [DashboardController::class, 'nationalFilterUcFormDashboard'])->name('filter-uc-form-dashboard');
         Route::post('/total-card', [DashboardController::class, 'totalCard'])->name('total-card');
         Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');
@@ -57,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.','middleware' => ['checkUserType:institute']], function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'instituteDashboard'])->name('dashboard');
         Route::get('/filter-dashboard', [DashboardController::class, 'instituteFilterDdashboard'])->name('filter-dashboard');
         Route::get('/report', [SOEUCFormController::class, 'report'])->name('report');
         Route::get('report-export', [SOEUCFormController::class, 'export'])->name('report-export');

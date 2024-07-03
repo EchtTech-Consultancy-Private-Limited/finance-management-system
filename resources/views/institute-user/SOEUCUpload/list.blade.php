@@ -28,7 +28,7 @@
         <div class="white_card_body">
             <div class="QA_section">
                 <div class="QA_table mb_30">
-                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="datatable" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
