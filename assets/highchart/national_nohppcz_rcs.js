@@ -1,7 +1,7 @@
 let totalExpenitureMargin =
     window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
 let expenditureHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
-let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 210 : 200;
+let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 250 : 200;
 
 let expenditureTitleY =
     // window.innerWidth > 768 && window.innerWidth < 1360 ? 45 : 40;
@@ -597,88 +597,86 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
 }
 
 
-// Run the zoom detection function
 
 
 
 
 
-
-Highcharts.chart("national_dd_percentage_nohppcz_rc", {
-    chart: {
-        plotBackgroundColor: null,
-        height: expenditurPercentageeHeight,
-        margin: [0, 0, 0, 0],
-        spacingTop: 0,
-        spacingBottom: 0,
-        spacingLeft: 0,
-        spacingRight: 0,
-        marginTop: totalExpenitureMargin,
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
-        align: "center",
-        verticalAlign: "middle",
-        y: expenditureTitleY,
-        style: {
-            fontSize: "16px",
-            color: "#000000",
-        },
-    },
-    subtitle: {
-        text: `
-        <div class="graph-title" style="color:#3a7ed3; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
-        align: "center",
-        verticalAlign: "middle",
-        y: expenditureSubtitleY,
-        style: {
-            fontSize: "16px",
-            color: "#000000",
-        },
-    },
-    tooltip: {
-        enabled: false,
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#558ed5", "#c6d9f1"],
-            dataLabels: {
-                enabled: false,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "60%",
-            data: [
-                ["", 10],
-                ["", 90],
-            ],
-        },
-    ],
-});
+// Highcharts.chart("national_dd_percentage_nohppcz_rc", {
+//     chart: {
+//         plotBackgroundColor: null,
+//         height: expenditurPercentageeHeight,
+//         margin: [0, 0, 0, 0],
+//         spacingTop: 0,
+//         spacingBottom: 0,
+//         spacingLeft: 0,
+//         spacingRight: 0,
+//         marginTop: totalExpenitureMargin,
+//     },
+//     credits: {
+//         enabled: false,
+//     },
+//     exporting: {
+//         enabled: false,
+//     },
+//     title: {
+//         text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
+//         align: "center",
+//         verticalAlign: "middle",
+//         y: expenditureTitleY,
+//         style: {
+//             fontSize: "16px",
+//             color: "#000000",
+//         },
+//     },
+//     subtitle: {
+//         text: `
+//         <div class="graph-title" style="color:#3a7ed3; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
+//         align: "center",
+//         verticalAlign: "middle",
+//         y: expenditureSubtitleY,
+//         style: {
+//             fontSize: "16px",
+//             color: "#000000",
+//         },
+//     },
+//     tooltip: {
+//         enabled: false,
+//     },
+//     accessibility: {
+//         point: {
+//             valueSuffix: "%",
+//         },
+//     },
+//     plotOptions: {
+//         pie: {
+//             colors: ["#558ed5", "#c6d9f1"],
+//             dataLabels: {
+//                 enabled: false,
+//                 distance: -50,
+//                 style: {
+//                     fontWeight: "bold",
+//                     color: "white",
+//                 },
+//             },
+//             startAngle: -90,
+//             endAngle: 90,
+//             center: ["50%", "75%"],
+//             size: "110%",
+//         },
+//     },
+//     series: [
+//         {
+//             type: "pie",
+//             name: "",
+//             innerSize: "60%",
+//             data: [
+//                 ["", 10],
+//                 ["", 90],
+//             ],
+//         },
+//     ],
+// });
 //   percentage of uc recevied
 
 Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {

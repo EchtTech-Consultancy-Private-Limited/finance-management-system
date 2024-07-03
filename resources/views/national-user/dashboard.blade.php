@@ -109,9 +109,10 @@
             <div class="col-md-3 total-card">
                 <div class="white_card graph-card-h m-0">
                     <div class="total-card-child d-flex align-items-center justify-content-center">
-                        <h3 class="text-center">
-                            {{ $totalSum }}<br>
-                            Total Institute
+                        <h3 class="text-center total_number_of_institute">
+                           <span class=""> Total Number <br> of Institute</span>
+                           <span>{{ $totalSum }}</span>
+                            <br>
                         </h3>
                     </div>
                 </div>
@@ -269,7 +270,7 @@
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div class="col-md-4 col-lg">
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
@@ -293,7 +294,7 @@
 
     <div class="col-md-12 overlall-expenditure">
         <div class="row custom-grid">
-            <div class="col-md-6 custom-grid">
+            <div class="col-md-8 custom-grid">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
@@ -350,8 +351,22 @@
 
                 </div>
             </div>
-            <div class="col-md-6 custom-grid w-40">
-                <div class="row">
+            <div class="col-md-4 custom-grid w-40">
+            <div class="white_card  mb_30 integrated-expenditure">
+                            <div class="">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="white_card_body overall-program-expenditure-amount pb-0">
+                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
+
+                            </div>
+                        </div>
+                <!-- <div class="row">
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
                             <div class="">
@@ -370,23 +385,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body overall-program-expenditure-amount pb-0">
-                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -404,7 +403,8 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program-ucform" name="program_id" class="form-control filter_program_id national_ucForm_filter">
+                            <select id="national-program-ucform" name="program_id"
+                                class="form-control filter_program_id national_ucForm_filter">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -414,19 +414,22 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control national_institute_name" id="national_institute_name">
+                            <select name="institute_name" class="form-control national_institute_name"
+                                id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                    <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
-                                        {{ $institute->name }}
-                                    </option>
+                                <option value="{{ $institute->id }}"
+                                    {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-ucform-fy" name="uc_financial_year" class="form-control national_ucForm_filter">
+                            <select id="national-ucform-fy" name="uc_financial_year"
+                                class="form-control national_ucForm_filter">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
@@ -551,7 +554,8 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select id="program_wise_yearly" name="program_wise_yearly" class="form-control yearly_soe_expenditure">
+                        <select id="program_wise_yearly" name="program_wise_yearly"
+                            class="form-control yearly_soe_expenditure">
                             <option value="">Select Program</option>
                             @foreach($institutePrograms as $key => $value)
                             <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -576,12 +580,14 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select name="institute_wise" class="form-control institute_wise yearly_soe_expenditure" id="institute_wise">
+                        <select name="institute_wise" class="form-control institute_wise yearly_soe_expenditure"
+                            id="institute_wise">
                             <option value="">Select Institute</option>
                             @foreach($institutes as $institute)
-                                <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
-                                    {{ $institute->name }}
-                                </option>
+                            <option value="{{ $institute->id }}"
+                                {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                {{ $institute->name }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -592,7 +598,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="devider-line">
         <div></div>
     </div>
@@ -606,7 +612,8 @@
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                    <select id="national-program-barchart" name="national-program-barchart" class="form-control national_program_barchart">
+                    <select id="national-program-barchart" name="national-program-barchart"
+                        class="form-control national_program_barchart">
                         <option value="">Select Program</option>
                         @foreach($institutePrograms as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -630,7 +637,8 @@
                     <div>
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
                                     class="text-danger">*</sup></b></label>
-                        <select id="expenditure_unspent" name="expenditure_unspent" class="form-control national_program_barchart">
+                        <select id="expenditure_unspent" name="expenditure_unspent"
+                            class="form-control national_program_barchart">
                             <option value="">Select Expenditure/Unspent Balance</option>
                             <option value="expenditure">Expenditure</option>
                             <option value="unspent">Unspent Balance</option>
@@ -645,9 +653,9 @@
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1">
-                           
+
                             <i class="fas fa-balance-scale"></i>
-                            </div>
+                        </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
                             <span class="number" id="overall_expenditure_chart"></span>
@@ -658,7 +666,7 @@
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1">
-                           
+
                             <i class="bi bi-currency-dollar"></i>
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
@@ -760,9 +768,10 @@
                                         <select id="national-user-fy-barchart-head" name="financial_year"
                                             class="form-control">
                                             <option value="">Select Year</option>
-                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
-                                                . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
-                                                {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                                $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : ''
+                                                ; @endphp <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} -
+                                                {{$i+1}}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -779,7 +788,7 @@
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                                
+
                                 <i class="fas fa-school"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
@@ -791,7 +800,7 @@
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                                
+
                                 <i class="fas fa-hands-helping"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
@@ -803,8 +812,8 @@
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                               
-                                <i class="fas fa-flask"></i> 
+
+                                <i class="fas fa-flask"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NRCP-<br>Lab</h3>
@@ -815,7 +824,7 @@
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                               
+
                                 <i class="fas fa-vials"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
@@ -827,7 +836,7 @@
                     <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                            <i class="fas fa-stethoscope"></i>
+                                <i class="fas fa-stethoscope"></i>
                                 <!-- <i class="fas fa-heartbeat"></i> -->
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
@@ -878,7 +887,8 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="program_wise" class="form-control filter_program_id national_all_form_map" id="program_wise_all_form">
+                            <select name="program_wise" class="form-control filter_program_id national_all_form_map"
+                                id="program_wise_all_form">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -888,41 +898,43 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_wise" class="form-control national_institute_name national_all_form_map" id="institute_wise_all_form">
+                            <select name="institute_wise"
+                                class="form-control national_institute_name national_all_form_map"
+                                id="institute_wise_all_form">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                    <option value="{{ $institute->id }}">
-                                        {{ $institute->name }}
-                                    </option>
+                                <option value="{{ $institute->id }}">
+                                    {{ $institute->name }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="month_name_all_form" class="form-control national_all_form_map" id="month_wise_all_form">
+                            <select name="month_name_all_form" class="form-control national_all_form_map"
+                                id="month_wise_all_form">
                                 <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
                                 @php
-                                    $selected = old('month') == $month ? 'selected' : '';
+                                $selected = old('month') == $month ? 'selected' : '';
                                 @endphp
                                 <option value="{{ $month }}" {{ $selected }}>
                                     {{ $month }}
                                 </option>
-                            @endforeach
+                                @endforeach
                             </select>
-                        </div>                        
+                        </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="financial_year" class="form-control national_all_form_map" id="financial_wise_all_form">
+                            <select name="financial_year" class="form-control national_all_form_map"
+                                id="financial_wise_all_form">
                                 <option value="">Choose Financial Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    @endfor
                             </select>
                         </div>
 
@@ -934,51 +946,116 @@
                     <div class="border country-overall-data p-3 rounded-1 pt-0">
                         <ul>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">1</span></span><span
-                                    class="country-list-content">Unspent Balance (GIA) as on 1st April..</span> <span
-                                    class="state-data-total" id="unspent_balance_1st_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">1</span></span><span
+                                            class="country-list-content">Unspent Balance (GIA) as on 1st April..</span>
+                                    </div>
+                                    <div>
+
+                                        <span class="state-data-total" id="unspent_balance_1st_total">0</span>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">2</span></span><span
-                                    class="country-list-content">GIA Received in F.Y</span> <span
-                                    class="state-data-total" id="gia_received_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">2</span></span><span
+                                            class="country-list-content">GIA Received in F.Y</span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="gia_received_total">0</span>
+                                    </div>
+                                </div>
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">3</span></span><span
-                                    class="country-list-content">Total Balance excluding interest</span> <span
-                                    class="state-data-total" id="total_balance_excluding_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">3</span></span><span
+                                            class="country-list-content">Total Balance excluding interest</span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="total_balance_excluding_total">0</span>
+                                    </div>
+                                </div>
+
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">4</span></span><span
-                                    class="country-list-content">Actual Expenditure incurred during the current F.Y
-                                    </span> <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">4</span></span><span
+                                            class="country-list-content">Actual Expenditure incurred during the current
+                                            F.Y
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
+                                    </div>
+                                </div>
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">5</span></span><span
-                                    class="country-list-content">Unspent Balance F=(D-E)</span> <span
-                                    class="state-data-total" id="unspent_balance_d_e_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">5</span></span><span
+                                            class="country-list-content">Unspent Balance F=(D-E)</span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="unspent_balance_d_e_total">0</span>
+                                    </div>
+                                </div>
+
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">6</span></span><span
-                                    class="country-list-content">Committed Liabilities (if any)</span> <span
-                                    class="state-data-total" id="committed_liabilities_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">6</span></span><span
+                                            class="country-list-content">Committed Liabilities (if any)</span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="committed_liabilities_total">0</span>
+                                    </div>
+                                </div>
+
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">7</span></span><span
-                                    class="country-list-content">Unspent Balance of (GIA) as on 31st March H=(F-G)</span>
-                                <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">7</span></span><span
+                                            class="country-list-content">Unspent Balance of (GIA) as on 31st March
+                                            H=(F-G)</span>
+                                    </div>
+                                    <div>
+                                        <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
+                                    </div>
+                                </div>
+
+
+
                             </li>
                             <li>
-                                <span class="arrow arrow-left"><span class="number">8</span></span><span
-                                    class="country-list-content">UC Uploaded</span> <span
-                                    class="state-data-total" id="uc_uploads_total">0</span>
+                                <div class="overall-data-li">
+                                    <div>
+                                        <span class="arrow arrow-left"><span class="number">8</span></span><span
+                                            class="country-list-content">UC Uploaded</span>
+                                    </div>
+                                    <div>
+
+                                        <span class="state-data-total" id="uc_uploads_total">0</span>
+                                    </div>
+                                </div>
+
                             </li>
                         </ul>
 
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="integrated-dashboard-india-map3" class="border rounded mb-3"></div>
+                    <div id="integrated-dashboard-india-map3" class="border rounded"></div>
                 </div>
             </div>
         </div>
@@ -1016,34 +1093,36 @@
                                         class="text-danger">*</sup></b></label>
                             <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
-                                    @php
-                                        $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    @endfor
                             </select>
                         </div>
                         <div class="col">
                             <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
-                                <select class="form-control"  name="modulename" id="form_type" required>
+                            <select class="form-control" name="modulename" id="form_type" required>
                                 <option value="">Select Module</option>
-                                <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form</option>
-                                <option value='2' {{  request('modulename') == '2' ? 'selected' : '' }}>UC Upload</option>
+                                <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form
+                                </option>
+                                <option value='2' {{  request('modulename') == '2' ? 'selected' : '' }}>UC Upload
+                                </option>
                             </select>
-                            @error('modulename') 
-                                <span class="form-text text-danger">{{ $message }}</span>
+                            @error('modulename')
+                            <span class="form-text text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control national_institute_name" id="national_institute_name">
+                            <select name="institute_name" class="form-control national_institute_name"
+                                id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                    <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
-                                        {{ $institute->name }}
-                                    </option>
+                                <option value="{{ $institute->id }}"
+                                    {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -1053,21 +1132,23 @@
                             <select name="month" class="form-control" id="national_month">
                                 <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)
-                                    @php
-                                        $selected = old('month') == $month ? 'selected' : '';
-                                    @endphp
-                                    <option value="{{ $month }}" {{ $selected }}>
-                                        {{ $month }}
-                                    </option>
+                                @php
+                                $selected = old('month') == $month ? 'selected' : '';
+                                @endphp
+                                <option value="{{ $month }}" {{ $selected }}>
+                                    {{ $month }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-12">
                             <div class="float-end mt-4">
-                                <button type="button" class="btn bg-cancel me-3 form_type_uc_list" id="form_type_uc_list">Search</button>
+                                <button type="button" class="btn bg-cancel me-3 form_type_uc_list"
+                                    id="form_type_uc_list">Search</button>
                                 <button type="reset" class="btn bg-danger me-3 form_type_uc_list">Reset</button>
-                                <button type="submit" class="btn btn-primary" id="form_type_export_button">Export Excel</button>
+                                <button type="submit" class="btn btn-primary" id="form_type_export_button">Export
+                                    Excel</button>
                             </div>
                         </div>
                     </div>

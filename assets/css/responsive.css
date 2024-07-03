@@ -151,8 +151,14 @@
 
 @media (min-width:768px) and (max-width:1299px) {
    .expenditure_height {
-      height: 142px;
+      height: 150px;
    }
+   .expenditure-count span:nth-child(1) {
+      font-size: 19px !important;
+  }
+   .expenditure-count span:nth-child(2) {
+      font-size: 13px !important;
+  }
 }
 
 @media (min-width:1350px) and (max-width:1450px) {
@@ -209,6 +215,10 @@
       min-width: 50%;
       } */
 
+      .col-md-4.w-40 {
+         width: 50% !important;
+     }
+
    .expenditure_lacks {
       padding: 0 10px;
       height: 190px;
@@ -226,8 +236,12 @@
 }
 
 @media (max-width:1580px) {
-
-
+   span.country-list-content{
+      font-size: 13px;
+   }
+   .country-overall-data span.state-data-total{
+      font-size: 13px;
+   }
    .SOE-UC-list .mr_10 {
       margin: 0 !important;
    }

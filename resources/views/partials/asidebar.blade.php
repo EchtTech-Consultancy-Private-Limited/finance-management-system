@@ -88,7 +88,7 @@
             <li class>
                <a class="" href="{{ route('national-user.soe-expense-index') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/4.svg') }}" alt>
+                  <i class="fas fa-list"></i>
                   </div>
                   <div class="nav_title">
                      <span>SOE Uploded List</span>
@@ -98,7 +98,7 @@
             <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/4.svg') }}" alt>
+                  <i class="fas fa-school"></i>
                   </div>
                   <div class="nav_title">
                      <span>NOHPPCZ -RC's</span>
@@ -112,7 +112,7 @@
             <li class>
                <a class="" href="{{ route('national-user.nohppczrsss') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/11.svg') }}" alt>
+                  <i class="fas fa-hands-helping"></i>
                   </div>
                   <div class="nav_title">
                      <span>NOHPPCZ -SSS</span>
@@ -126,7 +126,7 @@
             <li class>
                <a class="" href="{{ route('national-user.nrcplab') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/5.svg') }}" alt>
+                  <i class="fas fa-flask"></i>
                   </div>
                   <div class="nav_title">
                      <span>NRCP -Lab</span>
@@ -140,7 +140,7 @@
             <li class>
                <a class="" href="{{ route('national-user.ppcllab') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/8.svg') }}" alt>
+                  <i class="fas fa-vials"></i>
                   </div>
                   <div class="nav_title">
                      <span>PPCL -Lab</span>
@@ -154,7 +154,7 @@
             <li class>
                <a class="" href="{{ route('national-user.pmabhimsss') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/11.svg') }}" alt>
+                  <i class="fas fa-stethoscope"></i>
                   </div>
                   <div class="nav_title">
                      <span>PM-ABHIM-SSS</span>
@@ -168,7 +168,7 @@
             <li class=>
                <a href="{{ route('national-user.report') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                  <i class="bi bi-file-earmark-text"></i>
                   </div>
                   <div class="nav_title">
                      <span>Generate Report</span>

@@ -624,80 +624,80 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         }]
      });
 
-     Highcharts.chart('integrated-dashboard-total-interest-dd', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false,
-            height:'200',
-            // marginTop: ,
-        },
-        credits: {
-           enabled: false
-        },
-        exporting: {
-           enabled: false
-        },
-        title: {
-            text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
-            align: 'center',
-            verticalAlign: 'middle',
-            y: 30,
-            style: {
-                fontSize: '16px',
-                color: '#000000'
-            }
-        },
-        subtitle: {
-            text: `
-            <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
-        align: 'center',
-        verticalAlign: 'middle',
-        y: 70,
-        style: {
-            fontSize: '16px',
-            color: '#000000'
-        }
+    //  Highcharts.chart('integrated-dashboard-total-interest-dd', {
+    //     chart: {
+    //         plotBackgroundColor: null,
+    //         plotBorderWidth: 0,
+    //         plotShadow: false,
+    //         height:'200',
+    //         // marginTop: ,
+    //     },
+    //     credits: {
+    //        enabled: false
+    //     },
+    //     exporting: {
+    //        enabled: false
+    //     },
+    //     title: {
+    //         text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
+    //         align: 'center',
+    //         verticalAlign: 'middle',
+    //         y: 30,
+    //         style: {
+    //             fontSize: '16px',
+    //             color: '#000000'
+    //         }
+    //     },
+    //     subtitle: {
+    //         text: `
+    //         <div class="graph-title" style="color:#3a7ed3; font-size:16px !important; height:100px"> <span>Interest DD Returned</span> </div>`,
+    //     align: 'center',
+    //     verticalAlign: 'middle',
+    //     y: 70,
+    //     style: {
+    //         fontSize: '16px',
+    //         color: '#000000'
+    //     }
 
           
-        },
-        tooltip: {
-            enabled: true,
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-              colors: ['#558ed5', '#c6d9f1'],
-                dataLabels: {
-                    enabled: true,
-                    distance: -50,
-                    style: {
-                        fontWeight: 'bold',
-                        color: 'white'
-                    }
-                },
-                startAngle: -90,
-                endAngle: 90,
-                center: ['50%', '75%'],
-                size: '110%'
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: '',
-            innerSize: '60%',
-            data: [
-                ['', 10],
-                ['', 90],
+    //     },
+    //     tooltip: {
+    //         enabled: true,
+    //     },
+    //     accessibility: {
+    //         point: {
+    //             valueSuffix: '%'
+    //         }
+    //     },
+    //     plotOptions: {
+    //         pie: {
+    //           colors: ['#558ed5', '#c6d9f1'],
+    //             dataLabels: {
+    //                 enabled: true,
+    //                 distance: -50,
+    //                 style: {
+    //                     fontWeight: 'bold',
+    //                     color: 'white'
+    //                 }
+    //             },
+    //             startAngle: -90,
+    //             endAngle: 90,
+    //             center: ['50%', '75%'],
+    //             size: '110%'
+    //         }
+    //     },
+    //     series: [{
+    //         type: 'pie',
+    //         name: '',
+    //         innerSize: '60%',
+    //         data: [
+    //             ['', 10],
+    //             ['', 90],
                 
                
-            ]
-        }]
-     });
+    //         ]
+    //     }]
+    //  });
 
     // Overall Program Expenditure Amount
     let seriesData = programDetails.program_names.map((name, index) => ({
@@ -908,9 +908,9 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         xAxis: {
             type: "category",
             labels: {
-                autoRotation: [-70, -90],
+                autoRotation: [-80, -90],
                 style: {
-                    fontSize: "13px",
+                    fontSize: "11px",
                     fontFamily: "Verdana, sans-serif",
                 },
             },
@@ -948,7 +948,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 dataLabels: {
                     enabled: true,
                     rotation: -90,
-                    color: "#FFFFFF",
+                    color: "#000",
                     inside: true,
                     verticalAlign: "top",
                     format: "{point.y:.1f}", // one decimal
@@ -1660,6 +1660,7 @@ function allFormMapFilter(totalData,mapDetails){
         Highcharts.mapChart("integrated-dashboard-india-map3", {
             chart: {
                 map: topology,
+                height:376
             },
             title: {
                 text: "",
