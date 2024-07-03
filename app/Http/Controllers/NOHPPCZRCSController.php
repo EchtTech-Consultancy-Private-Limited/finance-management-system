@@ -36,7 +36,7 @@ class NOHPPCZRCSController extends Controller
         }
         $currentFY = date('Y').' - '.date('Y')+1;
         $institutePrograms = InstituteProgram::get();
-        $institutes = Institute::get();
+        $institutes = Institute::where('program_id', 1)->get();
         $sorUcLists = SOEUCUploadForm::with('users')->where('program_id', 1)->orderBy('id','desc')->get();
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
             ->where('financial_year', $currentFY)
@@ -151,9 +151,9 @@ class NOHPPCZRCSController extends Controller
         }
 
         // UC Received or not map code
-        $UcUploadCount = SOEUCUploadForm::count();
-        $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
-        $UcUploadNotApproved = SOEUCUploadForm::where('status', '2')->count();
+        $UcUploadCount = SOEUCUploadForm::where('program_id', 1)->count();
+        $UcUploadApproved = SOEUCUploadForm::where(['status' => '1', 'program_id' => 1])->count();
+        $UcUploadNotApproved = SOEUCUploadForm::where(['status' => '2', 'program_id' => 1])->count();
         $UcUploadDetails = [
             'UcApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
             'UcNotApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
@@ -264,5 +264,187 @@ class NOHPPCZRCSController extends Controller
         // End number of percentage program wise
         return response()->json(['totalArray' => $totalArray, 'UcUploadDetails' => $UcUploadDetails, 'programHeadDetails' => $programHeadDetails], 200);
     }
+    
+    /**
+     * nohppczrcsNationalFilterUcFormDashboard
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function nohppczrcsNationalFilterUcFormDashboard(Request $request)
+    {
+        $query = SOEUCUploadForm::query();        
+        if ($request->has('nohppczrcsNationalUcformFy') && $request->nohppczrcsNationalUcformFy) {
+            $query->where('financial_year', $request->nohppczrcsNationalUcformFy);
+        }        
+        if ($request->has('nohppczrcsNationalInstituteUcForm') && $request->nohppczrcsNationalInstituteUcForm) {
+            $query->where('institute_id', $request->nohppczrcsNationalInstituteUcForm);
+        }        
+        $UcUploadCount = $query->count();
+        $UcUploadApproved = clone $query;
+        $UcUploadApprovedCount = $UcUploadApproved->where('status', 1)->count();
+        $UcUploadNotApproved = clone $query;
+        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('status', 2)->count();
+        
+        $UcUploadDetails = [
+            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
+            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
+            'UcApprovedNumber' => $UcUploadApprovedCount,
+            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
+            'TotalUcForm' => $UcUploadCount,
+        ];
+        return response()->json(['UcUploadDetails' => $UcUploadDetails], 200);
+    }
+    
+    /**
+     * nohppczrcsSoeExpenditureFilter
+     *
+     * @return void
+     */
+    public function nohppczrcsSoeExpenditureFilter(Request $request)
+    {
+        $yearlySoeExpenditureProgram = [];
+        $yearlySoeExpenditureInstitute = [];       
 
+        if ($request->filled('program_wise_month')) {
+            $queryProgram = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('month', $request->program_wise_month)
+                            ->where('program_id', 1)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+            foreach ($queryProgram as $financialYear => $expenditure) {
+                $yearlySoeExpenditureProgram[] = [$financialYear, $expenditure / 2];
+            }
+        }else {
+            $queryProgram = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('program_id', 1)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+    
+            foreach ($queryProgram as $financialYear => $expenditure) {
+                $yearlySoeExpenditureProgram[] = [$financialYear, $expenditure / 2];
+            }
+        }
+        
+        if ($request->filled('institute_wise_nohppczrcs')) {
+            $queryInstitute = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('institute_id', $request->institute_wise_nohppczrcs)
+                            ->where('program_id', 1)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+
+            foreach ($queryInstitute as $financialYear => $expenditure) {
+                $yearlySoeExpenditureInstitute[] = [$financialYear, $expenditure / 2];
+            }
+        }else {
+            $queryInstitute = SOEUCForm::with('SoeUcFormCalculation')
+                            ->where('program_id', 1)
+                            ->get()
+                            ->groupBy('financial_year')
+                            ->map(function ($group) {
+                                return $group->pluck('SoeUcFormCalculation')
+                                            ->flatten()
+                                            ->sum('actual_expenditure');
+                            });
+    
+            foreach ($queryInstitute as $financialYear => $expenditure) {
+                $yearlySoeExpenditureInstitute[] = [$financialYear, $expenditure / 2];
+            }
+        }
+
+        $yearlySoeDetails = [
+            'month' => $yearlySoeExpenditureProgram,
+            'institute' => $yearlySoeExpenditureInstitute,
+        ];
+        return response()->json(['yearlySoeDetails' => $yearlySoeDetails], 200);
+    }
+    
+    /**
+     * nohppczrcsDashboardReport
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function nohppczrcsDashboardReport(Request $request)
+    {
+        $fileName = '';
+        $arrays = [];
+        switch ($request->modulename) {
+            case '1':
+                $fileName = 'SOEUForm';
+                $query = SOEUCForm::with('states','instituteProgram','SoeUcFormCalculation')->where('program_id', 1);
+                break;
+            case '2':
+                $fileName = 'UCUpload';
+                $query = SOEUCUploadForm::with('program')->where('program_id', 1);
+                break;
+            default:
+                return response()->json(['error' => 'Invalid module name'], 400);
+        }
+        if(!empty($request->national_institute_name)){
+            $query->where('institute_id', $request->national_institute_name);
+        }
+        if(!empty($request->financial_year)){
+            $query->where('financial_year', $request->financial_year);
+        }        
+        if(!empty($request->month)){
+            $query->where('month', $request->month);
+        }
+        if ($request->modulename == '2') {
+            $sorUcLists = $query->get();
+            $output = "";
+            $count = 0;
+            if ($sorUcLists) {
+                foreach ($sorUcLists as $sorUcList) {
+                    $count++;
+                    $output .= '<tr>
+                                    <td>' . $count . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->qtr_uc) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->program->name) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->financial_year) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->month) . '</td>
+
+
+                                    <td>';
+                    if ($sorUcList->file) {
+                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
+                                        <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </a>';
+                    } else {
+                        $output .= 'N/A';
+                    }
+                    $output .= '</td>
+                                    <td>' . date('d-m-Y', strtotime($sorUcList->date)) . '</td>
+                                    <td>' . htmlspecialchars($sorUcList->status == '1' ? 'Approved' : 'Returened') . '</td>
+                                    <td>' . ($sorUcList->reason ?? 'N/A') . '</td>
+                    </tr>';
+                }
+            } else {
+                $output .= 'Oops, something went wrong';
+            }
+            return $output;
+        }
+        if(!empty($request->national_institute_name)){
+            $query->where('institute_id', $request->national_institute_name);
+        }
+        $arrays = [$query->get()->toArray()];
+        return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
+    }
 }

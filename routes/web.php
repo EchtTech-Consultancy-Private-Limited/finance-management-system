@@ -53,7 +53,9 @@ Route::middleware(['auth'])->group(function () {
         // NOHPPCZ-RCs Dashboard
         Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');
         Route::get('/nohppczrcs-filter-dashboard', [NOHPPCZRCSController::class, 'nohppczrcsNationalFilterDdashboard'])->name('nohppczrcs-filter-dashboard');
-
+        Route::get('/nohppczrcs-filter-uc-form-dashboard', [NOHPPCZRCSController::class, 'nohppczrcsNationalFilterUcFormDashboard'])->name('nohppczrcs-filter-uc-form-dashboard');
+        Route::get('/nohppczrcs-soe-expenditure-filter', [NOHPPCZRCSController::class, 'nohppczrcsSoeExpenditureFilter'])->name('nohppczrcs-soe-expenditure-filter');        
+        Route::get('nohppczrcs-dashboard-report', [NOHPPCZRCSController::class, 'nohppczrcsDashboardReport'])->name('nohppczrcs-dashboard-report');
         // NOHPPCZ-SSS Dashboard
         Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('nohppczrsss');
         Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('nrcplab');

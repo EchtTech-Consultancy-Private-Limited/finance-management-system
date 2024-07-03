@@ -434,7 +434,7 @@
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                    @endfor
+                                @endfor
                             </select>
                         </div>
 

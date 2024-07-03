@@ -584,7 +584,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
             formatter: function() {
                 if (this.point.name === '') {
                     if (this.point.y === totalcommittedLiabilities) {
-                        return `Interest Earned: ${this.y}`;
+                        return `Committed Liabilities: ${this.y}`;
                     }
                 }
                 return `${this.point.name}: ${this.y}`;
