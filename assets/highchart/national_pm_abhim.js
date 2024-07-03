@@ -195,6 +195,7 @@ let overallChart_pm_abhim = Highcharts.chart('integrated-dashboard-chart-overall
         enabled: false,
         layout: 'vertical',
         align: 'right',
+        width:window.innerWidth < 1599 ? 150 : 270,
         verticalAlign: 'middle',
         itemStyle: {
             color: '#000000',
@@ -248,7 +249,7 @@ let overallChart_pm_abhim = Highcharts.chart('integrated-dashboard-chart-overall
 function addTextLabel(chart) {
     var textWidth = 500;
     var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-    var textY = chart.plotTop + chart.plotHeight * 0.35;
+    var textY = chart.plotTop + chart.plotHeight * 0.32;
 
     chart.customLabel = chart.renderer
         .label(
@@ -270,7 +271,7 @@ function addTextLabel(chart) {
 function updateTextLabel(chart) {
     var textWidth = 500;
     var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-    var textY = chart.plotTop + chart.plotHeight * 0.35;
+    var textY = chart.plotTop + chart.plotHeight * 0.32;
 
     if (chart.customLabel) {
         chart.customLabel.attr({

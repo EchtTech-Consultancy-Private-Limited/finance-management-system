@@ -234,7 +234,7 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
         {
             chart: {
                 type: "pie",
-                height: window.innerWidth < 1300 ? 218 : 215,
+                height: window.innerWidth < 1599 ? 180 : 215,
                 events: {
                     load: function() {
                         addTextLabel(this);
@@ -256,6 +256,7 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
                 enabled: true,
                 layout: "vertical",
                 align: "right",
+                width:window.innerWidth < 1599 ? 150 : 270,
                 verticalAlign: "middle",
                 itemStyle: {
                     color: "#000000",
@@ -310,10 +311,10 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
     function addTextLabel(chart) {
         var textWidth = 500;
         var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-        var textY = chart.plotTop + chart.plotHeight * 0.35;    
+        var textY = chart.plotTop + chart.plotHeight * 0.32;    
         chart.customLabel = chart.renderer
             .label(
-                '<div style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">'+programHeadDetails.total_program_expenditure+'</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
+                '<div  class="expenditure-count" style="width: ' + textWidth + 'px; text-align: center; position:relative;"><span style="font-size:22px; font-weight: 600; margin-bottom:20px;">'+programHeadDetails.total_program_expenditure+'</span><br><span style="font-size:14px;">All Program <br> Exp</span></div>',
                 textX,
                 textY,
                 null,
@@ -329,7 +330,7 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
     function updateTextLabel(chart) {
         var textWidth = 500;
         var textX = chart.plotLeft + chart.plotWidth * 0.4 - textWidth / 2;
-        var textY = chart.plotTop + chart.plotHeight * 0.35;
+        var textY = chart.plotTop + chart.plotHeight * 0.32;
 
         if (chart.customLabel) {
             chart.customLabel.attr({
