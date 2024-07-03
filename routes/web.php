@@ -44,17 +44,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/all-form-map-filter', [DashboardController::class, 'allFormMapFilter'])->name('all-form-map-filter');
         Route::get('/filter-uc-form-dashboard', [DashboardController::class, 'nationalFilterUcFormDashboard'])->name('filter-uc-form-dashboard');
         Route::post('/total-card', [DashboardController::class, 'totalCard'])->name('total-card');
-        Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');
-        Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('nohppczrsss');
-        Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('nrcplab');
-        Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('ppcllab');
-        Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
         Route::get('/soe-expense-list', [NationalSeoExpenseController::class, 'index'])->name('soe-expense-index');
         Route::get('/soe-expense-view/{id}', [NationalSeoExpenseController::class, 'view'])->name('soe-expense-view');
         Route::post('/soe-change-status/{id}', [NationalSeoExpenseController::class, 'changeStatus'])->name('soe-change-status');
         Route::get('/report', [DashboardController::class, 'report'])->name('report');
         Route::get('report-export', [DashboardController::class, 'export'])->name('report-export');
         Route::get('dashboard-report', [DashboardController::class, 'dashboardReport'])->name('dashboard-report');
+        // NOHPPCZ-RCs Dashboard
+        Route::get('/nohppczrcs', [NOHPPCZRCSController::class, 'index'])->name('nohppczrcs');
+        Route::get('/nohppczrcs-filter-dashboard', [NOHPPCZRCSController::class, 'nohppczrcsNationalFilterDdashboard'])->name('nohppczrcs-filter-dashboard');
+
+        // NOHPPCZ-SSS Dashboard
+        Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('nohppczrsss');
+        Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('nrcplab');
+        Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('ppcllab');
+        Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.','middleware' => ['checkUserType:institute']], function () {

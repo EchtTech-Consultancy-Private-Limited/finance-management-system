@@ -207,7 +207,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         title: {
             text: ` <div class="graph-title" style="color:#00b050; ">
-            ${percentageExpenditure} %
+            ${totalExpenditure} L
         </div>`,
             align: 'center',
             verticalAlign: 'middle',
@@ -296,7 +296,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         title: {
             text: ` <div class="graph-title" style="color:#00b050; ">
-            ${percentageUnspentBalance} %
+            ${totalUnspentBalance} L
         </div>`,
             align: 'center',
             verticalAlign: 'middle',

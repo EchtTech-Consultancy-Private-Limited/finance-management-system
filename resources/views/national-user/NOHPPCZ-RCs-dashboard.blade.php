@@ -46,11 +46,12 @@
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
-                            <option value="">Choose Financial Year</option>
-                            <option value="">2023-2024</option>
-                            <option value="">2022-2023</option>
-                            <option value="">2021-2022</option>
+                        <select id="nohppcz-rcs-year" name="financial_year" class="form-control nohppcz_rcs_card">
+                            <option value="">Select Year</option>
+                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
+                                <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                @endfor
                         </select>
                     </div>
                 </div>
@@ -58,11 +59,11 @@
                     <div class="d-flex align-items-center">
                         <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
+                        <select name="nohppcz-rcs-month" class="form-control nohppcz_rcs_card" id="nohppcz-rcs-month">
                             <option value="">Select Month</option>
-                            <option value="">January</option>
-                            <option value="">Febuary</option>
-                            <option value="">March</option>
+                            @foreach ($months as $key => $month)
+                                <option value="{{ $month }}">{{ $month }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -87,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="white_card_body p-0">
-                                <div id="national-total-expenditure-lac" class="expenditure_lacks"></div>
+                                <div id="national-nohppczrcs-total-expenditure-lac" class="expenditure_lacks"></div>
 
                             </div>
                         </div>
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="white_card_body p-0">
-                                <div id="national-total-unspent-lac" class="expenditure_lacks"></div>
+                                <div id="national-nohppczrcs-total-unspent-lac" class="expenditure_lacks"></div>
 
                             </div>
                         </div>
@@ -123,28 +124,10 @@
                     </div>
                     <div class="white_card_body p-0 overall-expenditure">
                         <div class="row align-items-center">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div id="integrated-dashboard-chart-overall-program-expenditure-amount-rc"></div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="bg-light  rounded-2 overall-content">
-                                    <ul>
-                                        <li>Current Man Power</li>
-                                        <li>Meetings, Training & Research</li>
-                                        <li>Lab Strengthening Kits, Regents & Consumable (Recurring)</li>
-                                        <li>IEC</li>
-                                        <li>Office Expenses & Travel</li>
-                                        <li>Lab Strengthening (Non Recurring)</li>
-                                        <li>Other Activities</li>
-                                    </ul>
-                                </div>
-
-
-                            </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -199,7 +182,7 @@
                 <div class="">
                     <div class="box_header m-0">
                         <div class="main-title">
-                            <h3 class="m-0">Total Interest Earned <br> in C.Y. %</h3>
+                            <h3 class="m-0">Total Committed Liabilities</h3>
                         </div>
 
                     </div>
@@ -243,24 +226,15 @@
             <div class="col-md-4 col-lg">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
-                        <h4 id="national-giaReceivedTotal">0</h4>
+                        <h4 id="national-nohppcz-rcs-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
                         <p>GIA Received during the Current F.Y. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg">
-                <div class="single_crm border-line-2 p-0">
-                    <div class="crm_body">
-                        <h4 id="national-committedLiabilitiesTotal">0
-                        </h4>
-                        <p>Interest earned in C.Y. </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-lg">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
-                        <h4 id="national-totalBalanceTotal">0</h4>
+                        <h4 id="national-nohppcz-rcs-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                         <p>Total Balance excluding interest</p>
                     </div>
                 </div>
@@ -268,16 +242,25 @@
             <div class="col-md-4 col-lg">
                 <div class="single_crm border-line-4 p-0">
                     <div class="crm_body">
-                        <h4 id="national-actualExpenditureTotal">0</h4>
+                        <h4 id="national-nohppcz-rcs-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
                         <p>Actual Expenditure incurred during the current F.Y </p>
+                    </div>
+                </div>
+            </div>                
+            <div class="col-md-4 col-lg">
+                <div class="single_crm border-line-5 p-0">
+                    <div class="crm_body">
+                        <h4 id="national-nohppcz-rcs-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
+                        <p>Unspent Balance (excluding Interest) </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-lg">
-                <div class="single_crm border-line-5 p-0">
+                <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
-                        <h4 id="national-unspentBalance31stTotal">0</h4>
-                        <p>Unspent Balance (excluding Interest ) </p>
+                        <h4 id="national-nohppcz-rcs-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
+                        </h4>
+                        <p>Committed Liabilities</p>
                     </div>
                 </div>
             </div>
