@@ -276,11 +276,13 @@
                 <div class="d-flex align-items-center">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                 class="text-danger">*</sup></b></label>
-                    <select name="" class="form-control" id="">
+                    <select name="nohppczrcs-national-institute-ucform" class="form-control nohppczrcs_national_ucForm_filter" id="nohppczrcs-national-institute-ucform">
                         <option value="">Choose the Institute</option>
-                        <option value="">Institute Name</option>
-                        <option value="">Institute Name</option>
-                        <option value="">Institute Name</option>
+                        @foreach($institutes as $institute)
+                        <option value="{{ $institute->id }}">
+                            {{ $institute->name }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
                 </div>
@@ -289,11 +291,11 @@
                 <div class="d-flex align-items-center">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
                                 class="text-danger">*</sup></b></label>
-                    <select name="" class="form-control" id="">
+                    <select name="nohppcarcs-national-ucform-fy" class="form-control nohppczrcs_national_ucForm_filter" id="nohppcarcs-national-ucform-fy">
                         <option value="">Choose Financial Year</option>
-                        <option value="">2023-2024</option>
-                        <option value="">2022-2023</option>
-                        <option value="">2021-2022</option>
+                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                            <option value="{{$i}} - {{$i+1}}">{{$i}} - {{$i+1}}</option>
+                        @endfor
                     </select>
                 </div>
                 </div>
@@ -343,38 +345,47 @@
     </div>
 
     <div class="col-md-12">
-        <div class="white_card p-3 mb-3">
+        <div class="white_card p-3 mb_30 p-4">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive-sm pt-3">
-                        <table class="table datatable table-bordered">
+                    <div class="QA_table pt-3">
+                        <table class="table national_uc_datatable table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Name of Institute</th>
+                                    <th scope="col">QTR UC</th>
+                                    <th scope="col">Program</th>
                                     <th>Year of UC</th>
-                                    <th>All UCs</th>
+                                    <th>UC File Upload</th>
                                     <th>UC Uploaded Date</th>
                                     <th>UC Status</th>
                                     <th>Remarks</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
-                                    <td>Display Selected Name</td>
-                                    <td>Display Selected Financial Year</td>
-                                    <td>View UC</td>
-                                    <td>Display submission date</td>
-                                    <td><span class="approve badge bg-success">Approved</span></td>
-                                    <td>Remarks</td>
+                                    <td>{{ $sorUcList->qtr_uc }}</td>
+                                    <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
+                                    <td>{{ @$sorUcList->year }}</td>
+                                    <td>
+                                        @if ($sorUcList->file)
+                                        <a class="nhm-file"
+                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                            <span>Download ({{ $sorUcList->file_size }})</span>
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </a>
+                                        @else
+                                        N/A
+                                        @endif
+                                    </td>
+                                    <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
+                                    <td><span
+                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned' : 'Pending') }}</span>
+                                    </td>
+                                    <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Display Selected Name</td>
-                                    <td>Display Selected Financial Year</td>
-                                    <td>View UC</td>
-                                    <td>Display submission date</td>
-                                    <td><span class="rejected badge bg-danger">Rejected</span></td>
-                                    <td>Remarks</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -392,10 +403,13 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select name="nohppcz-rcs-month-soe-expenditure" id="nohppcz-rcs-month-soe-expenditure" class="nice_Select2 max-width-220 nohppcz_rcsyearly_soe_expenditure">
+                            <option value="">Show by month</option>
+                            @foreach ($months as $key => $month)
+                            <option value="{{ $month }}">
+                                {{ $month }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -416,10 +430,13 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select name="nohppcz-rcs-institute-soe-expenditure" id="nohppcz-rcs-institute-soe-expenditure" class="nice_Select2 max-width-220 nohppcz_rcsyearly_soe_expenditure">
+                            <option value="">Show by Institute</option>
+                            @foreach($institutes as $institute)
+                            <option value="{{ $institute->id }}">
+                                {{ $institute->name }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -432,249 +449,104 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper ">
-        <div class="crad white_card mb_30 p-4">
-            <div>
-                <form action="" class="select-form-s">
-                    <div class="row">
-                        <div class="col-md-8">
+    <div class="row">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year
-                                            <sup class="text-danger">*</sup></b></label>
-                                    <select name="" class="form-control" id="">
-                                        <option value="">Choose Financial Year</option>
-                                        <option value="">2023-2024</option>
-                                        <option value="">2022-2023</option>
-                                        <option value="">2021-2022</option>
-                                    </select>
+        <div class="col-xl-12 ">
+            <div class="crad white_card mb_30 p-4">
+                <div>
+                    <form action="{{ route('national-user.nohppczrcs-dashboard-report') }}" method="get" id="institute-report">
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
+                                            class="text-danger">*</sup></b></label>
+                                <select id="financial_year" name="financial_year" class="form-control national_user_card">
+                                    <option value="">Select Year</option>
+                                    @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                        $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
+                                        <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                        @endfor
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
+                                <select class="form-control" name="modulename" id="form_type" required>
+                                    <option value="">Select Module</option>
+                                    <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form
+                                    </option>
+                                    <option value='2' {{  request('modulename') == '2' ? 'selected' : '' }}>UC Upload
+                                    </option>
+                                </select>
+                                @error('modulename')
+                                <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
+                                            class="text-danger">*</sup></b></label>
+                                <select name="institute_name" class="form-control national_institute_name"
+                                    id="national_institute_name">
+                                    <option value="">Select Institute</option>
+                                    @foreach($institutes as $institute)
+                                    <option value="{{ $institute->id }}"
+                                        {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                        {{ $institute->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
+                                            class="text-danger">*</sup></b></label>
+                                <select name="month" class="form-control" id="national_month">
+                                    <option value="">Select Month</option>
+                                    @foreach ($months as $key => $month)
+                                    @php
+                                    $selected = old('month') == $month ? 'selected' : '';
+                                    @endphp
+                                    <option value="{{ $month }}" {{ $selected }}>
+                                        {{ $month }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+    
+                            <div class="col-md-12">
+                                <div class="float-end mt-4">
+                                    <button type="button" class="btn bg-cancel me-3 form_type_uc_list"
+                                        id="nohppcz_rcs_form_type_uc_list">Search</button>
+                                    <button type="reset" class="btn bg-danger me-3 form_type_uc_list">Reset</button>
+                                    <button type="submit" class="btn btn-primary" id="form_type_export_button">Export
+                                        Excel</button>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type
-                                            <sup class="text-danger">*</sup></b></label>
-                                    <select name="" class="form-control" id="">
-                                        <option value="">Select Form Type</option>
-                                        <option value="">SOE</option>
-                                        <option value="">UC</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Monthly
-                                            <sup class="text-danger">*</sup></b></label>
-                                    <select name="" class="form-control" id="">
-                                        <option value="">Select Month</option>
-                                        <option value="">January</option>
-                                        <option value="">Febuary</option>
-                                        <option value="">March</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="float-end form-btn-sm mt-4 pt-2">
-                                <button type="submit" class="btn bg-cancel me-1">Search</button>
-                                <button type="reset" class="btn bg-danger me-1">Reset</button>
-                                <button type="submit" class="btn btn-primary">Export Excel</button>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="col-md-12">
-        <div class="white_card card_height_100 mb_30">
-
-            <div class="col-lg-12">
-                <div class="white_card card_height_100 mb_30">
-                    <!-- <div class="white_card_header">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Data table 1</h3>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="white_card_body">
-                        <div class="QA_section">
-                            <div class="QA_table">
-                                <table class="table datatable table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">View / Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-1
-                                                </a></th>
-                                            <td>1 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-2
-                                                </a></th>
-                                            <td>2 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-3
-                                                </a></th>
-                                            <td>3 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-4
-                                                </a></th>
-                                            <td>4 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-5
-                                                </a></th>
-                                            <td>5 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-6
-                                                </a></th>
-                                            <td>6 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-7
-                                                </a></th>
-                                            <td>7 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-8
-                                                </a></th>
-                                            <td>8 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-9
-                                                </a></th>
-                                            <td>9 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-10
-                                                </a></th>
-                                            <td>10 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"> <a href="#" class="question_content"> Name of Institute-11
-                                                </a></th>
-                                            <td>11 September 2023</td>
-                                            <td class="download-icon-width">
-                                                <div class="download ">
-                                                    <a href="#"><span class="view">View</span></a>
-                                                    <i class="fas fa-file-pdf ms-2 me-2 black_text"
-                                                        aria-hidden="true"></i>
-                                                    <span class="size">(3.59MB)
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    </form>
+                </div>
+                <div class="QA_section">
+                    <div class="QA_table form_type_uc_list" id="nohppcz_rcs_form_type_uc_list">
+                        <table class="table nohppcz_rcs_national_uc_filter_datatable table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sr. No.</th>
+                                    <th scope="col">QTR UC</th>
+                                    <th scope="col">Program</th>
+                                    <th scope="col">Year of UC</th>
+                                    <th scope="col">Month</th>
+                                    <th scope="col">UC File Upload</th>
+                                    <th scope="col">UC Uploaded Date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="national_report_data">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+    
     </div>
 
 

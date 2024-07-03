@@ -1,7 +1,7 @@
 let totalExpenitureMargin =
     window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
 let expenditureHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
-let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 250 : 200;
+let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 210 : 200;
 
 let expenditureTitleY =
     // window.innerWidth > 768 && window.innerWidth < 1360 ? 45 : 40;
@@ -11,7 +11,7 @@ let expenditureSubtitleY =
     window.innerWidth > 768 && window.innerWidth < 1300 ? 40 : (window.innerWidth > 1299  ? 68 : 68);
 
  // overall filter cards and charts
- $(document).ready(function(){
+$(document).ready(function(){
     $.ajax({
         type: "GET",
         url: BASE_URL + "national-users/nohppczrcs-filter-dashboard",
@@ -27,7 +27,21 @@ let expenditureSubtitleY =
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            // ucupload form
+            var UcUploadDetails = data.UcUploadDetails;
             nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
+            nationalNohppczrcsUcFormTotalChart(UcUploadDetails);
+        }
+    });
+});
+// Yearly SOE Expenditure under NOHPPCZ RC’s
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/nohppczrcs-soe-expenditure-filter",
+        success: function(data) {
+            var programWiseExpenditure = data.yearlySoeDetails;
+            nohppczRcsSoeExpenditure(programWiseExpenditure);         
         }
     });
 });
@@ -47,12 +61,47 @@ let expenditureSubtitleY =
             $("#national-nohppcz-rcs-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
             $("#national-nohppcz-rcs-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
             $("#national-nohppcz-rcs-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
+            var programHeadDetails = data.programHeadDetails;
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities);         
+            nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
+        }
+    });
+});
+// filter for only SOEUCUpload form data
+$(document).on('change', '.nohppczrcs_national_ucForm_filter', function() {
+    var nohppczrcsnationalUcformFy = $('#nohppcarcs-national-ucform-fy').find(":selected").val();
+    const nohppczrcsnationalProgramUcForm = $('#nohppczrcs-national-institute-ucform').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/nohppczrcs-filter-uc-form-dashboard",
+        data: {
+            'nohppczrcsNationalUcformFy': nohppczrcsnationalUcformFy,
+            'nohppczrcsNationalInstituteUcForm' : nohppczrcsnationalProgramUcForm
+        },
+        success: function(data) {           
+            var UcUploadDetails = data.UcUploadDetails;          
+            nationalNohppczrcsUcFormTotalChart(UcUploadDetails);      
+        }
+    });
+});
+// Yearly SOE Expenditure under NOHPPCZ RC’s
+$(document).on('change', '.nohppcz_rcsyearly_soe_expenditure', function() {
+    const programWiseMonth = $('#nohppcz-rcs-month-soe-expenditure').find(":selected").val();
+    const nohppczRcsInstitute = $('#nohppcz-rcs-institute-soe-expenditure').find(":selected").val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/nohppczrcs-soe-expenditure-filter",
+        data: {
+            'program_wise_month' : programWiseMonth,
+            'institute_wise_nohppczrcs' :nohppczRcsInstitute
+        },
+        success: function(data) {
+            var programWiseExpenditure = data.yearlySoeDetails;
+            nohppczRcsSoeExpenditure(programWiseExpenditure);         
         }
     });
 });
@@ -479,7 +528,7 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
             },
         },
         tooltip: {
-            enabled: false,
+            enabled: true,
         },
         accessibility: {
             point: {
@@ -509,8 +558,8 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
                 name: "",
                 innerSize: "60%",
                 data: [
-                    ["", 15],
-                    ["", 85],
+                    ["Unspent", totalUnspentBalance],
+                    ["Expenditure", totalExpenditure],                    
                 ],
             },
         ],
@@ -561,6 +610,14 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
         },
         tooltip: {
             enabled: true,
+            formatter: function() {
+                if (this.point.name === '') {
+                    if (this.point.y === totalcommittedLiabilities) {
+                        return `Committed Liabilities: ${this.y}`;
+                    }
+                }
+                return `${this.point.name}: ${this.y}`;
+            }
         },
         accessibility: {
             point: {
@@ -597,1568 +654,476 @@ function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBal
     });
 }
 
-
-
-
-
-
-
-// Highcharts.chart("national_dd_percentage_nohppcz_rc", {
-//     chart: {
-//         plotBackgroundColor: null,
-//         height: expenditurPercentageeHeight,
-//         margin: [0, 0, 0, 0],
-//         spacingTop: 0,
-//         spacingBottom: 0,
-//         spacingLeft: 0,
-//         spacingRight: 0,
-//         marginTop: totalExpenitureMargin,
-//     },
-//     credits: {
-//         enabled: false,
-//     },
-//     exporting: {
-//         enabled: false,
-//     },
-//     title: {
-//         text: ` <div class="graph-title" style="color:#3a7ed3; ">90%</div>`,
-//         align: "center",
-//         verticalAlign: "middle",
-//         y: expenditureTitleY,
-//         style: {
-//             fontSize: "16px",
-//             color: "#000000",
-//         },
-//     },
-//     subtitle: {
-//         text: `
-//         <div class="graph-title" style="color:#3a7ed3; white-space: nowrap; "> <span>Interest DD Returned</span> </div>`,
-//         align: "center",
-//         verticalAlign: "middle",
-//         y: expenditureSubtitleY,
-//         style: {
-//             fontSize: "16px",
-//             color: "#000000",
-//         },
-//     },
-//     tooltip: {
-//         enabled: false,
-//     },
-//     accessibility: {
-//         point: {
-//             valueSuffix: "%",
-//         },
-//     },
-//     plotOptions: {
-//         pie: {
-//             colors: ["#558ed5", "#c6d9f1"],
-//             dataLabels: {
-//                 enabled: false,
-//                 distance: -50,
-//                 style: {
-//                     fontWeight: "bold",
-//                     color: "white",
-//                 },
-//             },
-//             startAngle: -90,
-//             endAngle: 90,
-//             center: ["50%", "75%"],
-//             size: "110%",
-//         },
-//     },
-//     series: [
-//         {
-//             type: "pie",
-//             name: "",
-//             innerSize: "60%",
-//             data: [
-//                 ["", 10],
-//                 ["", 90],
-//             ],
-//         },
-//     ],
-// });
-//   percentage of uc recevied
-
-Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "50%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC Received </div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled:false
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
+function nationalNohppczrcsUcFormTotalChart(UcUploadDetails){
+    Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+        },        
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)} %`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
             },
         },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            
-            data: [
-                ["", 50],
-                ["", 50],
-            ],
+        credits: {
+            enabled: false,
         },
-    ],
-});
-
-Highcharts.chart("nohppz_rc_chart_currently_UC_not_Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
+        exporting: {
+            enabled: false,
         },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled:false
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "80 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled:false
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_not_Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        enabled:false
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-});
-
-// ***********************************************************************
-
-Highcharts.chart("national_expnediture_nohppcz_rc", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">% of UC Received </div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
             style: {
                 fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
+                color: "#000",
             },
         },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
+        legend: {
+            enabled: false,
         },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 5000],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}%`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
                 },
             },
         },
-    ],
-});
-
-Highcharts.chart("national_instiute_wise_yearly_nohppcz_rc", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -45],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                data: [
+                    ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],
+                    ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
+                ],
             },
-        },
-    },
-    exporting: {
-        enabled: false,
-    },
-    credits: {
-        enabled: false,
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Values",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "",
-            colors: [
-                "#399def",
-                "#3ebbf0",
-                "#35c3e8",
-                "#2bc9dc",
-                "#20cfe1",
-                "#16d4e6",
-                "#0dd9db",
-                "#03dfd0",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["2024-25", 4500],
-                ["2023-24", 5000],
-                ["2022-23", 800],
-                ["2021-22", 700],
-                ["2020-21", 600],
-                ["2019-20", 3600],
-                ["2018-19", 4100],
-                ["2017-18", 3800],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                //   format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-// program wise expenditure state filter highchart
-
-// Expenditure Bar Chart (All Programs combined data)
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart1", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: "250",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-
-    subtitle: {
-        text: "80%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        pointFormat: "name: <b>highchart</b>",
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#eb5034", "#434348"],
-            dataLabels: {
-                enabled: false,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 80],
-                ["", 20],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart2", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: "250",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "50%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        pointFormat: "name: <b>highchart</b>",
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            dataLabels: {
-                enabled: false,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 50],
-                ["", 50],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart3", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: "250",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "99%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        pointFormat: "name: <b>highchart</b>",
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#d7c706", "#434348"],
-            dataLabels: {
-                enabled: false,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 99],
-                ["", 1],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-program-wise-expenditure-bar-chart4", {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: 0,
-        plotShadow: false,
-        height: "250",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    title: {
-        text: "",
-    },
-    subtitle: {
-        text: "72%",
-        align: "center",
-        verticalAlign: "middle",
-        y: 60,
-        style: {
-            fontSize: "16px",
-            color: "#000",
-        },
-    },
-    tooltip: {
-        pointFormat: "name: <b>highchart</b>",
-    },
-    accessibility: {
-        point: {
-            valueSuffix: "%",
-        },
-    },
-    plotOptions: {
-        pie: {
-            colors: ["#eb5034", "#434348"],
-            dataLabels: {
-                enabled: false,
-                distance: -50,
-                style: {
-                    fontWeight: "bold",
-                    color: "white",
-                },
-            },
-            startAngle: -90,
-            endAngle: 90,
-            center: ["50%", "75%"],
-            size: "110%",
-        },
-    },
-    series: [
-        {
-            type: "pie",
-            name: "",
-            innerSize: "50%",
-            data: [
-                ["", 72],
-                ["", 28],
-            ],
-        },
-    ],
-});
-
-// Program wise Unspent Balance Line Chart
-Highcharts.chart("integrated-dashboard-unspent-balance-line-chart", {
-    chart: {
-        type: "line",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-
-    xAxis: {
-        categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
         ],
-    },
-    yAxis: {
-        title: {
-            text: "Temperature (°C)",
-        },
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: false,
-            },
-            enableMouseTracking: false,
-        },
-    },
-    series: [
-        {
-            name: "Reggane",
-            data: [
-                16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-                22.0, 17.8,
-            ],
-        },
-        {
-            name: "Tallinn",
-            data: [
-                -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0,
-                -0.9,
-            ],
-        },
-    ],
-});
+    });
 
-// state graph
-
-Highcharts.chart("integrated-dashboard-state-graph", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: [
-                "#9b20d9",
-                "#9215ac",
-                "#861ec9",
-                "#7a17e6",
-                "#7010f9",
-                "#691af3",
-                "#6225ed",
-                "#5b30e7",
-                "#533be1",
-                "#4c46db",
-                "#4551d5",
-                "#3e5ccf",
-                "#3667c9",
-                "#2f72c3",
-                "#277dbd",
-                "#1f88b7",
-                "#1693b1",
-                "#0a9eaa",
-                "#03c69b",
-                "#00f194",
-            ],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                ["Uttar Pradesh", 4.3],
-                ["Maharashtra", 2.5],
-                ["Bihar", 3.5],
-                ["West Bengal", 4.5],
-                ["Madhya Pradesh", 2],
-                ["Tamil Nadu", 1.2],
-                ["Rajasthan", 2.4],
-                ["Karnataka", 3.1],
-                ["Gujarat", 3.4],
-                ["Andhra Pradesh", 4],
-                ["Odisha", 4.4],
-                ["Telangana", 2.8],
-                ["Kerala", 4],
-                ["Jharkhand", 4],
-                ["Assam", 2],
-                ["Punjab", 3],
-                ["Chhattisgarh", 1],
-                ["Haryana", 4],
-                ["Uttarakhand", 4],
-                ["Himachal Pradesh", 4],
-                ["Tripura", 4],
-                ["Meghalaya", 4],
-                ["Manipur", 4],
-                ["Nagaland", 4],
-                ["Goa", 4],
-                ["Arunachal Pradesh", 4],
-                ["Mizoram", 4],
-                ["Sikkim", 4],
-                ["Delhi", 5], // Considering Delhi as a Union Territory
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-// data driven graph
-
-Highcharts.chart("integrated-dashboard-data-driven-graph1", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: ["#f49d00"],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                [" Current Man Power", 4.3],
-                [
-                    "Meetings, Training & Research Regents and consumable (Recuring)",
-                    2.5,
-                ],
-                ["Lab Strengthening Kits", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph2", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: ["#43cdd9"],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                [" Current Man Power", 4.3],
-                [
-                    "Meetings, Training & Research Regents and consumable (Recuring)",
-                    2.5,
-                ],
-                ["Lab Strengthening Kits", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph3", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: ["#dd5f00"],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                [" Current Man Power", 4.3],
-                [
-                    "Meetings, Training & Research Regents and consumable (Recuring)",
-                    2.5,
-                ],
-                ["Lab Strengthening Kits", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph4", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: ["#00b0f0"],
-            colorByPoint: true,
-            groupPadding: 0,
-            data: [
-                [" Current Man Power", 4.3],
-                [
-                    "Meetings, Training & Research Regents and consumable (Recuring)",
-                    2.5,
-                ],
-                ["Lab Strengthening Kits", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-data-driven-graph5", {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "",
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        text: "",
-    },
-    xAxis: {
-        type: "category",
-        labels: {
-            autoRotation: [-45, -90],
-            style: {
-                fontSize: "13px",
-                fontFamily: "Verdana, sans-serif",
-            },
-        },
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Population (millions)",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        pointFormat: "",
-    },
-    series: [
-        {
-            name: "State",
-            colors: ["#92d050"],
-
-            data: [
-                [" Current Man Power", 4.3],
-                [
-                    "Meetings, Training & Research Regents and consumable (Recuring)",
-                    2.5,
-                ],
-                ["Lab Strengthening Kits", 3.5],
-                ["IEC", 2],
-            ],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: "#FFFFFF",
-                inside: true,
-                verticalAlign: "top",
-                format: "{point.y:.1f}", // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: "13px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "50%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC Received </div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
-            },
-        },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
+    Highcharts.chart("nohppz_rc_chart_currently_UC_not_Received", {
+        chart: {
             type: "pie",
-            data: [
-                ["", 50],
-                ["", 50],
-            ],
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
         },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20%",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">% of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)} %`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
             },
         },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
-        },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "80 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
-        },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                },
-                connectorWidth: 0,
+    
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">% of UC not Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
             },
         },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
+        legend: {
+            enabled: false,
         },
-    ],
-});
-
-Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-not-Received", {
-    chart: {
-        type: "pie",
-        height: 210,
-        //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-    },
-    title: {
-        useHTML: true,
-        text: "20 Nos.",
-        floating: true,
-        verticalAlign: "middle",
-        y: 4,
-        style: {
-            fontSize: "16px",
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}%`;
+            }
         },
-    },
-    credits: {
-        enabled: false,
-    },
-    exporting: {
-        enabled: false,
-    },
-    subtitle: {
-        useHTML: true,
-        text: '<div style="text-align:center;">Nos. of UC not Received</div>',
-        align: "center",
-        verticalAlign: "bottom",
-        y: 0, // Adjusted position
-        style: {
-            fontSize: "13px",
-            color: "#000",
-        },
-    },
-    legend: {
-        enabled: false,
-    },
-    tooltip: {
-        valueDecimals: 2,
-        valueSuffix: "",
-    },
-    plotOptions: {
-        pie: {
-            size: "100%",
-            innerSize: "70%", // Adjusted for a larger inner circle
-            dataLabels: {
-                enabled: false,
-                // distance: -30, // Adjusted to move labels closer
-                style: {
-                    fontWeight: "bold",
-                    fontSize: "16px",
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
                 },
-                connectorWidth: 0,
             },
         },
-    },
-    colors: ["#b64926", "#eeece1"],
-    series: [
-        {
-            type: "pie",
-            data: [
-                ["", 20],
-                ["", 80],
-            ],
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                    data: [
+                        ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
+                        ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],                        
+                    ],
+            },
+        ],
+        credits: {
+            enabled: false,
         },
-    ],
+        exporting: {
+            enabled: false,
+        },
+    });
+
+    Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcApprovedNumber} Nos`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">Nos. of UC Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function() {
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+    
+                data: [
+                    ["Approved", UcUploadDetails.UcApprovedNumber],
+                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
+                ],
+            },
+        ],
+    });
+    
+    Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_not_Received", {
+        chart: {
+            type: "pie",
+            height: 210,
+            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+        },
+        title: {
+            useHTML: true,
+            text: `${UcUploadDetails.UcNotApprovedNumber} Nos`,
+            floating: true,
+            verticalAlign: "middle",
+            y: 4,
+            style: {
+                fontSize: "16px",
+            },
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        subtitle: {
+            useHTML: true,
+            text: '<div style="text-align:center;">Nos. of UC not Received</div>',
+            align: "center",
+            verticalAlign: "bottom",
+            y: 0, // Adjusted position
+            style: {
+                fontSize: "13px",
+                color: "#000",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            enabled: true,
+            formatter: function(){
+                return `${this.point.name}: ${this.y}`;
+            }
+        },
+        plotOptions: {
+            pie: {
+                size: "100%",
+                innerSize: "70%", // Adjusted for a larger inner circle
+                dataLabels: {
+                    enabled: false,
+                    // distance: -30, // Adjusted to move labels closer
+                    style: {
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                    },
+                    connectorWidth: 0,
+                },
+            },
+        },
+        colors: ["#b64926", "#eeece1"],
+        series: [
+            {
+                type: "pie",
+                data: [
+                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
+                    ["Approved", UcUploadDetails.UcApprovedNumber],
+                ],
+            },
+        ],
+    });
+}
+
+function nohppczRcsSoeExpenditure(programWiseExpenditure){
+    Highcharts.chart("national_expnediture_nohppcz_rc", {
+        chart: {
+            type: "column",
+        },
+        title: {
+            text: "",
+        },
+        subtitle: {
+            text: "",
+        },
+        xAxis: {
+            type: "category",
+            labels: {
+                autoRotation: [-45, -45],
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
+        },
+        exporting: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Values",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            pointFormat: "",
+        },
+        series: [
+            {
+                name: "",
+                colors: [
+                    "#399def",
+                    "#3ebbf0",
+                    "#35c3e8",
+                    "#2bc9dc",
+                    "#20cfe1",
+                    "#16d4e6",
+                    "#0dd9db",
+                    "#03dfd0",
+                ],
+                colorByPoint: true,
+                groupPadding: 0,
+                data: programWiseExpenditure.month,
+                dataLabels: {
+                    enabled: false,
+                    rotation: -90,
+                    color: "#FFFFFF",
+                    inside: true,
+                    verticalAlign: "top",
+                    //   format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: "13px",
+                        fontFamily: "Verdana, sans-serif",
+                    },
+                },
+            },
+        ],
+    });
+
+    Highcharts.chart("national_instiute_wise_yearly_nohppcz_rc", {
+        chart: {
+            type: "column",
+        },
+        title: {
+            text: "",
+        },
+        subtitle: {
+            text: "",
+        },
+        xAxis: {
+            type: "category",
+            labels: {
+                autoRotation: [-45, -45],
+                style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                },
+            },
+        },
+        exporting: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false,
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Values",
+            },
+        },
+        legend: {
+            enabled: false,
+        },
+        tooltip: {
+            pointFormat: "",
+        },
+        series: [
+            {
+                name: "",
+                colors: [
+                    "#399def",
+                    "#3ebbf0",
+                    "#35c3e8",
+                    "#2bc9dc",
+                    "#20cfe1",
+                    "#16d4e6",
+                    "#0dd9db",
+                    "#03dfd0",
+                ],
+                colorByPoint: true,
+                groupPadding: 0,
+                data: programWiseExpenditure.institute,
+                dataLabels: {
+                    enabled: false,
+                    rotation: -90,
+                    color: "#FFFFFF",
+                    inside: true,
+                    verticalAlign: "top",
+                    //   format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: "13px",
+                        fontFamily: "Verdana, sans-serif",
+                    },
+                },
+            },
+        ],
+    });
+}
+
+// Dashboard report filter export and show list
+$(document).ready(function() {
+    // Initialize DataTable on page load
+    var nationalDataTable = $('.nohppcz_rcs_national_uc_filter_datatable').DataTable({
+        pageLength: 5,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: '<i class="fa fa-print" aria-hidden="true"></i>',
+            }
+        ]
+    });
+
+    function fetchData() {       
+        let program_id = $("#national_program_id").val();
+        let financial_year = $("#financial_year").val();
+        let form_type = $("#form_type").val() || '2';
+        let national_institute_name = $("#national_institute_name").val();
+        let month = $("#national_month").val();
+        
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + 'national-users/nohppczrcs-dashboard-report',
+            data: {
+                'program_id': program_id,
+                'financial_year': financial_year,
+                'modulename': form_type,
+                'national_institute_name': national_institute_name,
+                'month': month,
+            },
+            success: function(data) {                    
+                // Clear existing rows and add new data
+                nationalDataTable.clear().rows.add($(data)).draw();
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error: ', status, error);
+            }
+        });
+    }    
+
+    // Initial data fetch
+    fetchData();
+
+    // Handle click event to fetch new data
+    $(document).on('click', '#nohppcz_rcs_form_type_uc_list', function(event) {
+        event.preventDefault();
+        fetchData();
+    });
 });
