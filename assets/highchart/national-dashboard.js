@@ -948,7 +948,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                 dataLabels: {
                     enabled: true,
                     rotation: -90,
-                    color: "#FFFFFF",
+                    color: "#000",
                     inside: true,
                     verticalAlign: "top",
                     format: "{point.y:.1f}", // one decimal
@@ -1660,6 +1660,7 @@ function allFormMapFilter(totalData,mapDetails){
         Highcharts.mapChart("integrated-dashboard-india-map3", {
             chart: {
                 map: topology,
+                height:376
             },
             title: {
                 text: "",

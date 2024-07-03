@@ -215,6 +215,10 @@
       min-width: 50%;
       } */
 
+      .col-md-4.w-40 {
+         width: 50% !important;
+     }
+
    .expenditure_lacks {
       padding: 0 10px;
       height: 190px;
@@ -232,8 +236,12 @@
 }
 
 @media (max-width:1580px) {
-
-
+   span.country-list-content{
+      font-size: 13px;
+   }
+   .country-overall-data span.state-data-total{
+      font-size: 13px;
+   }
    .SOE-UC-list .mr_10 {
       margin: 0 !important;
    }
