@@ -75,7 +75,7 @@
     <div class="col-xl-12 integrated-expenditure">
         <div class="row ">
 
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="white_card card_height_100 mb_30">
@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <div class="white_card card_height_100 mb_30">
                     <div class="">
                         <div class="box_header m-0">
