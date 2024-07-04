@@ -168,7 +168,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration}}</td>
                                     <td>{{ $user->state->name??'N/A' }}</td>
-                                    <td>{{ $user->program->name??'N/A' }}</td>                                    
+                                    <td>{{ $user->program->name??'N/A' }}-{{ $user->program->code??'N/A' }}</td>                                    
                                     <td>{{ $user->institute->name??'N/A'}}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="hidetext">{{ Str::limit($user->password, 4) }}</td>

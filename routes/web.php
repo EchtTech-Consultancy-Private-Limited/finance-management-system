@@ -58,8 +58,23 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nohppczrcs-dashboard-report', [NOHPPCZRCSController::class, 'nohppczrcsDashboardReport'])->name('nohppczrcs-dashboard-report');
         // NOHPPCZ-SSS Dashboard
         Route::get('/nohppczrsss', [NOHPPCZSSSController::class, 'index'])->name('nohppczrsss');
+        Route::get('/nohppczrsss-filter-dashboard', [NOHPPCZSSSController::class, 'nohppczrsssNationalFilterDdashboard'])->name('nohppczrsss-filter-dashboard');
+        Route::get('/nohppczrsss-filter-uc-form-dashboard', [NOHPPCZSSSController::class, 'nohppczrsssNationalFilterUcFormDashboard'])->name('nohppczrsss-filter-uc-form-dashboard');
+        Route::get('/nohppczrsss-soe-expenditure-filter', [NOHPPCZSSSController::class, 'nohppczrsssSoeExpenditureFilter'])->name('nohppczrsss-soe-expenditure-filter');        
+        Route::get('/nohppczrsss-dashboard-report', [NOHPPCZSSSController::class, 'nohppczrsssDashboardReport'])->name('nohppczrsss-dashboard-report');
+        // NRCP-LAB Dashboard
         Route::get('/nrcplab', [NRCPLABController::class, 'index'])->name('nrcplab');
+        Route::get('/nrcplab-filter-dashboard', [NRCPLABController::class, 'nrcplabNationalFilterDdashboard'])->name('nrcplab-filter-dashboard');
+        Route::get('/nrcplab-filter-uc-form-dashboard', [NRCPLABController::class, 'nrcplabNationalFilterUcFormDashboard'])->name('nrcplab-filter-uc-form-dashboard');
+        Route::get('/nrcplab-soe-expenditure-filter', [NRCPLABController::class, 'nrcplabSoeExpenditureFilter'])->name('nrcplab-soe-expenditure-filter');        
+        Route::get('/nrcplab-dashboard-report', [NRCPLABController::class, 'nrcplabDashboardReport'])->name('nrcplab-dashboard-report');
+        // PPCL-LAB Dashboard
         Route::get('/ppcllab', [PPCLLabController::class, 'index'])->name('ppcllab');
+        Route::get('/ppcllab-filter-dashboard', [PPCLLabController::class, 'ppcllabNationalFilterDdashboard'])->name('ppcllab-filter-dashboard');
+        Route::get('/ppcllab-filter-uc-form-dashboard', [PPCLLabController::class, 'ppcllabNationalFilterUcFormDashboard'])->name('ppcllab-filter-uc-form-dashboard');
+        Route::get('/ppcllab-soe-expenditure-filter', [PPCLLabController::class, 'ppcllabSoeExpenditureFilter'])->name('ppcllab-soe-expenditure-filter');        
+        Route::get('/ppcllab-dashboard-report', [PPCLLabController::class, 'ppcllabDashboardReport'])->name('ppcllab-dashboard-report');
+        // PM-ABHIM-SSS Dashboard
         Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
     });
 

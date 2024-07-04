@@ -34,7 +34,7 @@
                 <form method="POST" action="{{ route('institute-user.save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">QTR UC<span class="text-danger">*</span></label>
                             <select id="qtr_uc" class="form-control" name="qtr_uc">
                                 <option value="">Select QTR UC</option>
@@ -48,19 +48,28 @@
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">Program<span class="text-danger">*</span></label>
-                            <select id="program" class="form-control" name="program_id">
-                                <option value="">Select Program</option>
-                                @foreach($programs as $program)
-                                <option value="{{ $program->id }}">{{ $program->name }} - {{ $program->code }}</option>
-                                @endforeach
+                            <select id="program" name="program_id" class="form-control">
+                                <option value="{{ optional(Auth::user()->program)->id }}">
+                                    {{ optional(Auth::user()->program)->name }} -
+                                    {{ optional(Auth::user()->program)->code }}</option>
                             </select>
                             @error('program_id')
-                                <span class="text-danger error">{{ $message }}</span>
+                            <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label" for="inputAddress2">institute<span class="text-danger">*</span></label>
+                            <select id="institute" name="institute_id" class="form-control">
+                                <option value="{{ optional(Auth::user()->institute)->id }}">
+                                    {{ optional(Auth::user()->institute)->name }}</option>
+                            </select>
+                            @error('institute_id')
+                            <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">Year of UC<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="yearofuc">
                                 <option value="">Select Year</option>
@@ -75,9 +84,8 @@
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-4">
+                    
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">Month<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="month">
                                 <option value="">Select Month</option>
@@ -95,14 +103,14 @@
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">UC File Upload<span class="text-danger">*</span></label>
                             <input type="file" class="form-control" name="ucfileupload" id="inputAddress2">
                             @error('ucfileupload')
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span class="text-danger">*</span></label>
                             <input type="date" class="form-control" name="ucuploaddate" value="{{ old('ucuploaddate') }}" id="inputAddress2" placeholder="">
                             @error('ucuploaddate')
