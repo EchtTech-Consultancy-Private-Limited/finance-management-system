@@ -13,6 +13,7 @@ class SOEUCUploadForm extends Model
         'user_id',
         'qtr_uc',
         'program_id',
+        'institute_id',
         'financial_year',
         'month',
         'file',

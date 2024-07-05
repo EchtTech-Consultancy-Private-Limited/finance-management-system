@@ -406,9 +406,10 @@ class DashboardController extends Controller
             $UcUploadCount = SOEUCUploadForm::count();
             $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
             $UcUploadNotApproved = SOEUCUploadForm::where('status', '2')->count();
+            
             $UcUploadDetails = [
-                'UcApprovedPercentage' => ($UcUploadApproved / $UcUploadCount) * 100,
-                'UcNotApprovedPercentage' => ($UcUploadNotApproved / $UcUploadCount) * 100,
+                'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
+                'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
                 'UcApprovedNumber' => $UcUploadApproved,
                 'UcNotApprovedNumber' => $UcUploadNotApproved,
                 'TotalUcForm' => $UcUploadCount,
@@ -839,7 +840,6 @@ class DashboardController extends Controller
         if (!$institutes->isEmpty()) {
             foreach ($institutes as $institute) {
                 $count++;
-                $output .='<option value="">Select Institute</option>';
                 $output .='<option value="'.$institute->id.'">' . $institute->name . '</option>';
             }
         } else {

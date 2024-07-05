@@ -162,7 +162,7 @@ class AdminController extends Controller
     public function facilityMappingCreate(Request $request)
     {
         $request->validate([
-            'user_name' => 'required',
+            'user_name' => 'required|email',
             'program_id' => 'required',
             'institute_id' => 'required',
             'password' => 'required',
@@ -214,7 +214,7 @@ class AdminController extends Controller
     public function facilityMappingUpdate(Request $request, $id = '')
     {
         $request->validate([
-            'user_name' => 'required',
+            'user_name' => 'required|email',
             'program_id' => 'required',
             'institute_id' => 'required',
             'state_id' => 'required',

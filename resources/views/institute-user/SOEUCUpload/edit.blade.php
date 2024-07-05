@@ -50,18 +50,24 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="inputAddress2">Program<span
-                                    class="text-danger">*</span></label>
-                            <select id="program" class="form-control" name="program_id">
-                                <option value="">Select Program</option>
-                                @foreach($programs as $program)
-                                <option value="{{ $program->id }}"
-                                    {{($soeUCUpload->program_id == $program->id) ? 'selected':''}}>{{ $program->name }}
-                                    - {{ $program->code }}</option>
-                                @endforeach
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label" for="inputAddress2">Program<span class="text-danger">*</span></label>
+                            <select id="program" name="program_id" class="form-control">
+                                <option value="{{ optional(Auth::user()->program)->id }}">
+                                    {{ optional(Auth::user()->program)->name }} -
+                                    {{ optional(Auth::user()->program)->code }}</option>
                             </select>
                             @error('program_id')
+                            <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label" for="inputAddress2">Institute<span class="text-danger">*</span></label>
+                            <select id="institute" name="institute_id" class="form-control">
+                                <option value="{{ optional(Auth::user()->institute)->id }}">
+                                    {{ optional(Auth::user()->institute)->name }}</option>
+                            </select>
+                            @error('institute_id')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
@@ -70,19 +76,15 @@
                                     class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="yearofuc">
                                 <option value="">Select Year...</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=$soeUCUpload->year ==
-                                    ($i . ' - ' . ($i+1)) ? 'selected' : '';
-                                    @endphp
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) 
+                                    @php $selected = $soeUCUpload->financial_year == ($i . ' - ' . ($i+1)) ? 'selected' : ''; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                    @endfor
+                                @endfor
                             </select>
                             @error('yearofuc')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-                    </div>
-                    <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Month<span
                                     class="text-danger">*</span></label>
