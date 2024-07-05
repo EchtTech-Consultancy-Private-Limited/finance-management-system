@@ -45,59 +45,146 @@
             <div class="col-md-9 ">
                 <div class="row">
                     <div class="col-md-4 mb-4">
-                        <div class="profile-text">
+                        <div class="profile-text total-box1">
                             <div class="school-info-box">
-                                <p>Total State + UT</p>
-                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-flag"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_state_ut"
+                                                value="{{ @$totalcard->total_state_ut }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+
+                                        </div>
+                                        <p>Total State + UT <span tooltip="Doble Click on Number for Edit" flow="down"
+                                                class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="profile-text total-box2">
+                            <div class="school-info-box">
+
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_sentinel_site"
+                                                value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                            <p>Total Sentinel Site <span tooltip="Doble Click on Number for Edit"
+                                                    flow="down" class="total-ut-tooltip">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <div class="profile-text">
+                        <div class="profile-text total-box3">
                             <div class="school-info-box">
-                                <p>Total Sentinel Site</p>
-                                <input type="text" name="total_sentinel_site"
-                                    value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total PPCL Labs</p>
-                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total Regional Coordinator</p>
-                                <input type="text" name="total_regional_coordinator"
-                                    value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-vials"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_ppcl_labs"
+                                            value="{{ @$totalcard->total_ppcl_labs }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                    </div>
+                                    <p>Total PPCL Labs <span tooltip="Doble Click on Number for Edit" flow="down"
+                                            class="total-ut-tooltip">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text">
+                        <div class="profile-text total-box4">
+
                             <div class="school-info-box">
-                                <p>Total NRCP Labs</p>
-                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_regional_coordinator"
+                                            value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                        <p>Total Regional Coordinator <span tooltip="Doble Click on Number for Edit"
+                                                flow="down" class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text">
+                        <div class="profile-text total-box5">
                             <div class="school-info-box">
-                                <p>Total PM ABHIM SSS</p>
-                                <input type="text" name="total_pm_abhim_sss"
-                                    value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-flask"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_nrcp_labs"
+                                            value="{{ @$totalcard->total_nrcp_labs }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                    </div>
+                                    <p>Total NRCP Labs <span tooltip="Doble Click on Number for Edit" flow="down"
+                                            class="total-ut-tooltip">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="profile-text total-box6">
+                            <div class="school-info-box ">
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-solid fa-hospital"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_pm_abhim_sss"
+                                                value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                        </div>
+                                        <p>Total PM ABHIM SSS <span tooltip="Doble Click on Number for Edit" flow="down"
+                                                class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,9 +197,9 @@
                 <div class="white_card graph-card-h m-0">
                     <div class="total-card-child d-flex align-items-center justify-content-center">
                         <h3 class="text-center total_number_of_institute">
-                           <span class=""> Total Number <br> of Institute</span>
-                           <span>{{ $totalSum }}</span>
-                            <br>
+                            <span>{{ $totalSum }}</span>
+                            <span class=""> Total Number <br> of Institute</span>
+
                         </h3>
                     </div>
                 </div>
@@ -213,32 +300,34 @@
     <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  p-4">
 
-            <div class="white_card card_height_100 mb_30 mt-4">
+            <div class="white_card card_height_100 mb_30 ">
                 <div class="row">
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
-                        <div class="d-flex align-items-center">
-                            <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                        <div class="align-items-center">
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
                                     @endfor
                             </select>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
-                        <div class="d-flex align-items-center">
-                            <label for="" class="text-nowrap me-3 font-16"><b>Program Wise <sup
+                        <div class="align-items-center">
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Program Wise <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-program-wise" name="program_id"
                                 class="form-control national_user_card">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -247,7 +336,7 @@
                 </div>
             </div>
             <div class="row card-mm">
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -255,7 +344,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -263,26 +352,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-4 p-0">
                         <div class="crm_body">
-                            <h4 id="national-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
+                            <h4 id="national-actualExpenditureTotal">
+                                {{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
-                            <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
+                            <h4 id="national-unspentBalance31stTotal">
+                                {{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest) </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-2 p-0">
                         <div class="crm_body">
-                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
+                            <h4 id="national-committedLiabilitiesTotal">
+                                {{ @$totalArray['committedLiabilitiesTotal'] }}
                             </h4>
                             <p>Committed Liabilities</p>
                         </div>
@@ -293,79 +385,74 @@
     </div>
 
     <div class="col-md-12 overlall-expenditure">
-        <div class="row custom-grid">
-            <div class="col-md-8 custom-grid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Total Expenditure <br> in %</h3>
-                                    </div>
-
-                                </div>
+        <div class="row overall-expeniture-percent">
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Expenditure <br> in %</h3>
                             </div>
-                            <div class="white_card_body">
-                                <div id="national-total-expenditure" class="overall-programm-total"></div>
 
-                            </div>
                         </div>
                     </div>
+                    <div class="white_card_body">
+                        <div id="national-total-expenditure" class="overall-programm-total"></div>
 
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Total Fund Unspent <br> in %</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div id="national-total-fund-unspent" class="overall-programm-total"></div>
-
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Committed Liabilities <br> in %</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div id="integrated-dashboard-chart-currently-Interest-Earned"
-                                    class="overall-programm-total">
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <div class="col-md-4 custom-grid w-40">
-            <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
-                                    </div>
 
-                                </div>
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Fund Unspent <br> in %</h3>
                             </div>
-                            <div class="white_card_body overall-program-expenditure-amount pb-0">
-                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
 
-                            </div>
                         </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="national-total-fund-unspent" class="overall-programm-total"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Committed Liabilities <br> in %</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="integrated-dashboard-chart-currently-Interest-Earned" class="overall-programm-total">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 ">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="white_card_body overall-program-expenditure-amount pb-0">
+                        <div id="national-dashboard-overall-Program-expenditure-amount"></div>
+
+                    </div>
+                </div>
                 <!-- <div class="row">
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
@@ -400,18 +487,19 @@
             <div>
                 <form action="" class="select-form-s">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-program-ucform" name="program_id"
                                 class="form-control filter_program_id national_ucForm_filter">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
                             <select name="institute_name" class="form-control national_institute_name"
@@ -425,7 +513,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-ucform-fy" name="uc_financial_year"
@@ -433,8 +521,9 @@
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                @endfor
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
+                                    @endfor
                             </select>
                         </div>
 
@@ -635,8 +724,8 @@
                 <div class="col-md-4 align-items-end justify-content-between">
 
                     <div>
-                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
-                                    class="text-danger">*</sup></b></label>
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent
+                                Balance<sup class="text-danger">*</sup></b></label>
                         <select id="expenditure_unspent" name="expenditure_unspent"
                             class="form-control national_program_barchart">
                             <option value="">Select Expenditure/Unspent Balance</option>
@@ -667,7 +756,7 @@
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1">
 
-                            <i class="bi bi-currency-dollar"></i>
+                            <i class="bi bi-currency-rupee"></i>
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall Unspent <br> Balance</h3>
@@ -764,7 +853,8 @@
                             <form action="" class="select-form-s">
                                 <div class="row">
                                     <div class="col">
-
+                                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Select
+                                                Year</b></label>
                                         <select id="national-user-fy-barchart-head" name="financial_year"
                                             class="form-control">
                                             <option value="">Select Year</option>
@@ -836,7 +926,7 @@
                     <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                                <i class="fas fa-stethoscope"></i>
+                                <i class="fas fa-solid fa-hospital"></i>
                                 <!-- <i class="fas fa-heartbeat"></i> -->
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
@@ -891,7 +981,8 @@
                                 id="program_wise_all_form">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -933,7 +1024,8 @@
                                 <option value="">Choose Financial Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
                                     @endfor
                             </select>
                         </div>
@@ -949,7 +1041,8 @@
                                 <div class="overall-data-li">
                                     <div>
                                         <span class="arrow arrow-left"><span class="number">1</span></span><span
-                                            class="country-list-content">Unspent Balance (GIA) as on 1st April..</span>
+                                            class="country-list-content">Unspent Balance (GIA) as on 1st
+                                            April..</span>
                                     </div>
                                     <div>
 
@@ -986,7 +1079,8 @@
                                 <div class="overall-data-li">
                                     <div>
                                         <span class="arrow arrow-left"><span class="number">4</span></span><span
-                                            class="country-list-content">Actual Expenditure incurred during the current
+                                            class="country-list-content">Actual Expenditure incurred during the
+                                            current
                                             F.Y
                                         </span>
                                     </div>
@@ -1026,7 +1120,8 @@
                                 <div class="overall-data-li">
                                     <div>
                                         <span class="arrow arrow-left"><span class="number">7</span></span><span
-                                            class="country-list-content">Unspent Balance of (GIA) as on 31st March
+                                            class="country-list-content">Unspent Balance of (GIA) as on 31st
+                                            March
                                             H=(F-G)</span>
                                     </div>
                                     <div>
@@ -1095,7 +1190,8 @@
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
                                     @endfor
                             </select>
                         </div>
