@@ -1,5 +1,5 @@
 let totalExpenitureMargin =
-    window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
+    window.innerWidth > 768 && window.innerWidth < 1299 ? -50 : 0;
 let expenditureHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
 let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 210 : 200;
 
