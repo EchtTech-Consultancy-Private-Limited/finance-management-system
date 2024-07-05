@@ -186,6 +186,14 @@
 
 }
 
+@media (min-width:1500px) {
+   .row.overall-expeniture-percent .col-md-6:nth-child(4){
+      width: 40%;
+  }
+  .row.overall-expeniture-percent .col-md-6:nth-child(1), .row.overall-expeniture-percent .col-md-6:nth-child(2), .row.overall-expeniture-percent .col-md-6:nth-child(3)  {
+   width: 20%;
+}
+}
 @media (min-width:1800px) {
    .row.state-graph-filter .col {
       min-width: 120px !important;

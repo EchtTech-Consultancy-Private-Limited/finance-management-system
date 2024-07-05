@@ -154,7 +154,7 @@
             <li class>
                <a class="" href="{{ route('national-user.pmabhimsss') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                  <i class="fas fa-stethoscope"></i>
+                  <i class="fas fa-solid fa-hospital"></i>
                   </div>
                   <div class="nav_title">
                      <span>PM-ABHIM-SSS</span>

@@ -43,9 +43,9 @@
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                <div class="col-md-4 ">
+                    <div class="">
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
                                     class="text-danger">*</sup></b></label>
                         <select id="nohppcz-sss-year" name="financial_year" class="form-control nohppcz_sss_card">
                             <option value="">Select Year</option>
@@ -56,9 +56,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6 ">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="text-nowrap me-3 font-16"><b>Month<sup
+                <div class="col-md-4 ">
+                    <div class="">
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                     class="text-danger">*</sup></b></label>
                         <select name="nohppcz-sss-month" class="form-control nohppcz_sss_card" id="nohppcz-sss-month">
                             <option value="">Select Month</option>
@@ -142,7 +142,7 @@
                 <div class="">
                     <div class="box_header m-0">
                         <div class="main-title">
-                            <h3 class="m-0">Total Expenditure <br> in %</h3>
+                            <h3 class="m-0">Total Expenditure in %</h3>
                         </div>
 
                     </div>
@@ -163,7 +163,7 @@
                 <div class="">
                     <div class="box_header m-0">
                         <div class="main-title">
-                            <h3 class="m-0">Total Fund Unspent <br> in %</h3>
+                            <h3 class="m-0">Total Fund Unspent in %</h3>
                         </div>
                     </div>
                 </div>
@@ -268,8 +268,8 @@
     <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-1">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
-                <div class="col-md-6">
-                <div class="d-flex align-items-center">
+                <div class="col-md-4">
+                <div class="">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                 class="text-danger">*</sup></b></label>
                     <select name="nohppczsss-national-institute-ucform" class="form-control nohppczsss_national_ucForm_filter" id="nohppczsss-national-institute-ucform">
@@ -283,8 +283,8 @@
                 </div>
                 </div>
                
-                <div class="col-md-6">
-                <div class="d-flex align-items-center">
+                <div class="col-md-4">
+                <div class="">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
                                 class="text-danger">*</sup></b></label>
                     <select name="nohppcasss-national-ucform-fy" class="form-control nohppczsss_national_ucForm_filter" id="nohppcasss-national-ucform-fy">
