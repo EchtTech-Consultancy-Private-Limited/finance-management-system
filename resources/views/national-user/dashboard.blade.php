@@ -287,7 +287,7 @@
                             <p>Committed Liabilities</p>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
@@ -414,7 +414,7 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control national_institute_name"
+                            <select name="institute_name" class="form-control national_institute_name national_ucForm_filter"
                                 id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)

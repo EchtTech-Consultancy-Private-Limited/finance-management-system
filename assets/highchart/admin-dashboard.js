@@ -8,8 +8,9 @@ $(document).ready(function(){
             'financial_year': new Date().getFullYear()+ ' - ' + (new Date().getFullYear()+1)
         },
         success: function(data) {
-            var programUserDetails = data.programUserDetails;  
-            adminDashboardChart(data,programUserDetails);         
+            var programUserDetails = data.programUserDetails; 
+            var registrationsSession = data.registrationsSession;
+            adminDashboardChart(data,programUserDetails,registrationsSession);         
         }
     });
 });
@@ -23,8 +24,9 @@ $(document).on('click', '.performance', function() {
             'performance': performance
         },
         success: function(data) {
-            var programUserDetails = data.programUserDetails;  
-            adminDashboardChart(data,programUserDetails);         
+            var programUserDetails = data.programUserDetails;
+            var registrationsSession = data.registrationsSession;  
+            adminDashboardChart(data,programUserDetails,registrationsSession);         
         }
     });
 });
@@ -48,7 +50,7 @@ $(document).on('change', '#user_program', function() {
 
 
 // **************************************************
-function adminDashboardChart(data,programUserDetailsArray) {
+function adminDashboardChart(data,programUserDetailsArray,registrationsSession) {
     const colors = [
         ['#2bb930', '#fafafa'],
         ['#ff5733', '#fafafa'],
@@ -379,6 +381,7 @@ function adminDashboardChart(data,programUserDetailsArray) {
     
 
     // Program wise Unspent Balance Line Chart
+    let stringArray = registrationsSession.days.map(String);
     Highcharts.chart('integrated-dashboard-unspent-Sessions', {
         chart: {
             type: 'line'
@@ -394,7 +397,7 @@ function adminDashboardChart(data,programUserDetailsArray) {
         },
     
         xAxis: {
-            categories: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '01', '02']
+            categories: stringArray,
         },
         yAxis: {
             title: {
@@ -417,7 +420,7 @@ function adminDashboardChart(data,programUserDetailsArray) {
                 },
             },
         
-            data: [1, 18, 23, 15, 5, 25, 29, 28, 21, 10, 15, 17]
+            data: registrationsSession.count,
         }],
         
     

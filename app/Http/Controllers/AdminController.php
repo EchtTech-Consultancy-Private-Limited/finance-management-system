@@ -107,6 +107,23 @@ class AdminController extends Controller
                 'value' => $programUserCount,
             ];
         }
+        // Sessions In Last 30 Days user record
+        $currentYear = Carbon::now()->year;
+        $currentMonth = Carbon::now()->month;
+        $daysInMonth = Carbon::now()->daysInMonth;
+        $days = range(1, $daysInMonth);
+        $counts = array_fill(0, $daysInMonth, 0);
+        $dailyRegistrations = User::select(DB::raw('DAY(created_at) as day'), DB::raw('count(*) as count'))
+                                ->whereYear('created_at', $currentYear)
+                                ->whereMonth('created_at', $currentMonth)
+                                ->groupBy(DB::raw('DAY(created_at)'))
+                                ->pluck('count', 'day');
+        foreach ($dailyRegistrations as $day => $count) {
+            $counts[$day - 1] = $count;
+        }
+        $registrationsSession['days'] = $days;
+        $registrationsSession['count'] = $counts;
+        // End Sessions In Last 30 Days user record
 
         // Overall active user
         $overallActiveUser = round($login_status / $totalUser * 100);
@@ -133,7 +150,8 @@ class AdminController extends Controller
             'loginCountHour' => $loginCountHour,
             'overallActiveUser' => $overallActiveUser,
             'stateUserDetails' => $stateUserDetails,
-            'adminMonthPie' => $adminMonthPie
+            'adminMonthPie' => $adminMonthPie,
+            'registrationsSession' => $registrationsSession
         ], 200);
     }
 

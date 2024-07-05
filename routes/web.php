@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AdminController;
@@ -26,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-profile/{id}', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
     Route::get('/filter-program', [DashboardController::class, 'filterProgram'])->name('filterProgram');
-    
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => ['checkUserType:admin']], function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/filter-dashboard', [AdminController::class, 'adminFilterDdashboard'])->name('filter-dashboard');
@@ -76,6 +77,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/ppcllab-dashboard-report', [PPCLLabController::class, 'ppcllabDashboardReport'])->name('ppcllab-dashboard-report');
         // PM-ABHIM-SSS Dashboard
         Route::get('/pmabhimsss', [PMABHIMSSSController::class, 'index'])->name('pmabhimsss');
+        Route::get('/pmabhimsss-filter-dashboard', [PMABHIMSSSController::class, 'pmabhimsssNationalFilterDdashboard'])->name('pmabhimsss-filter-dashboard');
+        Route::get('/pmabhimsss-filter-uc-form-dashboard', [PMABHIMSSSController::class, 'pmabhimsssNationalFilterUcFormDashboard'])->name('pmabhimsss-filter-uc-form-dashboard');
+        Route::get('/pmabhimsss-soe-expenditure-filter', [PMABHIMSSSController::class, 'pmabhimsssSoeExpenditureFilter'])->name('pmabhimsss-soe-expenditure-filter');        
+        Route::get('/pmabhimsss-dashboard-report', [PMABHIMSSSController::class, 'pmabhimsssDashboardReport'])->name('pmabhimsss-dashboard-report');
     });
 
     Route::group(['prefix' => 'institute-users', 'as' => 'institute-user.','middleware' => ['checkUserType:institute']], function () {

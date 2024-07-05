@@ -41,7 +41,9 @@ class NationalSeoExpenseController extends Controller
                 $financialYearMonths[] = $month->format('F');
             }
             $soeForm = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')->where('id', $id)->first();
-            $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', $soeForm->user_id)->get();
+            $targetIndex = array_search($soeForm->month, $financialYearMonths);
+            $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex);
+            $soeForms = SOEUCForm::with('SoeUcFormCalculation')->whereIn('month', $monthsBefore)->where('user_id', $soeForm->user_id)->get();
             $previous_month_expenditure = [];
             $previous_month_total = [];
             $final_data = [];
@@ -64,18 +66,17 @@ class NationalSeoExpenseController extends Controller
                 }
             }
             foreach ($previous_month_expenditure as $head => $months) {
-                $total_str = implode('+', $months['total']) . '=' . $previous_month_total[$head];
+                $total_str = $previous_month_total[$head];
+                if($head == "Grand Total"){
+                    $grand_total = $previous_month_total[$head];
+                }
                 unset($months['total']);
                 $months_str = implode(', ', $months);
                 $final_data[$head] = [
                     $months_str,
                     $total_str,
-                    "Overall total of every head"
+                    $grand_total ?? '0',
                 ];
-            }
-            $overall_total = array_sum($previous_month_total);
-            foreach ($final_data as $head => &$data) {
-                $data[2] = $overall_total;
             }
             DB::commit();
             return view('national-user.soe-form.view', compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total'));
