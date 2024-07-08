@@ -934,7 +934,7 @@ function nationalNrcplabUcFormTotalChart(UcUploadDetails){
 }
 
 function nrcplabSoeExpenditure(programWiseExpenditure){
-    Highcharts.chart("national_expnediture_nohppcz_sss", {
+    Highcharts.chart("national_expnediture_nrcplab", {
         chart: {
             type: "column",
         },
@@ -970,7 +970,7 @@ function nrcplabSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {
@@ -1005,7 +1005,7 @@ function nrcplabSoeExpenditure(programWiseExpenditure){
         ],
     });
 
-    Highcharts.chart("national_instiute_wise_yearly_nohppcz_sss", {
+    Highcharts.chart("national_instiute_wise_yearly_nrcplab", {
         chart: {
             type: "column",
         },
@@ -1041,7 +1041,7 @@ function nrcplabSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {
