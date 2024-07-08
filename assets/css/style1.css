@@ -13519,14 +13519,16 @@ input.studentNumber.editmode:focus {
 }
 .school-info-box .card-icon-wrapper div i{
     color:#FF5722;
+    font-size: 23px;
+}
+.total-ut-tooltip i {
+    color: #5c5c5c;
+    font-size: 10px;
 }
 .school-info-box .card-content-wrapper {
     /* float: right; */
     width: 100%;
     margin-left: 15px;
-}
-.school-info-box .card-content-wrapper div{
-
 }
 
 .map-marker-person-icon {

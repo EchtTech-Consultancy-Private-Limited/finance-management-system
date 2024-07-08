@@ -26,7 +26,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
     </div>`,
         align: "center",
         verticalAlign: "middle",
-        y: 30,
+        y: window.innerWidth >1350 ? 55 : 40,
         style: {
             fontSize: "16px",
             color: "#000000",
@@ -40,7 +40,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
             </div>`,
         align: "center",
         verticalAlign: "middle",
-        y: 60,
+        y:  window.innerWidth >1350 ? 85 : 65 ,
         style: {
             fontSize: "16px",
             color: "#000000",
@@ -68,7 +68,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
             startAngle: -90,
             endAngle: 90,
             center: ["50%", "75%"],
-            size: "110%",
+            size: "100%",
         },
     },
     series: [
@@ -106,7 +106,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
         </div>`,
         align: "center",
         verticalAlign: "middle",
-        y: 30,
+        y: window.innerWidth >1350 ? 55 : 40,
         style: {
             fontSize: "16px",
             color: "#000000",
@@ -123,7 +123,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
         </div>`,
         align: "center",
         verticalAlign: "middle",
-        y: 60,
+        y:   window.innerWidth >1350 ? 85 : 65 ,
         style: {
             fontSize: "16px",
             color: "#000000",
@@ -151,7 +151,7 @@ Highcharts.chart("national-total-expenditure-lac-pm-abhim", {
             startAngle: -90,
             endAngle: 90,
             center: ["50%", "75%"],
-            size: "110%",
+            size: "100%",
         },
     },
     series: [
@@ -366,7 +366,7 @@ handleZoomDetection();
             startAngle: -90,
             endAngle: 90,
             center: ["50%", "75%"],
-            size: "110%",
+            size: "100%",
         },
     },
     series: [
@@ -447,7 +447,7 @@ handleZoomDetection();
             startAngle: -90,
             endAngle: 90,
             center: ["50%", "75%"],
-            size: "110%",
+            size: "100%",
         },
     },
     series: [
@@ -523,7 +523,7 @@ handleZoomDetection();
             startAngle: -90,
             endAngle: 90,
             center: ["50%", "75%"],
-            size: "110%",
+            size: "100%",
         },
     },
     series: [
@@ -599,7 +599,7 @@ handleZoomDetection();
     //         startAngle: -90,
     //         endAngle: 90,
     //         center: ["50%", "75%"],
-    //         size: "110%",
+    //         size: "100%",
     //     },
     // },
     // series: [

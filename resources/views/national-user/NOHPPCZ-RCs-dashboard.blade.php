@@ -223,7 +223,7 @@
 
     <div class="white_card_body col-xl-12 white_card card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-rcs-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-rcs-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -239,7 +239,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-4 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-rcs-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
@@ -247,7 +247,7 @@
                     </div>
                 </div>
             </div>                
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-5 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-rcs-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
@@ -255,7 +255,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-rcs-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
