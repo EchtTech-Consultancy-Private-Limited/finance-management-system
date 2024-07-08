@@ -78,8 +78,8 @@
                             <tr class="table-color-head">
                                 <th>Heads</th>
                                 <th>Sanction Order Nos.</th>
-                                <th>Previous Month Expenditure</th>
-                                <th>Previous Month Total</th>
+                                {{-- <th>Previous Month Expenditure</th> --}}
+                                <th>Expenditure Till Last Month</th>
                                 <th>Unspent Balance (GIA) as on 1st April</th>
                                 <th>GIA Received in F.Y</th>
                                 <th>Total Balance excluding interest</th>
@@ -92,7 +92,7 @@
                             <tr class="table-color-th">
                                 <th></th>
                                 <th>A</th>
-                                <th></th>
+                                {{-- <th></th> --}}
                                 <th></th>
                                 <th>B</th>
                                 <th>C</th>
@@ -116,11 +116,11 @@
                                     <p>{{ $value->sanction_order }}</p>
                                 </td>
                                 @endif
-                                <td>
+                                {{-- <td>
                                     <p>{{ $final_data[$value->head][0] ?? '' }}</p>
-                                </td>
+                                </td> --}}
                                 <td>
-                                    <p>{{ $final_data[$value->head][1] ?? '' }}</p>
+                                    <p>{{ $final_data[$value->head][1] ?? 'N/A' }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $value->unspent_balance_1st }}</p>
@@ -157,10 +157,10 @@
                                     Grand Total
                                 </th>
                                 <th class="grandTotal-A"></th>
+                                {{-- <th class="grandTotal-B">
+                                </th> --}}
                                 <th class="grandTotal-B">
-                                </th>
-                                <th class="grandTotal-B">
-                                    <p>{{ $final_data[$value->head][2] ?? '' }}</p>
+                                    <p>{{ $final_data[$value->head][2] ?? 'N/A' }}</p>
                                 </th>
                                 <th class="grandTotal-B">
                                     <p>{{ $value->unspent_balance_1st }}</p>

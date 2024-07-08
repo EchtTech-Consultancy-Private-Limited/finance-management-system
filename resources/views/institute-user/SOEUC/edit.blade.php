@@ -165,8 +165,8 @@
                         <tr class="table-color-head">
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
-                            <th>Previous Month Expenditure</th>
-                            <th>Previous Month Total</th>
+                            {{-- <th>Previous Month Expenditure</th> --}}
+                            <th>Expenditure Till Last Month</th>
                             <th>Unspent Balance (GIA) as on 1st April</th>
                             <th>GIA Received in F.Y</th>
                             <th>Total Balance excluding interest</th>
@@ -179,7 +179,7 @@
                         <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
-                            <th></th>
+                            {{-- <th></th> --}}
                             <th></th>
                             <th>B</th>
                             <th>C</th>
@@ -205,12 +205,12 @@
                                     class="form-control textarea-h" id="manpower-A"
                                     rows="16">{{ $value->sanction_order }}</textarea></td>
                             @endif
-                            <td>
+                            {{-- <td>
                                 <input type="text" name="previous_month_expenditure[]"
                                     value="{{ $final_data[$value->head][0] ?? '' }}" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)"
                                     readonly>
-                            </td>
+                            </td> --}}
                             <td>
                                 <input type="text" name="previous_month_total[]"
                                     value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control"
@@ -265,12 +265,12 @@
                                 <input type="hidden" name="head[]" value="Grand Total">
                             </th>
                             <th class="grandTotal-A"></th>
-                            <th class="grandTotal-B">
+                            {{-- <th class="grandTotal-B">
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
-                            </th>
+                            </th> --}}
                             <th class="grandTotal-B">
-                                <input type="text" name="previous_month_total[]" class="form-control grandTotal-B"
+                                <input type="text" name="previous_month_total[]" class="form-control"
                                     id="manpower-A"
                                     value="{{ old('previous_month_total.7', $final_data[$value->head][2] ?? '') }}"
                                     readonly>

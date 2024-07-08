@@ -347,6 +347,7 @@ class DashboardController extends Controller
             $grandTotalCommittedLiabilities = 0;
             $grandTotalTotalBalance = 0;
             $grandTotalActualExpenditure = 0;
+            $grandTotalUnspentBalanceFirst = 0;
             $grandTotalUnspentBalance = 0;
             foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                 if ($formCalculate->head == 'Grand Total') {
@@ -354,6 +355,7 @@ class DashboardController extends Controller
                     $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
                     $grandTotalTotalBalance += (int)$formCalculate->total_balance;
                     $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
+                    $grandTotalUnspentBalanceFirst += (int)$formCalculate->unspent_balance_1st;
                     $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
                 }
             }
@@ -362,6 +364,7 @@ class DashboardController extends Controller
                 'committed_liabilities_total' => $grandTotalCommittedLiabilities,
                 'total_balance_total' => $grandTotalTotalBalance,
                 'actual_expenditure_total' => $grandTotalActualExpenditure,
+                'unspent_balance_1st_total' => $grandTotalUnspentBalanceFirst,
                 'unspent_balance_31st_total' => $grandTotalUnspentBalance,
             ];
         }
@@ -371,6 +374,7 @@ class DashboardController extends Controller
             'committedLiabilitiesTotal' => 0,
             'totalBalanceTotal' => 0,
             'actualExpenditureTotal' => 0,
+            'unspentBalance1stTotal' => 0,
             'unspentBalance31stTotal' => 0,
         ];
         
@@ -379,6 +383,7 @@ class DashboardController extends Controller
             $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
             $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
 
@@ -765,9 +770,11 @@ class DashboardController extends Controller
         if ($request->has('nationalUcformFy') && $request->nationalUcformFy) {
             $query->where('financial_year', $request->nationalUcformFy);
         }        
-        
         if ($request->has('nationalProgramUcForm') && $request->nationalProgramUcForm) {
             $query->where('program_id', $request->nationalProgramUcForm);
+        }
+        if ($request->has('nationalInstituteName') && $request->nationalInstituteName) {
+            $query->where('institute_id', $request->nationalInstituteName);
         }
         
         $UcUploadCount = $query->count();

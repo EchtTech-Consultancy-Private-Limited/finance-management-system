@@ -37,14 +37,14 @@
                                     class="text-danger">*</span></label>
                             <select id="qtr_uc" class="form-control" name="qtr_uc">
                                 <option value="">Select QTR UC</option>
-                                <option value="30 June" {{($soeUCUpload->qtr_uc == "30 June") ? 'selected':''}}>30 June
+                                <option value="30 June" {{($soeUCUpload->qtr_uc == "30 June") ? 'selected':''}}>30 June ( First QTR )
                                 </option>
                                 <option value="30 September"
-                                    {{($soeUCUpload->qtr_uc == "30 September") ? 'selected':''}}>30 September</option>
+                                    {{($soeUCUpload->qtr_uc == "30 September") ? 'selected':''}}>30 September ( Second QTR )</option>
                                 <option value="31 December" {{($soeUCUpload->qtr_uc == "31 December") ? 'selected':''}}>
-                                    31 December</option>
+                                    31 December ( Third QTR )</option>
                                 <option value="31 March" {{($soeUCUpload->qtr_uc == "31 March") ? 'selected':''}}>31
-                                    March</option>
+                                    March ( Fourth QTR )</option>
                             </select>
                             @error('qtr_uc')
                             <span class="text-danger error">{{ $message }}</span>

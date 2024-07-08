@@ -74,7 +74,7 @@ $(document).on('change', '.national_user_card', function() {
             $("#national-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#national-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
             $("#national-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
-            $("#national-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
+            $("#national-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);           
             var programDetails = data.programDetails[0];
             var balanceProgramLineChart = data.balanceProgramLineChart.programs;
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
@@ -143,12 +143,14 @@ $(document).on('change', '#national-user-fy-barchart-head', function() {
 $(document).on('change', '.national_ucForm_filter', function() {
     var nationalUcformFy = $('#national-ucform-fy').find(":selected").val();
     const nationalProgramUcForm = $('#national-program-ucform').find(":selected").val();
+    const nationalInstituteName = $('#national_institute_name').find(":selected").val();
     $.ajax({
         type: "GET",
         url: BASE_URL + "national-users/filter-uc-form-dashboard",
         data: {
             'nationalUcformFy': nationalUcformFy,
-            'nationalProgramUcForm' : nationalProgramUcForm
+            'nationalProgramUcForm' : nationalProgramUcForm,
+            'nationalInstituteName' :nationalInstituteName
         },
         success: function(data) {           
             var UcUploadDetails = data.UcUploadDetails;
@@ -882,7 +884,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
                     enabled: true,
                 },
 
-                enableMouseTracking: false,
+                enableMouseTracking: true,
             },
         },
         series: balanceProgramLineChart,

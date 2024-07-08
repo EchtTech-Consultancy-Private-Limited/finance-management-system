@@ -38,10 +38,10 @@
                             <label class="form-label" for="inputAddress2">QTR UC<span class="text-danger">*</span></label>
                             <select id="qtr_uc" class="form-control" name="qtr_uc">
                                 <option value="">Select QTR UC</option>
-                                <option value="30 June">30 June</option>
-                                <option value="30 September">30 September</option>
-                                <option value="31 December">31 December</option>
-                                <option value="31 March">31 March</option>
+                                <option value="30 June">30 June ( First QTR )</option>
+                                <option value="30 September">30 September ( Second QTR )</option>
+                                <option value="31 December">31 December ( Third QTR )</option>
+                                <option value="31 March">31 March ( Fourth QTR )</option>
                                 
                             </select>
                             @error('qtr_uc')

@@ -182,8 +182,8 @@
                         <tr class="table-color-head">
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
-                            <th>Previous Month Expenditure</th>
-                            <th>Previous Month Total</th>
+                            {{-- <th>Previous Month Expenditure</th> --}}
+                            <th>Expenditure Till Last Month</th>
                             <th>Unspent Balance (GIA) as on 1st April</th>
                             <th>GIA Received in F.Y</th>
                             <th>Total Balance excluding interest</th>
@@ -196,7 +196,7 @@
                         <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
-                            <th></th>
+                            {{-- <th></th> --}}
                             <th></th>
                             <th>B</th>
                             <th>C</th>
@@ -221,10 +221,11 @@
                                     class="form-control textarea-h" id="manpower-A"
                                     rows="16">{{ old('sanction_order') }}</textarea></td>
                             @endif
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ @$previousTotalMonth['0'] }}" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)"
-                                    readonly=""></td>
+                                    readonly="">
+                                </td> --}}
                             <td><input type="text" name="previous_month_total[]" value="{{ @$previousTotalMonth['1'] }}"
                                     class="form-control" id="previous_month_total" maxlength="5"
                                     oninput="validateInput(this)" readonly=""></td>
@@ -260,9 +261,9 @@
                             <td rowspan="7" class="vertical-align-top"><textarea name="sanction_order"
                                     class="form-control textarea-h" id="manpower-A"
                                     rows="16">{{ old('sanction_order') }}</textarea></td>
-                            <td><input type="text" name="previous_month_expenditure[]" class="form-control"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value=""
-                                    readonly=""></td>
+                                    readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]" class="form-control"
                                     id="previous_month_total" maxlength="5" oninput="validateInput(this)" value=""
                                     readonly=""></td>
@@ -292,9 +293,9 @@
 
                                 <input type="hidden" name="head[]" value="Meetings, Training Research">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.1') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.1') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -325,9 +326,9 @@
                                 <input type="hidden" name="head[]"
                                     value="Lab Strengthening Kits, Regents &amp; Consumable (Recurring)">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.2') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.2') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -357,9 +358,9 @@
 
                                 <input type="hidden" name="head[]" value="IEC">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.3') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.3') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -389,9 +390,9 @@
 
                                 <input type="hidden" name="head[]" value="Office Expenses &amp; Travel">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.4') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.4') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -421,9 +422,9 @@
 
                                 <input type="hidden" name="head[]" value="Lab Strengthening (Non Recurring)">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.5') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.5') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -453,9 +454,9 @@
 
                                 <input type="hidden" name="head[]" value="Other Activities">
                             </th>
-                            <td><input type="text" name="previous_month_expenditure[]"
+                            {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.6') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}
                             <td><input type="text" name="previous_month_total[]"
                                     value="{{ old('previous_month_total.6') }}" class="form-control"
                                     id="previous_month_total" readonly=""></td>
@@ -491,12 +492,12 @@
                             <th class="grandTotal-A">
 
                             </th>
-                            <th class="grandTotal-B">
+                            {{-- <th class="grandTotal-B">
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
-                            </th>
+                            </th> --}}
                             <th class="grandTotal-B">
-                                <input type="text" name="previous_month_total[]" class="form-control grandTotal-B"
+                                <input type="text" name="previous_month_total[]" class="form-control"
                                     id="manpower-A"
                                     value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>
                             </th>
