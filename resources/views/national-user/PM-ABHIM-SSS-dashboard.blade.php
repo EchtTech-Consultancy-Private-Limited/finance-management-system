@@ -39,7 +39,7 @@
 
 <div class="row">
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
@@ -135,8 +135,8 @@
 
         </div>
     </div>
-   
-    <div class="row expenditure_percentage">
+   <div class="col-md-12">
+   <div class="row expenditure_percentage">
         <div class="col-md-4">
             <div class="white_card  mb_30 integrated-expenditure">
                 <div class="">
@@ -214,12 +214,14 @@
             </div>
         </div> -->
     </div>
+   </div>
 
 
 
-    <div class="white_card_body col-xl-12 white_card card_height_100 user_crm_wrapper mb-3">
+
+    <div class="white_card_body col-xl-12  card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -227,7 +229,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
+            <div class="col">
+                <div class="single_crm border-line-2 p-0">
+                    <div class="crm_body">
+                        <h4 id="national-committedLiabilitiesTotal">0
+                        </h4>
+                        <p>Interest earned in C.Y. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -235,7 +246,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-4 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
@@ -243,7 +254,7 @@
                     </div>
                 </div>
             </div>                
-            <div class="col-md-4 col-lg">
+            <div class="col">
                 <div class="single_crm border-line-5 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
@@ -251,8 +262,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg">
-                <div class="single_crm border-line-2 p-0">
+            <div class="col">
+                <div class="single_crm border-line-5 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
                         </h4>
@@ -265,7 +276,7 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-1">
+    <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-md-6">
@@ -445,9 +456,7 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="row">
-
-        <div class="col-xl-12 ">
+    <div class="col-xl-12 ">
             <div class="crad white_card mb_30 p-4">
                 <div>
                     <form action="{{ route('national-user.nohppczrsss-dashboard-report') }}" method="get" id="institute-report">
@@ -542,8 +551,6 @@
                 </div>
             </div>
         </div>
-    
-    </div>
 
 
 

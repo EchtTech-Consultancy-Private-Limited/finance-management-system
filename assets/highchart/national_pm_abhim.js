@@ -173,7 +173,7 @@ function nationalPmabhimsssTotalChart(percentageExpenditure,percentageUnspentBal
                 startAngle: -90,
                 endAngle: 90,
                 center: ["50%", "75%"],
-                size: "110%",
+                size: "100%",
             },
         },
         series: [
@@ -257,7 +257,7 @@ function nationalPmabhimsssTotalChart(percentageExpenditure,percentageUnspentBal
                 startAngle: -90,
                 endAngle: 90,
                 center: ["50%", "75%"],
-                size: "110%",
+                size: "100%",
             },
         },
         series: [
@@ -468,7 +468,7 @@ function nationalPmabhimsssTotalChart(percentageExpenditure,percentageUnspentBal
                 startAngle: -90,
                 endAngle: 90,
                 center: ["50%", "75%"],
-                size: "110%",
+                size: "100%",
             },
         },
         series: [
@@ -549,7 +549,7 @@ function nationalPmabhimsssTotalChart(percentageExpenditure,percentageUnspentBal
                 startAngle: -90,
                 endAngle: 90,
                 center: ["50%", "75%"],
-                size: "110%",
+                size: "100%",
             },
         },
         series: [
@@ -638,7 +638,7 @@ function nationalPmabhimsssTotalChart(percentageExpenditure,percentageUnspentBal
                 startAngle: -90,
                 endAngle: 90,
                 center: ["50%", "75%"],
-                size: "110%",
+                size: "100%",
             },
         },
         series: [
