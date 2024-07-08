@@ -195,3 +195,26 @@ $(document).on('change', '#form_type', function() {
     }
 });    
 // End List change on form type select
+
+// notification code
+$(document).ready(function() {
+    function fetchNotifications() {
+        $.ajax({
+            url: BASE_URL + 'notifications',
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                console.log(data);
+                $("#bell_notification_clicker").text(data.totalNew);
+                $('.total-resolved h2').text(data.totalReported);
+                $('.status span').eq(0).text(data.confirmed);
+                $('.status span').eq(1).text(data.returned);
+            }
+        });
+    }
+
+    setInterval(fetchNotifications, 30000);
+    fetchNotifications();
+});

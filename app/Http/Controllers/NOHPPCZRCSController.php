@@ -209,8 +209,7 @@ class NOHPPCZRCSController extends Controller
                 if ($formCalculate->head == 'Other Activities') {
                     $otherActivities += (int)$formCalculate->actual_expenditure;
                 }
-            }
-
+            }            
             $finalArray[] = [
                 'actual_expenditure_total' => $grandTotalActualExpenditure,
                 'unspent_balance_31st_total' => $grandTotalUnspentBalance,
@@ -234,8 +233,12 @@ class NOHPPCZRCSController extends Controller
             'Lab Strengthening (Non Recurring)' => 0,
             'Other Activities' => 0,
         ];
-        
+        $totalExpenditure = [
+            'total_program_expenditure' => 0,
+        ];
         foreach ($finalArray as $entry) {
+            $totalExpenditure['total_program_expenditure'] += $entry['actual_expenditure_total'];
+
             $totalHeads['Man Power with Human Resource'] += $entry['man_power_with_human_resource'];
             $totalHeads['Meetings, Training Research'] += $entry['meetings_training_research'];
             $totalHeads['Lab Strengthening Kits, Regents & Consumable (Recurring)'] += $entry['lab_strengthening_kits_regents'];
@@ -253,11 +256,10 @@ class NOHPPCZRCSController extends Controller
                 'y' => $amount
             ];
         }
-        
         $programHeadDetails = [
             'head_name' => $programNames . '-' . $instituteProgram->code,
             'totalHeads' => $headExpenditureFormatted,
-            'total_program_expenditure' => $grandTotalActualExpenditure ?? 0,
+            'total_program_expenditure' => $totalExpenditure['total_program_expenditure'],
         ];
         
         // End number of percentage program wise
@@ -281,9 +283,9 @@ class NOHPPCZRCSController extends Controller
         }        
         $UcUploadCount = $query->count();
         $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('status', 1)->count();
+        $UcUploadApprovedCount = $UcUploadApproved->where('program_id', 1)->where('status', 1)->count();
         $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('status', 2)->count();
+        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('program_id', 1)->where('status', 2)->count();
         
         $UcUploadDetails = [
             'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
