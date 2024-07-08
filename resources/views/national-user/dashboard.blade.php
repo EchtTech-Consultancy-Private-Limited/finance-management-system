@@ -40,12 +40,12 @@
         <h3> All Programs combined data</h3>
     </div> -->
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 ">
         <div class="row">
             <div class="col-md-9 ">
                 <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text total-box1">
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box1">
                             <div class="school-info-box">
                                 <div class="card-icon-wrapper">
                                     <div>
@@ -71,8 +71,8 @@
                         </div>
 
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text total-box2">
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box2">
                             <div class="school-info-box">
 
                                 <div class="card-icon-wrapper">
@@ -97,8 +97,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text total-box3">
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box3">
                             <div class="school-info-box">
                                 <div class="card-icon-wrapper">
                                     <div>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text total-box4">
+                        <div class="profile-text white_card total-box4">
 
                             <div class="school-info-box">
                                 <div class="card-icon-wrapper">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text total-box5">
+                        <div class="profile-text white_card total-box5">
                             <div class="school-info-box">
                                 <div class="card-icon-wrapper">
                                     <div>
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text total-box6">
+                        <div class="profile-text white_card total-box6">
                             <div class="school-info-box ">
                                 <div class="card-icon-wrapper">
                                     <div>
@@ -208,11 +208,11 @@
 
     </div>
 
-    <div class="col-xl-12 white_card  user_crm_wrapper mt_30">
-        <div class="crad mb_30 fund-card">
+    <div class="col-xl-12">
+        <div class="crad fund-card">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Fund approved <br> (in Cr.)
                         </h3>
@@ -223,7 +223,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Fund Expenditure <br> (in Cr.)
                         </h3>
@@ -233,7 +233,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Financial Progress <br> (%)
                         </h3>
@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Balance Amount <br> (in Cr.)
                         </h3>
@@ -297,10 +297,10 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
+    <div class="  col-xl-12 user_crm_wrapper">
         <div class="white_card_body  white_card  p-4">
 
-            <div class="white_card card_height_100 mb_30 ">
+            <div class="  mb_30">
                 <div class="row">
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
@@ -379,7 +379,7 @@
                             <p>Committed Liabilities</p>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
@@ -482,7 +482,7 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="col-xl-12 white_card meter-graph user_crm_wrapper">
+    <div class="col-xl-12  meter-graph user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="" class="select-form-s">
@@ -502,7 +502,8 @@
                         <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="institute_name" class="form-control national_institute_name national_ucForm_filter"
+                            <select name="institute_name"
+                                class="form-control national_institute_name national_ucForm_filter"
                                 id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
@@ -535,7 +536,7 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100">
+                            <div class=" card_height_100">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-UC-Received"
                                         class="border rounded mb-3 received-chart"></div>
@@ -544,7 +545,7 @@
                         </div>
 
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100 ">
+                            <div class=" card_height_100 ">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-UC-not-Received"
                                         class="border rounded mb-3 received-chart"></div>
@@ -562,7 +563,7 @@
                         </div>
 
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100 ">
+                            <div class=" card_height_100 ">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
                                         class="border rounded mb-0 received-chart"></div>
@@ -581,7 +582,7 @@
 
 
     <div class="col-md-12">
-        <div class="white_card p-3 mb_30 p-4">
+        <div class="white_card p-3 mb_30 p-4 pt-0">
             <div class="row">
                 <div class="col-md-12">
                     <div class="QA_table pt-3">
@@ -695,7 +696,7 @@
         <div class="main-title ">
             <h3 class="m-0"> Expenditure Bar Chart (All Programs combined data)</h3>
         </div>
-        <div class="crad white_card mb_30 p-4">
+        <div class="card white_card mb_30 p-4">
 
             <div class="row">
                 <div class="col-md-3">
@@ -765,80 +766,80 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
 
-                    <div class="white_card card_height_100 mb_30 integrated-expenditure">
-                        <div class="">
-                            <div class="box_header m-0">
-                                <div class="main-title ">
-                                    <h3 class="m-0">Program wise Expenditure Pie </h3>
-                                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
 
+                <div class=" card_height_100 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title ">
+                                <h3 class="m-0">Program wise Expenditure Pie </h3>
                             </div>
+
                         </div>
-                        <div class="row program-wise-expenditure-pie">
-                            <div class="col">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> NOHPPCZ-RCs</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
-                                        class="border border-1 "></div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> NOHPPCZ-SSS</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
-                                        class="border border-1 "></div>
-                                </div>
-
-                            </div>
-                            <div class="col">
-                                <div class="graph-container">
-                                    <h2 class="chart-title">NRCP-Lab</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
-                                        class="border border-1 "></div>
-                                </div>
-
-                            </div>
-                            <div class="col">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> PPCL-Lab</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
-                                        class="border border-1 "></div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> PM-ABHIM-SSS</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart5"
-                                        class="border border-1 "></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Program wise Expenditure Line Chart</h3>
-                                    </div>
-                                    <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
-
-                                    <div id="integrated-dashboard-state-graph" class=""></div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                    <div class="row program-wise-expenditure-pie">
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> NOHPPCZ-RCs</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> NOHPPCZ-SSS</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
+                                    class="border border-1 "></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title">NRCP-Lab</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
+                                    class="border border-1 "></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> PPCL-Lab</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> PM-ABHIM-SSS</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart5"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="graph-container white_card border border-1 ">
+                                <div class="main-title">
+                                    <h3 class="m-0">Program wise Expenditure Line Chart</h3>
+                                </div>
+                                <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12">
+                            <div class="graph-container white_card border border-1 mb-0">
+
+                                <div id="integrated-dashboard-state-graph" class=""></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="devider-line">
@@ -848,7 +849,7 @@
         <div class="white_card   mb_30 p-4">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="crad white_card mb_30">
+                    <div class="crad  mb_30">
                         <div>
                             <form action="" class="select-form-s">
                                 <div class="row">
@@ -937,36 +938,37 @@
                     </div>
 
                 </div>
-                <div class="row custom-grid2 state-driven">
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0">
-                            <div id="integrated-dashboard-data-driven-graph1" class=""></div>
-                        </div>
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph2" class=""></div>
-                        </div>
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph3" class=""></div>
-                        </div>
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph4" class=""></div>
-                        </div>
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph5" class=""></div>
-                        </div>
-                    </div>
+
+            </div>
+
+        </div>
+        <div class="row custom-grid2 state-driven">
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card">
+                    <div id="integrated-dashboard-data-driven-graph1" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph2" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph3" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph4" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph5" class=""></div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="col-xl-12 ">
@@ -1033,131 +1035,134 @@
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="border country-overall-data p-3 rounded-1 pt-0">
-                        <ul>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">1</span></span><span
-                                            class="country-list-content">Unspent Balance (GIA) as on 1st
-                                            April..</span>
-                                    </div>
-                                    <div>
 
-                                        <span class="state-data-total" id="unspent_balance_1st_total">0</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">2</span></span><span
-                                            class="country-list-content">GIA Received in F.Y</span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="gia_received_total">0</span>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">3</span></span><span
-                                            class="country-list-content">Total Balance excluding interest</span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="total_balance_excluding_total">0</span>
-                                    </div>
-                                </div>
-
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">4</span></span><span
-                                            class="country-list-content">Actual Expenditure incurred during the
-                                            current
-                                            F.Y
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">5</span></span><span
-                                            class="country-list-content">Unspent Balance F=(D-E)</span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="unspent_balance_d_e_total">0</span>
-                                    </div>
-                                </div>
-
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">6</span></span><span
-                                            class="country-list-content">Committed Liabilities (if any)</span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="committed_liabilities_total">0</span>
-                                    </div>
-                                </div>
-
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">7</span></span><span
-                                            class="country-list-content">Unspent Balance of (GIA) as on 31st
-                                            March
-                                            H=(F-G)</span>
-                                    </div>
-                                    <div>
-                                        <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
-                                    </div>
-                                </div>
-
-
-
-                            </li>
-                            <li>
-                                <div class="overall-data-li">
-                                    <div>
-                                        <span class="arrow arrow-left"><span class="number">8</span></span><span
-                                            class="country-list-content">UC Uploaded</span>
-                                    </div>
-                                    <div>
-
-                                        <span class="state-data-total" id="uc_uploads_total">0</span>
-                                    </div>
-                                </div>
-
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div id="integrated-dashboard-india-map3" class="border rounded"></div>
-                </div>
-            </div>
         </div>
 
 
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="border country-overall-data white_card rounded-1 pt-0 p-4">
+                <ul>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">1</span></span><span
+                                    class="country-list-content">Unspent Balance (GIA) as on 1st
+                                    April..</span>
+                            </div>
+                            <div>
 
+                                <span class="state-data-total" id="unspent_balance_1st_total">0</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">2</span></span><span
+                                    class="country-list-content">GIA Received in F.Y</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="gia_received_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">3</span></span><span
+                                    class="country-list-content">Total Balance excluding interest</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="total_balance_excluding_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">4</span></span><span
+                                    class="country-list-content">Actual Expenditure incurred during the
+                                    current
+                                    F.Y
+                                </span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">5</span></span><span
+                                    class="country-list-content">Unspent Balance F=(D-E)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="unspent_balance_d_e_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">6</span></span><span
+                                    class="country-list-content">Committed Liabilities (if any)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="committed_liabilities_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">7</span></span><span
+                                    class="country-list-content">Unspent Balance of (GIA) as on 31st
+                                    March
+                                    H=(F-G)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
+                            </div>
+                        </div>
+
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">8</span></span><span
+                                    class="country-list-content">UC Uploaded</span>
+                            </div>
+                            <div>
+
+                                <span class="state-data-total" id="uc_uploads_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="white_card">
+
+                <div id="integrated-dashboard-india-map3" class="border rounded"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>

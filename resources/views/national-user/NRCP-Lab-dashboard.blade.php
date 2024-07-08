@@ -38,7 +38,7 @@
 
 <div class="row">
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
 
@@ -135,6 +135,7 @@
         </div>
     </div>
    
+    <div class="col-md-12">
     <div class="row expenditure_percentage">
         <div class="col-md-4">
             <div class="white_card  mb_30 integrated-expenditure">
@@ -213,10 +214,11 @@
             </div>
         </div> -->
     </div>
+    </div>
 
 
 
-    <div class="white_card_body col-xl-12 white_card card_height_100 user_crm_wrapper mb-3">
+    <div class="white_card_body col-xl-12  card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
             <div class="col">
                 <div class="single_crm border-line-1 p-0">
@@ -264,7 +266,7 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper mt-1">
+    <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div class="row">
                 <div class="col-md-4">
@@ -444,9 +446,7 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="row">
-
-        <div class="col-xl-12 ">
+    <div class="col-xl-12 ">
             <div class="crad white_card mb_30 p-4">
                 <div>
                     <form action="{{ route('national-user.nohppczrsss-dashboard-report') }}" method="get" id="institute-report">
@@ -541,8 +541,6 @@
                 </div>
             </div>
         </div>
-    
-    </div>
 
 
 

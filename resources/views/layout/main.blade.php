@@ -16,7 +16,8 @@
                         <i class="ti-menu"></i>
                      </div>
                      <div class="line_icon open_miniSide d-none d-lg-block">
-                        <img src="{{ asset('assets/img/line_img.png') }}" alt>
+                        <!-- <img src="{{ asset('assets/img/line_img.png') }}" alt> -->
+                        <i class="bi bi-list"></i>
                      </div>
                      <!-- <div class="serach_field-area d-flex align-items-center">
                         <div class="search_inner">
