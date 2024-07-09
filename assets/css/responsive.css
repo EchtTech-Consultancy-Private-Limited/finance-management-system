@@ -167,6 +167,28 @@
    }
 }
 
+@media (max-width:1400px) {
+   .school-info-box .card-icon-wrapper div {
+      width: 45px;
+      height: 45px;
+  }
+  .school-info-box .card-icon-wrapper div i {
+   font-size: 17px;
+}
+.profile-text {
+   padding: 7px 6px;
+}
+.school-info-box .card-content-wrapper {
+   margin-left: 8px;
+}
+.profile-text {
+   padding: 7px 6px;
+   min-height: 97px;
+}
+.graph-card-h {
+   padding: 34px 0px;
+}
+}
 @media (min-width:1400px) {
    .expenditure_percentage br {
       display: none;
