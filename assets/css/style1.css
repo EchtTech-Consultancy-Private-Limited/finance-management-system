@@ -3352,8 +3352,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
   }
   @keyframes pulse {
     0% {
-      -moz-box-shadow: 0 0 0 0 rgba(244, 91, 15, 0.4);
-      box-shadow: 0 0 0 0 rgba(244, 91, 15, 0.4);
+      -moz-box-shadow: 0 0 0 0 rgb(253 253 253);
+      box-shadow: 0 0 0 0 rgb(253 253 253);
     }
     70% {
       -moz-box-shadow: 0 0 0 10px rgba(244, 91, 15, 0);
@@ -3367,18 +3367,18 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
   
 .header_iner .header_right .header_notification_warp li>a span {
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     text-align: center;
     color: #fff;
     display: inline-block;
     background: #fff;
     font-size: 11px;
     border-radius: 50%;
-    right: -12px;
-    top: -12px;
+    right: -10px;
+    top: -10px;
     background: #f45b0f;
-    line-height: 22px;
+    line-height: 18px;
     text-decoration: blink;
     animation: pulse 2s infinite;
 }
@@ -4910,7 +4910,7 @@ body::-webkit-scrollbar {
 }
 
 .page_title_box {
-    padding-bottom: 30px
+    padding-bottom: 15px
 }
 
 .breadcrumb.page_bradcam {
@@ -12887,7 +12887,7 @@ rect.highcharts-background {
     background: #FFF;
     border-radius: 5px;
     /* min-height: 112px; */
-    padding: 5px 10px;
+    padding: 10px 10px;
     align-items: center;
     display: flex;
     transition: all .3s ease-in-out;
@@ -12926,7 +12926,7 @@ rect.highcharts-background {
     color: #5c5c5c;
     font-weight: 600;
     line-height: 26px;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     font-size: 13px;
     text-align: left;
 }
@@ -12947,7 +12947,7 @@ rect.highcharts-background {
     align-items: center;
     justify-content: center;
     margin-left: 15px;
-    padding: 21px 0px;
+    padding: 26px 0px;
 }
 
 @media(max-width:1499px) {
@@ -13615,3 +13615,14 @@ input.studentNumber.editmode:focus {
   }
 
  
+  .dashboard-title h6 {
+    color: #c5c5c5;
+}
+
+.action_btns {
+    display: block !important;
+}
+a.action_btn {
+    padding: 3px;
+    line-height: 1.5;
+}

@@ -34,9 +34,9 @@
     </div>
 </div>
 <div class="row integrated-expenditure">
-
+  <div class="col-xl-12 ">
     <div class="crad white_card mb_30 p-4 ">
-        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+        <div class="col-xl-12   user_crm_wrapper">
             <!-- **************************** -->
             <div class="row">
                 <div class="col-md-6 col-lg-4  mb-5 financial-year-select">
@@ -57,7 +57,7 @@
             </div>
 
             <div class="row card-mm">
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>                
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-4 p-0">
                         <div class="crm_body">
                             <h4 id="actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
                             <h4 id="unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-2 p-0">
                         <div class="crm_body">
                             <h4 id="committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
@@ -104,7 +104,9 @@
         </div>
     </div>
 
-    <div class="col-xl-4">
+   
+</div>
+<div class="col-xl-4">
         <div class="white_card card_height_100 mb_30">
             <div class="main-title">
                 <h3 class="m-0">Total Expenditure in Lakhs</h3>
@@ -131,7 +133,5 @@
             </div>
         </div>
     </div>
-
-</div>
 
 @endsection
