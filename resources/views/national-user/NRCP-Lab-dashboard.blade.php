@@ -412,7 +412,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="national_expnediture_nohppcz_sss"></div>
+                <div id="national_expnediture_nrcplab"></div>
             </div>
         </div>
     </div>
@@ -439,7 +439,7 @@
                 </div>
             </div>
             <div class="white_card_body">
-                <div id="national_instiute_wise_yearly_nohppcz_sss"></div>
+                <div id="national_instiute_wise_yearly_nrcplab"></div>
             </div>
         </div>
     </div>

@@ -14,6 +14,7 @@ use App\Http\Controllers\NRCPLABController;
 use App\Http\Controllers\PPCLLabController;
 use App\Http\Controllers\PMABHIMSSSController;
 use App\Http\Controllers\NationalSeoExpenseController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('/');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-profile/{id}', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
     Route::get('/filter-program', [DashboardController::class, 'filterProgram'])->name('filterProgram');
+    Route::get('/notifications', [NotificationController::class, 'getNotifications'])->name('filterProgram');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => ['checkUserType:admin']], function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

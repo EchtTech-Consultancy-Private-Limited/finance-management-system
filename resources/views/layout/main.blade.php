@@ -36,42 +36,37 @@
                      <div class="header_right d-flex justify-content-between align-items-center">
                         <div class="header_notification_warp d-flex align-items-center">
                            <li>
-                              <a class="bell_notification_clicker" href="#"> <img src="{{ asset('assets/img/icon/bell.svg') }}" alt>
-                              <span>2</span>
-                              </a>
-                              <div class="Menu_NOtification_Wrap">
-                                 <div class="notification_Header">
-                                    <h4>Notifications</h4>
-                                 </div>
-                                 <div class="Notification_body">
-                                   <div class="mb-4 total-resolved">
-                                    <h2 class="mb-3"> 200</h2>
-                                    <h4> Total Resolved /<span class="text-danger"> Reported</span></h4>
+                               <a class="bell_notification_clicker" href="#">
+                                   <img src="{{ asset('assets/img/icon/bell.svg') }}" alt>
+                                   <span id="bell_notification_clicker"></span>
+                               </a>
+                               <div class="Menu_NOtification_Wrap">
+                                   <div class="notification_Header">
+                                       <h4>Notifications</h4>
                                    </div>
-                                   <div class="row">
-                                    <div class="col">
-                                       <div class="status">
-                                       <span > 0</span>
-                                       <h5>Confirmed</h5>
+                                   <div class="Notification_body">
+                                       <div class="mb-4 total-resolved">
+                                           <h2 class="mb-3">0</h2>
+                                           <h4>Total Resolved /<span class="text-danger">Reported</span></h4>
                                        </div>
-                                      
-                                    </div>
-                                    <div class="col">
-                                       <div class="status">
-                                       <span > 0</span>
-                                       <h5>Pending</h5>
+                                       <div class="row">
+                                           <div class="col">
+                                               <div class="status">
+                                                   <span>0</span>
+                                                   <h5>Confirmed</h5>
+                                               </div>
+                                           </div>
+                                           <div class="col">
+                                               <div class="status">
+                                                   <span>0</span>
+                                                   <h5>Pending</h5>
+                                               </div>
+                                           </div>
                                        </div>
-                                    </div>
                                    </div>
-                                 </div>
-                                 <!-- <div class="nofity_footer">
-                                    <div class="submit_button text-center pt_20">
-                                       <a href="#" class="btn_1">See More</a>
-                                    </div>
-                                 </div> -->
-                              </div>
+                               </div>
                            </li>
-                        </div>
+                       </div>                       
                         <div class="profile_info">
                            <img src="{{ asset('assets/img/client_img.png') }}" alt="#">
                            <div class="profile_info_iner">

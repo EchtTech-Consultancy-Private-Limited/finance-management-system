@@ -9,9 +9,16 @@ use Exception;
 use Carbon\Carbon;
 use Auth;
 use DateTime;
+use App\Services\SendNotificationServices;
 
 class NationalSeoExpenseController extends Controller
-{    
+{
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      *  @index show national expanse state list
      *
@@ -100,12 +107,15 @@ class NationalSeoExpenseController extends Controller
                 'reason' => $request->reason,
                 'status' => $request->status,
             ]);
+            $user =  SOEUCForm::where('id', $id)->first();
+            $formType = '1'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($id, $formType, $user->user_id, $request->status);
             DB::commit();
             \Toastr::success('Has been staus change successfully :)','Success');
             return redirect()->route('national-user.soe-expense-index');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Has been staus change successfully :)','Error');
+            \Toastr::error('fail, Has been staus not change :)','Error');
         }
     }
 }

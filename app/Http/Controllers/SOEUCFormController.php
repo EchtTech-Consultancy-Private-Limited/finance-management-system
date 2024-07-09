@@ -14,10 +14,17 @@ use Auth;
 use App\Exports\InstituteUserExport;
 use App\Models\InstituteProgram;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Services\SendNotificationServices;
 use DateTime;
 
 class SOEUCFormController extends Controller
 {
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -342,12 +349,14 @@ class SOEUCFormController extends Controller
                 'reason' => $request->reason,
                 'status' => $request->status,
             ]);
+            $formType = '1'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
             DB::commit();
             \Toastr::success('Has been staus change successfully :)','Success');
             return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Has been staus not change  :)','Error');
         }
     }
 

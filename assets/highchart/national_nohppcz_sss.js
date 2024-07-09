@@ -970,7 +970,7 @@ function nohppczsssSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {
@@ -1041,7 +1041,7 @@ function nohppczsssSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {

@@ -934,7 +934,7 @@ function nationalPpcllabUcFormTotalChart(UcUploadDetails){
 }
 
 function ppcllabSoeExpenditure(programWiseExpenditure){
-    Highcharts.chart("national_expnediture_nohppcz_sss", {
+    Highcharts.chart("national_expnediture_ppcllap", {
         chart: {
             type: "column",
         },
@@ -1005,7 +1005,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
         ],
     });
 
-    Highcharts.chart("national_instiute_wise_yearly_nohppcz_sss", {
+    Highcharts.chart("national_instiute_wise_yearly_ppcllab", {
         chart: {
             type: "column",
         },
