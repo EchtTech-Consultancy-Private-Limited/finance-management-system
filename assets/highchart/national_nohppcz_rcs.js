@@ -1,12 +1,12 @@
-let totalExpenitureMarginppcllab =
-    window.innerWidth > 768 && window.innerWidth < 1299 ? -150 : 0;
-let expenditureHeightPpclLab = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
-let expenditurPercentageeHeightPpclLab = window.innerWidth > 768 && window.innerWidth < 1360 ? 250 : 200;
+let totalExpenitureMargin =
+    window.innerWidth > 768 && window.innerWidth < 1299 ? -90 : 0;
+let expenditureHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 200 : 250;
+let expenditurPercentageeHeight = window.innerWidth > 768 && window.innerWidth < 1360 ? 250 : 200;
 
-let expenditureTitleYPpclLab =
+let expenditureTitleY =
     // window.innerWidth > 768 && window.innerWidth < 1360 ? 45 : 40;
     window.innerWidth > 768 && window.innerWidth < 1300 ? 10 : (window.innerWidth > 1299  ? 45 : 45);
-let expenditureSubtitleYPpclLab =
+let expenditureSubtitleY =
     // window.innerWidth > 768 && window.innerWidth < 1360 ? 75 : 70;
     window.innerWidth > 768 && window.innerWidth < 1300 ? 40 : (window.innerWidth > 1299  ? 68 : 68);
 
@@ -14,13 +14,13 @@ let expenditureSubtitleYPpclLab =
 $(document).ready(function(){
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-users/ppcllab-filter-dashboard",
+        url: BASE_URL + "national-users/nohppczrcs-filter-dashboard",
         success: function(data) {     
-            $("#national-ppcllab-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
-            $("#national-ppcllab-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
-            $("#national-ppcllab-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
-            $("#national-ppcllab-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
-            $("#national-ppcllab-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
+            $("#national-nohppcz-rcs-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
+            $("#national-nohppcz-rcs-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
+            $("#national-nohppcz-rcs-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
+            $("#national-nohppcz-rcs-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
+            $("#national-nohppcz-rcs-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
             var programHeadDetails = data.programHeadDetails;
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
@@ -29,8 +29,8 @@ $(document).ready(function(){
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
             // ucupload form
             var UcUploadDetails = data.UcUploadDetails;
-            nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
-            nationalPpcllabUcFormTotalChart(UcUploadDetails);
+            nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
+            nationalNohppczrcsUcFormTotalChart(UcUploadDetails);
         }
     });
 });
@@ -38,80 +38,80 @@ $(document).ready(function(){
 $(document).ready(function(){
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-users/ppcllab-soe-expenditure-filter",
+        url: BASE_URL + "national-users/nohppczrcs-soe-expenditure-filter",
         success: function(data) {
             var programWiseExpenditure = data.yearlySoeDetails;
-            ppcllabSoeExpenditure(programWiseExpenditure);         
+            nohppczRcsSoeExpenditure(programWiseExpenditure);         
         }
     });
 });
-$(document).on('change', '.ppcllab_card', function() {
-    let financialYear = $('#ppcllab-year').find(":selected").val();
-    const month = $('#ppcllab-month').find(":selected").val();
+ $(document).on('change', '.nohppcz_rcs_card', function() {
+    let financialYear = $('#nohppcz-rcs-year').find(":selected").val();
+    const month = $('#nohppcz-rcs-month').find(":selected").val();
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-users/ppcllab-filter-dashboard",
+        url: BASE_URL + "national-users/nohppczrcs-filter-dashboard",
         data: {
             'financial_year': financialYear,
             'month' : month
         },
         success: function(data) {     
-            $("#national-ppcllab-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
-            $("#national-ppcllab-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
-            $("#national-ppcllab-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
-            $("#national-ppcllab-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
-            $("#national-ppcllab-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
+            $("#national-nohppcz-rcs-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
+            $("#national-nohppcz-rcs-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
+            $("#national-nohppcz-rcs-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
+            $("#national-nohppcz-rcs-actualExpenditureTotal").text(data.totalArray.actualExpenditureTotal);
+            $("#national-nohppcz-rcs-unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
             var programHeadDetails = data.programHeadDetails;
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-            nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
+            nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
         }
     });
 });
 // filter for only SOEUCUpload form data
-$(document).on('change', '.ppcllab_national_ucForm_filter', function() {
-    var nrcplabsnationalUcformFy = $('#nrcplab-national-ucform-fy').find(":selected").val();
-    const nrcplabsnationalProgramUcForm = $('#nrcplab-national-institute-ucform').find(":selected").val();
+$(document).on('change', '.nohppczrcs_national_ucForm_filter', function() {
+    var nohppczrcsnationalUcformFy = $('#nohppcarcs-national-ucform-fy').find(":selected").val();
+    const nohppczrcsnationalProgramUcForm = $('#nohppczrcs-national-institute-ucform').find(":selected").val();
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-users/ppcllab-filter-uc-form-dashboard",
+        url: BASE_URL + "national-users/nohppczrcs-filter-uc-form-dashboard",
         data: {
-            'nrcplabsNationalUcformFy': nrcplabsnationalUcformFy,
-            'nrcplabsNationalInstituteUcForm' : nrcplabsnationalProgramUcForm
+            'nohppczrcsNationalUcformFy': nohppczrcsnationalUcformFy,
+            'nohppczrcsNationalInstituteUcForm' : nohppczrcsnationalProgramUcForm
         },
         success: function(data) {           
-            var UcUploadDetails = data.UcUploadDetails;
-            nationalPpcllabUcFormTotalChart(UcUploadDetails);      
+            var UcUploadDetails = data.UcUploadDetails;          
+            nationalNohppczrcsUcFormTotalChart(UcUploadDetails);      
         }
     });
 });
 // Yearly SOE Expenditure under NOHPPCZ RC’s
-$(document).on('change', '.ppcllab_yearly_soe_expenditure', function() {
-    const programWiseMonth = $('#nrcplab-month-soe-expenditure').find(":selected").val();
-    const nohppczsssInstitute = $('#nrcplab-institute-soe-expenditure').find(":selected").val();
+$(document).on('change', '.nohppcz_rcsyearly_soe_expenditure', function() {
+    const programWiseMonth = $('#nohppcz-rcs-month-soe-expenditure').find(":selected").val();
+    const nohppczRcsInstitute = $('#nohppcz-rcs-institute-soe-expenditure').find(":selected").val();
     $.ajax({
         type: "GET",
-        url: BASE_URL + "national-users/ppcllab-soe-expenditure-filter",
+        url: BASE_URL + "national-users/nohppczrcs-soe-expenditure-filter",
         data: {
             'program_wise_month' : programWiseMonth,
-            'institute_wise_nohppczrcs' :nohppczsssInstitute
+            'institute_wise_nohppczrcs' :nohppczRcsInstitute
         },
         success: function(data) {
             var programWiseExpenditure = data.yearlySoeDetails;
-            ppcllabSoeExpenditure(programWiseExpenditure);         
+            nohppczRcsSoeExpenditure(programWiseExpenditure);         
         }
     });
 });
 // End overall filter cards and charts
 
-function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails){
-    Highcharts.chart("national-ppcllab-total-expenditure-lac", {
+function nationalNohppczrcsTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails){
+    Highcharts.chart("national-nohppczrcs-total-expenditure-lac", {
         chart: {
             plotBackgroundColor: null,
-            height: expenditureHeightPpclLab,
+            height: expenditureHeight,
             margin: [0, 0, 0, 0],
             spacingTop: 0,
             spacingBottom: 0,
@@ -144,7 +144,8 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
                 </div>`,
             align: "center",
             verticalAlign: "middle",
-            y:  window.innerWidth >1350 ? 85 : 65 ,
+            y: 
+            window.innerWidth >1350 ? 85 : 65,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -188,10 +189,10 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             },
         ],
     });
-    Highcharts.chart("national-ppcllab-total-unspent-lac", {
+    Highcharts.chart("national-nohppczrcs-total-unspent-lac", {
         chart: {
             plotBackgroundColor: null,
-            height: expenditureHeightPpclLab,
+            height: expenditureHeight,
             margin: [0, 0, 0, 0],
             spacingTop: 0,
             spacingBottom: 0,
@@ -214,7 +215,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             </div>`,
             align: "center",
             verticalAlign: "middle",
-            y: window.innerWidth >1350 ? 55 : 40,
+            y: 30,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -229,7 +230,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             </div>`,
             align: "center",
             verticalAlign: "middle",
-            y: window.innerWidth >1350 ? 85 : 65 ,
+            y: 60,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -279,7 +280,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
     }));
 
     let overallChart = Highcharts.chart(
-        "integrated-dashboard-chart-overall-program-expenditure-amount-nrcplab",
+        "integrated-dashboard-chart-overall-program-expenditure-amount-rc",
         {
             chart: {
                 type: "pie",
@@ -405,16 +406,16 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
     handleZoomDetection();
     // End Overall Program Expenditure Amount
 
-    Highcharts.chart("national_expenditure_percentage_nrcplab", {
+    Highcharts.chart("national_expenditure_percentage_nohppcz_rc", {
         chart: {
             plotBackgroundColor: null,
-            height: expenditurPercentageeHeightPpclLab,
+            height: expenditurPercentageeHeight,
             margin: [0, 0, 0, 0],
             spacingTop: 0,
             spacingBottom: 0,
             spacingLeft: 0,
             spacingRight: 0,
-            marginTop: totalExpenitureMarginppcllab,
+            marginTop: totalExpenitureMargin,
         },
         credits: {
             enabled: false,
@@ -428,7 +429,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             </div>`,
             align: "center",
             verticalAlign: "middle",
-            y: expenditureTitleYPpclLab,
+            y: expenditureTitleY,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -484,16 +485,16 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
         ],
     });
 
-    Highcharts.chart("national_fund_unspent_percentage_nrcplab", {
+    Highcharts.chart("national_fund_unspent_percentage_nohppcz_rc", {
         chart: {
             plotBackgroundColor: null,
-            height: expenditurPercentageeHeightPpclLab,
+            height: expenditurPercentageeHeight,
             margin: [0, 0, 0, 0],
             spacingTop: 0,
             spacingBottom: 0,
             spacingLeft: 0,
             spacingRight: 0,
-            marginTop: totalExpenitureMarginppcllab,
+            marginTop: totalExpenitureMargin,
         },
         credits: {
             enabled: false,
@@ -507,7 +508,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             </div>`,
             align: "center",
             verticalAlign: "middle",
-            y: expenditureTitleYPpclLab,
+            y: expenditureTitleY,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -565,17 +566,17 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
         ],
     });
 
-    Highcharts.chart("national_interest_earned_cy_percentage_nrcplab", {
+    Highcharts.chart("national_interest_earned_cy_percentage_nohppcz_rc", {
         chart: {
             plotBackgroundColor: null,
             plotBackgroundColor: null,
-            height: expenditurPercentageeHeightPpclLab,
+            height: expenditurPercentageeHeight,
             margin: [0, 0, 0, 0],
             spacingTop: 0,
             spacingBottom: 0,
             spacingLeft: 0,
             spacingRight: 0,
-            marginTop: totalExpenitureMarginppcllab,
+            marginTop: totalExpenitureMargin,
         },
         credits: {
             enabled: false,
@@ -587,7 +588,7 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
             text: ` <div class="graph-title" style="color:#00b050; "> ${totalcommittedLiabilities} </div>`,
             align: "center",
             verticalAlign: "middle",
-            y: expenditureTitleYPpclLab,
+            y: expenditureTitleY,
             style: {
                 fontSize: "16px",
                 color: "#000000",
@@ -654,8 +655,8 @@ function nationalPpcllabTotalChart(percentageExpenditure,percentageUnspentBalanc
     });
 }
 
-function nationalPpcllabUcFormTotalChart(UcUploadDetails){
-    Highcharts.chart("nrcplab_chart_currently_UC_Received", {
+function nationalNohppczrcsUcFormTotalChart(UcUploadDetails){
+    Highcharts.chart("nohppz_rc_chart_currently_UC_Received", {
         chart: {
             type: "pie",
             height: 210,
@@ -723,7 +724,7 @@ function nationalPpcllabUcFormTotalChart(UcUploadDetails){
         ],
     });
 
-    Highcharts.chart("nrcplab_chart_currently_UC_not_Received", {
+    Highcharts.chart("nohppz_rc_chart_currently_UC_not_Received", {
         chart: {
             type: "pie",
             height: 210,
@@ -793,7 +794,7 @@ function nationalPpcllabUcFormTotalChart(UcUploadDetails){
         },
     });
 
-    Highcharts.chart("nrcplab_chart_currently_Nos_UC_Received", {
+    Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_Received", {
         chart: {
             type: "pie",
             height: 210,
@@ -863,7 +864,7 @@ function nationalPpcllabUcFormTotalChart(UcUploadDetails){
         ],
     });
     
-    Highcharts.chart("nrcplab_chart_currently_Nos_UC_not_Received", {
+    Highcharts.chart("nohppz_rc_chart_currently_Nos_UC_not_Received", {
         chart: {
             type: "pie",
             height: 210,
@@ -933,8 +934,8 @@ function nationalPpcllabUcFormTotalChart(UcUploadDetails){
     });
 }
 
-function ppcllabSoeExpenditure(programWiseExpenditure){
-    Highcharts.chart("national_expnediture_ppcllap", {
+function nohppczRcsSoeExpenditure(programWiseExpenditure){
+    Highcharts.chart("national_expnediture_nohppcz_rc", {
         chart: {
             type: "column",
         },
@@ -970,7 +971,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {
@@ -1005,7 +1006,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
         ],
     });
 
-    Highcharts.chart("national_instiute_wise_yearly_ppcllab", {
+    Highcharts.chart("national_instiute_wise_yearly_nohppcz_rc", {
         chart: {
             type: "column",
         },
@@ -1041,7 +1042,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
             enabled: false,
         },
         tooltip: {
-            pointFormat: "",
+            enabled: true,
         },
         series: [
             {
@@ -1080,7 +1081,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
 // Dashboard report filter export and show list
 $(document).ready(function() {
     // Initialize DataTable on page load
-    var nationalDataTable = $('.ppcllab_national_uc_filter_datatable').DataTable({
+    var nationalDataTable = $('.nohppcz_rcs_national_uc_filter_datatable').DataTable({
         pageLength: 5,
         dom: 'Bfrtip',
         buttons: [
@@ -1100,7 +1101,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "GET",
-            url: BASE_URL + 'national-users/ppcllab-dashboard-report',
+            url: BASE_URL + 'national-users/nohppczrcs-dashboard-report',
             data: {
                 'program_id': program_id,
                 'financial_year': financial_year,
@@ -1122,7 +1123,7 @@ $(document).ready(function() {
     fetchData();
 
     // Handle click event to fetch new data
-    $(document).on('click', '#ppcllab_form_type_uc_list', function(event) {
+    $(document).on('click', '#nohppcz_rcs_form_type_uc_list', function(event) {
         event.preventDefault();
         fetchData();
     });

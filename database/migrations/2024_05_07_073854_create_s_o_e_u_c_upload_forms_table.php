@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('s_o_e_u_c_upload_forms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('year',255)->nullable();
+            $table->foreignId('program_id')->nullable();
+            $table->string('qtr_uc',255)->nullable();
+            $table->string('financial_year',255)->nullable();
             $table->string('month',255)->nullable();
             $table->string('file',255)->nullable();
             $table->string('file_size',255)->nullable();
             $table->date('date',255)->nullable();
             $table->string('reason')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('1=>approve,2=>not-approved,3=>pending');
+            $table->tinyInteger('status')->nullable()->default('1')->comment('1=>approve,2=>not-approved,3=>pending');
             $table->softDeletes();
             $table->timestamps();
         });

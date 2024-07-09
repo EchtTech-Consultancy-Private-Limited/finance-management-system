@@ -19,8 +19,27 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'mname',
+        'lname',
         'email',
+        'program_id',
+        'institute_id',
         'password',
+        'state_id',
+        'district_id',
+        'date',
+        'user_type',
+        'status',
+        'dob',
+        'gender',
+        'ip',
+        'user_agent',
+        'last_login',
+        'number',
+        'mobile ',
+        'landline',
+        'login_status',
+        'designation',
     ];
 
     /**
@@ -42,4 +61,44 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    /**
+     * state
+     *
+     * @return void
+     */
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+    
+    /**
+     * city
+     *
+     * @return void
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class,'district_id');
+    }
+    
+    /**
+     * program
+     *
+     * @return void
+     */
+    public function program()
+    {
+        return $this->belongsTo(InstituteProgram::class);
+    }
+    
+    /**
+     * institute
+     *
+     * @return void
+     */
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class);
+    }
 }

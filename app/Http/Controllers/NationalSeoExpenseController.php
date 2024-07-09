@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SOEUCForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Carbon\Carbon;
 use Auth;
-use App\Models\NationalSeoExpanse;
-use App\Models\NationalSeoExpanseCalculation;
-use App\Models\State;
+use DateTime;
+use App\Services\SendNotificationServices;
 
 class NationalSeoExpenseController extends Controller
-{    
+{
+    public $SendNotificationServices;
+
+    function __construct()
+    {
+        $this->SendNotificationServices = new SendNotificationServices;
+    }
     /**
      *  @index show national expanse state list
      *
@@ -20,138 +26,72 @@ class NationalSeoExpenseController extends Controller
      */
     public function index()
     {
-        $nationalSeoExpanses = NationalSeoExpanse::with('states','cities','SoeUcFormCalculation')->get();
-        return view('national-user.soe-form.index', compact('nationalSeoExpanses'));
+        $soeucForms =  SOEUCForm::with('SoeUcFormCalculation','instituteProgram','institute')->get();
+        return view('national-user.soe-form.index', compact('soeucForms'));
     }
+    
     /**
-     *  @Create SOE Expense create form for national user
+     * view
      *
+     * @param  mixed $id
      * @return void
      */
-    public function create()
+    public function view($id)
     {
-        $states = State::get();
-        return view('national-user.soe-form.create',compact('states'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'state'     => 'required',
-            'city_id'     => 'required',
-            'expanse_plan' => 'required',
-            ],
-            [
-                'expanse_plan.required'=> 'The Expanse Plan field is required'
-            ]
-        
-        );        
         try {
             DB::beginTransaction();
-            $soeexpanseId = NationalSeoExpanse::Create([
-                'user_id' => Auth::id(),
-                'state_id' => $request->state,
-                'city_id' => $request->city_id,
-                'institute_program_id' => $request->institute_program_id,
-                'expanse_plan' => $request->expanse_plan,
-                'institute_name' => $request->institute_name,
-                'finance_account_officer' => $request->finance_account_officer,
-                'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
-                'finance_account_officer_email' => $request->finance_account_officer_email,
-                'nadal_officer' => $request->nadal_officer,
-                'nadal_officer_mobile' => $request->nadal_officer_mobile,
-                'nadal_officer_email' => $request->nadal_officer_email,
-                'month' => $request->month,
-                'financial_year' => $request->financial_year,
-            ])->id;
-            foreach($request->head as $key => $value){
-                NationalSeoExpanseCalculation::Create([
-                    'national_seo_expanse_id' => $soeexpanseId,
-                    'head' => $request->head[$key],
-                    'sanction_order' => $request->sanction_order[$key],
-                    'unspent_balance_1st' => $request->unspent_balance_1st[$key],
-                    'gia_received' => $request->gia_received[$key],
-                    'total_balance' => $request->total_balance[$key],
-                    'actual_expenditure' => $request->actual_expenditure[$key],
-                    'unspent_balance_last' => $request->unspent_balance_last[$key],
-                    'committed_liabilities' => $request->committed_liabilities[$key],
-                    'unspent_balance_31st' => $request->unspent_balance_31st[$key],
-                ]);
+            $financialYearMonths = [];
+            $currentYear = date('Y');
+            for ($m = 0; $m < 12; $m++) {
+                $month = new DateTime("$currentYear-04-01");
+                $month->modify("+$m months");
+                $financialYearMonths[] = $month->format('F');
+            }
+            $soeForm = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')->where('id', $id)->first();
+            $targetIndex = array_search($soeForm->month, $financialYearMonths);
+            $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex);
+            $soeForms = SOEUCForm::with('SoeUcFormCalculation')->whereIn('month', $monthsBefore)->where('user_id', $soeForm->user_id)->get();
+            $previous_month_expenditure = [];
+            $previous_month_total = [];
+            $final_data = [];
+            if ($soeForms) {
+                foreach ($soeForms as $soeFormPrev) {
+                    if ($soeFormPrev->SoeUcFormCalculation) {
+                        foreach ($soeFormPrev->SoeUcFormCalculation as $calculation) {
+                            $head = $calculation->head;
+                            $month = $calculation->previous_month_expenditure;
+                            $total = $calculation->previous_month_total;
+                            if (!isset($previous_month_expenditure[$head])) {
+                                $previous_month_expenditure[$head] = [];
+                                $previous_month_total[$head] = 0;
+                            }
+                            $previous_month_expenditure[$head][] = $month;
+                            $previous_month_expenditure[$head]['total'][] = $total;
+                            $previous_month_total[$head] += $total;
+                        }
+                    }
+                }
+            }
+            foreach ($previous_month_expenditure as $head => $months) {
+                $total_str = $previous_month_total[$head];
+                if($head == "Grand Total"){
+                    $grand_total = $previous_month_total[$head];
+                }
+                unset($months['total']);
+                $months_str = implode(', ', $months);
+                $final_data[$head] = [
+                    $months_str,
+                    $total_str,
+                    $grand_total ?? '0',
+                ];
             }
             DB::commit();
-            \Toastr::success('The Record has been Saved successfully.','Success');
-            return redirect()->route('national-user.soe-expense-index');            
-        } catch(Exception $e) {
-            DB::rollBack();
-            \Toastr::error('fail, Something went wrong !  :)','Error');
-        }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        try{
-            DB::beginTransaction();
-            $states = State::get();
-            $nationalSeoExpans = NationalSeoExpanse::with('states','cities','SoeUcFormCalculation')->where('id',$id)->first();
-            DB::commit();
-            return view('national-user.soe-form.edit',compact('states','nationalSeoExpans'));
-        }catch (Exception $e) {
+            return view('national-user.soe-form.view', compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total'));
+        } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id = '')
-    {
-        try{
-            DB::beginTransaction();
-            $soeexpanseId = NationalSeoExpanse::where('id', $id)->Update([
-                'user_id' => Auth::id(),
-                'state_id' => $request->state,
-                'city_id' => $request->city_id,
-                'institute_program_id' => $request->institute_program_id,
-                'expanse_plan' => $request->expanse_plan,
-                'institute_name' => $request->institute_name,
-                'finance_account_officer' => $request->finance_account_officer,
-                'finance_account_officer_mobile' => $request->finance_account_officer_mobile,
-                'finance_account_officer_email' => $request->finance_account_officer_email,
-                'nadal_officer' => $request->nadal_officer,
-                'nadal_officer_mobile' => $request->nadal_officer_mobile,
-                'nadal_officer_email' => $request->nadal_officer_email,
-                'month' => $request->month,
-                'financial_year' => $request->financial_year,
-            ]);
-            foreach($request->id as $key => $value){
-                NationalSeoExpanseCalculation::where('id', $value)->Update([
-                    'head' => $request->head[$key],
-                    'sanction_order' => $request->sanction_order[$key],
-                    'unspent_balance_1st' => $request->unspent_balance_1st[$key],
-                    'gia_received' => $request->gia_received[$key],
-                    'total_balance' => $request->total_balance[$key],
-                    'actual_expenditure' => $request->actual_expenditure[$key],
-                    'unspent_balance_last' => $request->unspent_balance_last[$key],
-                    'committed_liabilities' => $request->committed_liabilities[$key],
-                    'unspent_balance_31st' => $request->unspent_balance_31st[$key],
-                ]);
-            }
-            DB::commit();
-            \Toastr::success('The Record has been Updated successfully.','Success');
-            return redirect()->route('national-user.soe-expense-index');
-        } catch(Exception $e) {
-            DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
-        }
-    }
-
 
     /**
      *  @changeStatus of form
@@ -163,27 +103,19 @@ class NationalSeoExpenseController extends Controller
     {
         try{
             DB::beginTransaction();
-            NationalSeoExpanse::where('id', $id)->Update([
+            SOEUCForm::where('id', $id)->Update([
                 'reason' => $request->reason,
                 'status' => $request->status,
             ]);
+            $user =  SOEUCForm::where('id', $id)->first();
+            $formType = '1'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($id, $formType, $user->user_id, $request->status);
             DB::commit();
-            \Toastr::success('The status has been changed successfully.','Success');
-            return redirect()->back();
+            \Toastr::success('Has been staus change successfully :)','Success');
+            return redirect()->route('national-user.soe-expense-index');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Has been staus not change :)','Error');
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        NationalSeoExpanse::where('id', $id)->delete();
-        // SOEUCFormCalculatin::where('soe_form_id', $id)->delete();
-        \Toastr::success('The Reconrd has been deleted successfully.','Success');
-        return redirect()->back();
     }
 }

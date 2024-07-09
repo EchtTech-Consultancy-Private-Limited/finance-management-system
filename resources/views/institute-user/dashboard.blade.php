@@ -66,21 +66,13 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-2 p-0">
-                        <div class="crm_body">
-                            <h4 id="committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
-                            <p>Interest earned in C.Y. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
                             <p>Total Balance excluding interest</p>
                         </div>
                     </div>
-                </div>
+                </div>                
                 <div class="col-md-4 col-lg">
                     <div class="single_crm border-line-4 p-0">
                         <div class="crm_body">
@@ -94,6 +86,14 @@
                         <div class="crm_body">
                             <h4 id="unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest ) </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg">
+                    <div class="single_crm border-line-2 p-0">
+                        <div class="crm_body">
+                            <h4 id="committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
+                            <p>Committed Liabilities </p>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,10 @@ class SOEUCUploadForm extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'user_id',
-        'year',
+        'qtr_uc',
+        'program_id',
+        'institute_id',
+        'financial_year',
         'month',
         'file',
         'file_size',
@@ -26,5 +29,15 @@ class SOEUCUploadForm extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
-    } 
+    }
+    
+    /**
+     * program
+     *
+     * @return void
+     */
+    public function program()
+    {
+        return $this->belongsTo(InstituteProgram::class, 'program_id');
+    }
 }

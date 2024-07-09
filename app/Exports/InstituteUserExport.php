@@ -23,7 +23,7 @@ class InstituteUserExport implements FromCollection, WithStyles
         foreach ($arrays as $array) {
             if (!empty($array) && isset($array[0])) {
                 foreach ($array as $row) {
-                    unset($row['user_id'],$row['institute_program_id'],$row['state'],$row['deleted_at'], $row['updated_at']);
+                    unset($row['user_id'],$row['program_id'],$row['state'],$row['deleted_at'], $row['updated_at']);
                     if (!$headerAdded) {
                         $formattedKeys = array_map([$this, 'formatHeader'], array_keys($row));
                         $output[] = $formattedKeys; // Add main header row only if not already added

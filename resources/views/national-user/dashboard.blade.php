@@ -40,64 +40,151 @@
         <h3> All Programs combined data</h3>
     </div> -->
 
-    <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+    <div class="col-xl-12 ">
         <div class="row">
             <div class="col-md-9 ">
                 <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box1">
                             <div class="school-info-box">
-                                <p>Total State + UT</p>
-                                <input type="text" name="total_state_ut" value="{{ @$totalcard->total_state_ut }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-flag"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_state_ut"
+                                                value="{{ @$totalcard->total_state_ut }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+
+                                        </div>
+                                        <p>Total State + UT <span tooltip="Doble Click on Number for Edit" flow="down"
+                                                class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box2">
+                            <div class="school-info-box">
+
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_sentinel_site"
+                                                value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                            <p>Total Sentinel Site <span tooltip="Doble Click on Number for Edit"
+                                                    flow="down" class="total-ut-tooltip">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
+                    <div class="col-md-4 ">
+                        <div class="profile-text white_card total-box3">
                             <div class="school-info-box">
-                                <p>Total Sentinel Site</p>
-                                <input type="text" name="total_sentinel_site"
-                                    value="{{ @$totalcard->total_sentinel_site }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total PPCL Labs</p>
-                                <input type="text" name="total_ppcl_labs" value="{{ @$totalcard->total_ppcl_labs }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-vials"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_ppcl_labs"
+                                            value="{{ @$totalcard->total_ppcl_labs }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                    </div>
+                                    <p>Total PPCL Labs <span tooltip="Doble Click on Number for Edit" flow="down"
+                                            class="total-ut-tooltip">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text">
+                        <div class="profile-text white_card total-box4">
+
                             <div class="school-info-box">
-                                <p>Total Regional Coordinator</p>
-                                <input type="text" name="total_regional_coordinator"
-                                    value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_regional_coordinator"
+                                            value="{{ @$totalcard->total_regional_coordinator }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                        <p>Total Regional Coordinator <span tooltip="Doble Click on Number for Edit"
+                                                flow="down" class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text">
+                        <div class="profile-text white_card total-box5">
                             <div class="school-info-box">
-                                <p>Total NRCP Labs</p>
-                                <input type="text" name="total_nrcp_labs" value="{{ @$totalcard->total_nrcp_labs }}"
-                                    maxlength="5" oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-flask"></i>
+                                    </div>
+                                </div>
+                                <div class="card-content-wrapper">
+                                    <div class="total-ut-input">
+                                        <input type="text" name="total_nrcp_labs"
+                                            value="{{ @$totalcard->total_nrcp_labs }}" maxlength="5"
+                                            oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                    </div>
+                                    <p>Total NRCP Labs <span tooltip="Doble Click on Number for Edit" flow="down"
+                                            class="total-ut-tooltip">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="profile-text">
-                            <div class="school-info-box">
-                                <p>Total PM ABHIM SSS</p>
-                                <input type="text" name="total_pm_abhim_sss"
-                                    value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
-                                    oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                        <div class="profile-text white_card total-box6">
+                            <div class="school-info-box ">
+                                <div class="card-icon-wrapper">
+                                    <div>
+                                        <i class="fas fa-solid fa-hospital"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-content-wrapper">
+                                        <div class="total-ut-input">
+                                            <input type="text" name="total_pm_abhim_sss"
+                                                value="{{ @$totalcard->total_pm_abhim_sss }}" maxlength="5"
+                                                oninput="validateInput(this)" class="studentNumber editmode" readonly>
+                                        </div>
+                                        <p>Total PM ABHIM SSS <span tooltip="Doble Click on Number for Edit" flow="down"
+                                                class="total-ut-tooltip">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,7 +196,11 @@
             <div class="col-md-3 total-card">
                 <div class="white_card graph-card-h m-0">
                     <div class="total-card-child d-flex align-items-center justify-content-center">
-                        <h3>Total Value</h3>
+                        <h3 class="text-center total_number_of_institute">
+                            <span>{{ $totalSum }}</span>
+                            <span class=""> Total Number <br> of Institute</span>
+
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -117,11 +208,11 @@
 
     </div>
 
-    <div class="col-xl-12 white_card  user_crm_wrapper mt_30">
-        <div class="crad mb_30 fund-card">
+    <div class="col-xl-12">
+        <div class="crad fund-card">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Fund approved <br> (in Cr.)
                         </h3>
@@ -132,7 +223,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Fund Expenditure <br> (in Cr.)
                         </h3>
@@ -142,7 +233,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Financial Progress <br> (%)
                         </h3>
@@ -152,7 +243,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="fund-card-child">
+                    <div class="fund-card-child white_card">
                         <h3>
                             Balance Amount <br> (in Cr.)
                         </h3>
@@ -171,7 +262,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in Cr.</h3>
+                                <h3 class="m-0">Total Expenditure in Lakh.</h3>
                             </div>
 
                         </div>
@@ -189,7 +280,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Fund unspent in Cr.</h3>
+                                <h3 class="m-0">Total Fund unspent in Lakh.</h3>
                             </div>
 
                         </div>
@@ -206,35 +297,37 @@
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="white_card card_height_100 mb_30 col-xl-12 user_crm_wrapper">
-        <div class="white_card_body  white_card  ">
+    <div class="  col-xl-12 user_crm_wrapper">
+        <div class="white_card_body  white_card  p-4">
 
-            <div class="white_card card_height_100 mb_30 mt-4">
+            <div class="  mb_30">
                 <div class="row">
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
-                        <div class="d-flex align-items-center">
-                            <label for="" class="text-nowrap me-3 font-16"><b>Financial Year <sup
+                        <div class="align-items-center">
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Financial Year <sup
                                         class="text-danger">*</sup></b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
                                     @endfor
                             </select>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
-                        <div class="d-flex align-items-center">
-                            <label for="" class="text-nowrap me-3 font-16"><b>Program Wise <sup
+                        <div class="align-items-center">
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Program Wise <sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program-wise" name="institute_program_id"
+                            <select id="national-program-wise" name="program_id"
                                 class="form-control national_user_card">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -243,7 +336,7 @@
                 </div>
             </div>
             <div class="row card-mm">
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -251,16 +344,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-2 p-0">
-                        <div class="crm_body">
-                            <h4 id="national-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
-                            </h4>
-                            <p>Interest earned in C.Y. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
@@ -268,19 +352,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-4 p-0">
                         <div class="crm_body">
-                            <h4 id="national-actualExpenditureTotal">{{ @$totalArray['actualExpenditureTotal'] }}</h4>
+                            <h4 id="national-actualExpenditureTotal">
+                                {{ @$totalArray['actualExpenditureTotal'] }}</h4>
                             <p>Actual Expenditure incurred during the current F.Y </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg">
+                <div class="col">
                     <div class="single_crm border-line-5 p-0">
                         <div class="crm_body">
-                            <h4 id="national-unspentBalance31stTotal">{{ @$totalArray['unspentBalance31stTotal'] }}</h4>
+                            <h4 id="national-unspentBalance31stTotal">
+                                {{ @$totalArray['unspentBalance31stTotal'] }}</h4>
                             <p>Unspent Balance (excluding Interest) </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="single_crm border-line-2 p-0">
+                        <div class="crm_body">
+                            <h4 id="national-committedLiabilitiesTotal">
+                                {{ @$totalArray['committedLiabilitiesTotal'] }}
+                            </h4>
+                            <p>Committed Liabilities</p>
                         </div>
                     </div>
                 </div>
@@ -289,66 +385,75 @@
     </div>
 
     <div class="col-md-12 overlall-expenditure">
-        <div class="row custom-grid">
-            <div class="col-md-6 custom-grid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Total Expenditure <br> in %</h3>
-                                    </div>
-
-                                </div>
+        <div class="row overall-expeniture-percent">
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Expenditure <br> in %</h3>
                             </div>
-                            <div class="white_card_body">
-                                <div id="national-total-expenditure" class="overall-programm-total"></div>
 
-                            </div>
                         </div>
                     </div>
+                    <div class="white_card_body">
+                        <div id="national-total-expenditure" class="overall-programm-total"></div>
 
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Total Fund Unspent <br> in %</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div id="national-total-fund-unspent" class="overall-programm-total"></div>
-
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Total Interest Earned <br> in C.Y. %</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div id="integrated-dashboard-chart-currently-Interest-Earned"
-                                    class="overall-programm-total">
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <div class="col-md-6 custom-grid w-40">
-                <div class="row">
+
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Total Fund Unspent <br> in %</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="national-total-fund-unspent" class="overall-programm-total"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Committed Liabilities <br> in %</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div id="integrated-dashboard-chart-currently-Interest-Earned" class="overall-programm-total">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 ">
+                <div class="white_card  mb_30 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="white_card_body overall-program-expenditure-amount pb-0">
+                        <div id="national-dashboard-overall-Program-expenditure-amount"></div>
+
+                    </div>
+                </div>
+                <!-- <div class="row">
                     <div class="col-md-4">
                         <div class="white_card  mb_30 integrated-expenditure">
                             <div class="">
@@ -367,85 +472,58 @@
                         </div>
                     </div>
 
-                    <div class="col-md-8">
-                        <div class="white_card  mb_30 integrated-expenditure">
-                            <div class="">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Overall Program Expenditure <br> Amount</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="white_card_body overall-program-expenditure-amount pb-0">
-                                <div id="national-dashboard-overall-Program-expenditure-amount"></div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
 
 
             </div>
-
-
-            <!-- <div class="col-xl-2">
-        <div class="white_card card_height_100 mb_30 integrated-expenditure">
-            <div class="white_card_header">
-                <div class="box_header m-0">
-                    <div class="main-title">
-                        <h3 class="m-0">Total Interest DD</h3>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="white_card_body">
-                <div id="integrated-dashboard-chart-currently-Interest-DD"></div>
-
-            </div>
-        </div>
-    </div> -->
-
-
         </div>
     </div>
 
     <div class="devider-line">
         <div></div>
     </div>
-    <div class="col-xl-12 white_card meter-graph user_crm_wrapper">
+    <div class="col-xl-12  meter-graph user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="" class="select-form-s">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="national-program" name="institute_program_id" class="form-control">
+                            <select id="national-program-ucform" name="program_id"
+                                class="form-control filter_program_id national_ucForm_filter">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="institute_name"
+                                class="form-control national_institute_name national_ucForm_filter"
+                                id="national_institute_name">
                                 <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
+                                @foreach($institutes as $institute)
+                                <option value="{{ $institute->id }}"
+                                    {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-md-3">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select id="uc-financial-year" name="uc_financial_year" class="form-control">
+                            <select id="national-ucform-fy" name="uc_financial_year"
+                                class="form-control national_ucForm_filter">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
                                     @endfor
                             </select>
                         </div>
@@ -458,7 +536,7 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100">
+                            <div class=" card_height_100">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-UC-Received"
                                         class="border rounded mb-3 received-chart"></div>
@@ -467,7 +545,7 @@
                         </div>
 
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100 ">
+                            <div class=" card_height_100 ">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-UC-not-Received"
                                         class="border rounded mb-3 received-chart"></div>
@@ -485,42 +563,15 @@
                         </div>
 
                         <div class="col-xl-6">
-                            <div class="white_card card_height_100 ">
-
+                            <div class=" card_height_100 ">
                                 <div class="">
                                     <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
                                         class="border rounded mb-0 received-chart"></div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-
-                    <div class="">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge1"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge2"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge3"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="integrated-dashboard-gauge4"
-                                    class="border gauge-meter rounded mb-3 received-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-md-4">
                     <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
                 </div>
@@ -531,16 +582,17 @@
 
 
     <div class="col-md-12">
-        <div class="white_card p-3 mb_30">
+        <div class="white_card p-3 mb_30 p-4 pt-0">
             <div class="row">
                 <div class="col-md-12">
                     <div class="QA_table pt-3">
-                        <table class="table datatable table-bordered">
+                        <table class="table national_uc_datatable table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Name of Institute</th>
+                                    <th scope="col">QTR UC</th>
+                                    <th scope="col">Program</th>
                                     <th>Year of UC</th>
-                                    <th>All UCs</th>
+                                    <th>UC File Upload</th>
                                     <th>UC Uploaded Date</th>
                                     <th>UC Status</th>
                                     <th>Remarks</th>
@@ -549,7 +601,8 @@
                             <tbody>
                                 @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
-                                    <td>{{ @$sorUcList->users->institute_name }}</td>
+                                    <td>{{ $sorUcList->qtr_uc }}</td>
+                                    <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
                                     <td>{{ @$sorUcList->year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
@@ -565,7 +618,7 @@
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                     <td><span
-                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Not-Approved' : 'Pending') }}</span>
+                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned' : 'Pending') }}</span>
                                     </td>
                                     <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
@@ -591,10 +644,12 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select id="program_wise_yearly" name="program_wise_yearly"
+                            class="form-control yearly_soe_expenditure">
+                            <option value="">Select Program</option>
+                            @foreach($institutePrograms as $key => $value)
+                            <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -615,10 +670,15 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select class="nice_Select2 max-width-220">
-                            <option value="1">Show by month</option>
-                            <option value="1">Show by year</option>
-                            <option value="1">Show by day</option>
+                        <select name="institute_wise" class="form-control institute_wise yearly_soe_expenditure"
+                            id="institute_wise">
+                            <option value="">Select Institute</option>
+                            @foreach($institutes as $institute)
+                            <option value="{{ $institute->id }}"
+                                {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                {{ $institute->name }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -628,238 +688,7 @@
             </div>
         </div>
     </div>
-    <div class="devider-line">
-        <div></div>
-    </div>
-    <div class="col-xl-12 ">
-        <div class="crad white_card yellow-graph mb_30 p-4">
-            <div class="mb_30">
-                <form action="" class="select-form-s">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select id="national-program-map" name="institute_program_id" class="form-control">
-                                <option value="">Select Program</option>
-                                @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select id="national-user-fy-map" name="financial_year_map"
-                                class="form-control national_user_card">
-                                <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
-                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
-                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
-                                    @endfor
-                            </select>
-                        </div>
 
-                    </div>
-                </form>
-            </div>
-
-
-
-            <div class="row">
-                <div class="col-md-5">
-                    <div id="integrated-dashboard-india-map2" class="border rounded mb-3"></div>
-                </div>
-                <div class="col-md-7">
-                    <div class="row state-graph-filter">
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state1" class=" state-filter-highchart rounded mb-3 ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-                                <div class="">
-                                    <div id="integrated-dashboard-state2"
-                                        class=" state-filter-highchart rounded mb-3 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="">
-                                <div id="integrated-dashboard-state3" class=" state-filter-highchart rounded mb-0 ">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state4"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state5"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state6"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state7"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state8"
-                                        class=" state-filter-highchart rounded mb-0 received-chart">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state9"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state10"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="white_card  ">
-
-                                <div class="">
-                                    <div id="integrated-dashboard-state11"
-                                        class=" state-filter-highchart rounded mb-0 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ***** -->
-    <div class="col-md-12">
-        <div class="crad white_card mb_30 p-4">
-            <div class="QA_table pt-3">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Institute</th>
-                            <th>Unspent Balance (GIA) as on 1st April.. </th>
-                            <th>GIA Received during the Current F.Y</th>
-                            <th>Actual Expenditure incurred during the current F.Y </th>
-                            <th>Unspent Balance (excluding Interest)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td> National Institute of Medical Health and Neuro Science, Bangalore </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> Infectious Disease and Beliaghata General Hospital, Kolkata </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> Viral Research and Diagnostic Laboratory, GMC, Amritsar </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <td> State Public Health and Clinical Laboratory, Trivandrum </td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                            <td class="text-center">0</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">Total</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                            <th>0</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div>
     <div class="devider-line">
         <div></div>
     </div>
@@ -867,13 +696,14 @@
         <div class="main-title ">
             <h3 class="m-0"> Expenditure Bar Chart (All Programs combined data)</h3>
         </div>
-        <div class="crad white_card mb_30 p-4">
+        <div class="card white_card mb_30 p-4">
 
             <div class="row">
                 <div class="col-md-3">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                 class="text-danger">*</sup></b></label>
-                    <select id="national-program-barchart" name="institute_program_id" class="form-control">
+                    <select id="national-program-barchart" name="national-program-barchart"
+                        class="form-control national_program_barchart">
                         <option value="">Select Program</option>
                         @foreach($institutePrograms as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
@@ -884,7 +714,7 @@
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                 class="text-danger">*</sup></b></label>
                     <select id="national-user-fy-barchart" name="financial_year"
-                        class="form-control national_user_card">
+                        class="form-control national_program_barchart">
                         <option value="">Select Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
                             . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
@@ -892,22 +722,16 @@
                             @endfor
                     </select>
                 </div>
-
-                <div class="col-md-1 expenditure-or">
-                    <div class="d-inline-block">
-
-                        <h3>OR</h3>
-                    </div>
-                </div>
                 <div class="col-md-4 align-items-end justify-content-between">
 
                     <div>
-                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent Balance<sup
-                                    class="text-danger">*</sup></b></label>
-                        <select name="" class="form-control" id="">
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent
+                                Balance<sup class="text-danger">*</sup></b></label>
+                        <select id="expenditure_unspent" name="expenditure_unspent"
+                            class="form-control national_program_barchart">
                             <option value="">Select Expenditure/Unspent Balance</option>
-                            <option value="">Expenditure</option>
-                            <option value="">Unspent Balance</option>
+                            <option value="expenditure">Expenditure</option>
+                            <option value="unspent">Unspent Balance</option>
                         </select>
                     </div>
 
@@ -919,12 +743,12 @@
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box  d-flex">
                         <div class="expenditure-bar-chart-box-child1">
-                           
+
                             <i class="fas fa-balance-scale"></i>
-                            </div>
+                        </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall <br> Expenditure</h3>
-                            <span class="number">95%</span>
+                            <span class="number" id="overall_expenditure_chart"></span>
                         </div>
                     </div>
                 </div>
@@ -932,84 +756,90 @@
                 <div class="col-md-5">
                     <div class="expenditure-bar-chart-box unspent-bar-chart-box d-flex">
                         <div class="expenditure-bar-chart-box-child1">
-                           
-                            <i class="bi bi-currency-dollar"></i>
+
+                            <i class="bi bi-currency-rupee"></i>
                         </div>
                         <div class="expenditure-bar-chart-box-child2">
                             <h3>Overall Unspent <br> Balance</h3>
-                            <span class="number">5%</span>
+                            <span class="number" id="overall_unspent_chart"></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
 
-                    <div class="white_card card_height_100 mb_30 integrated-expenditure">
-                        <div class="">
-                            <div class="box_header m-0">
-                                <div class="main-title ">
-                                    <h3 class="m-0">Program wise Expenditure Pie </h3>
-                                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
 
+                <div class=" card_height_100 integrated-expenditure">
+                    <div class="">
+                        <div class="box_header m-0">
+                            <div class="main-title ">
+                                <h3 class="m-0">Program wise Expenditure Pie </h3>
                             </div>
+
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> NOHPPCZ-RCs</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
-                                        class="border border-1 "></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> NOHPPCZ-SSS</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
-                                        class="border border-1 "></div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <div class="graph-container">
-                                    <h2 class="chart-title">NRCP-Lab</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
-                                        class="border border-1 "></div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <div class="graph-container">
-                                    <h2 class="chart-title"> PPCL-Lab</h2>
-                                    <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
-                                        class="border border-1 "></div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Program wise Expenditure Line Chart</h3>
-                                    </div>
-                                    <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12">
-                                <div class="graph-container border border-1 mt-3 p-2">
-
-                                    <div id="integrated-dashboard-state-graph" class=""></div>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
+                    <div class="row program-wise-expenditure-pie">
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> NOHPPCZ-RCs</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart1"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> NOHPPCZ-SSS</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart2"
+                                    class="border border-1 "></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title">NRCP-Lab</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart3"
+                                    class="border border-1 "></div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> PPCL-Lab</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart4"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="graph-container white_card">
+                                <h2 class="chart-title"> PM-ABHIM-SSS</h2>
+                                <div id="integrated-dashboard-program-wise-expenditure-bar-chart5"
+                                    class="border border-1 "></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="graph-container white_card border border-1 ">
+                                <div class="main-title">
+                                    <h3 class="m-0">Program wise Expenditure Line Chart</h3>
+                                </div>
+                                <div id="integrated-dashboard-unspent-balance-line-chart" class=""></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12">
+                            <div class="graph-container white_card border border-1 mb-0">
+
+                                <div id="integrated-dashboard-state-graph" class=""></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="devider-line">
@@ -1019,129 +849,126 @@
         <div class="white_card   mb_30 p-4">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="crad white_card mb_30">
+                    <div class="crad  mb_30">
                         <div>
                             <form action="" class="select-form-s">
                                 <div class="row">
                                     <div class="col">
-
-                                        <select name="" class="form-control" id="">
-                                            <option value="">Select Financial Year</option>
-                                            <option value="">2024-25</option>
-                                            <option value="">2023-24</option>
-                                            <option value="">2022-23</option>
-                                            <option value="">2021-22</option>
+                                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Select
+                                                Year</b></label>
+                                        <select id="national-user-fy-barchart-head" name="financial_year"
+                                            class="form-control">
+                                            <option value="">Select Year</option>
+                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                                $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : ''
+                                                ; @endphp <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} -
+                                                {{$i+1}}</option>
+                                                @endfor
                                         </select>
                                     </div>
 
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
-
 
             <div class="data-driven">
                 <div class="row justify-content-between custom-grid">
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box1  d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                                
+
                                 <i class="fas fa-school"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPCZ-<br>RCs</h3>
-                                <span class="number">35%</span>
+                                <span class="number" id="program_percentagedriven_graph1"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box2 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                                
+
                                 <i class="fas fa-hands-helping"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NOHPPC-<br>SSS</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph2"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box3 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                               
-                                <i class="fas fa-flask"></i> 
+
+                                <i class="fas fa-flask"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>NRCP-<br>Lab</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph3"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-2">
                         <div class="expenditure-bar-chart-box box4 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                               
+
                                 <i class="fas fa-vials"></i>
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PPCL-<br>Lab</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph4"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="expenditure-bar-chart-box box5 d-flex">
                             <div class="expenditure-bar-chart-box-child1">
-                            <i class="fas fa-stethoscope"></i>
+                                <i class="fas fa-solid fa-hospital"></i>
                                 <!-- <i class="fas fa-heartbeat"></i> -->
                             </div>
                             <div class="expenditure-bar-chart-box-child2">
                                 <h3>PM-ABHIM-<br>SSS</h3>
-                                <span class="number">60%</span>
+                                <span class="number" id="program_percentagedriven_graph5"></span>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="row custom-grid2 state-driven">
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0">
-                            <div id="integrated-dashboard-data-driven-graph1" class=""></div>
-                        </div>
 
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph2" class=""></div>
-                        </div>
+            </div>
 
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph3" class=""></div>
-                        </div>
-
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph4" class=""></div>
-                        </div>
-
-                    </div>
-                    <div class="col-graph">
-                        <div class="graph-container border border-1 mt-3 me-0 ms-0">
-                            <div id="integrated-dashboard-data-driven-graph5" class=""></div>
-                        </div>
-
-                    </div>
+        </div>
+        <div class="row custom-grid2 state-driven">
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card">
+                    <div id="integrated-dashboard-data-driven-graph1" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph2" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph3" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph4" class=""></div>
+                </div>
+            </div>
+            <div class="col-graph">
+                <div class="graph-container border border-1 me-0 white_card ms-0">
+                    <div id="integrated-dashboard-data-driven-graph5" class=""></div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="col-xl-12 ">
@@ -1152,127 +979,190 @@
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="program_wise" class="form-control filter_program_id national_all_form_map"
+                                id="program_wise_all_form">
                                 <option value="">Select Program</option>
-                                <option value="">NOHPPCZ RC's</option>
-                                <option value="">NOHPPCZ SSS</option>
-                                <option value="">NRCP-Lab</option>
-                                <option value="">PPCL-Lab</option>
-                                <option value="">PM-ABHIM-SSS</option>
-                            </select>
-                        </div>
-
-                        <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Select Month</option>
-                                <option value="">January</option>
-                                <option value="">Febuary</option>
-                                <option value="">March</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="institute_wise"
+                                class="form-control national_institute_name national_all_form_map"
+                                id="institute_wise_all_form">
                                 <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
+                                @foreach($institutes as $institute)
+                                <option value="{{ $institute->id }}">
+                                    {{ $institute->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
+                                        class="text-danger">*</sup></b></label>
+                            <select name="month_name_all_form" class="form-control national_all_form_map"
+                                id="month_wise_all_form">
+                                <option value="">Select Month</option>
+                                @foreach ($months as $key => $month)
+                                @php
+                                $selected = old('month') == $month ? 'selected' : '';
+                                @endphp
+                                <option value="{{ $month }}" {{ $selected }}>
+                                    {{ $month }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="financial_year" class="form-control national_all_form_map"
+                                id="financial_wise_all_form">
                                 <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
+                                    @endfor
                             </select>
                         </div>
 
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="border country-overall-data p-3 rounded-1 pt-0">
-                        <ul>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">1</span></span><span
-                                    class="country-list-content">Unspent Balance (GIA) as on 1st April..</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">2</span></span><span
-                                    class="country-list-content">GIA Received during the Current F.Y.</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">3</span></span><span
-                                    class="country-list-content">Interest earned in C.Y.</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">4</span></span><span
-                                    class="country-list-content">Total Balance (a+b) excluding interest</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">5</span></span><span
-                                    class="country-list-content">Actual Expenditure incurred during the current
-                                    F.Y</span> <span class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">6</span></span><span
-                                    class="country-list-content">Interest DD Returned to NCDC</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">7</span></span><span
-                                    class="country-list-content">Unspent Balance (excluding Interest)</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">8</span></span><span
-                                    class="country-list-content">Committed Liabilities (if any)</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">9</span></span><span
-                                    class="country-list-content">Unspent Balance as on 31st January 2024 (g-h)</span>
-                                <span class="state-data-total">0</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">10</span></span><span
-                                    class="country-list-content">Fund Utilization (%)</span> <span
-                                    class="state-data-total">0%</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">11</span></span><span
-                                    class="country-list-content">Fund non utilization (%)</span> <span
-                                    class="state-data-total">0%</span>
-                            </li>
-                            <li>
-                                <span class="arrow arrow-left"><span class="number">12</span></span><span
-                                    class="country-list-content">UC Uploaded</span> <span
-                                    class="state-data-total">0</span>
-                            </li>
-                        </ul>
 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div id="integrated-dashboard-india-map3" class="border rounded mb-3"></div>
-                </div>
-            </div>
         </div>
 
 
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="border country-overall-data white_card rounded-1 pt-0 p-4">
+                <ul>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">1</span></span><span
+                                    class="country-list-content">Unspent Balance (GIA) as on 1st
+                                    April..</span>
+                            </div>
+                            <div>
 
+                                <span class="state-data-total" id="unspent_balance_1st_total">0</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">2</span></span><span
+                                    class="country-list-content">GIA Received in F.Y</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="gia_received_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">3</span></span><span
+                                    class="country-list-content">Total Balance excluding interest</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="total_balance_excluding_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">4</span></span><span
+                                    class="country-list-content">Actual Expenditure incurred during the
+                                    current
+                                    F.Y
+                                </span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="actual_expenditure_incurred_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">5</span></span><span
+                                    class="country-list-content">Unspent Balance F=(D-E)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="unspent_balance_d_e_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">6</span></span><span
+                                    class="country-list-content">Committed Liabilities (if any)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="committed_liabilities_total">0</span>
+                            </div>
+                        </div>
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">7</span></span><span
+                                    class="country-list-content">Unspent Balance of (GIA) as on 31st
+                                    March
+                                    H=(F-G)</span>
+                            </div>
+                            <div>
+                                <span class="state-data-total" id="unspent_balance_31st_march_total">0</span>
+                            </div>
+                        </div>
+
+
+
+                    </li>
+                    <li>
+                        <div class="overall-data-li">
+                            <div>
+                                <span class="arrow arrow-left"><span class="number">8</span></span><span
+                                    class="country-list-content">UC Uploaded</span>
+                            </div>
+                            <div>
+
+                                <span class="state-data-total" id="uc_uploads_total">0</span>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="white_card">
+
+                <div id="integrated-dashboard-india-map3" class="border rounded"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>
@@ -1285,422 +1175,103 @@
     <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
-                <form action="" class="select-form-s export-excel-form">
+                <form action="{{ route('national-user.dashboard-report') }}" method="get" id="institute-report">
+                    @csrf
                     <div class="row">
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="program_name" class="form-control filter_program_id" id="national_program_id">
                                 <option value="">Select Program</option>
-                                <option value="">Program 1</option>
-                                <option value="">Program 2</option>
-                                <option value="">Program 3</option>
+                                @foreach($institutePrograms as $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Choose Financial Year</option>
-                                <option value="">2023-2024</option>
-                                <option value="">2022-2023</option>
-                                <option value="">2021-2022</option>
+                            <select id="financial_year" name="financial_year" class="form-control national_user_card">
+                                <option value="">Select Year</option>
+                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
+                                    <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
+                                    </option>
+                                    @endfor
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Form Type<sup
-                                        class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
-                                <option value="">Select Form Type</option>
-                                <option value="">SOE</option>
-                                <option value="">UC</option>
+                            <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
+                            <select class="form-control" name="modulename" id="form_type" required>
+                                <option value="">Select Module</option>
+                                <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form
+                                </option>
+                                <option value='2' {{  request('modulename') == '2' ? 'selected' : '' }}>UC Upload
+                                </option>
                             </select>
+                            @error('modulename')
+                            <span class="form-text text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="institute_name" class="form-control national_institute_name"
+                                id="national_institute_name">
                                 <option value="">Select Institute</option>
-                                <option value="">Institutes 1</option>
-                                <option value="">Institutes 2</option>
-                                <option value="">Institutes 3</option>
+                                @foreach($institutes as $institute)
+                                <option value="{{ $institute->id }}"
+                                    {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
                                         class="text-danger">*</sup></b></label>
-                            <select name="" class="form-control" id="">
+                            <select name="month" class="form-control" id="national_month">
                                 <option value="">Select Month</option>
-                                <option value="">January</option>
-                                <option value="">Febuary</option>
-                                <option value="">March</option>
+                                @foreach ($months as $key => $month)
+                                @php
+                                $selected = old('month') == $month ? 'selected' : '';
+                                @endphp
+                                <option value="{{ $month }}" {{ $selected }}>
+                                    {{ $month }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-12">
                             <div class="float-end mt-4">
-                                <button type="submit" class="btn bg-cancel me-3">Search</button>
-                                <button type="reset" class="btn bg-danger me-3">Reset</button>
-                                <button type="submit" class="btn btn-primary">Export Excel</button>
+                                <button type="button" class="btn bg-cancel me-3 form_type_uc_list"
+                                    id="form_type_uc_list">Search</button>
+                                <button type="reset" class="btn bg-danger me-3 form_type_uc_list">Reset</button>
+                                <button type="submit" class="btn btn-primary" id="form_type_export_button">Export
+                                    Excel</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- <div class="row card-mm">
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-1 p-0">
-                        <div class="crm_head d-flex align-items-center justify-content-between">
-                            <div class="thumb">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="19.9" height="17.734"
-                                    viewBox="0 0 19.9 17.734" class="invert-1">
-                                    <g id="calender_icon" transform="translate(0 -20.9)">
-                                        <g id="Group_2869" data-name="Group 2869" transform="translate(0 20.9)">
-                                            <g id="Group_2868" data-name="Group 2868" transform="translate(0 0)">
-                                                <path id="Path_1648" data-name="Path 1648"
-                                                    d="M17.837,22.408H16.588v-.99a.518.518,0,0,0-1.037,0v.99h-5.08v-.99a.518.518,0,0,0-1.037,0v.99H4.3v-.99a.518.518,0,0,0-1.037,0v.99h-1.2A2.1,2.1,0,0,0,0,24.508V36.56a2.069,2.069,0,0,0,2.068,2.073H17.832A2.067,2.067,0,0,0,19.9,36.565V24.508A2.09,2.09,0,0,0,17.837,22.408ZM18.869,36.56A1.034,1.034,0,0,1,17.842,37.6H2.068a1.031,1.031,0,0,1-1.032-1.032V24.508a1.055,1.055,0,0,1,1.032-1.063h1.2V24.2a.518.518,0,0,0,1.037,0v-.752H9.434V24.2a.518.518,0,0,0,1.037,0v-.752h5.08V24.2a.518.518,0,0,0,1.037,0v-.752h1.249a1.054,1.054,0,0,1,1.032,1.063Z"
-                                                    transform="translate(0 -20.9)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2871" data-name="Group 2871" transform="translate(7.164 26.815)">
-                                            <g id="Group_2870" data-name="Group 2870">
-                                                <path id="Path_1649" data-name="Path 1649"
-                                                    d="M139.626,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
-                                                    transform="translate(-138.2 -135)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2873" data-name="Group 2873" transform="translate(10.772 26.815)">
-                                            <g id="Group_2872" data-name="Group 2872">
-                                                <path id="Path_1650" data-name="Path 1650"
-                                                    d="M209.226,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
-                                                    transform="translate(-207.8 -135)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2875" data-name="Group 2875" transform="translate(14.411 26.815)">
-                                            <g id="Group_2874" data-name="Group 2874">
-                                                <path id="Path_1651" data-name="Path 1651"
-                                                    d="M279.426,135h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
-                                                    transform="translate(-278 -135)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2877" data-name="Group 2877" transform="translate(7.164 30.391)">
-                                            <g id="Group_2876" data-name="Group 2876" transform="translate(0 0)">
-                                                <path id="Path_1652" data-name="Path 1652"
-                                                    d="M139.626,204h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
-                                                    transform="translate(-138.2 -204)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2879" data-name="Group 2879" transform="translate(3.525 30.391)">
-                                            <g id="Group_2878" data-name="Group 2878" transform="translate(0 0)">
-                                                <path id="Path_1653" data-name="Path 1653"
-                                                    d="M69.431,204h-.912a.518.518,0,0,0,0,1.037h.907A.518.518,0,0,0,69.431,204Z"
-                                                    transform="translate(-68 -204)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2881" data-name="Group 2881" transform="translate(10.772 30.391)">
-                                            <g id="Group_2880" data-name="Group 2880" transform="translate(0 0)">
-                                                <path id="Path_1654" data-name="Path 1654"
-                                                    d="M209.226,204h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
-                                                    transform="translate(-207.8 -204)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2883" data-name="Group 2883" transform="translate(14.411 30.391)">
-                                            <g id="Group_2882" data-name="Group 2882" transform="translate(0 0)">
-                                                <path id="Path_1655" data-name="Path 1655"
-                                                    d="M279.426,204h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
-                                                    transform="translate(-278 -204)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2885" data-name="Group 2885" transform="translate(7.164 33.916)">
-                                            <g id="Group_2884" data-name="Group 2884" transform="translate(0 0)">
-                                                <path id="Path_1656" data-name="Path 1656"
-                                                    d="M139.626,272h-.907a.518.518,0,0,0,0,1.037h.907a.518.518,0,1,0,0-1.037Z"
-                                                    transform="translate(-138.2 -272)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2887" data-name="Group 2887" transform="translate(3.525 33.916)">
-                                            <g id="Group_2886" data-name="Group 2886" transform="translate(0 0)">
-                                                <path id="Path_1657" data-name="Path 1657"
-                                                    d="M69.431,272h-.912a.518.518,0,0,0,0,1.037h.907A.518.518,0,0,0,69.431,272Z"
-                                                    transform="translate(-68 -272)" />
-                                            </g>
-                                        </g>
-                                        <g id="Group_2889" data-name="Group 2889" transform="translate(10.772 33.916)">
-                                            <g id="Group_2888" data-name="Group 2888" transform="translate(0 0)">
-                                                <path id="Path_1658" data-name="Path 1658"
-                                                    d="M209.226,272h-.907a.518.518,0,1,0,0,1.037h.907a.518.518,0,0,0,0-1.037Z"
-                                                    transform="translate(-207.8 -272)" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-                        </div>
-                        <div class="crm_body">
-                            <h4>0</h4>
-                            <p>GIA Received during the Current F.Y. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-2 p-0">
-                        <div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
-                            <div class="thumb">
-                                <i class="fas fa-credit-card f_s_16 white_text"></i>
-                            </div>
-                            <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-                        </div>
-                        <div class="crm_body">
-                            <h4>0</h4>
-                            <p>Interest earned in C.Y. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-3 p-0">
-                        <div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
-                            <div class="thumb">
-                                <i class="fas fa-plus f_s_16 white_text"></i>
-                            </div>
-                            <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-                        </div>
-                        <div class="crm_body">
-                            <h4>0</h4>
-                            <p>Total Balance excluding interest</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-4 p-0">
-                        <div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
-                            <div class="thumb">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15.535" height="14.888"
-                                    viewBox="0 0 15.535 14.888">
-                                    <g id="infographic" transform="translate(0 -1)">
-                                        <path id="Path_1511" data-name="Path 1511"
-                                            d="M2.647,7.65a.647.647,0,0,1-.43-1.131L5.13,3.93a.644.644,0,0,1,.507-.159l5.038.61,2.854-2.7a.647.647,0,0,1,.89.941L11.345,5.531a.65.65,0,0,1-.523.173l-5.05-.613-2.695,2.4a.645.645,0,0,1-.43.163Z"
-                                            transform="translate(-0.706 -0.177)" fill="#fff" />
-                                        <path id="Path_1512" data-name="Path 1512"
-                                            d="M19.751,4.236a.483.483,0,0,1-.343-.142L17.143,1.829A.485.485,0,0,1,17.486,1h2.266a.486.486,0,0,1,.485.485V3.751a.485.485,0,0,1-.485.485Z"
-                                            transform="translate(-5.996)" fill="#fff" />
-                                        <path id="Path_1513" data-name="Path 1513"
-                                            d="M4.884,17.809v1.78H1v-1.78A.809.809,0,0,1,1.809,17H4.075A.809.809,0,0,1,4.884,17.809Z"
-                                            transform="translate(-0.353 -5.643)" fill="#fff" />
-                                        <path id="Path_1514" data-name="Path 1514"
-                                            d="M12.884,11.809v5.664H9V11.809A.809.809,0,0,1,9.809,11h2.266A.809.809,0,0,1,12.884,11.809Z"
-                                            transform="translate(-3.174 -3.527)" fill="#fff" />
-                                        <path id="Path_1515" data-name="Path 1515"
-                                            d="M20.884,13.809v4.369H17V13.809A.809.809,0,0,1,17.809,13h2.266A.809.809,0,0,1,20.884,13.809Z"
-                                            transform="translate(-5.996 -4.232)" fill="#fff" />
-                                        <path id="Path_1516" data-name="Path 1516"
-                                            d="M15.05,23.471H.485a.485.485,0,1,1,0-.971H15.05a.485.485,0,1,1,0,.971Z"
-                                            transform="translate(0 -7.583)" fill="#fff" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-                        </div>
-                        <div class="crm_body">
-                            <h4>0</h4>
-                            <p>Actual Expenditure incurred during the current F.Y </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg">
-                    <div class="single_crm border-line-5 p-0">
-                        <div class="crm_head crm_bg_4 d-flex align-items-center justify-content-between">
-                            <div class="thumb">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15.412" height="15.412"
-                                    viewBox="0 0 15.412 15.412" class="briteness-10">
-                                    <g id="XMLID_17_" transform="translate(0 -0.002)">
-                                        <path id="XMLID_40_" d="M257.823.4A7.874,7.874,0,0,0,255,0V3.221Z"
-                                            transform="translate(-247.294 0)" fill="#5e3787" />
-                                        <path id="XMLID_560_"
-                                            d="M406.712,164.428a7.873,7.873,0,0,0-.4-2.823l-2.823,2.823Z"
-                                            transform="translate(-391.3 -156.719)" fill="#5e3787" />
-                                        <path id="XMLID_561_"
-                                            d="M255,65.9h.641l5.252-5.252a7.285,7.285,0,0,0-.641-.641L255,65.263Z"
-                                            transform="translate(-247.294 -58.195)" fill="#5e3787" />
-                                        <path id="XMLID_562_"
-                                            d="M319.921,109.629l3.724-3.724a7.253,7.253,0,0,0-.475-.807l-4.531,4.531Z"
-                                            transform="translate(-309.01 -101.92)" fill="#5e3787" />
-                                        <path id="XMLID_2261_"
-                                            d="M255,30.729,259.53,26.2a7.238,7.238,0,0,0-.807-.476L255,29.447Z"
-                                            transform="translate(-247.294 -24.943)" fill="#5e3787" />
-                                        <path id="XMLID_2337_"
-                                            d="M6.8,29.884l-.513.068A7.254,7.254,0,0,0,1.813,41.939L6.8,36.953Z"
-                                            transform="translate(0 -28.979)" fill="#5e3787" />
-                                        <path id="XMLID_2340_"
-                                            d="M81.205,290.006a7.254,7.254,0,0,0,11.987-4.473l.068-.513H86.191Z"
-                                            transform="translate(-78.751 -276.405)" fill="#5e3787" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-                        </div>
-                        <div class="crm_body">
-                            <h4>0</h4>
-                            <p>Unspent Balance (excluding Interest ) </p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="QA_section">
-                <div class="QA_table">
-                    <table class="table datatable table-bordered">
+                <div class="QA_table form_type_uc_list" id="form_type_uc_list">
+                    <table class="table national_uc_filter_datatable table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">View / Download</th>
+                                <th scope="col">Sr. No.</th>
+                                <th scope="col">QTR UC</th>
+                                <th scope="col">Program</th>
+                                <th scope="col">Year of UC</th>
+                                <th scope="col">Month</th>
+                                <th scope="col">UC File Upload</th>
+                                <th scope="col">UC Uploaded Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Remarks</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-1
-                                    </a></th>
-                                <td>1 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-2
-                                    </a></th>
-                                <td>2 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-3
-                                    </a></th>
-                                <td>3 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-4
-                                    </a></th>
-                                <td>4 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-5
-                                    </a></th>
-                                <td>5 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-6
-                                    </a></th>
-                                <td>6 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-7
-                                    </a></th>
-                                <td>7 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-8
-                                    </a></th>
-                                <td>8 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-9
-                                    </a></th>
-                                <td>9 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-10
-                                    </a></th>
-                                <td>10 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <a href="#" class="question_content"> Name of Institute-11
-                                    </a></th>
-                                <td>11 September 2023</td>
-                                <td class="download-icon-width">
-                                    <div class="download ">
-                                        <a href="#"><span class="view">View</span></a>
-                                        <i class="fas fa-file-pdf ms-2 me-2 black_text" aria-hidden="true"></i>
-                                        <span class="size">(3.59MB)
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-
+                        <tbody id="national_report_data">
                         </tbody>
                     </table>
                 </div>

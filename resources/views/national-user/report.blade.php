@@ -22,7 +22,7 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form action="{{ route('institute-user.report-export') }}" id="institute-report" method="GET">
+                <form action="{{ route('national-user.report-export') }}" id="national-report" method="GET">
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
@@ -69,7 +69,7 @@
                         <div class="col-md-12">
                             <div class="float-end mt-4">
                                 <button type="submit" class="btn bg-cancel me-3 form_type_uc_list">Search</button>
-                                <a href="{{ route('institute-user.report') }}" class="btn bg-danger me-3 form_type_uc_list">Reset</a>
+                                <a href="{{ route('national-user.report') }}" class="btn bg-danger me-3 form_type_uc_list">Reset</a>
                                 <button type="submit" class="btn btn-primary" id="form_type_export_button">Export Excel</button>
                             </div>
                         </div>

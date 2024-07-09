@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('soe_form_id');
             $table->string('head')->nullable();
             $table->string('sanction_order')->nullable();
+            $table->string('previous_month_expenditure')->nullable();
+            $table->string('previous_month_total')->nullable();
             $table->string('unspent_balance_1st')->nullable();
             $table->string('gia_received')->nullable();
             $table->string('total_balance')->nullable();
@@ -23,6 +25,7 @@ return new class extends Migration
             $table->string('unspent_balance_last')->nullable();
             $table->string('committed_liabilities')->nullable();
             $table->string('unspent_balance_31st')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

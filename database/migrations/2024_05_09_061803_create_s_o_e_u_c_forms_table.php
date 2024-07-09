@@ -16,9 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('state_id');
             $table->foreignId('city_id');
-            $table->foreignId('institute_program_id')->nullable();
-            $table->string('expanse_plan')->nullable()->comment('1=>year, 2=>month, 3=>quarter');
-            $table->string('institute_name')->nullable();
+            $table->foreignId('program_id')->nullable();            
+            $table->string('institute_id')->nullable();
             $table->string('finance_account_officer')->nullable();
             $table->string('finance_account_officer_mobile')->nullable();
             $table->string('finance_account_officer_email')->nullable();
@@ -28,7 +27,7 @@ return new class extends Migration
             $table->string('month')->nullable();
             $table->string('financial_year')->nullable();
             $table->string('reason')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('1=>approve,2=>not-approved,3=>pending');
+            $table->tinyInteger('status')->default('1')->nullable()->comment('1=>approve,2=>not-approved,3=>pending');
             $table->softDeletes();
             $table->timestamps();
         });
