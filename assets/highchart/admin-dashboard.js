@@ -32,7 +32,6 @@ $(document).on('click', '.performance', function() {
 });
 $(document).on('change', '#user_program', function() {
     let programName = $(this).val();
-    // alert(programName);  
     $.ajax({
         type: "GET",
         url: BASE_URL + "admin/filter-dashboard",
@@ -40,8 +39,9 @@ $(document).on('change', '#user_program', function() {
             'programName': programName
         },
         success: function(data) {
-            var programUserDetails = data.programUserDetails;  
-            adminDashboardChart(data,programUserDetails);         
+            var programUserDetails = data.programUserDetails;
+            var registrationsSession = data.registrationsSession;
+            adminDashboardChart(data,programUserDetails,registrationsSession);         
         }
     });
 });
@@ -381,7 +381,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
     
 
     // Program wise Unspent Balance Line Chart
-    let stringArray = registrationsSession.days.map(String);
+    let stringArray = registrationsSession.days.map(String); 
     Highcharts.chart('integrated-dashboard-unspent-Sessions', {
         chart: {
             type: 'line'
@@ -421,8 +421,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
             },
         
             data: registrationsSession.count,
-        }],
-        
+        }],       
     
     });
 
