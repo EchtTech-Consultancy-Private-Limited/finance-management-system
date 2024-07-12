@@ -32,7 +32,7 @@
 </div>
 <div class="row">
     <div class="crad white_card mb_30 p-4 pb-0">
-        <div class="col-xl-12 white_card card_height_100 user_crm_wrapper">
+        <div class="col-xl-12 user_crm_wrapper">
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-tab-group mb-4">
@@ -66,35 +66,35 @@
 
                 <div class="col-md-6 row spaicel-card-w-66 p-0">
                     <div class="col p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-0" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-1" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-2" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-3" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-4" class="rounded mb-3 received-chart"></div>
                             </div>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-md-3 row special-card-w-44">
                     <div class="col-md-6 p-0">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-Average-Login-Hours" class="rounded mb-3 received-chart"></div>
                             </div>
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div class="white_card card_height_100">
+                        <div class="">
                             <div class="">
                                 <div id="admin-dashboard-Overall-User-Active" class="rounded mb-3 received-chart"></div>
                             </div>

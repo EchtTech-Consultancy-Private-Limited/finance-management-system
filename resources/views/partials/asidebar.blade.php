@@ -38,7 +38,8 @@
             <li class>
                <a class="has-arrow" href="#" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
+                     <!-- <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt> -->
+                     <i class="fas fa-file-alt"></i>
                   </div>
                   <div class="nav_title">
                      <span>SOE Form</span>
@@ -52,7 +53,8 @@
             <li class>
                <a class="has-arrow" href="#" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                     <!-- <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt> -->
+                     <i class="fas fa-upload"></i>
                   </div>
                   <div class="nav_title">
                      <span>UC Upload</span>
@@ -66,7 +68,8 @@
             <li class=>
                <a href="{{ asset('assets/img/pdf/uc_form.pdf') }}" target="_blank" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                     <!-- <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt> -->
+                     <i class="fas fa-download"></i>
                   </div>
                   <div class="nav_title">
                      <span>UC Download</span>
@@ -76,7 +79,8 @@
             <li class=>
                <a href="{{ route('institute-user.report') }}" aria-expanded="false">
                   <div class="nav_icon_small">
-                     <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt>
+                     <!-- <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt> -->
+                     <i class="fas fa-file-invoice"></i>
                   </div>
                   <div class="nav_title">
                      <span>Generate Report</span>

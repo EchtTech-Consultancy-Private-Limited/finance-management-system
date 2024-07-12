@@ -830,7 +830,7 @@
 
                         </div>
                         <div class="col-md-12">
-                            <div class="graph-container white_card border border-1 mb-0">
+                            <div class="graph-container white_card border border-1 mb-0 p-3">
 
                                 <div id="integrated-dashboard-state-graph" class=""></div>
                             </div>
@@ -1040,6 +1040,7 @@
 
 
     </div>
+    <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
             <div class="border country-overall-data white_card rounded-1 pt-0 p-4">
@@ -1163,6 +1164,8 @@
             </div>
         </div>
     </div>
+    </div>
+    
 </div>
 
 </div>

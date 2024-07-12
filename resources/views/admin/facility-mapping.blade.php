@@ -26,8 +26,8 @@
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label class="form-label" for="inputAddress">User Name<span class="text-danger">*</span></label>
-                            <input type="text" name="user_name" value="{{ old('user_name', $user->user_name ?? '') }}" class="form-control" placeholder="Enter User Name">
+                            <label class="form-label" for="inputAddress">Email<span class="text-danger">*</span></label>
+                            <input type="text" name="user_name" value="{{ old('user_name', $user->user_name ?? '') }}" class="form-control" placeholder="Enter Your Email">
                             @error('user_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -72,7 +72,7 @@
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">State Name<span class="text-danger">*</span></label>
                             <select id="state_name" class="form-control" name="state_id">
-                                <option value="">State Name</option>
+                                <option value="">Select State Name</option>
                                 @foreach($state as $statelist)
                                     <option value="{{ $statelist->id }}" {{ old('state_id', $user->state_id ?? '') == $statelist->id ? 'selected' : '' }}>
                                         {{ $statelist->name }}
@@ -99,17 +99,11 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label class="form-label" for="inputAddress2">Date<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" name="date" value="{{ old('date', $user->date ?? '') }}" id="date">
-                            @error('date')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                       
                         <div class="col-md-4 pe-1">
                             <label class="form-label" for="inputAddress2">Assign Role<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="user_type">
-                                <option value="">Assign Role</option>
+                                <option value="">Select Assign Role</option>
                                 <option value="0" {{ old('user_type', $user->user_type ?? '') == 0 ? 'selected' : '' }}>National</option>
                                 <option value="1" {{ old('user_type', $user->user_type ?? '') == 1 ? 'selected' : '' }}>Institute</option>
                             </select>
@@ -120,11 +114,18 @@
                         <div class="col-md-4 pe-1">
                             <label class="form-label" for="inputAddress2">Status<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="status">
-                                <option value="">status</option>
+                                <option value="">Select status</option>
                                 <option value="1" {{ old('status', $user->status ?? '') == 1 ? 'selected' : '' }}>Enable</option>
                                 <option value="0" {{ old('status', $user->status ?? '') == 0 ? 'selected' : '' }}>Disable</option>
                             </select>
                             @error('status')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="inputAddress2">Date<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="date" value="{{ old('date', $user->date ?? '') }}" id="date" data-date="date" placeholder="DD/MM/YYYY">
+                            @error('date')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -148,12 +149,12 @@
         <div class="white_card_body">
             <div class="QA_section">
                 <div class="QA_table mb_30">
-                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="datatable" class="table table-striped table-bordered facility-mapping-list datatable" cellspacing="0" width="100%" >
                     <thead>
                         <tr>
                             <th scope="col">Sr. No.</th>
-                            <th scope="col">State</th>
                             <th scope="col">Program</th>
+                            <th scope="col">State</th>
                             <th scope="col">Name Of Institute</th>
                             <th scope="col">Login ID</th>
                             <th scope="col">Password</th>
@@ -167,8 +168,8 @@
                             @foreach($users as $key=>$user)
                                 <tr>
                                     <td>{{ $loop->iteration}}</td>
-                                    <td>{{ $user->state->name??'N/A' }}</td>
                                     <td>{{ $user->program->name??'N/A' }}-{{ $user->program->code??'N/A' }}</td>                                    
+                                    <td>{{ $user->state->name??'N/A' }}</td>
                                     <td>{{ $user->institute->name??'N/A'}}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="hidetext">{{ Str::limit($user->password, 4) }}</td>
