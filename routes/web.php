@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Master\ProgramController;
+use App\Http\Controllers\Master\InstituteController;
 use App\Http\Controllers\SOEUCFormController;
 use App\Http\Controllers\SOEUCUploadFormController;
 use App\Http\Controllers\NOHPPCZRCSController;
@@ -37,6 +39,22 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/create-facility-mapping', [AdminController::class, 'facilityMappingCreate'])->name('create-facility-mapping');
         Route::get('/edit-facility-mapping/{id}', [AdminController::class, 'facilityMappingEdit'])->name('facility-mapping-edit');
         Route::post('/update-facility-mapping/{id}', [AdminController::class, 'facilityMappingUpdate'])->name('update-facility-mapping');
+        
+        Route::group(['prefix' => 'programs', 'as' => 'programs.'], function(){
+            Route::get('/', [ProgramController::class, 'index'])->name('index');
+            Route::post('store', [ProgramController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [ProgramController::class, 'edit'])->name('edit');
+            Route::post('update/{id}', [ProgramController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [ProgramController::class, 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'institutes', 'as' => 'institutes.'], function(){
+            Route::get('/', [InstituteController::class, 'index'])->name('index');
+            Route::post('store', [InstituteController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [InstituteController::class, 'edit'])->name('edit');
+            Route::post('update/{id}', [InstituteController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [InstituteController::class, 'delete'])->name('delete');
+        });
     });
 
     Route::group(['prefix' => 'national-users', 'as' => 'national-user.','middleware' => ['checkUserType:national']], function () {

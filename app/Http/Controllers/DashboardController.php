@@ -587,8 +587,8 @@ class DashboardController extends Controller
                 }
         
                 $finalArray[] = [
-                    'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : 0) : $grandTotalActualExpenditure,
-                    'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : 0) : $grandTotalUnspentBalance,
+                    'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : $grandTotalActualExpenditure) : $grandTotalActualExpenditure,
+                    'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : $grandTotalUnspentBalance) : $grandTotalUnspentBalance,
                     // Head Expenditure
                     'man_power_with_human_resource' => $manPowerwithHumanResource,
                     'meetings_training_research' => $meetingsTrainingResearch,

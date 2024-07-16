@@ -214,7 +214,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Fund approved <br> (in Cr.)
+                            Fund Approved <br> (in Lakh.)
                         </h3>
                         <span class="fund-number">
                             {{ @$totalArray['unspentBalance1stTotal'] }}
@@ -225,7 +225,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Fund Expenditure <br> (in Cr.)
+                            Fund Expenditure <br> (in Lakh.)
                         </h3>
                         <span class="fund-number">
                             {{ @$totalArray['actualExpenditureTotal'] }}
@@ -245,7 +245,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Balance Amount <br> (in Cr.)
+                            Balance Amount <br> (in Lakh.)
                         </h3>
                         <span class="fund-number">
                             15%
@@ -601,9 +601,9 @@
                             <tbody>
                                 @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
-                                    <td>{{ $sorUcList->qtr_uc }}</td>
-                                    <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
-                                    <td>{{ @$sorUcList->year }}</td>
+                                    <td>{{ @$sorUcList->qtr_uc }}</td>
+                                    <td>{{ @$sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
+                                    <td>{{ @$sorUcList->financial_year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
                                         <a class="nhm-file"

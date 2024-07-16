@@ -316,8 +316,8 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
     (async () => {
         const topology = await fetch(
             'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-        ).then(response => response.json());
-    
+        ).then(response => response.json());        
+
         Highcharts.mapChart('integrated-dashboard-india-map-admin', {
             chart: {
                 map: topology,
@@ -336,7 +336,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                // max: 25,
                 minColor: '#fcad95',
                 maxColor: '#ab4024',
                 labels: {

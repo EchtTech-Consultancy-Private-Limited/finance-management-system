@@ -17,7 +17,7 @@ $(document).ready(function(){
             var UcFormstateDetails = data.UcFormstateDetails;            
             var programWiseExpenditure = data.yearlySoeDetails;
             var instituteColumnDetails = data.instituteColumnDetails;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
             nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);                 
             nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);
@@ -81,7 +81,7 @@ $(document).on('change', '.national_user_card', function() {
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var instituteColumnDetails = data.instituteColumnDetails;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
             var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
             nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);         
         }
@@ -1120,7 +1120,7 @@ function expenditureBarChart(programUserDetailsArray){
     programUserDetailsArray.forEach((programUserDetails, index) => {
         var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
         var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
-        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
         var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
         percentageExpenditureAll += parseInt(percentageExpenditure);
         percentageUnspentBalanceAll += parseInt(percentageUnspentBalance);
@@ -1144,7 +1144,7 @@ function expenditureBarChart(programUserDetailsArray){
                 text: "",
             },
             subtitle: {
-                text: `${percentageExpenditure} %`,
+                text: `${percentageExpenditure}%`,
                 align: "center",
                 verticalAlign: "middle",
                 y: 60,
@@ -1209,7 +1209,7 @@ function expenditureBarChartHead(programUserDetailsArray){
     programUserDetailsArray.forEach((programUserDetails, index) => {
         var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
         var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
-        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc(((totalExpenditure + totalUnspentBalance) / totalExpenditure) * 100) : 0;    
+        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
         // data driven graph
         $(`#program_percentagedriven_graph${index+1}`).text(parseInt(percentageExpenditure) + '%');
         const chartDrivenGraphId = `integrated-dashboard-data-driven-graph${index+1}`;        
@@ -1303,7 +1303,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
         },        
         title: {
             useHTML: true,
-            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)} %`,
+            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)}%`,
             floating: true,
             verticalAlign: "middle",
             y: 4,
@@ -1372,7 +1372,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
         },
         title: {
             useHTML: true,
-            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)} %`,
+            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)}%`,
             floating: true,
             verticalAlign: "middle",
             y: 4,
@@ -1598,7 +1598,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                // max: 100,
                 minColor: '#fcad95',
                 maxColor: '#ab4024',
                 labels: {
@@ -1681,7 +1681,7 @@ function allFormMapFilter(totalData,mapDetails){
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                // max: 100,
                 minColor: "#fcad95",
                 maxColor: "#ab4024",
                 labels: {
