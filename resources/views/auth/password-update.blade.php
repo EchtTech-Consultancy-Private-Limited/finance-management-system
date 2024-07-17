@@ -10,6 +10,7 @@
  {{ __('Password Update') }}
 @endsection
 @section('content')
+{!! Toastr::message() !!}
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
         <div class="white_card_header">
@@ -21,19 +22,19 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form method="POST" action="{{ route('update-profile') }}">
+                <form method="POST" action="{{ route('change-password', $id) }}">
                 @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Old Password<span class="text-danger">*</span></label>
-                            <input type="password" class="form-control @error('oldpassword') is-invalid @enderror" name="oldpassword" id="oldpassword" placeholder="password">
+                            <input type="password" class="form-control @error('oldpassword') is-invalid @enderror" name="oldpassword" id="oldpassword" placeholder="Old Password">
                             @error('oldpassword')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">New Password<span class="text-danger">*</span></label>
-                            <input type="password" class="form-control @error('newpassword') is-invalid @enderror" name="newpassword" id="newpassword" placeholder="password">
+                            <input type="password" class="form-control @error('newpassword') is-invalid @enderror" name="newpassword" id="newpassword" placeholder="New Password">
                             @error('newpassword')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

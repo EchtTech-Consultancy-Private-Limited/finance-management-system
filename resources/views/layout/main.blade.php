@@ -34,6 +34,7 @@
                         <h6 class="text-center mb-1">{{ optional(Auth::user()->institute)->name }}</h6>
                      </div>
                      <div class="header_right d-flex justify-content-between align-items-center">
+                        @if(Auth::user()->user_type != 'admin')
                         <div class="header_notification_warp d-flex align-items-center">
                            <li>
                                <a class="bell_notification_clicker" href="#">
@@ -66,7 +67,8 @@
                                    </div>
                                </div>
                            </li>
-                       </div>                       
+                       </div>
+                       @endif
                         <div class="profile_info">
                            <img src="{{ asset('assets/img/client_img.png') }}" alt="#">
                            <div class="profile_info_iner">

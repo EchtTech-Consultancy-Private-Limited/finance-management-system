@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}/edit', [DashboardController::class, 'getUserProfile'])->name('profile.edit');
     Route::get('password/{id}/update', [DashboardController::class, 'getUserPassword'])->name('password.update');
     Route::post('update-profile/{id}', [DashboardController::class, 'updateProfile'])->name('update-profile');
+    Route::post('change-password/{id}', [DashboardController::class, 'changePassword'])->name('change-password');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
     Route::get('/filter-program', [DashboardController::class, 'filterProgram'])->name('filterProgram');
     Route::get('/notifications', [NotificationController::class, 'getNotifications'])->name('filterProgram');
