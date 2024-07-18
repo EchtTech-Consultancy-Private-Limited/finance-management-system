@@ -13,4 +13,14 @@ class Institute extends Model
        'program_id',
        'name',
     ];
+    
+    /**
+     * program
+     *
+     * @return void
+     */
+    public function program()
+    {
+        return $this->belongsTo(InstituteProgram::class, 'program_id');
+    }
 }

@@ -1,5 +1,5 @@
 <div class="logo d-flex justify-content-between">
-            <a class="large_logo" ><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt></a>
+            <a class="large_logo" ><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt><br><b>{{ Auth::user()->user_type == 'admin' ? 'Admin' : (Auth::user()->user_type == '0' ? 'National' : 'Institute') }} Dashboard</b></a>
             <a class="small_logo"><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt style="height: 25px;"></a>
             <div class="sidebar_close_icon d-lg-none">
                <i class="ti-close"></i>
@@ -32,6 +32,21 @@
                      <span>Facility Center Mapping</span>
                   </div>
                </a>
+            </li>
+            <li class>
+               <a class="has-arrow" href="#" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <!-- <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt> -->
+                     <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="nav_title">
+                     <span>Master</span>
+                  </div>
+               </a>
+               <ul>
+                  <li><a href="{{ route('admin.programs.index') }}">Programs</a></li>
+                  <li><a href="{{ route('admin.institutes.index') }}">Institutes</a></li>
+               </ul>
             </li>
             @endif
             @if(isset(Auth::user()->user_type) && Auth::user()->user_type ==1)
@@ -72,7 +87,7 @@
                      <i class="fas fa-download"></i>
                   </div>
                   <div class="nav_title">
-                     <span>UC Download</span>
+                     <span>UC Form Download</span>
                   </div>
                </a>
             </li>

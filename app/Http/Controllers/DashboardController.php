@@ -21,6 +21,7 @@ use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use DateTime;
 use NunoMaduro\Collision\Adapters\Laravel\Inspector;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -587,8 +588,8 @@ class DashboardController extends Controller
                 }
         
                 $finalArray[] = [
-                    'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : 0) : $grandTotalActualExpenditure,
-                    'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : 0) : $grandTotalUnspentBalance,
+                    'actual_expenditure_total' => $filterSelected ? ($expenditureSelected ? $grandTotalActualExpenditure : $grandTotalActualExpenditure) : $grandTotalActualExpenditure,
+                    'unspent_balance_31st_total' => $filterSelected ? ($unspentSelected ? $grandTotalUnspentBalance : $grandTotalUnspentBalance) : $grandTotalUnspentBalance,
                     // Head Expenditure
                     'man_power_with_human_resource' => $manPowerwithHumanResource,
                     'meetings_training_research' => $meetingsTrainingResearch,
@@ -886,12 +887,34 @@ class DashboardController extends Controller
             DB::table('users')->where('id', $id)->update($data);
             Toastr::success('Record has been updated successfully :)', 'Success');
         }
-
         return redirect()->back();
     }
 
     public function getUserPassword(Request $request,$id){
-        return view('auth.password-update');
+        return view('auth.password-update', compact('id'));
+    }
+        
+    /**
+     *  @changePassword
+     *
+     * @return void
+     */
+    public function changePassword(Request $request, $id = '') {
+        $request->validate([
+            'oldpassword' => 'required',
+            'newpassword' => 'required|min:8',
+        ]);
+
+        $user = User::find($id);
+        if (!Hash::check($request->oldpassword, $user->password)) {
+            Toastr::error('Old password is incorrect)', 'Wrong');
+            return redirect()->back();
+        }
+
+        $user->password = Hash::make($request->newpassword);
+        $user->save();
+        Toastr::success('Password updated successfully)', 'Success');
+        return redirect()->back();
     }
     
     /**
@@ -1025,8 +1048,6 @@ class DashboardController extends Controller
                                     <td>' . htmlspecialchars($sorUcList->program->name) . '</td>
                                     <td>' . htmlspecialchars($sorUcList->financial_year) . '</td>
                                     <td>' . htmlspecialchars($sorUcList->month) . '</td>
-
-
                                     <td>';
                     if ($sorUcList->file) {
                         $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
@@ -1052,6 +1073,7 @@ class DashboardController extends Controller
             $query->where('institute_id', $request->national_institute_name);
         }
         $arrays = [$query->get()->toArray()];
+        
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
     }
 

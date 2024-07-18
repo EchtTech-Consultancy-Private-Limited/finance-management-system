@@ -168,14 +168,14 @@
                             @foreach($users as $key=>$user)
                                 <tr>
                                     <td>{{ $loop->iteration}}</td>
-                                    <td>{{ $user->program->name??'N/A' }}-{{ $user->program->code??'N/A' }}</td>                                    
-                                    <td>{{ $user->state->name??'N/A' }}</td>
-                                    <td>{{ $user->institute->name??'N/A'}}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td class="hidetext">{{ Str::limit($user->password, 4) }}</td>
+                                    <td>{{ @$user->program->name??'N/A' }}-{{ $user->program->code??'N/A' }}</td>                                    
+                                    <td>{{ ucwords(@$user->state->name)??'N/A' }}</td>
+                                    <td>{{ @$user->institute->name??'N/A'}}</td>
+                                    <td>{{ @$user->email }}</td>
+                                    <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
                                     <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stope'; } @endphp</td>
                                     <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
-                                    <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}">Edit</a></td>
+                                    <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}"><i class="far fa-edit"></i></a></td>
                                 </tr>
                             @endforeach
                         @endif
