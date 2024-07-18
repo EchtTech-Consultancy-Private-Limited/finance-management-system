@@ -42,24 +42,32 @@
                                </a>
                                <div class="Menu_NOtification_Wrap">
                                    <div class="notification_Header">
-                                       <h4>Notifications</h4>
+                                    <div class="d-flex justify-content-between">
+                                       <h4>Notifications </h4>
+                                       <span class="notification-total text-white">0</span>
+                                    </div>
                                    </div>
                                    <div class="Notification_body">
-                                       <div class="mb-4 total-resolved">
+                                     <ul>
+                                       <li>Please click to see notification</li>
+                                       <li>Please click to see notification</li>
+                                       <li>Please click to see notification</li>
+                                     </ul>
+                                       <!-- <div class="mb-4 total-resolved">
                                            <h2 class="mb-3">0</h2>
                                            <h4>Total Resolved /<span class="text-danger">Reported</span></h4>
-                                       </div>
-                                       <div class="row">
+                                       </div> -->
+                                       <div class="confirm-pending">
                                            <div class="col">
                                                <div class="status">
-                                                   <span>0</span>
-                                                   <h5>Confirmed</h5>
+                                                  <h5>Confirmed</h5>
+                                                  <span>0</span>
                                                </div>
                                            </div>
                                            <div class="col">
                                                <div class="status">
-                                                   <span>0</span>
-                                                   <h5>Pending</h5>
+                                                  <h5>Pending</h5>
+                                                  <span>0</span>
                                                </div>
                                            </div>
                                        </div>
