@@ -32,7 +32,6 @@ $(document).on('click', '.performance', function() {
 });
 $(document).on('change', '#user_program', function() {
     let programName = $(this).val();
-    // alert(programName);  
     $.ajax({
         type: "GET",
         url: BASE_URL + "admin/filter-dashboard",
@@ -40,8 +39,9 @@ $(document).on('change', '#user_program', function() {
             'programName': programName
         },
         success: function(data) {
-            var programUserDetails = data.programUserDetails;  
-            adminDashboardChart(data,programUserDetails);         
+            var programUserDetails = data.programUserDetails;
+            var registrationsSession = data.registrationsSession;
+            adminDashboardChart(data,programUserDetails,registrationsSession);         
         }
     });
 });
@@ -316,8 +316,8 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
     (async () => {
         const topology = await fetch(
             'https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.topo.json'
-        ).then(response => response.json());
-    
+        ).then(response => response.json());        
+
         Highcharts.mapChart('integrated-dashboard-india-map-admin', {
             chart: {
                 map: topology,
@@ -336,7 +336,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
             },
             colorAxis: {
                 min: 0,
-                max: 100,
+                // max: 25,
                 minColor: '#fcad95',
                 maxColor: '#ab4024',
                 labels: {
@@ -381,7 +381,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
     
 
     // Program wise Unspent Balance Line Chart
-    let stringArray = registrationsSession.days.map(String);
+    let stringArray = registrationsSession.days.map(String); 
     Highcharts.chart('integrated-dashboard-unspent-Sessions', {
         chart: {
             type: 'line'
@@ -421,8 +421,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
             },
         
             data: registrationsSession.count,
-        }],
-        
+        }],       
     
     });
 

@@ -66,6 +66,7 @@ input:focus {
 select.form-control{
     appearance: auto;
     font-size: 14px;
+    padding: 6px 5px;
 }
 
 .form-control:focus {
@@ -10038,12 +10039,34 @@ a.pswp__share--download:hover {
 }
 
 .Menu_NOtification_Wrap .Notification_body {
-    padding: 20px;
+    padding: 5px 11px 11px 11px;
     /* height: 254x; */
     overflow: auto;
     text-align: center;
     background-color: #567aed0f;
 }
+.Menu_NOtification_Wrap .Notification_body ul{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.Menu_NOtification_Wrap .Notification_body ul li{
+    background: #fff;
+    margin: 1px 0 6px 0px;
+    padding: 6px 8px;
+    text-align: left;
+    color: #008af7;
+    border-radius: 3px;
+    display: block !important;
+    box-shadow: 0px 0px 5px #ddd;
+    cursor: pointer;
+}
+.confirm-pending{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.Menu_NOtification_Wrap .Notification_body ul
 
 .Menu_NOtification_Wrap .Notification_body::before {
     position: absolute;
@@ -10077,7 +10100,8 @@ a.pswp__share--download:hover {
 
 .Menu_NOtification_Wrap .Notification_body h5{
     font-size: 14px;
-    color: #000;
+    color: #444;
+    margin: 0;
 }
 .Menu_NOtification_Wrap .Notification_body .status span{
     color: red;
@@ -10085,7 +10109,11 @@ a.pswp__share--download:hover {
 .Menu_NOtification_Wrap .Notification_body  .status {
     background: #fff;
     border-radius: 5px;
-    padding: 5px 1px;
+    padding: 3px 6px;
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    justify-content: space-between;
 }
 .Menu_NOtification_Wrap .Notification_body .total-resolved {
     border-bottom: 3px solid #f45b0f;
@@ -12936,7 +12964,7 @@ rect.highcharts-background {
     border: none;
     background: inherit;
     text-align: center;
-    color: #000;
+    color: #4c4c4c;
     font-weight: bold;
     width: 85px;
     text-align: left;
@@ -13625,4 +13653,11 @@ input.studentNumber.editmode:focus {
 a.action_btn {
     padding: 3px;
     line-height: 1.5;
+}
+.facility-mapping-list tbody tr td:nth-child(2){
+   text-transform: capitalize;
+}
+
+select.form-control option {
+    color: #000;
 }

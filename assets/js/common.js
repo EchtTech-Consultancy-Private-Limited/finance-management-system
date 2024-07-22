@@ -90,3 +90,27 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+
+$(document).ready(function() {
+    // Select the input elements with data-date attribute using jQuery
+    const dateInput = $('input[data-date="date"]');
+
+    // Attach focus event using jQuery
+    dateInput.on('focus', function() {
+        this.type = 'date';
+        // Uncomment the alert for debugging purposes
+        // alert("all is well");
+    });
+
+    // Attach blur event using jQuery
+    dateInput.on('blur', function() {
+        if (!this.value) {
+            this.type = 'text';
+        }
+    });
+
+    // let today = new Date().toISOString().split('T')[0];
+    // document.getElementsByName("date")[0].setAttribute('min', today);
+});
+
