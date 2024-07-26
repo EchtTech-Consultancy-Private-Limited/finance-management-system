@@ -1,5 +1,5 @@
 <div class="logo d-flex justify-content-between">
-            <a class="large_logo" ><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt><br><b>{{ Auth::user()->user_type == 'admin' ? 'Admin' : (Auth::user()->user_type == '0' ? 'National' : 'Institute') }} Dashboard</b></a>
+            <a class="large_logo text-white" ><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt class="mb-2"><br><b>{{ Auth::user()->user_type == 'admin' ? 'Admin' : (Auth::user()->user_type == '0' ? 'National' : 'Institute') }} Dashboard</b></a>
             <a class="small_logo"><img src="{{ asset('assets/img/FMSDashboard.png') }}" alt style="height: 25px;"></a>
             <div class="sidebar_close_icon d-lg-none">
                <i class="ti-close"></i>
