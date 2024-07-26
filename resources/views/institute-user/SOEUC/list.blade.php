@@ -111,10 +111,10 @@
                                             class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
                                         <a href="{{ route('institute-user.soe-view',$soeucForm->id) }}"
                                             class="action_btn mr_10"> <i class="far fa-eye"></i> </a>
-                                        <a href="{{ route('institute-user.soe-destroy',$soeucForm->id) }}"
+                                        <!-- <a href="{{ route('institute-user.soe-destroy',$soeucForm->id) }}"
                                             class="action_btn"
                                             onclick="return confirm('Are you sure you want to delete this record?');">
-                                            <i class="fas fa-trash text-danger"></i> </a>
+                                            <i class="fas fa-trash text-danger"></i> </a> -->
                                     </div>
                                 </td>
                             </tr>
