@@ -83,10 +83,10 @@
                                 <th>Unspent Balance (GIA) as on 1st April</th>
                                 <th>GIA Received in F.Y</th>
                                 <th>Total Balance excluding interest</th>
-                                <th>Actual Expenditure incurred during the current F.Y</th>
-                                <th>Unspent Balance</th>
+                                <th>Actual Expenditure incurred during the current month</th>
+                                <th>Unspent Balance as on 31st March</th>
                                 <th>Committed Liabilities (if any)</th>
-                                <th>Unspent Balance of (GIA) as on 31st March</th>
+                                <th>Unspent Balance after Committed Liabilities as on 31st March</th>
                             </tr>
 
                             <tr class="table-color-th">

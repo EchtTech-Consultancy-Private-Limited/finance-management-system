@@ -427,7 +427,8 @@
                             <h3 class="m-0">Institute wise Yearly Expenditure</h3>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-end d-flex justify-content-end">
+                    <div class="col-lg-4">
+                        <div class="float-right">
                         <select name="nrcplab-institute-soe-expenditure" id="nrcplab-institute-soe-expenditure" class="nice_Select2 max-width-220 ppcllab_yearly_soe_expenditure">
                             <option value="">Show by Institute</option>
                             @foreach($institutes as $institute)
@@ -436,6 +437,7 @@
                             </option>
                             @endforeach
                         </select>
+                        </div>
                     </div>
                 </div>
             </div>

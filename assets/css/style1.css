@@ -4971,9 +4971,9 @@ body::-webkit-scrollbar {
 
 .page_date_button {
     text-transform: capitalize;
-    color: #9995b6;
+    color: #000;
     border-radius: 5px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: .3s;
@@ -12443,8 +12443,10 @@ img#captchaimg {
     text-align: left !important;
     font-weight: 600;
     padding: 8px;
+    text-transform: capitalize;
 }
 
+.float-right{float: right;}
 
 .fms-table .table thead tr th, .fms-table .table tbody tr th, .fms-table .table tbody tr td{padding:9px 7px;} 
 .fms-table .table input.form-control {
@@ -12570,7 +12572,9 @@ ul.bullet-list li {
     background:#ffeded;
     padding: 10px 33px;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
 }
 
 .integrated-expenditure .main-title {
@@ -12955,7 +12959,7 @@ rect.highcharts-background {
     font-weight: 600;
     line-height: 26px;
     /* margin-bottom: 5px; */
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
 }
 .profile-text .studentNumber {
@@ -12964,7 +12968,8 @@ rect.highcharts-background {
     border: none;
     background: inherit;
     text-align: center;
-    color: #4c4c4c;
+    /* color: #4c4c4c; */
+    color: #000;
     font-weight: bold;
     width: 85px;
     text-align: left;
