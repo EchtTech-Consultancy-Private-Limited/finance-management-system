@@ -352,11 +352,11 @@ class SOEUCFormController extends Controller
             $formType = '1'; //Soe Uc Form
             $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
             DB::commit();
-            \Toastr::success('Has been staus change successfully :)','Success');
+            \Toastr::success('The status has been successfully updated','Success');
             return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Has been staus not change  :)','Error');
+            \Toastr::error('fail, The status has not been changed  :)','Error');
         }
     }
 
