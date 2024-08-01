@@ -1010,6 +1010,7 @@ function yearlySoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
+                pointWidth: 50,
                 name: "",
                 colors: [
                     "#399def",
@@ -1081,6 +1082,7 @@ function yearlySoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
+                pointWidth: 50,
                 name: "",
                 colors: [
                     "#399def",
