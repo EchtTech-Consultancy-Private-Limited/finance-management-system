@@ -50,9 +50,16 @@
                                    </div>
                                    <div class="Notification_body">
                                      <ul>
-                                       <li>Please click to see notification</li>
-                                       <li>Please click to see notification</li>
-                                       <li>Please click to see notification</li>
+                                       @if(notifications())
+                                       @foreach(notifications() as $key => $notification)
+                                          @if(Auth::user()->user_type == 0)
+                                             <li><a href="{{ route('national-user.soe-expense-view', $notification->form_id) }}" target="_blanck">Notification: ({{ senderName($notification->sender_id) }})</a></li>
+                                          @endif
+                                          @if(Auth::user()->user_type == 1)
+                                          <li><a href="{{ route('institute-user.soe-view', $notification->form_id) }}" target="_blanck">Notification: ({{ senderName($notification->sender_id) }})</a></li>
+                                          @endif
+                                       @endforeach
+                                       @endif
                                      </ul>
                                        <!-- <div class="mb-4 total-resolved">
                                            <h2 class="mb-3">0</h2>

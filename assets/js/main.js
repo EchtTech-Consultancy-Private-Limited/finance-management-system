@@ -208,6 +208,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log(data);
                 $("#bell_notification_clicker").text(data.totalNew);
+                $('.notification-total').text(data.totalNew);
                 $('.total-resolved h2').text(data.totalReported);
                 $('.status span').eq(0).text(data.confirmed);
                 $('.status span').eq(1).text(data.returned);
