@@ -395,11 +395,11 @@
         <div class="white_card mb_30 card_height_100 ">
             <div class="white_card_header">
                 <div class="row align-items-center justify-content-between flex-wrap">
-                    <div class="col-lg-8">
+                    <di v class="col-lg-8">
                         <div class="main-title">
                             <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
                         </div>
-                    </div>
+                    </di>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
                         <select name="nrcplab-month-soe-expenditure" id="nrcplab-month-soe-expenditure" class="nice_Select2 max-width-220 ppcllab_yearly_soe_expenditure">
                             <option value="">Show by month</option>

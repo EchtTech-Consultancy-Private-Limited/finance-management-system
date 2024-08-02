@@ -975,6 +975,7 @@ function nohppczRcsSoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
+                pointWidth: 50,
                 name: "",
                 colors: [
                     "#399def",
@@ -1046,6 +1047,7 @@ function nohppczRcsSoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
+                pointWidth: 50,
                 name: "",
                 colors: [
                     "#399def",

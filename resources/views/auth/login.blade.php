@@ -73,22 +73,31 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <img src="{{ url('captcha-code') }}" id="captchaimg" height="50"
-                                                            width="350">
+
+                                                    <div class="row">
+                                                      
+                                                       
+                                                        <div class="col-md-6">
+                                                            <div class="mb-0">
+                                                                <img src="{{ url('captcha-code') }}" id="captchaimg" class="mb-0">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-0">
+                                                                <input placeholder="Enter Captcha" type="text"
+                                                                    name="captcha_code" tabindex="2" id="captcha_code" class="mb-0">
+                                                                @error('captcha_code')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3 mt-2 capcha-text">
+                                                            Can't read the above code?
+                                                            <a class="ccc" href="javascript:void(0);"
+                                                                onClick="refreshCaptcha();">Refresh</a>
+                                                        </div>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        Can't read the above code? <a class="ccc"
-                                                            href="javascript:void(0);"
-                                                            onClick="refreshCaptcha();">Refresh</a>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input placeholder="Enter Captcha" type="text"
-                                                            name="captcha_code" tabindex="2" id="captcha_code">
-                                                        @error('captcha_code')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
+
                                                     <button type="submit" class="btn_1 full_width text-center">Log
                                                         in</button>
                                                     <div class="text-center">
@@ -129,31 +138,31 @@
             input.attr("type", "password");
         }
     });
-$(document).ready(function(){
+    $(document).ready(function() {
 
-    $("#loginForm").validate({
-        rules: {
-				password: {
-					required: true,
-					minlength: 5
-				},
-				email: {
-					required: true,
-					email: true
-				},
-				captcha_code:'required'
-			},
-			messages: {
-				
-				password: {
-					required: "Please provide a password",
-					minlength: "Your password must be at least 5 characters long"
-				},
-				email: "Please enter a valid email address",
-                captcha_code:'Please enter captcha code'
-			}
-    }); 
-})
+        $("#loginForm").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                captcha_code: 'required'
+            },
+            messages: {
+
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long"
+                },
+                email: "Please enter a valid email address",
+                captcha_code: 'Please enter captcha code'
+            }
+        });
+    })
     </script>
 
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -163,7 +172,7 @@ $(document).ready(function(){
     <script src="{{ asset('assets/finance-nrcp/scroll/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/finance-nrcp/scroll/scrollable-custom.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    
+
     <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
 </body>
 

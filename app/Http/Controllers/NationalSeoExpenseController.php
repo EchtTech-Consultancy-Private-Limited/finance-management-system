@@ -111,11 +111,11 @@ class NationalSeoExpenseController extends Controller
             $formType = '1'; //Soe Uc Form
             $this->SendNotificationServices->sendNotification($id, $formType, $user->user_id, $request->status);
             DB::commit();
-            \Toastr::success('Has been staus change successfully :)','Success');
+            \Toastr::success('The status has been successfully updated','Success');
             return redirect()->route('national-user.soe-expense-index');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Has been staus not change :)','Error');
+            \Toastr::error('fail, The status has not been changed ','Error');
         }
     }
 }

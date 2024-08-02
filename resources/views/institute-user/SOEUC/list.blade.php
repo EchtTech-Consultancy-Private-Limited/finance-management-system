@@ -108,9 +108,9 @@
                                 <td>
                                     <div class="action_btns d-flex">
                                         <a href="{{ route('institute-user.soe-edit',$soeucForm->id) }}"
-                                            class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+                                            class="action_btn mr_10" title="Edit"> <i class="far fa-edit"></i> </a>
                                         <a href="{{ route('institute-user.soe-view',$soeucForm->id) }}"
-                                            class="action_btn mr_10"> <i class="far fa-eye"></i> </a>
+                                            class="action_btn mr_10" title="View"> <i class="far fa-eye"></i> </a>
                                         <!-- <a href="{{ route('institute-user.soe-destroy',$soeucForm->id) }}"
                                             class="action_btn"
                                             onclick="return confirm('Are you sure you want to delete this record?');">
