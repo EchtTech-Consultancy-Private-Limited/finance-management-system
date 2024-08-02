@@ -1117,15 +1117,17 @@ function yearlySoeExpenditure(programWiseExpenditure){
 
 function expenditureBarChart(programUserDetailsArray){
     const colors = ["#f49d00", "#43cdd9", "#dd5f00", "#00b0f0", "#92d050"];
-    var percentageExpenditureAll = 0;
-    var percentageUnspentBalanceAll = 0;
+    var expenditureAll = 0;
+    var unspentAll = 0;
     programUserDetailsArray.forEach((programUserDetails, index) => {
         var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
         var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
         var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
         var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
-        percentageExpenditureAll += parseInt(percentageExpenditure);
-        percentageUnspentBalanceAll += parseInt(percentageUnspentBalance);
+        expenditureAll += totalExpenditure;
+        unspentAll += totalUnspentBalance;
+        percentageExpenditureAll = (expenditureAll !== 0) ? Math.trunc((expenditureAll / (expenditureAll + unspentAll)) * 100) : 0;
+        percentageUnspentBalanceAll = (unspentAll !== 0) ? Math.trunc((unspentAll / (expenditureAll + unspentAll)) * 100) : 0;
         $("#overall_expenditure_chart").text(percentageExpenditureAll + '%');
         $("#overall_unspent_chart").text(percentageUnspentBalanceAll + '%');
         const chartContainerId = `integrated-dashboard-program-wise-expenditure-bar-chart${index+1}`;        

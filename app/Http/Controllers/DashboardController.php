@@ -628,6 +628,7 @@ class DashboardController extends Controller
                 $totalHeads['Lab Strengthening (Non Recurring)'] += $entry['lab_strengthening'];
                 $totalHeads['Other Activities'] += $entry['other_activities'];
             }
+            // return $totalArray;
             // Convert $totalHeads to the desired format
             $headExpenditureFormatted = [];
             foreach ($totalHeads as $head => $amount) {

@@ -26,7 +26,9 @@ class NationalSeoExpenseController extends Controller
      */
     public function index()
     {
-        $soeucForms =  SOEUCForm::with('SoeUcFormCalculation','instituteProgram','institute')->get();
+        $soeucForms = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')
+        ->latest('updated_at')
+        ->get();
         return view('national-user.soe-form.index', compact('soeucForms'));
     }
     
