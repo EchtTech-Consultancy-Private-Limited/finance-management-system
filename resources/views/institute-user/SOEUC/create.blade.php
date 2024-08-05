@@ -46,14 +46,12 @@
                             <label class="form-label" for="inputEmail4">Name of program<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="program_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->program)->id }}">
-                                    {{ optional(Auth::user()->program)->name }} -
-                                    {{ optional(Auth::user()->program)->code }}</option>
-                                {{-- @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}"
-                                {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
-                                {{ $value->code }}</option>
-                                @endforeach --}}
+                                <option value="">Select Program</option>
+                                @foreach($institutePrograms as $key => $value)
+                                @if(in_array($value->id, explode(',', Auth::user()->program_id)))
+                                        <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                @endif
+                                @endforeach
                             </select>
                             @error('program_id')
                             <span class="text-danger error">{{ $message }}</span>
@@ -63,13 +61,12 @@
                             <label class="form-label" for="inputPassword4">Name of the Institute<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="institute_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->institute)->id }}">
-                                    {{ optional(Auth::user()->institute)->name }}</option>
-                                {{-- @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}"
-                                {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
-                                {{ $value->code }}</option>
-                                @endforeach --}}
+                                <option value="">Select Institute</option>
+                                @foreach($institutes as $key => $value)
+                                @if(in_array($value->id, explode(',', Auth::user()->institute_id)))
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endif
+                                @endforeach
                             </select>
                             @error('institute_name')
                             <span class="text-danger error">{{ $message }}</span>

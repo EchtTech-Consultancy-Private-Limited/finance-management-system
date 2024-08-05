@@ -35,38 +35,36 @@
                         </div>
 
                        
-                        <div class="col-md-4">
-                            <label class="form-label" for="inputAddress2">Select Program<span
-                                    class="text-danger">*</span></label>
-                            <select class="form-control mySelect2" name="program_id" id="program_id" multiple="multiple" aria-label="Default select">
-                                <!-- <option value="Select Program">Select Program</option> -->
-                                @foreach($institutePrograms as $instituteProgram)
-                                <option value="{{ $instituteProgram->id }}"
-                                    {{ old('program_id', $user->program_id ?? '') == $instituteProgram->id ? 'selected' : '' }}>
-                                    {{ $instituteProgram->name }} -{{ $instituteProgram->code }}
-                                </option>
-                                @endforeach
-                            </select>
-                            @error('program_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="inputAddress2">Select Institute<span
-                                    class="text-danger">*</span></label>
-                            <select id="institute_name" class="form-control mySelect3" name="institute_id" multiple="multiple" aria-label="Default select">
-                                <!-- <option value="Select Institute">Select Institute</option> -->
-                                @foreach($institutes as $institute)
-                                <option value="{{ $institute->id }}"
-                                    {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
-                                    {{ $institute->name }}
-                                </option>
-                                @endforeach
-                            </select>
-                            @error('institute_id')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="inputAddress2">Select Program<span class="text-danger">*</span></label>
+                        <select class="form-control mySelect2" name="program_id[]" id="program_multiselect_id" multiple="multiple" aria-label="Default select">
+                            @foreach($institutePrograms as $instituteProgram)
+                            <option value="{{ $instituteProgram->id }}"
+                                {{ (collect(old('program_id', $user->program_id ?? []))->contains($instituteProgram->id)) ? 'selected' : '' }}>
+                                {{ $instituteProgram->name }} - {{ $instituteProgram->code }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('program_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
+                        <select id="institute_name" class="form-control mySelect3" name="institute_id[]" multiple="multiple" aria-label="Default select">
+                            @foreach($institutes as $institute)
+                            <option value="{{ $institute->id }}"
+                                {{ (collect(old('institute_id', $user->institute_id ?? []))->contains($institute->id)) ? 'selected' : '' }}>
+                                {{ $institute->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('institute_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                        
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -191,9 +189,21 @@
                             @foreach($users as $key=>$user)
                             <tr>
                                 <td>{{ $loop->iteration}}</td>
-                                <td>{{ @$user->program->name??'N/A' }}-{{ $user->program->code??'N/A' }}</td>
+                                <td>
+                                    @foreach($institutePrograms as $instituteProgram)
+                                    @if(in_array($instituteProgram->id, explode(',', $user->program_id)))
+                                        <span class="admin_list_name">{{ @$instituteProgram->name??'N/A' }}-{{ $instituteProgram->code??'N/A' }}</span>
+                                    @endif
+                                    @endforeach
+                                </td>
                                 <td>{{ ucwords(@$user->state->name)??'N/A' }}</td>
-                                <td>{{ @$user->institute->name??'N/A'}}</td>
+                                <td>
+                                    @foreach($institutes as $institute)
+                                    @if(in_array($institute->id, explode(',', $user->institute_id)))
+                                        <span class="admin_list_name">{{ @$institute->name??'N/A' }}</span>
+                                    @endif
+                                    @endforeach
+                                </td>
                                 <td>{{ @$user->email }}</td>
                                 <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
                                 <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stope'; } @endphp

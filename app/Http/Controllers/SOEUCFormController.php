@@ -12,6 +12,7 @@ use Exception;
 use Carbon\Carbon;
 use Auth;
 use App\Exports\InstituteUserExport;
+use App\Models\Institute;
 use App\Models\InstituteProgram;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\SendNotificationServices;
@@ -52,6 +53,8 @@ class SOEUCFormController extends Controller
         }
         $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', Auth::id())->get();
         $soeFormData = SOEUCForm::where('user_id', Auth::id())->first();
+        $institutePrograms = InstituteProgram::get();
+        $institutes = Institute::get();
         $previous_month_expenditure = [];
         $previous_month_total = [];
         $final_data = [];
@@ -86,7 +89,7 @@ class SOEUCFormController extends Controller
                 $grand_total ?? '0',
             ];
         }
-        return view($this->create,compact('financialYearMonths','final_data','soeFormData'));
+        return view($this->create,compact('financialYearMonths','final_data','soeFormData','institutePrograms','institutes'));
     }
 
     /**
@@ -231,6 +234,8 @@ class SOEUCFormController extends Controller
             $targetIndex = array_search($soeForm->month, $financialYearMonths);
             $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex);
             $soeForms = SOEUCForm::with('SoeUcFormCalculation')->whereIn('month', $monthsBefore)->where('user_id', Auth::id())->get();
+            $institutePrograms = InstituteProgram::get();
+            $institutes = Institute::get();
             $previous_month_expenditure = [];
             $previous_month_total = [];
             $final_data = [];
@@ -267,7 +272,7 @@ class SOEUCFormController extends Controller
             }           
             
             DB::commit();
-            return view($this->edit, compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total'));
+            return view($this->edit, compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total','institutePrograms','institutes'));
         } catch (Exception $e) {
             DB::rollBack();
             throw new Exception($e->getMessage());

@@ -78,5 +78,8 @@
 <script src="{{ asset('assets/highchart/national_nohppcz_sss.js') }}"></script>
 <script src="{{ asset('assets/highchart/national_nrcp_lab.js') }}"></script>
 <script src="{{ asset('assets/highchart/national_ppcl_lab.js') }}"></script>
-<script src="{{ asset('assets/highchart/national_pm_abhim.js') }}"></script> 
-<script src="{{ asset('assets/js/filter-multi-select-bundle.min.js') }}"></script> 
+<script src="{{ asset('assets/highchart/national_pm_abhim.js') }}"></script>
+{{-- select 2 js --}}
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+
+<script src="{{ asset('assets/highchart/national_pm_abhim.js') }}"></script>

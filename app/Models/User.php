@@ -81,24 +81,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(City::class,'district_id');
     }
-    
-    /**
-     * program
-     *
-     * @return void
-     */
-    public function program()
-    {
-        return $this->belongsTo(InstituteProgram::class);
-    }
-    
-    /**
-     * institute
-     *
-     * @return void
-     */
-    public function institute()
-    {
-        return $this->belongsTo(Institute::class);
-    }
 }

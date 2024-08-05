@@ -845,7 +845,7 @@ class DashboardController extends Controller
     {
         $output = "";
         $count = 0;
-        $institutes = Institute::where('program_id', $request->program_id)->get();
+        $institutes = Institute::whereIn('program_id', [$request->program_id])->get();
         if (!$institutes->isEmpty()) {
             foreach ($institutes as $institute) {
                 $count++;

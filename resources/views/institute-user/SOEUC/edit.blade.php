@@ -36,9 +36,14 @@
                             <label class="form-label" for="inputEmail4">Name of program<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="program_id" class="form-control">
-                                <option value="{{ @$soeForm->instituteProgram->id }}">
-                                    {{ @$soeForm->instituteProgram->name }} - {{ @$soeForm->instituteProgram->code }}
-                                </option>
+                                <option value="">Select Program</option>
+                                @foreach($institutePrograms as $key => $value)
+                                    @if(in_array($value->id, explode(',', Auth::user()->program_id)))
+                                        <option value="{{ $value->id }}" {{ ($value->id == @$soeForm->program_id) ? 'selected' : '' }}>
+                                            {{ $value->name }} - {{ $value->code }}
+                                        </option>
+                                    @endif
+                                @endforeach
                             </select>
                             @error('program_id')
                             <span class="text-danger">{{ $message }}</span>
@@ -48,12 +53,11 @@
                             <label class="form-label" for="inputPassword4">Name of the Institute<span
                                     class="text-danger">*</span></label>
                             <select id="inputState" name="institute_id" class="form-control">
-                                <option value="{{ @$soeForm->institute->id }}">{{ @$soeForm->institute->name }}</option>
-                                {{-- @foreach($institutePrograms as $key => $value)
-                                <option value="{{ $value->id }}"
-                                {{ old('program_id') == $value->id ? 'selected' : '' }}>{{ $value->name }} -
-                                {{ $value->code }}</option>
-                                @endforeach --}}
+                                @foreach($institutes as $key => $value)
+                                @if(in_array($value->id, explode(',', Auth::user()->institute_id)))
+                                <option value="{{ $value->id }}" {{ ($value->id == @$soeForm->institute_id) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                @endif
+                                @endforeach
                             </select>
                             @error('institute_name')
                             <span class="text-danger error">{{ $message }}</span>
@@ -130,7 +134,7 @@
                     </div> --}}
                     <div class="col-md-4 mb-3">
                         <label class="form-label" for="inputAddress2">Month</label>
-                        <select id="inputState" class="form-control" name="month">
+                        <select id="soe_form_month" class="form-control" name="month">
                             <option value="">Select Month</option>
                             @foreach ($financialYearMonths as $key => $month)
                             @php
@@ -172,9 +176,9 @@
                             <th>Total Balance excluding interest</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
-                            <th>Unspent Balance as on 31st March</th>
+                            <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
                             <th>Committed Liabilities (if any)</th>
-                            <th>Unspent Balance after Committed Liabilities as on 31st March</th>
+                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">31st March</span></th>
                         </tr>
 
                         <tr class="table-color-th">

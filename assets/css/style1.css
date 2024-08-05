@@ -201,6 +201,22 @@ p {
     font-family: mulish, sans-serif;
     font-weight: 300
 }
+.admin_list_name {
+    display: inline-block; 
+    background-color: #00bcd4;
+    color: #fff; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    font-size: 14px;
+    font-weight: 600;
+    margin: 2px;
+    text-align: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 a:focus,
 .button:focus,
