@@ -51,6 +51,7 @@ class SOEUCFormController extends Controller
             $financialYearMonths[] = $month->format('F');
         }
         $soeForms = SOEUCForm::with('SoeUcFormCalculation')->where('user_id', Auth::id())->get();
+        $soeFormData = SOEUCForm::where('user_id', Auth::id())->first();
         $previous_month_expenditure = [];
         $previous_month_total = [];
         $final_data = [];
@@ -85,7 +86,7 @@ class SOEUCFormController extends Controller
                 $grand_total ?? '0',
             ];
         }
-        return view($this->create,compact('financialYearMonths','final_data'));
+        return view($this->create,compact('financialYearMonths','final_data','soeFormData'));
     }
 
     /**
