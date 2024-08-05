@@ -974,7 +974,7 @@ function PmabhimsssSoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
-                pointWidth: 50,
+               
                 pointWidth: 50,
                 name: "",
                 colors: [
