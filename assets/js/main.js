@@ -149,19 +149,29 @@ $(".btn-tab-admin").click(function(){
 })
 
 // get institute program wise for admin 
-$(document).on('change', '#program_id', function() {    
-    let program_id = $(this).val();
-    $.ajax({
-        type: "GET",
-        url: BASE_URL + 'filter-program',
-        data: {
-            'program_id': program_id
-        },
-        success: function(data) {
-            $("#institute_name").html(data);
-        }
+$(document).ready(function() {
+    $('#program_multiselect_id').select2();
+    $('#institute_name').select2();
+    $('#program_multiselect_id').on('change', function() {
+        let program_id = $(this).val().toString();
+        // alert(program_id);  // This is for debugging purposes, you can remove it later
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + 'filter-program',
+            data: {
+                'program_id': program_id
+            },
+            success: function(data) {
+                $("#institute_name").html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error: ', error);
+            }
+        });
     });
 });
+
+
 
 // validate integer length and remove validation error after fill the field
 function validateInput(input) {
@@ -220,7 +230,6 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
-                console.log(data);
                 $("#bell_notification_clicker").text(data.totalNew);
                 $('.notification-total').text(data.totalNew);
                 $('.total-resolved h2').text(data.totalReported);
@@ -234,6 +243,9 @@ $(document).ready(function() {
 });
 
 // Get current month on SOE Form Unspent text
+var monthName = $('#soe_form_month').val();
+var lastDate = getLastDateOfMonth(monthName)+'st '+monthName;
+$(".current_month_selected_text").text(lastDate);
 $(document).on('change', '#soe_form_month', function() {
     var monthName = $(this).val();
     var lastDate = getLastDateOfMonth(monthName)+'st '+monthName;

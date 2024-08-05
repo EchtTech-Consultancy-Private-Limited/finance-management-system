@@ -34,28 +34,32 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Select Program<span class="text-danger">*</span></label>
-                            <select class="form-control" name="program_id" id="program_id">
+                            <select class="form-control mySelect2" name="program_id[]" id="program_multiselect_id" multiple="multiple" aria-label="Default select">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $instituteProgram)
-                                    <option value="{{ $instituteProgram->id }}" {{ old('program_id', $user->program_id ?? '') == $instituteProgram->id ? 'selected' : '' }}>
+                                    <option value="{{ $instituteProgram->id }}" 
+                                        {{ in_array($instituteProgram->id, old('program_id', $user->program_id ? explode(',', $user->program_id) : [])) ? 'selected' : '' }}>
                                         {{ $instituteProgram->name }} -{{ $instituteProgram->code }}
                                     </option>
                                 @endforeach
-                            </select>
+                            </select>                            
                             @error('program_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
-                            <select id="institute_name" class="form-control" name="institute_id">
+                            <select id="institute_name" class="form-control mySelect3" name="institute_id[]" multiple="multiple" aria-label="Default select">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                    <option value="{{ $institute->id }}" {{ old('institute_id', $user->institute_id ?? '') == $institute->id ? 'selected' : '' }}>
+                                    <option value="{{ $institute->id }}" 
+                                        {{ in_array($institute->id, old('institute_id', $user->institute_id ? explode(',', $user->institute_id) : [])) ? 'selected' : '' }}>
                                         {{ $institute->name }}
                                     </option>
                                 @endforeach
                             </select>
+                            
+                            
                             @error('institute_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

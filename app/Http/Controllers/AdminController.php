@@ -162,7 +162,7 @@ class AdminController extends Controller
         $institutePrograms = InstituteProgram::get();
         $institutes = Institute::get();
         $cities = City::get();
-        $users = User::with('state','city','program','institute')->whereIn('user_type',['0','1'])->get();
+        $users = User::with('state','city')->whereIn('user_type',['0','1'])->get();
         return view('admin.facility-mapping',[
                 'state'=>$stateList,
                 'institutes'=> $institutes,
@@ -192,8 +192,8 @@ class AdminController extends Controller
         ]);
         DB::table('users')->insert([
             'email' => $request->user_name,
-            'program_id' => $request->program_id,
-            'institute_id' => $request->institute_id,
+            'program_id' => implode(',',$request->program_id),
+            'institute_id' => implode(',',$request->institute_id),
             'password' => Hash::make($request->password),
             'state_id' => $request->state_id,
             'district_id' => $request->city_id,
@@ -218,7 +218,7 @@ class AdminController extends Controller
         $institutePrograms = InstituteProgram::get();
         $institutes = Institute::get();
         $cities = City::get();
-        $user = User::with('state','city','program','institute')->where('id', $id)->first();
+        $user = User::with('state','city')->where('id', $id)->first();
         return view('admin.edit-facility-mapping',compact('user','state','institutePrograms','institutes','cities'));
     }
     
@@ -245,8 +245,8 @@ class AdminController extends Controller
         // Prepare the data for insertion/updation
         $data = [
             'email' => $request->user_name,
-            'program_id' => $request->program_id,
-            'institute_id' => $request->institute_id,
+            'program_id' => implode(',',$request->program_id),
+            'institute_id' => implode(',',$request->institute_id),
             'state_id' => $request->state_id,
             'district_id' => $request->city_id,
             'date' => $request->date,
