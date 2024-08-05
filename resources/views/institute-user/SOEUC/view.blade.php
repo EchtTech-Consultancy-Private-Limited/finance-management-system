@@ -84,6 +84,7 @@
                                 <th>GIA Received in F.Y</th>
                                 <th>Total Balance excluding interest</th>
                                 <th>Actual Expenditure incurred during the current month</th>
+                                <th>Total Expenditure Till date</th>
                                 <th>Unspent Balance as on 31st March</th>
                                 <th>Committed Liabilities (if any)</th>
                                 <th>Unspent Balance after Committed Liabilities as on 31st March</th>
@@ -98,6 +99,7 @@
                                 <th>C</th>
                                 <th>D=(B+C)</th>
                                 <th>E</th>
+                                <th></th>
                                 <th>F=(D-E)</th>
                                 <th>G</th>
                                 <th>H=(F-G)</th>
@@ -120,7 +122,7 @@
                                     <p>{{ $final_data[$value->head][0] ?? '' }}</p>
                                 </td> --}}
                                 <td>
-                                    <p>{{ $final_data[$value->head][1] ?? 'N/A' }}</p>
+                                    <p>{{ $final_data[$value->head][1] ?? '0' }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $value->unspent_balance_1st }}</p>
@@ -133,6 +135,9 @@
                                 </td>
                                 <td>
                                     <p>{{ $value->actual_expenditure }}</p>
+                                </td>
+                                <td>
+                                    <p>{{ @$final_data[$value->head][1]+@$value->actual_expenditure }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $value->unspent_balance_last }}</p>
@@ -173,6 +178,9 @@
                                 </th>
                                 <th class="grandTotal-E">
                                     <p>{{ $value->actual_expenditure }}</p>
+                                </th>
+                                <th class="grandTotal-I">
+                                    <p>{{ @$final_data[$value->head][2]+@$value->actual_expenditure }}</p>
                                 </th>
                                 <th class="grandTotal-F">
                                     <p>{{ $value->unspent_balance_last }}</p>

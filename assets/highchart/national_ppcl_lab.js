@@ -974,6 +974,7 @@ function ppcllabSoeExpenditure(programWiseExpenditure){
         },
         series: [
             {
+                pointWidth: 50,
                 name: "",
                 colors: [
                     "#399def",

@@ -13913,3 +13913,46 @@ a.action_btn {
 select.form-control option {
     color: #000;
 }
+
+.filter-multi-select.dropdown .dropdown-menu .dropdown-item:hover{
+   background-color: transparent !important;
+   color: #000 !important;
+}
+.filter-multi-select > .viewbar > .selected-items > .item{
+    color: #000 !important;
+    border: 1px solid #ddd !important;
+}
+
+.filter-multi-select > .viewbar > .selected-items > .item > button{
+    color: #000 !important;
+}
+
+.filter-multi-select .dropdown-item .custom-control-label::before {
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none;
+    background-color: #FFFFFF !important;
+    border: #ffffff solid 1px !important;
+}
+
+.filter-multi-select .dropdown-item .custom-control-label::after {
+    position: absolute;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.filter-multi-select .dropdown-item .custom-control-input {
+    position: static !important;
+    z-index: 1;
+    opacity: 1 !important;
+    margin-right: 5px !important;
+}
+.dropdown .dropdown-menu .dropdown-item {
+    font-size: 14px !important;
+    padding: 4px 6px !important;
+    color: #242934;
+}
+
+.filter-multi-select > .dropdown-menu{
+    max-width: 100% !important;
+}

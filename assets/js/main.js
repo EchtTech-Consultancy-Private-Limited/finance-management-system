@@ -27,6 +27,11 @@ $(document).ready(function() {
 
 // calculation of SOEU Form
 $(document).ready(function() {
+    $('.mySelect2').filterMultiSelect();
+    $('.mySelect3').filterMultiSelect();
+    $('.mySelect4').filterMultiSelect();
+
+    
     $('input[type="text"]').on('input', function() {
         calculateFields($(this));
         calculateGrandTotal();
@@ -41,10 +46,13 @@ $(document).ready(function() {
         var F = D - E;
         var G = parseFloat(row.find('.manpower-G').val()) || 0;
         var H = F - G;
+        var J = parseFloat(row.find('.manpower-J').val()) || 0; //Expenditure Till Last Month
+        var I = E + J;
 
         row.find('.manpower-D').val(D);
         row.find('.manpower-F').val(F);
         row.find('.manpower-H').val(H);
+        row.find('.manpower-I').val(I); // Total Expenditure Till Date
     }
     // Function to calculate Grand Total
     function calculateGrandTotal() {
@@ -56,7 +64,8 @@ $(document).ready(function() {
             E: 0,
             F: 0,
             G: 0,
-            H: 0
+            H: 0,
+            I: 0,
         };
         $('tbody tr').each(function() {
             var row = $(this);
@@ -69,6 +78,8 @@ $(document).ready(function() {
             var F = D - E;
             var G = parseFloat(row.find('.manpower-G').val()) || 0;
             var H = F - G;
+            var J = parseFloat(row.find('.manpower-J').val()) || 0; //Expenditure Till Last Month
+            var I = parseFloat(row.find('.manpower-I').val()) || 0;
 
             grandTotal.A += A;
             grandTotal.B += B;
@@ -78,6 +89,8 @@ $(document).ready(function() {
             grandTotal.F += F;
             grandTotal.G += G;
             grandTotal.H += H;
+            grandTotal.I += I;
+            
         });
         // Update grand total in footer
         $('.grandTotal-A').val(grandTotal.A);
@@ -88,6 +101,7 @@ $(document).ready(function() {
         $('.grandTotal-F').val(grandTotal.F);
         $('.grandTotal-G').val(grandTotal.G);
         $('.grandTotal-H').val(grandTotal.H);
+        $('.grandTotal-I').val(grandTotal.I);
     }
 
     // Function to evaluate arithmetic expressions
@@ -215,7 +229,24 @@ $(document).ready(function() {
             }
         });
     }
-
     setInterval(fetchNotifications, 30000);
     fetchNotifications();
 });
+
+// Get current month on SOE Form Unspent text
+$(document).on('change', '#soe_form_month', function() {
+    var monthName = $(this).val();
+    var lastDate = getLastDateOfMonth(monthName)+'st '+monthName;
+    $(".current_month_selected_text").text(lastDate);
+});
+function getLastDateOfMonth(monthName) {
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var monthIndex = monthNames.indexOf(monthName);
+    if (monthIndex === -1) {
+        return "Invalid month name";
+    }
+    var year = new Date().getFullYear();
+    var date = new Date(year, monthIndex + 1, 0);
+    return date.getDate();
+}
+// End Get current month on SOE Form Unspent text

@@ -171,6 +171,7 @@
                             <th>GIA Received in F.Y</th>
                             <th>Total Balance excluding interest</th>
                             <th>Actual Expenditure incurred during the current Month</th>
+                            <th>Total Expenditure Till date</th>
                             <th>Unspent Balance as on 31st March</th>
                             <th>Committed Liabilities (if any)</th>
                             <th>Unspent Balance after Committed Liabilities as on 31st March</th>
@@ -185,6 +186,7 @@
                             <th>C</th>
                             <th>D=(B+C)</th>
                             <th>E</th>
+                            <th></th>
                             <th>F=(D-E)</th>
                             <th>G</th>
                             <th>H=(F-G)</th>
@@ -233,6 +235,10 @@
                                 <input type="text" name="actual_expenditure[]" class="form-control manpower-E"
                                     maxlength="5" oninput="validateInput(this)"
                                     value="{{ $value->actual_expenditure }}">
+                            </td>
+                            <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
+                                    maxlength="5" oninput="validateInput(this)" readonly=""
+                                    value="{{ @$final_data[$value->head][1]+@$value->actual_expenditure ?? '' }}">
                             </td>
                             <td>
                                 <input type="text" name="unspent_balance_last[]" class="form-control manpower-F"
@@ -290,6 +296,11 @@
                             <th class="grandTotal-E">
                                 <input type="text" name="actual_expenditure[]" class="form-control grandTotal-E"
                                     id="manpower-A" value="{{ $value->actual_expenditure }}" readonly>
+                            </th>
+                            <th>
+                                <input type="text" name="total_expenditure_till_date[]" class="form-control grandTotal-I"
+                                        maxlength="5" oninput="validateInput(this)" readonly=""
+                                        value="{{ @$final_data[$value->head][2]+@$value->actual_expenditure }}" readonly>
                             </th>
                             <th class="grandTotal-F">
                                 <input type="text" name="unspent_balance_last[]" class="form-control grandTotal-F"
