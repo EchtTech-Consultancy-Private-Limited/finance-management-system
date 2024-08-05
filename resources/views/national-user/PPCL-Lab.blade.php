@@ -45,8 +45,7 @@
 
                 <div class="col-md-4 ">
                     <div class="">
-                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
-                                    class="text-danger">*</sup></b></label>
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                         <select id="ppcllab-year" name="financial_year" class="form-control ppcllab_card">
                             <option value="">Select Year</option>
                             @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
@@ -58,8 +57,7 @@
                 </div>
                 <div class="col-md-4 ">
                     <div class="">
-                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
-                                    class="text-danger">*</sup></b></label>
+                        <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month</b></label>
                         <select name="ppcllab-month" class="form-control ppcllab_card" id="ppcllab-month">
                             <option value="">Select Month</option>
                             @foreach ($months as $key => $month)
@@ -272,8 +270,7 @@
             <div class="row">
                 <div class="col-md-4">
                 <div class="">
-                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                class="text-danger">*</sup></b></label>
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes</b></label>
                     <select name="nrcplab-national-ucform-fy" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-ucform-fy">
                         <option value="">Choose the Institute</option>
                         @foreach($institutes as $institute)
@@ -287,8 +284,7 @@
                
                 <div class="col-md-4">
                 <div class="">
-                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year <sup
-                                class="text-danger">*</sup></b></label>
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                     <select name="nrcplab-national-institute-ucform" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-institute-ucform">
                         <option value="">Choose Financial Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
@@ -397,7 +393,7 @@
                 <div class="row align-items-center justify-content-between flex-wrap">
                     <di v class="col-lg-8">
                         <div class="main-title">
-                            <h3 class="m-0">Yearly SOE Expenditure under NOHPPCZ RC’s</h3>
+                            <h3 class="m-0">Yearly SOE Expenditure under PPCL-Lab</h3>
                         </div>
                     </di>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
@@ -456,8 +452,7 @@
                         @csrf
                         <div class="row">
                             <div class="col">
-                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                            class="text-danger">*</sup></b></label>
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year</b></label>
                                 <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                     <option value="">Select Year</option>
                                     @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
@@ -467,7 +462,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
+                                <label for="state" class="form-label">Module</label>
                                 <select class="form-control" name="modulename" id="form_type" required>
                                     <option value="">Select Module</option>
                                     <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form
@@ -480,8 +475,7 @@
                                 @enderror
                             </div>
                             <div class="col">
-                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                            class="text-danger">*</sup></b></label>
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes</b></label>
                                 <select name="institute_name" class="form-control national_institute_name"
                                     id="national_institute_name">
                                     <option value="">Select Institute</option>
@@ -494,8 +488,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
-                                            class="text-danger">*</sup></b></label>
+                                <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month</b></label>
                                 <select name="month" class="form-control" id="national_month">
                                     <option value="">Select Month</option>
                                     @foreach ($months as $key => $month)

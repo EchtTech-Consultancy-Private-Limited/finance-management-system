@@ -305,8 +305,7 @@
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="align-items-center">
-                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Financial Year <sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Financial Year  </b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
@@ -320,8 +319,7 @@
 
                     <div class="col-md-6 col-lg-4 choose-financial-year-select">
                         <div class="align-items-center">
-                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Program Wise <sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Program Wise  </b></label>
                             <select id="national-program-wise" name="program_id"
                                 class="form-control national_user_card">
                                 <option value="">Select Program</option>
@@ -488,8 +486,7 @@
                 <form action="" class="select-form-s">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program </b></label>
                             <select id="national-program-ucform" name="program_id"
                                 class="form-control filter_program_id national_ucForm_filter">
                                 <option value="">Select Program</option>
@@ -500,8 +497,7 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes </b></label>
                             <select name="institute_name"
                                 class="form-control national_institute_name national_ucForm_filter"
                                 id="national_institute_name">
@@ -515,8 +511,7 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                             <select id="national-ucform-fy" name="uc_financial_year"
                                 class="form-control national_ucForm_filter">
                                 <option value="">Select Year</option>
@@ -700,8 +695,7 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
-                                class="text-danger">*</sup></b></label>
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program</b></label>
                     <select id="national-program-barchart" name="national-program-barchart"
                         class="form-control national_program_barchart">
                         <option value="">Select Program</option>
@@ -711,8 +705,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 ">
-                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                class="text-danger">*</sup></b></label>
+                    <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year</b></label>
                     <select id="national-user-fy-barchart" name="financial_year"
                         class="form-control national_program_barchart">
                         <option value="">Select Year</option>
@@ -726,7 +719,7 @@
 
                     <div>
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Choose Expenditure/Unspent
-                                Balance<sup class="text-danger">*</sup></b></label>
+                                Balance</b></label>
                         <select id="expenditure_unspent" name="expenditure_unspent"
                             class="form-control national_program_barchart">
                             <option value="">Select Expenditure/Unspent Balance</option>
@@ -977,8 +970,7 @@
                 <form action="" class="select-form-s">
                     <div class="row">
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of Program </b></label>
                             <select name="program_wise" class="form-control filter_program_id national_all_form_map"
                                 id="program_wise_all_form">
                                 <option value="">Select Program</option>
@@ -989,8 +981,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes </b></label>
                             <select name="institute_wise"
                                 class="form-control national_institute_name national_all_form_map"
                                 id="institute_wise_all_form">
@@ -1003,8 +994,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month </b></label>
                             <select name="month_name_all_form" class="form-control national_all_form_map"
                                 id="month_wise_all_form">
                                 <option value="">Select Month</option>
@@ -1019,8 +1009,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                             <select name="financial_year" class="form-control national_all_form_map"
                                 id="financial_wise_all_form">
                                 <option value="">Select Financial Year</option>
@@ -1182,8 +1171,7 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Program </b></label>
                             <select name="program_name" class="form-control filter_program_id" id="national_program_id">
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
@@ -1192,8 +1180,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                             <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
                                 @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
@@ -1204,7 +1191,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
+                            <label for="state" class="form-label">Module</label>
                             <select class="form-control" name="modulename" id="form_type" required>
                                 <option value="">Select Module</option>
                                 <option value='1' {{  request('modulename') == '1' ? 'selected' : '' }}>SOE Form
@@ -1217,8 +1204,7 @@
                             @enderror
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes </b></label>
                             <select name="institute_name" class="form-control national_institute_name"
                                 id="national_institute_name">
                                 <option value="">Select Institute</option>
@@ -1231,8 +1217,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month<sup
-                                        class="text-danger">*</sup></b></label>
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Month </b></label>
                             <select name="month" class="form-control" id="national_month">
                                 <option value="">Select Month</option>
                                 @foreach ($months as $key => $month)

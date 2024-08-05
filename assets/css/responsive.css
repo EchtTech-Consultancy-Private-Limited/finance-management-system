@@ -292,11 +292,12 @@
       font-size: 13px;
    }
 }
-
-@media (max-width:1400px) {
+@media (max-width:1250px) {
    .SOE-UC-list {
       display: block !important;
    }
+}
+@media (max-width:1400px) {
 
    .overall-content {
       margin-right: 0px;
