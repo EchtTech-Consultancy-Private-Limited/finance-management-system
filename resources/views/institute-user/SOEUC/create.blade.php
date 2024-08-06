@@ -519,7 +519,7 @@
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
                             </th> --}}
-                            <th class="grandTotal-B">
+                            <th class="grandTotal-J">
                                 <input type="text" name="previous_month_total[]" class="form-control manpower-J"
                                     id="manpower-A"
                                     value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>

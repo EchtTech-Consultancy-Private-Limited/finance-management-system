@@ -65,10 +65,10 @@
                                 </td>
                                 <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
                                 <td
-                                    class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'returned_by_nhq' : '') }}">
+                                    class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'returned_by_nhq' : 'pending') }}">
                                     <a href="#" class="action_btn mr_10" data-bs-toggle="modal"
-                                        data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned by NHQ' : '') }}</a>
-                                    <div class="modal fade" id="soe_uc_form_{{ $sorUcList->id }}" tabindex="-1"
+                                        data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned by NHQ' : 'Awaiting') }}</a>
+                                    {{-- <div class="modal fade" id="soe_uc_form_{{ $sorUcList->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="soe_uc_form_{{ $sorUcList->id }}Title"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,13 +114,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </td>
                                 <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
+                                        @if($sorUcList->status != 1)
                                         <a href="{{ route('institute-user.SOE-UC-upload-edit',$sorUcList->id) }}"
-                                            class="action_btn mr_10" title="Edit"> <i class="far fa-edit"></i> </a>
+                                            class="action_btn mr_10" title="Edit"> <i class="far fa-edit"></i>
+                                        </a>
+                                        @endif
                                         <!-- <a href="{{ route('institute-user.SOE-UC-upload-destroy',$sorUcList->id) }}"
                                             class="action_btn"
                                             onclick="return confirm('Are you sure you want to delete this record?');">

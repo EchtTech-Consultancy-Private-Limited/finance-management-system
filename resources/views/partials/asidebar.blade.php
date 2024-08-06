@@ -115,6 +115,16 @@
                </a>
             </li>
             <li class>
+               <a class="" href="{{ route('national-user.uc-upload-list') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                  <i class="fas fa-list"></i>
+                  </div>
+                  <div class="nav_title">
+                     <span>UC Uploded List</span>
+                  </div>
+               </a>
+            </li>
+            <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                   <i class="fas fa-school"></i>

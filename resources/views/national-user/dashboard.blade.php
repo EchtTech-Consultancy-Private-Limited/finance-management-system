@@ -612,8 +612,10 @@
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                    <td><span
-                                            class="approve badge {{ ($sorUcList->status == 1) ? "bg-success" : (($sorUcList->status == 2) ? 'bg-danger' : 'bg-primary') }} ">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned' : 'Pending') }}</span>
+                                    <td class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'returned_by_nhq' : 'pending') }}">
+                                        <a href="#" class="action_btn mr_10" data-bs-toggle="modal"
+                                            data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned by NHQ' : 'Awaiting') }}
+                                        </a>
                                     </td>
                                     <td>{{ @$sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
@@ -1164,7 +1166,7 @@
 </div>
 <div class="row">
 
-    <div class="col-xl-12 ">
+    {{-- <div class="col-xl-12 ">
         <div class="crad white_card mb_30 p-4">
             <div>
                 <form action="{{ route('national-user.dashboard-report') }}" method="get" id="institute-report">
@@ -1265,7 +1267,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </div>
 

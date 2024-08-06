@@ -67,8 +67,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/filter-uc-form-dashboard', [DashboardController::class, 'nationalFilterUcFormDashboard'])->name('filter-uc-form-dashboard');
         Route::post('/total-card', [DashboardController::class, 'totalCard'])->name('total-card');
         Route::get('/soe-expense-list', [NationalSeoExpenseController::class, 'index'])->name('soe-expense-index');
+        Route::get('/uc-upload-list', [SOEUCUploadFormController::class, 'ucUploadList'])->name('uc-upload-list');
         Route::get('/soe-expense-view/{id}', [NationalSeoExpenseController::class, 'view'])->name('soe-expense-view');
         Route::post('/soe-change-status/{id}', [NationalSeoExpenseController::class, 'changeStatus'])->name('soe-change-status');
+        Route::post('/soe-uc-update-change-status/{id}', [SOEUCUploadFormController::class, 'changeStatus'])->name('soe-uc-update-change-status');
         Route::get('/report', [DashboardController::class, 'report'])->name('report');
         Route::get('report-export', [DashboardController::class, 'export'])->name('report-export');
         Route::get('dashboard-report', [DashboardController::class, 'dashboardReport'])->name('dashboard-report');
@@ -121,8 +123,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/SOE-UC-upload', [SOEUCUploadFormController::class, 'create'])->name('SOE-UC-upload');
         Route::post('/save', [SOEUCUploadFormController::class, 'store'])->name('save');
         Route::get('/SOE-UC-upload-edit/{id}', [SOEUCUploadFormController::class, 'edit'])->name('SOE-UC-upload-edit');
-        Route::post('/update/{id}', [SOEUCUploadFormController::class, 'update'])->name('update');
-        Route::post('/soe-uc-update-change-status/{id}', [SOEUCUploadFormController::class, 'changeStatus'])->name('soe-uc-update-change-status');
+        Route::post('/update/{id}', [SOEUCUploadFormController::class, 'update'])->name('update');        
         Route::get('/SOE-UC-upload-destroy/{id}', [SOEUCUploadFormController::class, 'destroy'])->name('SOE-UC-upload-destroy');
     });
 });

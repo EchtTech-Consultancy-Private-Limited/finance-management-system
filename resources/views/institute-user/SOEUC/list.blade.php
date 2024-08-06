@@ -53,10 +53,10 @@
                                 <td>{{ @$soeucForm->month }}</td>
                                 <td>{{ @$soeucForm->financial_year }}</td>
                                 <td
-                                    class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'returned_by_nhq' : '') }}">
+                                    class="{{ ($soeucForm->status == 1) ? 'approved' : (($soeucForm->status == 2) ? 'returned_by_nhq' : 'pending') }}">
                                     <a href="#" class="action_btn" data-bs-toggle="modal"
-                                        data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Returned by NHQ' : '') }}</a>
-                                    <div class="modal fade" id="soe_uc_form_{{ $soeucForm->id }}" tabindex="-1"
+                                        data-bs-target="#soe_uc_form_{{ $soeucForm->id }}">{{ ($soeucForm->status == 1) ? "Approved" : (($soeucForm->status == 2) ? 'Returned by NHQ' : 'Awaiting') }}</a>
+                                    {{-- <div class="modal fade" id="soe_uc_form_{{ $soeucForm->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="soe_uc_form_{{ $soeucForm->id }}Title"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -102,13 +102,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </td>
                                 <td>{{ @$soeucForm->reason ?? 'N/A' }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
+                                        @if($soeucForm->status != 1)
                                         <a href="{{ route('institute-user.soe-edit',$soeucForm->id) }}"
-                                            class="action_btn mr_10" title="Edit"> <i class="far fa-edit"></i> </a>
+                                            class="action_btn mr_10" title="Edit"> <i class="far fa-edit"></i> 
+                                        </a>
+                                        @endif
                                         <a href="{{ route('institute-user.soe-view',$soeucForm->id) }}"
                                             class="action_btn mr_10" title="View"> <i class="far fa-eye"></i> </a>
                                         <!-- <a href="{{ route('institute-user.soe-destroy',$soeucForm->id) }}"

@@ -112,7 +112,11 @@
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                    <td>{{ ($sorUcList->status == 1) ? 'Approved' : (($sorUcList->status == 2) ? 'Returned by NHQ' : '') }}</td>
+                                    <td
+                                    class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'returned_by_nhq' : 'pending') }}">
+                                    <a href="#" class="action_btn mr_10" data-bs-toggle="modal"
+                                        data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned by NHQ' : 'Awaiting') }}</a>
+                                    </td>
                                     <td>{{ $sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
                                 @endforeach

@@ -444,10 +444,10 @@
             </div>
         </div>
     </div>
-    <div class="devider-line">
+    {{-- <div class="devider-line">
         <div></div>
-    </div>
-    <div class="col-xl-12 ">
+    </div> --}}
+    {{-- <div class="col-xl-12 ">
             <div class="crad white_card mb_30 p-4">
                 <div>
                     <form action="{{ route('national-user.nohppczrcs-dashboard-report') }}" method="get" id="institute-report">
@@ -543,6 +543,6 @@
 
 
 
-</div>
+    </div> --}}
 
 @endsection
