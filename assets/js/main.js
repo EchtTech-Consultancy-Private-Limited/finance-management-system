@@ -26,12 +26,7 @@ $(document).ready(function() {
 });
 
 // calculation of SOEU Form
-$(document).ready(function() {
-    $('.mySelect2').filterMultiSelect();
-    $('.mySelect3').filterMultiSelect();
-    $('.mySelect4').filterMultiSelect();
-
-    
+$(document).ready(function() {    
     $('input[type="text"]').on('input', function() {
         calculateFields($(this));
         calculateGrandTotal();

@@ -440,7 +440,7 @@
             </div>
         </div>
     </div>
-    <div class="devider-line">
+    {{-- <div class="devider-line">
         <div></div>
     </div>
     <div class="col-xl-12 ">
@@ -539,6 +539,6 @@
 
 
 
-</div>
+</div> --}}
 
 @endsection

@@ -144,6 +144,8 @@ class SOEUCFormController extends Controller
                         'unspent_balance_31st' => $request->unspent_balance_31st[$key],
                     ]);
                 }
+                $formType = '1'; //Soe Uc Form
+                $this->SendNotificationServices->sendNotification($soeucFormId, $formType, '1', $request->status);
                 DB::commit();
                 \Toastr::success('The Reconrd has been create successfully.','Success');
                 return redirect()->route('institute-user.soe-form-list');
@@ -332,6 +334,8 @@ class SOEUCFormController extends Controller
                     'unspent_balance_31st' => $request->unspent_balance_31st[$key],
                 ]);
             }
+            $formType = '1'; //Soe Uc Form
+            $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
             DB::commit();
             \Toastr::success('The Reconrd has been updated successfully.','Success');
             return redirect()->route('institute-user.soe-form-list');

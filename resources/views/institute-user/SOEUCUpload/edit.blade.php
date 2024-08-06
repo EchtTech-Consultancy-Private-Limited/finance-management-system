@@ -53,9 +53,12 @@
                         <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">Program<span class="text-danger">*</span></label>
                             <select id="program" name="program_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->program)->id }}">
-                                    {{ optional(Auth::user()->program)->name }} -
-                                    {{ optional(Auth::user()->program)->code }}</option>
+                                <option value="">Select Program</option>
+                                @foreach($institutePrograms as $key => $value)
+                                @if(in_array($value->id, explode(',', Auth::user()->program_id)))
+                                        <option value="{{ $value->id }}" {{ ($value->id == @$soeUCUpload->program_id) ? 'selected' : '' }}>{{ $value->name }} - {{ $value->code }}</option>
+                                @endif
+                                @endforeach
                             </select>
                             @error('program_id')
                             <span class="text-danger error">{{ $message }}</span>
@@ -64,8 +67,12 @@
                         <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">Institute<span class="text-danger">*</span></label>
                             <select id="institute" name="institute_id" class="form-control">
-                                <option value="{{ optional(Auth::user()->institute)->id }}">
-                                    {{ optional(Auth::user()->institute)->name }}</option>
+                                <option value="">Select Institute</option>
+                                @foreach($institutes as $key => $value)
+                                    @if(in_array($value->id, explode(',', Auth::user()->institute_id)))
+                                        <option value="{{ $value->id }}" {{ ($value->id == @$soeUCUpload->institute_id) ? 'selected' : '' }}>{{ $value->name }}</option>
+                                    @endif
+                                @endforeach
                             </select>
                             @error('institute_id')
                             <span class="text-danger error">{{ $message }}</span>

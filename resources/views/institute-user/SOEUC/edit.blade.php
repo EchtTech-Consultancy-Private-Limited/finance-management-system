@@ -219,7 +219,7 @@
                             </td> --}}
                             <td>
                                 <input type="text" name="previous_month_total[]"
-                                    value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control"
+                                    value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control manpower-J"
                                     id="previous_month_total" maxlength="5" oninput="validateInput(this)" readonly>
                             </td>
                             <td>
