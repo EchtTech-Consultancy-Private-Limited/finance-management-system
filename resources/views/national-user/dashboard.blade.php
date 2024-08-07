@@ -423,7 +423,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Committed Liabilities <br> in %</h3>
+                                <h3 class="m-0">Committed Liabilities <br> in Lakh.</h3>
                             </div>
 
                         </div>
@@ -827,7 +827,7 @@
                         <div class="col-md-12">
                             <div class="graph-container white_card border border-1 mb-0 p-3">
 
-                                <div id="integrated-dashboard-state-graph" class=""></div>
+                                {{-- <div id="integrated-dashboard-state-graph" class=""></div> --}}
                             </div>
                         </div>
                     </div>

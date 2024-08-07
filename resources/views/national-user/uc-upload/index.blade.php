@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
+                                <th scope="col">User</th>
                                 <th scope="col">QTR UC</th>
                                 <th scope="col">Program</th>
                                 <th scope="col">Year of UC</th>
@@ -41,6 +42,7 @@
                             @foreach($sorUcLists as $key => $sorUcList)
                                 <tr>
                                     <th scope="row">{{ @$loop->iteration }}</th>
+                                    <th>{{$sorUcList->users->name}}</th>
                                     <td>{{ $sorUcList->qtr_uc }}</td>
                                     <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
                                     <td>{{ $sorUcList->financial_year }}</td>

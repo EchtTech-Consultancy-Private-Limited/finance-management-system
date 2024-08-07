@@ -53,10 +53,32 @@
                                        @if(notifications())
                                        @foreach(notifications() as $key => $notification)
                                           @if(Auth::user()->user_type == 0)
-                                             <li><a href="{{ route('national-user.soe-expense-view', $notification->form_id) }}" target="_blanck">Notification: ({{ senderName($notification->sender_id) }})</a></li>
+                                          <li>
+                                             @if($notification->form_type ==1)
+                                             <a href="{{ route('national-user.soe-expense-view', $notification->form_id) }}" target="_blank">
+                                                SOE Upload List : ({{ senderName($notification->sender_id)->name }})
+                                             </a>
+                                             @endif
+                                             @if($notification->form_type ==2)
+                                             <a href="{{ route('national-user.uc-upload-list', $notification->form_id) }}" target="_blank">
+                                                UC Upload List : ({{ senderName($notification->sender_id)->name }})
+                                             </a>
+                                             @endif
+                                         </li>                                         
                                           @endif
                                           @if(Auth::user()->user_type == 1)
-                                          <li><a href="{{ route('institute-user.soe-view', $notification->form_id) }}" target="_blanck">Notification: ({{ senderName($notification->sender_id) }})</a></li>
+                                          <li>
+                                             @if($notification->form_type ==1)
+                                             <a href="{{ route('institute-user.soe-view', $notification->form_id) }}" target="_blank">
+                                                SOE Upload List : ({{ senderName($notification->sender_id)->name }})
+                                             </a>
+                                             @endif
+                                             @if($notification->form_type ==2)
+                                             <a href="{{ route('institute-user.SOE-UC-upload-list', $notification->form_id) }}" target="_blank">
+                                                UC Upload List : ({{ senderName($notification->sender_id)->name }})
+                                             </a>
+                                             @endif
+                                          </li>
                                           @endif
                                        @endforeach
                                        @endif
@@ -66,17 +88,25 @@
                                            <h4>Total Resolved /<span class="text-danger">Reported</span></h4>
                                        </div> -->
                                        <div class="confirm-pending">
+                                          <div class="col">
+                                             <div class="status">
+                                                @if(Auth::user()->user_type == 0)
+                                                   <a href="{{ route('national-user.soe-expense-index') }}" target="_blank"><h5>View UC</h5></a>
+                                                @endif
+                                                @if(Auth::user()->user_type == 1)
+                                                   <a href="{{ route('institute-user.soe-form-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                @endif
+                                             </div>
+                                          </div>
                                            <div class="col">
-                                               <div class="status">
-                                                  <h5>Confirmed</h5>
-                                                  <span>0</span>
-                                               </div>
-                                           </div>
-                                           <div class="col">
-                                               <div class="status">
-                                                  <h5>Pending</h5>
-                                                  <span>0</span>
-                                               </div>
+                                             <div class="status">
+                                                @if(Auth::user()->user_type == 0)
+                                                   <a href="{{ route('national-user.uc-upload-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                @endif
+                                                @if(Auth::user()->user_type == 1)
+                                                   <a href="{{ route('institute-user.SOE-UC-upload-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                @endif
+                                             </div>
                                            </div>
                                        </div>
                                    </div>
