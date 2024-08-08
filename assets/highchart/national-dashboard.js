@@ -1177,7 +1177,7 @@ function expenditureBarChart(programUserDetailsArray){
             },
             plotOptions: {
                 pie: {
-                    colors: ["#f49e04", "#00b050"],
+                    colors: ["#00b050", "#f49e04"],
                     dataLabels: {
                         enabled: true,
                         distance: -50,
@@ -1356,7 +1356,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1420,7 +1420,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1495,7 +1495,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1565,7 +1565,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1600,6 +1600,9 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                     verticalAlign: 'bottom'
                 }
             },
+            // legend: {
+            //     enabled: false 
+            // },
             colorAxis: {
                 min: 0,
                 // max: 100,

@@ -12423,6 +12423,9 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     background: 0 0
 }
 
+.user_crm_wrapper .single_crm:hover {
+    transform: scale(1.04);
+}
 .user_crm_wrapper .single_crm {
     background: #fff;
     border-radius: 5px;
@@ -12431,7 +12434,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     box-shadow: 0 0px 10px #d3d3d3;
     text-align: center;
     min-height: 123px;
-    transition: all .3s ease-in-out;
+    transition: all .2s ease-in-out;
     border: none;
 }
 
@@ -13132,12 +13135,12 @@ rect.highcharts-background {
     font-weight: 600;
     line-height: 26px;
     /* margin-bottom: 5px; */
-    font-size: 14px;
+    font-size: 17px;
     text-align: left;
 }
 
 .profile-text .studentNumber {
-    font-size: 25px;
+    font-size: 30px;
     max-width: 100%;
     border: none;
     background: inherit;
@@ -13165,7 +13168,7 @@ rect.highcharts-background {
 
     .profile-text p {
         line-height: 20px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .fund-card h3,
@@ -13205,7 +13208,7 @@ rect.highcharts-background {
 }
 
 div#integrated-dashboard-india-map {
-    height: 441px;
+    height: 382px;
 }
 
 .table.lms_table_active3 .download .view {
@@ -13862,11 +13865,11 @@ input.studentNumber.editmode:focus {
     display: flex;
     justify-self: center;
     align-items: center;
-    box-shadow: inset #ffe8e8 0px 0px 60px -12px;
+    box-shadow: inset #0044cd26 0px 0px 60px -12px;
 }
 
 .school-info-box .card-icon-wrapper div i {
-    color: #FF5722;
+    color: #0044cd;
     font-size: 23px;
 }
 
