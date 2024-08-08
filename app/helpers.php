@@ -13,7 +13,7 @@ function notifications()
 
 function senderName($senderId)
 {
-    $senderName = User::where('id', $senderId)->pluck('name')->first();
+    $senderName = User::where('id', $senderId)->first();
     return $senderName;
 }
 

@@ -833,7 +833,7 @@
                         <div class="col-md-12">
                             <div class="graph-container white_card border border-1 mb-0 p-3">
 
-                                <div id="integrated-dashboard-state-graph" class=""></div>
+                                {{-- <div id="integrated-dashboard-state-graph" class=""></div> --}}
                             </div>
                         </div>
                     </div>
