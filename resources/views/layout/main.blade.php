@@ -30,7 +30,7 @@
                         </div>
                      </div> -->
                      <div class="dashboard-title">
-                        <h1 class="title"> Finance Management System</h1>
+                        <h1 class="title"> Finance Management System, NCDC</h1>
                         <h6 class="text-center mb-1">{{ optional(Auth::user()->institute)->name }}</h6>
                      </div>
                      <div class="header_right d-flex justify-content-between align-items-center">
@@ -88,23 +88,23 @@
                                            <h4>Total Resolved /<span class="text-danger">Reported</span></h4>
                                        </div> -->
                                        <div class="confirm-pending">
-                                          <div class="col">
+                                          <div class="col text-start ps-2">
                                              <div class="status">
                                                 @if(Auth::user()->user_type == 0)
-                                                   <a href="{{ route('national-user.soe-expense-index') }}" target="_blank"><h5>View SOE</h5></a>
+                                                   <a href="{{ route('national-user.soe-expense-index') }}" target="_blank">View SOE</a>
                                                 @endif
                                                 @if(Auth::user()->user_type == 1)
-                                                   <a href="{{ route('institute-user.soe-form-list') }}" target="_blank"><h5>View SOE</h5></a>
+                                                   <a href="{{ route('institute-user.soe-form-list') }}" target="_blank">View SOE</a>
                                                 @endif
                                              </div>
                                           </div>
-                                           <div class="col">
+                                           <div class="col text-end pe-2">
                                              <div class="status">
                                                 @if(Auth::user()->user_type == 0)
-                                                   <a href="{{ route('national-user.uc-upload-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                   <a href="{{ route('national-user.uc-upload-list') }}" target="_blank">View UC</a>
                                                 @endif
                                                 @if(Auth::user()->user_type == 1)
-                                                   <a href="{{ route('institute-user.SOE-UC-upload-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                   <a href="{{ route('institute-user.SOE-UC-upload-list') }}" target="_blank">View UC</a>
                                                 @endif
                                              </div>
                                            </div>

@@ -10074,7 +10074,7 @@ a.pswp__share--download:hover {
 .Menu_NOtification_Wrap {
     background: #fff;
     box-shadow: 0 10px 15px rgba(6, 0, 8, .22);
-    border-radius: 10px;
+    border-radius: 6px;
     position: absolute;
     right: 0;
     width: 258px;
@@ -10096,7 +10096,14 @@ a.pswp__share--download:hover {
     visibility: visible;
     transform: translateY(20px) translateX(20px)
 }
-
+.Menu_NOtification_Wrap.active:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    border: 10px solid;
+    border-color: transparent transparent #567aed  transparent;
+}
 @media(max-width:575.98px) {
     .Menu_NOtification_Wrap.active {
         transform: translateY(16px) translateX(55px)
@@ -10104,14 +10111,14 @@ a.pswp__share--download:hover {
 }
 
 .Menu_NOtification_Wrap .notification_Header {
-    padding: 15px 20px;
-    border-radius: 10px 10px 0 0;
+    padding: 7px 20px;
+    border-radius: 6px 6px 0 0;
     background: #567aed;
     text-align: center;
 }
 
 .Menu_NOtification_Wrap .notification_Header h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #fff;
     margin-bottom: 0
@@ -10122,24 +10129,36 @@ a.pswp__share--download:hover {
     /* height: 254x; */
     overflow: auto;
     text-align: center;
-    background-color: #567aed0f;
+    /* background-color: #567aed0f; */
 }
 
 .Menu_NOtification_Wrap .Notification_body ul {
     margin: 0 !important;
     padding: 0 !important;
+    max-height: 180px;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
+.header_iner .header_right .header_notification_warp li a {
+    color: #000;
+    font-weight: 500;
+    font-size: 14px ;
+}
+.Menu_NOtification_Wrap .Notification_body ul li:hover {
+    background-color: #ddd;
+}
 .Menu_NOtification_Wrap .Notification_body ul li {
-    background: #fff;
-    margin: 1px 0 6px 0px;
-    padding: 6px 8px;
+    /* background: #fff; */
+    /* margin: 1px 0 6px 0px; */
+    padding: 5px 8px;
     text-align: left;
     color: #008af7;
     border-radius: 3px;
     display: block !important;
-    box-shadow: 0px 0px 5px #ddd;
+    /* box-shadow: 0px 0px 5px #ddd; */
     cursor: pointer;
+    border-bottom: 1px solid #ddd;
 }
 
 .confirm-pending {
@@ -10191,14 +10210,24 @@ a.pswp__share--download:hover {
     color: red;
 }
 
+.Menu_NOtification_Wrap .Notification_body .status a{
+    color: #fff !important;
+}
+.Menu_NOtification_Wrap .Notification_body .status:hover a{color: #ff5b2a !important;}
+.Menu_NOtification_Wrap .Notification_body .status:hover {
+    background-color: #fff;
+}
+.Menu_NOtification_Wrap .Notification_body .status a{font-size: 13px !important;}
 .Menu_NOtification_Wrap .Notification_body .status {
-    background: #fff;
+    background: #ff5b2a;
     border-radius: 5px;
-    padding: 3px 6px;
-    display: flex;
-    gap: 13px;
+    padding: 2px 7px;
+    display: inline-block;
+    /* gap: 13px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
+    margin-top: 10px;
+    border: 1px solid #ff5b2a;
 }
 
 .Menu_NOtification_Wrap .Notification_body .total-resolved {
@@ -12423,6 +12452,9 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     background: 0 0
 }
 
+.user_crm_wrapper .single_crm:hover {
+    transform: scale(1.04);
+}
 .user_crm_wrapper .single_crm {
     background: #fff;
     border-radius: 5px;
@@ -12431,7 +12463,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     box-shadow: 0 0px 10px #d3d3d3;
     text-align: center;
     min-height: 123px;
-    transition: all .3s ease-in-out;
+    transition: all .2s ease-in-out;
     border: none;
 }
 
@@ -13137,12 +13169,12 @@ rect.highcharts-background {
     font-weight: 600;
     line-height: 26px;
     /* margin-bottom: 5px; */
-    font-size: 14px;
+    font-size: 17px;
     text-align: left;
 }
 
 .profile-text .studentNumber {
-    font-size: 25px;
+    font-size: 30px;
     max-width: 100%;
     border: none;
     background: inherit;
@@ -13170,7 +13202,7 @@ rect.highcharts-background {
 
     .profile-text p {
         line-height: 20px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .fund-card h3,
@@ -13378,10 +13410,22 @@ button.dt-button.buttons-print {
     border: 0;
     color: #fff;
     font-size: 16px;
-    padding: 4px 11px;
+    padding: 9px 9px;
     transition: 0.3s ease-in-out;
+    line-height: 1;
 }
-
+button.dt-button.buttons-print  span{
+    margin: 0;
+}
+button.dt-button.buttons-print.soe-print-button {
+    position: absolute;
+    right: 26px;
+    top: 18px;
+}
+button.dt-button.buttons-print  i{
+    color: #fff;
+    font-size: 16px;
+}
 button.dt-button.buttons-print:hover,
 button.dt-button.buttons-print:focus {
     background: #7a3bf9;
@@ -13867,11 +13911,11 @@ input.studentNumber.editmode:focus {
     display: flex;
     justify-self: center;
     align-items: center;
-    box-shadow: inset #ffe8e8 0px 0px 60px -12px;
+    box-shadow: inset #0044cd26 0px 0px 60px -12px;
 }
 
 .school-info-box .card-icon-wrapper div i {
-    color: #FF5722;
+    color: #0044cd;
     font-size: 23px;
 }
 
