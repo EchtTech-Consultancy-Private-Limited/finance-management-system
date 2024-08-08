@@ -93,15 +93,26 @@
                             @enderror
                         </div>
                     </div>
+                    @if(Auth::user()->user_type == 1)
                     <div class="row mb-3">
-                        <div class=" col-md-12">
-                            <label class="form-label" for="inputPassword4">Name of the Institute<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="institute_id" value="{{ old('institute_id', $user->institute->name ?? '') }}" id="inputPassword4" placeholder="Name of the Institute" readonly>
-                            @error('institute_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                        <div class=" col-md-6">
+                            <label class="form-label" for="inputPassword4">Name of the Institute</label><br>
+                            @foreach($institutes as $institute)
+                            @if(in_array($institute->id, explode(',', $user->institute_id)))
+                                <span class="admin_list_name">{{ @$institute->name??'N/A' }}</span>
+                            @endif
+                            @endforeach
+                        </div>
+                        <div class=" col-md-6">
+                            <label class="form-label" for="inputPassword4">Name of the Program</label><br>
+                            @foreach($institutePrograms as $instituteProgram)
+                            @if(in_array($instituteProgram->id, explode(',', $user->program_id)))
+                                <span class="admin_list_name">{{ @$instituteProgram->name??'N/A' }}-{{ $instituteProgram->code??'N/A' }}</span>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
+                    @endif
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>

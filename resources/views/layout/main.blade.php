@@ -91,10 +91,10 @@
                                           <div class="col">
                                              <div class="status">
                                                 @if(Auth::user()->user_type == 0)
-                                                   <a href="{{ route('national-user.soe-expense-index') }}" target="_blank"><h5>View UC</h5></a>
+                                                   <a href="{{ route('national-user.soe-expense-index') }}" target="_blank"><h5>View SOE</h5></a>
                                                 @endif
                                                 @if(Auth::user()->user_type == 1)
-                                                   <a href="{{ route('institute-user.soe-form-list') }}" target="_blank"><h5>View UC</h5></a>
+                                                   <a href="{{ route('institute-user.soe-form-list') }}" target="_blank"><h5>View SOE</h5></a>
                                                 @endif
                                              </div>
                                           </div>

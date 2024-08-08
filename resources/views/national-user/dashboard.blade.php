@@ -592,6 +592,7 @@
                                 <tr>
                                     <th scope="col">QTR UC</th>
                                     <th scope="col">Program</th>
+                                    <th scope="col">Institute</th>
                                     <th>Year of UC</th>
                                     <th>UC File Upload</th>
                                     <th>UC Uploaded Date</th>
@@ -604,6 +605,7 @@
                                 <tr>
                                     <td>{{ @$sorUcList->qtr_uc }}</td>
                                     <td>{{ @$sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
+                                    <td>{{ @$sorUcList->institute->name }}</td>
                                     <td>{{ @$sorUcList->financial_year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
