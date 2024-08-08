@@ -12531,7 +12531,7 @@ img#captchaimg {
 }
 
 .table thead tr th,
-.table tfoot tr th {
+.table tr.t-foot th {
     background: #6c33df !important;
     font-size: 16px;
     color: #fff;
@@ -12539,6 +12539,11 @@ img#captchaimg {
     font-weight: 600;
     padding: 8px;
     text-transform: capitalize;
+}
+
+.table.table-bordered tbody tr.t-foot th{
+    padding: 8px 5px !important;
+    text-align: center !important;
 }
 
 .float-right {

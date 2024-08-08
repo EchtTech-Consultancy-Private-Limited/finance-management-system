@@ -859,8 +859,10 @@ class DashboardController extends Controller
 
     public function getUserProfile(Request $request, $id)
     {
-        $user = User::with('state','city','program','institute')->where('id', Auth::id())->first();
-        return view('auth.profile',compact('user'));
+        $user = User::with('state','city')->where('id', Auth::id())->first();
+        $institutes = Institute::get();
+        $institutePrograms = InstituteProgram::get();
+        return view('auth.profile',compact('user','institutes','institutePrograms'));
     }
     
     /**
