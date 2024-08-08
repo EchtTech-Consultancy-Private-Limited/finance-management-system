@@ -12,14 +12,11 @@
 @section('content')
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
-        <div class="white_card_header">
+        <div class="white_card_header position-relative">
             <div class="box_header m-0">
                 <div class="main-title">
                     <h3 class="m-0">Statement of Expenditure (SOE) View</h3>
-                    <button class="buttons-print float-right" type="button"
-                        onclick="printDiv('view_soe')"><span> <i
-                        class="fa fa-print"></i></span>
-                    </button>
+                    <button class="dt-button buttons-print soe-print-button" type="button" onclick="printDiv('view_soe')"><span> <i class="fa fa-print"></i></span></button>
                 </div>
             </div>
         </div>
