@@ -104,6 +104,8 @@ class SOEUCFormController extends Controller
             'finance_account_officer_mobile'     => 'required|digits:10',
             'nadal_officer'     => 'required',
             'nadal_officer_mobile'     => 'required|digits:10',
+            'finance_account_officer_email'     => 'required',
+            'nadal_officer_email'     => 'required',
             'month'     => 'required',
             'financial_year'     => 'required',
         ],
