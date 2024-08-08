@@ -40,4 +40,9 @@ class SOEUCUploadForm extends Model
     {
         return $this->belongsTo(InstituteProgram::class, 'program_id');
     }
+
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class, 'institute_id');
+    }
 }

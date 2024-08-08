@@ -342,7 +342,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         plotOptions: {
             pie: {
-                colors: ['#00b050', '#f79646'],
+                colors: ['#f79646', '#00b050'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -891,81 +891,81 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
     });
 
     // program wise expenditure column institute wise
-    Highcharts.chart("integrated-dashboard-state-graph", {
-        chart: {
-            type: "column",
-        },
-        title: {
-            text: "",
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            text: "",
-        },
-        xAxis: {
-            type: "category",
-            labels: {
-                autoRotation: [-80, -90],
-                style: {
-                    fontSize: "11px",
-                    fontFamily: "Verdana, sans-serif",
-                },
-            },
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: null,
-            },
-        },
-        legend: {
-            enabled: true,
-            useHTML: true,
-            // labelFormatter: function() {
-            //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
-            //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
-            // }
+    // Highcharts.chart("integrated-dashboard-state-graph", {
+    //     chart: {
+    //         type: "column",
+    //     },
+    //     title: {
+    //         text: "",
+    //     },
+    //     credits: {
+    //         enabled: false,
+    //     },
+    //     exporting: {
+    //         enabled: false,
+    //     },
+    //     subtitle: {
+    //         text: "",
+    //     },
+    //     xAxis: {
+    //         type: "category",
+    //         labels: {
+    //             autoRotation: [-80, -90],
+    //             style: {
+    //                 fontSize: "11px",
+    //                 fontFamily: "Verdana, sans-serif",
+    //             },
+    //         },
+    //     },
+    //     yAxis: {
+    //         min: 0,
+    //         title: {
+    //             text: null,
+    //         },
+    //     },
+    //     legend: {
+    //         enabled: true,
+    //         useHTML: true,
+    //         // labelFormatter: function() {
+    //         //     let symbol = '<span style="color:' + this.color + ';font-size:12px; color:red">&#9644;</span>';
+    //         //     return '<span style="font-size: 12px;">' + symbol +  ' ' + this.name  +  '</span>';
+    //         // }
     
-            allowPointSelect: false,
-        },
-        tooltip: {
-            enabled: true,
-        },
-        series: [
-            {
-                name: "Expenditure",
-                type: "column",
-                color: "#ffc147",
-                events: {
-                    legendItemClick: function (e) {
-                        e.preventDefault();
-                    },
-                },
-                data: instituteColumnDetails.data,
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: "#000",
-                    inside: true,
-                    verticalAlign: "top",
-                    format: "{point.y:.1f}", // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: "12px",
-                        fontFamily: "Verdana, sans-serif",
-                        textShadow: "none",
-                        color: "red",
-                    },
-                    textShadow: "none",
-                },
-            },
-        ],
-    });
+    //         allowPointSelect: false,
+    //     },
+    //     tooltip: {
+    //         enabled: true,
+    //     },
+    //     series: [
+    //         {
+    //             name: "Expenditure",
+    //             type: "column",
+    //             color: "#ffc147",
+    //             events: {
+    //                 legendItemClick: function (e) {
+    //                     e.preventDefault();
+    //                 },
+    //             },
+    //             data: instituteColumnDetails.data,
+    //             dataLabels: {
+    //                 enabled: true,
+    //                 rotation: -90,
+    //                 color: "#000",
+    //                 inside: true,
+    //                 verticalAlign: "top",
+    //                 format: "{point.y:.1f}", // one decimal
+    //                 y: 10, // 10 pixels down from the top
+    //                 style: {
+    //                     fontSize: "12px",
+    //                     fontFamily: "Verdana, sans-serif",
+    //                     textShadow: "none",
+    //                     color: "red",
+    //                 },
+    //                 textShadow: "none",
+    //             },
+    //         },
+    //     ],
+    // });
 }
 
 function yearlySoeExpenditure(programWiseExpenditure){
@@ -1177,7 +1177,7 @@ function expenditureBarChart(programUserDetailsArray){
             },
             plotOptions: {
                 pie: {
-                    colors: ["#f49e04", "#00b050"],
+                    colors: ["#00b050", "#f49e04"],
                     dataLabels: {
                         enabled: true,
                         distance: -50,
@@ -1356,7 +1356,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1420,7 +1420,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",
@@ -1495,7 +1495,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1565,7 +1565,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",
@@ -1599,6 +1599,9 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 buttonOptions: {
                     verticalAlign: 'bottom'
                 }
+            },
+            legend: {
+                enabled: false 
             },
             colorAxis: {
                 min: 0,

@@ -192,7 +192,7 @@ class SOEUCUploadFormController extends Controller
     public function ucUploadList()
     {
         $programs = InstituteProgram::get();
-        $sorUcLists = SOEUCUploadForm::with('users')->get();
+        $sorUcLists = SOEUCUploadForm::with('users')->latest('updated_at')->get();
         return view('national-user.uc-upload.index',compact('programs','sorUcLists'));
     }
 

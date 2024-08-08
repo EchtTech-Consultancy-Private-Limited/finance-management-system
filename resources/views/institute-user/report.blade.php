@@ -84,6 +84,7 @@
                                 <th scope="col">Sr. No.</th>
                                 <th scope="col">QTR UC</th>
                                 <th scope="col">Program</th>
+                                <th scope="col">Institute</th>
                                 <th scope="col">Year of UC</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">UC File Upload</th>
@@ -98,7 +99,8 @@
                                     <th scope="row">{{ @$loop->iteration }}</th>
                                     <td>{{ $sorUcList->qtr_uc }}</td>
                                     <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
-                                    <td>{{ $sorUcList->financial_year }}</td>
+                                    <td>{{ $sorUcList->institute->name }}</td>
+                                    <td>{{ @$sorUcList->financial_year }}</td>
                                     <td>{{ $sorUcList->month }}</td>                                    
                                     <td>
                                         @if ($sorUcList->file)
@@ -112,7 +114,11 @@
                                         @endif
                                     </td>
                                     <td>{{ date('d-m-Y',strtotime($sorUcList->date)) }}</td>
-                                    <td>{{ ($sorUcList->status == 1) ? 'Approved' : (($sorUcList->status == 2) ? 'Returned by NHQ' : '') }}</td>
+                                    <td
+                                    class="{{ ($sorUcList->status == 1) ? 'approved' : (($sorUcList->status == 2) ? 'returned_by_nhq' : 'pending') }}">
+                                    <a href="#" class="action_btn mr_10" data-bs-toggle="modal"
+                                        data-bs-target="#soe_uc_form_{{ $sorUcList->id }}">{{ ($sorUcList->status == 1) ? "Approved" : (($sorUcList->status == 2) ? 'Returned by NHQ' : 'Awaiting') }}</a>
+                                    </td>
                                     <td>{{ $sorUcList->reason ?? 'N/A' }}</td>
                                 </tr>
                                 @endforeach

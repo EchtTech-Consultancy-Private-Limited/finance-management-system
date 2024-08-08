@@ -22,7 +22,8 @@
             </div>
         </div>
     </div>
-    <div class="white_card card_height_100 mb_30">
+    <div class="white_card card_height_100 mb_30 position-relative" id="institute_view_soe">
+    <button class="dt-button buttons-print soe-print-button" type="button" onclick="printDiv('institute_view_soe')"><span> <i class="fa fa-print"></i></span></button>
 
         <div class="white_card_body">
             <div class="card-body pb-5">

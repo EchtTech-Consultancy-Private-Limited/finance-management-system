@@ -711,7 +711,7 @@ function nationalPmabhimsssUcFormTotalChart(UcUploadDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -775,7 +775,7 @@ function nationalPmabhimsssUcFormTotalChart(UcUploadDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",
@@ -850,7 +850,7 @@ function nationalPmabhimsssUcFormTotalChart(UcUploadDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -920,7 +920,7 @@ function nationalPmabhimsssUcFormTotalChart(UcUploadDetails){
                 },
             },
         },
-        colors: ["#b64926", "#eeece1"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",

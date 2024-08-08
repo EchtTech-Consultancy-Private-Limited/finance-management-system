@@ -198,7 +198,7 @@
                     <div class="total-card-child d-flex align-items-center justify-content-center">
                         <h3 class="text-center total_number_of_institute">
                             <span>{{ $totalSum }}</span>
-                            <span class=""> Total Number <br> of Institute</span>
+                            <span class=""> Total Number <br> of Institutes</span>
 
                         </h3>
                     </div>
@@ -214,7 +214,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Fund Approved <br> (in Lakh.)
+                            Fund Approved <br> (in Lakh)
                         </h3>
                         <span class="fund-number">
                             {{ @$totalArray['unspentBalance1stTotal'] }}
@@ -225,7 +225,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Fund Expenditure <br> (in Lakh.)
+                            Fund Expenditure <br> (in Lakh)
                         </h3>
                         <span class="fund-number">
                             {{ @$totalArray['actualExpenditureTotal'] }}
@@ -245,7 +245,7 @@
                 <div class="col-md-3">
                     <div class="fund-card-child white_card">
                         <h3>
-                            Balance Amount <br> (in Lakh.)
+                            Balance Amount <br> (in Lakh)
                         </h3>
                         <span class="fund-number">
                             15%
@@ -262,7 +262,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Expenditure in Lakh.</h3>
+                                <h3 class="m-0">Total Expenditure in Lakh</h3>
                             </div>
 
                         </div>
@@ -280,7 +280,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Total Fund unspent in Lakh.</h3>
+                                <h3 class="m-0">Total Fund unspent in Lakh</h3>
                             </div>
 
                         </div>
@@ -423,7 +423,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Committed Liabilities <br> in %</h3>
+                                <h3 class="m-0">Committed Liabilities <br> in Lakh</h3>
                             </div>
 
                         </div>
@@ -482,6 +482,9 @@
     </div>
     <div class="col-xl-12  meter-graph user_crm_wrapper">
         <div class="crad white_card mb_30 p-4">
+           <div class="page_title_left d-flex align-items-center justify-content-center mb-4">
+                <h3 >UC</h3>
+            </div>
             <div>
                 <form action="" class="select-form-s">
                     <div class="row">
@@ -568,7 +571,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
+                    <div class="">
+                    
+                        <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
+                    </div>
                 </div>
             </div>
 
@@ -586,6 +592,7 @@
                                 <tr>
                                     <th scope="col">QTR UC</th>
                                     <th scope="col">Program</th>
+                                    <th scope="col">Institute</th>
                                     <th>Year of UC</th>
                                     <th>UC File Upload</th>
                                     <th>UC Uploaded Date</th>
@@ -598,6 +605,7 @@
                                 <tr>
                                     <td>{{ @$sorUcList->qtr_uc }}</td>
                                     <td>{{ @$sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
+                                    <td>{{ @$sorUcList->institute->name }}</td>
                                     <td>{{ @$sorUcList->financial_year }}</td>
                                     <td>
                                         @if ($sorUcList->file)
@@ -827,7 +835,7 @@
                         <div class="col-md-12">
                             <div class="graph-container white_card border border-1 mb-0 p-3">
 
-                                <div id="integrated-dashboard-state-graph" class=""></div>
+                                {{-- <div id="integrated-dashboard-state-graph" class=""></div> --}}
                             </div>
                         </div>
                     </div>
@@ -842,6 +850,9 @@
     </div>
     <div class="col-xl-12 ">
         <div class="white_card   mb_30 p-4">
+          <div class="page_title_left d-flex align-items-center justify-content-center mb-4">
+                <h3>Program wise Expenditure</h3>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="crad  mb_30">

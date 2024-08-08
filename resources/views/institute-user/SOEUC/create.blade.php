@@ -94,7 +94,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4 mb-4">
-                            <label class="form-label" for="inputAddress2"> Finance/Accounts officer Email</label>
+                            <label class="form-label" for="inputAddress2"> Finance/Accounts officer Email<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="finance_account_officer_email"
                                 value="{{ old('finance_account_officer_email' , @$soeFormData->finance_account_officer_email) }}" id="inputAddress2"
                                 placeholder="Email">
@@ -110,6 +110,10 @@
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
+
+
+
+                        
                         <div class="col-md-4 mb-4">
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Mobile<span
                                     class="text-danger">*</span></label>
@@ -121,7 +125,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4 mb-4">
-                            <label class="form-label" for="inputAddress2">Nodal/Program Officer Email</label>
+                            <label class="form-label" for="inputAddress2">Nodal/Program Officer Email<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer_email"
                                 value="{{ old('nadal_officer_email', @$soeFormData->nadal_officer_email) }}" id="inputAddress2" placeholder="Email">
                         </div>
@@ -141,7 +145,7 @@
                         @enderror
                     </div> --}}
                     <div class="col-md-4 mb-4">
-                        <label class="form-label" for="inputAddress2">Month</label>
+                        <label class="form-label" for="inputAddress2">Month<span class="text-danger">*</span></label>
                         <select id="soe_form_month" class="form-control" name="month">
                             <option value="">Select Month</option>
                             @foreach ($financialYearMonths as $key => $month)

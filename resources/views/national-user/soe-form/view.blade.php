@@ -12,14 +12,15 @@
 @section('content')
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
-        <div class="white_card_header">
+        <div class="white_card_header position-relative">
             <div class="box_header m-0">
                 <div class="main-title">
                     <h3 class="m-0">Statement of Expenditure (SOE) View</h3>
+                    <button class="dt-button buttons-print soe-print-button" type="button" onclick="printDiv('view_soe')"><span> <i class="fa fa-print"></i></span></button>
                 </div>
             </div>
         </div>
-        <div class="white_card_body">
+        <div class="white_card_body" id="view_soe">
             <div class="card-body pb-5">
                 <div class="row mb-3">
                     <div class="col-md-6">                       
@@ -148,12 +149,12 @@
                                     @endif
                                 @endforeach
                             @endif
-                        </tbody>
+                        
 
-                        <tfoot>
+                       
                             @foreach($soeForm->SoeUcFormCalculation as $key => $value)
                                 @if($value->head == "Grand Total")
-                                    <tr>
+                                    <tr class="t-foot">
                                         <th>
                                             Grand Total
                                         </th>
@@ -191,10 +192,9 @@
                                     </tr>
                                 @endif
                             @endforeach
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
