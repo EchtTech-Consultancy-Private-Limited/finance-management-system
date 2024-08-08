@@ -1600,9 +1600,9 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                     verticalAlign: 'bottom'
                 }
             },
-            // legend: {
-            //     enabled: false 
-            // },
+            legend: {
+                enabled: false 
+            },
             colorAxis: {
                 min: 0,
                 // max: 100,
