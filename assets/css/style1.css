@@ -12789,7 +12789,7 @@ ul.bullet-list li {
 }
 
 .expenditure-bar-chart-box {
-    background: linear-gradient(90deg, #db971d 70%, transparent);
+    background: linear-gradient(90deg, #00b050 70%, transparent) ;
     /* padding: 15px; */
     border-radius: 60px 0 0 60px;
     color: #fff;
@@ -12805,7 +12805,7 @@ ul.bullet-list li {
     align-items: center;
     justify-content: center;
     padding: 11px;
-    background: #f49e04;
+    background: #00b050;
 }
 
 .expenditure-bar-chart-box-child1 img {
@@ -12836,14 +12836,14 @@ ul.bullet-list li {
 }
 
 .expenditure-bar-chart-box.unspent-bar-chart-box {
-    background: linear-gradient(90deg, #00b050 70%, transparent);
+    background: linear-gradient(90deg, #db971d 70%, transparent);
     /* padding: 15px; */
     border-radius: 60px 0 0 60px;
     color: #fff;
 }
 
 .expenditure-bar-chart-box.unspent-bar-chart-box .expenditure-bar-chart-box-child1 {
-    background: #00b050;
+    background: #f49e04;
 }
 
 .expenditure-bar-chart-box.unspent-bar-chart-box .expenditure-bar-chart-box-child1 img {
@@ -13429,10 +13429,14 @@ button.dt-button.buttons-print  i{
 button.dt-button.buttons-print:hover,
 button.dt-button.buttons-print:focus {
     background: #7a3bf9;
-    border: 0;
     color: #fff;
-    font-size: 16px;
-    padding: 4px 11px;
+    padding: 9px 9px;
+    border: 0;
+}
+@media print {
+    .dt-button.buttons-print.soe-print-button {
+        display: none;
+    }
 }
 
 .dataTables_wrapper .dataTables_filter input {
