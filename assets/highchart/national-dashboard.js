@@ -1420,7 +1420,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#f49e04", "#00b050"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1565,7 +1565,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#f49e04", "#00b050"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
