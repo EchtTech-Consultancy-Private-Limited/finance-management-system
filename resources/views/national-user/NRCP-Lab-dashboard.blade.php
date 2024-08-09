@@ -116,7 +116,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Overall Head Expenditure</h3>
+                                <h3 class="m-0">Overall Head Expenditure in Lakhs</h3>
                             </div>
                         </div>
                     </div>
