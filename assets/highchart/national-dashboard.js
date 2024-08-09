@@ -342,7 +342,7 @@ function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,total
         },
         plotOptions: {
             pie: {
-                colors: ['#00b050', '#f79646'],
+                colors: ['#f79646', '#00b050'],
                 dataLabels: {
                     enabled: true,
                     distance: -50,
@@ -1420,7 +1420,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#00b050", "#f49e04"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",
@@ -1565,7 +1565,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#00b050", "#f49e04"],
+        colors: ["#f49e04", "#00b050"],
         series: [
             {
                 type: "pie",

@@ -14,10 +14,6 @@
     <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
         <div class="page_title_left d-flex align-items-center">
             <h3 class="f_s_25 f_w_700 dark_text mr_30">Statement of Expenditure (SOE) View</h3>
-            <button class="buttons-print float-right" type="button"
-                onclick="printDiv('institute_view_soe')"><span> <i
-                class="fa fa-print"></i></span>
-            </button>
         </div>
         <div class="page_title_right">
             <div class="page_date_button d-flex align-items-center">
@@ -26,7 +22,8 @@
             </div>
         </div>
     </div>
-    <div class="white_card card_height_100 mb_30" id="institute_view_soe">
+    <div class="white_card card_height_100 mb_30 position-relative" id="institute_view_soe">
+    <button class="dt-button buttons-print soe-print-button" type="button" onclick="printDiv('institute_view_soe')"><span> <i class="fa fa-print"></i></span></button>
 
         <div class="white_card_body">
             <div class="card-body pb-5">
