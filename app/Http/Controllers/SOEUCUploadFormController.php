@@ -60,6 +60,7 @@ class SOEUCUploadFormController extends Controller
         $request->validate([
             'qtr_uc' => 'required',
             'program_id' => 'required',
+            'institute_id' => 'required',
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
@@ -146,6 +147,7 @@ class SOEUCUploadFormController extends Controller
         $request->validate([
             'qtr_uc' => 'required',
             'program_id' => 'required',
+            'institute_id' => 'required',
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',

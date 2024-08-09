@@ -391,8 +391,9 @@ class SOEUCFormController extends Controller
     public function report()
     {
         $programs = InstituteProgram::get();
+        $institutes = Institute::get();
         $sorUcLists = SOEUCUploadForm::with('users')->where('user_id', Auth::id())->get();
-        return view('institute-user.report',compact('programs','sorUcLists'));
+        return view('institute-user.report',compact('programs','sorUcLists','institutes'));
     }
     
     /**
@@ -436,13 +437,17 @@ class SOEUCFormController extends Controller
         if(!empty($request->program_id)){
             $query->where('program_id', $request->program_id);
         }
+        if(!empty($request->institute_id)){
+            $query->where('institute_id', $request->institute_id);
+        }
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }
         if ($request->modulename == '2') {
             $sorUcLists = $query->get();
             $programs = InstituteProgram::get();
-            return view('institute-user.report',compact('programs','sorUcLists'));
+            $institutes = Institute::get();
+            return view('institute-user.report',compact('programs','sorUcLists','institutes'));
         }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');

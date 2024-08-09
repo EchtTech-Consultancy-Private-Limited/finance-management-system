@@ -514,9 +514,8 @@
                                     maxlength="5" oninput="validateInput(this)" readonly=""></td>
                         </tr>
                         @endif
-                    </tbody>
-                    <tfoot>
-                        <tr>
+                    
+                        <tr class="t-foot">
                             <th>
                                 Grand Total
 
@@ -568,7 +567,7 @@
                                     id="manpower-A" value="{{ old('unspent_balance_31st.7') }}" readonly>
                             </th>
                         </tr>
-                    </tfoot>
+                        </tbody>
                 </table>
             </div>
             <div class="float-end">

@@ -730,6 +730,14 @@ class DashboardController extends Controller
             $UcFormCount = $UcUploadMap->whereHas('users', function ($query) use ($state) {
                 $query->where('state_id', $state->id);
             })->count();
+
+            $stateInstituteCount = User::where('state_id', $state->id)
+                ->whereNotNull('institute_id')
+                ->pluck('institute_id')
+                ->map(function ($instituteIds) {
+                    return count(explode(',', $instituteIds));
+                })->sum();
+
             
             $soeucFormData = isset($aggregatedData[$state->id]) ? $aggregatedData[$state->id] : [
                 'gia_received_total' => 0,
@@ -744,6 +752,7 @@ class DashboardController extends Controller
             $UcFormstateDetails[] = [
                 'hc-key' => $state->name,
                 'value' => $UcFormCount,
+                'state_institute' =>$stateInstituteCount,
                 'gia_received_total' => $soeucFormData['gia_received_total'],
                 'committed_liabilities_total' => $soeucFormData['committed_liabilities_total'],
                 'total_balance_total' => $soeucFormData['total_balance_total'],
@@ -751,9 +760,8 @@ class DashboardController extends Controller
                 'unspent_balance_1st_total' => $soeucFormData['unspent_balance_1st_total'],
                 'unspent_balance_last_total' => $soeucFormData['unspent_balance_last_total'],
                 'unspent_balance_31st_total' => $soeucFormData['unspent_balance_31st_total'],
-            ];
+            ];            
         }
-
         return response()->json(['totalArray' => $totalArray, 'UcFormstateDetails' => $UcFormstateDetails], 200);
     }
 
@@ -951,8 +959,9 @@ class DashboardController extends Controller
     public function report()
     {
         $programs = InstituteProgram::get();
+        $institutes = Institute::get();
         $sorUcLists = SOEUCUploadForm::with('users')->get();
-        return view('national-user.report',compact('programs','sorUcLists'));
+        return view('national-user.report',compact('programs','sorUcLists','institutes'));
     }
     
     /**
@@ -996,13 +1005,17 @@ class DashboardController extends Controller
         if(!empty($request->program_id)){
             $query->where('program_id', $request->program_id);
         }
+        if(!empty($request->institute_id)){
+            $query->where('institute_id', $request->institute_id);
+        }
         if (!empty($request->startdate) && !empty($request->enddate)) {
             $query->whereBetween('created_at', [$start_date, $end_date]);
         }
         if ($request->modulename == '2') {
             $sorUcLists = $query->get();
             $programs = InstituteProgram::get();
-            return view('national-user.report',compact('programs','sorUcLists'));
+            $institutes = Institute::get();
+            return view('national-user.report',compact('programs','sorUcLists','institutes'));
         }
         $arrays = [$query->get()->toArray()];
         return Excel::download(new InstituteUserExport($arrays), Carbon::now()->format('d-m-Y') . '-' . $fileName . '.xlsx');
