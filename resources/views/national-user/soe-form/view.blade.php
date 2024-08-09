@@ -91,7 +91,7 @@
                             <tr class="table-color-th">
                                 <th></th>
                                 <th>A</th>
-                                {{-- <th></th> --}}                            
+                                {{-- <th></th> --}}
                                 <th>B</th>
                                 <th>C</th>
                                 <th>D=(B+C)</th>
