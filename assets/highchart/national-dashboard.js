@@ -1151,7 +1151,7 @@ function expenditureBarChart(programUserDetailsArray){
                 text: `${percentageExpenditure}%`,
                 align: "center",
                 verticalAlign: "middle",
-                y: 60,
+                y: 40,
                 style: {
                     fontSize: "16px",
                     color: "#000",
@@ -1687,13 +1687,16 @@ function allFormMapFilter(totalData,mapDetails){
                 },
             },
             colorAxis: {
-                min: 0,
+                //min: 0,
                 // max: 100,
                 minColor: "#fcad95",
                 maxColor: "#ab4024",
                 labels: {
                     format: "{value}",
                 },
+            },
+            legend:{
+                enabled:false,
             },
             series: [
                 {

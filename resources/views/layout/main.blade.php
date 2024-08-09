@@ -115,11 +115,11 @@
                        </div>
                        @endif
                         <div class="profile_info">
-                           <img src="{{ asset('assets/img/client_img.png') }}" alt="#">
+                           <img src="{{ asset('assets/img/client1.jpg') }}" alt="#">
                            <div class="profile_info_iner">
                               <div class="profile_author_name">
                                  <div class="profile_img">
-                                    <img src="{{ asset('assets/img/client_img.png') }}" alt>
+                                    <img src="{{ asset('assets/img/client1.jpg') }}" alt>
                                  </div>
                                  <div class="profile_img">
                                     <p>@if(isset(Auth::user()->user_type) && Auth::user()->user_type ==0) National User @elseif(isset(Auth::user()->user_type) && Auth::user()->user_type ==1) Institute User @else Admin @endif </p>

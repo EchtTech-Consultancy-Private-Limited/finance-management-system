@@ -125,6 +125,17 @@
                </a>
             </li>
             <li class>
+               <a class="has-arrow" href="#" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <!-- <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt> -->
+                     <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="nav_title">
+                     <span>Program List</span>
+                  </div>
+               </a>
+               <ul>
+               <li class>
                <a class="" href="{{ route('national-user.nohppczrcs') }}" aria-expanded="false">
                   <div class="nav_icon_small">
                   <i class="fas fa-school"></i>
@@ -194,6 +205,9 @@
                   <li><a href="#">List</a></li>
                </ul> -->
             </li>
+               </ul>
+            </li>
+            
             <li class=>
                <a href="{{ route('national-user.report') }}" aria-expanded="false">
                   <div class="nav_icon_small">

@@ -16,7 +16,7 @@
         <div class="white_card_header ps-2">
             <div class="box_header m-0">
                 <div class="main-title">
-                    <h3 class="m-0">Statement of Expenditure (SOE) List</h3>
+                    <h3 class="m-0">Utilization Certificate (UC) List</h3>
                 </div>
             </div>
         </div>

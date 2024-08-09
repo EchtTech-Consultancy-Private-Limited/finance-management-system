@@ -14,7 +14,7 @@
 <div class="col-lg-12">
     <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
         <div class="page_title_left d-flex align-items-center">
-            <h3 class="f_s_25 f_w_700 dark_text mr_30">UC Upload List</h3>
+            <h3 class="f_s_25 f_w_700 dark_text mr_30">Utilization Certificate (UC) List</h3>
 
         </div>
         <div class="page_title_right">
