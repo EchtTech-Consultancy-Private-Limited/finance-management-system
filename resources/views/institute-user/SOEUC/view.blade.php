@@ -79,11 +79,11 @@
                             <tr class="table-color-head">
                                 <th>Heads</th>
                                 <th>Sanction Order Nos.</th>
-                                {{-- <th>Previous Month Expenditure</th> --}}
-                                <th>Expenditure Till Last Month</th>
+                                {{-- <th>Previous Month Expenditure</th> --}}                                
                                 <th>Unspent Balance (GIA) as on 1st April</th>
                                 <th>GIA Received in F.Y</th>
                                 <th>Total Balance excluding interest</th>
+                                <th>Expenditure Till Last Month</th>
                                 <th>Actual Expenditure incurred during the current month</th>
                                 <th>Total Expenditure Till date</th>
                                 <th>Unspent Balance as on 31st March</th>
@@ -94,11 +94,11 @@
                             <tr class="table-color-th">
                                 <th></th>
                                 <th>A</th>
-                                {{-- <th></th> --}}
-                                <th></th>
+                                {{-- <th></th> --}}                                
                                 <th>B</th>
                                 <th>C</th>
                                 <th>D=(B+C)</th>
+                                <th></th>
                                 <th>E</th>
                                 <th></th>
                                 <th>F=(D-E)</th>
@@ -121,10 +121,7 @@
                                 @endif
                                 {{-- <td>
                                     <p>{{ $final_data[$value->head][0] ?? '' }}</p>
-                                </td> --}}
-                                <td>
-                                    <p>{{ $final_data[$value->head][1] ?? '0' }}</p>
-                                </td>
+                                </td> --}}                                
                                 <td>
                                     <p>{{ $value->unspent_balance_1st }}</p>
                                 </td>
@@ -133,6 +130,9 @@
                                 </td>
                                 <td>
                                     <p>{{ $value->total_balance }}</p>
+                                </td>
+                                <td>
+                                    <p>{{ $final_data[$value->head][1] ?? '0' }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $value->actual_expenditure }}</p>
@@ -161,10 +161,7 @@
                                 </th>
                                 <th class="grandTotal-A"></th>
                                 {{-- <th class="grandTotal-B">
-                                </th> --}}
-                                <th class="grandTotal-B">
-                                    <p>{{ $final_data[$value->head][2] ?? 'N/A' }}</p>
-                                </th>
+                                </th> --}}                                
                                 <th class="grandTotal-B">
                                     <p>{{ $value->unspent_balance_1st }}</p>
                                 </th>
@@ -173,6 +170,9 @@
                                 </th>
                                 <th class="grandTotal-D">
                                     <p>{{ $value->total_balance }}</p>
+                                </th>
+                                <th class="grandTotal-B">
+                                    <p>{{ $final_data[$value->head][2] ?? '0' }}</p>
                                 </th>
                                 <th class="grandTotal-E">
                                     <p>{{ $value->actual_expenditure }}</p>
