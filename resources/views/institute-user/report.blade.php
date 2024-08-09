@@ -26,8 +26,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label class="form-label" for="inputAddress2">Program</label>
-                            <select id="program" class="form-control" name="program_id">
+                            <label class="form-label" for="inputAddress2">Program<span class="text-danger">*</span></label>
+                            <select id="program" class="form-control filter_program_id" name="program_id">
                                 <option value="">Select Program</option>
                                 @foreach($programs as $program)
                                 <option value="{{ $program->id }}" {{  request('program_id') == $program->id ? 'selected' : '' }}>{{ $program->name }} - {{ $program->code }}</option>
@@ -38,6 +38,17 @@
                             @enderror
                         </div>
                         <div class="col-md-3">
+                            <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes </b></label>
+                            <select name="institute_id"
+                                class="form-control national_institute_name national_ucForm_filter"
+                                id="national_institute_name">
+                                <option value="">Select Institute</option>
+                                @foreach($institutes as $institute)
+                                <option value="{{ $institute->id }}" {{  request('institute_id') == $institute->id ? 'selected' : '' }}>{{ $institute->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2">
                             <label for="state" class="form-label">Module<span class="text-danger">*</span></label>
                                 <select class="form-control"  name="modulename" id="form_type">
                                 <option value="">Select Module</option>
@@ -48,7 +59,7 @@
                                 <span class="form-text text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-lg-3 col-md-3 col-6">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label class="form-label" for="district">From Date</label>
                                 <input type="date" name="startdate" value="{{ request('startdate') }}" class="form-control">
@@ -57,7 +68,7 @@
                                 @enderror 
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-6">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label class="form-label" for="fromYear">To Date</label>
                                 <input type="date" name="enddate" value="{{ request('enddate') }}" class="form-control">

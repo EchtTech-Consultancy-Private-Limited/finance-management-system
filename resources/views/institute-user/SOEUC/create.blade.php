@@ -68,7 +68,7 @@
                                 @endif
                                 @endforeach
                             </select>
-                            @error('institute_name')
+                            @error('institute_id')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
@@ -98,6 +98,9 @@
                             <input type="text" class="form-control" name="finance_account_officer_email"
                                 value="{{ old('finance_account_officer_email' , @$soeFormData->finance_account_officer_email) }}" id="inputAddress2"
                                 placeholder="Email">
+                                @error('finance_account_officer_email')
+                                <span class="text-danger error">{{ $message }}</span>
+                                @enderror
                         </div>
                   
                         <div class="col-md-4 mb-4">
@@ -128,6 +131,9 @@
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Email<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer_email"
                                 value="{{ old('nadal_officer_email', @$soeFormData->nadal_officer_email) }}" id="inputAddress2" placeholder="Email">
+                                @error('nadal_officer_email')
+                                <span class="text-danger error">{{ $message }}</span>
+                                @enderror
                         </div>
                    
                         {{-- <div class="col-md-4 mb-4">
@@ -508,9 +514,8 @@
                                     maxlength="5" oninput="validateInput(this)" readonly=""></td>
                         </tr>
                         @endif
-                    </tbody>
-                    <tfoot>
-                        <tr>
+                    
+                        <tr class="t-foot">
                             <th>
                                 Grand Total
 
@@ -562,7 +567,7 @@
                                     id="manpower-A" value="{{ old('unspent_balance_31st.7') }}" readonly>
                             </th>
                         </tr>
-                    </tfoot>
+                        </tbody>
                 </table>
             </div>
             <div class="float-end">

@@ -153,12 +153,9 @@
                             @endif
                             @endforeach
                             @endif
-                        </tbody>
-
-                        <tfoot>
                             @foreach($soeForm->SoeUcFormCalculation as $key => $value)
                             @if($value->head == "Grand Total")
-                            <tr>
+                            <tr class="t-foot">
                                 <th>
                                     Grand Total
                                 </th>
@@ -195,7 +192,7 @@
                             </tr>
                             @endif
                             @endforeach
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
 
