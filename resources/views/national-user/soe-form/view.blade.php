@@ -88,7 +88,6 @@
                                 <th>Committed Liabilities (if any)</th>
                                 <th>Unspent Balance after Committed Liabilities as on 31st March</th>
                             </tr>
-
                             <tr class="table-color-th">
                                 <th></th>
                                 <th>A</th>
@@ -96,12 +95,12 @@
                                 <th>B</th>
                                 <th>C</th>
                                 <th>D=(B+C)</th>
-                                <th></th>
                                 <th>E</th>
-                                <th>F=(D-E)</th>
-                                <th></th>
-                                <th>G</th>
-                                <th>H=(F-G)</th>
+                                <th>F</th>
+                                <th>G=(E+F)</th>
+                                <th>H=(D-F)</th>
+                                <th>I</th>
+                                <th>J=(H-I)</th>
                             </tr>
                         </thead>
                         <tbody>
