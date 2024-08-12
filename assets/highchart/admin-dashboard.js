@@ -476,7 +476,8 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
                     showInLegend: true,
                     center: ["50%", "50%"],
                     size: "90%",
-                    borderWidth: 0,
+                    borderWidth: 2, // Set the border width
+                    borderColor: "#ddd", // Set the border color
                     shadow: false,
                     point: {
                         events: {
