@@ -1151,7 +1151,7 @@ function expenditureBarChart(programUserDetailsArray){
                 text: `${percentageExpenditure}%`,
                 align: "center",
                 verticalAlign: "middle",
-                y: 60,
+                y: 40,
                 style: {
                     fontSize: "16px",
                     color: "#000",
@@ -1420,7 +1420,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#f49e04", "#00b050"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1565,7 +1565,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
                 },
             },
         },
-        colors: ["#f49e04", "#00b050"],
+        colors: ["#00b050", "#f49e04"],
         series: [
             {
                 type: "pie",
@@ -1687,13 +1687,16 @@ function allFormMapFilter(totalData,mapDetails){
                 },
             },
             colorAxis: {
-                min: 0,
+                //min: 0,
                 // max: 100,
                 minColor: "#fcad95",
                 maxColor: "#ab4024",
                 labels: {
                     format: "{value}",
                 },
+            },
+            legend:{
+                enabled:false,
             },
             series: [
                 {
@@ -1711,6 +1714,7 @@ function allFormMapFilter(totalData,mapDetails){
                         pointFormatter: function() {
                             return '' +
                                 this.name + '<br/>' +
+                                'Total Institute: ' + this.state_institute + '<br/>' +
                                 'UC Form Count: ' + this.value + '<br/>' +
                                 'GIA Received Total: ' + this.gia_received_total + '<br/>' +
                                 'Committed Liabilities Total: ' + this.committed_liabilities_total + '<br/>' +

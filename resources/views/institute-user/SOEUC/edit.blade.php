@@ -169,11 +169,11 @@
                         <tr class="table-color-head">
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
-                            {{-- <th>Previous Month Expenditure</th> --}}
-                            <th>Expenditure Till Last Month</th>
+                            {{-- <th>Previous Month Expenditure</th> --}}                            
                             <th>Unspent Balance (GIA) as on 1st April</th>
                             <th>GIA Received in F.Y</th>
                             <th>Total Balance excluding interest</th>
+                            <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
                             <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
@@ -184,16 +184,16 @@
                         <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
-                            {{-- <th></th> --}}
-                            <th></th>
+                            {{-- <th></th> --}}                            
                             <th>B</th>
                             <th>C</th>
                             <th>D=(B+C)</th>
                             <th>E</th>
-                            <th></th>
-                            <th>F=(D-E)</th>
-                            <th>G</th>
-                            <th>H=(F-G)</th>
+                            <th>F</th>
+                            <th>G=(E+F)</th>
+                            <th>H=(D-F)</th>
+                            <th>I</th>
+                            <th>J=(H-I)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -216,12 +216,7 @@
                                     value="{{ $final_data[$value->head][0] ?? '' }}" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)"
                                     readonly>
-                            </td> --}}
-                            <td>
-                                <input type="text" name="previous_month_total[]"
-                                    value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control manpower-J"
-                                    id="previous_month_total" maxlength="5" oninput="validateInput(this)" readonly>
-                            </td>
+                            </td> --}}                            
                             <td>
                                 <input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                     maxlength="5" oninput="validateInput(this)"
@@ -234,6 +229,11 @@
                             <td>
                                 <input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
                                     oninput="validateInput(this)" readonly value="{{ $value->total_balance }}">
+                            </td>
+                            <td>
+                                <input type="text" name="previous_month_total[]"
+                                    value="{{ $final_data[$value->head][1] ?? '' }}" class="form-control manpower-J"
+                                    id="previous_month_total" maxlength="5" oninput="validateInput(this)" readonly>
                             </td>
                             <td>
                                 <input type="text" name="actual_expenditure[]" class="form-control manpower-E"
@@ -263,12 +263,10 @@
                         @endif
                         @endforeach
                         @endif
-                    </tbody>
-
-                    <tfoot>
+                    
                         @foreach($soeForm->SoeUcFormCalculation as $key => $value)
                         @if($value->head == "Grand Total")
-                        <tr>
+                        <tr class="t-foot">
                             <th>
                                 Grand Total
                                 <input type="hidden" name="id[]" value="{{ $value->id }}">
@@ -278,13 +276,7 @@
                             {{-- <th class="grandTotal-B">
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
-                            </th> --}}
-                            <th class="grandTotal-B">
-                                <input type="text" name="previous_month_total[]" class="form-control"
-                                    id="manpower-A"
-                                    value="{{ old('previous_month_total.7', $final_data[$value->head][2] ?? '') }}"
-                                    readonly>
-                            </th>
+                            </th> --}}                            
                             <th class="grandTotal-B">
                                 <input type="text" name="unspent_balance_1st[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ $value->unspent_balance_1st }}" readonly>
@@ -296,6 +288,12 @@
                             <th class="grandTotal-D">
                                 <input type="text" name="total_balance[]" class="form-control grandTotal-D"
                                     id="manpower-A" value="{{ $value->total_balance }}" readonly>
+                            </th>
+                            <th class="grandTotal-B">
+                                <input type="text" name="previous_month_total[]" class="form-control"
+                                    id="manpower-A"
+                                    value="{{ old('previous_month_total.7', $final_data[$value->head][2] ?? '') }}"
+                                    readonly>
                             </th>
                             <th class="grandTotal-E">
                                 <input type="text" name="actual_expenditure[]" class="form-control grandTotal-E"
@@ -321,7 +319,7 @@
                         </tr>
                         @endif
                         @endforeach
-                    </tfoot>
+                    </tbody>
                 </table>
             </div>
 

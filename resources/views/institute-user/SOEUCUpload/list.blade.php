@@ -14,7 +14,7 @@
 <div class="col-lg-12">
     <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
         <div class="page_title_left d-flex align-items-center">
-            <h3 class="f_s_25 f_w_700 dark_text mr_30">UC Upload List</h3>
+            <h3 class="f_s_25 f_w_700 dark_text mr_30">Utilization Certificate (UC) List</h3>
 
         </div>
         <div class="page_title_right">
@@ -34,6 +34,7 @@
                                 <th scope="col">Sr. No.</th>
                                 <th scope="col">QTR UC</th>
                                 <th scope="col">Program</th>
+                                <th scope="col">Institute</th>
                                 <th scope="col">Year of UC</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">UC File Upload</th>
@@ -49,6 +50,7 @@
                                 <th scope="row">{{ @$loop->iteration }}</th>
                                 <td>{{ $sorUcList->qtr_uc }}</td>
                                 <td>{{ $sorUcList->program->name }} - {{ $sorUcList->program->code }}</td>
+                                <td>{{ $sorUcList->institute->name }}</td>
                                 <td>{{ $sorUcList->financial_year }}</td>
                                 <td>{{ $sorUcList->month }}</td>
                                 <td>

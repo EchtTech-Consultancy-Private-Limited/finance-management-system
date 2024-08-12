@@ -68,7 +68,7 @@
                                 @endif
                                 @endforeach
                             </select>
-                            @error('institute_name')
+                            @error('institute_id')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
@@ -98,6 +98,9 @@
                             <input type="text" class="form-control" name="finance_account_officer_email"
                                 value="{{ old('finance_account_officer_email' , @$soeFormData->finance_account_officer_email) }}" id="inputAddress2"
                                 placeholder="Email">
+                                @error('finance_account_officer_email')
+                                <span class="text-danger error">{{ $message }}</span>
+                                @enderror
                         </div>
                   
                         <div class="col-md-4 mb-4">
@@ -128,6 +131,9 @@
                             <label class="form-label" for="inputAddress2">Nodal/Program Officer Email<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" name="nadal_officer_email"
                                 value="{{ old('nadal_officer_email', @$soeFormData->nadal_officer_email) }}" id="inputAddress2" placeholder="Email">
+                                @error('nadal_officer_email')
+                                <span class="text-danger error">{{ $message }}</span>
+                                @enderror
                         </div>
                    
                         {{-- <div class="col-md-4 mb-4">
@@ -183,11 +189,11 @@
                         <tr class="table-color-head">
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
-                            {{-- <th>Previous Month Expenditure</th> --}}
-                            <th>Expenditure Till Last Month</th>
+                            {{-- <th>Previous Month Expenditure</th> --}}                            
                             <th>Unspent Balance (GIA) as on 1st April</th>
                             <th>GIA Received in F.Y</th>
                             <th>Total Balance excluding interest</th>
+                            <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
                             <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
@@ -198,16 +204,16 @@
                         <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
-                            {{-- <th></th> --}}
-                            <th></th>
+                            {{-- <th></th> --}}                            
                             <th>B</th>
                             <th>C</th>
                             <th>D=(B+C)</th>
                             <th>E</th>
-                            <th></th>
-                            <th>F=(D-E)</th>
-                            <th>G</th>
-                            <th>H=(F-G)</th>
+                            <th>F</th>
+                            <th>G=(E+F)</th>
+                            <th>H=(D-F)</th>
+                            <th>I</th>
+                            <th>J=(H-I)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -228,10 +234,7 @@
                                     value="{{ @$previousTotalMonth['0'] }}" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)"
                                     readonly="">
-                                </td> --}}
-                                <td><input type="text" name="previous_month_total[]" value="{{ @$previousTotalMonth['1'] }}"
-                                        class="form-control manpower-J" id="previous_month_total" maxlength="5"
-                                        oninput="validateInput(this)" readonly=""></td>
+                                </td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"
                                         value="{{ old('unspent_balance_1st.' . $loop->iteration) }}"></td>
@@ -240,6 +243,9 @@
                                 <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
                                         oninput="validateInput(this)" readonly=""
                                         value="{{ old('total_balance.' . $loop->iteration) }}"></td>
+                                <td><input type="text" name="previous_month_total[]" value="{{ @$previousTotalMonth['1'] }}"
+                                                class="form-control manpower-J" id="previous_month_total" maxlength="5"
+                                                oninput="validateInput(this)" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E"
                                         maxlength="5" oninput="validateInput(this)"
                                         value="{{ old('actual_expenditure.'. $loop->iteration) }}"></td>
@@ -269,10 +275,7 @@
                                     rows="16">{{ old('sanction_order') }}</textarea></td>
                             {{-- <td><input type="text" name="previous_month_expenditure[]" class="form-control"
                                     id="previous_month_expenditure" maxlength="5" oninput="validateInput(this)" value=""
-                                    readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]" class="form-control manpower-J"
-                                        id="previous_month_total" maxlength="5" oninput="validateInput(this)" value=""
-                                        readonly=""></td>
+                                    readonly=""></td> --}}                               
                                 <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"
                                         value="{{ old('unspent_balance_1st.0') }}"></td>
@@ -280,6 +283,9 @@
                                         value="{{ old('gia_received.0') }}"></td>
                                 <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
                                         oninput="validateInput(this)" readonly="" value="{{ old('total_balance.0') }}"></td>
+                                <td><input type="text" name="previous_month_total[]" class="form-control manpower-J"
+                                                id="previous_month_total" maxlength="5" oninput="validateInput(this)" value=""
+                                                readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" class="form-control manpower-E"
                                     maxlength="5" oninput="validateInput(this)"
                                     value="{{ old('actual_expenditure.0') }}"></td>
@@ -304,10 +310,7 @@
                             </th>
                             {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.1') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.1') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.1') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -316,6 +319,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.1') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                                value="{{ old('previous_month_total.1') }}" class="form-control manpower-J"
+                                                id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.1') }}"
                                     class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -340,10 +346,7 @@
                                 </th>
                                 {{-- <td><input type="text" name="previous_month_expenditure[]"
                                         value="{{ old('previous_month_expenditure.2') }}" class="form-control"
-                                        id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.2') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                        id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.2') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -352,6 +355,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.2') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                                value="{{ old('previous_month_total.2') }}" class="form-control manpower-J"
+                                                id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.2') }}"
                                         class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -375,10 +381,7 @@
                             </th>
                             {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.3') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.3') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.3') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -387,6 +390,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.3') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                                value="{{ old('previous_month_total.3') }}" class="form-control manpower-J"
+                                                id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.3') }}"
                                         class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -410,10 +416,7 @@
                             </th>
                             {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.4') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.4') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.4') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -422,6 +425,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.4') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                                value="{{ old('previous_month_total.4') }}" class="form-control manpower-J"
+                                                id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.4') }}"
                                         class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -445,10 +451,7 @@
                             </th>
                             {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.5') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.5') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.5') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -457,6 +460,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.5') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                                value="{{ old('previous_month_total.5') }}" class="form-control manpower-J"
+                                                id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.5') }}"
                                         class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -480,10 +486,7 @@
                             </th>
                             {{-- <td><input type="text" name="previous_month_expenditure[]"
                                     value="{{ old('previous_month_expenditure.6') }}" class="form-control"
-                                    id="previous_month_expenditure" readonly=""></td> --}}
-                                <td><input type="text" name="previous_month_total[]"
-                                        value="{{ old('previous_month_total.6') }}" class="form-control manpower-J"
-                                        id="previous_month_total" readonly=""></td>
+                                    id="previous_month_expenditure" readonly=""></td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]"
                                         value="{{ old('unspent_balance_1st.6') }}" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"></td>
@@ -492,6 +495,9 @@
                                 <td><input type="text" name="total_balance[]" value="{{ old('total_balance.6') }}"
                                         class="form-control manpower-D" maxlength="5" oninput="validateInput(this)"
                                         readonly=""></td>
+                                <td><input type="text" name="previous_month_total[]"
+                                        value="{{ old('previous_month_total.6') }}" class="form-control manpower-J"
+                                        id="previous_month_total" readonly=""></td>
                                 <td><input type="text" name="actual_expenditure[]" value="{{ old('actual_expenditure.6') }}"
                                         class="form-control manpower-E" maxlength="5" oninput="validateInput(this)"></td>
                                 <td><input type="text" name="total_expenditure_till_date[]" class="form-control manpower-I"
@@ -508,9 +514,8 @@
                                     maxlength="5" oninput="validateInput(this)" readonly=""></td>
                         </tr>
                         @endif
-                    </tbody>
-                    <tfoot>
-                        <tr>
+                    
+                        <tr class="t-foot">
                             <th>
                                 Grand Total
 
@@ -522,12 +527,7 @@
                             {{-- <th class="grandTotal-B">
                                 <input type="text" name="previous_month_expenditure[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('previous_month_expenditure.7') }}" readonly>
-                            </th> --}}
-                            <th class="grandTotal-J">
-                                <input type="text" name="previous_month_total[]" class="form-control manpower-J"
-                                    id="manpower-A"
-                                    value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>
-                            </th>
+                            </th> --}}                            
                             <th class="grandTotal-B">
                                 <input type="text" name="unspent_balance_1st[]" class="form-control grandTotal-B"
                                     id="manpower-A" value="{{ old('unspent_balance_1st.7') }}" readonly>
@@ -539,6 +539,11 @@
                             <th class="grandTotal-D">
                                 <input type="text" name="total_balance[]" class="form-control grandTotal-D"
                                     id="manpower-A" value="{{ old('total_balance.7') }}" readonly>
+                            </th>
+                            <th class="grandTotal-J">
+                                <input type="text" name="previous_month_total[]" class="form-control manpower-J"
+                                    id="manpower-A"
+                                    value="{{ old('previous_month_total.7', @$previousTotalMonth['2']) }}" readonly>
                             </th>
                             <th class="grandTotal-E">
                                 <input type="text" name="actual_expenditure[]" class="form-control grandTotal-E"
@@ -562,7 +567,7 @@
                                     id="manpower-A" value="{{ old('unspent_balance_31st.7') }}" readonly>
                             </th>
                         </tr>
-                    </tfoot>
+                        </tbody>
                 </table>
             </div>
             <div class="float-end">
