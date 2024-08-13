@@ -14025,3 +14025,17 @@ select.form-control option {
 .filter-multi-select > .dropdown-menu{
     max-width: 100% !important;
 }
+/* 
+.sidebar .mm-active ul.mm-collapse {
+    padding: 0 0 5px 20px !important;
+} */
+
+.soe-uc-upload-list tr th:nth-child(4){
+    min-width: 200px;
+}
+.soe-uc-upload-list tr td:nth-child(2), .soe-uc-upload-list tr td:nth-child(3){
+    white-space: nowrap;
+}
+.soe-uc-upload-list tr th:nth-child(4){
+    min-width: 200px;
+}
