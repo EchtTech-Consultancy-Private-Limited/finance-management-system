@@ -178,7 +178,7 @@ class SOEUCUploadFormController extends Controller
             $formType = '2'; //Soe Uc Upload
             $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
             DB::commit();
-            \Toastr::success('The Reconrd has been updated successfully.','Success');
+            \Toastr::success('The Record has been updated successfully.','Success');
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();
@@ -230,7 +230,7 @@ class SOEUCUploadFormController extends Controller
     public function destroy($id)
     {
         SOEUCUploadForm::where('id', $id)->delete();
-        \Toastr::success('The Reconrd has been deleted successfully.','Success');
+        \Toastr::success('The Record has been deleted successfully.','Success');
         return redirect()->back();
     }
 }
