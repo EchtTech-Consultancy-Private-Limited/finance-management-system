@@ -149,7 +149,7 @@ class SOEUCFormController extends Controller
                 $formType = '1'; //Soe Uc Form
                 $this->SendNotificationServices->sendNotification($soeucFormId, $formType, '1', $request->status);
                 DB::commit();
-                \Toastr::success('The Reconrd has been create successfully.','Success');
+                \Toastr::success('The Record has been create successfully.','Success');
                 return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
@@ -339,7 +339,7 @@ class SOEUCFormController extends Controller
             $formType = '1'; //Soe Uc Form
             $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
             DB::commit();
-            \Toastr::success('The Reconrd has been updated successfully.','Success');
+            \Toastr::success('The Record has been updated successfully.','Success');
             return redirect()->route('institute-user.soe-form-list');
         } catch(Exception $e) {
             DB::rollBack();
@@ -379,7 +379,7 @@ class SOEUCFormController extends Controller
     {
         SOEUCForm::where('id', $id)->delete();
         SOEUCFormCalculatin::where('soe_form_id', $id)->delete();
-        \Toastr::success('The Reconrd has been deleted successfully.','Success');
+        \Toastr::success('The Record has been deleted successfully.','Success');
         return redirect()->back();
     }
     
