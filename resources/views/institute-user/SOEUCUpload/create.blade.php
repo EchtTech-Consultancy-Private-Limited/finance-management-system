@@ -14,7 +14,7 @@
 <div class="col-lg-12">
 <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
-                <h3 class="f_s_25 f_w_700 dark_text mr_30">Create UC</h3>
+                <h3 class="f_s_25 f_w_700 dark_text mr_30">Create Utilization Certificate (UC)</h3>
                 <!-- <ol class="breadcrumb page_bradcam mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
@@ -63,7 +63,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label class="form-label" for="inputAddress2">institute<span class="text-danger">*</span></label>
+                            <label class="form-label" for="inputAddress2">Institute<span class="text-danger">*</span></label>
                             <select id="institute" name="institute_id" class="form-control">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $key => $value)

@@ -28,13 +28,13 @@
         <div class="white_card_body">
             <div class="QA_section">
                 <div class="QA_table mb_30">
-                    <table id="datatable" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
+                    <table id="datatable" class="table table-striped table-bordered datatable soe-uc-upload-list" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th scope="col">Sr. No.</th>
                                 <th scope="col">QTR UC</th>
                                 <th scope="col">Program</th>
-                                <th scope="col">Institute</th>
+                                <th scope="col" class="w-25">Institute</th>
                                 <th scope="col">Year of UC</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">UC File Upload</th>

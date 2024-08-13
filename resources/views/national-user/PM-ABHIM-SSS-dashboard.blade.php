@@ -227,7 +227,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-committedLiabilitiesTotal">0
@@ -235,7 +235,7 @@
                         <p>Interest earned in C.Y. </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col">
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
@@ -261,7 +261,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="single_crm border-line-5 p-0">
+                <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
                         </h4>
