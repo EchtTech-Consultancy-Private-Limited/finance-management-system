@@ -58,6 +58,14 @@
 
             <div class="row card-mm">
                 <div class="col">
+                    <div class="single_crm border-line-2 p-0">
+                        <div class="crm_body">
+                            <h4 id="unspentBalance1stTotal">{{ @$totalArray['unspentBalance1stTotal'] }}</h4>
+                            <p>Unspent Balance (GIA) as on Perivious Month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -69,7 +77,7 @@
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                            <p>Total Balance excluding interest</p>
+                            <p>Total Balance</p>
                         </div>
                     </div>
                 </div>                
@@ -89,14 +97,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="single_crm border-line-2 p-0">
                         <div class="crm_body">
                             <h4 id="committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}</h4>
                             <p>Committed Liabilities </p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- **************************** -->
 

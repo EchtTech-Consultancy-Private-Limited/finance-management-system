@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Institute;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Notification;
 use App\Models\User;
@@ -14,6 +16,9 @@ function notifications()
 function senderName($senderId)
 {
     $senderName = User::where('id', $senderId)->first();
+    if(Auth::user()->user_type == 0){
+        $senderName = Institute::where('id', $senderName->institute_id)->first();
+    }
     return $senderName;
 }
 

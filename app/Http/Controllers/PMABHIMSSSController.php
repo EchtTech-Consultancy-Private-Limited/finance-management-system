@@ -111,6 +111,7 @@ class PMABHIMSSSController extends Controller
         
         $finalArray = [];
         foreach ($dataForms as $dataForm) {
+            $grandTotalUnspentBalanceFirst = 0;
             $grandTotalGiaReceived = 0;
             $grandTotalCommittedLiabilities = 0;
             $grandTotalTotalBalance = 0;
@@ -118,6 +119,7 @@ class PMABHIMSSSController extends Controller
             $grandTotalUnspentBalance = 0;
             foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                 if ($formCalculate->head == 'Grand Total') {
+                    $grandTotalUnspentBalanceFirst += (int)$formCalculate->unspent_balance_1st;	
                     $grandTotalGiaReceived += (int)$formCalculate->gia_received;
                     $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
                     $grandTotalTotalBalance += (int)$formCalculate->total_balance;
@@ -126,6 +128,7 @@ class PMABHIMSSSController extends Controller
                 }
             }
             $finalArray[] = [
+                'unspent_balance_1st_total' => $grandTotalUnspentBalanceFirst,
                 'gia_received_total' => $grandTotalGiaReceived,
                 'committed_liabilities_total' => $grandTotalCommittedLiabilities,
                 'total_balance_total' => $grandTotalTotalBalance,
@@ -135,6 +138,7 @@ class PMABHIMSSSController extends Controller
         }
         
         $totalArray = [
+            'unspentBalance1stTotal' => 0,
             'giaReceivedTotal' => 0,
             'committedLiabilitiesTotal' => 0,
             'totalBalanceTotal' => 0,
@@ -143,6 +147,7 @@ class PMABHIMSSSController extends Controller
         ];
         
         foreach ($finalArray as $entry) {
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st_total'];
             $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
             $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
             $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];

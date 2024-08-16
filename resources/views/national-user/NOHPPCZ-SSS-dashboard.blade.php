@@ -231,7 +231,7 @@
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-nohppcz-sss-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                        <p>Total Balance excluding interest</p>
+                        <p>Total Balance</p>
                     </div>
                 </div>
             </div>

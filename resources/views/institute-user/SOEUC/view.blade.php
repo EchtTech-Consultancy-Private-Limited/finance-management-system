@@ -80,9 +80,9 @@
                                 <th>Heads</th>
                                 <th>Sanction Order Nos.</th>
                                 {{-- <th>Previous Month Expenditure</th> --}}                                
-                                <th>Unspent Balance (GIA) as on 1st April</th>
+                                <th>Unspent Balance (GIA) as on Perivious Month</th>
                                 <th>GIA Received in F.Y</th>
-                                <th>Total Balance excluding interest</th>
+                                <th>Total Balance</th>
                                 <th>Expenditure Till Last Month</th>
                                 <th>Actual Expenditure incurred during the current month</th>
                                 <th>Total Expenditure Till date</th>

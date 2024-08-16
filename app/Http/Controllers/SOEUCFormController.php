@@ -57,18 +57,21 @@ class SOEUCFormController extends Controller
         $institutes = Institute::get();
         $previous_month_expenditure = [];
         $previous_month_total = [];
+        $unspent_balance_last = [];
         $final_data = [];
         if ($soeForms) {
             foreach ($soeForms as $soeForm) {
                 if ($soeForm->SoeUcFormCalculation) {
                     foreach ($soeForm->SoeUcFormCalculation as $calculation) {
                         $head = $calculation->head;
+                        $unspentBalanceLast = $calculation->unspent_balance_last;
                         $month = $calculation->previous_month_expenditure;
                         $total = $calculation->previous_month_total;
                         if (!isset($previous_month_expenditure[$head])) {
                             $previous_month_expenditure[$head] = [];
                             $previous_month_total[$head] = 0;
                         }
+                        $previous_month_expenditure[$head]['unspent_balance_last'] = $unspentBalanceLast;
                         $previous_month_expenditure[$head][] = $month;
                         $previous_month_expenditure[$head]['total'][] = $total;
                         $previous_month_total[$head] += $total;
@@ -76,19 +79,22 @@ class SOEUCFormController extends Controller
                 }
             }
         }
+        // dd($previous_month_expenditure);
         foreach ($previous_month_expenditure as $head => $months) {
             $total_str = $previous_month_total[$head];
             if($head == "Grand Total"){
                 $grand_total = $previous_month_total[$head];
             }
+            // dd($months);
             unset($months['total']);
-            $months_str = implode(', ', $months);
-            $final_data[$head] = [
-                $months_str,
+            // $months_str = implode(', ', $months);
+            $final_data[$head] = [               
+                $months['unspent_balance_last'],
                 $total_str,
                 $grand_total ?? '0',
             ];
         }
+        // dd($final_data);
         return view($this->create,compact('financialYearMonths','final_data','soeFormData','institutePrograms','institutes'));
     }
 
@@ -273,7 +279,7 @@ class SOEUCFormController extends Controller
                     $total_str,
                     $grand_total ?? '0',
                 ];
-            }           
+            }
             
             DB::commit();
             return view($this->edit, compact('soeForm', 'financialYearMonths', 'final_data', 'previous_month_expenditure', 'previous_month_total','institutePrograms','institutes'));

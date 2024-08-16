@@ -220,6 +220,16 @@
     <div class="white_card_body col-xl-12  card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
             <div class="col">
+                <div class="single_crm border-line-2 p-0">
+                    <div class="crm_body">
+                        <h4 id="national-ppcllab-unspentBalance1stTotal">
+                            {{ @$totalArray['unspentBalance1stTotal'] }}
+                        </h4>
+                        <p>Unspent Balance (GIA) as on Perivious Month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
                         <h4 id="national-ppcllab-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -231,7 +241,7 @@
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-ppcllab-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                        <p>Total Balance excluding interest</p>
+                        <p>Total Balance</p>
                     </div>
                 </div>
             </div>
@@ -251,7 +261,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-ppcllab-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
@@ -259,7 +269,7 @@
                         <p>Committed Liabilities</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="devider-line">

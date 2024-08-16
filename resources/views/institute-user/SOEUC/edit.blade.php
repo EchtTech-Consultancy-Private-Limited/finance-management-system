@@ -170,9 +170,9 @@
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
                             {{-- <th>Previous Month Expenditure</th> --}}                            
-                            <th>Unspent Balance (GIA) as on 1st April</th>
+                            <th>Unspent Balance (GIA) as on Perivious Month</th>
                             <th>GIA Received in F.Y</th>
-                            <th>Total Balance excluding interest</th>
+                            <th>Total Balance</th>
                             <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
@@ -220,7 +220,7 @@
                             <td>
                                 <input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                     maxlength="5" oninput="validateInput(this)"
-                                    value="{{ $value->unspent_balance_1st }}">
+                                    value="{{ $value->unspent_balance_1st }}" readonly>
                             </td>
                             <td>
                                 <input type="text" name="gia_received[]" class="form-control manpower-C"

@@ -15,7 +15,8 @@ $(document).ready(function(){
     $.ajax({
         type: "GET",
         url: BASE_URL + "national-users/nrcplab-filter-dashboard",
-        success: function(data) {     
+        success: function(data) {
+            $('#national-nrcplab-unspentBalance1stTotal').text(data.totalArray.unspentBalance1stTotal)    
             $("#national-nrcplab-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
             $("#national-nrcplab-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#national-nrcplab-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
@@ -25,8 +26,8 @@ $(document).ready(function(){
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             // ucupload form
             var UcUploadDetails = data.UcUploadDetails;
             nationalNrcplabTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
@@ -55,7 +56,8 @@ $(document).ready(function(){
             'financial_year': financialYear,
             'month' : month
         },
-        success: function(data) {     
+        success: function(data) {   
+            $('#national-nrcplab-unspentBalance1stTotal').text(data.totalArray.unspentBalance1stTotal);  
             $("#national-nrcplab-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
             $("#national-nrcplab-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#national-nrcplab-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
@@ -65,8 +67,8 @@ $(document).ready(function(){
             var totalcommittedLiabilities = data.totalArray.committedLiabilitiesTotal;
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             nationalNrcplabTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,totalcommittedLiabilities,programHeadDetails);         
         }
     });

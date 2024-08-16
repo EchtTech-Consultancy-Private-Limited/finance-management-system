@@ -17,8 +17,8 @@ $(document).ready(function(){
             var UcFormstateDetails = data.UcFormstateDetails;            
             var programWiseExpenditure = data.yearlySoeDetails;
             var instituteColumnDetails = data.instituteColumnDetails;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);                 
             nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);
             yearlySoeExpenditure(programWiseExpenditure);
@@ -69,7 +69,8 @@ $(document).on('change', '.national_user_card', function() {
             'financial_year': financialYear,
             'program_wise' : programWise
         },
-        success: function(data) {     
+        success: function(data) {
+            $("#national-unspentBalance1stTotal").text(data.totalArray.unspentBalance1stTotal);     
             $("#national-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
             $("#national-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#national-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
@@ -81,8 +82,8 @@ $(document).on('change', '.national_user_card', function() {
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
             var instituteColumnDetails = data.instituteColumnDetails;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities);         
         }
     });
@@ -1122,12 +1123,12 @@ function expenditureBarChart(programUserDetailsArray){
     programUserDetailsArray.forEach((programUserDetails, index) => {
         var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
         var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
-        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-        var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+        var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+        var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
         expenditureAll += totalExpenditure;
         unspentAll += totalUnspentBalance;
-        percentageExpenditureAll = (expenditureAll !== 0) ? Math.trunc((expenditureAll / (expenditureAll + unspentAll)) * 100) : 0;
-        percentageUnspentBalanceAll = (unspentAll !== 0) ? Math.trunc((unspentAll / (expenditureAll + unspentAll)) * 100) : 0;
+        percentageExpenditureAll = (expenditureAll !== 0) ? ((expenditureAll / (expenditureAll + unspentAll)) * 100).toFixed(2) : 0;
+        percentageUnspentBalanceAll = (unspentAll !== 0) ? ((unspentAll / (expenditureAll + unspentAll)) * 100).toFixed(2)  : 0;
         $("#overall_expenditure_chart").text(percentageExpenditureAll + '%');
         $("#overall_unspent_chart").text(percentageUnspentBalanceAll + '%');
         const chartContainerId = `integrated-dashboard-program-wise-expenditure-bar-chart${index+1}`;        
@@ -1213,7 +1214,7 @@ function expenditureBarChartHead(programUserDetailsArray){
     programUserDetailsArray.forEach((programUserDetails, index) => {
         var totalExpenditure = programUserDetails.totalArray.actualExpenditureTotal;
         var totalUnspentBalance = programUserDetails.totalArray.unspentBalance31stTotal;
-        var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
+        var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
         // data driven graph
         $(`#program_percentagedriven_graph${index+1}`).text(parseInt(percentageExpenditure) + '%');
         const chartDrivenGraphId = `integrated-dashboard-data-driven-graph${index+1}`;        

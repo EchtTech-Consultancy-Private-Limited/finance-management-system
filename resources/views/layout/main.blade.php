@@ -30,7 +30,7 @@
                         </div>
                      </div> -->
                      <div class="dashboard-title">
-                        <h1 class="title"> Finance Management System, NCDC</h1>
+                        <h1 class="title"> Finance Management System (Center For One Health NCDC,Delhi)</h1>
                         <h6 class="text-center mb-1">{{ optional(Auth::user()->institute)->name }}</h6>
                      </div>
                      <div class="header_right d-flex justify-content-between align-items-center">
