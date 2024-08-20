@@ -36,6 +36,7 @@
                                 <th scope="col">Sr. No.</th>
                                 <th scope="col">Name of program</th>
                                 <th scope="col">Name of the Institute</th>
+                                <th scope="col">Section Order</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">Financial Year</th>
                                 <th scope="col">Status</th>
@@ -50,6 +51,18 @@
                                 <td>{{ @$soeucForm->instituteProgram->name }} -
                                     {{ @$soeucForm->instituteProgram->code }}</td>
                                 <td>{{ @$soeucForm->institute->name }}</td>
+                                <td>
+                                    @if ($soeucForm->section_order_file)
+                                    <a class="nhm-file" href="{{ asset('public/images/uploads/soeuc/'.$soeucForm->section_order_file) }}"
+                                        download>
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                        <span>Download ({{ $soeucForm->section_order_file_size }})</span>
+                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                    </a>
+                                    @else
+                                        <span>N/A</span>
+                                    @endif
+                                </td>
                                 <td>{{ @$soeucForm->month }}</td>
                                 <td>{{ @$soeucForm->financial_year }}</td>
                                 <td

@@ -14,6 +14,7 @@ use Auth;
 use App\Exports\InstituteUserExport;
 use App\Models\Institute;
 use App\Models\InstituteProgram;
+use App\Models\Notification;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\SendNotificationServices;
 use DateTime;
@@ -180,6 +181,7 @@ class SOEUCFormController extends Controller
                 $month->modify("+$m months");
                 $financialYearMonths[] = $month->format('F');
             }
+            Notification::where('receiver_id', Auth::id())->where('form_id', $id)->where('form_type', '1')->where('status', '1')->delete();
             $soeForm = SOEUCForm::with('SoeUcFormCalculation', 'instituteProgram', 'institute')->where('id', $id)->first();
             $targetIndex = array_search($soeForm->month, $financialYearMonths);
             $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex);

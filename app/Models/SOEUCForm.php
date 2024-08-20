@@ -23,6 +23,8 @@ class SOEUCForm extends Model
        'nadal_officer_email',
        'month',
        'financial_year',
+       'section_order_file',
+       'section_order_file_size',
        'reason',
        'status',
     ];

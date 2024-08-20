@@ -375,7 +375,7 @@
                                     <td>
                                         @if ($sorUcList->file)
                                         <a class="nhm-file"
-                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            href="{{ asset('public/images/uploads/soeucupload/'.$sorUcList->file) }}" download>
                                             <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>

@@ -57,8 +57,26 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form id="myForm" method="post" action="{{ route('national-user.soe-change-status',$soeucForm->id) }}">
+                                                    <form id="myForm" method="post" action="{{ route('national-user.soe-change-status',$soeucForm->id) }}" enctype="multipart/form-data">
                                                         @csrf
+                                                        <div class="form-group">
+                                                            <label for="reasonInput">Upload Section Order:</label>
+                                                            <input type="hidden" value="{{$soeucForm->section_order_file}}" name="old_section_order">
+                                                            <input type="hidden" value="{{$soeucForm->section_order_file_size}}" name="old_section_order_file_size">
+                                                            <input type="file" class="form-control" name="section_order" id="section_order" {{ $soeucForm->section_order_file ? '' : 'required' }}>
+
+                                                        </div>
+                                                        @if ($soeucForm->section_order_file)
+                                                        <a class="nhm-file" href="{{ asset('public/images/uploads/soeuc/'.$soeucForm->section_order_file) }}"
+                                                            download>
+                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                            <span>Download ({{ $soeucForm->section_order_file_size }})</span>
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                        </a><br>
+                                                        @endif
+                                                        @error('section_order')
+                                                            <span class="text-danger error">{{ $message }}</span>
+                                                        @enderror
                                                         <div class="form-group">
                                                             <label for="reasonInput">Reason:</label>
                                                             <textarea class="form-control" name="reason" id="reasonInput" placeholder="Enter reason">{{ $soeucForm->reason }}</textarea>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Institute;
 use App\Models\InstituteProgram;
+use App\Models\Notification;
 use App\Models\SOEUCUploadForm;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class SOEUCUploadFormController extends Controller
 
     public function index()
     {
+        Notification::where('receiver_id', Auth::id())->where('form_type', '2')->where('status', '1')->delete();
         $sorUcLists = SOEUCUploadForm::with('program')->where('user_id', Auth::id())->orderBy('id','desc')->get();
         return view($this->list,compact('sorUcLists'));
     }
@@ -81,7 +83,7 @@ class SOEUCUploadFormController extends Controller
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
                 $ucFileUploadName = $ucFileUpload->getClientOriginalName();
-                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
+                $ucFileUpload->move(public_path('public/images/uploads/soeucupload'), $ucFileUploadName);
             }
             $ucUploadId = SOEUCUploadForm::Create([
                 'user_id' => Auth::id(),
@@ -159,7 +161,7 @@ class SOEUCUploadFormController extends Controller
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
                 $ucFileUploadName = $ucFileUpload->getClientOriginalName();
-                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
+                $ucFileUpload->move(public_path('public/images/uploads/soeucupload'), $ucFileUploadName);
             }else{
                 $ucFileUploadName = $request->old_file;
                 $ucFileUploadSize = $request->old_file_size;

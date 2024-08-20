@@ -118,7 +118,7 @@
                             <input type="hidden" value="{{$soeUCUpload->file_size}}" name="old_file_size">
                             <input type="file" class="form-control" name="ucfileupload" id="inputAddress2">
                             @if ($soeUCUpload->file)
-                            <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$soeUCUpload->file) }}"
+                            <a class="nhm-file" href="{{ asset('public/images/uploads/soeucupload/'.$soeUCUpload->file) }}"
                                 download>
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                 <span>Download ({{ $soeUCUpload->file_size }})</span>
