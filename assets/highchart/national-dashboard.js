@@ -153,7 +153,8 @@ $(document).on('change', '.national_ucForm_filter', function() {
             'nationalProgramUcForm' : nationalProgramUcForm,
             'nationalInstituteName' :nationalInstituteName
         },
-        success: function(data) {           
+        success: function(data) {
+            console.log(data);          
             var UcUploadDetails = data.UcUploadDetails;
             var UcFormstateDetails = data.UcFormstateDetails;           
             nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails);         
@@ -1301,282 +1302,59 @@ function expenditureBarChartHead(programUserDetailsArray){
 
 function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
     // UC Received and not received graph
-    Highcharts.chart("integrated-dashboard-chart-currently-UC-Received", {
+    var categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var data = categories.map(function(_, index) {
+        var month = index + 1;
+        var details = UcUploadDetails[month] || { total: 0, approved: 0, not_approved: 0 };
+        return {
+            y: details.total,
+            total: details.total,
+            approved: details.approved,
+            not_approved: details.not_approved
+        };
+    });
+    // Create the Highcharts chart
+    Highcharts.chart('national-uc-upload-dashboard-Months-bar', {
         chart: {
-            type: "pie",
-            height: 210,
-        },        
+            type: 'column'
+        },
         title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)}%`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
+            text: ''
         },
         credits: {
-            enabled: false,
+            enabled: false
         },
         exporting: {
-            enabled: false,
+            enabled: false
         },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">% of UC Received </div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
+        plotOptions: {
+            column: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: true
+            }
         },
-        legend: {
-            enabled: false,
+        xAxis: {
+            categories: categories
         },
         tooltip: {
-            enabled: true,
             formatter: function() {
-                return `${this.point.name}: ${this.y}%`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
+                var point = this.points[0].point; // Access the first point's data
+                return `<b>${this.x}</b><br/>Total: ${point.total}<br/>Approved: ${point.approved}<br/>Not Approved: ${point.not_approved}`;
             },
+            shared: true
         },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                data: [
-                    ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],
-                    ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
-                ],
-            },
-        ],
-    });
-
-    Highcharts.chart("integrated-dashboard-chart-currently-UC-not-Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-        },
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)}%`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-    
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">% of UC not Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function() {
-                return `${this.point.name}: ${this.y}%`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                    data: [
-                        ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
-                        ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],                        
-                    ],
-            },
-        ],
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
+        series: [{
+            type: 'column',
+            name: 'User',
+            borderRadius: 5,
+            colorByPoint: true,
+            data: data,
+            showInLegend: false
+        }]
     });
     
-    Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-        },
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcApprovedNumber} Nos`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">Nos. of UC Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function() {
-                return `${this.point.name}: ${this.y}`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-    
-                data: [
-                    ["Approved", UcUploadDetails.UcApprovedNumber],
-                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
-                ],
-            },
-        ],
-    });
-    
-    Highcharts.chart("integrated-dashboard-chart-currently-Nos-UC-not-Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-        },
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcNotApprovedNumber} Nos`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">Nos. of UC not Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function(){
-                return `${this.point.name}: ${this.y}`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                data: [
-                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
-                    ["Approved", UcUploadDetails.UcApprovedNumber],
-                ],
-            },
-        ],
-    });
     // End UC Received and not received graph
 
     // UCUploadForm map

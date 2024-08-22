@@ -542,47 +542,14 @@
 
             <div class="row mt-5 custom-grid ">
                 <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class=" card_height_100">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-UC-Received"
-                                        class="border rounded mb-3 received-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class=" card_height_100 ">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-UC-not-Received"
-                                        class="border rounded mb-3 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="">
-                                <div id="integrated-dashboard-chart-currently-Nos-UC-Received"
-                                    class="border rounded mb-0 received-chart"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class=" card_height_100 ">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
-                                        class="border rounded mb-0 received-chart"></div>
-                                </div>
-                            </div>
+                    <div class="">
+                        <div id="national-uc-upload-dashboard-Months-bar"
+                            class="border rounded mb-3">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="">
-                    
+                    <div class="">                    
                         <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
                     </div>
                 </div>

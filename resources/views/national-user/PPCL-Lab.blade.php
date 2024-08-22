@@ -281,7 +281,7 @@
                 <div class="col-md-4">
                 <div class="">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes</b></label>
-                    <select name="nrcplab-national-ucform-fy" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-ucform-fy">
+                    <select name="ppcllab-national-institute-ucform" class="form-control ppcllab_national_ucForm_filter" id="ppcllab-national-institute-ucform">
                         <option value="">Choose the Institute</option>
                         @foreach($institutes as $institute)
                         <option value="{{ $institute->id }}">
@@ -295,7 +295,7 @@
                 <div class="col-md-4">
                 <div class="">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
-                    <select name="nrcplab-national-institute-ucform" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-institute-ucform">
+                    <select name="ppcl-national-ucform-fy" class="form-control ppcllab_national_ucForm_filter" id="ppcl-national-ucform-fy">
                         <option value="">Choose Financial Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                             <option value="{{$i}} - {{$i+1}}">{{$i}} - {{$i+1}}</option>
@@ -312,37 +312,10 @@
         </div>
     </div>
     <div class="row pe-0">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="white_card  ">
-
                 <div class="white_card">
-                    <div id="nrcplab_chart_currently_UC_Received" class=" mb-3 received-chart"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card  ">
-                <div class="">
-                    <div id="nrcplab_chart_currently_UC_not_Received" class=" mb-3 received-chart"></div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card">
-                <div id="nrcplab_chart_currently_Nos_UC_Received" class=" mb-0 received-chart"></div>
-
-            </div>
-        </div>
-
-        <div class="col-md-3 pe-0">
-            <div class="white_card  ">
-
-                <div class="">
-                    <div id="nrcplab_chart_currently_Nos_UC_not_Received" class=" mb-0 received-chart"></div>
-
+                    <div id="national-ppcllab-uc-upload-dashboard-Months-bar" class="mb-3"></div>
                 </div>
             </div>
         </div>

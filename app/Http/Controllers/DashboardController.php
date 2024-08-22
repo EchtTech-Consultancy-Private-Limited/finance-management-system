@@ -415,18 +415,26 @@ class DashboardController extends Controller
         // end Soe Expenditure
 
         // UC Reveived or not map code
-            $UcUploadCount = SOEUCUploadForm::count();
-            $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
-            $UcUploadNotApproved = SOEUCUploadForm::where('status', '2')->count();
-            
-            $UcUploadDetails = [
-                'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
-                'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
-                'UcApprovedNumber' => $UcUploadApproved,
-                'UcNotApprovedNumber' => $UcUploadNotApproved,
-                'TotalUcForm' => $UcUploadCount,
-            ];
+            $currentYear = Carbon::now()->year;
+            $query = SOEUCUploadForm::whereYear('date', $currentYear);;
+            $UcUploadDetails = [];
+            for ($month = 1; $month <= 12; $month++) {
+                $queryForMonth = clone $query;
+                // Total count for the month
+                $total = $queryForMonth->whereMonth('date', $month)->count();
+                // Approved count for the month
+                $queryForApproved = clone $queryForMonth;
+                $approved = $queryForApproved->where('status', 1)->count();
+                // Not approved count for the month
+                $queryForNotApproved = clone $queryForMonth;
+                $notApproved = $queryForNotApproved->where('status', 2)->count();
 
+                $UcUploadDetails[$month] = [
+                    'total' => $total ?: 0,
+                    'approved' => $approved ?: 0,
+                    'not_approved' => $notApproved ?: 0,
+                ];
+            }
             $UcFormstateDetails = [];
             $states = State::all();
             foreach ($states as $state) {
@@ -784,28 +792,37 @@ class DashboardController extends Controller
         $query = SOEUCUploadForm::query();
         
         if ($request->has('nationalUcformFy') && $request->nationalUcformFy) {
-            $query->where('financial_year', $request->nationalUcformFy);
+            $financialYear = $request->nationalUcformFy;
+        } else {
+            $financialYear = Carbon::now()->year;
         }        
+        $query->where('financial_year', $financialYear);
+
         if ($request->has('nationalProgramUcForm') && $request->nationalProgramUcForm) {
             $query->where('program_id', $request->nationalProgramUcForm);
         }
         if ($request->has('nationalInstituteName') && $request->nationalInstituteName) {
             $query->where('institute_id', $request->nationalInstituteName);
         }
-        
-        $UcUploadCount = $query->count();
-        $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('status', 1)->count();
-        $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('status', 2)->count();
-        
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApprovedCount,
-            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
-            'TotalUcForm' => $UcUploadCount,
-        ];
+        $UcUploadDetails = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
 
         // Initialize array for state details
         $UcFormstateDetails = [];
@@ -861,6 +878,7 @@ class DashboardController extends Controller
         $count = 0;
         $institutes = Institute::whereIn('program_id', [$request->program_id])->get();
         if (!$institutes->isEmpty()) {
+            $output .='<option value="">Select Institute</option>';
             foreach ($institutes as $institute) {
                 $count++;
                 $output .='<option value="'.$institute->id.'">' . $institute->name . '</option>';
@@ -1072,7 +1090,7 @@ class DashboardController extends Controller
                                     <td>' . htmlspecialchars($sorUcList->month) . '</td>
                                     <td>';
                     if ($sorUcList->file) {
-                        $output .= '<a class="nhm-file" href="' . asset('public/images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
                                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
                                         <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
                                         <i class="fa fa-download" aria-hidden="true"></i>

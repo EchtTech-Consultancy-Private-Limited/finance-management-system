@@ -79,8 +79,8 @@ $(document).on('change', '.nohppczsss_national_ucForm_filter', function() {
         type: "GET",
         url: BASE_URL + "national-users/nohppczrsss-filter-uc-form-dashboard",
         data: {
-            'nohppczrcsNationalUcformFy': nohppczrcsnationalUcformFy,
-            'nohppczrcsNationalInstituteUcForm' : nohppczrcsnationalProgramUcForm
+            'nohppczrcsssNationalUcformFy': nohppczrcsnationalUcformFy,
+            'nohppczrcsssNationalInstituteUcForm' : nohppczrcsnationalProgramUcForm
         },
         success: function(data) {           
             var UcUploadDetails = data.UcUploadDetails;          
@@ -655,281 +655,57 @@ function nationalNohppczsssTotalChart(percentageExpenditure,percentageUnspentBal
 }
 
 function nationalNohppczsssUcFormTotalChart(UcUploadDetails){
-    Highcharts.chart("nohppz_sss_chart_currently_UC_Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-        },        
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcApprovedPercentage.toFixed(1)} %`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">% of UC Received </div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function() {
-                return `${this.point.name}: ${this.y}%`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                data: [
-                    ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],
-                    ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
-                ],
-            },
-        ],
+    var categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var data = categories.map(function(_, index) {
+        var month = index + 1;
+        var details = UcUploadDetails[month] || { total: 0, approved: 0, not_approved: 0 };
+        return {
+            y: details.total,
+            total: details.total,
+            approved: details.approved,
+            not_approved: details.not_approved
+        };
     });
-
-    Highcharts.chart("nohppz_sss_chart_currently_UC_not_Received", {
+    // Create the Highcharts chart
+    Highcharts.chart('national-nohppz-sss-nohppczrcs-uc-upload-dashboard-Months-bar', {
         chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
+            type: 'column'
         },
         title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcNotApprovedPercentage.toFixed(1)} %`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
+            text: ''
         },
-    
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">% of UC not Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
+        credits: {
+            enabled: false
         },
-        legend: {
-            enabled: false,
+        exporting: {
+            enabled: false
+        },
+        plotOptions: {
+            column: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: true
+            }
+        },
+        xAxis: {
+            categories: categories
         },
         tooltip: {
-            enabled: true,
             formatter: function() {
-                return `${this.point.name}: ${this.y}%`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
+                var point = this.points[0].point; // Access the first point's data
+                return `<b>${this.x}</b><br/>Total: ${point.total}<br/>Approved: ${point.approved}<br/>Not Approved: ${point.not_approved}`;
             },
+            shared: true
         },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                    data: [
-                        ["Returned", parseFloat(UcUploadDetails.UcNotApprovedPercentage.toFixed(1))],
-                        ["Approved", parseFloat(UcUploadDetails.UcApprovedPercentage.toFixed(1))],                        
-                    ],
-            },
-        ],
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-    });
-
-    Highcharts.chart("nohppz_sss_chart_currently_Nos_UC_Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-        },
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcApprovedNumber} Nos`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">Nos. of UC Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function() {
-                return `${this.point.name}: ${this.y}`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-    
-                data: [
-                    ["Approved", UcUploadDetails.UcApprovedNumber],
-                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
-                ],
-            },
-        ],
-    });
-    
-    Highcharts.chart("nohppz_sss_chart_currently_Nos_UC_not_Received", {
-        chart: {
-            type: "pie",
-            height: 210,
-            //  margin: [0, 0, 0, 0] // Set margins to remove extra space
-        },
-        title: {
-            useHTML: true,
-            text: `${UcUploadDetails.UcNotApprovedNumber} Nos`,
-            floating: true,
-            verticalAlign: "middle",
-            y: 4,
-            style: {
-                fontSize: "16px",
-            },
-        },
-        credits: {
-            enabled: false,
-        },
-        exporting: {
-            enabled: false,
-        },
-        subtitle: {
-            useHTML: true,
-            text: '<div style="text-align:center;">Nos. of UC not Received</div>',
-            align: "center",
-            verticalAlign: "bottom",
-            y: 0, // Adjusted position
-            style: {
-                fontSize: "13px",
-                color: "#000",
-            },
-        },
-        legend: {
-            enabled: false,
-        },
-        tooltip: {
-            enabled: true,
-            formatter: function(){
-                return `${this.point.name}: ${this.y}`;
-            }
-        },
-        plotOptions: {
-            pie: {
-                size: "100%",
-                innerSize: "70%", // Adjusted for a larger inner circle
-                dataLabels: {
-                    enabled: false,
-                    // distance: -30, // Adjusted to move labels closer
-                    style: {
-                        fontWeight: "bold",
-                        fontSize: "16px",
-                    },
-                    connectorWidth: 0,
-                },
-            },
-        },
-        colors: ["#00b050", "#f49e04"],
-        series: [
-            {
-                type: "pie",
-                data: [
-                    ["Returned", UcUploadDetails.UcNotApprovedNumber],
-                    ["Approved", UcUploadDetails.UcApprovedNumber],
-                ],
-            },
-        ],
+        series: [{
+            type: 'column',
+            name: 'User',
+            borderRadius: 5,
+            colorByPoint: true,
+            data: data,
+            showInLegend: false
+        }]
     });
 }
 

@@ -316,40 +316,13 @@
         </div>
     </div>
     <div class="row pe-0">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="white_card  ">
-
                 <div class="white_card">
-                    <div id="nohppz_rc_chart_currently_UC_Received" class=" mb-3 received-chart"></div>
+                    <div id="national-nohppczrcs-uc-upload-dashboard-Months-bar" class="mb-3"></div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card  ">
-                <div class="">
-                    <div id="nohppz_rc_chart_currently_UC_not_Received" class=" mb-3 received-chart"></div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card">
-                <div id="nohppz_rc_chart_currently_Nos_UC_Received" class=" mb-0 received-chart"></div>
-
-            </div>
-        </div>
-
-        <div class="col-md-3 pe-0">
-            <div class="white_card  ">
-
-                <div class="">
-                    <div id="nohppz_rc_chart_currently_Nos_UC_not_Received" class=" mb-0 received-chart"></div>
-
-                </div>
-            </div>
-        </div>
+        </div>        
     </div>
 
     <div class="col-md-12">
