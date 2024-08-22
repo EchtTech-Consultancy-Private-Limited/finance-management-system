@@ -86,9 +86,9 @@
                                 <th>Expenditure Till Last Month</th>
                                 <th>Actual Expenditure incurred during the current month</th>
                                 <th>Total Expenditure Till date</th>
-                                <th>Unspent Balance as on 31st March</th>
+                                <th>Unspent Balance as on {{ date('d', strtotime("last day of $soeForm->month " . date('Y'))) }}st {{ @$soeForm->month }}</th>
                                 <th>Committed Liabilities (if any)</th>
-                                <th>Unspent Balance after Committed Liabilities as on 31st March</th>
+                                <th>Unspent Balance after Committed Liabilities as on {{ date('d', strtotime("last day of $soeForm->month " . date('Y'))) }}st {{ @$soeForm->month }}</th>
                             </tr>
 
                             <tr class="table-color-th">

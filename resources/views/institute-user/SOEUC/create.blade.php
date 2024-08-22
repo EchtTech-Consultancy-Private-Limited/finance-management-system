@@ -198,9 +198,10 @@
                             <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
-                            <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance as on <span class="current_month_selected_text">{{ date('dS M Y', strtotime('last day of this month')) }}</span></th>
+
                             <th>Committed Liabilities (if any)</th>
-                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">{{ date('dS M Y', strtotime('last day of this month')) }}</span></th>
                         </tr>
                        
                         <tr class="table-color-th">

@@ -133,12 +133,21 @@
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span
                                     class="text-danger">*</span></label>
                             <input type="date" class="form-control" name="ucuploaddate"
-                                value="{{ old('ucuploaddate',$soeUCUpload->date) }}" id="inputAddress2" placeholder="">
+                                value="{{ old('ucuploaddate',$soeUCUpload->date) }}" id="inputAddress2" readonly>
                             @error('ucuploaddate')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="inputAddress2">Total Amount<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="total_amount" value="{{ old('total_amount',$soeUCUpload->total_amount) }}" maxlength="7" oninput="validateInput(this)">
+                            @error('total_amount')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
+                    <p class="text-danger"><b>Note:</b> Total amount should be match SOE Expenditure Amount.</p><br>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>

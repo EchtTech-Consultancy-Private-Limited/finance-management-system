@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Institute;
 use App\Models\InstituteProgram;
 use App\Models\Notification;
+use App\Models\SOEUCForm;
+use App\Models\SOEUCFormCalculatin;
 use App\Models\SOEUCUploadForm;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -66,6 +68,7 @@ class SOEUCUploadFormController extends Controller
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
+            'total_amount'     => 'required',
             'ucfileupload'        => 'required|mimes:pdf',
         ],
         [
@@ -75,10 +78,66 @@ class SOEUCUploadFormController extends Controller
             'yearofuc.required' => 'The Year of UC field is required',
             'ucuploaddate.required' => 'The Year of UC Upload Date field is required',
             'ucfileupload.required' => 'The UC File Upload field must contain a pdf file'
-        ]
-    );
+        ]);
         try {
             DB::beginTransaction();
+            $ucExist = SOEUCUploadForm::where([
+                'user_id' => Auth::id(),
+                'program_id' => $request->program_id,
+                'institute_id' => $request->institute_id,
+                'qtr_uc' => $request->qtr_uc,
+                'financial_year' => $request->yearofuc,
+                'month' => $request->month
+            ])->exists();
+            if ($ucExist) {
+                \Toastr::error('fail, QTR already created in the Month of financial year  :)','Error');
+                return back()->withInput();
+            }
+            // QTR SOE Expenditure Total amount
+            $date = DateTime::createFromFormat('d F', $request->qtr_uc);
+            $qtrMonth = $date->format('F');
+            $soeForm = SOEUCForm::where([
+                'user_id' => Auth::id(),
+                'program_id' => $request->program_id,
+                'institute_id' => $request->institute_id,
+                'financial_year' => $request->yearofuc,
+                'month' => $qtrMonth
+            ])->first();
+            if($soeForm){
+                $financialYearMonths = [];
+                $currentYear = date('Y');
+                for ($m = 0; $m < 12; $m++) {
+                    $month = new DateTime("$currentYear-04-01");
+                    $month->modify("+$m months");
+                    $financialYearMonths[] = $month->format('F');
+                }
+                $targetIndex = array_search($qtrMonth, $financialYearMonths);
+                $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex+1);
+                $soeForms = SOEUCForm::with('SoeUcFormCalculation')->whereIn('month', $monthsBefore)->where('user_id', $soeForm->user_id)->get();
+                if ($soeForms) {
+                    foreach ($soeForms as $soeFormPrev) {
+                        if ($soeFormPrev->SoeUcFormCalculation) {
+                            foreach ($soeFormPrev->SoeUcFormCalculation as $calculation) {
+                                $head = $calculation->head;
+                                $total = $calculation->previous_month_total;
+                                if (!isset($previous_month_expenditure[$head])) {
+                                    $previous_month_total[$head] = 0;
+                                }
+                                $previous_month_expenditure[$head]['total'][] = $total;
+                                $previous_month_total[$head] += $total;
+                            }
+                        }
+                    }
+                }
+                if($previous_month_total['Grand Total'] != $request->total_amount){
+                    \Toastr::error('fail, UC Amount does not match SOE Expenditure Amount  :)','Error');
+                    return back()->withInput();
+                }
+            }else{
+                \Toastr::error('fail, QTR SOE not created in the Month of financial year  :)','Error');
+                return back()->withInput();
+            }
+
             $ucFileUpload = $request->file('ucfileupload');
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
@@ -95,6 +154,7 @@ class SOEUCUploadFormController extends Controller
                 'file' => $ucFileUploadName ?? '',
                 'file_size' => $ucFileUploadSize ?? '',
                 'date' => $request->ucuploaddate,
+                'total_amount' => $request->total_amount,
             ])->id;
             DB::commit();
             $formType = '2'; //Soe Uc Upload
@@ -103,7 +163,7 @@ class SOEUCUploadFormController extends Controller
             return redirect()->route('institute-user.SOE-UC-upload-list');
         } catch(Exception $e) {
             DB::rollBack();
-            \Toastr::error('fail, Add new student  :)','Error');
+            \Toastr::error('fail, Somethings went wrong  :)','Error');
         }
 
     }
@@ -153,10 +213,55 @@ class SOEUCUploadFormController extends Controller
             'yearofuc'    => 'required',
             'month'     => 'required',
             'ucuploaddate'     => 'required',
+            'total_amount'     => 'required',
             // 'ucfileupload'        => 'required|mimes:pdf',
         ]);
         try{
             DB::beginTransaction();
+            // QTR SOE Expenditure Total amount
+            $date = DateTime::createFromFormat('d F', $request->qtr_uc);
+            $qtrMonth = $date->format('F');
+            $soeForm = SOEUCForm::where([
+                'user_id' => Auth::id(),
+                'program_id' => $request->program_id,
+                'institute_id' => $request->institute_id,
+                'financial_year' => $request->yearofuc,
+                'month' => $qtrMonth
+            ])->first();
+            if($soeForm){
+                $financialYearMonths = [];
+                $currentYear = date('Y');
+                for ($m = 0; $m < 12; $m++) {
+                    $month = new DateTime("$currentYear-04-01");
+                    $month->modify("+$m months");
+                    $financialYearMonths[] = $month->format('F');
+                }
+                $targetIndex = array_search($qtrMonth, $financialYearMonths);
+                $monthsBefore = array_slice($financialYearMonths, 0, $targetIndex+1);
+                $soeForms = SOEUCForm::with('SoeUcFormCalculation')->whereIn('month', $monthsBefore)->where('user_id', $soeForm->user_id)->get();
+                if ($soeForms) {
+                    foreach ($soeForms as $soeFormPrev) {
+                        if ($soeFormPrev->SoeUcFormCalculation) {
+                            foreach ($soeFormPrev->SoeUcFormCalculation as $calculation) {
+                                $head = $calculation->head;
+                                $total = $calculation->previous_month_total;
+                                if (!isset($previous_month_expenditure[$head])) {
+                                    $previous_month_total[$head] = 0;
+                                }
+                                $previous_month_expenditure[$head]['total'][] = $total;
+                                $previous_month_total[$head] += $total;
+                            }
+                        }
+                    }
+                }
+                if($previous_month_total['Grand Total'] != $request->total_amount){
+                    \Toastr::error('fail, UC Amount does not match SOE Expenditure Amount  :)','Error');
+                    return back()->withInput();
+                }
+            }else{
+                \Toastr::error('fail, QTR SOE not created in the Month of financial year  :)','Error');
+                return back()->withInput();
+            }
             $ucFileUpload = $request->file('ucfileupload');
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
@@ -176,6 +281,7 @@ class SOEUCUploadFormController extends Controller
                 'file' => $ucFileUploadName ?? '',
                 'file_size' => $ucFileUploadSize ?? '',
                 'date' => $request->ucuploaddate,
+                'total_amount' => $request->total_amount,
             ]);
             $formType = '2'; //Soe Uc Upload
             $this->SendNotificationServices->sendNotification($id, $formType, '1', $request->status);
