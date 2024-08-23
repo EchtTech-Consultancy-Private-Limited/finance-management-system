@@ -60,7 +60,7 @@
                                                     <form id="myForm" method="post" action="{{ route('national-user.soe-change-status',$soeucForm->id) }}" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <label for="reasonInput">Upload Section Order:</label>
+                                                            <label for="reasonInput">Upload Sanction Order:</label>
                                                             <input type="hidden" value="{{$soeucForm->section_order_file}}" name="old_section_order">
                                                             <input type="hidden" value="{{$soeucForm->section_order_file_size}}" name="old_section_order_file_size">
                                                             <input type="file" class="form-control" name="section_order" id="section_order" {{ $soeucForm->section_order_file ? '' : 'required' }}>
