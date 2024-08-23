@@ -102,7 +102,7 @@
                                 <td>{{ @$soeucForm->reason ?? 'N/A' }}</td>
                                 <td>
                                     <div class="action_btns d-flex">
-                                        <a href="{{ route('national-user.soe-expense-view',$soeucForm->id) }}" class="action_btn mr_10"> <i class="far fa-eye"></i> </a>
+                                        <a href="{{ route('national-user.soe-expense-view',$soeucForm->id) }}" class="action_btn mr_10" title="View"> <i class="far fa-eye"></i> </a>
                                     </div>
                                 </td>
                             </tr>
