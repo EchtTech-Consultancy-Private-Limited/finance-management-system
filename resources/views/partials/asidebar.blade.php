@@ -34,6 +34,16 @@
                </a>
             </li>
             <li class>
+               <a href="{{ route('admin.ucuploads.index') }}" aria-expanded="false">
+                  <div class="nav_icon_small">
+                     <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt>
+                  </div>
+                  <div class="nav_title">
+                     <span>UC Form Upload</span>
+                  </div>
+               </a>
+            </li>
+            <li class>
                <a class="has-arrow" href="#" aria-expanded="false">
                   <div class="nav_icon_small">
                      <!-- <img src="{{ asset('assets/img/menu-icon/2.svg') }}" alt> -->
@@ -81,7 +91,7 @@
                </ul>
             </li>
             <li class=>
-               <a href="{{ asset('assets/img/pdf/uc_form.pdf') }}" target="_blank" aria-expanded="false">
+               <a href="{{ asset('public/public/images/uploads/ucform/' . ucForm()) }}" target="_blank" aria-expanded="false">
                   <div class="nav_icon_small">
                      <!-- <img src="{{ asset('assets/img/menu-icon/3.svg') }}" alt> -->
                      <i class="fas fa-download"></i>

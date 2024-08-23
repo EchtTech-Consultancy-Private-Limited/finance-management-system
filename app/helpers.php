@@ -3,6 +3,7 @@
 use App\Models\Institute;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Notification;
+use App\Models\UcForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,5 +22,14 @@ function senderName($senderId)
     }
     return $senderName;
 }
+
+function ucForm()
+{
+    $ucForm = UcForm::where('status', '1')
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+    return $ucForm->file;
+}
+
 
 ?>
