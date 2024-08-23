@@ -3104,6 +3104,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 .header_iner {
     position: fixed;
     top: 0;
+    right: 0;
     z-index: 99999;
     padding: 10px 30px;
     /* position: relative; */
