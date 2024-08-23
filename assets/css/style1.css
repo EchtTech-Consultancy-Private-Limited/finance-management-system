@@ -4627,7 +4627,7 @@ body::-webkit-scrollbar {
     transition: .5s;
     position: relative;
     min-height: 100vh;
-    padding-bottom: 70px;
+    /* padding-bottom: 70px; */
     overflow: hidden
 }
 
@@ -4676,7 +4676,7 @@ body::-webkit-scrollbar {
 }
 
 .main_content .main_content_iner {
-    min-height: 68vh;
+    min-height: 93vh;
     transition: .5s;
     position: relative;
     background: #ebeff2;
@@ -5694,7 +5694,8 @@ table.dataTable tbody td {
     left: 0;
     right: 0;
     bottom: 0;
-    padding-bottom: 15px
+    padding-bottom: 15px;
+    display: none;
 }
 
 .footer_part.fixed_footer {
