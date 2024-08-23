@@ -828,7 +828,7 @@
     <div class="col-xl-12 ">
         <div class="white_card   mb_30 p-4">
           <div class="page_title_left d-flex align-items-center justify-content-center mb-4">
-                <h3>Program wise Expenditure</h3>
+                <h3>Program/Head wise Expenditure</h3>
             </div>
             <div class="row">
                 <div class="col-md-3">

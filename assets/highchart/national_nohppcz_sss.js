@@ -55,7 +55,8 @@ $(document).ready(function(){
             'financial_year': financialYear,
             'month' : month
         },
-        success: function(data) {     
+        success: function(data) {
+            $("#national-nohppcz-sss-unspentBalance1stTotal").text(data.totalArray.unspentBalance1stTotal);     
             $("#national-nohppcz-sss-giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
             $("#national-nohppcz-sss-committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#national-nohppcz-sss-totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
