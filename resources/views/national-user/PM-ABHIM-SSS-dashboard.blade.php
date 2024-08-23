@@ -220,6 +220,16 @@
     <div class="white_card_body col-xl-12  card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
             <div class="col">
+                <div class="single_crm border-line-2 p-0">
+                    <div class="crm_body">
+                        <h4 id="national-pmabhimsss-unspentBalance1stTotal">
+                            {{ @$totalArray['unspentBalance1stTotal'] }}
+                        </h4>
+                        <p>Unspent Balance (GIA) as on Perivious Month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -240,7 +250,7 @@
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                        <p>Total Balance excluding interest</p>
+                        <p>Total Balance</p>
                     </div>
                 </div>
             </div>
@@ -260,7 +270,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-pmabhimsss-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
@@ -268,7 +278,7 @@
                         <p>Committed Liabilities</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="devider-line">
@@ -280,7 +290,7 @@
                 <div class="col-md-6">
                 <div class="d-flex align-items-center">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Name of the Institutes</b></label>
-                    <select name="nrcplab-national-ucform-fy" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-ucform-fy">
+                    <select name="pmabhim-national-institute-ucform" class="form-control pmabhim_national_ucForm_filter" id="pmabhim-national-institute-ucform">
                         <option value="">Choose the Institute</option>
                         @foreach($institutes as $institute)
                         <option value="{{ $institute->id }}">
@@ -294,7 +304,7 @@
                 <div class="col-md-6">
                 <div class="d-flex align-items-center">
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
-                    <select name="nrcplab-national-institute-ucform" class="form-control ppcllab_national_ucForm_filter" id="nrcplab-national-institute-ucform">
+                    <select name="pmabhim-national-ucform-fy" class="form-control pmabhim_national_ucForm_filter" id="pmabhim-national-ucform-fy">
                         <option value="">Choose Financial Year</option>
                         @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
                             <option value="{{$i}} - {{$i+1}}">{{$i}} - {{$i+1}}</option>
@@ -311,37 +321,10 @@
         </div>
     </div>
     <div class="row pe-0">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="white_card  ">
-
                 <div class="white_card">
-                    <div id="pmabhimsss_chart_currently_UC_Received" class=" mb-3 received-chart"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card  ">
-                <div class="">
-                    <div id="pmabhimsss_chart_currently_UC_not_Received" class=" mb-3 received-chart"></div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card">
-                <div id="pmabhimsss_chart_currently_Nos_UC_Received" class=" mb-0 received-chart"></div>
-
-            </div>
-        </div>
-
-        <div class="col-md-3 pe-0">
-            <div class="white_card  ">
-
-                <div class="">
-                    <div id="pmabhimsss_chart_currently_Nos_UC_not_Received" class=" mb-0 received-chart"></div>
-
+                    <div id="national-pmabhim-uc-upload-dashboard-Months-bar" class="mb-3"></div>
                 </div>
             </div>
         </div>
@@ -375,7 +358,7 @@
                                     <td>
                                         @if ($sorUcList->file)
                                         <a class="nhm-file"
-                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            href="{{ asset('public/images/uploads/soeucupload/'.$sorUcList->file) }}" download>
                                             <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
@@ -408,7 +391,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select name="nrcplab-month-soe-expenditure" id="nrcplab-month-soe-expenditure" class="nice_Select2 max-width-220 ppcllab_yearly_soe_expenditure">
+                        <select name="nrcplab-month-soe-expenditure" id="nrcplab-month-soe-expenditure" class="nice_Select2 max-width-220 pmabhim_yearly_soe_expenditure">
                             <option value="">Show by month</option>
                             @foreach ($months as $key => $month)
                             <option value="{{ $month }}">
@@ -435,7 +418,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end d-flex justify-content-end">
-                        <select name="nrcplab-institute-soe-expenditure" id="nrcplab-institute-soe-expenditure" class="nice_Select2 max-width-220 ppcllab_yearly_soe_expenditure">
+                        <select name="nrcplab-institute-soe-expenditure" id="nrcplab-institute-soe-expenditure" class="nice_Select2 max-width-220 pmabhim_yearly_soe_expenditure">
                             <option value="">Show by Institute</option>
                             @foreach($institutes as $institute)
                             <option value="{{ $institute->id }}">

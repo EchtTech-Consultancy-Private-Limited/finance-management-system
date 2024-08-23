@@ -52,7 +52,8 @@
                     
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
-                        <select id="institute_name" class="form-control mySelect3" name="institute_id[]" multiple="multiple" aria-label="Default select">
+                        <select id="institute_name" class="form-control" name="institute_id[]">
+                            <option value="">Select Institute</option>
                             @foreach($institutes as $institute)
                             <option value="{{ $institute->id }}"
                                 {{ (collect(old('institute_id', $user->institute_id ?? []))->contains($institute->id)) ? 'selected' : '' }}>

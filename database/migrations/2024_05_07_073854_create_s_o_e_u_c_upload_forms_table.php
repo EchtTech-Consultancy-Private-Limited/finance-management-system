@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('file',255)->nullable();
             $table->string('file_size',255)->nullable();
             $table->date('date',255)->nullable();
+            $table->date('total_amount',255)->nullable();
             $table->string('reason')->nullable();
             $table->tinyInteger('status')->nullable()->default('1')->comment('1=>approve,2=>not-approved,3=>pending');
             $table->softDeletes();

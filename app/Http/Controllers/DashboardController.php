@@ -195,13 +195,15 @@ class DashboardController extends Controller
      */
     public function instituteFilterDdashboard(Request $request)
     {
+        $currentFY = date('Y').' - '.date('Y')+1;
         $dataForms = SOEUCForm::with('states', 'SoeUcFormCalculation')
-            ->where('financial_year', $request->financial_year)
+            ->where('financial_year', $request->financial_year ?? $currentFY)
             ->where('user_id', Auth::id())
             ->get();
 
         $finalArray = [];
         foreach ($dataForms as $dataForm) {
+            $grandTotalUnspentFirst = 0;
             $grandTotalGiaReceived = 0;
             $grandTotalCommittedLiabilities = 0;
             $grandTotalTotalBalance = 0;
@@ -209,6 +211,7 @@ class DashboardController extends Controller
             $grandTotalUnspentBalance = 0;
             foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                 if ($formCalculate->head == 'Grand Total') {
+                    $grandTotalUnspentFirst += (int)$formCalculate->unspent_balance_1st;
                     $grandTotalGiaReceived += (int)$formCalculate->gia_received;
                     $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
                     $grandTotalTotalBalance += (int)$formCalculate->total_balance;
@@ -217,6 +220,7 @@ class DashboardController extends Controller
                 }
             }
             $finalArray[] = [
+                'unspent_balance_1st' => $grandTotalUnspentFirst,
                 'gia_received_total' => $grandTotalGiaReceived,
                 'committed_liabilities_total' => $grandTotalCommittedLiabilities,
                 'total_balance_total' => $grandTotalTotalBalance,
@@ -226,6 +230,7 @@ class DashboardController extends Controller
         }
         
         $totalArray = [
+            'unspentBalance1stTotal' => 0,
             'giaReceivedTotal' => 0,
             'committedLiabilitiesTotal' => 0,
             'totalBalanceTotal' => 0,
@@ -234,6 +239,7 @@ class DashboardController extends Controller
         ];
         
         foreach ($finalArray as $entry) {
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
             $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
             $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
             $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
@@ -409,18 +415,26 @@ class DashboardController extends Controller
         // end Soe Expenditure
 
         // UC Reveived or not map code
-            $UcUploadCount = SOEUCUploadForm::count();
-            $UcUploadApproved = SOEUCUploadForm::where('status', '1')->count();
-            $UcUploadNotApproved = SOEUCUploadForm::where('status', '2')->count();
-            
-            $UcUploadDetails = [
-                'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
-                'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
-                'UcApprovedNumber' => $UcUploadApproved,
-                'UcNotApprovedNumber' => $UcUploadNotApproved,
-                'TotalUcForm' => $UcUploadCount,
-            ];
+            $currentYear = Carbon::now()->year;
+            $query = SOEUCUploadForm::whereYear('date', $currentYear);;
+            $UcUploadDetails = [];
+            for ($month = 1; $month <= 12; $month++) {
+                $queryForMonth = clone $query;
+                // Total count for the month
+                $total = $queryForMonth->whereMonth('date', $month)->count();
+                // Approved count for the month
+                $queryForApproved = clone $queryForMonth;
+                $approved = $queryForApproved->where('status', 1)->count();
+                // Not approved count for the month
+                $queryForNotApproved = clone $queryForMonth;
+                $notApproved = $queryForNotApproved->where('status', 2)->count();
 
+                $UcUploadDetails[$month] = [
+                    'total' => $total ?: 0,
+                    'approved' => $approved ?: 0,
+                    'not_approved' => $notApproved ?: 0,
+                ];
+            }
             $UcFormstateDetails = [];
             $states = State::all();
             foreach ($states as $state) {
@@ -778,28 +792,37 @@ class DashboardController extends Controller
         $query = SOEUCUploadForm::query();
         
         if ($request->has('nationalUcformFy') && $request->nationalUcformFy) {
-            $query->where('financial_year', $request->nationalUcformFy);
+            $financialYear = $request->nationalUcformFy;
+        } else {
+            $financialYear = Carbon::now()->year;
         }        
+        $query->where('financial_year', $financialYear);
+
         if ($request->has('nationalProgramUcForm') && $request->nationalProgramUcForm) {
             $query->where('program_id', $request->nationalProgramUcForm);
         }
         if ($request->has('nationalInstituteName') && $request->nationalInstituteName) {
             $query->where('institute_id', $request->nationalInstituteName);
         }
-        
-        $UcUploadCount = $query->count();
-        $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('status', 1)->count();
-        $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('status', 2)->count();
-        
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApprovedCount,
-            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
-            'TotalUcForm' => $UcUploadCount,
-        ];
+        $UcUploadDetails = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
 
         // Initialize array for state details
         $UcFormstateDetails = [];
@@ -855,6 +878,7 @@ class DashboardController extends Controller
         $count = 0;
         $institutes = Institute::whereIn('program_id', [$request->program_id])->get();
         if (!$institutes->isEmpty()) {
+            $output .='<option value="">Select Institute</option>';
             foreach ($institutes as $institute) {
                 $count++;
                 $output .='<option value="'.$institute->id.'">' . $institute->name . '</option>';

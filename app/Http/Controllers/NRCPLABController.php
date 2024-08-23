@@ -111,6 +111,7 @@ class NRCPLABController extends Controller
         
         $finalArray = [];
         foreach ($dataForms as $dataForm) {
+            $grandTotalUnspentFirst = 0;
             $grandTotalGiaReceived = 0;
             $grandTotalCommittedLiabilities = 0;
             $grandTotalTotalBalance = 0;
@@ -118,6 +119,7 @@ class NRCPLABController extends Controller
             $grandTotalUnspentBalance = 0;
             foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                 if ($formCalculate->head == 'Grand Total') {
+                    $grandTotalUnspentFirst += (int)$formCalculate->unspent_balance_1st;
                     $grandTotalGiaReceived += (int)$formCalculate->gia_received;
                     $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
                     $grandTotalTotalBalance += (int)$formCalculate->total_balance;
@@ -126,6 +128,7 @@ class NRCPLABController extends Controller
                 }
             }
             $finalArray[] = [
+                'unspent_balance_1st' => $grandTotalUnspentFirst,
                 'gia_received_total' => $grandTotalGiaReceived,
                 'committed_liabilities_total' => $grandTotalCommittedLiabilities,
                 'total_balance_total' => $grandTotalTotalBalance,
@@ -135,6 +138,7 @@ class NRCPLABController extends Controller
         }
         
         $totalArray = [
+            'unspentBalance1stTotal' => 0,
             'giaReceivedTotal' => 0,
             'committedLiabilitiesTotal' => 0,
             'totalBalanceTotal' => 0,
@@ -143,25 +147,13 @@ class NRCPLABController extends Controller
         ];
         
         foreach ($finalArray as $entry) {
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st'];
             $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
             $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
             $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
-
-        // UC Received or not map code
-        $UcUploadCount = SOEUCUploadForm::where('program_id', 3)->count();
-        $UcUploadApproved = SOEUCUploadForm::where(['status' => '1', 'program_id' => 3])->count();
-        $UcUploadNotApproved = SOEUCUploadForm::where(['status' => '2', 'program_id' => 3])->count();
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApproved,
-            'UcNotApprovedNumber' => $UcUploadNotApproved,
-            'TotalUcForm' => $UcUploadCount,
-        ];
-        // End UC Received or not map code
 
         // number of percentage Head wise specific program
         $instituteProgram = InstituteProgram::where('id', 3)->first();
@@ -265,6 +257,29 @@ class NRCPLABController extends Controller
         ];
         
         // End number of percentage program wise
+        // UC Received or not map code
+        $financialYear = Carbon::now()->year;
+        $query = SOEUCUploadForm::where('financial_year', $financialYear)->where('program_id', 3);
+        $UcUploadDetails = [];
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
+        // End UC Received or not map code
+
         return response()->json(['totalArray' => $totalArray, 'UcUploadDetails' => $UcUploadDetails, 'programHeadDetails' => $programHeadDetails], 200);
     }
     
@@ -275,27 +290,39 @@ class NRCPLABController extends Controller
      * @return void
      */
     public function nrcplabNationalFilterUcFormDashboard(Request $request)
-    {
-        $query = SOEUCUploadForm::query();        
+    {       
+        $query = SOEUCUploadForm::query();
         if ($request->has('nrcplabsNationalInstituteUcForm') && $request->nrcplabsNationalInstituteUcForm) {
-            $query->where('financial_year', $request->nrcplabsNationalInstituteUcForm);
-        }        
+            $financialYear = $request->nrcplabsNationalInstituteUcForm;
+        } else {
+            $financialYear = Carbon::now()->year;
+        }
         if ($request->has('nrcplabsNationalUcformFy') && $request->nrcplabsNationalUcformFy) {
             $query->where('institute_id', $request->nrcplabsNationalUcformFy);
-        }        
-        $UcUploadCount = $query->count();
-        $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('program_id', 3)->where('status', 1)->count();
-        $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('program_id', 3)->where('status', 2)->count();
+        }
         
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApprovedCount,
-            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
-            'TotalUcForm' => $UcUploadCount,
-        ];
+        $query->where('financial_year', $financialYear)->where('program_id', 3);
+
+
+        $UcUploadDetails = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
         return response()->json(['UcUploadDetails' => $UcUploadDetails], 200);
     }
     
@@ -425,7 +452,7 @@ class NRCPLABController extends Controller
 
                                     <td>';
                     if ($sorUcList->file) {
-                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                        $output .= '<a class="nhm-file" href="' . asset('public/images/uploads/soeucupload/' . $sorUcList->file) . '" download>
                                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
                                         <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
                                         <i class="fa fa-download" aria-hidden="true"></i>

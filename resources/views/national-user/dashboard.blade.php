@@ -335,6 +335,16 @@
             </div>
             <div class="row card-mm">
                 <div class="col">
+                    <div class="single_crm border-line-2 p-0">
+                        <div class="crm_body">
+                            <h4 id="national-unspentBalance1stTotal">
+                                {{ @$totalArray['unspentBalance1stTotal'] }}
+                            </h4>
+                            <p>Unspent Balance (GIA) as on Perivious Month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
                     <div class="single_crm border-line-1 p-0">
                         <div class="crm_body">
                             <h4 id="national-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -346,7 +356,7 @@
                     <div class="single_crm border-line-3 p-0">
                         <div class="crm_body">
                             <h4 id="national-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                            <p>Total Balance excluding interest</p>
+                            <p>Total Balance</p>
                         </div>
                     </div>
                 </div>
@@ -368,7 +378,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="single_crm border-line-2 p-0">
                         <div class="crm_body">
                             <h4 id="national-committedLiabilitiesTotal">
@@ -377,7 +387,7 @@
                             <p>Committed Liabilities</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -532,47 +542,14 @@
 
             <div class="row mt-5 custom-grid ">
                 <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class=" card_height_100">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-UC-Received"
-                                        class="border rounded mb-3 received-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class=" card_height_100 ">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-UC-not-Received"
-                                        class="border rounded mb-3 received-chart"></div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="">
-                                <div id="integrated-dashboard-chart-currently-Nos-UC-Received"
-                                    class="border rounded mb-0 received-chart"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class=" card_height_100 ">
-                                <div class="">
-                                    <div id="integrated-dashboard-chart-currently-Nos-UC-not-Received"
-                                        class="border rounded mb-0 received-chart"></div>
-                                </div>
-                            </div>
+                    <div class="">
+                        <div id="national-uc-upload-dashboard-Months-bar"
+                            class="border rounded mb-3">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="">
-                    
+                    <div class="">                    
                         <div id="integrated-dashboard-india-map" class="border rounded mb-3"></div>
                     </div>
                 </div>
@@ -610,7 +587,7 @@
                                     <td>
                                         @if ($sorUcList->file)
                                         <a class="nhm-file"
-                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            href="{{ asset('public/images/uploads/soeucupload/'.$sorUcList->file) }}" download>
                                             <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
@@ -1076,7 +1053,7 @@
                         <div class="overall-data-li">
                             <div>
                                 <span class="arrow arrow-left"><span class="number">3</span></span><span
-                                    class="country-list-content">Total Balance excluding interest</span>
+                                    class="country-list-content">Total Balance</span>
                             </div>
                             <div>
                                 <span class="state-data-total" id="total_balance_excluding_total">0</span>

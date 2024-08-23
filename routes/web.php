@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\Master\InstituteController;
+use App\Http\Controllers\Master\UcFormController;
 use App\Http\Controllers\SOEUCFormController;
 use App\Http\Controllers\SOEUCUploadFormController;
 use App\Http\Controllers\NOHPPCZRCSController;
@@ -48,13 +49,19 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{id}', [ProgramController::class, 'update'])->name('update');
             Route::get('delete/{id}', [ProgramController::class, 'delete'])->name('delete');
         });
-
         Route::group(['prefix' => 'institutes', 'as' => 'institutes.'], function(){
             Route::get('/', [InstituteController::class, 'index'])->name('index');
             Route::post('store', [InstituteController::class, 'store'])->name('store');
             Route::get('edit/{id}', [InstituteController::class, 'edit'])->name('edit');
             Route::post('update/{id}', [InstituteController::class, 'update'])->name('update');
             Route::get('delete/{id}', [InstituteController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'ucuploads', 'as' => 'ucuploads.'], function(){
+            Route::get('/', [UcFormController::class, 'index'])->name('index');
+            Route::post('store', [UcFormController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [UcFormController::class, 'edit'])->name('edit');
+            Route::post('update/{id}', [UcFormController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [UcFormController::class, 'delete'])->name('delete');
         });
     });
 

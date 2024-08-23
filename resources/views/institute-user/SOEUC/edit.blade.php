@@ -170,15 +170,15 @@
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
                             {{-- <th>Previous Month Expenditure</th> --}}                            
-                            <th>Unspent Balance (GIA) as on 1st April</th>
+                            <th>Unspent Balance (GIA) as on Perivious Month</th>
                             <th>GIA Received in F.Y</th>
-                            <th>Total Balance excluding interest</th>
+                            <th>Total Balance</th>
                             <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
-                            <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance as on <span class="current_month_selected_text">{{ date('d', strtotime("last day of $soeForm->month " . date('Y'))) }}st {{ @$soeForm->month }}</span></th>
                             <th>Committed Liabilities (if any)</th>
-                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">{{ date('d', strtotime("last day of $soeForm->month " . date('Y'))) }}st {{ @$soeForm->month }}</span></th>
                         </tr>
 
                         <tr class="table-color-th">
@@ -220,7 +220,7 @@
                             <td>
                                 <input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                     maxlength="5" oninput="validateInput(this)"
-                                    value="{{ $value->unspent_balance_1st }}">
+                                    value="{{ $value->unspent_balance_1st }}" readonly>
                             </td>
                             <td>
                                 <input type="text" name="gia_received[]" class="form-control manpower-C"

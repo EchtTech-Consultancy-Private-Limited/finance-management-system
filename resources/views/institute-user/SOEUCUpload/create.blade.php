@@ -28,7 +28,6 @@
             </div>
         </div>
     <div class="white_card card_height_100 mb_30">
-       
         <div class="white_card_body">
             <div class="card-body">
                 <form method="POST" action="{{ route('institute-user.save') }}" enctype="multipart/form-data">
@@ -38,12 +37,11 @@
                             <label class="form-label" for="inputAddress2">QTR UC<span class="text-danger">*</span></label>
                             <select id="qtr_uc" class="form-control" name="qtr_uc">
                                 <option value="">Select QTR UC</option>
-                                <option value="30 June">30 June ( First QTR )</option>
-                                <option value="30 September">30 September ( Second QTR )</option>
-                                <option value="31 December">31 December ( Third QTR )</option>
-                                <option value="31 March">31 March ( Fourth QTR )</option>
-                                
-                            </select>
+                                <option value="30 June" {{ old('qtr_uc') == '30 June' ? 'selected' : '' }}>30 June ( First QTR )</option>
+                                <option value="30 September" {{ old('qtr_uc') == '30 September' ? 'selected' : '' }}>30 September ( Second QTR )</option>
+                                <option value="31 December" {{ old('qtr_uc') == '31 December' ? 'selected' : '' }}>31 December ( Third QTR )</option>
+                                <option value="31 March" {{ old('qtr_uc') == '31 March' ? 'selected' : '' }}>31 March ( Fourth QTR )</option>
+                            </select>                            
                             @error('qtr_uc')
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
@@ -54,7 +52,10 @@
                                 <option value="">Select Program</option>
                                 @foreach($institutePrograms as $key => $value)
                                 @if(in_array($value->id, explode(',', Auth::user()->program_id)))
-                                        <option value="{{ $value->id }}">{{ $value->name }} - {{ $value->code }}</option>
+                                    <option value="{{ $value->id }}" 
+                                        {{ old('program_id') == $value->id ? 'selected' : '' }}>
+                                        {{ $value->name }} - {{ $value->code }}
+                                    </option>
                                 @endif
                                 @endforeach
                             </select>
@@ -68,10 +69,13 @@
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $key => $value)
                                     @if(in_array($value->id, explode(',', Auth::user()->institute_id)))
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        <option value="{{ $value->id }}" 
+                                            {{ old('institute_id') == $value->id ? 'selected' : '' }}>
+                                            {{ $value->name }}
+                                        </option>
                                     @endif
                                 @endforeach
-                            </select>
+                            </select>                            
                             @error('institute_id')
                             <span class="text-danger error">{{ $message }}</span>
                             @enderror
@@ -119,11 +123,20 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" name="ucuploaddate" value="{{ old('ucuploaddate') }}" id="inputAddress2" placeholder="">
+                            <input type="date" class="form-control" name="ucuploaddate" value="{{ date('Y-m-d') }}" id="inputAddress2" readonly>
+
                             @error('ucuploaddate')
                                 <span class="text-danger error">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label" for="inputAddress2">Total Amount<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="total_amount" value="{{ old('total_amount') }}" maxlength="7" oninput="validateInput(this)">
+                            @error('total_amount')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <p class="text-danger"><b>Note:</b> Total amount should be match SOE Expenditure Amount.</p>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>

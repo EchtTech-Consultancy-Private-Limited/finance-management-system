@@ -118,7 +118,7 @@
                             <input type="hidden" value="{{$soeUCUpload->file_size}}" name="old_file_size">
                             <input type="file" class="form-control" name="ucfileupload" id="inputAddress2">
                             @if ($soeUCUpload->file)
-                            <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$soeUCUpload->file) }}"
+                            <a class="nhm-file" href="{{ asset('public/images/uploads/soeucupload/'.$soeUCUpload->file) }}"
                                 download>
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                 <span>Download ({{ $soeUCUpload->file_size }})</span>
@@ -133,12 +133,21 @@
                             <label class="form-label" for="inputAddress2">UC Uploaded Date<span
                                     class="text-danger">*</span></label>
                             <input type="date" class="form-control" name="ucuploaddate"
-                                value="{{ old('ucuploaddate',$soeUCUpload->date) }}" id="inputAddress2" placeholder="">
+                                value="{{ old('ucuploaddate',$soeUCUpload->date) }}" id="inputAddress2" readonly>
                             @error('ucuploaddate')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="inputAddress2">Total Amount<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="total_amount" value="{{ old('total_amount',$soeUCUpload->total_amount) }}" maxlength="7" oninput="validateInput(this)">
+                            @error('total_amount')
+                                <span class="text-danger error">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
+                    <p class="text-danger"><b>Note:</b> Total amount should be match SOE Expenditure Amount.</p><br>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>

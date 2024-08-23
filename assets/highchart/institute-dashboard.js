@@ -10,8 +10,8 @@ $(document).ready(function(){
         success: function(data) {
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance);         
         }
     });
@@ -26,7 +26,8 @@ $(document).on('change', '#institute-user-fy', function() {
         data: {
             'financial_year': financialYear
         },
-        success: function(data) {     
+        success: function(data) {
+            $("#unspentBalance1stTotal").text(data.totalArray.unspentBalance1stTotal); 
             $("#giaReceivedTotal").text(data.totalArray.giaReceivedTotal);
             $("#committedLiabilitiesTotal").text(data.totalArray.committedLiabilitiesTotal);
             $("#totalBalanceTotal").text(data.totalArray.totalBalanceTotal);
@@ -34,8 +35,8 @@ $(document).on('change', '#institute-user-fy', function() {
             $("#unspentBalance31stTotal").text(data.totalArray.unspentBalance31stTotal);
             var totalExpenditure = data.totalArray.actualExpenditureTotal;
             var totalUnspentBalance = data.totalArray.unspentBalance31stTotal;
-            var percentageExpenditure =  (totalExpenditure !== 0) ? Math.trunc((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100) : 0;    
-            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? Math.trunc((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100) : 0;
+            var percentageExpenditure =  (totalExpenditure !== 0) ? ((totalExpenditure / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;    
+            var percentageUnspentBalance =  (totalUnspentBalance !== 0) ? ((totalUnspentBalance / (totalExpenditure + totalUnspentBalance)) * 100).toFixed(2) : 0;
             instituteDashboardChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance);         
         }
     });

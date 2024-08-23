@@ -19,6 +19,7 @@ class SOEUCUploadForm extends Model
         'file',
         'file_size',
         'date',
+        'total_amount',
     ];
     
     /**

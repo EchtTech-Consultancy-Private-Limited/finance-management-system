@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Auth;
 use DateTime;
 use App\Services\SendNotificationServices;
+use App\Services\FileSizeServices;
 
 class NationalSeoExpenseController extends Controller
 {
@@ -103,9 +104,26 @@ class NationalSeoExpenseController extends Controller
      */
     public function changeStatus(Request $request, $id = '')
     {
+        if($request->file('section_order')){
+            $request->validate([
+                'section_order' => 'required|max:5120',
+            ]);
+        }
         try{
             DB::beginTransaction();
+            $soeUc = $request->file('section_order');
+            if ($soeUc) {
+                $soeUcSize =  FileSizeServices::getFileSize($soeUc->getSize());
+                $soeUcName = $soeUc->getClientOriginalName();
+                $soeUc->move(public_path('images/uploads/soeuc'), $soeUcName);
+            }else{
+                $soeUcName = $request->old_section_order;
+                $soeUcSize = $request->old_section_order_file_size;
+            }
+            
             SOEUCForm::where('id', $id)->Update([
+                'section_order_file' => $soeUcName ?? '',
+                'section_order_file_size' => $soeUcSize ?? '',
                 'reason' => $request->reason,
                 'status' => $request->status,
             ]);

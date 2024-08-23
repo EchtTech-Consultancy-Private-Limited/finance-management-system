@@ -240,7 +240,7 @@ $(document).ready(function() {
 // Get current month on SOE Form Unspent text
 var monthName = $('#soe_form_month').val();
 var lastDate = getLastDateOfMonth(monthName)+'st '+monthName;
-$(".current_month_selected_text").text(lastDate);
+// $(".current_month_selected_text").text(lastDate);
 $(document).on('change', '#soe_form_month', function() {
     var monthName = $(this).val();
     var lastDate = getLastDateOfMonth(monthName)+'st '+monthName;

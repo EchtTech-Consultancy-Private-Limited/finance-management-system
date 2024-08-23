@@ -98,9 +98,10 @@ class NOHPPCZRCSController extends Controller
      */
     public function nohppczrcsNationalFilterDdashboard(Request $request)
     {
+        $currentFY = date('Y').' - '.date('Y')+1;
         $query = SOEUCForm::with('states', 'SoeUcFormCalculation');
         if ($request->has('financial_year') && $request->financial_year) {
-            $query->where('financial_year', $request->financial_year);
+            $query->where('financial_year', $request->financial_year ?? $currentFY);
         }
         if ($request->has('month') && $request->month) {
             $query->where('month', $request->month);
@@ -110,6 +111,7 @@ class NOHPPCZRCSController extends Controller
         
         $finalArray = [];
         foreach ($dataForms as $dataForm) {
+            $grandTotalUnspentBalanceFirst = 0;
             $grandTotalGiaReceived = 0;
             $grandTotalCommittedLiabilities = 0;
             $grandTotalTotalBalance = 0;
@@ -117,14 +119,16 @@ class NOHPPCZRCSController extends Controller
             $grandTotalUnspentBalance = 0;
             foreach ($dataForm->SoeUcFormCalculation as $formCalculate) {
                 if ($formCalculate->head == 'Grand Total') {
+                    $grandTotalUnspentBalanceFirst += (int)$formCalculate->unspent_balance_1st;	
                     $grandTotalGiaReceived += (int)$formCalculate->gia_received;
                     $grandTotalCommittedLiabilities += (int)$formCalculate->committed_liabilities;
                     $grandTotalTotalBalance += (int)$formCalculate->total_balance;
                     $grandTotalActualExpenditure += (int)$formCalculate->actual_expenditure;
                     $grandTotalUnspentBalance += (int)$formCalculate->unspent_balance_31st;
                 }
-            }
+            }            
             $finalArray[] = [
+                'unspent_balance_1st_total' => $grandTotalUnspentBalanceFirst,
                 'gia_received_total' => $grandTotalGiaReceived,
                 'committed_liabilities_total' => $grandTotalCommittedLiabilities,
                 'total_balance_total' => $grandTotalTotalBalance,
@@ -134,6 +138,7 @@ class NOHPPCZRCSController extends Controller
         }
         
         $totalArray = [
+            'unspentBalance1stTotal' => 0,
             'giaReceivedTotal' => 0,
             'committedLiabilitiesTotal' => 0,
             'totalBalanceTotal' => 0,
@@ -142,25 +147,13 @@ class NOHPPCZRCSController extends Controller
         ];
         
         foreach ($finalArray as $entry) {
+            $totalArray['unspentBalance1stTotal'] += $entry['unspent_balance_1st_total'];
             $totalArray['giaReceivedTotal'] += $entry['gia_received_total'];
             $totalArray['committedLiabilitiesTotal'] += $entry['committed_liabilities_total'];
             $totalArray['totalBalanceTotal'] += $entry['total_balance_total'];
             $totalArray['actualExpenditureTotal'] += $entry['actual_expenditure_total'];
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
-        }
-
-        // UC Received or not map code
-        $UcUploadCount = SOEUCUploadForm::where('program_id', 1)->count();
-        $UcUploadApproved = SOEUCUploadForm::where(['status' => '1', 'program_id' => 1])->count();
-        $UcUploadNotApproved = SOEUCUploadForm::where(['status' => '2', 'program_id' => 1])->count();
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApproved,
-            'UcNotApprovedNumber' => $UcUploadNotApproved,
-            'TotalUcForm' => $UcUploadCount,
-        ];
-        // End UC Received or not map code
+        }        
 
         // number of percentage Head wise specific program
         $instituteProgram = InstituteProgram::where('id', 1)->first();
@@ -261,7 +254,28 @@ class NOHPPCZRCSController extends Controller
             'totalHeads' => $headExpenditureFormatted,
             'total_program_expenditure' => $totalExpenditure['total_program_expenditure'],
         ];
-        
+        // UC Received or not map code
+        $financialYear = Carbon::now()->year;
+        $query = SOEUCUploadForm::where('financial_year', $financialYear)->where('program_id', 1);
+        $UcUploadDetails = [];
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
+        // End UC Received or not map code
         // End number of percentage program wise
         return response()->json(['totalArray' => $totalArray, 'UcUploadDetails' => $UcUploadDetails, 'programHeadDetails' => $programHeadDetails], 200);
     }
@@ -274,26 +288,36 @@ class NOHPPCZRCSController extends Controller
      */
     public function nohppczrcsNationalFilterUcFormDashboard(Request $request)
     {
-        $query = SOEUCUploadForm::query();        
+        $query = SOEUCUploadForm::query();
         if ($request->has('nohppczrcsNationalUcformFy') && $request->nohppczrcsNationalUcformFy) {
-            $query->where('financial_year', $request->nohppczrcsNationalUcformFy);
-        }        
+            $financialYear = $request->nohppczrcsNationalUcformFy;
+        } else {
+            $financialYear = Carbon::now()->year;
+        }
         if ($request->has('nohppczrcsNationalInstituteUcForm') && $request->nohppczrcsNationalInstituteUcForm) {
             $query->where('institute_id', $request->nohppczrcsNationalInstituteUcForm);
-        }        
-        $UcUploadCount = $query->count();
-        $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('program_id', 1)->where('status', 1)->count();
-        $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('program_id', 1)->where('status', 2)->count();
+        }      
         
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApprovedCount,
-            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
-            'TotalUcForm' => $UcUploadCount,
-        ];
+        $query->where('financial_year', $financialYear)->where('program_id', 1);
+        $UcUploadDetails = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
         return response()->json(['UcUploadDetails' => $UcUploadDetails], 200);
     }
     
@@ -423,7 +447,7 @@ class NOHPPCZRCSController extends Controller
 
                                     <td>';
                     if ($sorUcList->file) {
-                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                        $output .= '<a class="nhm-file" href="' . asset('public/images/uploads/soeucupload/' . $sorUcList->file) . '" download>
                                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
                                         <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
                                         <i class="fa fa-download" aria-hidden="true"></i>

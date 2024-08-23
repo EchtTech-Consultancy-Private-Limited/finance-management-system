@@ -149,19 +149,6 @@ class NOHPPCZSSSController extends Controller
             $totalArray['unspentBalance31stTotal'] += $entry['unspent_balance_31st_total'];
         }
 
-        // UC Received or not map code
-        $UcUploadCount = SOEUCUploadForm::where('program_id', 2)->count();
-        $UcUploadApproved = SOEUCUploadForm::where(['status' => '1', 'program_id' => 2])->count();
-        $UcUploadNotApproved = SOEUCUploadForm::where(['status' => '2', 'program_id' => 2])->count();
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadApproved / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => ($UcUploadCount > 0) ? ($UcUploadNotApproved / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApproved,
-            'UcNotApprovedNumber' => $UcUploadNotApproved,
-            'TotalUcForm' => $UcUploadCount,
-        ];
-        // End UC Received or not map code
-
         // number of percentage Head wise specific program
         $instituteProgram = InstituteProgram::where('id', 2)->first();
         $programNames = $instituteProgram->name;
@@ -264,6 +251,29 @@ class NOHPPCZSSSController extends Controller
             'totalHeads' => $headExpenditureFormatted,
             'total_program_expenditure' => $totalExpenditure['total_program_expenditure'],
         ];
+
+        // UC Received or not map code
+        $financialYear = Carbon::now()->year;
+        $query = SOEUCUploadForm::where('financial_year', $financialYear)->where('program_id', 2);
+        $UcUploadDetails = [];
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
+        // End UC Received or not map code
         
         // End number of percentage program wise
         return response()->json(['totalArray' => $totalArray, 'UcUploadDetails' => $UcUploadDetails, 'programHeadDetails' => $programHeadDetails], 200);
@@ -277,26 +287,36 @@ class NOHPPCZSSSController extends Controller
      */
     public function nohppczrsssNationalFilterUcFormDashboard(Request $request)
     {
-        $query = SOEUCUploadForm::query();        
-        if ($request->has('nohppczrcsNationalUcformFy') && $request->nohppczrcsNationalUcformFy) {
-            $query->where('financial_year', $request->nohppczrcsNationalUcformFy);
-        }        
-        if ($request->has('nohppczrcsNationalInstituteUcForm') && $request->nohppczrcsNationalInstituteUcForm) {
-            $query->where('institute_id', $request->nohppczrcsNationalInstituteUcForm);
-        }        
-        $UcUploadCount = $query->count();
-        $UcUploadApproved = clone $query;
-        $UcUploadApprovedCount = $UcUploadApproved->where('program_id', 2)->where('status', 1)->count();
-        $UcUploadNotApproved = clone $query;
-        $UcUploadNotApprovedCount = $UcUploadNotApproved->where('program_id', 2)->where('status', 2)->count();
+        $query = SOEUCUploadForm::query();
+        if ($request->has('nohppczrcsssNationalUcformFy') && $request->nohppczrcsssNationalUcformFy) {
+            $financialYear = $request->nohppczrcsssNationalUcformFy;
+        } else {
+            $financialYear = Carbon::now()->year;
+        }
+        if ($request->has('nohppczrcsssNationalInstituteUcForm') && $request->nohppczrcsssNationalInstituteUcForm) {
+            $query->where('institute_id', $request->nohppczrcsssNationalInstituteUcForm);
+        }      
         
-        $UcUploadDetails = [
-            'UcApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcNotApprovedPercentage' => $UcUploadCount > 0 ? ($UcUploadNotApprovedCount / $UcUploadCount) * 100 : 0,
-            'UcApprovedNumber' => $UcUploadApprovedCount,
-            'UcNotApprovedNumber' => $UcUploadNotApprovedCount,
-            'TotalUcForm' => $UcUploadCount,
-        ];
+        $query->where('financial_year', $financialYear)->where('program_id', 2);
+        $UcUploadDetails = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $queryForMonth = clone $query;
+            // Total count for the month
+            $total = $queryForMonth->whereMonth('date', $month)->count();
+            // Approved count for the month
+            $queryForApproved = clone $queryForMonth;
+            $approved = $queryForApproved->where('status', 1)->count();
+            // Not approved count for the month
+            $queryForNotApproved = clone $queryForMonth;
+            $notApproved = $queryForNotApproved->where('status', 2)->count();
+
+            $UcUploadDetails[$month] = [
+                'total' => $total ?: 0,
+                'approved' => $approved ?: 0,
+                'not_approved' => $notApproved ?: 0,
+            ];
+        }
         return response()->json(['UcUploadDetails' => $UcUploadDetails], 200);
     }
     
@@ -426,7 +446,7 @@ class NOHPPCZSSSController extends Controller
 
                                     <td>';
                     if ($sorUcList->file) {
-                        $output .= '<a class="nhm-file" href="' . asset('images/uploads/soeucupload/' . $sorUcList->file) . '" download>
+                        $output .= '<a class="nhm-file" href="' . asset('public/images/uploads/soeucupload/' . $sorUcList->file) . '" download>
                                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
                                         <span>Download (' . htmlspecialchars($sorUcList->file_size) . ')</span>
                                         <i class="fa fa-download" aria-hidden="true"></i>

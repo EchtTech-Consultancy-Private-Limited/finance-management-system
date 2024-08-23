@@ -30,7 +30,10 @@
                             <select id="program" class="form-control filter_program_id" name="program_id">
                                 <option value="">Select Program</option>
                                 @foreach($programs as $program)
-                                <option value="{{ $program->id }}" {{  request('program_id') == $program->id ? 'selected' : '' }}>{{ $program->name }} - {{ $program->code }}</option>
+                                @if(in_array($program->id, explode(',', Auth::user()->program_id)))
+                                        <option value="{{ $program->id }}">{{ $program->name }} - {{ $program->code }}</option>
+                                @endif
+                                {{-- <option value="{{ $program->id }}" {{  request('program_id') == $program->id ? 'selected' : '' }}>{{ $program->name }} - {{ $program->code }}</option> --}}
                                 @endforeach
                             </select>
                             @error('program_id')
@@ -44,7 +47,10 @@
                                 id="national_institute_name">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                <option value="{{ $institute->id }}" {{  request('institute_id') == $institute->id ? 'selected' : '' }}>{{ $institute->name }}</option>
+                                    @if(in_array($institute->id, explode(',', Auth::user()->institute_id)))
+                                        <option value="{{ $institute->id }}">{{ $institute->name }}</option>
+                                    @endif
+                                    {{-- <option value="{{ $institute->id }}" {{  request('institute_id') == $institute->id ? 'selected' : '' }}>{{ $institute->name }}</option> --}}
                                 @endforeach
                             </select>
                         </div>
@@ -115,7 +121,7 @@
                                     <td>{{ $sorUcList->month }}</td>                                    
                                     <td>
                                         @if ($sorUcList->file)
-                                        <a class="nhm-file" href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                        <a class="nhm-file" href="{{ asset('public/images/uploads/soeucupload/'.$sorUcList->file) }}" download>
                                             <i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>

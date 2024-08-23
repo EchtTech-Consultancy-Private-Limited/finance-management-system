@@ -182,29 +182,32 @@
                         @enderror
                     </div>
             </div>
-
             <div class="table-responsive fms-table mt-5">
+                @if(@$final_data['Grand Total'])
+                <div><b id="total-balance-doe">Total Unspent Balance : {{ @$final_data['Grand Total']['0'] }}</b></div><br>
+                @endif
                 <table class="table table-bordered text-center">
                     <thead>
                         <tr class="table-color-head">
                             <th>Heads</th>
                             <th>Sanction Order Nos.</th>
                             {{-- <th>Previous Month Expenditure</th> --}}                            
-                            <th>Unspent Balance (GIA) as on 1st April</th>
+                            <th>Unspent Balance (GIA) as on Perivious Month</th>
                             <th>GIA Received in F.Y</th>
-                            <th>Total Balance excluding interest</th>
+                            <th>Total Balance</th>
                             <th>Expenditure Till Last Month</th>
                             <th>Actual Expenditure incurred during the current Month</th>
                             <th>Total Expenditure Till date</th>
-                            <th>Unspent Balance as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance as on <span class="current_month_selected_text">{{ date('dS M Y', strtotime('last day of this month')) }}</span></th>
+
                             <th>Committed Liabilities (if any)</th>
-                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">31st March</span></th>
+                            <th>Unspent Balance after Committed Liabilities as on <span class="current_month_selected_text">{{ date('dS M Y', strtotime('last day of this month')) }}</span></th>
                         </tr>
                        
                         <tr class="table-color-th">
                             <th></th>
                             <th>A</th>
-                            {{-- <th></th> --}}                            
+                            {{-- <th></th> --}}
                             <th>B</th>
                             <th>C</th>
                             <th>D=(B+C)</th>
@@ -237,7 +240,7 @@
                                 </td> --}}                                
                                 <td><input type="text" name="unspent_balance_1st[]" class="form-control manpower-B"
                                         maxlength="5" oninput="validateInput(this)"
-                                        value="{{ old('unspent_balance_1st.' . $loop->iteration) }}"></td>
+                                        value="{{ @$previousTotalMonth['0'] }}" readonly></td>
                                 <td><input type="text" name="gia_received[]" class="form-control manpower-C"
                                         value="{{ old('gia_received.0') }}"></td>
                                 <td><input type="text" name="total_balance[]" class="form-control manpower-D" maxlength="5"
@@ -530,7 +533,7 @@
                             </th> --}}                            
                             <th class="grandTotal-B">
                                 <input type="text" name="unspent_balance_1st[]" class="form-control grandTotal-B"
-                                    id="manpower-A" value="{{ old('unspent_balance_1st.7') }}" readonly>
+                                    id="manpower-A" value="{{ @$previousTotalMonth['0'] }}" readonly>
                             </th>
                             <th class="grandTotal-C">
                                 <input type="text" name="gia_received[]" class="form-contal-C grandTotal-C"

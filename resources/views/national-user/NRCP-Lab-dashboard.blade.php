@@ -219,6 +219,16 @@
     <div class="white_card_body col-xl-12  card_height_100 user_crm_wrapper mb-3">
         <div class="row card-mm">
             <div class="col">
+                <div class="single_crm border-line-2 p-0">
+                    <div class="crm_body">
+                        <h4 id="national-nrcplab-unspentBalance1stTotal">
+                            {{ @$totalArray['unspentBalance1stTotal'] }}
+                        </h4>
+                        <p>Unspent Balance (GIA) as on Perivious Month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="single_crm border-line-1 p-0">
                     <div class="crm_body">
                         <h4 id="national-nrcplab-giaReceivedTotal">{{ @$totalArray['giaReceivedTotal'] }}</h4>
@@ -230,7 +240,7 @@
                 <div class="single_crm border-line-3 p-0">
                     <div class="crm_body">
                         <h4 id="national-nrcplab-totalBalanceTotal">{{ @$totalArray['totalBalanceTotal'] }}</h4>
-                        <p>Total Balance excluding interest</p>
+                        <p>Total Balance</p>
                     </div>
                 </div>
             </div>
@@ -250,7 +260,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <div class="single_crm border-line-2 p-0">
                     <div class="crm_body">
                         <h4 id="national-nrcplab-committedLiabilitiesTotal">{{ @$totalArray['committedLiabilitiesTotal'] }}
@@ -258,7 +268,7 @@
                         <p>Committed Liabilities</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="devider-line">
@@ -301,37 +311,10 @@
         </div>
     </div>
     <div class="row pe-0">
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="white_card  ">
-
                 <div class="white_card">
-                    <div id="nrcplab_chart_currently_UC_Received" class=" mb-3 received-chart"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card  ">
-                <div class="">
-                    <div id="nrcplab_chart_currently_UC_not_Received" class=" mb-3 received-chart"></div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="white_card">
-                <div id="nrcplab_chart_currently_Nos_UC_Received" class=" mb-0 received-chart"></div>
-
-            </div>
-        </div>
-
-        <div class="col-md-3 pe-0">
-            <div class="white_card  ">
-
-                <div class="">
-                    <div id="nrcplab_chart_currently_Nos_UC_not_Received" class=" mb-0 received-chart"></div>
-
+                    <div id="national-nrcplab-uc-upload-dashboard-Months-bar" class="mb-3"></div>
                 </div>
             </div>
         </div>
@@ -365,7 +348,7 @@
                                     <td>
                                         @if ($sorUcList->file)
                                         <a class="nhm-file"
-                                            href="{{ asset('images/uploads/soeucupload/'.$sorUcList->file) }}" download>
+                                            href="{{ asset('public/images/uploads/soeucupload/'.$sorUcList->file) }}" download>
                                             <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                                             <span>Download ({{ $sorUcList->file_size }})</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
