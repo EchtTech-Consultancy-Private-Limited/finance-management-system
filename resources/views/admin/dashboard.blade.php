@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row dash-frst-row">
 
                 <div class="col-md-3 row special-card special-card-w-33">
                     <div class="col-md-6">
@@ -105,7 +105,7 @@
                 <div class="col-md-3 row special-card-w-44">
                     <div class="col-md-6 p-0">
                         <div class="">
-                            <div class="">
+                            <div class="login-hrs">
                                 <div id="admin-dashboard-Average-Login-Hours" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
 
                     <div class="col-md-6">
                         <div class="">
-                            <div class="">
+                            <div class="user-actv">
                                 <div id="admin-dashboard-Overall-User-Active" class="rounded mb-3 received-chart"></div>
                             </div>
                         </div>

@@ -210,7 +210,7 @@
                                 <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stope'; } @endphp
                                 </td>
                                 <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
-                                <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}"><i
+                                <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}" title="edit"><i
                                             class="far fa-edit"></i></a></td>
                             </tr>
                             @endforeach
