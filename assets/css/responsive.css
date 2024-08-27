@@ -104,7 +104,7 @@
 
 @media (min-width:768px) and (max-width:1365px) {
    tspan.graph-title tspan {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
    }
 
@@ -262,7 +262,7 @@
 
    .expenditure_lacks {
       padding: 0 10px;
-      height: 190px;
+      height: 216px;
    }
 
    .white_card_body.overall-program-expenditure-amount {
