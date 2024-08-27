@@ -84,10 +84,10 @@
                                     <td>{{ @$institute->name }}</td>
                                     <td>
                                         <a href="{{ route('admin.institutes.edit',$institute->id) }}"
-                                            class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+                                            class="action_btn mr_10" title="edit"> <i class="far fa-edit"></i> </a>
                                         <a href="{{ route('admin.institutes.delete',$institute->id) }}"
                                             class="action_btn"
-                                            onclick="return confirm('Are you sure you want to delete this record?');">
+                                            onclick="return confirm('Are you sure you want to delete this record?');" title="delete">
                                             <i class="fas fa-trash text-danger"></i> </a>
                                     </td>
                                 </tr>

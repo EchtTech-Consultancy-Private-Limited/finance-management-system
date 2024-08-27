@@ -41,7 +41,8 @@
    }
 
    .spaicel-card-w-66 {
-      width: 66.66666667% !important;
+      width: 45.66666667% !important;
+      justify-content: space-between;
    }
 
    .special-card-w-33 {
@@ -57,12 +58,13 @@
    }
 
    .special-card-w-44 {
-      width: 41.66666667%;
+      width: 35.66666667%;
    }
 
    .user_crm_wrapper .special-card .single_crm {
-      min-height: 135px;
+      min-height: 85px;
       margin-top: 35px;
+      height: 90px;
    }
 
    .user_crm_wrapper .special-card .single_crm .crm_body {
@@ -102,7 +104,7 @@
 
 @media (min-width:768px) and (max-width:1365px) {
    tspan.graph-title tspan {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
    }
 
@@ -260,7 +262,7 @@
 
    .expenditure_lacks {
       padding: 0 10px;
-      height: 190px;
+      height: 216px;
    }
 
    .white_card_body.overall-program-expenditure-amount {
@@ -335,4 +337,35 @@
    .textarea-h {
       height: 420px !important;
    }
+}
+@media (min-width:1301px) and (max-width:1600px){
+   .special-card-w-33 {
+      width: 24% !important;
+      justify-content: space-around;
+  }
+  .col.p-0 {
+   width: 100px !important;
+   max-width: 115px !important;
+}
+div#admin-dashboard-Average-Login-Hours, div#admin-dashboard-Overall-User-Active {
+   width: 150px;
+}
+.login-hrs, .user-actv {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+.user_crm_wrapper .single_crm .crm_body h4 {
+   font-size: 20px;
+}
+
+}
+@media (min-width:1025px) and (max-width:1300px){
+   .special-card-w-33 {
+      width: 35% !important;
+      justify-content: space-around;
+  }
+  .spaicel-card-w-66 {
+   width: 68% !important;
+}
 }
