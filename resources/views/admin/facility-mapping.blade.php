@@ -207,7 +207,7 @@
                                 </td>
                                 <td>{{ @$user->email }}</td>
                                 <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
-                                <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stope'; } @endphp
+                                <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stop'; } @endphp
                                 </td>
                                 <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
                                 <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}" title="edit"><i
