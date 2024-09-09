@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('change-password/{id}', [DashboardController::class, 'changePassword'])->name('change-password');
     Route::get('/filter', [DashboardController::class, 'filterCity'])->name('filterCity');
     Route::get('/filter-program', [DashboardController::class, 'filterProgram'])->name('filterProgram');
-    Route::get('/notifications', [NotificationController::class, 'getNotifications'])->name('filterProgram');
+    Route::get('/notifications', [NotificationController::class, 'getNotifications']);
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => ['checkUserType:admin']], function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

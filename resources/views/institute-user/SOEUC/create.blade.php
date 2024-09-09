@@ -10,7 +10,7 @@
 {{ __('Create') }}
 @endsection
 @section('content')
-
+{!! Toastr::message() !!}
 <div class="col-lg-12 institute">
     <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
         <div class="page_title_left d-flex align-items-center">

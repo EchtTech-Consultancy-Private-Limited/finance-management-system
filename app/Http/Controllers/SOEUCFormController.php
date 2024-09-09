@@ -104,6 +104,7 @@ class SOEUCFormController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'program_id'    => 'required',
             'institute_id'     => 'required',
@@ -122,6 +123,18 @@ class SOEUCFormController extends Controller
         ]);
         try {
                 DB::beginTransaction();
+                $soeExist = SOEUCForm::where([
+                    'user_id' => Auth::id(),
+                    'program_id' => $request->program_id,
+                    'institute_id' => $request->institute_id,
+                    'financial_year' => $request->financial_year,
+                    'month' => $request->month
+                ])->exists();
+                if ($soeExist) {
+                    \Toastr::error('fail, SOE Form already created in the Month of financial year  :)','Error');
+                    return back()->withInput();
+                }
+
                 $soeucFormId = SOEUCForm::Create([
                     'user_id' => Auth::id(),
                     'program_id' => $request->program_id,

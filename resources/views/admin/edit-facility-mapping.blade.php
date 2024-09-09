@@ -27,7 +27,7 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress">User Name<span class="text-danger">*</span></label>
-                            <input type="text" name="user_name" value="{{ old('user_name', $user->email ?? '') }}" class="form-control" placeholder="Enter User Name">
+                            <input type="text" name="user_name" value="{{ old('user_name', $user->email ?? '') }}" class="form-control" placeholder="Enter User Name" readonly>
                             @error('user_name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -49,13 +49,13 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
-                            <select id="institute_name" class="form-control mySelect3" name="institute_id[]">
+                            <select id="institute_name" class="form-control mySelect3" name="institute_id">
                                 <option value="">Select Institute</option>
                                 @foreach($institutes as $institute)
-                                    <option value="{{ $institute->id }}" 
-                                        {{ in_array($institute->id, old('institute_id', $user->institute_id ? explode(',', $user->institute_id) : [])) ? 'selected' : '' }}>
-                                        {{ $institute->name }}
-                                    </option>
+                                <option value="{{ $institute->id }}" 
+                                    {{ old('institute_id', $user->institute_id) == $institute->id ? 'selected' : '' }}>
+                                    {{ $institute->name }}
+                                </option>                                
                                 @endforeach
                             </select>
                             

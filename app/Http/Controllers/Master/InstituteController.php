@@ -19,7 +19,7 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        $institutes = Institute::with('program')->get();
+        $institutes = Institute::with('program')->orderBy('id', 'DESC')->get();
         $programs = InstituteProgram::get();
         return view('admin.master.institute.index', compact('institutes','programs'));
     }

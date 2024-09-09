@@ -52,7 +52,7 @@
                     
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
-                        <select id="institute_name" class="form-control" name="institute_id[]">
+                        <select id="institute_name" class="form-control" name="institute_id">
                             <option value="">Select Institute</option>
                             @foreach($institutes as $institute)
                             <option value="{{ $institute->id }}"
@@ -180,6 +180,7 @@
                                 <th scope="col">Name Of Institute</th>
                                 <th scope="col">Login ID</th>
                                 <th scope="col">Password</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Edit</th>
@@ -207,7 +208,8 @@
                                 </td>
                                 <td>{{ @$user->email }}</td>
                                 <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
-                                <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stope'; } @endphp
+                                <td>{{ $user->user_type == 1 ? "Institute" : ($user->user_type == 0 ? "National" : "Admin") }}</td>
+                                <td>{{ $user->login_status == 1 ? 'Running' : 'Stop' }}</td>
                                 </td>
                                 <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
                                 <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}" title="edit"><i
@@ -222,4 +224,12 @@
         </div>
     </div>
 </div>
+<script>
+
+$(document).ready(function() {
+    $('select').select2({
+   placeholder: "Select a state"
+}):
+});
+</script>
 @endsection

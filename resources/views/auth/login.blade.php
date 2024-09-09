@@ -41,10 +41,10 @@
                                             <form method="POST" action="{{ route('authenticate') }}" id="loginForm">
                                                 @csrf
                                                 <div class="form-check">
-                                                    <div class="radio-btn-card d-flex mb-3">
+                                                    <div class="radio-btn-card d-flex mb-3 position-relative">
                                                         <div class="d-flex me-5">
                                                             <input class="form-check-radio" type="radio" name="usertype"
-                                                                id="gridRadios1" value="0" checked="">
+                                                                id="gridRadios1" value="0">
                                                             <label class="form-label form-check-label"
                                                                 for="gridRadios1">National User</label>
                                                         </div>
@@ -54,6 +54,9 @@
                                                             <label class="form-label form-check-label"
                                                                 for="gridRadios2">Institute User</label>
                                                         </div>
+                                                        @error('usertype')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                     <div class="mb-3">
                                                         <input type="text" name="email" value="{{ old('email') }}"
@@ -142,6 +145,9 @@
 
         $("#loginForm").validate({
             rules: {
+                usertype: {
+                    required: true
+                },
                 password: {
                     required: true,
                     minlength: 5

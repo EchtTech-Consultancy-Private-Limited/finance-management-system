@@ -64,7 +64,7 @@
                                                 UC Upload List : ({{ senderName($notification->sender_id)->name }})
                                              </a>
                                              @endif
-                                         </li>                                         
+                                         </li>
                                           @endif
                                           @if(Auth::user()->user_type == 1)
                                           <li>

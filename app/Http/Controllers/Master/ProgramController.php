@@ -18,7 +18,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = InstituteProgram::get();   
+        $programs = InstituteProgram::orderBy('id', 'DESC')->get();   
         return view('admin.master.program.index', compact('programs'));
     }
     

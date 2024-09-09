@@ -162,7 +162,7 @@ class AdminController extends Controller
         $institutePrograms = InstituteProgram::get();
         $institutes = Institute::get();
         $cities = City::get();
-        $users = User::with('state','city')->whereIn('user_type',['0','1'])->get();
+        $users = User::with('state','city')->whereIn('user_type',['0','1'])->orderBy('id','DESC')->get();
         return view('admin.facility-mapping',[
                 'state'=>$stateList,
                 'institutes'=> $institutes,
@@ -180,7 +180,7 @@ class AdminController extends Controller
     public function facilityMappingCreate(Request $request)
     {
         $request->validate([
-            'user_name' => 'required|email',
+            'user_name' => 'required|email|unique:users,email,'.$request->user_name,
             'program_id' => 'required',
             'institute_id' => 'required',
             'password' => 'required',
@@ -193,7 +193,7 @@ class AdminController extends Controller
         DB::table('users')->insert([
             'email' => $request->user_name,
             'program_id' => implode(',',$request->program_id),
-            'institute_id' => implode(',',$request->institute_id),
+            'institute_id' => $request->institute_id,
             'password' => Hash::make($request->password),
             'state_id' => $request->state_id,
             'district_id' => $request->city_id,
@@ -246,7 +246,7 @@ class AdminController extends Controller
         $data = [
             'email' => $request->user_name,
             'program_id' => implode(',',$request->program_id),
-            'institute_id' => implode(',',$request->institute_id),
+            'institute_id' => $request->institute_id,
             'state_id' => $request->state_id,
             'district_id' => $request->city_id,
             'date' => $request->date,
