@@ -52,7 +52,7 @@
                     
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Select Institute<span class="text-danger">*</span></label>
-                        <select id="institute_name" class="form-control" name="institute_id[]">
+                        <select id="institute_name" class="form-control" name="institute_id">
                             <option value="">Select Institute</option>
                             @foreach($institutes as $institute)
                             <option value="{{ $institute->id }}"
@@ -224,4 +224,12 @@
         </div>
     </div>
 </div>
+<script>
+
+$(document).ready(function() {
+    $('select').select2({
+   placeholder: "Select a state"
+}):
+});
+</script>
 @endsection

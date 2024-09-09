@@ -26,10 +26,11 @@ function senderName($senderId)
 function ucForm()
 {
     $ucForm = UcForm::where('status', '1')
-                    ->orderBy('created_at', 'desc')
-                    ->first();
-    return $ucForm->file;
+            ->orderBy('created_at', 'desc')
+            ->first();
+    if($ucForm){
+        return $ucForm->file;
+    }
 }
-
 
 ?>

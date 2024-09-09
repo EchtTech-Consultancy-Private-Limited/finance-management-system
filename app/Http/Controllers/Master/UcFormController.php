@@ -20,7 +20,7 @@ class UcFormController extends Controller
      */
     public function index()
     {
-        $ucForms = UcForm::get();
+        $ucForms = UcForm::orderBy('id', 'DESC')->get();
         return view('admin.master.ucform.index',compact('ucForms'));
     }
     
