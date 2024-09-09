@@ -41,7 +41,7 @@
                                             <form method="POST" action="{{ route('authenticate') }}" id="loginForm">
                                                 @csrf
                                                 <div class="form-check">
-                                                    <div class="radio-btn-card d-flex mb-3">
+                                                    <div class="radio-btn-card d-flex mb-3 position-relative">
                                                         <div class="d-flex me-5">
                                                             <input class="form-check-radio" type="radio" name="usertype"
                                                                 id="gridRadios1" value="0">
