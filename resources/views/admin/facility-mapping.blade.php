@@ -180,6 +180,7 @@
                                 <th scope="col">Name Of Institute</th>
                                 <th scope="col">Login ID</th>
                                 <th scope="col">Password</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Edit</th>
@@ -207,7 +208,8 @@
                                 </td>
                                 <td>{{ @$user->email }}</td>
                                 <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
-                                <td>@php if($user->login_status ==1){ echo 'Running'; }else{ echo 'Stop'; } @endphp
+                                <td>{{ $user->user_type == 1 ? "Institute" : ($user->user_type == 0 ? "National" : "Admin") }}</td>
+                                <td>{{ $user->login_status == 1 ? 'Running' : 'Stop' }}</td>
                                 </td>
                                 <td>@php if($user->status ==1){ echo 'Active'; }else{ echo 'Deactive'; } @endphp</td>
                                 <td><a href="{{route('admin.facility-mapping-edit',$user->id)}}" title="edit"><i
