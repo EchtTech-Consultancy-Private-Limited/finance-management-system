@@ -77,7 +77,7 @@
                                                         @enderror
                                                     </div>
 
-                                                    <div class="row">
+                                                    <div class="row captcha-alignment">
                                                       
                                                        
                                                         <div class="col-md-6">
