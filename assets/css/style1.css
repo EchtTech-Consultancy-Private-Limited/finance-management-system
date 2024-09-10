@@ -3035,7 +3035,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     line-height: 30px;
     text-align: center;
     color: #67349d;
-    font-size: 12px;
+    font-size: 14px;
     transition: .3s;
     display: inline-block;
     flex: 32px 0 0
@@ -12906,7 +12906,7 @@ input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear {
 
 .graph-container h2.chart-title {
     position: absolute;
-    z-index: 99;
+    z-index: 0;
     font-size: 16px;
     color: #000;
     font-weight: 700;
@@ -14114,6 +14114,12 @@ select#filter-city {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    box-sizing: border-box;
+}
+select#filter-city:focus {
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
 }
 .row.captcha-alignment {
     align-items: flex-start !important;
