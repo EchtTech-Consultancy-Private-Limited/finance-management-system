@@ -451,7 +451,7 @@
                     <div class="">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Overall Program Expenditure <br> Amount In Lakh</h3>
+                                <h3 class="m-0">Overall Program Expenditure <br> Amount in Lakh</h3>
                             </div>
 
                         </div>

@@ -145,9 +145,9 @@
 
         $("#loginForm").validate({
             rules: {
-                usertype: {
-                    required: true
-                },
+                // usertype: {
+                //     required: true
+                // },
                 password: {
                     required: true,
                     minlength: 5
