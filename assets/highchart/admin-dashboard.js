@@ -413,7 +413,7 @@ function adminDashboardChart(data,programUserDetailsArray,registrationsSession) 
             }
         },
         series: [{
-            name: '2021/11',
+            name: new Date().getFullYear() + '/' + (new Date().getMonth() + 1),
             events: {
                 legendItemClick: function (e) {
                     e.preventDefault();
