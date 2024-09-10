@@ -19,6 +19,7 @@ use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Http\Helpers\CustomCaptcha;
 use App\Http\Helpers\phptextClass;
+use Illuminate\Validation\Rule;
 
 class LoginController extends Controller
 {
@@ -83,13 +84,12 @@ class LoginController extends Controller
      */
 
     public function authenticate(Request $request)
-    {
-      
+    {      
       $request->validate(
         [
             'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            'usertype'=> 'required',//|alpha_num|min:6
-            'password'=> 'required',//|alpha_num|min:6
+            // 'usertype'=> Rule::requiredIf($request->usertype != 'admin'),
+            'password'=> 'required',
             'captcha_code' => 'required|in:'.Session::get('captcha_code')
         ],[
           'email.required' => 'The email field is required.',
@@ -105,33 +105,15 @@ class LoginController extends Controller
           Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
           return redirect()->back();
       }else{
-        //$approve = DB::table('users')->where('email',$request->email)->first()->status == '3';
-        // if($approve == false){
-        //   return response()->json(['message' => "Your account is not approve or Publish.",'status'=>401],401);
-        // }else{
-          //if(config('checkduplicate.CHECK_LOGIN_USER_LOGGEDIN') == 'ON'){
-          // $check = DB::table('users')->where('email',$request->email)->first()->login_status == '0';
-          // }else{
-          //   $check ='true';
-          // }
-        // if($check == false){
-        //   return response()->json(['message' => "Another Person login!",'status'=>401],401);
-        // }else{
-        // $request['password'] =base64_decode(strrev($request->password));
         $credentials = $request->only('email', 'password');
-      //dd(auth()->attempt($credentials));
       if (Auth::attempt($credentials)) {
-          
-     // if (auth()->attempt($credentials)) {
-          // Authentication passed...
           if(Auth::user()->user_type == 0){
             $redirectUrl = redirect()->intended('national-users/dashboard')->getTargetUrl();
           }elseif(Auth::user()->user_type == 1){
             $redirectUrl = redirect()->intended('institute-users/dashboard')->getTargetUrl();
           }else{
             $redirectUrl = redirect()->intended('admin/dashboard')->getTargetUrl();
-          }
-          
+          }          
           //for tracking
           $user = Auth::user();
           $br= $this->getBrowser();
@@ -142,23 +124,15 @@ class LoginController extends Controller
           $user->login_status = 1;
           $user->save();
 
-          //$userId = Auth::user()->id;
-          //$sqlUpdate = DB::table('users')->where('id', $userId)->update(array('last_login'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_status'=>'1'));
-
-         // $signedupAt = Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at, "UTC");
-          //$user->signedupAt = $signedupAt->toIso8601ZuluString();
-
           $crisp_signature = hash_hmac("sha256", $user->email,env('CRISP_SECRET_KEY'));
           
           if ($request->expectsJson()) {
               //dd('HiOTT');
               $verified = $user->email_verified_at?true:false;
-            //  $token= auth()->attempt($credentials);
-             // return $this->createNewToken($token, $crisp_signature, $verified);
               return response()->json(['redirectUrl' => $redirectUrl, 'user' => $user,'crisp_signature'=>$crisp_signature,
                      'verified'=>$verified,'status'=>200]);
           }
-              else  return redirect($redirectUrl);
+          else  return redirect($redirectUrl);
       }
 
       if ($request->expectsJson()) {

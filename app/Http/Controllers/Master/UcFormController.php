@@ -35,7 +35,7 @@ class UcFormController extends Controller
         $request->validate([
             'title' => 'required',
             'status' => 'required',
-            'file' => 'required|file|max:5120',
+            'file' => 'required|file|max:5120|mimes:doc,docx,pdf',
         ]);        
         try {            
             DB::beginTransaction();

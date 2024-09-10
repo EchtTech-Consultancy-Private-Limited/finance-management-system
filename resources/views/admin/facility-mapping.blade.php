@@ -179,7 +179,7 @@
                                 <th scope="col">State</th>
                                 <th scope="col">Name Of Institute</th>
                                 <th scope="col">Login ID</th>
-                                <th scope="col">Password</th>
+                                {{-- <th scope="col">Password</th> --}}
                                 <th scope="col">Role</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -207,7 +207,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{ @$user->email }}</td>
-                                <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td>
+                                {{-- <td class="hidetext">{{ Str::limit(@$user->password, 4) }}</td> --}}
                                 <td>{{ $user->user_type == 1 ? "Institute" : ($user->user_type == 0 ? "National" : "Admin") }}</td>
                                 <td>{{ $user->login_status == 1 ? 'Running' : 'Stop' }}</td>
                                 </td>
