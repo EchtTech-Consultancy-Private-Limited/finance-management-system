@@ -17,10 +17,12 @@ function notifications()
 function senderName($senderId)
 {
     $senderName = User::where('id', $senderId)->first();
-    if(Auth::user()->user_type == 0){
-        $senderName = Institute::where('id', $senderName->institute_id)->first();
+    if($senderName){
+        if(Auth::user()->user_type == 0){
+            $senderName = Institute::where('id', $senderName->institute_id)->first();
+        }
+        return $senderName;
     }
-    return $senderName;
 }
 
 function ucForm()
