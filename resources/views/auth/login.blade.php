@@ -53,11 +53,12 @@
                                                                 id="gridRadios2" value="1">
                                                             <label class="form-label form-check-label"
                                                                 for="gridRadios2">Institute User</label>
-                                                        </div>
-                                                        @error('usertype')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
+                                                        </div>                                                        
                                                     </div>
+                                                    @error('usertype')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                    <br>
                                                     <div class="mb-3">
                                                         <input type="text" name="email" value="{{ old('email') }}"
                                                             class="form-control @error('email') is-invalid @enderror"

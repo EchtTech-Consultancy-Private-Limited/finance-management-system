@@ -84,17 +84,18 @@ class LoginController extends Controller
      */
 
     public function authenticate(Request $request)
-    {      
+    {
+      $user = DB::table('users')->where('email',$request->email)->first(); 
       $request->validate(
         [
             'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            // 'usertype'=> Rule::requiredIf($request->usertype != 'admin'),
+            'usertype'=> Rule::requiredIf($user->user_type != 'admin'),
             'password'=> 'required',
             'captcha_code' => 'required|in:'.Session::get('captcha_code')
         ],[
           'email.required' => 'The email field is required.',
           'email.email' => 'The email must be valid.',
-          'usertype.required' => 'The field is required.',
+          'usertype.required' => 'Please select user type.',
           'password.required' => 'The Password is required.',
           'captcha_code.required' => 'The Captcha field is required.',
           'captcha_code.captcha_code' => 'Please enter a valid Captcha',

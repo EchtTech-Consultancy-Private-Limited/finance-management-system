@@ -56,12 +56,12 @@
                                           <li>
                                              @if($notification->form_type ==1)
                                              <a href="{{ route('national-user.soe-expense-view', $notification->form_id) }}" target="_blank">
-                                                SOE Upload List : ({{ senderName($notification->sender_id)->name }})
+                                                SOE Upload List : ({{ senderName($notification->sender_id)->name ?? '' }})
                                              </a>
                                              @endif
                                              @if($notification->form_type ==2)
                                              <a href="{{ route('national-user.uc-upload-list', $notification->form_id) }}" target="_blank">
-                                                UC Upload List : ({{ senderName($notification->sender_id)->name }})
+                                                UC Upload List : ({{ senderName($notification->sender_id)->name ?? '' }})
                                              </a>
                                              @endif
                                          </li>
