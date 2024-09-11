@@ -308,7 +308,7 @@
                             <label for="" class="text-nowrap me-3 mb-2 font-16"><b>Financial Year  </b></label>
                             <select id="national-user-fy" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
                                     </option>
@@ -528,7 +528,7 @@
                             <select id="national-ucform-fy" name="uc_financial_year"
                                 class="form-control national_ucForm_filter">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
                                     </option>
@@ -696,7 +696,7 @@
                     <select id="national-user-fy-barchart" name="financial_year"
                         class="form-control national_program_barchart">
                         <option value="">Select Year</option>
-                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
+                        @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php $selected=old('financial_year')==($i
                             . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
                             {{$selected}}>{{$i}} - {{$i+1}}</option>
                             @endfor
@@ -842,7 +842,7 @@
                                         <select id="national-user-fy-barchart-head" name="financial_year"
                                             class="form-control">
                                             <option value="">Select Year</option>
-                                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                            @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                                 $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : ''
                                                 ; @endphp <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} -
                                                 {{$i+1}}</option>
@@ -1003,7 +1003,7 @@
                             <select name="financial_year" class="form-control national_all_form_map"
                                 id="financial_wise_all_form">
                                 <option value="">Select Financial Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
                                     </option>
@@ -1179,7 +1179,7 @@
                             <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                             <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                     $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                     <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}
                                     </option>

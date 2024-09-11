@@ -23,7 +23,11 @@
         <div class="page_title_right">
             <div class="page_date_button d-flex align-items-center">
                 <img src="http://localhost/limitedfinance-management-system/assets/img/icon/calender_icon.svg" alt="">
-                July 01 ,2024 - July 31 ,2024
+                @php
+                    $first_date = date('F d ,Y',strtotime('first day of this month'));
+                    $last_date = date('F d ,Y',strtotime('last day of this month'));
+                @endphp
+                    {{ $first_date }} - {{ $last_date }}
             </div>
         </div>
     </div>
@@ -172,7 +176,7 @@
                                 class="text-danger">*</span></label>
                         <select id="institute-user-fy" name="financial_year" class="form-control">
                             <option value="">Select Year</option>
-                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php $selected=old('financial_year')==($i
+                            @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php $selected=old('financial_year')==($i
                                 . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp <option value="{{$i}} - {{$i+1}}"
                                 {{$selected}}>{{$i}} - {{$i+1}}</option>
                                 @endfor

@@ -18,7 +18,11 @@
         <div class="page_title_right">
             <div class="page_date_button d-flex align-items-center">
                 <img src="http://localhost/limitedfinance-management-system/assets/img/icon/calender_icon.svg" alt="">
-                July 01 ,2024 - July 31 ,2024
+                @php
+                    $first_date = date('F d ,Y',strtotime('first day of this month'));
+                    $last_date = date('F d ,Y',strtotime('last day of this month'));
+                    @endphp
+                    {{ $first_date }} - {{ $last_date }}
             </div>
         </div>
     </div>
