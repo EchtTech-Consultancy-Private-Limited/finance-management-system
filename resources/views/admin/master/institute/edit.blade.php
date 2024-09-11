@@ -26,7 +26,7 @@
                     @csrf
                     <div class="row mb-3">                        
                         <div class="col-md-4">
-                            <label class="form-label" for="inputAddress">Program Name</label>
+                            <label class="form-label" for="inputAddress">Program Name<span class="text-danger">*</span></label>
                             <select id="program" class="form-control" name="program_id">
                                 <option value="">Select Program</option>
                                 @foreach($programs as $program)

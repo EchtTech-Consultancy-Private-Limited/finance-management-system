@@ -1137,9 +1137,15 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="white_card">
-
-                <div id="integrated-dashboard-india-map3" class="border rounded"></div>
+            <div class="white_card border rounded position-relative">
+                <div class="institute-nis-select">
+                    <select name="institute_wise" class="form-control institute_wise">
+                        <option value="">Select Institute</option>
+                        <option value="1">Institute 1</option>
+                        <option value="2">Institute 2</option>                
+                     </select>
+                </div>     
+                <div id="integrated-dashboard-india-map3" class=""></div>
             </div>
         </div>
     </div>
