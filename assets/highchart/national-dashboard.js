@@ -186,6 +186,24 @@ $(document).on('change', '.national_all_form_map', function() {
 });
 // End collect all data of all form module with map
 
+// Module waise map filter form
+$(document).on('change', '.module_form_map', function() {
+    const moduleName =  $(this).val();
+    $.ajax({
+        type: "GET",
+        url: BASE_URL + "national-users/all-form-map-filter",
+        data: {
+            'module_name' : moduleName,
+        },
+        success: function(data) {
+            var totalData = data.totalArray;
+            var mapDetails = data.UcFormstateDetails;
+            allFormMapFilter(totalData,mapDetails,moduleName);         
+        }
+    });
+});
+// End Module waise map filter form
+
 
 // national dashboard chart function
 function nationalTotalChart(percentageExpenditure,percentageUnspentBalance,totalExpenditure,totalUnspentBalance,programDetails,balanceProgramLineChart,instituteColumnDetails,totalcommittedLiabilities)
@@ -1429,7 +1447,7 @@ function nationalUcFormTotalChart(UcUploadDetails,UcFormstateDetails){
 }
 
 // allFormMapFilter
-function allFormMapFilter(totalData,mapDetails){
+function allFormMapFilter(totalData,mapDetails,moduleName){
     $("#gia_received_total").text(totalData.giaReceivedTotal);
     $("#total_balance_excluding_total").text(totalData.totalBalanceTotal);
     $("#actual_expenditure_incurred_total").text(totalData.actualExpenditureTotal);
@@ -1491,23 +1509,36 @@ function allFormMapFilter(totalData,mapDetails){
                     },
                     tooltip: {
                         pointFormatter: function() {
-                            return '' +
-                                this.name + '<br/>' +
-                                'Total Institute: ' + this.state_institute + '<br/>' +
-                                'UC Form Count: ' + this.value + '<br/>' +
-                                'GIA Received Total: ' + this.gia_received_total + '<br/>' +
-                                'Committed Liabilities Total: ' + this.committed_liabilities_total + '<br/>' +
-                                'Total Balance Total: ' + this.total_balance_total + '<br/>' +
-                                'Actual Expenditure Total: ' + this.actual_expenditure_total + '<br/>' +
-                                'Unspent Balance 1st Total: ' + this.unspent_balance_1st_total + '<br/>' +
-                                'Unspent Balance Last Total: ' + this.unspent_balance_last_total + '<br/>' +
-                                'Unspent Balance 31st Total: ' + this.unspent_balance_31st_total;
+                            let result = this.name + '<br/>' +
+                                         'Total Institute: ' + this.state_institute + '<br/>';
+                    
+                            if (moduleName == 'uc') {
+                                result += 'UC Form Count: ' + this.value + '<br/>';
+                            } else if(moduleName == 'soe') {
+                                result += 'GIA Received Total: ' + this.gia_received_total + '<br/>' +
+                                          'Committed Liabilities Total: ' + this.committed_liabilities_total + '<br/>' +
+                                          'Total Balance Total: ' + this.total_balance_total + '<br/>' +
+                                          'Actual Expenditure Total: ' + this.actual_expenditure_total + '<br/>' +
+                                          'Unspent Balance 1st Total: ' + this.unspent_balance_1st_total + '<br/>' +
+                                          'Unspent Balance Last Total: ' + this.unspent_balance_last_total + '<br/>' +
+                                          'Unspent Balance 31st Total: ' + this.unspent_balance_31st_total;
+                            }else {
+                                result += 'UC Form Count: ' + this.value + '<br/>' +
+                                          'GIA Received Total: ' + this.gia_received_total + '<br/>' +
+                                          'Committed Liabilities Total: ' + this.committed_liabilities_total + '<br/>' +
+                                          'Total Balance Total: ' + this.total_balance_total + '<br/>' +
+                                          'Actual Expenditure Total: ' + this.actual_expenditure_total + '<br/>' +
+                                          'Unspent Balance 1st Total: ' + this.unspent_balance_1st_total + '<br/>' +
+                                          'Unspent Balance Last Total: ' + this.unspent_balance_last_total + '<br/>' +
+                                          'Unspent Balance 31st Total: ' + this.unspent_balance_31st_total;
+                            }
+                            return result;
                         }
-                    }
+                    }                    
                 },
             ],
             exporting: {
-                enabled: false,
+                enabled: true,
                 buttons: {
                     contextButton: {
                         menuItems: [
@@ -1527,8 +1558,6 @@ function allFormMapFilter(totalData,mapDetails){
         });        
     })();
 }
-
-
 
 // Custom action Js
 $(document).ready(function() {

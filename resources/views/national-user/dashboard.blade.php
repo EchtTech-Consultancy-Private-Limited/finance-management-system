@@ -1139,10 +1139,10 @@
         <div class="col-md-6">
             <div class="white_card border rounded position-relative">
                 <div class="institute-nis-select">
-                    <select name="institute_wise" class="form-control institute_wise">
-                        <option value="">Select Institute</option>
-                        <option value="1">Institute 1</option>
-                        <option value="2">Institute 2</option>                
+                    <select name="module_form_map" class="form-control module_form_map">
+                        <option value="">Select Module</option>
+                        <option value="soe">SOE Form</option>
+                        <option value="uc">UC Upload</option>                
                      </select>
                 </div>     
                 <div id="integrated-dashboard-india-map3" class=""></div>

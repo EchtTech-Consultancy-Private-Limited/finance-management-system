@@ -762,7 +762,6 @@ class DashboardController extends Controller
                 'unspent_balance_last_total' => 0,
                 'unspent_balance_31st_total' => 0,
             ];
-
             $UcFormstateDetails[] = [
                 'hc-key' => $state->name,
                 'value' => $UcFormCount,
@@ -774,7 +773,7 @@ class DashboardController extends Controller
                 'unspent_balance_1st_total' => $soeucFormData['unspent_balance_1st_total'],
                 'unspent_balance_last_total' => $soeucFormData['unspent_balance_last_total'],
                 'unspent_balance_31st_total' => $soeucFormData['unspent_balance_31st_total'],
-            ];            
+            ];
         }
         return response()->json(['totalArray' => $totalArray, 'UcFormstateDetails' => $UcFormstateDetails], 200);
     }
