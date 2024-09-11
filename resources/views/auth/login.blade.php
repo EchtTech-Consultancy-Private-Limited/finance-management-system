@@ -41,25 +41,25 @@
                                             <form method="POST" action="{{ route('authenticate') }}" id="loginForm">
                                                 @csrf
                                                 <div class="form-check">
-                                                    <div class="radio-btn-card d-flex mb-3 position-relative">
+                                                    <div class="radio-btn-card d-flex mb-2 position-relative">
                                                         <div class="d-flex me-5">
-                                                            <input class="form-check-radio" type="radio" name="usertype"
+                                                            <input class="form-check-radio mb-0" type="radio" name="usertype"
                                                                 id="gridRadios1" value="0">
-                                                            <label class="form-label form-check-label"
+                                                            <label class="form-label form-check-label mb-0"
                                                                 for="gridRadios1">National User</label>
                                                         </div>
                                                         <div class="d-flex">
-                                                            <input class="form-check-radio" type="radio" name="usertype"
+                                                            <input class="form-check-radio mb-0" type="radio" name="usertype"
                                                                 id="gridRadios2" value="1">
-                                                            <label class="form-label form-check-label"
+                                                            <label class="form-label form-check-label mb-0"
                                                                 for="gridRadios2">Institute User</label>
                                                         </div>                                                        
                                                     </div>
                                                     @error('usertype')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-                                                    <br>
-                                                    <div class="mb-3">
+                                                    
+                                                    <div class="mb-3 mt-2">
                                                         <input type="text" name="email" value="{{ old('email') }}"
                                                             class="form-control @error('email') is-invalid @enderror"
                                                             placeholder="Enter your email">

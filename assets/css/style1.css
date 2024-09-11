@@ -4728,9 +4728,9 @@ body::-webkit-scrollbar {
         padding: 10px 15px;
     }
 
-    .radio-btn-card {
+    /* .radio-btn-card {
         margin-bottom: 5px !important;
-    }
+    } */
 
     .form-btn-sm button.btn {
         font-size: 15px;
@@ -4803,9 +4803,9 @@ body::-webkit-scrollbar {
         border-radius: 3px;
     }
 
-    .radio-btn-card {
+    /* .radio-btn-card {
         margin-bottom: 5px !important;
-    }
+    } */
 
     .form-btn-sm button.btn {
         font-size: 15px;
@@ -14130,9 +14130,7 @@ select#filter-city:focus {
         bottom: -12px;
     }
 
-    .radio-btn-card {
-        margin-bottom: 20px !important;
-    }
+    
 }
 
 @media (max-width:1399px) and (min-width: 1024px) {
@@ -14140,7 +14138,14 @@ select#filter-city:focus {
         bottom: -12px;
     }
 
-    .radio-btn-card {
-        margin-bottom: 20px !important;
-    }
+ 
+}
+
+.ml-auto{margin-left: auto;}
+.institute-nis-select {
+    position: absolute;
+    right: 2%;
+    top: 3%;
+    z-index: 999999;
+    cursor: pointer;
 }
