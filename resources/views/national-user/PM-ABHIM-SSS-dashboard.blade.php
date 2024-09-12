@@ -48,7 +48,7 @@
                         <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                         <select id="pmabhimsss-year" name="financial_year" class="form-control pmabhimsss_card">
                             <option value="">Select Year</option>
-                            @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                            @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                 $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                 <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
                                 @endfor
@@ -306,7 +306,7 @@
                     <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year </b></label>
                     <select name="pmabhim-national-ucform-fy" class="form-control pmabhim_national_ucForm_filter" id="pmabhim-national-ucform-fy">
                         <option value="">Choose Financial Year</option>
-                        @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                        @for ($i = date("Y")-5; $i <= date("Y"); $i++)
                             <option value="{{$i}} - {{$i+1}}">{{$i}} - {{$i+1}}</option>
                         @endfor
                     </select>
@@ -447,7 +447,7 @@
                                 <label for="" class="text-nowrap me-3 font-16 mb-2"><b>Financial Year</b></label>
                                 <select id="financial_year" name="financial_year" class="form-control national_user_card">
                                     <option value="">Select Year</option>
-                                    @for ($i = date("Y")-10; $i <= date("Y")+10; $i++) @php
+                                    @for ($i = date("Y")-5; $i <= date("Y"); $i++) @php
                                         $selected=old('financial_year')==($i . ' - ' . ($i+1)) ? 'selected' : '' ; @endphp
                                         <option value="{{$i}} - {{$i+1}}" {{$selected}}>{{$i}} - {{$i+1}}</option>
                                         @endfor

@@ -3035,7 +3035,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     line-height: 30px;
     text-align: center;
     color: #67349d;
-    font-size: 12px;
+    font-size: 14px;
     transition: .3s;
     display: inline-block;
     flex: 32px 0 0
@@ -4728,9 +4728,9 @@ body::-webkit-scrollbar {
         padding: 10px 15px;
     }
 
-    .radio-btn-card {
+    /* .radio-btn-card {
         margin-bottom: 5px !important;
-    }
+    } */
 
     .form-btn-sm button.btn {
         font-size: 15px;
@@ -4803,9 +4803,9 @@ body::-webkit-scrollbar {
         border-radius: 3px;
     }
 
-    .radio-btn-card {
+    /* .radio-btn-card {
         margin-bottom: 5px !important;
-    }
+    } */
 
     .form-btn-sm button.btn {
         font-size: 15px;
@@ -12746,14 +12746,24 @@ ul.bullet-list li {
 .p-relative {
     position: relative;
 }
+input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear {
+    display: none;
+}
+
 
 .toggle-password.icon-psw {
     position: absolute;
-    top: 18px;
+    top: 14px;
     right: 18px;
     cursor: pointer;
     font-size: 16px;
     color: #383838;
+}
+@supports (-ms-ime-align:auto) {
+    .toggle-password.icon-psw{
+    position: absolute;
+    top: 13px;
+    }
 }
 
 .total-card h3 {
@@ -12896,7 +12906,7 @@ ul.bullet-list li {
 
 .graph-container h2.chart-title {
     position: absolute;
-    z-index: 99;
+    z-index: 0;
     font-size: 16px;
     color: #000;
     font-weight: 700;
@@ -14100,15 +14110,27 @@ select.form-control option {
     bottom: -12px;
     left: 2px;
 }
+select#filter-city {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+select#filter-city:focus {
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+}
+.row.captcha-alignment {
+    align-items: flex-start !important;
+}
 
 @media (max-width:1599px) and (min-width: 1361px) {
     #usertype-error {
         bottom: -12px;
     }
 
-    .radio-btn-card {
-        margin-bottom: 20px !important;
-    }
+    
 }
 
 @media (max-width:1399px) and (min-width: 1024px) {
@@ -14116,7 +14138,14 @@ select.form-control option {
         bottom: -12px;
     }
 
-    .radio-btn-card {
-        margin-bottom: 20px !important;
-    }
+ 
+}
+
+.ml-auto{margin-left: auto;}
+.institute-nis-select {
+    position: absolute;
+    right: 2%;
+    top: 3%;
+    z-index: 999999;
+    cursor: pointer;
 }

@@ -45,7 +45,7 @@
                                     class="text-danger">*</sup></b></label>
                             <select id="institute-user-fy" name="financial_year" class="form-control">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++)
                                     @php
                                         $selected = old('financial_year') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
                                     @endphp

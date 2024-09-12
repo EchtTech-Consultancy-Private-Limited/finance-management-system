@@ -23,7 +23,11 @@
             <div class="page_title_right">
                 <div class="page_date_button d-flex align-items-center">
                     <img src="http://localhost/limitedfinance-management-system/assets/img/icon/calender_icon.svg" alt="">
-                                        July 01 ,2024 - July 31 ,2024
+                                        @php
+                    $first_date = date('F d ,Y',strtotime('first day of this month'));
+                    $last_date = date('F d ,Y',strtotime('last day of this month'));
+                    @endphp
+                    {{ $first_date }} - {{ $last_date }}
                 </div>
             </div>
         </div>
@@ -84,7 +88,7 @@
                             <label class="form-label" for="inputAddress2">Year of UC<span class="text-danger">*</span></label>
                             <select id="inputState" class="form-control" name="yearofuc">
                                 <option value="">Select Year</option>
-                                @for ($i = date("Y")-10; $i <= date("Y")+10; $i++)
+                                @for ($i = date("Y")-5; $i <= date("Y"); $i++)
                                     @php
                                         $selected = old('yearofuc') == ($i . ' - ' . ($i+1)) ? 'selected' : '';
                                     @endphp
