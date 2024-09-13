@@ -37,7 +37,7 @@
                        
                     <div class="col-md-4">
                         <label class="form-label" for="inputAddress2">Select Program<span class="text-danger">*</span></label>
-                        <select class="form-control mySelect2" name="program_id[]" id="program_multiselect_id" multiple="multiple" aria-label="Default select">
+                        <select class="form-control mySelect2" name="program_id[]" id="program_multiselect_id" multiple="multiple" aria-label="Default select" data-placeholder="Select program">
                             @foreach($institutePrograms as $instituteProgram)
                             <option value="{{ $instituteProgram->id }}"
                                 {{ (collect(old('program_id', $user->program_id ?? []))->contains($instituteProgram->id)) ? 'selected' : '' }}>
