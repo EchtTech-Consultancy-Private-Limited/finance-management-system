@@ -14149,3 +14149,14 @@ select#filter-city:focus {
     z-index: 999999;
     cursor: pointer;
 }
+span.select2-selection.select2-selection--multiple::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23949ba3' viewBox='0 0 16 16'%3E%3Cpath d='M8 13.1l-8-8 2.1-2.2 5.9 5.9 5.9-5.9 2.1 2.2z'/%3E%3C/svg%3E");
+    height: 10px;
+    width: 10px;
+}
