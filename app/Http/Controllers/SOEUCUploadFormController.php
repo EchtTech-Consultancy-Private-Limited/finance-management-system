@@ -142,7 +142,7 @@ class SOEUCUploadFormController extends Controller
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
                 $ucFileUploadName = $ucFileUpload->getClientOriginalName();
-                $ucFileUpload->move(public_path('public/images/uploads/soeucupload'), $ucFileUploadName);
+                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
             }
             $ucUploadId = SOEUCUploadForm::Create([
                 'user_id' => Auth::id(),
@@ -266,7 +266,7 @@ class SOEUCUploadFormController extends Controller
             if ($ucFileUpload) {
                 $ucFileUploadSize =  FileSizeServices::getFileSize($ucFileUpload->getSize());
                 $ucFileUploadName = $ucFileUpload->getClientOriginalName();
-                $ucFileUpload->move(public_path('public/images/uploads/soeucupload'), $ucFileUploadName);
+                $ucFileUpload->move(public_path('images/uploads/soeucupload'), $ucFileUploadName);
             }else{
                 $ucFileUploadName = $request->old_file;
                 $ucFileUploadSize = $request->old_file_size;
