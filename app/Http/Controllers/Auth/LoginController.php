@@ -58,7 +58,6 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function generateCaptcha(){
-
       $CustomCaptchas = new CustomCaptcha;
       return  $CustomCaptchas->phpcaptcha('#884ffb','#fff',120,40,10,25);
 
@@ -89,7 +88,7 @@ class LoginController extends Controller
       $request->validate(
         [
             'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            'usertype'=> Rule::requiredIf($user->user_type != 'admin'),
+            'usertype'=> Rule::requiredIf(@$user->user_type != 'admin'),
             'password'=> 'required',
             'captcha_code' => 'required|in:'.Session::get('captcha_code')
         ],[
