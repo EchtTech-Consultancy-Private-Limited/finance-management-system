@@ -329,7 +329,7 @@ class NOHPPCZRCSController extends Controller
     public function nohppczrcsSoeExpenditureFilter(Request $request)
     {
         $yearlySoeExpenditureProgram = [];
-        $yearlySoeExpenditureInstitute = [];       
+        $yearlySoeExpenditureInstitute = [];
 
         if ($request->filled('program_wise_month')) {
             $queryProgram = SOEUCForm::with('SoeUcFormCalculation')

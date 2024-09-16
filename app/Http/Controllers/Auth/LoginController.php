@@ -99,8 +99,11 @@ class LoginController extends Controller
           'captcha_code.required' => 'The Captcha field is required.',
           'captcha_code.captcha_code' => 'Please enter a valid Captcha',
       ]);
-      
-      $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
+      if($request->usertype != null){
+        $ExitMail = DB::table('users')->where('email',$request->email)->where('user_type',$request->usertype)->count() >0;
+      }else{
+        $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
+      }
       if($ExitMail == false){
           Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
           return redirect()->back();

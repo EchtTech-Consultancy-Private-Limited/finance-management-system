@@ -327,10 +327,23 @@
    }
 }
 
-@media (min-width:991px) and (max-width:1499px) {
+@media (min-width:991px) and (max-width:1550px) {
    .textarea-h {
       height: 500px !important;
    }
+   span.highcharts-title:not(last-child) {
+      position: absolute;
+      top: 61px !important;
+      font-size: 15px !important;
+  }
+  .col.p-0:last-child {
+   margin-top: 6px;
+}
+.col.p-0:last-child span.highcharts-title {
+   position: absolute;
+   top: 54px !important;
+}
+  
 }
 
 @media (min-width:1500px) and (max-width:1599px) {

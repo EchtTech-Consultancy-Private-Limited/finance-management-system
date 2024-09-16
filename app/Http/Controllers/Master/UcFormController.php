@@ -43,7 +43,7 @@ class UcFormController extends Controller
             if ($ucFile) {
                 $ucFileSize =  FileSizeServices::getFileSize($ucFile->getSize());
                 $ucFileName = $ucFile->getClientOriginalName();
-                $ucFile->move(public_path('public/images/uploads/ucform'), $ucFileName);
+                $ucFile->move(public_path('images/uploads/ucform'), $ucFileName);
             }
             UcForm::create([
                 'title' => $request->title,
@@ -90,7 +90,7 @@ class UcFormController extends Controller
             
             if ($ucFile) {
                 $ucFileName = $ucFile->getClientOriginalName();
-                $ucFile->move(public_path('public/images/uploads/ucform'), $ucFileName);
+                $ucFile->move(public_path('images/uploads/ucform'), $ucFileName);
             }
 
             // Update the record

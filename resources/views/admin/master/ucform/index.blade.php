@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 </form>
             </div>
             
@@ -95,6 +96,7 @@
                                             <span>Download</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                         </a>
+                                        <span style="font-size: 12px; margin-left: 5px;color: #000; font: weight 600px;" tabindex="0">(205.06KB)</span>
                                         @else
                                         N/A
                                         @endif
