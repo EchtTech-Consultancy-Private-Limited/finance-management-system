@@ -31,7 +31,7 @@
 
         <div class="white_card_body SOE-UC-list-container">
 
-            <div class="QA_section">
+            <div class="QA_section table-responsive">
                 <div class="QA_table mb_30">
                     <table id="datatable" class="datatable table  table-bordered SOE-UC-list" cellspacing="0"
                         width="100%">
