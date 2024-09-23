@@ -1041,7 +1041,7 @@
                         <div class="overall-data-li">
                             <div>
                                 <span class="arrow arrow-left"><span class="number">2</span></span><span
-                                    class="country-list-content">GIA Received in F.Y</span>
+                                    class="country-list-content">GIA Received in Current Month</span>
                             </div>
                             <div>
                                 <span class="state-data-total" id="gia_received_total">0</span>
