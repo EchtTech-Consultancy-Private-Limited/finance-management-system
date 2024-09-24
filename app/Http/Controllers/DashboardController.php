@@ -855,6 +855,7 @@ class DashboardController extends Controller
         $count = 0;
         $cities = City::where('state_id', $request->state_id)->get();
         if ($cities) {
+            $output .='<option value="">Select District</option>';
             foreach ($cities as $city) {
                 $count++;
                 $output .='<option value="'.$city->id.'">' . $city->name . '</option>';

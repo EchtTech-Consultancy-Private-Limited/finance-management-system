@@ -84,7 +84,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-      $user = DB::table('users')->where('email',$request->email)->first(); 
+      $user = DB::table('users')->where('email',$request->email)->first();
       $request->validate(
         [
             'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
@@ -104,12 +104,16 @@ class LoginController extends Controller
       }else{
         $ExitMail = DB::table('users')->where('email',$request->email)->count() >0;
       }
+      if(@$user->status == 0){
+        Toastr::error('Your account is deactivated. Please contact the administrator for assistance.','Account Deactivated');
+          return redirect()->back();
+      }
       if($ExitMail == false){
           Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
           return redirect()->back();
       }else{
         $credentials = $request->only('email', 'password');
-      if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
           if(Auth::user()->user_type == 0){
             $redirectUrl = redirect()->intended('national-users/dashboard')->getTargetUrl();
           }elseif(Auth::user()->user_type == 1){
@@ -130,24 +134,21 @@ class LoginController extends Controller
           $crisp_signature = hash_hmac("sha256", $user->email,env('CRISP_SECRET_KEY'));
           
           if ($request->expectsJson()) {
-              //dd('HiOTT');
               $verified = $user->email_verified_at?true:false;
               return response()->json(['redirectUrl' => $redirectUrl, 'user' => $user,'crisp_signature'=>$crisp_signature,
-                     'verified'=>$verified,'status'=>200]);
+                    'verified'=>$verified,'status'=>200]);
+          }else{
+            return redirect($redirectUrl);
           }
-          else  return redirect($redirectUrl);
+        }
+        if ($request->expectsJson()) {
+            Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
+            return redirect()->back();
+        }else{
+            Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
+            return redirect()->back();
+        }
       }
-
-      if ($request->expectsJson()) {
-          Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
-          return redirect()->back();
-      }
-      else 
-          Toastr::error('fail, Incorrect email or password. User not authenticated :)','Error');
-          return redirect()->back();
-      
-      //}}
-    }
   }
 
     /**
@@ -167,8 +168,7 @@ class LoginController extends Controller
           return redirect(
               property_exists($this, 'redirectAfterLogout')
                       ? $this->redirectAfterLogout : 'login'
-          );
-      
+          );  
     }
     /**
      * Refresh a token.
