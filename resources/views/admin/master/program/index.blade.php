@@ -80,10 +80,10 @@
                         @if(isset($programs) && count($programs)>0)
                             @foreach($programs as $key=>$program)
                                 <tr>
-                                    <td>{{ $loop->iteration}}</td>
-                                    <td>{{ @$program->name }}</td>
-                                    <td>{{ @$program->code }}</td>
-                                    <td>{{ @$program->count}}</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ @$program->name ?? 'N/A'}}</td>
+                                    <td>{{ @$program->code ?? 'N/A' }}</td>
+                                    <td>{{ @$program->count ?? 'N/A'}}</td>
                                     <td>
                                         <a href="{{ route('admin.programs.edit',$program->id) }}"
                                             class="action_btn mr_10" title="edit"> <i class="far fa-edit"></i> </a>

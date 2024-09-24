@@ -4224,6 +4224,18 @@ table.dataTable {
     visibility: visible
 }
 
+.sidebar #sidebar_menu>li.dropdown-active>a::after {
+    color: #8890b5;
+    transform: rotate(0deg) translate(0, -50%);
+    opacity: 1;
+    font-size: 10px;
+    right: 15px;
+}
+
+li.dropdown-active ul.mm-collapse {
+    display: block !important;
+}
+
 .sidebar #sidebar_menu>li ul {
     padding: 0 0 5px 40px;
     background: 0 0;
@@ -4409,8 +4421,8 @@ body::-webkit-scrollbar {
     background: 0 0
 }
 
-.sidebar.dark_sidebar #sidebar_menu>li ul li a.active {
-    background: 0 0;
+.sidebar.dark_sidebar #sidebar_menu>li ul li a.active-nav {
+    /* background:; */
     color: #f65365 !important
 }
 
@@ -4422,6 +4434,10 @@ body::-webkit-scrollbar {
 .sidebar.dark_sidebar #sidebar_menu>li {
     margin-left: 0;
     margin-right: 20px
+}
+.sidebar.dark_sidebar #sidebar_menu>li a.active-nav {
+    background-color: #000 !important;
+    margin-right: 0;
 }
 
 .sidebar.dark_sidebar #sidebar_menu>li a::after {
