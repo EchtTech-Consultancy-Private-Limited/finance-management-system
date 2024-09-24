@@ -201,6 +201,9 @@ p {
     font-family: mulish, sans-serif;
     font-weight: 300
 }
+.form-label+p {
+    color: #000;
+}
 
 .admin_list_name {
     display: inline-block;
@@ -687,6 +690,9 @@ table.dataTable tbody td {
 @media only screen and (min-width:1200px) and (max-width:1439px) {
     .white_box {
         padding: 30px 20px
+    }
+    .expenditure-count span {
+        font-size: 12px;
     }
 }
 
@@ -13119,6 +13125,8 @@ select.form-control {
 .form-label {
     font-size: 15px;
     font-weight: bold;
+    color: #000;
+
 }
 
 .financial-year-institute-dashboard select.form-control,
@@ -14152,6 +14160,9 @@ select#filter-city:focus {
 @media (max-width:1399px) and (min-width: 1024px) {
     #usertype-error {
         bottom: -12px;
+    }
+    .form-label {
+        font-size: 13px;
     }
 
  

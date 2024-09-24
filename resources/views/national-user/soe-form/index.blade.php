@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="white_card_body">
-            <div class="QA_section">
+            <div class="QA_section table-responsive">
                 <div class="QA_table mb_30">
                     <table id="datatable" class="datatable table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>

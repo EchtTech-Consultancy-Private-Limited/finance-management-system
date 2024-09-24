@@ -48,6 +48,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 </form>
             </div>
             
@@ -64,9 +65,9 @@
             </div>
         </div>
         <div class="white_card_body">
-            <div class="QA_section">
+            <div class="QA_section table-responsive">
                 <div class="QA_table mb_30">
-                    <table id="datatable" class="table table-striped table-bordered facility-mapping-list datatable" cellspacing="0" width="100%" >
+                    <table id="datatable" class=" table-responsive table table-striped table-bordered facility-mapping-list datatable" cellspacing="0" width="100%" >
                     <thead>
                         <tr>
                             <th scope="col">Sr. No.</th>

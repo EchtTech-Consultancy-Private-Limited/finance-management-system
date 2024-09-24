@@ -46,6 +46,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 </form>
             </div>
             

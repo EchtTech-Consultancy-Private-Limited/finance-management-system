@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 </form>
             </div>
             
@@ -67,8 +68,8 @@
                 </div>
             </div>
         </div>
-        <div class="white_card_body">
-            <div class="QA_section">
+        <div class="white_card_body table-responsive">
+            <div class="QA_section table-responsive">
                 <div class="QA_table mb_30">
                     <table id="datatable" class="table table-striped table-bordered facility-mapping-list datatable" cellspacing="0" width="100%" >
                     <thead>
@@ -95,6 +96,7 @@
                                             <span>Download</span>
                                             <i class="fa fa-download" aria-hidden="true"></i>
                                         </a>
+                                        <span style="font-size: 12px; margin-left: 5px;color: #000; font: weight 600px;" tabindex="0">(205.06KB)</span>
                                         @else
                                         N/A
                                         @endif

@@ -93,7 +93,7 @@
                     </div>
                 </form>
             </div>
-            <div class="QA_section">
+            <div class="QA_section table-responsive">
                 <div class="QA_table form_type_uc_list" id="form_type_uc_list">
                     <table class="table datatable table-bordered">
                         <thead>
