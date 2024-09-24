@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="white_card_body p-0 overall-expenditure">
+                    <div class="white_card_body p-0 overall-expenditure responsive">
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div id="integrated-dashboard-chart-overall-program-expenditure-amount-rc"></div>
