@@ -19,10 +19,10 @@ class NotificationController extends Controller
         $returned = $notifications->where('status', '2')->count();
 
         return response()->json([
-            'totalNew' => $totalNew,
-            'totalReported' => $totalReported,
             'confirmed' => $confirmed,
             'returned' => $returned,
+            'totalNew' => $totalNew,
+            'totalReported' => $totalReported,            
         ]);
     }
 }

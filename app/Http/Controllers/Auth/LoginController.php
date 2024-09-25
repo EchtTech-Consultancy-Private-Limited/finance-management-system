@@ -91,11 +91,11 @@ class LoginController extends Controller
             'usertype'=> Rule::requiredIf(@$user->user_type != 'admin'),
             'password'=> 'required',
             'captcha_code' => 'required|in:'.Session::get('captcha_code')
-        ],[
-          'email.required' => 'The email field is required.',
-          'email.email' => 'The email must be valid.',
+        ],[          
           'usertype.required' => 'Please select user type.',
           'password.required' => 'The Password is required.',
+          'email.required' => 'The email field is required.',
+          'email.email' => 'The email must be valid.',
           'captcha_code.required' => 'The Captcha field is required.',
           'captcha_code.captcha_code' => 'Please enter a valid Captcha',
       ]);
